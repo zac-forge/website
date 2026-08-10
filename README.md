@@ -66,11 +66,16 @@ repo or in client-side code.
 
 ## TODO before this is a real site
 
-- [ ] Design and copy for the actual page (not started, this scaffold is intentionally blank).
-- [ ] Real calendar link (cal.com or Calendly) to replace the placeholder booking URL.
-- [ ] Confirm the contact email (currently `andrew@mahalomediagroup.com`, may move to a
-      `zacforge.com` address).
-- [ ] OG image for social sharing.
-- [ ] Logo.
-- [ ] Favicon.
-- [ ] Implement `functions/api/chat.ts` for the v1.1 AI assistant.
+- [ ] Real calendar link. `BOOKING_URL` in `src/lib/links.ts` is still the placeholder
+      `https://cal.com/REPLACE`, so every "Book a call" button is currently dead.
+- [ ] Confirm `hello@zacforge.com` actually receives mail. It is live in the footer and the
+      "Send a message" button, set in `src/lib/links.ts`.
+- [ ] OG image for social sharing (1200x630 PNG or JPG). The meta tag is stubbed out in
+      `index.html` and commented, uncomment it once the image exists.
+- [ ] Swap the placeholder role cards in `src/components/TrackRecord.tsx` for real names if and
+      when you want the team public.
+- [ ] Implement `functions/api/chat.ts` for the v1.1 AI assistant. Note that the current
+      `wrangler.toml` deploys static assets only, so the `functions/` directory is not wired up
+      on the deployed site yet.
+
+Done: page design and copy, brand assets, logo, favicon.

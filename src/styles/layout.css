@@ -476,8 +476,27 @@
   color: var(--color-text-muted);
 }
 
+.roles-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+  margin-top: var(--space-7);
+}
+.role {
+  padding: var(--space-5);
+}
+.role .eyebrow {
+  margin-bottom: var(--space-2);
+}
+.role p:last-child {
+  margin: 0;
+}
+
 @media (max-width: 900px) {
   .track-grid {
+    grid-template-columns: 1fr;
+  }
+  .roles-row {
     grid-template-columns: 1fr;
   }
 }
