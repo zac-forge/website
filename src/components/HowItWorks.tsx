@@ -60,11 +60,12 @@ export function HowItWorks() {
 
         <div className="how-grid">
           <Reveal className="how-copy">
-            <h2 className="h2">One senior point of contact.</h2>
+            <h2 className="h2">One point of contact. A senior team behind it.</h2>
             <p className="text-muted">
-              Strategy and execution stay connected. When a project needs more depth, ZAC brings
-              in trusted senior specialists in development, design, and related fields. The team
-              expands around the problem, not around an agency org chart.
+              Strategy and execution stay connected. Our core team covers development, design,
+              and technology strategy, and we bring in trusted senior specialists when a project
+              calls for more depth. The team expands around the problem, not around an agency org
+              chart.
             </p>
           </Reveal>
 

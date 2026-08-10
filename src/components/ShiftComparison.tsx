@@ -19,8 +19,8 @@ export function ShiftComparison() {
           <h2 className="h2">The cost of building changed. Your strategy should too.</h2>
           <p className="text-muted">
             AI does not replace experience. It multiplies what experienced people can do. ZAC uses
-            that leverage to collapse the layers between strategy and execution, so the person who
-            helps decide what to build can also build it.
+            that leverage to collapse the layers between strategy and execution, so the people who
+            help decide what to build are the ones who build it.
           </p>
         </Reveal>
 
