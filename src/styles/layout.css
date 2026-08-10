@@ -144,6 +144,45 @@
   position: relative;
   perspective: 1000px;
 }
+.hero-forge-tilt {
+  position: relative;
+}
+
+.forge-hotspots {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.hotspot {
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  margin-left: -70px;
+  margin-top: -70px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 104, 117, 0.55) 0%, rgba(232, 52, 69, 0.22) 40%, transparent 70%);
+  mix-blend-mode: screen;
+  filter: blur(6px);
+  animation: hotspot-pulse 3.6s ease-in-out infinite;
+}
+.hotspot-1 {
+  left: 68%;
+  top: 39%;
+}
+.hotspot-2 {
+  left: 55%;
+  top: 58%;
+  width: 100px;
+  height: 100px;
+  margin-left: -50px;
+  margin-top: -50px;
+  animation-delay: -1.8s;
+  animation-duration: 4.2s;
+}
+@keyframes hotspot-pulse {
+  0%, 100% { opacity: .55; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.25); }
+}
 
 .ember-field {
   position: absolute;
@@ -162,38 +201,38 @@
   animation: ember-drift 6s ease-in infinite;
 }
 .ember:nth-child(1) {
-  left: 22%;
-  bottom: 18%;
+  left: 70%;
+  bottom: 58%;
   animation-delay: -0.5s;
   animation-duration: 5.5s;
 }
 .ember:nth-child(2) {
-  left: 48%;
-  bottom: 10%;
+  left: 57%;
+  bottom: 40%;
   animation-delay: -2.2s;
   animation-duration: 6.5s;
 }
 .ember:nth-child(3) {
-  left: 64%;
-  bottom: 24%;
+  left: 18%;
+  bottom: 72%;
   animation-delay: -4s;
   animation-duration: 5s;
 }
 .ember:nth-child(4) {
-  left: 34%;
-  bottom: 30%;
+  left: 10%;
+  bottom: 34%;
   animation-delay: -1.2s;
   animation-duration: 7s;
 }
 .ember:nth-child(5) {
-  left: 72%;
-  bottom: 14%;
+  left: 80%;
+  bottom: 47%;
   animation-delay: -3.4s;
   animation-duration: 6s;
 }
 .ember:nth-child(6) {
-  left: 58%;
-  bottom: 36%;
+  left: 26%;
+  bottom: 52%;
   animation-delay: -5s;
   animation-duration: 5.8s;
 }

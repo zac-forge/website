@@ -10,11 +10,15 @@
 
 .forge-glow {
   position: absolute;
-  width: 620px;
-  aspect-ratio: 1;
+  left: 68%;
+  top: 39%;
+  width: 420px;
+  height: 420px;
+  margin-left: -210px;
+  margin-top: -210px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(232,52,69,.22) 0, rgba(232,52,69,.07) 28%, transparent 66%);
-  filter: blur(10px);
+  background: radial-gradient(circle, rgba(232,52,69,.28) 0, rgba(232,52,69,.09) 30%, transparent 66%);
+  filter: blur(14px);
   pointer-events: none;
   animation: glow-pulse 4.5s ease-in-out infinite;
 }
@@ -23,10 +27,17 @@
   50% { opacity: 1; }
 }
 
+/* The artwork ships on its own near-black plate that does not exactly match
+   the page background, so feather the edges to blend it in rather than
+   letting it read as a pasted rectangle. */
 .hero-forge {
+  width: 100%;
+  height: auto;
   animation: forge-breathe 7s ease-in-out infinite;
   transform-origin: center;
   will-change: transform, filter;
+  -webkit-mask-image: radial-gradient(ellipse 62% 58% at 50% 50%, #000 30%, rgba(0, 0, 0, 0.55) 62%, transparent 88%);
+  mask-image: radial-gradient(ellipse 62% 58% at 50% 50%, #000 30%, rgba(0, 0, 0, 0.55) 62%, transparent 88%);
 }
 @keyframes forge-breathe {
   0%, 100% { transform: scale(1); filter: brightness(.95); }

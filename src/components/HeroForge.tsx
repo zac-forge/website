@@ -42,8 +42,22 @@ export function HeroForge() {
     >
       <motion.div className="forge-glow" style={{ x: glowX, y: glowY }} aria-hidden="true" />
 
-      <motion.div style={{ rotateX, rotateY, x: tiltX, y: tiltY }}>
-        <img className="hero-forge" src="/brand/hero-forge.svg" alt="" aria-hidden="true" draggable={false} />
+      <motion.div className="hero-forge-tilt" style={{ rotateX, rotateY, x: tiltX, y: tiltY }}>
+        <img
+          className="hero-forge"
+          src="/brand/hero-forge.webp"
+          width={1536}
+          height={1024}
+          alt=""
+          aria-hidden="true"
+          draggable={false}
+          fetchPriority="high"
+          decoding="async"
+        />
+        <div className="forge-hotspots" aria-hidden="true">
+          <span className="hotspot hotspot-1" />
+          <span className="hotspot hotspot-2" />
+        </div>
       </motion.div>
 
       <div className="ember-field" aria-hidden="true">
