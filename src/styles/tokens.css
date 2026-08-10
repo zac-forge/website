@@ -1,0 +1,30 @@
+/* Design tokens: placeholder ember/forge palette. Swap values here once the
+   real design lands, nothing that consumes these variables should need to
+   change. */
+:root {
+  /* color */
+  --color-bg: #0b0a09;
+  --color-bg-elevated: #17140f;
+  --color-text: #f5f1ea;
+  --color-text-muted: #a89f92;
+  --color-accent: #b8371f;
+  --color-accent-hover: #d1452b;
+  --color-accent-glow: rgba(184, 55, 31, 0.45);
+
+  /* spacing */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2.5rem;
+  --space-6: 4rem;
+  --space-7: 6rem;
+
+  /* radius */
+  --radius-sm: 4px;
+  --radius-md: 10px;
+  --radius-lg: 20px;
+
+  /* effects */
+  --shadow-glow: 0 0 48px var(--color-accent-glow);
+}

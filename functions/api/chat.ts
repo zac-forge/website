@@ -27,8 +27,15 @@
 //
 // Until that lands, this handler just returns 501 so the endpoint is a
 // known, predictable no-op instead of a 404.
+//
+// PagesFunction and Response are ambient globals here, typed via
+// @cloudflare/workers-types (see functions/tsconfig.json).
 
-export async function onRequestPost(context) {
+interface Env {
+  ANTHROPIC_API_KEY: string;
+}
+
+export const onRequestPost: PagesFunction<Env> = async () => {
   return new Response(
     JSON.stringify({
       error: "not_implemented",
@@ -37,10 +44,10 @@ export async function onRequestPost(context) {
     {
       status: 501,
       headers: { "content-type": "application/json" },
-    }
+    },
   );
-}
+};
 
-export async function onRequestGet(context) {
+export const onRequestGet: PagesFunction<Env> = async () => {
   return new Response("Method not allowed. Use POST.", { status: 405 });
-}
+};
