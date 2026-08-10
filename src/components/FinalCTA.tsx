@@ -8,7 +8,7 @@ export function FinalCTA() {
       <div className="container">
         <Reveal>
           <p className="eyebrow">HAVE SOMETHING WORTH BUILDING?</p>
-          <h2 className="h2">Bring me the problem.</h2>
+          <h2 className="h2">Bring us the problem.</h2>
           <p className="text-muted">
             Whether you know exactly what you need or just know something should work better,
             that is enough to start.
