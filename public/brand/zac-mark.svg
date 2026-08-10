@@ -1,0 +1,12 @@
+<svg width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>ZACFORGE mark</title>
+  <defs>
+    <linearGradient id="g" x1="24" y1="16" x2="136" y2="144" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FF6875"/>
+      <stop offset="0.42" stop-color="#E83445"/>
+      <stop offset="1" stop-color="#9E1F2D"/>
+    </linearGradient>
+  </defs>
+  <path d="M30 28H132L112 52H66L126 108H28L48 84H92L30 28Z" fill="url(#g)"/>
+  <path d="M42 30H124L115 40H53L42 30Z" fill="#FF7C87" fill-opacity=".28"/>
+</svg>

@@ -1,0 +1,13 @@
+<svg width="420" height="88" viewBox="0 0 420 88" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>ZACFORGE wordmark</title>
+  <defs>
+    <linearGradient id="g" x1="8" y1="8" x2="76" y2="76" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FF6875"/>
+      <stop offset=".45" stop-color="#E83445"/>
+      <stop offset="1" stop-color="#9E1F2D"/>
+    </linearGradient>
+  </defs>
+  <path d="M12 17H76L64 31H35L73 66H11L23 52H52L12 17Z" fill="url(#g)"/>
+  <text x="94" y="57" fill="#F4F2F0" font-family="Space Grotesk, Arial, sans-serif" font-size="36" font-weight="600" letter-spacing="2">ZAC</text>
+  <text x="181" y="57" fill="#A6A4AA" font-family="Space Grotesk, Arial, sans-serif" font-size="36" font-weight="500" letter-spacing="2">FORGE</text>
+</svg>
