@@ -1,24 +1,26 @@
+import { motion, useReducedMotion } from "motion/react";
 import { Reveal } from "./Reveal";
 
 const COMPARISON = [
-  ["Large delivery team", "Lean senior team"],
+  ["Large delivery teams", "Lean senior team"],
   ["Long build cycles", "Rapid iteration"],
   ["Heavy coordination", "Direct collaboration"],
   ["Ideas waiting on budget", "Ideas tested early"],
-  ["Big upfront commitments", "Value proven quickly"],
 ];
 
 export function ShiftComparison() {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <section className="section shift">
       <div className="container shift-grid">
         <Reveal className="shift-copy">
           <p className="eyebrow">01 / THE SHIFT</p>
-          <h2 className="h2">The cost of building changed. Your technology strategy should too.</h2>
+          <h2 className="h2">The cost of building changed. Your strategy should too.</h2>
           <p className="text-muted">
-            AI does not replace experience. It increases what experienced people can accomplish.
-            ZAC uses that leverage to remove layers between strategy and execution, so the person
-            helping determine what should be built can also help build it.
+            AI does not replace experience. It multiplies what experienced people can do. ZAC uses
+            that leverage to collapse the layers between strategy and execution, so the person who
+            helps decide what to build can also build it.
           </p>
         </Reveal>
 
@@ -28,10 +30,18 @@ export function ShiftComparison() {
             <span className="text-forge">NOW</span>
           </div>
           <ul className="compare-list">
-            {COMPARISON.map(([then, now]) => (
+            {COMPARISON.map(([then, now], i) => (
               <li key={then}>
                 <span>{then}</span>
-                <span className="compare-line" aria-hidden="true" />
+                <span className="compare-line" aria-hidden="true">
+                  <motion.span
+                    className="compare-line-fill"
+                    initial={shouldReduceMotion ? false : { scaleX: 0 }}
+                    whileInView={{ scaleX: 1 }}
+                    viewport={{ once: true, amount: 0.6 }}
+                    transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] as const, delay: i * 0.1 }}
+                  />
+                </span>
                 <span className="text-forge">{now}</span>
               </li>
             ))}

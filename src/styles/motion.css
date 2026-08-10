@@ -16,8 +16,11 @@
   background: radial-gradient(circle, rgba(232,52,69,.22) 0, rgba(232,52,69,.07) 28%, transparent 66%);
   filter: blur(10px);
   pointer-events: none;
-  transform: translate3d(var(--mx, 0), var(--my, 0), 0);
-  transition: transform 320ms var(--ease-out);
+  animation: glow-pulse 4.5s ease-in-out infinite;
+}
+@keyframes glow-pulse {
+  0%, 100% { opacity: .75; }
+  50% { opacity: 1; }
 }
 
 .hero-forge {
@@ -31,12 +34,14 @@
 }
 
 .service-row {
-  transition: border-color var(--duration-base) var(--ease-out), background var(--duration-base) var(--ease-out), transform var(--duration-base) var(--ease-out);
+  transition: border-color var(--duration-base) var(--ease-out), background var(--duration-base) var(--ease-out), transform var(--duration-base) var(--ease-out), box-shadow var(--duration-base) var(--ease-out);
 }
-.service-row:hover {
+.service-row:hover,
+.service-row:focus-within {
   border-color: rgba(232,52,69,.65);
   background: linear-gradient(90deg, rgba(232,52,69,.08), rgba(255,255,255,.018) 34%, rgba(232,52,69,.04));
   transform: translateX(4px);
+  box-shadow: 0 12px 40px rgba(232,52,69,.16), inset 0 1px rgba(255,255,255,.045);
 }
 
 @media (prefers-reduced-motion: reduce) {
