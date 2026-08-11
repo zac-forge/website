@@ -8,6 +8,9 @@ type Props = {
 export function ServiceRow({ index, title, statement, items }: Props) {
   return (
     <article className="service-row" tabIndex={0}>
+      {/* The node on the row's signal edge. Dim at rest, bright on interaction:
+          energy here is reactive, never ambient. */}
+      <span className="service-spark" aria-hidden="true" />
       <div className="service-index" aria-hidden="true">
         {index}
       </div>

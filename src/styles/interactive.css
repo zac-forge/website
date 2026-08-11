@@ -127,6 +127,57 @@
 .service-row:focus-within::before {
   opacity: 1;
 }
+/* A faint internal light spreading about 90px from the signal edge. Clipped by
+   the row's own overflow, so it never spills into the section. Energy in this
+   section is reactive only: nothing here runs on its own. */
+.service-row::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 240px;
+  height: 240px;
+  translate: -46% -50%;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(232, 52, 69, 0.16) 0%,
+    rgba(232, 52, 69, 0.05) 42%,
+    transparent 72%
+  );
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--duration-base) var(--ease-out);
+}
+.service-row:hover::after,
+.service-row:focus-within::after {
+  opacity: 1;
+}
+/* The node on the signal edge. Dim at rest so the row still reads as wired,
+   bright on interaction. */
+.service-spark {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 5px;
+  height: 5px;
+  translate: 0 -50%;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff 0 30%, var(--color-forge-hot) 66%, var(--color-forge));
+  box-shadow: 0 0 8px 2px rgba(232, 52, 69, 0.45);
+  opacity: 0.3;
+  pointer-events: none;
+  transition:
+    opacity var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out);
+}
+.service-row:hover .service-spark,
+.service-row:focus-within .service-spark {
+  opacity: 1;
+  box-shadow:
+    0 0 12px 3px rgba(232, 52, 69, 0.75),
+    0 0 28px 8px rgba(232, 52, 69, 0.28);
+}
 .service-row:hover .service-title,
 .service-row:focus-within .service-title,
 .service-row:hover .service-statement,

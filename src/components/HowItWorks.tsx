@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { motion, useInView, useReducedMotion } from "motion/react";
 import { Reveal } from "./Reveal";
 import { ZacMark } from "./Brand";
+import { Motes } from "./Motes";
 import { fadeUp, EASE } from "../lib/motion";
 
 const PRINCIPLES = [
@@ -107,6 +108,10 @@ export function HowItWorks() {
 
   return (
     <section id="approach" className="section how-it-works section--grid">
+      {/* Three points in the black to the right of the section label. The ZAC
+          node energises its own surroundings via a halo in CSS; this section
+          gets nothing beyond that. */}
+      <Motes count={3} seed={17} className="mote-field--how" />
       <div className="container">
         <Reveal>
           <p className="eyebrow">03 / HOW ZAC WORKS</p>
@@ -135,8 +140,14 @@ export function HowItWorks() {
           </motion.span>
 
           {/* ZAC is the energy source, so it is lit from the start rather than
-              waiting for the signal to reach it. */}
-          <motion.div className="sequence-node sequence-node--zac" variants={sequenceItem}>
+              waiting for the signal to reach it. It does still flare as the
+              signal passes through, on a fast rise and a slow settle, which is
+              what makes the direction of travel readable. */}
+          <motion.div
+            className="sequence-node sequence-node--zac"
+            variants={sequenceItem}
+            data-flare={lit === 2 ? "true" : "false"}
+          >
             <ZacMark className="sequence-mark" />
             <span>ZAC</span>
           </motion.div>

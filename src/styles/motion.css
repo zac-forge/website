@@ -23,6 +23,59 @@
     art-in 1.3s var(--ease-out) 0.55s both,
     art-breathe 8s ease-in-out 1.85s infinite;
 }
+
+/*
+ * The forge core. Opacity .72 to 1 to .76 with a 6% radius lift over 7s, which
+ * is where the hero's sense of heat now comes from.
+ *
+ * `filter` is deliberately absent from these keyframes. The element carries a
+ * static blur, so animating only `opacity` and `scale` lets the browser cache
+ * the blurred texture once and transform it on the compositor. Putting
+ * `brightness()` in here would force the whole filter chain to re-evaluate
+ * every frame; the opacity range carries that perceptually instead.
+ */
+.hero-core {
+  opacity: 0;
+  animation:
+    layer-in 1.5s var(--ease-out) 0.75s both,
+    core-heat 7s ease-in-out 2.1s infinite;
+}
+@keyframes core-heat {
+  0% {
+    opacity: 0.72;
+    scale: 1;
+  }
+  50% {
+    opacity: 1;
+    scale: 1.06;
+  }
+  100% {
+    opacity: 0.76;
+    scale: 1.02;
+  }
+}
+
+/*
+ * Suspended energy points. Short travel over a long duration, so nothing ever
+ * reads as falling or rising through the frame. Only transform and opacity,
+ * and the per-point glow underneath is a static shadow.
+ */
+@keyframes mote-drift {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0) scale(0.72);
+  }
+  16% {
+    opacity: var(--mote-peak, 0.4);
+  }
+  62% {
+    opacity: calc(var(--mote-peak, 0.4) * 0.62);
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(var(--mote-x, 0px), var(--mote-y, -20px), 0) scale(1);
+  }
+}
 @keyframes art-in {
   from {
     opacity: 0;
@@ -81,15 +134,18 @@
   animation: node-pulse var(--node-dur, 4s) ease-in-out infinite;
   animation-delay: var(--node-delay, 0s);
 }
+/* `--node-floor` is per node. Points set low disappear almost entirely between
+   pulses; points set high hold a dim red state throughout. That mix is what
+   stops the field reading as a row of blinking lights. */
 @keyframes node-pulse {
   0%,
   100% {
-    opacity: 0.4;
-    scale: 0.75;
+    opacity: var(--node-floor, 0.06);
+    scale: 0.72;
   }
   50% {
     opacity: 1;
-    scale: 1.3;
+    scale: 1.28;
   }
 }
 
@@ -98,13 +154,16 @@
   animation: layer-in 1.4s var(--ease-out) 1.2s both;
 }
 /*
- * A bright dash travelling one link. The dash is short relative to the path
- * and the cycle is long, so most of the time nothing is happening and the
- * transmission reads as occasional signal rather than circuitry.
+ * A bright dash travelling one link, then nothing for the rest of a very long
+ * cycle. The travel occupies the first 7% of each cycle, so at the 20, 24 and
+ * 28 second periods the three paths cross in 1.4, 1.7 and 2.0 seconds. With
+ * their delays staggered a signal fires somewhere every 5 to 10 seconds, and
+ * because the spacing varies it reads as a system processing something rather
+ * than as a metronome.
  */
 .hero-link-signal {
   stroke-dasharray: 6 94;
-  animation: link-signal var(--link-dur, 18s) linear infinite;
+  animation: link-signal var(--link-dur, 24s) linear infinite;
   animation-delay: var(--link-delay, 0s);
 }
 @keyframes link-signal {
@@ -112,13 +171,13 @@
     stroke-dashoffset: 100;
     opacity: 0;
   }
-  4% {
-    opacity: 0.85;
+  0.6% {
+    opacity: 0.9;
   }
-  16% {
-    opacity: 0.85;
+  6.4% {
+    opacity: 0.9;
   }
-  20% {
+  7% {
     stroke-dashoffset: 0;
     opacity: 0;
   }
@@ -155,6 +214,24 @@
   100% {
     opacity: 0.82;
     filter: brightness(0.96) saturate(1.02);
+  }
+}
+
+/* A heat band drifting along the limb. The arc image itself never moves, which
+   is the point: this should read as energy travelling through the horizon, not
+   as a background sliding. Transform and opacity only, over a static blur. */
+@keyframes arc-heat {
+  0% {
+    transform: translateX(0);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateX(120%);
+    opacity: 0.85;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 0.3;
   }
 }
 
@@ -196,7 +273,30 @@
      rather than frozen mid-cycle. */
   .arc-traveller,
   .hero-link-signal,
-  .ember {
+  .arc-heat {
     display: none;
+  }
+  /*
+   * Everything else keeps its composition. The universal rule above collapses
+   * animations to 0.01ms, which lands each element on its keyframe end state,
+   * and for a drifting point that end state is opacity 0. So the atmospheric
+   * layers are pinned to a designed resting state instead: still visible, at
+   * restrained opacity, simply not moving. The static artwork and all the
+   * lighting are untouched.
+   */
+  .mote {
+    animation: none !important;
+    opacity: 0.32;
+    transform: none;
+  }
+  .hero-node {
+    animation: none !important;
+    opacity: 0.6;
+    scale: 1;
+  }
+  .hero-core {
+    animation: none !important;
+    opacity: 0.85;
+    scale: 1;
   }
 }

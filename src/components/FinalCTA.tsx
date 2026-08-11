@@ -1,6 +1,6 @@
 import { Reveal } from "./Reveal";
 import { Magnetic } from "./Magnetic";
-import { Embers } from "./Embers";
+import { Motes } from "./Motes";
 import { RedArc } from "./RedArc";
 import { BOOKING_URL, CONTACT_EMAIL } from "../lib/links";
 
@@ -10,7 +10,12 @@ export function FinalCTA() {
       <RedArc />
       {/* One light making a very slow pass along the limb. */}
       <span className="arc-traveller" aria-hidden="true" />
-      <Embers count={10} seed={23} className="ember-field--horizon" />
+      {/* Energy travelling through the horizon rather than the image sliding:
+          a soft heat band drifting along the limb on a 15s cycle. */}
+      <span className="arc-heat" aria-hidden="true" />
+      {/* Two distant points, nothing more. The limb is the visual event here,
+          so this section gets no field. */}
+      <Motes count={2} seed={23} className="mote-field--horizon" />
 
       <div className="container">
         <Reveal>
