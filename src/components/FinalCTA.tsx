@@ -1,11 +1,18 @@
 import { Reveal } from "./Reveal";
 import { Magnetic } from "./Magnetic";
+import { Embers } from "./Embers";
 import { BOOKING_URL, CONTACT_EMAIL } from "../lib/links";
 
 export function FinalCTA() {
   return (
     <section id="contact" className="section final-cta">
-      <div className="horizon-glow" aria-hidden="true" />
+      {/* The red planetary horizon from the reference mockup: a bloom, the
+          lit limb itself, and embers rising off it. */}
+      <div className="horizon" aria-hidden="true">
+        <div className="horizon-bloom" />
+        <div className="horizon-arc" />
+      </div>
+      <Embers count={14} seed={23} className="ember-field--horizon" />
       <div className="container">
         <Reveal>
           <p className="eyebrow">HAVE SOMETHING WORTH BUILDING?</p>

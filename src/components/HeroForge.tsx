@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { motion, useMotionValue, useSpring, useTransform, useReducedMotion } from "motion/react";
+import { Embers } from "./Embers";
 
 const EMBER_COUNT = 10;
 
@@ -60,11 +61,7 @@ export function HeroForge() {
         </div>
       </motion.div>
 
-      <div className="ember-field" aria-hidden="true">
-        {Array.from({ length: EMBER_COUNT }).map((_, i) => (
-          <span className="ember" key={i} />
-        ))}
-      </div>
+      <Embers count={EMBER_COUNT} seed={11} />
     </div>
   );
 }

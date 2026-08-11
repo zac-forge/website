@@ -22,7 +22,7 @@ export function HowItWorks() {
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <section id="approach" className="section how-it-works">
+    <section id="approach" className="section how-it-works section--grid">
       <div className="container">
         <Reveal>
           <p className="eyebrow">03 / HOW ZAC WORKS</p>

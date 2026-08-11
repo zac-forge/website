@@ -1,0 +1,24 @@
+# ZAC Forge
+
+> A senior-led, AI-native technology studio. ZAC advises on where technology creates leverage,
+> builds the systems that follow, and partners as ongoing senior capability, without agency
+> overhead.
+
+ZAC pairs senior technology judgment with AI-native execution. The team is small and senior by
+design: one point of contact, with development, design, and strategy behind it, plus trusted
+specialists brought in when a project calls for more depth.
+
+## Services
+
+- Advise: technology strategy, AI opportunity assessment, product and platform direction,
+  workflow analysis, architecture and technical planning.
+- Build: custom software, web applications, high-performance websites, internal tools, workflow
+  automation, AI integrations and agents, prototypes and MVPs.
+- Partner: fractional technology leadership, ongoing product development, technical problem
+  solving, specialist team assembly, existing platform improvement.
+
+## Contact
+
+- Book a call: https://cal.com/zacforge/20-min-chat
+- Email: hello@zacforge.com
+- Site: https://zacforge.com/

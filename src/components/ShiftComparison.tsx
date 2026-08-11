@@ -1,5 +1,6 @@
 import { motion, useReducedMotion } from "motion/react";
 import { Reveal } from "./Reveal";
+import { Embers } from "./Embers";
 
 const COMPARISON = [
   ["Large delivery teams", "Lean senior team"],
@@ -12,7 +13,8 @@ export function ShiftComparison() {
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <section className="section shift">
+    <section className="section shift section--grid">
+      <Embers count={7} seed={41} />
       <div className="container shift-grid">
         <Reveal className="shift-copy">
           <p className="eyebrow">01 / THE SHIFT</p>
