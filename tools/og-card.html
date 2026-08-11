@@ -1,0 +1,153 @@
+<!doctype html>
+<!--
+  Source for public/og-image.png. This is a local generator, not part of the
+  built site, so it is deliberately outside public/ and never deployed.
+
+  To regenerate:
+    python3 -m http.server 4599   (from the repo root)
+    open http://localhost:4599/tools/og-card.html
+    screenshot the 1200x630 .og-card element, save to public/og-image.png
+
+  It pulls the real font files and the real design tokens so the card cannot
+  drift away from the live site.
+-->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>ZAC Forge OG card</title>
+    <style>
+      @font-face {
+        font-family: "Space Grotesk";
+        font-weight: 600;
+        font-display: block;
+        src: url("../node_modules/@fontsource/space-grotesk/files/space-grotesk-latin-600-normal.woff2")
+          format("woff2");
+      }
+      @font-face {
+        font-family: "IBM Plex Mono";
+        font-weight: 500;
+        font-display: block;
+        src: url("../node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-500-normal.woff2")
+          format("woff2");
+      }
+
+      /* Tokens copied from src/styles/tokens.css. */
+      :root {
+        --color-bg: #0c0c0f;
+        --color-forge: #e83445;
+        --color-text: #f4f2f0;
+        --color-text-muted: #a6a4aa;
+        --font-display: "Space Grotesk", system-ui, sans-serif;
+        --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: #17171b;
+      }
+
+      .og-card {
+        width: 1200px;
+        height: 630px;
+        position: relative;
+        overflow: hidden;
+        display: grid;
+        grid-template-columns: 54% 46%;
+        align-items: center;
+        padding: 64px;
+        background:
+          radial-gradient(760px 520px at 78% 6%, rgba(232, 52, 69, 0.1), transparent 60%),
+          var(--color-bg);
+      }
+
+      .eyebrow {
+        font: 500 17px/1.2 var(--font-mono);
+        color: var(--color-forge);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        margin: 0 0 28px;
+      }
+
+      .headline {
+        font-family: var(--font-display);
+        font-weight: 600;
+        font-size: 76px;
+        line-height: 0.96;
+        letter-spacing: -0.035em;
+        color: var(--color-text);
+        margin: 0 0 34px;
+      }
+      .headline span {
+        color: var(--color-forge);
+      }
+
+      .proof {
+        font: 500 13px/1.5 var(--font-mono);
+        color: var(--color-text-muted);
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+        margin: 0;
+        white-space: nowrap;
+      }
+
+      .art {
+        position: relative;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .art img {
+        width: 132%;
+        max-width: none;
+        display: block;
+        /* Same feathering the live hero uses, so the artwork's own black
+           plate does not read as a pasted rectangle. */
+        -webkit-mask-image: radial-gradient(
+          ellipse 60% 56% at 50% 50%,
+          #000 30%,
+          rgba(0, 0, 0, 0.55) 60%,
+          transparent 86%
+        );
+        mask-image: radial-gradient(
+          ellipse 60% 56% at 50% 50%,
+          #000 30%,
+          rgba(0, 0, 0, 0.55) 60%,
+          transparent 86%
+        );
+      }
+      .glow {
+        position: absolute;
+        left: 62%;
+        top: 44%;
+        width: 340px;
+        height: 340px;
+        margin: -170px 0 0 -170px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(232, 52, 69, 0.26) 0,
+          rgba(232, 52, 69, 0.08) 32%,
+          transparent 68%
+        );
+        filter: blur(14px);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="og-card">
+      <div>
+        <p class="eyebrow">ZAC / Technology + AI</p>
+        <h1 class="headline">Technology has <span>new economics.</span></h1>
+        <p class="proof">Senior-led. Specialist-supported. Built without agency overhead.</p>
+      </div>
+      <div class="art">
+        <div class="glow"></div>
+        <img src="../public/brand/hero-forge.webp" alt="" />
+      </div>
+    </div>
+  </body>
+</html>

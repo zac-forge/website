@@ -68,8 +68,6 @@ repo or in client-side code.
 
 - [ ] Confirm `hello@zacforge.com` actually receives mail. It is live in the footer and the
       "Send a message" button, set in `src/lib/links.ts`.
-- [ ] OG image for social sharing (1200x630 PNG or JPG). The meta tag is stubbed out in
-      `index.html` and commented, uncomment it once the image exists.
 - [ ] Swap the placeholder role cards in `src/components/TrackRecord.tsx` for real names if and
       when you want the team public.
 - [ ] Implement `functions/api/chat.ts` for the v1.1 AI assistant. Note that the current
@@ -77,4 +75,17 @@ repo or in client-side code.
       on the deployed site yet.
 
 Done: page design and copy, brand assets, logo, favicon, booking link
-(`https://cal.com/zacforge/20-min-chat`).
+(`https://cal.com/zacforge/20-min-chat`), OG image.
+
+## Regenerating the OG image
+
+`public/og-image.jpg` is rendered from `tools/og-card.html`, which pulls the real font files and
+the real design tokens so the card cannot drift away from the live site. It is deliberately kept
+out of `public/` so it never ships. To regenerate after a copy or brand change:
+
+```bash
+python3 -m http.server 4599    # from the repo root
+```
+
+Open `http://localhost:4599/tools/og-card.html` at a 1200x630 viewport, screenshot it at 2x, then
+downscale to exactly 1200x630 and save as `public/og-image.jpg`.
