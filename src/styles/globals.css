@@ -23,9 +23,16 @@ button, input, textarea { font: inherit; }
   width: min(100% - (2 * var(--gutter)), var(--content-width));
   margin-inline: auto;
 }
+/* Section rhythm.
+   The reference runs considerably denser than a uniform 128px band: measured
+   against the mockup the implementation had drifted 63% taller overall, and
+   progressively worse down the page. Sections now carry their own rhythm via
+   --pad-top / --pad-bottom so the page can alternate dense and open rather
+   than repeating one value. */
 .section {
   position: relative;
-  padding-block: clamp(72px, 9vw, 128px);
+  padding-top: var(--pad-top, clamp(56px, 6vw, 88px));
+  padding-bottom: var(--pad-bottom, clamp(56px, 6vw, 88px));
   border-top: 1px solid var(--color-border);
 }
 .eyebrow {
@@ -42,8 +49,8 @@ button, input, textarea { font: inherit; }
   text-wrap: balance;
 }
 .h1 { font-size: var(--text-hero); line-height: .94; font-weight: 600; }
-.h2 { font-size: clamp(2rem, 3.9vw, 3.5rem); line-height: 1.02; font-weight: 600; }
-.h3 { font-size: clamp(1.4rem, 2.4vw, 1.95rem); line-height: 1.1; font-weight: 600; }
+.h2 { font-size: clamp(1.85rem, 3.15vw, 2.85rem); line-height: 1.04; font-weight: 600; }
+.h3 { font-size: clamp(1.3rem, 1.9vw, 1.65rem); line-height: 1.14; font-weight: 600; }
 
 .text-muted { color: var(--color-text-muted); }
 .text-forge { color: var(--color-forge); }
@@ -115,6 +122,9 @@ button, input, textarea { font: inherit; }
 }
 
 @media (max-width: 760px) {
-  .section { padding-block: 72px; }
-  .h1 { font-size: clamp(3rem, 15vw, 4.5rem); }
+  .section {
+    padding-top: clamp(52px, 11vw, 72px);
+    padding-bottom: clamp(52px, 11vw, 72px);
+  }
+  .h1 { font-size: clamp(2.75rem, 12.5vw, 4rem); }
 }

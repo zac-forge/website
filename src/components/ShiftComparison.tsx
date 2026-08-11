@@ -11,6 +11,9 @@ const COMPARISON = [
   ["Big upfront commitments", "Value proven quickly"],
 ];
 
+const ROW_STAGGER = 0.09;
+const VIEW = { once: true, amount: 0.5 } as const;
+
 export function ShiftComparison() {
   const shouldReduceMotion = useReducedMotion();
 
@@ -39,21 +42,41 @@ export function ShiftComparison() {
             <span className="text-forge">NOW</span>
           </div>
           <ul className="compare-list">
-            {COMPARISON.map(([then, now], i) => (
-              <li key={then}>
-                <span className="compare-then">{then}</span>
-                <span className="compare-line" aria-hidden="true">
+            {COMPARISON.map(([then, now], i) => {
+              // Each row resolves in order: the line draws left to right, the
+              // endpoint lights, then the NOW copy arrives. Once only.
+              const base = i * ROW_STAGGER;
+              return (
+                <li key={then}>
+                  <span className="compare-then">{then}</span>
+                  <span className="compare-line" aria-hidden="true">
+                    <motion.span
+                      className="compare-line-fill"
+                      initial={shouldReduceMotion ? false : { scaleX: 0 }}
+                      whileInView={{ scaleX: 1 }}
+                      viewport={VIEW}
+                      transition={{ duration: 0.68, ease: EASE, delay: base }}
+                    />
+                    <motion.span
+                      className="compare-node"
+                      initial={shouldReduceMotion ? false : { opacity: 0, scale: 0.2 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={VIEW}
+                      transition={{ duration: 0.34, ease: EASE, delay: base + 0.6 }}
+                    />
+                  </span>
                   <motion.span
-                    className="compare-line-fill"
-                    initial={shouldReduceMotion ? false : { scaleX: 0 }}
-                    whileInView={{ scaleX: 1 }}
-                    viewport={{ once: true, amount: 0.6 }}
-                    transition={{ duration: 0.7, ease: EASE, delay: i * 0.08 }}
-                  />
-                </span>
-                <span className="compare-now">{now}</span>
-              </li>
-            ))}
+                    className="compare-now"
+                    initial={shouldReduceMotion ? false : { opacity: 0, x: -6 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={VIEW}
+                    transition={{ duration: 0.45, ease: EASE, delay: base + 0.7 }}
+                  >
+                    {now}
+                  </motion.span>
+                </li>
+              );
+            })}
           </ul>
 
           <div className="pull-quote">

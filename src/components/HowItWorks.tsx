@@ -1,4 +1,5 @@
-import { motion, useReducedMotion } from "motion/react";
+import { useEffect, useRef, useState } from "react";
+import { motion, useInView, useReducedMotion } from "motion/react";
 import { Reveal } from "./Reveal";
 import { ZacMark } from "./Brand";
 import { fadeUp, EASE } from "../lib/motion";
@@ -12,14 +13,10 @@ const PRINCIPLES = [
   },
 ];
 
-const sequenceContainer = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.12 } },
-};
-
+const sequenceContainer = { hidden: {}, show: { transition: { staggerChildren: 0.1 } } };
 const sequenceItem = {
-  hidden: { opacity: 0, x: -14 },
-  show: { opacity: 1, x: 0, transition: { duration: 0.5, ease: EASE } },
+  hidden: { opacity: 0, y: 10 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: EASE } },
 };
 
 /** Abstract glyphs only. Nothing here stands in for a real client or person. */
@@ -80,8 +77,33 @@ const PRINCIPLE_RING = (
   </svg>
 );
 
+// Seven slots: node, arrow, node, arrow, node, arrow, node.
+const STEPS = 7;
+const STEP_MS = 240; // 7 steps lands the whole pass just under 1.7s
+
 export function HowItWorks() {
   const shouldReduceMotion = useReducedMotion();
+  const sequenceRef = useRef<HTMLDivElement>(null);
+  const inView = useInView(sequenceRef, { once: true, amount: 0.4 });
+  const [lit, setLit] = useState(-1);
+
+  /**
+   * A single pass of signal from the business through ZAC to working
+   * technology, then it settles. `lit` is the position of the signal, not a
+   * count, so the illumination travels rather than accumulating: leaving every
+   * node warm afterwards would dilute ZAC as the source. It ends on -1, which
+   * returns the graphite nodes to rest. Plays once, never loops.
+   */
+  useEffect(() => {
+    if (!inView || shouldReduceMotion) return;
+    const timers = Array.from({ length: STEPS }, (_, i) =>
+      window.setTimeout(() => setLit(i), 260 + i * STEP_MS),
+    );
+    timers.push(window.setTimeout(() => setLit(-1), 260 + STEPS * STEP_MS));
+    return () => timers.forEach(window.clearTimeout);
+  }, [inView, shouldReduceMotion]);
+
+  const node = (index: number) => ({ "data-lit": lit === index ? "true" : "false" });
 
   return (
     <section id="approach" className="section how-it-works section--grid">
@@ -91,40 +113,58 @@ export function HowItWorks() {
         </Reveal>
 
         <motion.div
+          ref={sequenceRef}
           className="sequence"
           variants={sequenceContainer}
           initial={shouldReduceMotion ? false : "hidden"}
           whileInView="show"
           viewport={{ once: true, amount: 0.35 }}
         >
-          <motion.div className="sequence-node" variants={sequenceItem}>
+          <motion.div className="sequence-node" variants={sequenceItem} {...node(0)}>
             <SignalGlyph />
             <span>Your business</span>
           </motion.div>
 
-          <motion.span className="sequence-arrow" variants={sequenceItem} aria-hidden="true">
+          <motion.span
+            className="sequence-arrow"
+            variants={sequenceItem}
+            aria-hidden="true"
+            {...node(1)}
+          >
             →
           </motion.span>
 
+          {/* ZAC is the energy source, so it is lit from the start rather than
+              waiting for the signal to reach it. */}
           <motion.div className="sequence-node sequence-node--zac" variants={sequenceItem}>
             <ZacMark className="sequence-mark" />
             <span>ZAC</span>
           </motion.div>
 
-          <motion.span className="sequence-arrow" variants={sequenceItem} aria-hidden="true">
+          <motion.span
+            className="sequence-arrow"
+            variants={sequenceItem}
+            aria-hidden="true"
+            {...node(3)}
+          >
             →
           </motion.span>
 
-          <motion.div className="sequence-node" variants={sequenceItem}>
+          <motion.div className="sequence-node" variants={sequenceItem} {...node(4)}>
             <SpecialistsGlyph />
             <span>Senior specialists</span>
           </motion.div>
 
-          <motion.span className="sequence-arrow" variants={sequenceItem} aria-hidden="true">
+          <motion.span
+            className="sequence-arrow"
+            variants={sequenceItem}
+            aria-hidden="true"
+            {...node(5)}
+          >
             →
           </motion.span>
 
-          <motion.div className="sequence-node" variants={sequenceItem}>
+          <motion.div className="sequence-node" variants={sequenceItem} {...node(6)}>
             <SystemGlyph />
             <span>Working technology</span>
           </motion.div>

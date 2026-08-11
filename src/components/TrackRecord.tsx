@@ -48,7 +48,8 @@ export function TrackRecord() {
           <Reveal className="experience-grid" stagger={0.06}>
             {EXPERIENCE.map((item) => (
               <motion.div className="experience-item" key={item} variants={fadeUpSmall}>
-                {item}
+                <span className="experience-marker" aria-hidden="true" />
+                <span>{item}</span>
               </motion.div>
             ))}
           </Reveal>

@@ -28,7 +28,10 @@
   --text-xl: 1.5rem;
   --text-2xl: 2rem;
   --text-3xl: 3rem;
-  --text-hero: clamp(3rem, 5.4vw, 4.75rem);
+  /* Measured off the reference mockup: the hero headline renders at roughly
+     99px at a 1440 viewport, against section headings at roughly 45px. That
+     2.2x ratio is what gives the approved design its hierarchy. */
+  --text-hero: clamp(2.9rem, 6.9vw, 6.25rem);
 
   /* Space */
   --space-1: 4px;

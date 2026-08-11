@@ -91,42 +91,47 @@
 /* Service rows. The lit left edge and the ghost index are already part of the
    static composition, so hover brightens what is there rather than
    introducing new furniture. */
+/* The row itself stays put. Only its contents move, which reads as more
+   precise than sliding the whole block sideways. */
 .service-row {
   transition:
     border-color var(--duration-base) var(--ease-out),
     background var(--duration-base) var(--ease-out),
-    transform var(--duration-base) var(--ease-out),
     box-shadow var(--duration-base) var(--ease-out);
 }
 .service-row:hover,
 .service-row:focus-visible,
 .service-row:focus-within {
-  transform: translateX(4px);
-  border-color: rgba(232, 52, 69, 0.55);
+  /* Warms toward red rather than becoming red. */
+  border-color: rgba(232, 52, 69, 0.42);
   background: linear-gradient(
     90deg,
-    rgba(232, 52, 69, 0.07),
-    rgba(255, 255, 255, 0.015) 38%,
-    rgba(232, 52, 69, 0.025)
+    rgba(232, 52, 69, 0.055),
+    rgba(255, 255, 255, 0.012) 42%,
+    rgba(232, 52, 69, 0.018)
   );
-  box-shadow:
-    0 12px 40px rgba(232, 52, 69, 0.16),
-    inset 0 1px rgba(255, 255, 255, 0.045);
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.04);
 }
 .service-row:hover::before,
 .service-row:focus-within::before {
   opacity: 1;
 }
+.service-row:hover .service-title,
+.service-row:focus-within .service-title,
+.service-row:hover .service-statement,
+.service-row:focus-within .service-statement {
+  transform: translateX(5px);
+}
 .service-row:hover .service-arrow,
 .service-row:focus-within .service-arrow {
-  transform: translateX(5px);
+  transform: translateX(4px);
 }
 .service-index {
   transition: color var(--duration-base) var(--ease-out);
 }
 .service-row:hover .service-index,
 .service-row:focus-within .service-index {
-  color: #34343d;
+  color: #3a3a45;
 }
 
 /* Faint technical grid, echoing the drafting lines in the reference mockup.
@@ -149,6 +154,28 @@
   /* Fade the grid out at the edges so it reads as texture, not a table. */
   -webkit-mask-image: radial-gradient(ellipse 72% 62% at 50% 46%, #000 20%, transparent 78%);
   mask-image: radial-gradient(ellipse 72% 62% at 50% 46%, #000 20%, transparent 78%);
+}
+
+/* Interactive targets.
+   Everything clickable clears 44px without changing the visual rhythm: the
+   extra height is padding around the same ink. */
+.brand,
+.footer-brand a,
+.footer-email,
+.text-link {
+  min-height: 44px;
+}
+.text-link {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Focus is never communicated by colour alone, and the outline is applied to
+   everything focusable rather than just links and buttons. */
+:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+  border-radius: 2px;
 }
 
 @media (prefers-reduced-motion: reduce) {

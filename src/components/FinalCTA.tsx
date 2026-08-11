@@ -8,7 +8,9 @@ export function FinalCTA() {
   return (
     <section id="contact" className="section final-cta">
       <RedArc />
-      <Embers count={12} seed={23} className="ember-field--horizon" />
+      {/* One light making a very slow pass along the limb. */}
+      <span className="arc-traveller" aria-hidden="true" />
+      <Embers count={10} seed={23} className="ember-field--horizon" />
 
       <div className="container">
         <Reveal>
