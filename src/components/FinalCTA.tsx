@@ -15,9 +15,10 @@ export function FinalCTA() {
       <div className="container">
         <Reveal>
           <p className="eyebrow">HAVE SOMETHING WORTH BUILDING?</p>
-          {/* Singular by intent: it reinforces the direct relationship with
-              the senior person who advises and builds. */}
-          <h2 className="h2 final-heading">Bring me the problem.</h2>
+          {/* Plural by intent. ZAC is senior-led but operates as a studio with
+              a curated specialist network, so the closing line carries the
+              institutional voice and matches "See what we build" in the hero. */}
+          <h2 className="h2 final-heading">Bring us the problem.</h2>
           <p className="final-body">
             Whether you know exactly what you need or only know something should work better,
             that is enough to start.

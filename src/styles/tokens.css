@@ -12,22 +12,34 @@
   --color-text: #F4F2F0;
   --color-text-muted: #A6A4AA;
   --color-text-faint: #737179;
+  --color-text-body: #CBC9CF;
   --color-border: #29292F;
   --color-border-hover: #414149;
+  /* Red borders are part of the same system, not per-component opacities:
+     soft is the interactive/active state, strong is reserved for ZAC itself. */
+  --color-border-red-soft: rgba(232, 52, 69, .42);
+  --color-border-red: rgba(232, 52, 69, .5);
+  --color-border-red-strong: rgba(232, 52, 69, .8);
 
   /* Fonts */
   --font-display: "Space Grotesk", system-ui, sans-serif;
   --font-body: "Inter", system-ui, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, monospace;
 
-  /* Type */
-  --text-xs: .8125rem;
-  --text-sm: .9375rem;
-  --text-base: 1rem;
-  --text-lg: 1.125rem;
+  /* Type.
+     One body system in three bands, so nothing is sized ad hoc:
+       meta     technical metadata only, never a meaningful paragraph
+       compact  compact explanatory copy inside dense components
+       body     primary marketing body
+       lead     hero and closing lead paragraphs
+     `label` is the mono section-label size, sitting just under body so the
+     landmarks read as navigation rather than legal footnotes. */
+  --text-meta: .78125rem;
+  --text-compact: .9375rem;
+  --text-label: .96875rem;
+  --text-body: 1rem;
+  --text-lead: 1.0625rem;
   --text-xl: 1.5rem;
-  --text-2xl: 2rem;
-  --text-3xl: 3rem;
   /* 64px floor, 88px ceiling. The mockup measures nearer 99px, but the
      approved direction caps the headline here so the rest of the type system
      can come up to meet it rather than being dwarfed. */

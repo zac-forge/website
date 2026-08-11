@@ -24,16 +24,11 @@ button, input, textarea { font: inherit; }
   margin-inline: auto;
 }
 /* Section rhythm.
-   The reference runs considerably denser than a uniform 128px band: measured
-   against the mockup the implementation had drifted 63% taller overall, and
-   progressively worse down the page. Sections now carry their own rhythm via
-   --pad-top / --pad-bottom so the page can alternate dense and open rather
-   than repeating one value. */
-/* Section rhythm.
-   Major sections sit in the 88 to 112px band. Sections still carry their own
+   Major sections sit in the 88 to 104px band. Sections still carry their own
    --pad-top / --pad-bottom so the page alternates dense against open rather
    than repeating one value; the hero and closing section are the exceptions
-   and set their own. */
+   and set their own. The rebalancing runs in both directions: frames come in
+   where they were running to dead space, components get the room instead. */
 .section {
   position: relative;
   padding-top: var(--pad-top, clamp(64px, 7.2vw, 104px));
@@ -43,7 +38,7 @@ button, input, textarea { font: inherit; }
 /* Section labels are technical, not micro. Sized above the metadata token so
    they read without squinting while keeping the mono, red treatment. */
 .eyebrow {
-  font: 500 .875rem/1.2 var(--font-mono);
+  font: 500 var(--text-label)/1.2 var(--font-mono);
   color: var(--color-forge);
   letter-spacing: .11em;
   text-transform: uppercase;
@@ -56,16 +51,19 @@ button, input, textarea { font: inherit; }
   text-wrap: balance;
 }
 .h1 { font-size: var(--text-hero); line-height: .94; font-weight: 600; }
-.h2 { font-size: clamp(2.2rem, 3.6vw, 3.25rem); line-height: 1.04; font-weight: 600; }
-.h3 { font-size: clamp(1.5rem, 2.1vw, 1.9rem); line-height: 1.16; font-weight: 600; }
+.h2 { font-size: clamp(2.35rem, 3.82vw, 3.45rem); line-height: 1.04; font-weight: 600; }
+.h3 { font-size: clamp(1.6rem, 2.27vw, 2.05rem); line-height: 1.16; font-weight: 600; }
 
 .text-muted { color: var(--color-text-muted); }
 .text-forge { color: var(--color-forge); }
 
+/* One primary CTA specification. The hero and closing buttons use it as-is;
+   the header only overrides its height, never its red, radius, type, arrow
+   behaviour, hover physics, or focus treatment. */
 .btn {
   min-height: 48px;
   padding: 0 26px;
-  font-size: var(--text-base);
+  font-size: var(--text-body);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -104,11 +102,15 @@ button, input, textarea { font: inherit; }
   outline-offset: 4px;
 }
 
+/* The secondary hero action. Carries slightly more presence than plain body
+   text (weight plus a longer resting underline) without competing with the
+   filled primary next to it. */
 .text-link {
   position: relative;
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  font-weight: 600;
 }
 .text-link::after {
   content: "";
@@ -116,7 +118,7 @@ button, input, textarea { font: inherit; }
   left: 0; right: 0; bottom: -5px;
   height: 1px;
   background: var(--color-forge);
-  transform: scaleX(.18);
+  transform: scaleX(.32);
   transform-origin: left;
   transition: transform var(--duration-fast) var(--ease-out);
 }

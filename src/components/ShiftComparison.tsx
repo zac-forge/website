@@ -1,6 +1,5 @@
 import { motion, useReducedMotion } from "motion/react";
 import { Reveal } from "./Reveal";
-import { Embers } from "./Embers";
 import { EASE } from "../lib/motion";
 
 const COMPARISON = [
@@ -17,9 +16,13 @@ const VIEW = { once: true, amount: 0.5 } as const;
 export function ShiftComparison() {
   const shouldReduceMotion = useReducedMotion();
 
+  // No ambient ember field here. In the motion hierarchy this section carries
+  // exactly one thing, the one-shot signal that draws the comparison.
+  // Continuous ambience belongs to the hero and the closing horizon, so motion
+  // falls away through the information-heavy middle of the page and returns at
+  // the end.
   return (
     <section className="section shift section--grid">
-      <Embers count={6} seed={41} />
       <div className="container shift-grid">
         <Reveal className="shift-copy">
           <p className="eyebrow">01 / THE SHIFT</p>

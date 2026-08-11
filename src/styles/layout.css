@@ -49,7 +49,7 @@
 /* Width-driven: the lockup is cropped to its ink bounds, so this number is
    the width of the visible mark rather than of mostly empty canvas. */
 .brand-wordmark {
-  width: clamp(128px, 9.8vw, 146px);
+  width: clamp(126px, 9.4vw, 136px);
   height: auto;
   display: block;
 }
@@ -63,7 +63,7 @@
 .site-nav {
   display: flex;
   align-items: center;
-  gap: clamp(22px, 2.2vw, 32px);
+  gap: clamp(26px, 2.7vw, 38px);
   margin-left: auto;
 }
 .site-nav a:not(.btn) {
@@ -71,18 +71,22 @@
   align-items: center;
   /* 44px minimum target without changing the visual rhythm of the bar. */
   min-height: 44px;
-  font: 500 var(--text-base) / 1 var(--font-body);
+  font: 500 var(--text-body) / 1 var(--font-body);
   color: var(--color-text-muted);
   transition: color var(--duration-fast) var(--ease-out);
 }
 .site-nav a:not(.btn):hover {
   color: var(--color-text);
 }
+/* Height is the only thing the header CTA changes about the primary button.
+   It is a pointer target on a 70px bar, so it sits below the 44px touch
+   minimum here and is put back at the breakpoint where the nav becomes a
+   tapped panel. */
 .nav-cta {
   margin-left: var(--space-3);
-  min-height: 44px;
+  min-height: 42px;
   padding: 0 var(--space-5);
-  font-size: var(--text-sm);
+  font-size: var(--text-compact);
 }
 .nav-toggle {
   display: none;
@@ -135,6 +139,7 @@
   .nav-cta {
     margin-left: 0;
     margin-top: var(--space-2);
+    min-height: 48px;
   }
   .nav-toggle {
     display: flex;
@@ -187,10 +192,10 @@
 .hero-body {
   /* body to CTAs 28px */
   margin-block: 0 28px;
-  font-size: var(--text-lg);
+  font-size: var(--text-lead);
   line-height: 1.6;
   max-width: 600px;
-  color: #c2c0c6;
+  color: var(--color-text-body);
 }
 .cta-row {
   display: flex;
@@ -198,11 +203,13 @@
   gap: clamp(20px, 2.4vw, 30px);
   flex-wrap: wrap;
 }
+/* Technical metadata, deliberately the smallest type on the page and the only
+   place the meta band is used above the fold. */
 .proof-line {
   /* CTAs to proof line 30px */
   margin-top: 30px;
   color: #cfcdd1;
-  font: 500 .8125rem / 1.4 var(--font-mono);
+  font: 500 var(--text-meta) / 1.4 var(--font-mono);
   letter-spacing: 0.02em;
   white-space: nowrap;
 }
@@ -218,9 +225,12 @@
 .hero-visual {
   position: relative;
   /* Sized and offset so the artwork spans roughly 42% to 98% of the viewport,
-     which is where the mockup places it. */
+     which is where the mockup places it. The negative margin pulls the Z about
+     3% further left than it sat before, closing the gap between the copy area
+     and the artwork area without shrinking either. The lit core stays right of
+     the copy; only the dark faceted structure crosses over. */
   width: 114%;
-  margin-left: -8%;
+  margin-left: -11%;
   aspect-ratio: 1536 / 1024;
 }
 .hero-art {
@@ -247,13 +257,19 @@
 }
 
 /* Construction layer. Reads as almost nothing on its own; it exists so the
-   pointer light and the artwork's own glow have structure to fall across. */
+   pointer light and the artwork's own glow have structure to fall across.
+   Extended to the left so the faint drafting lines carry on under the copy
+   area and the two halves read as one composition. Only this layer crosses
+   over: it is hairlines at 3% white and a dashed stroke at 22% red, well below
+   anything that could compete with the headline sitting on top of it.
+   The mask centre moves right in percentage terms purely to stay put in
+   absolute terms once the box grew leftward. */
 .hero-substrate {
   position: absolute;
-  inset: -6% -4%;
+  inset: -6% -4% -6% -18%;
   pointer-events: none;
-  -webkit-mask-image: radial-gradient(ellipse 66% 62% at 54% 48%, #000 8%, transparent 82%);
-  mask-image: radial-gradient(ellipse 66% 62% at 54% 48%, #000 8%, transparent 82%);
+  -webkit-mask-image: radial-gradient(ellipse 60% 62% at 59% 48%, #000 8%, transparent 82%);
+  mask-image: radial-gradient(ellipse 60% 62% at 59% 48%, #000 8%, transparent 82%);
 }
 .hero-grid-layer {
   position: absolute;
@@ -349,6 +365,13 @@
     width: auto;
     max-width: 100%;
   }
+  /* nowrap exists only to hold the proof line on one line inside the 43%
+     desktop column. Once the hero is a single column there is no column to
+     fight, and leaving it on overflows the viewport, invisibly, because the
+     hero clips. */
+  .proof-line {
+    white-space: normal;
+  }
   /* Copy first, artwork below. It is already first in the DOM. */
   .hero-visual {
     width: 100%;
@@ -424,12 +447,13 @@
 /* ------------------------------------------------------------- 01 / Shift */
 /* An open section: it carries the argument, so it gets the breathing room. */
 .shift {
-  --pad-top: clamp(68px, 7.6vw, 110px);
-  --pad-bottom: clamp(68px, 7.6vw, 110px);
+  --pad-top: clamp(66px, 7.2vw, 104px);
+  --pad-bottom: clamp(66px, 7.2vw, 104px);
 }
 .shift-copy p {
-  font-size: var(--text-base);
-  line-height: 1.62;
+  font-size: var(--text-body);
+  line-height: 1.7;
+  color: var(--color-text-body);
 }
 .shift-grid {
   display: grid;
@@ -437,11 +461,13 @@
   gap: clamp(32px, 4vw, 60px);
   align-items: start;
 }
+/* The left column was reading as one compressed block. Headline, first
+   paragraph and second paragraph each get their own separation now. */
 .shift-copy .h2 {
-  margin: var(--space-4) 0 var(--space-5);
+  margin: var(--space-4) 0 var(--space-6);
 }
 .shift-copy p + p {
-  margin-top: var(--space-4);
+  margin-top: var(--space-5);
 }
 .shift-compare {
   padding-left: clamp(0px, 2.6vw, 42px);
@@ -453,7 +479,7 @@
   gap: var(--space-4);
   align-items: center;
   margin-bottom: var(--space-5);
-  font: 500 var(--text-base) / 1 var(--font-mono);
+  font: 500 var(--text-body) / 1 var(--font-mono);
   letter-spacing: 0.1em;
   color: var(--color-text);
 }
@@ -466,15 +492,15 @@
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 4px;
 }
 .compare-list li {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(48px, 0.62fr) minmax(0, 1fr);
   gap: var(--space-4);
   align-items: center;
-  min-height: 50px;
-  font-size: var(--text-base);
+  min-height: 56px;
+  font-size: var(--text-lead);
 }
 /* THEN stays subdued; NOW acquires the energy. */
 .compare-then {
@@ -484,10 +510,12 @@
   color: var(--color-text);
   font-weight: 500;
 }
+/* Still a hairline. The unlit half moves one step up the border scale so the
+   connector reads as a signal path rather than a table rule. */
 .compare-line {
   position: relative;
   height: 1px;
-  background: var(--color-border);
+  background: var(--color-border-hover);
 }
 .compare-line-fill {
   position: absolute;
@@ -503,10 +531,12 @@
   right: -2px;
   top: 50%;
   translate: 0 -50%;
-  width: 5px;
-  height: 5px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
-  background: var(--color-forge-hot);
+  /* Bright centre, controlled falloff, then the glow. Three steps rather than
+     a flat dot with a halo. */
+  background: radial-gradient(circle, #fff 0 32%, var(--color-forge-hot) 68%, var(--color-forge) 100%);
   box-shadow:
     0 0 10px 2px rgba(232, 52, 69, 0.75),
     0 0 20px 5px rgba(232, 52, 69, 0.3);
@@ -516,8 +546,8 @@
   position: relative;
   overflow: hidden;
   margin-top: var(--space-7);
-  padding: clamp(26px, 2.8vw, 34px);
-  border: 1px solid rgba(232, 52, 69, 0.5);
+  padding: clamp(30px, 3.2vw, 40px);
+  border: 1px solid var(--color-border-red);
   border-radius: var(--radius-md);
   background: linear-gradient(
     115deg,
@@ -544,7 +574,7 @@
 .pull-quote p {
   position: relative;
   margin: 0;
-  font-size: clamp(1.35rem, 2.15vw, 1.6rem);
+  font-size: clamp(1.5rem, 2.36vw, 1.76rem);
   line-height: 1.22;
 }
 
@@ -561,8 +591,8 @@
 /* ---------------------------------------------------------- 02 / Services */
 /* A dense section: rows carry the information, so the frame stays tight. */
 .services {
-  --pad-top: clamp(60px, 6.4vw, 92px);
-  --pad-bottom: clamp(60px, 6.4vw, 92px);
+  --pad-top: clamp(62px, 6.6vw, 95px);
+  --pad-bottom: clamp(62px, 6.6vw, 95px);
 }
 .service-rows {
   display: flex;
@@ -570,6 +600,10 @@
   gap: 12px;
   margin-top: var(--space-6);
 }
+/* One grid definition, shared by all three rows. The tracks are fractions of
+   the same width in every row, so the number, title, statement, arrow and both
+   capability columns land on identical x positions regardless of how much copy
+   a row carries. Only row height follows content. */
 .service-row {
   position: relative;
   overflow: hidden;
@@ -579,7 +613,7 @@
     36px minmax(0, 1.3fr);
   align-items: center;
   gap: clamp(16px, 2.4vw, 34px);
-  padding: clamp(22px, 2.4vw, 30px) clamp(22px, 2.4vw, 32px);
+  padding: clamp(26px, 2.7vw, 36px) clamp(24px, 2.6vw, 36px);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   background: linear-gradient(90deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.006));
@@ -598,22 +632,27 @@
   opacity: 0.3;
   transition: opacity var(--duration-base) var(--ease-out);
 }
+/* Larger, still ghosted. The number is structure, not information. */
 .service-index {
-  font: 400 clamp(42px, 4.2vw, 52px) / 1 var(--font-display);
+  align-self: center;
+  font: 400 clamp(46px, 4.7vw, 58px) / 1 var(--font-display);
   letter-spacing: -0.04em;
   color: #212129;
 }
+.service-label {
+  align-self: center;
+}
 .service-title {
   margin: 0;
-  font: 600 clamp(1.0625rem, 1.4vw, 1.1875rem) / 1.15 var(--font-display);
+  font: 600 clamp(1.125rem, 1.5vw, 1.28rem) / 1.15 var(--font-display);
   letter-spacing: -0.02em;
   transition: transform var(--duration-base) var(--ease-out);
 }
 .service-statement {
-  margin: 8px 0 0;
+  margin: 10px 0 0;
   max-width: 30ch;
-  color: var(--color-text-muted);
-  font-size: var(--text-sm);
+  color: var(--color-text-body);
+  font-size: var(--text-body);
   line-height: 1.45;
   transition: transform var(--duration-base) var(--ease-out);
 }
@@ -624,15 +663,16 @@
   transition: transform var(--duration-base) var(--ease-out);
 }
 .service-items {
+  align-self: center;
   list-style: none;
   margin: 0;
   padding: 0;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 7px var(--space-6);
+  gap: 9px var(--space-6);
 }
 .service-items li {
-  font-size: .875rem;
+  font-size: var(--text-compact);
   color: var(--color-text-muted);
 }
 
@@ -652,8 +692,8 @@
 
 /* ------------------------------------------------------- 03 / How it works */
 .how-it-works {
-  --pad-top: clamp(52px, 5.6vw, 84px);
-  --pad-bottom: clamp(52px, 5.6vw, 84px);
+  --pad-top: clamp(58px, 6.2vw, 90px);
+  --pad-bottom: clamp(58px, 6.2vw, 90px);
 }
 .sequence {
   display: grid;
@@ -664,7 +704,7 @@
 }
 .sequence-node {
   position: relative;
-  min-height: 146px;
+  min-height: 160px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -675,7 +715,7 @@
   border-radius: var(--radius-md);
   background: rgba(255, 255, 255, 0.018);
   text-align: center;
-  font: 500 var(--text-sm) / 1.35 var(--font-mono);
+  font: 500 var(--text-body) / 1.35 var(--font-mono);
   letter-spacing: 0.09em;
   text-transform: uppercase;
   color: var(--color-text-muted);
@@ -687,35 +727,35 @@
 /* Reached by the travelling signal: warms briefly, then holds a settled
    state rather than looping. */
 .sequence-node[data-lit="true"] {
-  border-color: rgba(232, 52, 69, 0.42);
+  border-color: var(--color-border-red-soft);
   color: var(--color-text);
   box-shadow: 0 0 26px rgba(232, 52, 69, 0.1);
 }
 .node-glyph {
-  width: clamp(46px, 4.4vw, 60px);
+  width: clamp(50px, 4.8vw, 66px);
   height: auto;
 }
 /* ZAC is the energy source in the diagram, so it is the only node that is lit
    by default, with a halo the others never get. */
 .sequence-node--zac {
-  border-color: rgba(232, 52, 69, 0.8);
+  border-color: var(--color-border-red-strong);
   color: var(--color-text);
-  background: linear-gradient(180deg, rgba(232, 52, 69, 0.1), rgba(232, 52, 69, 0.03));
-  border-width: 1.5px;
+  background: linear-gradient(180deg, rgba(232, 52, 69, 0.12), rgba(232, 52, 69, 0.035));
+  border-width: 2px;
   box-shadow:
-    inset 0 0 52px rgba(232, 52, 69, 0.2),
-    0 0 56px rgba(232, 52, 69, 0.16);
+    inset 0 0 56px rgba(232, 52, 69, 0.24),
+    0 0 62px rgba(232, 52, 69, 0.2);
 }
 .sequence-node--zac::after {
   content: "";
   position: absolute;
-  inset: -14px;
+  inset: -16px;
   border-radius: inherit;
-  background: radial-gradient(ellipse at center, rgba(232, 52, 69, 0.16), transparent 68%);
+  background: radial-gradient(ellipse at center, rgba(232, 52, 69, 0.2), transparent 68%);
   pointer-events: none;
 }
 .sequence-mark {
-  height: 34px;
+  height: 40px;
   width: auto;
   display: block;
 }
@@ -745,8 +785,9 @@
 }
 .how-copy p {
   margin: 0;
-  font-size: var(--text-base);
-  line-height: 1.62;
+  font-size: var(--text-body);
+  line-height: 1.68;
+  color: var(--color-text-body);
 }
 .principles {
   display: grid;
@@ -768,14 +809,21 @@
 }
 .principle p:last-child {
   margin: 0;
-  font-size: var(--text-base);
-  line-height: 1.55;
+  font-size: var(--text-body);
+  line-height: 1.58;
+  color: var(--color-text-body);
 }
 
 @media (max-width: 900px) {
   .sequence {
     grid-template-columns: 1fr;
     gap: var(--space-2);
+  }
+  /* Stacked, the desktop height turns four nodes into a very long scroll for
+     one glyph and one line of type each. The nodes stay generous, just not
+     desktop-generous. */
+  .sequence-node {
+    min-height: 112px;
   }
   .sequence-arrow {
     justify-self: center;
@@ -790,12 +838,15 @@
 /* ------------------------------------------------------ 04 / Track record */
 /* Restrained by intent: this section trades on credibility, not spectacle. */
 .track-record {
-  --pad-top: clamp(52px, 5.6vw, 84px);
-  --pad-bottom: clamp(52px, 5.6vw, 84px);
+  --pad-top: clamp(58px, 6.2vw, 90px);
+  --pad-bottom: clamp(58px, 6.2vw, 90px);
 }
+/* A deliberate 36 / 34 / 30 relationship: the statement leads, the copy
+   carries the substance, the matrix indexes it. Written as raw fr units so the
+   intended proportions are readable at a glance. */
 .track-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr) minmax(0, 0.9fr);
+  grid-template-columns: minmax(0, 36fr) minmax(0, 34fr) minmax(0, 30fr);
   gap: clamp(30px, 3.6vw, 54px);
   align-items: start;
 }
@@ -804,29 +855,37 @@
 }
 .track-copy p {
   margin: 0;
-  font-size: var(--text-base);
-  line-height: 1.62;
+  font-size: var(--text-body);
+  line-height: 1.68;
+  color: var(--color-text-body);
 }
 .track-copy p + p {
-  margin-top: var(--space-4);
+  margin-top: var(--space-5);
 }
 /* An expertise matrix rather than cards: hairline cells, each tagged with a
-   small technical marker. */
+   small technical marker, on the default border rather than a brighter one of
+   its own.
+
+   Two columns of three, and the labels wrapping onto two lines, is how the
+   approved reference draws this block, so the wrap is the design and not
+   something to size out of. That does make the cells width-bound: at the 30%
+   track each is about 175px, which caps the label. The marker gap is tightened
+   to buy the label the increase rather than pushing any cell to three lines. */
 .experience-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1px;
-  background: var(--color-border-hover);
-  border: 1px solid var(--color-border-hover);
+  background: var(--color-border);
+  border: 1px solid var(--color-border);
 }
 .experience-item {
   display: flex;
   align-items: center;
-  gap: var(--space-3);
-  padding: var(--space-5) var(--space-4);
+  gap: var(--space-2);
+  padding: 27px var(--space-4);
   background: var(--color-bg);
-  font: 500 var(--text-sm) / 1.3 var(--font-mono);
-  letter-spacing: 0.07em;
+  font: 500 var(--text-label) / 1.3 var(--font-mono);
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--color-text-muted);
 }
@@ -850,7 +909,7 @@
   overflow: clip;
   background: var(--color-black);
   --pad-top: clamp(72px, 7.8vw, 112px);
-  --pad-bottom: clamp(104px, 11vw, 158px);
+  --pad-bottom: clamp(96px, 10vw, 144px);
 }
 /*
  * The red limb. Same compositing rule as the hero: no stacking context may sit
@@ -893,17 +952,20 @@
   pointer-events: none;
   animation: arc-travel 18s linear infinite;
 }
-/* The second major typographic payoff after the hero. */
+/* The second major typographic payoff after the hero. Left aligned, never
+   centred: the closing section reads as a continuation of the argument. */
 .final-heading {
   margin: var(--space-4) 0 var(--space-5);
-  font-size: clamp(3rem, 4.4vw, 4rem);
+  font-size: clamp(2.9rem, 4.1vw, 3.7rem);
 }
+/* Readability here comes from measure and contrast rather than size, so it
+   stays in the same lead band as the hero paragraph. */
 .final-body {
-  max-width: 52ch;
+  max-width: 60ch;
   margin: 0 0 var(--space-6);
-  color: #cfcdd1;
-  font-size: var(--text-lg);
-  line-height: 1.6;
+  color: var(--color-text-body);
+  font-size: var(--text-lead);
+  line-height: 1.65;
 }
 /* Embers rise off the lit limb rather than the whole section. */
 .ember-field--horizon {
@@ -925,7 +987,7 @@
   align-items: center;
   justify-content: space-between;
   gap: var(--space-5);
-  font: 500 var(--text-sm) / 1 var(--font-mono);
+  font: 500 var(--text-compact) / 1 var(--font-mono);
   letter-spacing: 0.05em;
 }
 .footer-brand {
