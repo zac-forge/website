@@ -1,0 +1,109 @@
+/* Button and interaction polish. Kept separate from globals.css (the handoff
+   baseline) so what was refined later stays legible in a diff. */
+
+/* Primary keeps its solid red fill. It is the highest-contrast element on a
+   near-black page and translucency would cost that, so the glass here is in
+   the edge treatment: a lit top sheen, a darker lower half, and a bloom that
+   only appears on hover. */
+.btn-primary {
+  position: relative;
+  background: linear-gradient(180deg, var(--color-forge-hover) 0%, var(--color-forge) 58%, #cf2c3d 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.34),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.22),
+    0 1px 2px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+}
+/* The sheen is a separate layer so it can fade independently of the fill. */
+.btn-primary::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 50%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.2), transparent);
+  pointer-events: none;
+  transition: opacity var(--duration-base) var(--ease-out);
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(180deg, #f4596a 0%, var(--color-forge-hover) 58%, var(--color-forge) 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.45),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.2),
+    0 10px 34px rgba(232, 52, 69, 0.34),
+    0 0 0 1px rgba(255, 104, 117, 0.28);
+}
+.btn-primary:hover::before {
+  opacity: 0.75;
+}
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+/* Secondary is where the actual glass lives: it sits on the dark ground and
+   picks up whatever is behind it. */
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.045);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  border-color: rgba(255, 255, 255, 0.14);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    0 1px 2px rgba(0, 0, 0, 0.3);
+}
+.btn-secondary:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.24);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    0 10px 28px rgba(0, 0, 0, 0.45);
+}
+
+/* Magnetic wrapper. The transform lives on this element so it composes with
+   the button's own hover lift instead of fighting it. */
+.magnetic {
+  display: inline-flex;
+  will-change: transform;
+}
+
+/* Nav underline that grows from the left on hover and focus. */
+.site-nav a:not(.btn) {
+  position: relative;
+}
+.site-nav a:not(.btn)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 1px;
+  background: var(--color-forge);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--duration-base) var(--ease-out);
+}
+.site-nav a:not(.btn):hover::after,
+.site-nav a:not(.btn):focus-visible::after {
+  transform: scaleX(1);
+}
+
+/* Service row index. Sits behind the content and lifts slightly as the row
+   activates, so the number reads as part of the hover rather than static
+   furniture. */
+.service-index {
+  transition:
+    color var(--duration-base) var(--ease-out),
+    transform var(--duration-base) var(--ease-out);
+}
+.service-row:hover .service-index,
+.service-row:focus-within .service-index {
+  color: var(--color-forge);
+  transform: translateY(-2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .magnetic {
+    transform: none !important;
+  }
+}

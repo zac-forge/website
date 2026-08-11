@@ -1,33 +1,38 @@
-import { useEffect, useRef, useState } from "react";
+import { motion, useReducedMotion } from "motion/react";
+import { fadeUp, VIEWPORT } from "../lib/motion";
 
-export function Reveal({ children, className = "" }: { children: React.ReactNode; className?: string }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
+/**
+ * Fades and lifts a block as it enters the viewport, once.
+ *
+ * Motion drives this rather than the original IntersectionObserver plus CSS
+ * class, so it shares easing with the rest of the site and can stagger its
+ * children when asked.
+ */
+export function Reveal({
+  children,
+  className = "",
+  stagger,
+}: {
+  children: React.ReactNode;
+  className?: string;
+  stagger?: number;
+}) {
+  const shouldReduceMotion = useReducedMotion();
 
-  useEffect(() => {
-    const node = ref.current;
-    if (!node) return;
-    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
-    if (media.matches) {
-      setVisible(true);
-      return;
-    }
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.16 },
-    );
-    observer.observe(node);
-    return () => observer.disconnect();
-  }, []);
+  // With a stagger the parent only orchestrates, children carry the movement.
+  const variants = stagger
+    ? { hidden: {}, show: { transition: { staggerChildren: stagger } } }
+    : fadeUp;
 
   return (
-    <div ref={ref} className={`reveal ${className}`} data-visible={visible}>
+    <motion.div
+      className={className}
+      variants={variants}
+      initial={shouldReduceMotion ? false : "hidden"}
+      whileInView="show"
+      viewport={VIEWPORT}
+    >
       {children}
-    </div>
+    </motion.div>
   );
 }

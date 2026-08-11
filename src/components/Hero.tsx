@@ -1,30 +1,33 @@
 import { motion, useReducedMotion } from "motion/react";
-import { Reveal } from "./Reveal";
 import { HeroForge } from "./HeroForge";
+import { Magnetic } from "./Magnetic";
 import { BOOKING_URL } from "../lib/links";
+import { EASE, staggerContainer } from "../lib/motion";
 
-const container = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.09, delayChildren: 0.05 } },
-};
+const container = staggerContainer(0.11, 0.06);
 
 const item = {
-  hidden: { opacity: 0, y: 16 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] as const } },
+  hidden: { opacity: 0, y: 30 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.78, ease: EASE } },
+};
+
+const art = {
+  hidden: { opacity: 0, scale: 0.9 },
+  show: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 1.15, ease: EASE, delay: 0.24 },
+  },
 };
 
 export function Hero() {
   const shouldReduceMotion = useReducedMotion();
+  const initial = shouldReduceMotion ? false : "hidden";
 
   return (
     <section id="top" className="hero">
       <div className="container hero-grid">
-        <motion.div
-          className="hero-copy"
-          variants={container}
-          initial={shouldReduceMotion ? false : "hidden"}
-          animate="show"
-        >
+        <motion.div className="hero-copy" variants={container} initial={initial} animate="show">
           <motion.p className="eyebrow" variants={item}>
             ZAC / TECHNOLOGY + AI
           </motion.p>
@@ -37,10 +40,12 @@ export function Hero() {
             possible, without cutting corners.
           </motion.p>
           <motion.div className="cta-row" variants={item}>
-            <a className="btn btn-primary" href={BOOKING_URL}>
-              <span>Book a call</span>
-              <span aria-hidden="true"> →</span>
-            </a>
+            <Magnetic>
+              <a className="btn btn-primary" href={BOOKING_URL}>
+                <span>Book a call</span>
+                <span aria-hidden="true"> →</span>
+              </a>
+            </Magnetic>
             <a className="text-link" href="#services">
               <span>See what we build</span>
               <span aria-hidden="true"> ↓</span>
@@ -51,9 +56,9 @@ export function Hero() {
           </motion.p>
         </motion.div>
 
-        <Reveal className="hero-visual">
+        <motion.div className="hero-visual" variants={art} initial={initial} animate="show">
           <HeroForge />
-        </Reveal>
+        </motion.div>
       </div>
     </section>
   );

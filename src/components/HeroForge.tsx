@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { motion, useMotionValue, useSpring, useTransform, useReducedMotion } from "motion/react";
 
-const EMBER_COUNT = 6;
+const EMBER_COUNT = 10;
 
 export function HeroForge() {
   const wrap = useRef<HTMLDivElement>(null);

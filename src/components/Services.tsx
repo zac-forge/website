@@ -1,5 +1,7 @@
+import { motion } from "motion/react";
 import { Reveal } from "./Reveal";
 import { ServiceRow } from "./ServiceRow";
+import { fadeUp } from "../lib/motion";
 
 const SERVICES = [
   {
@@ -49,13 +51,13 @@ export function Services() {
         <Reveal>
           <p className="eyebrow">02 / WHAT ZAC DOES</p>
         </Reveal>
-        <div className="service-rows">
+        <Reveal className="service-rows" stagger={0.12}>
           {SERVICES.map((service) => (
-            <Reveal key={service.index}>
+            <motion.div key={service.index} variants={fadeUp}>
               <ServiceRow {...service} />
-            </Reveal>
+            </motion.div>
           ))}
-        </div>
+        </Reveal>
       </div>
     </section>
   );

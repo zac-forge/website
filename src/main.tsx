@@ -14,6 +14,7 @@ import "@fontsource/ibm-plex-mono/500.css";
 import "./styles/globals.css";
 import "./styles/motion.css";
 import "./styles/layout.css";
+import "./styles/interactive.css";
 import App from "./App.tsx";
 
 createRoot(document.getElementById("root")!).render(

@@ -1,5 +1,6 @@
 import { motion, useReducedMotion } from "motion/react";
 import { Reveal } from "./Reveal";
+import { fadeUp } from "../lib/motion";
 
 const PRINCIPLES = [
   { label: "SENIOR-LED", body: "No layers of junior account management." },
@@ -69,12 +70,12 @@ export function HowItWorks() {
             </p>
           </Reveal>
 
-          <Reveal className="principles">
+          <Reveal className="principles" stagger={0.1}>
             {PRINCIPLES.map((p) => (
-              <div className="principle surface" key={p.label}>
+              <motion.div className="principle surface" key={p.label} variants={fadeUp}>
                 <p className="eyebrow">{p.label}</p>
                 <p className="text-muted">{p.body}</p>
-              </div>
+              </motion.div>
             ))}
           </Reveal>
         </div>

@@ -9,6 +9,9 @@
       name="description"
       content="Senior technology judgment plus AI-native execution. ZAC advises, designs, and builds working technology faster than used to be possible, without agency overhead."
     />
+    <link rel="canonical" href="https://zacforge.com/" />
+    <meta name="theme-color" content="#0C0C0F" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
 
     <meta property="og:type" content="website" />
     <meta property="og:title" content="ZAC Forge: AI-native technology consulting and development" />
@@ -24,7 +27,7 @@
       content="ZAC Forge. Technology has new economics."
     />
     <meta property="og:site_name" content="ZAC Forge" />
-    <meta property="og:url" content="https://zacforge.com" />
+    <meta property="og:url" content="https://zacforge.com/" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="ZAC Forge: AI-native technology consulting and development" />
@@ -33,6 +36,64 @@
       content="Senior technology judgment plus AI-native execution. ZAC advises, designs, and builds working technology faster than used to be possible, without agency overhead."
     />
     <meta name="twitter:image" content="https://zacforge.com/og-image.jpg" />
+
+    <!--
+      Organization-level structured data only. No Person schema and no
+      individual contact details, so the entity Google builds is the studio
+      rather than any one person.
+    -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "ZAC Forge",
+        "alternateName": "ZAC",
+        "legalName": "ZAC Consulting LLC",
+        "url": "https://zacforge.com/",
+        "logo": "https://zacforge.com/brand/zacforge-wordmark.svg",
+        "image": "https://zacforge.com/og-image.jpg",
+        "email": "hello@zacforge.com",
+        "description": "Senior technology judgment plus AI-native execution. ZAC advises, designs, and builds working technology faster than used to be possible, without agency overhead.",
+        "knowsAbout": [
+          "Technology strategy",
+          "AI integration",
+          "Custom software development",
+          "Web applications",
+          "Workflow automation",
+          "Product development"
+        ],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Services",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Advise",
+                "description": "Technology strategy, AI opportunity assessment, product and platform direction, workflow analysis, and architecture planning."
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Build",
+                "description": "Custom software, web applications, high-performance websites, internal tools, workflow automation, AI integrations and agents, prototypes and MVPs."
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Partner",
+                "description": "Fractional technology leadership, ongoing product development, technical problem solving, specialist team assembly, and existing platform improvement."
+              }
+            }
+          ]
+        }
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>

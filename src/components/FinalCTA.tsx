@@ -1,4 +1,5 @@
 import { Reveal } from "./Reveal";
+import { Magnetic } from "./Magnetic";
 import { BOOKING_URL, CONTACT_EMAIL } from "../lib/links";
 
 export function FinalCTA() {
@@ -14,13 +15,17 @@ export function FinalCTA() {
             that is enough to start.
           </p>
           <div className="cta-row">
-            <a className="btn btn-primary" href={BOOKING_URL}>
-              <span>Book a call</span>
-              <span aria-hidden="true"> →</span>
-            </a>
-            <a className="btn btn-secondary" href={`mailto:${CONTACT_EMAIL}`}>
-              Send a message
-            </a>
+            <Magnetic>
+              <a className="btn btn-primary" href={BOOKING_URL}>
+                <span>Book a call</span>
+                <span aria-hidden="true"> →</span>
+              </a>
+            </Magnetic>
+            <Magnetic>
+              <a className="btn btn-secondary" href={`mailto:${CONTACT_EMAIL}`}>
+                Send a message
+              </a>
+            </Magnetic>
           </div>
         </Reveal>
       </div>

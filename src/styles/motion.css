@@ -1,12 +1,4 @@
-.reveal {
-  opacity: 0;
-  transform: translateY(18px);
-  transition: opacity var(--duration-slow) var(--ease-out), transform var(--duration-slow) var(--ease-out);
-}
-.reveal[data-visible="true"] {
-  opacity: 1;
-  transform: translateY(0);
-}
+/* Section reveals now live in the Reveal component (Motion), not here. */
 
 .forge-glow {
   position: absolute;
@@ -22,8 +14,11 @@
   pointer-events: none;
   animation: glow-pulse 4.5s ease-in-out infinite;
 }
+/* Opacity only. Motion drives this element's transform for the pointer
+   parallax, and a CSS animation on transform would win the cascade and kill
+   that. */
 @keyframes glow-pulse {
-  0%, 100% { opacity: .75; }
+  0%, 100% { opacity: .58; }
   50% { opacity: 1; }
 }
 
@@ -39,9 +34,12 @@
   -webkit-mask-image: radial-gradient(ellipse 62% 58% at 50% 50%, #000 30%, rgba(0, 0, 0, 0.55) 62%, transparent 88%);
   mask-image: radial-gradient(ellipse 62% 58% at 50% 50%, #000 30%, rgba(0, 0, 0, 0.55) 62%, transparent 88%);
 }
+/* Breathing plus a slow sway, so the artwork is never fully still. Kept under
+   1 degree: enough to register at the edge of attention, not enough to read
+   as the logo rotating. */
 @keyframes forge-breathe {
-  0%, 100% { transform: scale(1); filter: brightness(.95); }
-  50% { transform: scale(1.012); filter: brightness(1.08); }
+  0%, 100% { transform: scale(1) rotate(-0.5deg); filter: brightness(.93); }
+  50% { transform: scale(1.022) rotate(0.5deg); filter: brightness(1.12); }
 }
 
 .service-row {
@@ -62,5 +60,4 @@
     animation-iteration-count: 1 !important;
     transition-duration: .01ms !important;
   }
-  .reveal { opacity: 1; transform: none; }
 }

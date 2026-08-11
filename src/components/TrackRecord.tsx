@@ -1,4 +1,6 @@
+import { motion } from "motion/react";
 import { Reveal } from "./Reveal";
+import { fadeUp, fadeUpSmall } from "../lib/motion";
 
 const EXPERIENCE = [
   "Enterprise systems",
@@ -34,21 +36,21 @@ export function TrackRecord() {
             </p>
           </Reveal>
 
-          <Reveal className="experience-grid">
+          <Reveal className="experience-grid" stagger={0.06}>
             {EXPERIENCE.map((item) => (
-              <div className="experience-item surface" key={item}>
+              <motion.div className="experience-item surface" key={item} variants={fadeUpSmall}>
                 {item}
-              </div>
+              </motion.div>
             ))}
           </Reveal>
         </div>
 
-        <Reveal className="roles-row">
+        <Reveal className="roles-row" stagger={0.1}>
           {ROLES.map((role) => (
-            <div className="role surface" key={role.label}>
+            <motion.div className="role surface" key={role.label} variants={fadeUp}>
               <p className="eyebrow">{role.label}</p>
               <p className="text-muted">{role.body}</p>
-            </div>
+            </motion.div>
           ))}
         </Reveal>
       </div>

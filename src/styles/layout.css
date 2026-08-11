@@ -236,20 +236,45 @@
   animation-delay: -5s;
   animation-duration: 5.8s;
 }
+.ember:nth-child(7) {
+  left: 64%;
+  bottom: 30%;
+  animation-delay: -2.7s;
+  animation-duration: 7.4s;
+}
+.ember:nth-child(8) {
+  left: 42%;
+  bottom: 64%;
+  animation-delay: -6.1s;
+  animation-duration: 6.8s;
+}
+.ember:nth-child(9) {
+  left: 74%;
+  bottom: 66%;
+  animation-delay: -0.9s;
+  animation-duration: 8s;
+}
+.ember:nth-child(10) {
+  left: 34%;
+  bottom: 22%;
+  animation-delay: -4.6s;
+  animation-duration: 7.1s;
+}
 @keyframes ember-drift {
   0% {
     opacity: 0;
-    transform: translate(0, 0) scale(0.5);
+    transform: translate(0, 0) scale(0.4);
   }
-  12% {
-    opacity: 0.9;
+  10% {
+    opacity: 1;
   }
-  70% {
-    opacity: 0.5;
+  60% {
+    opacity: 0.6;
+    transform: translate(14px, -84px) scale(1);
   }
   100% {
     opacity: 0;
-    transform: translate(6px, -70px) scale(1);
+    transform: translate(26px, -150px) scale(0.7);
   }
 }
 
