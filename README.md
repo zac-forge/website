@@ -66,8 +66,6 @@ repo or in client-side code.
 
 ## TODO before this is a real site
 
-- [ ] Real calendar link. `BOOKING_URL` in `src/lib/links.ts` is still the placeholder
-      `https://cal.com/REPLACE`, so every "Book a call" button is currently dead.
 - [ ] Confirm `hello@zacforge.com` actually receives mail. It is live in the footer and the
       "Send a message" button, set in `src/lib/links.ts`.
 - [ ] OG image for social sharing (1200x630 PNG or JPG). The meta tag is stubbed out in
@@ -78,4 +76,5 @@ repo or in client-side code.
       `wrangler.toml` deploys static assets only, so the `functions/` directory is not wired up
       on the deployed site yet.
 
-Done: page design and copy, brand assets, logo, favicon.
+Done: page design and copy, brand assets, logo, favicon, booking link
+(`https://cal.com/zacforge/20-min-chat`).

@@ -1,4 +1,3 @@
-// TODO: replace with the real calendar link before launch.
-export const BOOKING_URL = "https://cal.com/REPLACE";
+export const BOOKING_URL = "https://cal.com/zacforge/20-min-chat";
 
 export const CONTACT_EMAIL = "hello@zacforge.com";
