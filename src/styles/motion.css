@@ -197,29 +197,78 @@
  */
 @keyframes z-resolve {
   0% {
-    opacity: 0.92;
+    opacity: 0.38;
   }
-  70% {
-    opacity: 0.25;
+  62% {
+    opacity: 0.14;
   }
   100% {
     opacity: 0;
   }
 }
+/* Upper left to lower right. The band lives inside the mask and the region
+   clip sits on a wrapper above it, so the logo itself never moves: what
+   travels is the illumination. */
 @keyframes z-sweep {
   0% {
     opacity: 0;
-    transform: translateX(-120%);
+    transform: translate(-80%, -80%);
   }
-  22% {
+  18% {
     opacity: 1;
   }
-  78% {
+  76% {
     opacity: 1;
   }
   100% {
     opacity: 0;
-    transform: translateX(120%);
+    transform: translate(80%, 80%);
+  }
+}
+/* The lettering coming up from about 65%, as a dark overlay clearing rather
+   than opacity on the shared raster. */
+@keyframes z-word {
+  0% {
+    opacity: 0.35;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/*
+ * Service row ignition. One pass, on entry only.
+ *
+ * The dot pops, then a single particle crosses the row to the arrow and dies
+ * there. Total sequence is 750ms including the particle's delay. It never
+ * loops: while the row stays hovered the animation simply holds its end state.
+ */
+@keyframes spark-ignite {
+  0% {
+    scale: 0.85;
+  }
+  38% {
+    scale: 1.25;
+  }
+  100% {
+    scale: 1;
+  }
+}
+@keyframes service-ignite {
+  0% {
+    opacity: 0;
+    transform: translateX(0) scale(0.6);
+  }
+  14% {
+    opacity: 1;
+    transform: translateX(4cqw) scale(1);
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(37cqw) scale(0.8);
   }
 }
 
@@ -329,14 +378,22 @@
   .arc-traveller,
   .arc-ember,
   .hero-link-signal,
-  .arc-heat {
+  .arc-heat,
+  /* The travelling particle goes; the row keeps its static lit state, so the
+     dot, edge, border and internal glow all still respond. */
+  .service-particle {
     display: none;
   }
-  /* The load illumination is motion, so it does not run. The mark simply
-     arrives at its normal Forge Red. Hover luminosity is interaction feedback
-     rather than motion, so it stays. */
+  .service-spark {
+    animation: none !important;
+    scale: 1;
+  }
+  /* The load sequence is motion, so it is skipped entirely and the logo
+     renders immediately in its final static state. Hover luminosity is
+     interaction feedback rather than motion, so it stays. */
   .lockup-z-dim,
-  .lockup-z-sweep {
+  .lockup-z-sweep,
+  .lockup-z-word {
     animation: none !important;
     opacity: 0 !important;
   }

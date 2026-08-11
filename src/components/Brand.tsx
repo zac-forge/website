@@ -33,29 +33,44 @@ const MARK = { src: "/brand/zac-mark.webp", w: 256, h: 163 };
  * untouched, and nothing here can move, scale or rotate the logo. Only colour
  * and luminosity change.
  */
-function ZIllumination({ src, clip }: { src: string; clip?: string }) {
+function ZIllumination({ markInset, wordInset }: { markInset?: string; wordInset?: string }) {
   return (
-    <span
-      className="lockup-z"
-      aria-hidden="true"
-      style={
-        {
-          WebkitMaskImage: `url("${src}")`,
-          maskImage: `url("${src}")`,
-          clipPath: clip,
-        } as React.CSSProperties
-      }
-    >
-      <span className="lockup-z-dim" />
-      <span className="lockup-z-sweep" />
-      <span className="lockup-z-hot" />
-    </span>
+    <>
+      {/* Unmasked, and therefore soft: a bloom keyed to the mark's position
+          rather than its silhouette, which is what a glow around an object
+          looks like. Sits behind the artwork. */}
+      <span className="lockup-bloom" aria-hidden="true" />
+      <span className="lockup-z" aria-hidden="true">
+        {/* This wrapper is the mark's region, expressed as a box rather than a
+            clip on a full-size layer. Two reasons: the wrapper is never
+            transformed, so the lit region cannot slide off the mark the way a
+            clip on the sweep itself would; and it makes the sweep's travel a
+            percentage of the mark, so the same keyframes read correctly on the
+            wide lockup and on the standalone mark. */}
+        <span className="lockup-z-mark" style={{ inset: markInset }}>
+          <span className="lockup-z-dim" />
+          <span className="lockup-z-sweep" />
+          <span className="lockup-z-hot" />
+        </span>
+        {wordInset ? <span className="lockup-z-word" style={{ inset: wordInset }} /> : null}
+      </span>
+    </>
   );
 }
 
 export function Wordmark({ className = "" }: { className?: string }) {
   return (
-    <span className={`lockup ${className}`}>
+    <span
+      className={`lockup ${className}`}
+      // The mask keys every overlay to the artwork's own alpha. --z-cx is the
+      // horizontal centre of the mark, used to place the unmasked bloom.
+      style={
+        {
+          "--lockup-src": `url("${LOCKUP.src}")`,
+          "--z-cx": "15.5%",
+        } as React.CSSProperties
+      }
+    >
       <img
         className="lockup-art"
         src={LOCKUP.src}
@@ -65,14 +80,18 @@ export function Wordmark({ className = "" }: { className?: string }) {
         draggable={false}
         decoding="async"
       />
-      <ZIllumination src={LOCKUP.src} clip="inset(0 69% 0 0)" />
+      <ZIllumination markInset="0 69% 0 0" wordInset="0 0 0 31%" />
     </span>
   );
 }
 
 export function ZacMark({ className = "" }: { className?: string }) {
   return (
-    <span className={`lockup ${className}`} aria-hidden="true">
+    <span
+      className={`lockup ${className}`}
+      aria-hidden="true"
+      style={{ "--lockup-src": `url("${MARK.src}")`, "--z-cx": "50%" } as React.CSSProperties}
+    >
       <img
         className="lockup-art"
         src={MARK.src}
@@ -82,8 +101,9 @@ export function ZacMark({ className = "" }: { className?: string }) {
         draggable={false}
         decoding="async"
       />
-      {/* No clip: this asset is the mark and nothing else. */}
-      <ZIllumination src={MARK.src} />
+      {/* No clips: this asset is the mark and nothing else, so there is no
+          lettering to separate out. */}
+      <ZIllumination />
     </span>
   );
 }

@@ -153,8 +153,19 @@
 .service-row:focus-within::after {
   opacity: 1;
 }
-/* The node on the signal edge. Dim at rest so the row still reads as wired,
-   bright on interaction. */
+/*
+ * The row's ignition.
+ *
+ * The dot on the signal edge is dim at rest so the row still reads as wired.
+ * On interaction it brightens and pops, then releases one particle that
+ * crosses to the arrow and dies there.
+ *
+ * The once-per-entry behaviour is the CSS animation model rather than any
+ * state tracking: an animation attached to :hover / :focus-visible starts when
+ * the state is entered, runs its single iteration, and holds its end state for
+ * as long as the state lasts. Leaving removes it, and returning starts it
+ * again, which is exactly the required behaviour with no JavaScript.
+ */
 .service-spark {
   position: absolute;
   left: 0;
@@ -165,7 +176,7 @@
   border-radius: 50%;
   background: radial-gradient(circle, #fff 0 30%, var(--color-forge-hot) 66%, var(--color-forge));
   box-shadow: 0 0 8px 2px rgba(232, 52, 69, 0.45);
-  opacity: 0.3;
+  opacity: 0.45;
   pointer-events: none;
   transition:
     opacity var(--duration-base) var(--ease-out),
@@ -177,6 +188,53 @@
   box-shadow:
     0 0 12px 3px rgba(232, 52, 69, 0.75),
     0 0 28px 8px rgba(232, 52, 69, 0.28);
+}
+/* `scale` is the individual property, so the pop composes with the dot's own
+   `translate` centring instead of overwriting it. */
+.service-row:hover .service-spark,
+.service-row:focus-visible .service-spark {
+  animation: spark-ignite 380ms var(--ease-out) 1 both;
+}
+
+/*
+ * The particle. Travel is expressed in container units so it lands just short
+ * of the arrow at every width: the arrow column starts at 40.6% of the row, so
+ * 37cqw stops the particle inside the gap before it. A viewport unit would
+ * drift, since the row is a clamped container rather than a share of the
+ * screen.
+ */
+.service-particle {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 4px;
+  height: 4px;
+  translate: 0 -50%;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff 0 26%, var(--color-forge-hot) 62%, var(--color-forge));
+  box-shadow: 0 0 8px 2px rgba(232, 52, 69, 0.55);
+  opacity: 0;
+  pointer-events: none;
+}
+/* A short trail behind the core. It is part of the particle rather than an
+   animation of its own, so it costs nothing and cannot drift out of sync. */
+.service-particle::after {
+  content: "";
+  position: absolute;
+  right: 100%;
+  top: 50%;
+  translate: 0 -50%;
+  width: 26px;
+  height: 1.5px;
+  border-radius: 1px;
+  background: linear-gradient(90deg, transparent, rgba(232, 52, 69, 0.6));
+}
+/* The plain `ease-out` keyword, not the site's --ease-out. That curve covers
+   365 of the 474px in its first 200ms and then crawls, which reads as a jump
+   rather than a crossing. This one travels. */
+.service-row:hover .service-particle,
+.service-row:focus-visible .service-particle {
+  animation: service-ignite 640ms ease-out 110ms 1 both;
 }
 .service-row:hover .service-title,
 .service-row:focus-within .service-title,

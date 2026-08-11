@@ -43,47 +43,107 @@
   inset: 0;
   pointer-events: none;
   overflow: hidden;
+  -webkit-mask-image: var(--lockup-src);
+  mask-image: var(--lockup-src);
   -webkit-mask-size: 100% 100%;
   mask-size: 100% 100%;
   -webkit-mask-repeat: no-repeat;
   mask-repeat: no-repeat;
 }
-.lockup-z > span {
+.lockup-z-mark {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+.lockup-z-mark > span,
+.lockup-z-word {
   position: absolute;
   inset: 0;
   display: block;
   opacity: 0;
 }
-/* Graphite over the red, resolving away. Only runs where the lockup is used
-   as the site's identity, never on the copy of the mark inside the process
-   diagram, which would flash graphite for anyone landing mid-page. */
+
+/*
+ * Load sequence, once.
+ *
+ * The mark starts around 40% of its normal luminosity and a band of red energy
+ * crosses its facets from upper left to lower right, while the lettering comes
+ * up from about 65%. Everything ends at zero, so the logo settles into exactly
+ * its normal appearance and stays there.
+ *
+ * Both the dimming and the lettering are expressed as dark overlays that fade
+ * away rather than as opacity on the artwork, because the artwork is a single
+ * raster: fading the image would fade the mark and the lettering together.
+ *
+ * Scoped to the header and footer. The copy of the mark inside the process
+ * diagram is not the site's identity, and would otherwise flash dim for
+ * anyone landing mid-page.
+ */
 .lockup-z-dim {
-  background: #26262c;
+  /* 0.38 over the Forge Red measures out at 40% relative luminance, inside the
+     35 to 45% the sequence is meant to start from. Very slightly red rather
+     than neutral, so the mark reads as unlit metal with heat still in it. */
+  background: #120a0c;
 }
 .lockup-z-sweep {
+  /* Forge, hot and deep red only. Deliberately no white: this is energy moving
+     through the facets, not a shine passing over them. */
   background: linear-gradient(
-    102deg,
+    135deg,
     transparent 34%,
-    rgba(255, 186, 196, 0.8) 50%,
+    rgba(158, 31, 45, 0.5) 43%,
+    rgba(255, 104, 117, 0.92) 50%,
+    rgba(232, 52, 69, 0.62) 57%,
     transparent 66%
   );
 }
+.lockup-z-word {
+  background: var(--color-bg);
+}
+/* ease-in-out, not the site's --ease-out. That curve puts roughly 90% of its
+   travel in the first third, which crossed the sweep in about 250ms of its
+   880 and made the whole sequence read as a flicker. An even curve spends the
+   duration actually moving. */
 .brand .lockup-z-dim,
 .footer-brand .lockup-z-dim {
-  animation: z-resolve 620ms var(--ease-out) 100ms 1 both;
+  animation: z-resolve 880ms ease-in-out 60ms 1 both;
 }
 .brand .lockup-z-sweep,
 .footer-brand .lockup-z-sweep {
-  animation: z-sweep 640ms var(--ease-out) 180ms 1 both;
+  animation: z-sweep 880ms ease-in-out 120ms 1 both;
 }
-/* Interaction only: a slight lift in luminosity, nothing else. */
+.brand .lockup-z-word,
+.footer-brand .lockup-z-word {
+  animation: z-word 760ms ease-in-out 80ms 1 both;
+}
+
+/* Interaction: luminosity and glow on the mark only, never the lettering and
+   never position. */
 .lockup-z-hot {
   background: var(--color-forge-hot);
-  transition: opacity 200ms var(--ease-out);
+  transition: opacity 220ms var(--ease-out);
+}
+.lockup-bloom {
+  position: absolute;
+  left: var(--z-cx, 50%);
+  top: 50%;
+  width: 56%;
+  aspect-ratio: 1;
+  translate: -50% -50%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(232, 52, 69, 0.55), transparent 62%);
+  filter: blur(6px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 220ms var(--ease-out);
 }
 a:hover .lockup-z-hot,
 a:focus-visible .lockup-z-hot {
-  opacity: 0.2;
+  opacity: 0.3;
+}
+a:hover .lockup-bloom,
+a:focus-visible .lockup-bloom {
+  opacity: 1;
 }
 
 /* ---------------------------------------------------------------- Header */
@@ -753,6 +813,9 @@ a:focus-visible .lockup-z-hot {
 .service-row {
   position: relative;
   overflow: hidden;
+  /* So the ignition particle can express its travel as a share of the row
+     (cqw) rather than of the viewport. */
+  container-type: inline-size;
   display: grid;
   grid-template-columns:
     clamp(68px, 6.6vw, 100px) minmax(190px, 0.62fr)
@@ -828,6 +891,12 @@ a:focus-visible .lockup-z-hot {
     gap: var(--space-3) var(--space-4);
   }
   .service-arrow {
+    display: none;
+  }
+  /* The particle exists to carry energy to the arrow. With no arrow to reach,
+     it would just stop somewhere in the middle of the row, and at these widths
+     there is no hover to start it from anyway. The dot stays. */
+  .service-particle {
     display: none;
   }
   .service-items {
