@@ -1,35 +1,31 @@
 import { motion, useReducedMotion } from "motion/react";
-import { HeroForge } from "./HeroForge";
+import { HeroArt } from "./HeroArt";
 import { Magnetic } from "./Magnetic";
 import { BOOKING_URL } from "../lib/links";
 import { EASE, staggerContainer } from "../lib/motion";
 
-const container = staggerContainer(0.11, 0.06);
+const container = staggerContainer(0.1, 0.05);
 
 const item = {
-  hidden: { opacity: 0, y: 30 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.78, ease: EASE } },
-};
-
-const art = {
-  hidden: { opacity: 0, scale: 0.9 },
-  show: {
-    opacity: 1,
-    scale: 1,
-    transition: { duration: 1.15, ease: EASE, delay: 0.24 },
-  },
+  hidden: { opacity: 0, y: 26 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.75, ease: EASE } },
 };
 
 export function Hero() {
   const shouldReduceMotion = useReducedMotion();
-  const initial = shouldReduceMotion ? false : "hidden";
 
   return (
     <section id="top" className="hero">
       <div className="container hero-grid">
-        <motion.div className="hero-copy" variants={container} initial={initial} animate="show">
+        <motion.div
+          className="hero-copy"
+          variants={container}
+          initial={shouldReduceMotion ? false : "hidden"}
+          animate="show"
+        >
           <motion.p className="eyebrow" variants={item}>
-            ZAC / TECHNOLOGY + AI
+            <span className="eyebrow-slash">/</span> ZAC <span className="eyebrow-slash">/</span>{" "}
+            TECHNOLOGY + AI
           </motion.p>
           <motion.h1 className="h1" variants={item}>
             Technology has <span className="text-forge">new economics.</span>
@@ -51,14 +47,16 @@ export function Hero() {
               <span aria-hidden="true"> ↓</span>
             </a>
           </motion.div>
-          <motion.p className="proof-line text-muted" variants={item}>
+          <motion.p className="proof-line" variants={item}>
             Senior-led. Specialist-supported. Built without agency overhead.
           </motion.p>
         </motion.div>
 
-        <motion.div className="hero-visual" variants={art} initial={initial} animate="show">
-          <HeroForge />
-        </motion.div>
+        {/* Deliberately not wrapped in a Motion element. Its entrance is a CSS
+            animation on the image itself, because any transform or opacity on
+            a wrapper would create a stacking context and break the screen
+            blend that drops the artwork's black plate out. */}
+        <HeroArt />
       </div>
     </section>
   );

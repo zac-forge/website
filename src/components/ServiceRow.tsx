@@ -7,18 +7,22 @@ type Props = {
 
 export function ServiceRow({ index, title, statement, items }: Props) {
   return (
-    <article className="service-row surface" tabIndex={0}>
-      <div className="service-index">{index}</div>
-      <div>
-        <div className="eyebrow">{title}</div>
-        <h3 className="h3">{statement}</h3>
+    <article className="service-row" tabIndex={0}>
+      <div className="service-index" aria-hidden="true">
+        {index}
       </div>
-      <ul>
+      <div className="service-label">
+        <h3 className="service-title">{title}</h3>
+        <p className="service-statement">{statement}</p>
+      </div>
+      <span className="service-arrow" aria-hidden="true">
+        →
+      </span>
+      <ul className="service-items">
         {items.map((item) => (
           <li key={item}>{item}</li>
         ))}
       </ul>
-      <span aria-hidden="true">→</span>
     </article>
   );
 }

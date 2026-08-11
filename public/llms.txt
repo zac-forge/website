@@ -10,15 +10,17 @@ specialists brought in when a project calls for more depth.
 
 ## Services
 
-- Advise: technology strategy, AI opportunity assessment, product and platform direction,
-  workflow analysis, architecture and technical planning.
-- Build: custom software, web applications, high-performance websites, internal tools, workflow
-  automation, AI integrations and agents, prototypes and MVPs.
-- Partner: fractional technology leadership, ongoing product development, technical problem
-  solving, specialist team assembly, existing platform improvement.
+- [Advise](https://zacforge.com/#services): Technology strategy, AI opportunity assessment, product and platform direction, workflow analysis, architecture and technical planning.
+- [Build](https://zacforge.com/#services): Custom software, web applications, high-performance websites, internal tools, workflow automation, AI integrations and agents, prototypes and MVPs.
+- [Partner](https://zacforge.com/#services): Fractional technology leadership, ongoing product development, technical problem solving, specialist team assembly, existing platform improvement.
+
+## About
+
+- [How ZAC works](https://zacforge.com/#approach): One senior point of contact, with specialists brought in around the problem rather than an agency org chart.
+- [Track record](https://zacforge.com/#about): Experience spanning enterprise systems, digital products, web and applications, AI and automation, technology strategy, and design.
 
 ## Contact
 
-- Book a call: https://cal.com/zacforge/20-min-chat
-- Email: hello@zacforge.com
-- Site: https://zacforge.com/
+- [Book a call](https://cal.com/zacforge/20-min-chat): A 20 minute intro conversation.
+- [Email](mailto:hello@zacforge.com): hello@zacforge.com
+- [Website](https://zacforge.com/): The full site.

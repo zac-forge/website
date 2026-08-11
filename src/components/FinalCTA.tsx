@@ -1,23 +1,20 @@
 import { Reveal } from "./Reveal";
 import { Magnetic } from "./Magnetic";
 import { Embers } from "./Embers";
+import { RedArc } from "./RedArc";
 import { BOOKING_URL, CONTACT_EMAIL } from "../lib/links";
 
 export function FinalCTA() {
   return (
     <section id="contact" className="section final-cta">
-      {/* The red planetary horizon from the reference mockup: a bloom, the
-          lit limb itself, and embers rising off it. */}
-      <div className="horizon" aria-hidden="true">
-        <div className="horizon-bloom" />
-        <div className="horizon-arc" />
-      </div>
-      <Embers count={14} seed={23} className="ember-field--horizon" />
+      <RedArc />
+      <Embers count={12} seed={23} className="ember-field--horizon" />
+
       <div className="container">
         <Reveal>
           <p className="eyebrow">HAVE SOMETHING WORTH BUILDING?</p>
-          <h2 className="h2">Bring us the problem.</h2>
-          <p className="text-muted">
+          <h2 className="h2 final-heading">Bring us the problem.</h2>
+          <p className="final-body">
             Whether you know exactly what you need or just know something should work better,
             that is enough to start.
           </p>

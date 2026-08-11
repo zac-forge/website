@@ -1,33 +1,42 @@
-/* Layout and section styling not covered by the handoff's globals.css /
-   motion.css (those two are treated as canon and left untouched). This
-   file covers structure: header/nav, hero grid, and each page section. */
+/* Structure and section composition, built against docs/reference-mockup.jpg.
+   tokens.css and globals.css remain the handoff baseline; this file carries
+   the layout. */
 
 .text-faint {
   color: var(--color-text-faint);
 }
 
-/* Header */
+/* Two-tone section headings: statement on the first line, the softer
+   consequence underneath, as in the mockup. */
+.h2--split .h2-secondary {
+  display: block;
+  font-weight: 400;
+  color: #d8d7da;
+}
+
+/* ---------------------------------------------------------------- Header */
 .site-header {
   position: sticky;
   top: 0;
   z-index: 40;
-  background: rgba(12, 12, 15, 0.72);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--color-border);
+  background: rgba(10, 10, 12, 0.78);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 .header-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: var(--space-5);
-  padding-block: var(--space-4);
+  height: 76px;
 }
 .brand {
   display: flex;
   align-items: center;
 }
 .brand-wordmark {
-  height: clamp(32px, 2.6vw, 42px);
+  height: clamp(30px, 2.4vw, 38px);
   width: auto;
 }
 .site-nav {
@@ -69,10 +78,10 @@
   background: var(--color-text);
 }
 
-@media (max-width: 760px) {
+@media (max-width: 860px) {
   .site-nav {
     position: fixed;
-    inset: 72px var(--gutter) auto var(--gutter);
+    inset: 76px var(--gutter) auto var(--gutter);
     flex-direction: column;
     align-items: stretch;
     gap: var(--space-4);
@@ -100,90 +109,131 @@
   }
 }
 
-/* Hero */
+/* ------------------------------------------------------------------ Hero */
 .hero {
-  padding-block: clamp(48px, 8vw, 96px) clamp(72px, 9vw, 128px);
   position: relative;
+  /* Clips the artwork's right-hand bleed. `clip` and `hidden` both avoid
+     creating a stacking context, which the screen blend below depends on. */
   overflow: clip;
+  border-bottom: 1px solid var(--color-border);
 }
 .hero-grid {
   display: grid;
-  grid-template-columns: 44% 56%;
+  grid-template-columns: minmax(0, 0.98fr) minmax(0, 1.02fr);
   align-items: center;
-  gap: var(--space-8);
-  min-height: 760px;
+  gap: clamp(24px, 3vw, 48px);
+  min-height: 720px;
+  padding-block: clamp(48px, 6vw, 84px) clamp(56px, 7vw, 96px);
+}
+.eyebrow-slash {
+  color: var(--color-text-faint);
 }
 .hero-copy {
-  max-width: var(--copy-width);
+  max-width: 660px;
+}
+.hero .h1 {
+  margin: var(--space-5) 0 var(--space-5);
 }
 .hero-body {
-  margin-block: var(--space-5);
+  margin-block: 0 var(--space-6);
   font-size: var(--text-lg);
-  max-width: 52ch;
+  max-width: 48ch;
 }
 .cta-row {
   display: flex;
   align-items: center;
-  gap: var(--space-5);
+  gap: clamp(20px, 2.4vw, 32px);
   flex-wrap: wrap;
-  margin-bottom: var(--space-6);
 }
 .proof-line {
+  margin-top: var(--space-7);
+  color: #d2d0d3;
   font: 500 var(--text-xs) / 1.4 var(--font-mono);
   letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-.hero-visual {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.hero-forge-wrap {
-  width: min(100%, 620px);
-  position: relative;
-  perspective: 1000px;
-}
-.hero-forge-tilt {
-  position: relative;
 }
 
-.forge-hotspots {
+/*
+ * Hero artwork stack.
+ *
+ * IMPORTANT: `.hero-visual` must never gain a transform, filter, opacity below
+ * 1, `isolation`, or a z-index. Any of those creates a stacking context, which
+ * confines `mix-blend-mode: screen` to this box and brings the artwork's black
+ * plate back as a visible rectangle.
+ */
+.hero-visual {
+  position: relative;
+  /* Oversized and pulled left so the artwork bleeds past the container edge
+     as it does in the mockup. `.hero` clips the overhang. */
+  width: 134%;
+  margin-left: -16%;
+  aspect-ratio: 1536 / 1024;
+}
+.hero-art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  /* The source is a black plate with no alpha. Screening it over the page
+     drops the plate out exactly, with no mask or feathering needed. */
+  mix-blend-mode: screen;
+  /* Pointer parallax uses the individual `translate` property so it composes
+     with the breathing animation's `scale` instead of colliding on
+     `transform`. */
+  translate: var(--mx, 0px) var(--my, 0px);
+  transition: translate 520ms var(--ease-out);
+}
+.hero-glow {
+  position: absolute;
+  left: 58%;
+  top: 45%;
+  width: 52%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 104, 117, 0.26) 0%,
+    rgba(232, 52, 69, 0.1) 30%,
+    transparent 64%
+  );
+  filter: blur(18px);
+  mix-blend-mode: screen;
+  pointer-events: none;
+  translate: calc(-50% + var(--gx, 0px)) calc(-50% + var(--gy, 0px));
+  transition: translate 620ms var(--ease-out);
+}
+.hero-nodes {
   position: absolute;
   inset: 0;
   pointer-events: none;
+  translate: var(--mx, 0px) var(--my, 0px);
+  transition: translate 520ms var(--ease-out);
 }
-.hotspot {
+.hero-node {
   position: absolute;
-  width: 140px;
-  height: 140px;
-  margin-left: -70px;
-  margin-top: -70px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 104, 117, 0.55) 0%, rgba(232, 52, 69, 0.22) 40%, transparent 70%);
-  mix-blend-mode: screen;
-  filter: blur(6px);
-  animation: hotspot-pulse 3.6s ease-in-out infinite;
-}
-.hotspot-1 {
-  left: 68%;
-  top: 39%;
-}
-.hotspot-2 {
-  left: 55%;
-  top: 58%;
-  width: 100px;
-  height: 100px;
-  margin-left: -50px;
-  margin-top: -50px;
-  animation-delay: -1.8s;
-  animation-duration: 4.2s;
-}
-@keyframes hotspot-pulse {
-  0%, 100% { opacity: .55; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.25); }
+  translate: -50% -50%;
+  background: radial-gradient(circle, #fff 0%, var(--color-forge-hot) 42%, transparent 72%);
+  box-shadow:
+    0 0 10px 2px rgba(255, 104, 117, 0.75),
+    0 0 26px 6px rgba(232, 52, 69, 0.4);
 }
 
+@media (max-width: 1024px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    min-height: 0;
+    gap: var(--space-7);
+  }
+  /* Copy first, artwork below. It is already first in the DOM. */
+  .hero-visual {
+    width: 100%;
+    margin-left: 0;
+    max-width: 620px;
+  }
+}
+
+/* --------------------------------------------------------- Ambient embers */
 .ember-field {
   position: absolute;
   inset: 0;
@@ -191,7 +241,8 @@
   overflow: hidden;
   z-index: 0;
 }
-/* Keep copy above any decorative layer a section carries. */
+/* Keeps copy above any decorative layer a section carries. Deliberately not
+   applied to the hero, where a stacking context would break the blend. */
 .section > .container {
   position: relative;
   z-index: 1;
@@ -226,246 +277,368 @@
   }
 }
 
-@media (max-width: 1024px) {
-  .hero-grid {
-    grid-template-columns: 1fr;
-    min-height: 0;
-    gap: var(--space-7);
-  }
-}
-
-/* The shift */
+/* ------------------------------------------------------------- 01 / Shift */
 .shift-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-8);
+  grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
+  gap: clamp(40px, 5.5vw, 84px);
   align-items: start;
 }
+.shift-copy .h2 {
+  margin: var(--space-5) 0 var(--space-6);
+}
+.shift-copy p + p {
+  margin-top: var(--space-4);
+}
+.shift-compare {
+  padding-left: clamp(0px, 3vw, 48px);
+  border-left: 1px solid var(--color-border);
+}
 .compare-header {
-  display: flex;
-  justify-content: space-between;
-  font: 600 var(--text-xs) / 1 var(--font-mono);
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(56px, 1.05fr) minmax(0, 0.92fr);
+  gap: var(--space-4);
+  align-items: center;
+  margin-bottom: var(--space-5);
+  font: 500 var(--text-sm) / 1 var(--font-mono);
   letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--color-text-faint);
-  margin-bottom: var(--space-4);
+  color: var(--color-text);
+}
+.compare-header span:last-child {
+  grid-column: 3;
 }
 .compare-list {
   list-style: none;
-  margin: 0 0 var(--space-6);
+  margin: 0;
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
+  gap: var(--space-2);
 }
 .compare-list li {
-  display: flex;
-  align-items: center;
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(56px, 1.05fr) minmax(0, 0.92fr);
   gap: var(--space-4);
-  font: 500 var(--text-sm) / 1.2 var(--font-body);
+  align-items: center;
+  min-height: 46px;
+  font-size: var(--text-sm);
 }
-.compare-list li > span:first-child {
+.compare-then {
   color: var(--color-text-muted);
-  white-space: nowrap;
 }
-.compare-list li > span:last-child {
-  white-space: nowrap;
-  font-weight: 600;
+.compare-now {
+  color: var(--color-text);
+  font-weight: 500;
 }
 .compare-line {
-  flex: 1;
+  position: relative;
   height: 1px;
   background: var(--color-border);
-  position: relative;
 }
 .compare-line-fill {
   position: absolute;
   inset: 0;
   display: block;
-  background: var(--color-forge);
+  background: linear-gradient(90deg, var(--color-border), var(--color-forge));
   transform-origin: left;
 }
+/* The lit terminal on each connector, as in the mockup. */
+.compare-line::after {
+  content: "";
+  position: absolute;
+  right: -2px;
+  top: 50%;
+  translate: 0 -50%;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--color-forge-hot);
+  box-shadow: 0 0 8px 2px rgba(232, 52, 69, 0.55);
+}
+
 .pull-quote {
-  padding: var(--space-6);
+  position: relative;
+  overflow: hidden;
+  margin-top: var(--space-7);
+  padding: clamp(22px, 2.4vw, 30px);
+  border: 1px solid rgba(232, 52, 69, 0.55);
+  border-radius: var(--radius-md);
+  background: linear-gradient(
+    115deg,
+    rgba(232, 52, 69, 0.07),
+    rgba(232, 52, 69, 0.015) 46%,
+    transparent
+  );
+  box-shadow:
+    0 0 48px rgba(232, 52, 69, 0.1),
+    inset 0 0 36px rgba(232, 52, 69, 0.05);
+}
+/* Dot matrix bleeding in from the right edge, matching the mockup's panel. */
+.pull-quote::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(rgba(232, 52, 69, 0.55) 1px, transparent 1px);
+  background-size: 7px 7px;
+  opacity: 0.45;
+  -webkit-mask-image: linear-gradient(90deg, transparent 56%, #000 100%);
+  mask-image: linear-gradient(90deg, transparent 56%, #000 100%);
 }
 .pull-quote p {
+  position: relative;
   margin: 0;
+  font-size: clamp(1.25rem, 2.1vw, 1.85rem);
+  line-height: 1.16;
 }
 
 @media (max-width: 900px) {
   .shift-grid {
     grid-template-columns: 1fr;
   }
-  .compare-list li {
-    flex-wrap: wrap;
+  .shift-compare {
+    padding-left: 0;
+    border-left: 0;
   }
 }
 
-/* Services */
+/* ---------------------------------------------------------- 02 / Services */
 .service-rows {
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
+  gap: var(--space-3);
   margin-top: var(--space-6);
 }
 .service-row {
+  position: relative;
+  overflow: hidden;
   display: grid;
-  grid-template-columns: 56px 1fr 1fr 32px;
+  grid-template-columns:
+    clamp(64px, 6.5vw, 100px) minmax(180px, 0.62fr)
+    34px minmax(0, 1.34fr);
   align-items: center;
-  gap: var(--space-6);
-  padding: var(--space-6) var(--space-5);
+  gap: clamp(14px, 2.2vw, 32px);
+  padding: clamp(20px, 2.2vw, 28px) clamp(18px, 2vw, 26px);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.022), rgba(255, 255, 255, 0.008));
   cursor: default;
 }
-.service-index {
-  font: 600 var(--text-2xl) / 1 var(--font-mono);
-  color: var(--color-text-faint);
+/* Lit left edge, as on the highlighted row in the mockup. Present on every
+   row at low strength so it reads as structure, then brightens on hover. */
+.service-row::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 12%;
+  bottom: 12%;
+  width: 2px;
+  background: linear-gradient(180deg, transparent, var(--color-forge), transparent);
+  opacity: 0.35;
+  transition: opacity var(--duration-base) var(--ease-out);
 }
-.service-row ul {
+.service-index {
+  font: 400 clamp(38px, 4.2vw, 54px) / 1 var(--font-display);
+  letter-spacing: -0.04em;
+  color: #23232a;
+}
+.service-title {
+  margin: 0;
+  font: 600 clamp(1.15rem, 1.6vw, 1.45rem) / 1.1 var(--font-display);
+  letter-spacing: -0.02em;
+}
+.service-statement {
+  margin: var(--space-2) 0 0;
+  max-width: 28ch;
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  line-height: 1.4;
+}
+.service-arrow {
+  justify-self: center;
+  font-size: var(--text-xl);
+  color: var(--color-forge);
+  transition: transform var(--duration-base) var(--ease-out);
+}
+.service-items {
   list-style: none;
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--space-2) var(--space-5);
 }
-.service-row li {
+.service-items li {
   font-size: var(--text-sm);
   color: var(--color-text-muted);
-}
-.service-row > span:last-child {
-  font-size: var(--text-xl);
-  color: var(--color-forge);
-  justify-self: end;
-  transition: transform var(--duration-base) var(--ease-out);
-}
-.service-row:hover > span:last-child,
-.service-row:focus-visible > span:last-child {
-  transform: translateX(4px);
 }
 
 @media (max-width: 900px) {
   .service-row {
-    grid-template-columns: 1fr;
+    grid-template-columns: clamp(48px, 12vw, 64px) 1fr;
     gap: var(--space-4);
   }
-  .service-row ul {
-    grid-template-columns: 1fr;
-  }
-  .service-row > span:last-child {
+  .service-arrow {
     display: none;
+  }
+  .service-items {
+    grid-column: 2;
+    grid-template-columns: 1fr;
   }
 }
 
-/* How it works */
+/* ------------------------------------------------------- 03 / How it works */
 .sequence {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
   align-items: center;
-  justify-content: space-between;
-  gap: var(--space-3);
+  gap: clamp(8px, 1.4vw, 18px);
   margin-block: var(--space-7);
-  padding: var(--space-5);
 }
 .sequence-node {
-  flex: 1;
-  text-align: center;
-  padding: var(--space-4);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  font: 500 var(--text-sm) / 1.2 var(--font-body);
-  color: var(--color-text-muted);
-  background: rgba(255, 255, 255, 0.02);
-}
-.sequence-node--zac {
-  border-color: var(--color-forge);
-  color: var(--color-text);
-  font-family: var(--font-mono);
-  font-weight: 600;
+  min-height: 138px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: var(--space-2);
-  box-shadow: 0 0 32px rgba(232, 52, 69, 0.25);
+  gap: var(--space-4);
+  padding: var(--space-5) var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.02);
+  text-align: center;
+  font: 500 var(--text-xs) / 1.35 var(--font-mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+.node-glyph {
+  width: clamp(44px, 4.2vw, 58px);
+  height: auto;
+}
+.sequence-node--zac {
+  border-color: rgba(232, 52, 69, 0.8);
+  color: var(--color-text);
+  background: linear-gradient(180deg, rgba(232, 52, 69, 0.1), rgba(232, 52, 69, 0.03));
+  box-shadow:
+    inset 0 0 44px rgba(232, 52, 69, 0.16),
+    0 0 44px rgba(232, 52, 69, 0.12);
 }
 .sequence-node--zac img {
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
+}
+.sequence-node--zac span {
+  font-size: var(--text-lg);
+  font-weight: 600;
+  letter-spacing: 0.14em;
 }
 .sequence-arrow {
-  color: var(--color-text-faint);
-  flex: 0 0 auto;
+  color: var(--color-forge);
+  font-size: var(--text-xl);
 }
 
 .how-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-8);
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: clamp(40px, 5vw, 76px);
   align-items: start;
 }
+.how-copy .h3 {
+  margin: 0 0 var(--space-4);
+}
+.how-copy p {
+  margin: 0;
+}
 .principles {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-4);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(20px, 2.4vw, 32px);
 }
 .principle {
-  padding: var(--space-5);
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--space-4);
+}
+.principle-ring {
+  width: 22px;
+  height: 22px;
+  margin-bottom: var(--space-3);
 }
 .principle .eyebrow {
-  margin-bottom: var(--space-2);
+  color: var(--color-text);
+  margin: 0 0 var(--space-2);
 }
 .principle p:last-child {
   margin: 0;
+  font-size: var(--text-sm);
+  line-height: 1.5;
 }
 
 @media (max-width: 900px) {
   .sequence {
-    flex-direction: column;
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
   }
   .sequence-arrow {
-    transform: rotate(90deg);
+    justify-self: center;
+    rotate: 90deg;
   }
-  .how-grid {
+  .how-grid,
+  .principles {
     grid-template-columns: 1fr;
   }
 }
 
-/* Track record */
+/* ------------------------------------------------------ 04 / Track record */
 .track-grid {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: var(--space-8);
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr) minmax(0, 0.8fr);
+  gap: clamp(32px, 3.4vw, 52px);
   align-items: start;
+}
+.track-heading .h2 {
+  margin: var(--space-5) 0 0;
+}
+.track-copy p {
+  margin: 0;
 }
 .track-copy p + p {
   margin-top: var(--space-4);
 }
 .experience-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--space-3);
 }
 .experience-item {
-  padding: var(--space-4) var(--space-5);
-  font: 500 var(--text-sm) / 1.2 var(--font-body);
+  padding: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.018);
+  font: 500 var(--text-xs) / 1.3 var(--font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   color: var(--color-text-muted);
 }
 
 .roles-row {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-4);
-  margin-top: var(--space-7);
-}
-.role {
-  padding: var(--space-5);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(20px, 2.4vw, 32px);
+  margin-top: var(--space-8);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--color-border);
 }
 .role .eyebrow {
-  margin-bottom: var(--space-2);
+  color: var(--color-text);
+  margin: 0 0 var(--space-2);
 }
 .role p:last-child {
   margin: 0;
+  font-size: var(--text-sm);
 }
 
-@media (max-width: 900px) {
+@media (max-width: 980px) {
   .track-grid {
     grid-template-columns: 1fr;
   }
@@ -474,87 +647,55 @@
   }
 }
 
-/* Final CTA */
+/* --------------------------------------------------------- Closing / arc */
 .final-cta {
   position: relative;
   overflow: clip;
-  text-align: center;
+  background: var(--color-black);
+  padding-block: clamp(80px, 8vw, 120px) clamp(150px, 16vw, 240px);
 }
-.final-cta .container {
-  position: relative;
-  z-index: 1;
-  max-width: 640px;
-}
-.final-cta .cta-row {
-  justify-content: center;
-  margin-bottom: 0;
-}
-/* Red planetary horizon, per the reference mockup. Two layers: a broad
-   atmospheric bloom, and a hard-edged lit limb on top of it. Both are clipped
-   by the section so only the upper curve shows. */
-.horizon {
+/*
+ * Same compositing rule as the hero: no stacking context may sit between this
+ * image and the section background, or the black plate returns.
+ *
+ * Sunk below the fold of the section and offset right, so what shows is the
+ * lit upper limb in the lower right rather than the whole planet. The mask
+ * holds the top edge back off the headline, which the full-strength image
+ * otherwise washes out.
+ */
+.red-arc {
   position: absolute;
-  inset: 0;
-  overflow: hidden;
+  left: 62%;
+  bottom: -30%;
+  translate: -50% 0;
+  width: min(135%, 1900px);
+  max-width: none;
+  height: auto;
+  mix-blend-mode: screen;
   pointer-events: none;
+  -webkit-mask-image: linear-gradient(180deg, transparent 4%, rgba(0, 0, 0, 0.5) 30%, #000 58%);
+  mask-image: linear-gradient(180deg, transparent 4%, rgba(0, 0, 0, 0.5) 30%, #000 58%);
+  animation: arc-pulse 8s ease-in-out infinite;
 }
-/* Positioned from the top and sized in vw. Anchoring with `bottom` and a
-   percentage width put the sphere's lit edge far above the section, leaving
-   only its sides showing in the corners. */
-.horizon-bloom {
-  position: absolute;
-  left: 50%;
-  top: 82%;
-  width: 200vw;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  transform: translateX(-50%);
-  background: radial-gradient(
-    closest-side,
-    rgba(232, 52, 69, 0.16) 0%,
-    rgba(232, 52, 69, 0.12) 88%,
-    rgba(255, 104, 117, 0.3) 97%,
-    transparent 100%
-  );
-  /* One moderate blur rather than several. Blur is the only genuinely
-     expensive part of this effect. */
-  filter: blur(30px);
-  animation: horizon-breathe 9s ease-in-out infinite;
+.final-heading {
+  margin: var(--space-4) 0;
 }
-.horizon-arc {
-  position: absolute;
-  left: 50%;
-  top: 82%;
-  width: 200vw;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  transform: translateX(-50%);
-  /* The lit limb: transparent through the body of the sphere, then a thin
-     bright band right at its edge. */
-  background: radial-gradient(
-    closest-side,
-    transparent 0%,
-    transparent 98.4%,
-    rgba(232, 52, 69, 0.42) 98.9%,
-    rgba(255, 104, 117, 0.72) 99.4%,
-    rgba(255, 150, 158, 0.4) 99.75%,
-    transparent 100%
-  );
+.final-body {
+  max-width: 56ch;
+  margin: 0 0 var(--space-6);
+  color: #d2d0d3;
+  font-size: var(--text-lg);
 }
-@keyframes horizon-breathe {
-  0%, 100% { opacity: 0.72; }
-  50% { opacity: 1; }
-}
-
-/* Embers over the horizon rise off the lit edge, not the whole box. */
+/* Embers rise off the lit limb rather than the whole section. */
 .ember-field--horizon {
   top: auto;
-  height: 62%;
+  height: 46%;
 }
 
-/* Footer */
+/* ---------------------------------------------------------------- Footer */
 .site-footer {
   border-top: 1px solid var(--color-border);
+  background: #08080a;
   padding-block: var(--space-6);
 }
 .footer-inner {
@@ -563,14 +704,26 @@
   align-items: center;
   justify-content: space-between;
   gap: var(--space-4);
-  font-size: var(--text-sm);
+  font: 500 var(--text-xs) / 1 var(--font-mono);
+  letter-spacing: 0.06em;
+}
+.footer-domain {
+  color: var(--color-text-muted);
+  transition: color var(--duration-fast) var(--ease-out);
+}
+.footer-domain:hover {
+  color: var(--color-text);
+}
+.footer-legal {
+  margin: 0;
+  color: var(--color-text-faint);
 }
 .footer-nav {
   display: flex;
   gap: var(--space-5);
 }
 .footer-nav a {
-  color: var(--color-text-muted);
+  color: var(--color-text-faint);
 }
 .footer-nav a:hover {
   color: var(--color-text);

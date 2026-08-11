@@ -88,18 +88,45 @@
   transform: scaleX(1);
 }
 
-/* Service row index. Sits behind the content and lifts slightly as the row
-   activates, so the number reads as part of the hover rather than static
-   furniture. */
-.service-index {
+/* Service rows. The lit left edge and the ghost index are already part of the
+   static composition, so hover brightens what is there rather than
+   introducing new furniture. */
+.service-row {
   transition:
-    color var(--duration-base) var(--ease-out),
-    transform var(--duration-base) var(--ease-out);
+    border-color var(--duration-base) var(--ease-out),
+    background var(--duration-base) var(--ease-out),
+    transform var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out);
+}
+.service-row:hover,
+.service-row:focus-visible,
+.service-row:focus-within {
+  transform: translateX(4px);
+  border-color: rgba(232, 52, 69, 0.55);
+  background: linear-gradient(
+    90deg,
+    rgba(232, 52, 69, 0.07),
+    rgba(255, 255, 255, 0.015) 38%,
+    rgba(232, 52, 69, 0.025)
+  );
+  box-shadow:
+    0 12px 40px rgba(232, 52, 69, 0.16),
+    inset 0 1px rgba(255, 255, 255, 0.045);
+}
+.service-row:hover::before,
+.service-row:focus-within::before {
+  opacity: 1;
+}
+.service-row:hover .service-arrow,
+.service-row:focus-within .service-arrow {
+  transform: translateX(5px);
+}
+.service-index {
+  transition: color var(--duration-base) var(--ease-out);
 }
 .service-row:hover .service-index,
 .service-row:focus-within .service-index {
-  color: var(--color-forge);
-  transform: translateY(-2px);
+  color: #34343d;
 }
 
 /* Faint technical grid, echoing the drafting lines in the reference mockup.

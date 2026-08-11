@@ -28,7 +28,7 @@
   --text-xl: 1.5rem;
   --text-2xl: 2rem;
   --text-3xl: 3rem;
-  --text-hero: clamp(3.5rem, 7vw, 6rem);
+  --text-hero: clamp(3rem, 5.4vw, 4.75rem);
 
   /* Space */
   --space-1: 4px;

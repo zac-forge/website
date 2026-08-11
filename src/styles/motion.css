@@ -1,63 +1,123 @@
-/* Section reveals now live in the Reveal component (Motion), not here. */
+/* Keyframes and timing. Section reveals live in the Reveal component (Motion);
+   everything here is CSS because it either runs forever or sits on an element
+   whose `transform` Motion must not touch. */
 
-.forge-glow {
-  position: absolute;
-  left: 68%;
-  top: 39%;
-  width: 420px;
-  height: 420px;
-  margin-left: -210px;
-  margin-top: -210px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(232,52,69,.28) 0, rgba(232,52,69,.09) 30%, transparent 66%);
-  filter: blur(14px);
-  pointer-events: none;
-  animation: glow-pulse 4.5s ease-in-out infinite;
+/*
+ * Hero artwork.
+ *
+ * Two animations, sequenced by delay rather than combined, so the entrance can
+ * use `animation-fill-mode: both` without the breathing having to reproduce
+ * its end state. `art-breathe` comes second in the list, so once its delay has
+ * elapsed it wins on `scale`.
+ *
+ * `scale` here is the individual property, not `transform`. The pointer
+ * parallax in layout.css uses the individual `translate`, so the two compose
+ * instead of overwriting each other, which is what a shared `transform` would
+ * have done.
+ */
+.hero-art {
+  animation:
+    art-in 1.2s var(--ease-out) 0.15s both,
+    art-breathe 7s ease-in-out 1.35s infinite;
 }
-/* Opacity only. Motion drives this element's transform for the pointer
-   parallax, and a CSS animation on transform would win the cascade and kill
-   that. */
+@keyframes art-in {
+  from {
+    opacity: 0;
+    scale: 0.94;
+  }
+  to {
+    opacity: 1;
+    scale: 1;
+  }
+}
+@keyframes art-breathe {
+  0%,
+  100% {
+    scale: 1;
+    filter: brightness(0.94);
+  }
+  50% {
+    scale: 1.014;
+    filter: brightness(1.1);
+  }
+}
+
+/* The forge light. Slow and out of phase with the breathing, so the two never
+   line up into a single obvious pulse. */
+.hero-glow {
+  opacity: 0;
+  animation:
+    layer-in 1.4s var(--ease-out) 0.5s both,
+    glow-pulse 5.5s ease-in-out 1.9s infinite;
+}
 @keyframes glow-pulse {
-  0%, 100% { opacity: .58; }
-  50% { opacity: 1; }
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
 }
 
-/* The artwork ships on its own near-black plate that does not exactly match
-   the page background, so feather the edges to blend it in rather than
-   letting it read as a pasted rectangle. */
-.hero-forge {
-  width: 100%;
-  height: auto;
-  animation: forge-breathe 7s ease-in-out infinite;
-  transform-origin: center;
-  will-change: transform, filter;
-  -webkit-mask-image: radial-gradient(ellipse 62% 58% at 50% 50%, #000 30%, rgba(0, 0, 0, 0.55) 62%, transparent 88%);
-  mask-image: radial-gradient(ellipse 62% 58% at 50% 50%, #000 30%, rgba(0, 0, 0, 0.55) 62%, transparent 88%);
+.hero-nodes {
+  opacity: 0;
+  animation: layer-in 1s var(--ease-out) 0.75s both;
 }
-/* Breathing plus a slow sway, so the artwork is never fully still. Kept under
-   1 degree: enough to register at the edge of attention, not enough to read
-   as the logo rotating. */
-@keyframes forge-breathe {
-  0%, 100% { transform: scale(1) rotate(-0.5deg); filter: brightness(.93); }
-  50% { transform: scale(1.022) rotate(0.5deg); filter: brightness(1.12); }
+/* Each node carries its own duration and negative delay from the component,
+   so they start mid-cycle and never visibly synchronise. */
+.hero-node {
+  opacity: 0.9;
+  animation: node-pulse var(--node-dur, 4s) ease-in-out infinite;
+  animation-delay: var(--node-delay, 0s);
+}
+@keyframes node-pulse {
+  0%,
+  100% {
+    opacity: 0.45;
+    scale: 0.8;
+  }
+  50% {
+    opacity: 1;
+    scale: 1.35;
+  }
 }
 
-.service-row {
-  transition: border-color var(--duration-base) var(--ease-out), background var(--duration-base) var(--ease-out), transform var(--duration-base) var(--ease-out), box-shadow var(--duration-base) var(--ease-out);
+@keyframes layer-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
-.service-row:hover,
-.service-row:focus-within {
-  border-color: rgba(232,52,69,.65);
-  background: linear-gradient(90deg, rgba(232,52,69,.08), rgba(255,255,255,.018) 34%, rgba(232,52,69,.04));
-  transform: translateX(4px);
-  box-shadow: 0 12px 40px rgba(232,52,69,.16), inset 0 1px rgba(255,255,255,.045);
+
+/* The red limb: opacity, brightness and saturation on a slow cycle, so the
+   horizon reads as a light source rather than a pasted image. */
+.red-arc {
+  opacity: 0.92;
+}
+@keyframes arc-pulse {
+  0%,
+  100% {
+    opacity: 0.78;
+    filter: brightness(0.92) saturate(1.05);
+  }
+  50% {
+    opacity: 1;
+    filter: brightness(1.16) saturate(1.2);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  *, *::before, *::after {
-    animation-duration: .01ms !important;
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: .01ms !important;
+    transition-duration: 0.01ms !important;
   }
 }
