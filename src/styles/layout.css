@@ -35,9 +35,13 @@
   display: flex;
   align-items: center;
 }
+/* The lockup is inline SVG with a fixed viewBox, so height drives it and the
+   width follows. Fixing the height also means the Space Grotesk swap cannot
+   shift layout: the glyphs change inside a box that never resizes. */
 .brand-wordmark {
   height: clamp(30px, 2.4vw, 38px);
   width: auto;
+  display: block;
 }
 .site-nav {
   display: flex;
@@ -524,9 +528,10 @@
     inset 0 0 44px rgba(232, 52, 69, 0.16),
     0 0 44px rgba(232, 52, 69, 0.12);
 }
-.sequence-node--zac img {
+.sequence-mark {
   width: 30px;
   height: 30px;
+  display: block;
 }
 .sequence-node--zac span {
   font-size: var(--text-lg);
@@ -703,15 +708,25 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: var(--space-4);
+  gap: var(--space-5);
   font: 500 var(--text-xs) / 1 var(--font-mono);
   letter-spacing: 0.06em;
 }
-.footer-domain {
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+.footer-wordmark {
+  height: 26px;
+  width: auto;
+  display: block;
+}
+.footer-email {
   color: var(--color-text-muted);
   transition: color var(--duration-fast) var(--ease-out);
 }
-.footer-domain:hover {
+.footer-email:hover {
   color: var(--color-text);
 }
 .footer-legal {

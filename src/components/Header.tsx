@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Wordmark } from "./Brand";
 import { BOOKING_URL } from "../lib/links";
 
 const NAV_LINKS = [
@@ -14,7 +15,7 @@ export function Header() {
     <header className="site-header">
       <div className="container header-inner">
         <a href="#top" className="brand" onClick={() => setOpen(false)}>
-          <img src="/brand/zacforge-wordmark.svg" alt="ZAC" className="brand-wordmark" />
+          <Wordmark className="brand-wordmark" />
         </a>
 
         <nav className="site-nav" aria-label="Primary" data-open={open}>

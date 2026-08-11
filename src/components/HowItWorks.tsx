@@ -1,5 +1,6 @@
 import { motion, useReducedMotion } from "motion/react";
 import { Reveal } from "./Reveal";
+import { ZacMark } from "./Brand";
 import { fadeUp, EASE } from "../lib/motion";
 
 const PRINCIPLES = [
@@ -106,7 +107,7 @@ export function HowItWorks() {
           </motion.span>
 
           <motion.div className="sequence-node sequence-node--zac" variants={sequenceItem}>
-            <img src="/brand/zac-mark.svg" alt="" aria-hidden="true" />
+            <ZacMark className="sequence-mark" />
             <span>ZAC</span>
           </motion.div>
 
