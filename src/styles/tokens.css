@@ -21,17 +21,17 @@
   --font-mono: "IBM Plex Mono", ui-monospace, monospace;
 
   /* Type */
-  --text-xs: .75rem;
-  --text-sm: .875rem;
+  --text-xs: .8125rem;
+  --text-sm: .9375rem;
   --text-base: 1rem;
-  --text-lg: 1.25rem;
+  --text-lg: 1.125rem;
   --text-xl: 1.5rem;
   --text-2xl: 2rem;
   --text-3xl: 3rem;
-  /* Measured off the reference mockup: the hero headline renders at roughly
-     99px at a 1440 viewport, against section headings at roughly 45px. That
-     2.2x ratio is what gives the approved design its hierarchy. */
-  --text-hero: clamp(2.9rem, 6.9vw, 6.25rem);
+  /* 64px floor, 88px ceiling. The mockup measures nearer 99px, but the
+     approved direction caps the headline here so the rest of the type system
+     can come up to meet it rather than being dwarfed. */
+  --text-hero: clamp(4rem, 6vw, 5.5rem);
 
   /* Space */
   --space-1: 4px;
@@ -55,7 +55,7 @@
   /* Layout */
   --content-width: 1280px;
   --copy-width: 680px;
-  --gutter: clamp(20px, 4vw, 48px);
+  --gutter: clamp(24px, 3.4vw, 48px);
 
   /* Motion */
   --duration-fast: 160ms;

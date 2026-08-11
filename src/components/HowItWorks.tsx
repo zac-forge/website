@@ -172,7 +172,7 @@ export function HowItWorks() {
 
         <div className="how-grid">
           <Reveal className="how-copy">
-            <h2 className="h3">One point of contact. A senior team behind it.</h2>
+            <h2 className="h3">One senior point of contact.</h2>
             <p className="text-muted">
               Strategy and execution stay connected. Our core team covers development, design, and
               technology strategy, and we bring in trusted senior specialists when a project calls

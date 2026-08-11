@@ -15,9 +15,11 @@ export function FinalCTA() {
       <div className="container">
         <Reveal>
           <p className="eyebrow">HAVE SOMETHING WORTH BUILDING?</p>
-          <h2 className="h2 final-heading">Bring us the problem.</h2>
+          {/* Singular by intent: it reinforces the direct relationship with
+              the senior person who advises and builds. */}
+          <h2 className="h2 final-heading">Bring me the problem.</h2>
           <p className="final-body">
-            Whether you know exactly what you need or just know something should work better,
+            Whether you know exactly what you need or only know something should work better,
             that is enough to start.
           </p>
           <div className="cta-row">

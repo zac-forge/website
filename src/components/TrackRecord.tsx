@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import { Reveal } from "./Reveal";
-import { fadeUp, fadeUpSmall } from "../lib/motion";
+import { fadeUpSmall } from "../lib/motion";
 
 const EXPERIENCE = [
   "Enterprise systems",
@@ -9,14 +9,6 @@ const EXPERIENCE = [
   "AI + automation",
   "Technology strategy",
   "Design + media",
-];
-
-// Roles only, no names. Swap in real people once those are ready to be
-// public, the layout takes a name line without restructuring.
-const ROLES = [
-  { label: "FOUNDER", body: "Technology strategy and direction." },
-  { label: "DEVELOPMENT", body: "Software, web, and AI integration." },
-  { label: "DESIGN", body: "Product and brand design." },
 ];
 
 export function TrackRecord() {
@@ -54,15 +46,6 @@ export function TrackRecord() {
             ))}
           </Reveal>
         </div>
-
-        <Reveal className="roles-row" stagger={0.1}>
-          {ROLES.map((role) => (
-            <motion.div className="role" key={role.label} variants={fadeUp}>
-              <p className="eyebrow">{role.label}</p>
-              <p className="text-muted">{role.body}</p>
-            </motion.div>
-          ))}
-        </Reveal>
       </div>
     </section>
   );

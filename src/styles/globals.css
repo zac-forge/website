@@ -29,16 +29,23 @@ button, input, textarea { font: inherit; }
    progressively worse down the page. Sections now carry their own rhythm via
    --pad-top / --pad-bottom so the page can alternate dense and open rather
    than repeating one value. */
+/* Section rhythm.
+   Major sections sit in the 88 to 112px band. Sections still carry their own
+   --pad-top / --pad-bottom so the page alternates dense against open rather
+   than repeating one value; the hero and closing section are the exceptions
+   and set their own. */
 .section {
   position: relative;
-  padding-top: var(--pad-top, clamp(56px, 6vw, 88px));
-  padding-bottom: var(--pad-bottom, clamp(56px, 6vw, 88px));
+  padding-top: var(--pad-top, clamp(64px, 7.2vw, 104px));
+  padding-bottom: var(--pad-bottom, clamp(64px, 7.2vw, 104px));
   border-top: 1px solid var(--color-border);
 }
+/* Section labels are technical, not micro. Sized above the metadata token so
+   they read without squinting while keeping the mono, red treatment. */
 .eyebrow {
-  font: 500 var(--text-xs)/1.2 var(--font-mono);
+  font: 500 .875rem/1.2 var(--font-mono);
   color: var(--color-forge);
-  letter-spacing: .12em;
+  letter-spacing: .11em;
   text-transform: uppercase;
 }
 /* Tracking matches the mockup's display setting, which is tighter than the
@@ -49,15 +56,16 @@ button, input, textarea { font: inherit; }
   text-wrap: balance;
 }
 .h1 { font-size: var(--text-hero); line-height: .94; font-weight: 600; }
-.h2 { font-size: clamp(1.85rem, 3.15vw, 2.85rem); line-height: 1.04; font-weight: 600; }
-.h3 { font-size: clamp(1.3rem, 1.9vw, 1.65rem); line-height: 1.14; font-weight: 600; }
+.h2 { font-size: clamp(2.2rem, 3.6vw, 3.25rem); line-height: 1.04; font-weight: 600; }
+.h3 { font-size: clamp(1.5rem, 2.1vw, 1.9rem); line-height: 1.16; font-weight: 600; }
 
 .text-muted { color: var(--color-text-muted); }
 .text-forge { color: var(--color-forge); }
 
 .btn {
-  min-height: 50px;
-  padding: 0 22px;
+  min-height: 48px;
+  padding: 0 26px;
+  font-size: var(--text-base);
   display: inline-flex;
   align-items: center;
   justify-content: center;
