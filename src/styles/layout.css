@@ -1287,10 +1287,16 @@ a:focus-visible .lockup-bloom {
   pointer-events: none;
   animation: arc-heat 15s ease-in-out infinite;
 }
-/* Two distant points above the limb. Not a field: the horizon is the event. */
+/* Two distant points above the limb. Not a field: the horizon is the event.
+   Scaled to 1.5x the shared primitive's duration so they drift at the same
+   pace as the travellers and embers below them, without slowing the hero
+   field that uses the same component. */
 .mote-field--horizon {
   inset: 10% 8% 54% 46%;
   opacity: 0.5;
+}
+.mote-field--horizon .mote {
+  animation-duration: calc(var(--mote-dur, 12s) * 1.5);
 }
 
 /* Narrow screens. This block has to live here rather than with the other

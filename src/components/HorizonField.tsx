@@ -38,8 +38,11 @@ export function HorizonField({ travellers = 7, embers = 5, seed = 91 }: Props) {
     const paths = Array.from({ length: travellers }, () => ({
       bottom: 6 + rnd() * 30,
       size: 2 + rnd() * 2.2,
-      dur: 15 + rnd() * 12,
-      delay: -(rnd() * 26),
+      // 1.5x the original 15 to 27s. The delay range grows with it so the
+      // phases stay spread across the full cycle rather than bunching into
+      // its first half.
+      dur: 22.5 + rnd() * 18,
+      delay: -(rnd() * 40),
       peak: 0.55 + rnd() * 0.4,
       // Each pass carries its own shallow arc, so the group never reads as a
       // single track with beads on it.
@@ -55,8 +58,9 @@ export function HorizonField({ travellers = 7, embers = 5, seed = 91 }: Props) {
         size: 1.4 + rnd() * 1.8,
         rise: 40 + rnd() * 50,
         drift: 4 + rnd() * 14,
-        dur: 6 + rnd() * 5,
-        delay: -(rnd() * 11),
+        // 1.5x the original 6 to 11s. Same travel, taken more slowly.
+        dur: 9 + rnd() * 7.5,
+        delay: -(rnd() * 17),
         peak: 0.4 + rnd() * 0.4,
       };
     });
