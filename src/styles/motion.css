@@ -187,6 +187,42 @@
   }
 }
 
+/*
+ * Logo, on first load only.
+ *
+ * The mark arrives as dim graphite and resolves to its normal Forge Red while
+ * a highlight passes across its facets. The highlight travels inside the mask,
+ * so the logo itself never moves: the Z is structurally fixed and only its
+ * illumination changes. Both run once, `both` so they hold their end state.
+ */
+@keyframes z-resolve {
+  0% {
+    opacity: 0.92;
+  }
+  70% {
+    opacity: 0.25;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes z-sweep {
+  0% {
+    opacity: 0;
+    transform: translateX(-120%);
+  }
+  22% {
+    opacity: 1;
+  }
+  78% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(120%);
+  }
+}
+
 @keyframes layer-in {
   from {
     opacity: 0;
@@ -240,21 +276,40 @@
    loading indicator. */
 @keyframes arc-travel {
   0% {
-    transform: translate(4vw, 40px);
+    transform: translate(0, var(--t-y0, 40px));
     opacity: 0;
   }
   12% {
-    opacity: 0.9;
+    opacity: var(--t-peak, 0.9);
   }
   50% {
-    transform: translate(52vw, -26px);
+    transform: translate(52vw, var(--t-y1, -26px));
   }
   86% {
-    opacity: 0.75;
+    opacity: calc(var(--t-peak, 0.9) * 0.78);
   }
   100% {
-    transform: translate(104vw, 66px);
+    transform: translate(106vw, var(--t-y2, 66px));
     opacity: 0;
+  }
+}
+
+/* Embers leaving the surface: a real rise, cooling and shrinking on the way
+   out, unlike the suspended points elsewhere which barely move. */
+@keyframes arc-ember {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0) scale(0.5);
+  }
+  14% {
+    opacity: var(--e-peak, 0.6);
+  }
+  70% {
+    opacity: calc(var(--e-peak, 0.6) * 0.45);
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(var(--e-drift, 8px), calc(var(--e-rise, 60px) * -1), 0) scale(0.85);
   }
 }
 
@@ -272,9 +327,18 @@
   /* Anything whose only visible state comes from motion is removed outright
      rather than frozen mid-cycle. */
   .arc-traveller,
+  .arc-ember,
   .hero-link-signal,
   .arc-heat {
     display: none;
+  }
+  /* The load illumination is motion, so it does not run. The mark simply
+     arrives at its normal Forge Red. Hover luminosity is interaction feedback
+     rather than motion, so it stays. */
+  .lockup-z-dim,
+  .lockup-z-sweep {
+    animation: none !important;
+    opacity: 0 !important;
   }
   /*
    * Everything else keeps its composition. The universal rule above collapses

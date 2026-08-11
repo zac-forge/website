@@ -15,6 +15,77 @@
   color: #d8d7da;
 }
 
+/* --------------------------------------------------------- Brand lockups */
+/*
+ * The size classes (.brand-wordmark, .footer-wordmark, .brand-mark-only,
+ * .sequence-mark) sit on this wrapper rather than on the image, so the
+ * illumination overlay can be positioned against a box that exactly matches
+ * the artwork. The image simply fills it.
+ */
+.lockup {
+  position: relative;
+  display: inline-block;
+  line-height: 0;
+}
+.lockup-art {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/*
+ * Z illumination. Masked by the artwork's own alpha and clipped to the mark,
+ * so the ZACFORGE lettering is never affected and no layer here can move,
+ * scale or rotate anything: the three children only change colour.
+ */
+.lockup-z {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+}
+.lockup-z > span {
+  position: absolute;
+  inset: 0;
+  display: block;
+  opacity: 0;
+}
+/* Graphite over the red, resolving away. Only runs where the lockup is used
+   as the site's identity, never on the copy of the mark inside the process
+   diagram, which would flash graphite for anyone landing mid-page. */
+.lockup-z-dim {
+  background: #26262c;
+}
+.lockup-z-sweep {
+  background: linear-gradient(
+    102deg,
+    transparent 34%,
+    rgba(255, 186, 196, 0.8) 50%,
+    transparent 66%
+  );
+}
+.brand .lockup-z-dim,
+.footer-brand .lockup-z-dim {
+  animation: z-resolve 620ms var(--ease-out) 100ms 1 both;
+}
+.brand .lockup-z-sweep,
+.footer-brand .lockup-z-sweep {
+  animation: z-sweep 640ms var(--ease-out) 180ms 1 both;
+}
+/* Interaction only: a slight lift in luminosity, nothing else. */
+.lockup-z-hot {
+  background: var(--color-forge-hot);
+  transition: opacity 200ms var(--ease-out);
+}
+a:hover .lockup-z-hot,
+a:focus-visible .lockup-z-hot {
+  opacity: 0.2;
+}
+
 /* ---------------------------------------------------------------- Header */
 .site-header {
   position: sticky;
@@ -54,11 +125,11 @@
   display: block;
 }
 /* Compact mark for narrow viewports, swapped in place of the full lockup.
-   Height-driven with auto width, since the mark is not square. */
+   Width-driven: 53px on the 256x163 mark renders at the same 34px tall it
+   always did, and the wrapper needs a definite width to size the overlay. */
 .brand-mark-only {
   display: none;
-  height: 34px;
-  width: auto;
+  width: 53px;
 }
 .site-nav {
   display: flex;
@@ -872,9 +943,9 @@
   background: radial-gradient(ellipse at center, rgba(232, 52, 69, 0.2), transparent 68%);
   pointer-events: none;
 }
+/* 63px on the 256x163 mark is the same 40px tall as before. */
 .sequence-mark {
-  height: 40px;
-  width: auto;
+  width: 63px;
   display: block;
 }
 .sequence-node--zac span {
@@ -1069,22 +1140,47 @@
   mask-image: linear-gradient(184deg, transparent 10%, rgba(0, 0, 0, 0.34) 34%, #000 66%);
   animation: arc-pulse 11s ease-in-out infinite;
 }
-/* A single light making a very slow pass along the limb. Long enough that it
-   never reads as a progress indicator. */
+/* Lights making very slow passes along the limb. Each carries its own height,
+   size, speed, brightness and shallow arc, so the group never reads as beads
+   on one track, and the cycles are long enough that none of them reads as a
+   progress indicator. */
+.horizon-field {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+/* The band the embers launch from. Full section at desktop widths, where the
+   arc fills most of the lower half; compressed at the bottom on narrow ones,
+   where it does not. */
+.horizon-embers {
+  position: absolute;
+  inset: 0;
+}
 .arc-traveller {
   position: absolute;
-  left: 0;
-  bottom: 16%;
-  width: 4px;
-  height: 4px;
+  left: -2%;
   border-radius: 50%;
   background: #fff;
+  /* Static, never animated. */
   box-shadow:
     0 0 12px 3px rgba(255, 104, 117, 0.85),
     0 0 34px 10px rgba(232, 52, 69, 0.4);
   opacity: 0;
-  pointer-events: none;
-  animation: arc-travel 18s linear infinite;
+  animation: arc-travel var(--t-dur, 18s) linear infinite;
+  animation-delay: var(--t-delay, 0s);
+}
+/* Material lifting off the planet surface and cooling as it goes. These rise
+   further and faster than the suspended points elsewhere on the page, which is
+   the difference between something leaving a hot surface and something hanging
+   in the dark. */
+.arc-ember {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--color-forge-hot);
+  box-shadow: 0 0 5px 1px rgba(255, 104, 117, 0.7);
+  opacity: 0;
+  animation: arc-ember var(--e-dur, 8s) ease-out infinite;
+  animation-delay: var(--e-delay, 0s);
 }
 /* The second major typographic payoff after the hero. Left aligned, never
    centred: the closing section reads as a continuation of the argument. */
@@ -1126,6 +1222,26 @@
 .mote-field--horizon {
   inset: 10% 8% 54% 46%;
   opacity: 0.5;
+}
+
+/* Narrow screens. This block has to live here rather than with the other
+   mobile rules further up the file: the base .horizon-embers rule above would
+   otherwise win on source order at equal specificity, which is exactly what
+   happened the first time. */
+@media (max-width: 680px) {
+  /* The closing section is about a quarter of its desktop area, so the same
+     point count reads four times as dense. Four passes and three embers. */
+  .arc-traveller:nth-of-type(n + 5),
+  .arc-ember:nth-of-type(n + 4) {
+    display: none;
+  }
+  /* Measured: at 390 the arc occupies only the bottom 44px of a 508px
+     section, so a full-height band leaves the embers suspended in black
+     hundreds of pixels above the planet. */
+  .horizon-embers {
+    top: auto;
+    height: 108px;
+  }
 }
 
 /* ---------------------------------------------------------------- Footer */

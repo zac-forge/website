@@ -1,6 +1,7 @@
 import { Reveal } from "./Reveal";
 import { Magnetic } from "./Magnetic";
 import { Motes } from "./Motes";
+import { HorizonField } from "./HorizonField";
 import { RedArc } from "./RedArc";
 import { BOOKING_URL, CONTACT_EMAIL } from "../lib/links";
 
@@ -8,8 +9,9 @@ export function FinalCTA() {
   return (
     <section id="contact" className="section final-cta">
       <RedArc />
-      {/* One light making a very slow pass along the limb. */}
-      <span className="arc-traveller" aria-hidden="true" />
+      {/* Seven lights making slow passes along the limb, plus embers lifting
+          off the planet surface. */}
+      <HorizonField />
       {/* Energy travelling through the horizon rather than the image sliding:
           a soft heat band drifting along the limb on a 15s cycle. */}
       <span className="arc-heat" aria-hidden="true" />
