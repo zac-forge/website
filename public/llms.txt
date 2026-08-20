@@ -1,26 +1,48 @@
-# ZAC Forge
+# ZAC
 
-> A senior-led, AI-native technology studio. ZAC advises on where technology creates leverage,
-> builds the systems that follow, and partners as ongoing senior capability, without agency
+> A senior technology studio. ZAC advises on what is worth building, builds the
+> systems that follow, and partners as ongoing senior capability, without agency
 > overhead.
 
-ZAC pairs senior technology judgment with AI-native execution. The team is small and senior by
-design: one point of contact, with development, design, and strategy behind it, plus trusted
-specialists brought in when a project calls for more depth.
+ZAC is the successor to Mahalo Media Group, a practice run by founder Andrew
+Johnston for over 15 years across more than 100 engagements. The team is small
+and senior: one point of contact, with development, design, and strategy behind
+it, plus specialists brought in when a project calls for more depth.
+
+## Track record
+
+- Heritage Global Partners: all web properties including hgpauction.com, with
+  real-time auction creation from the sale floor on connected tablets. Live since
+  2010, with over $1 billion in assets sold through the platform.
+- Legacy Studios and Teddy Bear Portraits: end-to-end point of sale and same-day
+  photo delivery across 41 states, migrated from proprietary software to open
+  source and handed to the client's own team. Built 2016 to 2019, still running.
+- US Naval Academy and US Marines: branded cadet booking and photo portals, live
+  since 2017.
+- Legal Access Alameda: web properties for a statewide group of attorneys
+  providing disaster response and free legal assistance.
 
 ## Services
 
-- [Advise](https://zacforge.com/#services): Technology strategy, AI opportunity assessment, product and platform direction, workflow analysis, architecture and technical planning.
-- [Build](https://zacforge.com/#services): Custom software, web applications, high-performance websites, internal tools, workflow automation, AI integrations and agents, prototypes and MVPs.
-- [Partner](https://zacforge.com/#services): Fractional technology leadership, ongoing product development, technical problem solving, specialist team assembly, existing platform improvement.
+- [Advise](https://zacforge.com/#services): Technology strategy, what to build and
+  in what order, second opinions on decisions and vendors, workflow analysis,
+  architecture and planning.
+- [Build](https://zacforge.com/#services): Custom software, web applications,
+  internal tools, workflow automation, integrations, high-performance websites,
+  prototypes.
+- [Partner](https://zacforge.com/#services): Fractional technology leadership,
+  continuous product development, standing senior review, specialist teams,
+  fixing what someone else built.
 
-## About
+## Start here
 
-- [How ZAC works](https://zacforge.com/#approach): One senior point of contact, with specialists brought in around the problem rather than an agency org chart.
-- [Track record](https://zacforge.com/#about): Experience spanning enterprise systems, digital products, web and applications, AI and automation, technology strategy, and design.
+- Backlog Review: 2 to 3 weeks, from $6,500. What has been shelved, what is now
+  affordable, and what to do first.
+- Two-Week Proof: 2 weeks, $5,000. The smallest real version of the thing, built
+  for a fixed price.
 
 ## Contact
 
-- [Book a call](https://cal.com/zacforge/20-min-chat): A 20 minute intro conversation.
+- [Book a call](https://cal.com/zacforge/20-min-chat): A 20 minute conversation.
 - [Email](mailto:hello@zacforge.com): hello@zacforge.com
-- [Website](https://zacforge.com/): The full site.
+- [Website](https://zacforge.com/)
