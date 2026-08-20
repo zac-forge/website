@@ -2,7 +2,7 @@
 
 Complete copy for zacforge.com. Voice rules and guardrails live in `CLAUDE.md` at the repo root. Read that first.
 
-> **Remaining `[[slot]]`:** the IBM/MMG timeline framing, and only that. Do not guess at it. Andrew's bio line was picked on 2026-08-20 and is now inline in section 3. The team section ships **nameless by default**, see section 3.
+> **No `[[slots]]` remain.** Both were picked on 2026-08-20 and are written inline below: Andrew's bio line in section 3, and the IBM/MMG timeline framing in the Track Record intro. The team section still ships **nameless by default**, see section 3.
 >
 > **Separators in the copy blocks below are `·`, not em dashes, and they mark two distinct fields.** Render them as separate elements (a heading and a paragraph). Never emit a literal `·` or `-` between them, and never an em dash anywhere.
 
@@ -77,7 +77,9 @@ CTA: `Book a call`
 >
 > ## We have built this before.
 >
-> ZAC is the successor to Mahalo Media Group, the practice Andrew Johnston has run for over 15 years. `[[Timeline framing]]` Same principal, same standards, new economics.
+> ZAC is the successor to Mahalo Media Group, the practice Andrew Johnston has run for over 15 years. It started while he was still at IBM and has outlasted that tenure. Same principal, same standards, new economics.
+
+*Timeline framing picked 2026-08-20. The two rejected candidates were "That run overlapped the IBM years rather than following them." and "Behind it sits a 20 year enterprise career, most of it at IBM." Do not re-offer the choice.*
 
 ### Case studies
 
@@ -302,7 +304,7 @@ it, plus specialists brought in when a project calls for more depth.
 
 - [ ] Confirm `hello@zacforge.com` receives mail
 - [x] Andrew's bio line picked (2026-08-20)
-- [ ] Fill the remaining `[[slot]]`: the IBM/MMG timeline wording
+- [x] IBM/MMG timeline wording picked (2026-08-20)
 - [ ] Team block built with optional name and photo props
 - [ ] Ask Misha and Luciano using the exact lines above; swap in names if they agree
 - [ ] Confirm client-name permissions where contracts require it

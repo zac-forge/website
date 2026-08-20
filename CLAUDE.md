@@ -91,11 +91,9 @@ There is **no test framework** in this repo. Verification is `npm run build` (ru
 
 ## Open slots
 
-**One** placeholder remains in the copy deck, marked `[[like this]]`:
-- The IBM/MMG timeline framing, in the Track Record intro
+**None.** Both `[[like this]]` placeholders were picked on 2026-08-20 and are written into `docs/site-copy-v3.md` inline. Ship them exactly as written and do not re-offer either choice.
 
-Do not guess at it. Leave the placeholder and flag it.
+- **Andrew's bio line:** "Twenty years at IBM and fifteen running his own practice. ZAC is what happens when those stop being separate things."
+- **IBM/MMG timeline framing:** "It started while he was still at IBM and has outlasted that tenure."
 
-**Resolved 2026-08-20.** Andrew's bio line is picked. Ship exactly this, and do not re-offer the choice:
-
-> Twenty years at IBM and fifteen running his own practice. ZAC is what happens when those stop being separate things.
+If new copy is ever missing, the rule still stands: ask rather than filling the gap.

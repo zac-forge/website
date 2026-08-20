@@ -3,13 +3,14 @@ import { Reveal } from "./Reveal";
 import { fadeUpSmall } from "../lib/motion";
 
 /**
- * SLOT: the IBM and Mahalo Media Group timeline framing.
- *
- * Marked do-not-guess in docs/site-copy-v3.md and still open as of
- * 2026-08-20. It renders nothing while null, and the intro reads correctly
- * without it. Filling it is a one-string change, never a layout change.
+ * The IBM and Mahalo Media Group timeline framing. Held open as do-not-guess
+ * through the v3 build and picked by Drew on 2026-08-20. It stays a named
+ * field rather than being inlined, because it is the one sentence here whose
+ * factual claim depends on Andrew's actual dates: the practice began inside
+ * the IBM tenure and continued past it.
  */
-const TIMELINE_FRAMING: string | null = null;
+const TIMELINE_FRAMING: string | null =
+  "It started while he was still at IBM and has outlasted that tenure.";
 
 type CaseStudy = {
   client: string;
