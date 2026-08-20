@@ -3,9 +3,9 @@ import { Wordmark, ZacMark } from "./Brand";
 import { BOOKING_URL } from "../lib/links";
 
 const NAV_LINKS = [
-  { href: "#services", label: "Services" },
-  { href: "#approach", label: "Approach" },
-  { href: "#about", label: "About" },
+  { href: "#track-record", label: "Track record" },
+  { href: "#services", label: "What we do" },
+  { href: "#approach", label: "How we work" },
 ];
 
 export function Header() {

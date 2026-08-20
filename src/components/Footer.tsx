@@ -21,7 +21,7 @@ export function Footer() {
         <nav className="footer-nav" aria-label="Footer">
           <a href="#services">Services</a>
           <a href="#approach">Approach</a>
-          <a href="#about">About</a>
+          <a href="#track-record">Track record</a>
         </nav>
       </div>
     </footer>
