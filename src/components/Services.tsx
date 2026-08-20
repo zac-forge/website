@@ -8,13 +8,13 @@ const SERVICES = [
   {
     index: "01",
     title: "ADVISE",
-    statement: "Find where technology creates leverage.",
+    statement: "Find out what is worth building.",
     items: [
       "Technology strategy",
-      "AI opportunity assessment",
-      "Product and platform direction",
+      "What to build and in what order",
+      "Second opinions on decisions and vendors",
       "Workflow analysis",
-      "Architecture and technical planning",
+      "Architecture and planning",
     ],
   },
   {
@@ -24,23 +24,23 @@ const SERVICES = [
     items: [
       "Custom software",
       "Web applications",
-      "High-performance websites",
       "Internal tools",
       "Workflow automation",
-      "AI integrations and agents",
-      "Prototypes and MVPs",
+      "Integrations",
+      "High-performance websites",
+      "Prototypes",
     ],
   },
   {
     index: "03",
     title: "PARTNER",
-    statement: "Senior technology capability when you need it.",
+    statement: "Senior capability, ongoing.",
     items: [
       "Fractional technology leadership",
-      "Ongoing product development",
-      "Technical problem solving",
-      "Specialist team assembly",
-      "Existing platform improvement",
+      "Continuous product development",
+      "Standing senior review",
+      "Specialist teams assembled to the work",
+      "Fixing what someone else built",
     ],
   },
 ];
@@ -62,7 +62,7 @@ export function Services() {
 
       <div className="container">
         <Reveal>
-          <p className="eyebrow">02 / WHAT ZAC DOES</p>
+          <p className="eyebrow">03 / WHAT WE DO</p>
         </Reveal>
         <Reveal className="service-rows" stagger={0.12}>
           {SERVICES.map((service) => (

@@ -6,11 +6,17 @@ import { Motes } from "./Motes";
 import { fadeUp, EASE } from "../lib/motion";
 
 const PRINCIPLES = [
-  { label: "SENIOR-LED", body: "No layers of junior account management." },
-  { label: "AI-NATIVE", body: "Modern tools increase the output of experienced practitioners." },
+  {
+    label: "SENIOR-LED",
+    body: "The person in the meeting is the person doing the work. There is no account manager between you and the build.",
+  },
   {
     label: "RIGHT-SIZED",
-    body: "Bring in the expertise the work requires, then get out of the way.",
+    body: "Specialists come in when the work needs them and leave when it does not. You are not funding a permanent bench.",
+  },
+  {
+    label: "BUILT TO KEEP",
+    body: "Every project is pressure tested for security, usability, and scale against two decades of enterprise experience. We do not leave anything to chance by lazy automation. You own the code outright, and our systems are still running years after we handed them over.",
   },
 ];
 
@@ -114,7 +120,7 @@ export function HowItWorks() {
       <Motes count={3} seed={17} className="mote-field--how" />
       <div className="container">
         <Reveal>
-          <p className="eyebrow">03 / HOW ZAC WORKS</p>
+          <p className="eyebrow">04 / HOW WE WORK</p>
         </Reveal>
 
         <motion.div
@@ -183,7 +189,7 @@ export function HowItWorks() {
 
         <div className="how-grid">
           <Reveal className="how-copy">
-            <h2 className="h3">One senior point of contact.</h2>
+            <h2 className="h3">One team. No layers.</h2>
             <p className="text-muted">
               Strategy and execution stay connected. Our core team covers development, design, and
               technology strategy, and we bring in trusted senior specialists when a project calls

@@ -25,17 +25,19 @@ export function ShiftComparison() {
     <section className="section shift section--grid">
       <div className="container shift-grid">
         <Reveal className="shift-copy">
-          <p className="eyebrow">01 / THE SHIFT</p>
+          <p className="eyebrow">02 / WHY NOW</p>
           <h2 className="h2 h2--split">
             The cost of building changed.{" "}
-            <span className="h2-secondary">Your technology strategy should too.</span>
+            <span className="h2-secondary">Your technology plan should too.</span>
           </h2>
           <p className="text-muted">
-            AI does not replace experience. It increases what experienced people can accomplish.
+            Experience did not get cheaper. Judgment about what is worth building is still the hard
+            part, and it still decides whether a project works.
           </p>
           <p className="text-muted">
-            ZAC uses that leverage to remove the layers between strategy and execution, so the
-            people who help decide what should be built are the ones who build it.
+            What changed is everything downstream of that decision. Experienced people now produce
+            far more than they did two years ago, so the arithmetic that killed half your backlog no
+            longer holds.
           </p>
         </Reveal>
 
@@ -87,6 +89,12 @@ export function ShiftComparison() {
               Less machinery around the work.
               <br />
               <span className="text-forge">More capability applied to it.</span>
+            </p>
+            {/* The site is the example. Concrete and checkable, which is the
+                whole argument of this section in one number. */}
+            <p className="pull-quote-proof">
+              This site is the example. Domain name to live site, including design, email, hosting,
+              and certificates: about 14 hours.
             </p>
           </div>
         </Reveal>
