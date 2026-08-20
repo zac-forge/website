@@ -91,4 +91,11 @@ python3 -m http.server 4599    # from the repo root
 ```
 
 Open `http://localhost:4599/tools/og-card.html` at a 1200x630 viewport, screenshot it at 2x, then
-downscale to exactly 1200x630 and save as `public/og-image.jpg`.
+downscale to exactly 1200x630 and save as `public/og-image.jpg`. On macOS the downscale is:
+
+```bash
+sips -z 630 1200 shot@2x.png -s format jpeg -s formatOptions 88 --out public/og-image.jpg
+```
+
+The card must stay in sync with the hero. Its eyebrow, headline, and proof line are the hero's,
+so any copy change to the hero means regenerating this image.

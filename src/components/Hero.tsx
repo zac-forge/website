@@ -28,7 +28,8 @@ export function Hero() {
             TECHNOLOGY STUDIO
           </motion.p>
           <motion.h1 className="h1" variants={item}>
-            The work you shelved is <span className="text-forge">back on the table.</span>
+            The projects you could not justify are{" "}
+            <span className="text-forge">affordable now.</span>
           </motion.h1>
           <motion.p className="hero-body text-muted" variants={item}>
             Every company has projects that were worth doing but never worth what they cost.
@@ -57,7 +58,7 @@ export function Hero() {
             </a>
           </motion.div>
           <motion.p className="proof-line" variants={item}>
-            15 years. Over 100 engagements. Systems still running after 16.
+            15 years. Over 100 engagements. Systems still running since 2010.
           </motion.p>
         </motion.div>
 

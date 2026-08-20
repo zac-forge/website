@@ -810,17 +810,26 @@ a:focus-visible .lockup-bloom {
   -webkit-mask-image: linear-gradient(90deg, transparent 56%, #000 100%);
   mask-image: linear-gradient(90deg, transparent 56%, #000 100%);
 }
-.pull-quote-proof {
-  margin: var(--space-5) 0 0;
-  font: 500 var(--text-compact) / 1.55 var(--font-mono);
-  letter-spacing: 0.01em;
-  color: var(--color-text-body);
-}
 .pull-quote p {
   position: relative;
   margin: 0;
   font-size: clamp(1.5rem, 2.36vw, 1.76rem);
   line-height: 1.22;
+}
+/* The 14 hour proof, sitting under the quote as evidence for it. Must be
+   subordinate to the quote, so it needs to out-specify `.pull-quote p` above:
+   that selector is (0,1,1) and set the quote's 1.76rem on it, which is how
+   this first shipped at quote size and swamped the line it was supporting. */
+.pull-quote p.pull-quote-proof {
+  margin: var(--space-5) 0 0;
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--color-border-red-soft);
+  font-family: var(--font-mono);
+  font-size: var(--text-compact);
+  font-weight: 500;
+  line-height: 1.55;
+  letter-spacing: 0.01em;
+  color: var(--color-text-body);
 }
 
 @media (max-width: 900px) {

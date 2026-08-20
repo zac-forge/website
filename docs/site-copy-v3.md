@@ -8,6 +8,23 @@ Complete copy for zacforge.com. Voice rules and guardrails live in `CLAUDE.md` a
 
 ---
 
+## Copy pass, 2026-08-20
+
+After the v3 build shipped, a copy-editing pass revised six lines. Everything below reflects the current site. What changed and why:
+
+| Was | Now | Reason |
+|---|---|---|
+| "The work you shelved is back on the table." | "The projects you could not justify are affordable now." | The old headline asserted the claim but left the reason two paragraphs away, and "back on the table" did no specific work. The new one uses the buyer's own language for the moment the project died. |
+| "Systems still running after 16." | "Systems still running since 2010." | "15 years" then "after 16" read as a contradiction above the fold. 2010 is concrete and matches the Heritage Global case study. Also corrected in the meta description. |
+| "We do not leave anything to chance by lazy automation." | "Nothing ships because a tool produced it and it looked right." | The original was garbled and oblique. This is the sentence that answers the technical-debt objection, so it has to be plain. |
+| "The client reported support calls dropped by over 90%." | "Support calls dropped by over 90%, according to the client." | Attribution is still required and still present, but leading with the hedge blunted the number. |
+| "Senior capability, ongoing." | "Keep senior capability on hand." | ADVISE and BUILD are verb-led. PARTNER was the only noun fragment of the three. |
+| "which of it is now affordable" | "which of them are now affordable" | Grammar. |
+
+**Two items raised and deliberately not actioned.** Andrew's bio spells out "Twenty" and "fifteen" against the numerals rule in `CLAUDE.md`, but it is the line picked verbatim on 2026-08-20 and reads better spelled out. Two-Week Proof has no risk reversal where Backlog Review is credited in full, which is a business decision rather than a copy problem.
+
+---
+
 ## Structural changes
 
 **Current order:** Hero → ShiftComparison → Services → HowItWorks → TrackRecord → FinalCTA
@@ -43,7 +60,7 @@ CTA: `Book a call`
 
 > **/ ZAC / TECHNOLOGY STUDIO**
 >
-> # The work you shelved is back on the table.
+> # The projects you could not justify are affordable now.
 >
 > Every company has projects that were worth doing but never worth what they cost. The internal tool nobody funded. The integration that stayed manual. The reporting that still runs on a spreadsheet.
 >
@@ -51,7 +68,7 @@ CTA: `Book a call`
 >
 > **[Book a call →]**  ·  [See what we have built ↓]
 >
-> 15 years. Over 100 engagements. Systems still running after 16.
+> 15 years. Over 100 engagements. Systems still running since 2010.
 
 ## Version B, hold for later
 
@@ -67,7 +84,7 @@ CTA: `Book a call`
 
 *Version B is a vertical positioning built on the real through-line across HGP, Legacy and the academies: real-time, onsite, tablet-driven transaction systems. More memorable, but it narrows inbound. Revisit after the first ten client conversations.*
 
-**Design notes:** the H1 runs 3 lines desktop, 4 mobile, and must still dominate. The three examples are the emotional hook. Set them apart from the paragraph rather than running them in. "The price changed." is the turn and can carry weight. The proof line under the CTA is load-bearing, not fine print.
+**Design notes:** the H1 runs 3 lines desktop and 3 mobile as built, and must still dominate. The three examples are the emotional hook. Set them apart from the paragraph rather than running them in. "The price changed." is the turn and can carry weight. The proof line under the CTA is load-bearing, not fine print.
 
 ---
 
@@ -87,7 +104,7 @@ CTA: `Book a call`
 > Every web property, rebuilt. Real-time uploads and auction creation from the sale floor on connected tablets, in 2010. Still running today. **Over $1 billion in assets sold through the platform since launch.**
 >
 > **Legacy Studios · Teddy Bear Portraits**
-> End-to-end point of sale and same-day photo delivery across **41 states**. Parents saw their photos in real time and bought on the spot. We moved them off proprietary software onto open source, then handed the system to their own team. Built 2016 to 2019. **Still running.** The client reported support calls dropped by over 90%.
+> End-to-end point of sale and same-day photo delivery across **41 states**. Parents saw their photos in real time and bought on the spot. We moved them off proprietary software onto open source, then handed the system to their own team. Built 2016 to 2019. **Still running.** Support calls dropped by over 90%, according to the client.
 >
 > **US Naval Academy · US Marines**
 > Branded cadet booking and photo portals for both academies, built on the platform we had already shipped. Delivered through Legacy Studios. Live since 2017 and still running.
@@ -167,7 +184,7 @@ CTA: `Book a call`
 > ### 02 BUILD · Turn the right ideas into working systems.
 > Custom software · Web applications · Internal tools · Workflow automation · Integrations · High-performance websites · Prototypes
 >
-> ### 03 PARTNER · Senior capability, ongoing.
+> ### 03 PARTNER · Keep senior capability on hand.
 > Fractional technology leadership · Continuous product development · Standing senior review · Specialist teams assembled to the work · Fixing what someone else built
 
 *Changes: ADVISE statement moves into the client's language. "AI integrations and agents" folds into "integrations." "Fixing what someone else built" is added. Keep the row ignition interaction.*
@@ -187,7 +204,7 @@ CTA: `Book a call`
 > Specialists come in when the work needs them and leave when it does not. You are not funding a permanent bench.
 >
 > **BUILT TO KEEP**
-> Every project is pressure tested for security, usability, and scale against two decades of enterprise experience. We do not leave anything to chance by lazy automation. You own the code outright, and our systems are still running years after we handed them over.
+> Every project is pressure tested for security, usability, and scale against two decades of enterprise experience. Nothing ships because a tool produced it and it looked right. You own the code outright, and our systems are still running years after we handed them over.
 
 **"AI-NATIVE" is removed as a principle** and replaced by "BUILT TO KEEP." This is the single biggest copy decision in the rewrite. Roughly 82% of technology buyers believe AI-generated code creates technical debt their organization cannot manage; v1 never addressed it, and three competitors make the AI-native claim in near-identical words.
 
@@ -202,7 +219,7 @@ CTA: `Book a call`
 > ## Two ways in. Both small.
 >
 > ### Backlog Review · 2 to 3 weeks, from $6,500
-> You know something should work better, but not what to do first. We go through everything that has been shelved or never funded and tell you which of it is now affordable, what each would take, and which one to do first. Including what is not worth doing.
+> You know something should work better, but not what to do first. We go through everything that has been shelved or never funded and tell you which of them are now affordable, what each would take, and which one to do first. Including what is not worth doing.
 > Credited in full against a build started within 60 days.
 >
 > ### Two-Week Proof · 2 weeks, $5,000
@@ -237,9 +254,9 @@ CTA: `Book a call`
 **Title:** `ZAC: A senior technology studio`
 
 **Meta description:**
-> A senior technology studio. 15 years, over 100 engagements, and systems still running after 16. We build what your business runs on.
+> A senior technology studio. 15 years, over 100 engagements, and systems still running since 2010. We build what your business runs on.
 
-**OG title:** `ZAC: The work you shelved is back on the table.`
+**OG title:** `ZAC: The projects you could not justify are affordable now.`
 
 **Structured data:** keep Organization schema. **Add Person schema for Andrew Johnston only** while the other two are unnamed.
 

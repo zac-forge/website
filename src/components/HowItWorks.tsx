@@ -16,7 +16,7 @@ const PRINCIPLES = [
   },
   {
     label: "BUILT TO KEEP",
-    body: "Every project is pressure tested for security, usability, and scale against two decades of enterprise experience. We do not leave anything to chance by lazy automation. You own the code outright, and our systems are still running years after we handed them over.",
+    body: "Every project is pressure tested for security, usability, and scale against two decades of enterprise experience. Nothing ships because a tool produced it and it looked right. You own the code outright, and our systems are still running years after we handed them over.",
   },
 ];
 

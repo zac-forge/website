@@ -34,7 +34,7 @@ const SERVICES = [
   {
     index: "03",
     title: "PARTNER",
-    statement: "Senior capability, ongoing.",
+    statement: "Keep senior capability on hand.",
     items: [
       "Fractional technology leadership",
       "Continuous product development",

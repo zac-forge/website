@@ -14,10 +14,10 @@ fail=0
 # Everything that ships or is published with the repo. package.json and
 # README.md are included deliberately: the old grep covered only src/, public/
 # and index.html, and both of those files carried "AI-native" for months.
-SHIPS=(src public index.html package.json README.md)
+SHIPS=(src public index.html package.json README.md tools)
 # The em dash rule reaches further than shipping copy. Drew has restated that
 # it covers code comments, docs, assets and commit messages.
-ALL=(src public index.html package.json README.md CLAUDE.md docs scripts)
+ALL=(src public index.html package.json README.md CLAUDE.md docs scripts tools)
 
 hit() { # <label> <paths...> with $PAT preset
   local label="$1"; shift

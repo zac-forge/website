@@ -1,12 +1,12 @@
 <!doctype html>
 <!--
-  Source for public/og-image.png. This is a local generator, not part of the
+  Source for public/og-image.jpg. This is a local generator, not part of the
   built site, so it is deliberately outside public/ and never deployed.
 
   To regenerate:
     python3 -m http.server 4599   (from the repo root)
     open http://localhost:4599/tools/og-card.html
-    screenshot the 1200x630 .og-card element, save to public/og-image.png
+    screenshot the 1200x630 .og-card element, save to public/og-image.jpg
 
   It pulls the real font files and the real design tokens so the card cannot
   drift away from the live site.
@@ -74,8 +74,8 @@
       .headline {
         font-family: var(--font-display);
         font-weight: 600;
-        font-size: 76px;
-        line-height: 0.96;
+        font-size: 60px;
+        line-height: 1.02;
         letter-spacing: -0.035em;
         color: var(--color-text);
         margin: 0 0 34px;
@@ -140,13 +140,13 @@
   <body>
     <div class="og-card">
       <div>
-        <p class="eyebrow">ZAC / Technology + AI</p>
-        <h1 class="headline">Technology has <span>new economics.</span></h1>
-        <p class="proof">Senior-led. Specialist-supported. Built without agency overhead.</p>
+        <p class="eyebrow">ZAC / Technology studio</p>
+        <h1 class="headline">The projects you could not justify are <span>affordable now.</span></h1>
+        <p class="proof">15 years. Over 100 engagements. Systems still running since 2010.</p>
       </div>
       <div class="art">
         <div class="glow"></div>
-        <img src="../public/brand/hero-forge.webp" alt="" />
+        <img src="../public/art/hero-z.webp" alt="" />
       </div>
     </div>
   </body>

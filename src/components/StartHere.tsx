@@ -8,7 +8,7 @@ const OFFERS = [
   {
     name: "Backlog Review",
     terms: "2 to 3 weeks, from $6,500",
-    body: "You know something should work better, but not what to do first. We go through everything that has been shelved or never funded and tell you which of it is now affordable, what each would take, and which one to do first. Including what is not worth doing.",
+    body: "You know something should work better, but not what to do first. We go through everything that has been shelved or never funded and tell you which of them are now affordable, what each would take, and which one to do first. Including what is not worth doing.",
     note: "Credited in full against a build started within 60 days.",
   },
   {

@@ -30,7 +30,7 @@ const CASE_STUDIES: CaseStudy[] = [
   {
     client: "Legacy Studios · Teddy Bear Portraits",
     body: "End-to-end point of sale and same-day photo delivery across 41 states. Parents saw their photos in real time and bought on the spot. We moved them off proprietary software onto open source, then handed the system to their own team. Built 2016 to 2019. Still running.",
-    metric: "The client reported support calls dropped by over 90%.",
+    metric: "Support calls dropped by over 90%, according to the client.",
   },
   {
     client: "US Naval Academy · US Marines",
