@@ -8,6 +8,18 @@ A senior technology studio. Successor practice to Mahalo Media Group, which foun
 
 **Positioning:** experience and proof lead. The economics of building changed, so shelved projects are affordable again.
 
+## This site is a working copy
+
+**Misha is currently redesigning the brand and the site.** What is deployed at zacforge.com is a working copy, not the final design. Treat it that way:
+
+- The current visual direction is **provisional**, held steady so copy and structure work can proceed without churn. It is not a permanent creative decision and it is not a QA target for the redesign.
+- Do not invest in visual polish that the redesign will discard. Refinement against `docs/reference-mockup.jpg` still applies to the working copy, but weigh the cost before doing deep visual work.
+- **Do not start a redesign, and do not introduce a new visual direction.** That work belongs to Misha.
+- Copy, structure, positioning, accessibility, performance, and correctness are all still live and worth doing properly. They carry over to whatever design lands.
+- The brand red mismatch (`#FF2D55` in the logo sheet against `#E83445` in the palette) resolves in the redesign. Do not chase it.
+
+Positioning work should be handed to Misha as **input** to the redesign rather than executed against the current design.
+
 ## The copy source of truth
 
 `docs/site-copy-v3.md` carries the complete section-by-section copy, structural changes, and design notes.
