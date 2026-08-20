@@ -68,8 +68,7 @@ repo or in client-side code.
 
 ## Open TODOs
 
-- [ ] Confirm `hello@zacforge.com` actually receives mail. It is live in the footer and the
-      "Send a message" button, set in `src/lib/links.ts`.
+- [x] `hello@zacforge.com` confirmed receiving mail (2026-08-20).
 - [ ] Add the two team names in `src/components/TrackRecord.tsx` once Misha and Luciano consent.
       The block ships nameless by design and takes name and photo as optional props, so this is
       a content change, not a redesign.
