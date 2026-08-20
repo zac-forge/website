@@ -316,17 +316,50 @@ a:focus-visible .lockup-bloom {
      Note this is `width`, not `max-width`: max-width cannot exceed the 43%
      grid column, so it would keep wrapping to three lines. An explicit width
      is what lets the headline overrun its column, which is the point. */
-  width: 7.4em;
+  width: 8.6em;
   max-width: 88vw;
   text-wrap: initial;
 }
 .hero-body {
-  /* body to CTAs 28px */
-  margin-block: 0 28px;
+  /* First paragraph runs tight into the examples list below it. */
+  margin-block: 0 16px;
   font-size: var(--text-lead);
   line-height: 1.6;
   max-width: 600px;
   color: var(--color-text-body);
+}
+/* body to CTAs 28px, on the paragraph that actually precedes them */
+.hero-body:last-of-type {
+  margin-bottom: 28px;
+}
+/* The three shelved projects. A list, not a paragraph: the deck treats these
+   as the emotional hook and asks for them set apart. The marker is the rotated
+   square the old experience matrix used, kept at hairline weight so the block
+   reads as evidence rather than as a feature list. */
+.hero-examples {
+  margin: 0 0 28px;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 10px;
+  max-width: 600px;
+}
+.hero-examples li {
+  position: relative;
+  padding-left: 22px;
+  font-size: var(--text-body);
+  line-height: 1.5;
+  color: var(--color-text-body);
+}
+.hero-examples li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 6px;
+  height: 6px;
+  border: 1px solid var(--color-forge);
+  rotate: 45deg;
 }
 .cta-row {
   display: flex;

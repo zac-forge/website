@@ -25,15 +25,24 @@ export function Hero() {
         >
           <motion.p className="eyebrow" variants={item}>
             <span className="eyebrow-slash">/</span> ZAC <span className="eyebrow-slash">/</span>{" "}
-            TECHNOLOGY + AI
+            TECHNOLOGY STUDIO
           </motion.p>
           <motion.h1 className="h1" variants={item}>
-            Technology has <span className="text-forge">new economics.</span>
+            The work you shelved is <span className="text-forge">back on the table.</span>
           </motion.h1>
           <motion.p className="hero-body text-muted" variants={item}>
-            AI changed what it takes to turn an idea into working technology. ZAC pairs senior
-            judgment with AI-native execution to advise, design, and build faster than used to be
-            possible, without cutting corners.
+            Every company has projects that were worth doing but never worth what they cost.
+          </motion.p>
+          {/* The three examples are the emotional hook, so they are set apart
+              from the paragraph rather than running inside it. */}
+          <motion.ul className="hero-examples" variants={item}>
+            <li>The internal tool nobody funded.</li>
+            <li>The integration that stayed manual.</li>
+            <li>The reporting that still runs on a spreadsheet.</li>
+          </motion.ul>
+          <motion.p className="hero-body text-muted" variants={item}>
+            Those projects did not fail a value test. They failed a price test.{" "}
+            <span className="text-forge">The price changed.</span>
           </motion.p>
           <motion.div className="cta-row" variants={item}>
             <Magnetic>
@@ -42,13 +51,13 @@ export function Hero() {
                 <span aria-hidden="true"> →</span>
               </a>
             </Magnetic>
-            <a className="text-link" href="#services">
-              <span>See what we build</span>
+            <a className="text-link" href="#track-record">
+              <span>See what we have built</span>
               <span aria-hidden="true"> ↓</span>
             </a>
           </motion.div>
           <motion.p className="proof-line" variants={item}>
-            Senior-led. Specialist-supported. Built without agency overhead.
+            15 years. Over 100 engagements. Systems still running after 16.
           </motion.p>
         </motion.div>
 
