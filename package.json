@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
-  "description": "One-page marketing site for ZAC (zacforge.com), an AI-native technology consulting and development studio.",
+  "description": "One-page marketing site for ZAC (zacforge.com), a senior technology studio.",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",

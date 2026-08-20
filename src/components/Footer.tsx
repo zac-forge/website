@@ -19,9 +19,9 @@ export function Footer() {
         <p className="footer-legal">© {year} ZAC Consulting LLC. All rights reserved.</p>
 
         <nav className="footer-nav" aria-label="Footer">
-          <a href="#services">Services</a>
-          <a href="#approach">Approach</a>
           <a href="#track-record">Track record</a>
+          <a href="#services">What we do</a>
+          <a href="#approach">How we work</a>
         </nav>
       </div>
     </footer>

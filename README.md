@@ -1,28 +1,30 @@
 # zacforge-site
 
-The one-page marketing site for ZAC (`zacforge.com`), an AI-native technology consulting and
-development studio. This repo is currently a bare scaffold: no design or copy yet, just a
-deployable project structure.
+The one-page marketing site for ZAC (`zacforge.com`), a senior technology studio. The site is
+live. Copy is governed by `CLAUDE.md` at the repo root and the copy deck in
+`docs/site-copy-v3.md`, and the voice rules there are binding.
 
 ## Stack
 
 - React + TypeScript, built with Vite.
 - React Router, so more pages can be added later without a restructure.
 - Motion (the current package name for what used to be called Framer Motion) for animation,
-  installed and ready, not used yet since there is no design to animate.
-- CSS Modules for component styles, with shared design tokens as CSS variables in
-  `src/styles/tokens.css`.
+  used throughout. Shared easings and variants live in `src/lib/motion.ts`.
+- Global CSS, not CSS Modules. `src/styles/layout.css` carries section composition,
+  `globals.css` the primitives, `interactive.css` and `motion.css` the behaviour, and
+  `tokens.css` the design tokens as CSS variables. Use the tokens, never hardcode a colour.
 - Cloudflare Pages for hosting, Cloudflare Pages Functions (`functions/`) for server-side logic.
   No persistent Node server, the Functions run on the Workers runtime.
 
 ## Structure
 
-- `src/`: the app. `App.tsx` sets up routing, `pages/Home.tsx` is the one real page for now.
-- `src/styles/tokens.css`: design tokens (color, spacing, radius) as CSS variables. Swap the
-  palette here once the real design lands.
-- `functions/api/chat.ts`: a Cloudflare Pages Function stub for a future AI assistant. Not
+- `src/`: the app. `App.tsx` sets up routing, `pages/Home.tsx` composes the one real page,
+  `components/` holds the sections in page order.
+- `src/styles/tokens.css`: design tokens (color, spacing, radius) as CSS variables. A brand
+  redesign is in progress, so change the palette here rather than hardcoding a colour anywhere.
+- `functions/api/chat.ts`: a Cloudflare Pages Function stub for a future chat assistant. Not
   implemented yet, returns 501. See the comments in that file for what it will do.
-- `public/`: static files served as-is (favicon, OG image, once those exist).
+- `public/`: static files served as-is (favicon, OG image, `llms.txt`, `robots.txt`, sitemap).
 
 ## Running locally
 
@@ -64,13 +66,14 @@ Once the assistant is implemented, set `ANTHROPIC_API_KEY` as an encrypted envir
 in the Cloudflare Pages project settings (Settings, Environment variables). Never put it in the
 repo or in client-side code.
 
-## TODO before this is a real site
+## Open TODOs
 
 - [ ] Confirm `hello@zacforge.com` actually receives mail. It is live in the footer and the
       "Send a message" button, set in `src/lib/links.ts`.
-- [ ] Swap the placeholder role cards in `src/components/TrackRecord.tsx` for real names if and
-      when you want the team public.
-- [ ] Implement `functions/api/chat.ts` for the v1.1 AI assistant. Note that the current
+- [ ] Add the two team names in `src/components/TrackRecord.tsx` once Misha and Luciano consent.
+      The block ships nameless by design and takes name and photo as optional props, so this is
+      a content change, not a redesign.
+- [ ] Implement `functions/api/chat.ts` for the v1.1 chat assistant. Note that the current
       `wrangler.toml` deploys static assets only, so the `functions/` directory is not wired up
       on the deployed site yet.
 

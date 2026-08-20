@@ -1,8 +1,10 @@
-# Site Copy v3 — Execution Deck
+# Site Copy v3: Execution Deck
 
-Complete copy for zacforge.com. Voice rules and guardrails live in `CLAUDE.md` at the repo root — read that first.
+Complete copy for zacforge.com. Voice rules and guardrails live in `CLAUDE.md` at the repo root. Read that first.
 
-> **Remaining `[[slots]]`:** Andrew's bio line and the IBM/MMG timeline framing. Do not guess at these. The team section ships **nameless by default** — see section 3.
+> **Remaining `[[slot]]`:** the IBM/MMG timeline framing, and only that. Do not guess at it. Andrew's bio line was picked on 2026-08-20 and is now inline in section 3. The team section ships **nameless by default**, see section 3.
+>
+> **Separators in the copy blocks below are `·`, not em dashes, and they mark two distinct fields.** Render them as separate elements (a heading and a paragraph). Never emit a literal `·` or `-` between them, and never an em dash anywhere.
 
 ---
 
@@ -15,11 +17,11 @@ Complete copy for zacforge.com. Voice rules and guardrails live in `CLAUDE.md` a
 |---|---|
 | Reorder sections | `src/pages/Home.tsx` |
 | New copy + proof line | `src/components/Hero.tsx` |
-| **Full rebuild** — case studies and team replace category chips | `src/components/TrackRecord.tsx` |
+| **Full rebuild.** Case studies and team replace category chips | `src/components/TrackRecord.tsx` |
 | New copy, keep THEN/NOW animation | `src/components/ShiftComparison.tsx` |
 | Minor copy edits | `src/components/Services.tsx` |
 | "AI-NATIVE" principle → "BUILT TO KEEP" | `src/components/HowItWorks.tsx` |
-| **New component** — two offer cards | `src/components/StartHere.tsx` |
+| **New component.** Two offer cards | `src/components/StartHere.tsx` |
 | Title, meta, OG, Person schema for Andrew only | `index.html` |
 | Full rewrite | `public/llms.txt` |
 | Unchanged | `FinalCTA.tsx`, `Footer.tsx` |
@@ -37,7 +39,7 @@ CTA: `Book a call`
 
 # 2. Hero
 
-## Version A — ship this one
+## Version A, ship this one
 
 > **/ ZAC / TECHNOLOGY STUDIO**
 >
@@ -51,7 +53,7 @@ CTA: `Book a call`
 >
 > 15 years. Over 100 engagements. Systems still running after 16.
 
-## Version B — hold for later
+## Version B, hold for later
 
 *Kept here for reference. Not for this build.*
 
@@ -65,7 +67,7 @@ CTA: `Book a call`
 
 *Version B is a vertical positioning built on the real through-line across HGP, Legacy and the academies: real-time, onsite, tablet-driven transaction systems. More memorable, but it narrows inbound. Revisit after the first ten client conversations.*
 
-**Design notes:** the H1 runs 3 lines desktop, 4 mobile, and must still dominate. The three examples are the emotional hook — set them apart from the paragraph rather than running them in. "The price changed." is the turn and can carry weight. The proof line under the CTA is load-bearing, not fine print.
+**Design notes:** the H1 runs 3 lines desktop, 4 mobile, and must still dominate. The three examples are the emotional hook. Set them apart from the paragraph rather than running them in. "The price changed." is the turn and can carry weight. The proof line under the CTA is load-bearing, not fine print.
 
 ---
 
@@ -79,7 +81,7 @@ CTA: `Book a call`
 
 ### Case studies
 
-> **Heritage Global Partners** — hgpauction.com
+> **Heritage Global Partners** · hgpauction.com
 > Every web property, rebuilt. Real-time uploads and auction creation from the sale floor on connected tablets, in 2010. Still running today. **Over $1 billion in assets sold through the platform since launch.**
 >
 > **Legacy Studios · Teddy Bear Portraits**
@@ -91,16 +93,16 @@ CTA: `Book a call`
 > **Legal Access Alameda**
 > Web properties for a statewide group of attorneys providing disaster response and free legal assistance across California.
 
-### The team — ships nameless
+### The team, ships nameless
 
 **Build name and photo as optional props.** Adding a name later must be a content change, not a redesign.
 
 **Ship this now:**
 
-> **Andrew Johnston** — Founder
-> `[[Pick one:]]`
-> `[[ "Two decades at IBM, finishing as technology director at IBM Design Lab in New York." ]]`
-> `[[ "Twenty years at IBM and fifteen running his own practice. ZAC is what happens when those stop being separate things." ]]`
+> **Andrew Johnston** · Founder
+> Twenty years at IBM and fifteen running his own practice. ZAC is what happens when those stop being separate things.
+
+*Picked 2026-08-20. Ship verbatim. The rejected option was "Two decades at IBM, finishing as technology director at IBM Design Lab in New York." Do not re-offer the choice and do not substitute the rejected line because it is shorter.*
 >
 > **Creative Director**
 > Years at Havas and Ogilvy. He and Andrew met on a cross-company team at the IBM Design Lab.
@@ -110,8 +112,8 @@ CTA: `Book a call`
 
 **Swap in later, once confirmed:**
 
-> **Misha `[[surname]]`** — Creative Director
-> **Luciano `[[surname]]`** — Senior Engineer
+> **Misha `[[surname]]`** · Creative Director
+> **Luciano `[[surname]]`** · Senior Engineer
 
 *(Same background lines.)*
 
@@ -147,7 +149,7 @@ CTA: `Book a call`
 >
 > **This site is the example. Domain name to live site, including design, email, hosting, and certificates: about 14 hours.**
 
-**Deliberate omission:** the word "AI" does not appear here or anywhere on the site. The economics are described directly. This is a strategic decision, not an oversight — do not "improve" it by naming the technology.
+**Deliberate omission:** the word "AI" does not appear here or anywhere on the site. The economics are described directly. This is a strategic decision, not an oversight. Do not "improve" it by naming the technology.
 
 **Keep the THEN/NOW row-draw animation exactly as built.** It is the strongest interaction on the current site.
 
@@ -157,13 +159,13 @@ CTA: `Book a call`
 
 > **03 / WHAT WE DO**
 >
-> ### 01 ADVISE — Find out what is worth building.
+> ### 01 ADVISE · Find out what is worth building.
 > Technology strategy · What to build and in what order · Second opinions on decisions and vendors · Workflow analysis · Architecture and planning
 >
-> ### 02 BUILD — Turn the right ideas into working systems.
+> ### 02 BUILD · Turn the right ideas into working systems.
 > Custom software · Web applications · Internal tools · Workflow automation · Integrations · High-performance websites · Prototypes
 >
-> ### 03 PARTNER — Senior capability, ongoing.
+> ### 03 PARTNER · Senior capability, ongoing.
 > Fractional technology leadership · Continuous product development · Standing senior review · Specialist teams assembled to the work · Fixing what someone else built
 
 *Changes: ADVISE statement moves into the client's language. "AI integrations and agents" folds into "integrations." "Fixing what someone else built" is added. Keep the row ignition interaction.*
@@ -197,11 +199,11 @@ CTA: `Book a call`
 >
 > ## Two ways in. Both small.
 >
-> ### Backlog Review — 2 to 3 weeks, from $6,500
+> ### Backlog Review · 2 to 3 weeks, from $6,500
 > You know something should work better, but not what to do first. We go through everything that has been shelved or never funded and tell you which of it is now affordable, what each would take, and which one to do first. Including what is not worth doing.
 > Credited in full against a build started within 60 days.
 >
-> ### Two-Week Proof — 2 weeks, $5,000
+> ### Two-Week Proof · 2 weeks, $5,000
 > You already know what you want. Pick the smallest real version of it. We build it in two weeks for a fixed price, and you finish with working software and a clear idea of what it is like to work with us.
 >
 > **Every quote comes with two numbers: what the work would have cost the old way, and what it costs now.**
@@ -210,7 +212,7 @@ CTA: `Book a call`
 >
 > **[Book a call →]**
 
-**Design:** two cards, equal weight, clearly parallel. The calmest, most practical part of the page. **No atmosphere effects here** — this is what a serious buyer screenshots.
+**Design:** two cards, equal weight, clearly parallel. The calmest, most practical part of the page. **No atmosphere effects here.** This is what a serious buyer screenshots.
 
 ---
 
@@ -230,18 +232,18 @@ CTA: `Book a call`
 
 # 9. Metadata
 
-**Title:** `ZAC — A senior technology studio`
+**Title:** `ZAC: A senior technology studio`
 
 **Meta description:**
 > A senior technology studio. 15 years, over 100 engagements, and systems still running after 16. We build what your business runs on.
 
-**OG title:** `ZAC — The work you shelved is back on the table.`
+**OG title:** `ZAC: The work you shelved is back on the table.`
 
 **Structured data:** keep Organization schema. **Add Person schema for Andrew Johnston only** while the other two are unnamed.
 
 ---
 
-# 10. llms.txt — full replacement
+# 10. llms.txt, full replacement
 
 ```
 # ZAC
@@ -299,11 +301,13 @@ it, plus specialists brought in when a project calls for more depth.
 # Pre-launch checklist
 
 - [ ] Confirm `hello@zacforge.com` receives mail
-- [ ] Fill the two `[[slots]]` — Andrew's bio, timeline wording
+- [x] Andrew's bio line picked (2026-08-20)
+- [ ] Fill the remaining `[[slot]]`: the IBM/MMG timeline wording
 - [ ] Team block built with optional name and photo props
 - [ ] Ask Misha and Luciano using the exact lines above; swap in names if they agree
 - [ ] Confirm client-name permissions where contracts require it
 - [ ] Verify the "since 2017" academy date if possible
 - [ ] No DoD seals, no IBM logo
 - [ ] Person schema for Andrew added alongside Organization schema
-- [ ] `grep -ri "\bAI\b" src/ public/ index.html` returns nothing in user-facing copy
+- [ ] `bash scripts/voice-check.sh` passes. It covers `src/ public/ index.html package.json README.md`
+      for "AI", em dashes, semicolons, exclamation points, and the banned vocabulary list.

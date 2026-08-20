@@ -1,16 +1,16 @@
-# CLAUDE.md — zacforge-site
+# CLAUDE.md: zacforge-site
 
 Repo memory for the ZAC marketing site. Read this before touching copy.
 
 ## What ZAC is
 
-A senior technology studio. Successor practice to Mahalo Media Group, which founder Andrew Johnston ran for 15+ years across 100+ engagements. Not a startup — an established practice operating under new economics.
+A senior technology studio. Successor practice to Mahalo Media Group, which founder Andrew Johnston ran for 15+ years across 100+ engagements. Not a startup. An established practice operating under new economics.
 
 **Positioning:** experience and proof lead. The economics of building changed, so shelved projects are affordable again.
 
 ## The copy source of truth
 
-`docs/site-copy-v3.md` — complete section-by-section copy, structural changes, and design notes.
+`docs/site-copy-v3.md` carries the complete section-by-section copy, structural changes, and design notes.
 
 Do not invent marketing copy. If something is missing, ask rather than filling the gap.
 
@@ -22,7 +22,7 @@ These are not stylistic preferences. They are binding.
 
 | Rule | Detail |
 |---|---|
-| **Never use the word "AI"** | Zero occurrences anywhere on the site — copy, alt text, meta tags, `llms.txt`. The category label is saturated and buyers discount it. Describe the economics directly instead. |
+| **Never use the word "AI"** | Zero occurrences anywhere on the site: copy, alt text, meta tags, `llms.txt`, `package.json`, and `README.md`. The category label is saturated and buyers discount it. Describe the economics directly instead. |
 | **No contractions** | "does not," not "doesn't." "That is enough to start," not "That's." |
 | **No em dashes** | Use a full stop or a comma. |
 | **No semicolons** | Split the sentence. |
@@ -38,7 +38,7 @@ These are not stylistic preferences. They are binding.
 
 ---
 
-## Compliance guardrails — do not violate
+## Compliance guardrails, do not violate
 
 | Rule | Why |
 |---|---|
@@ -67,7 +67,8 @@ Two changes from what is currently deployed: TrackRecord moves from fifth to sec
 | `Services.tsx` | Minor copy edits |
 | `HowItWorks.tsx` | "AI-NATIVE" principle replaced with "BUILT TO KEEP" |
 | `StartHere.tsx` | **New.** Two offer cards with pricing. |
-| `FinalCTA.tsx`, `Footer.tsx` | Unchanged — the closing copy is the best on the site |
+| `FinalCTA.tsx` | Copy unchanged. The closing copy is the best on the site. |
+| `Footer.tsx` | Copy unchanged, but its `#about` link and "About" label follow the nav rename to Track record. |
 | `index.html` | Title, meta, OG, add Person schema for Andrew only |
 | `public/llms.txt` | Full rewrite, currently leads with "AI-native" |
 
@@ -82,14 +83,19 @@ The v1 interactions are good and should survive the copy change:
 
 ## Stack notes
 
-React 19 + TypeScript + Vite · Motion · CSS Modules · Cloudflare Pages
-Design tokens in `src/styles/tokens.css` — a brand redesign is in progress, so avoid hardcoding colors. Use the token variables.
+React 19 + TypeScript + Vite · Motion · global CSS · Cloudflare Pages
+Styling is **global CSS, not CSS Modules**. `src/styles/layout.css` (1400 lines) carries section composition, `globals.css` the primitives, `interactive.css` and `motion.css` the behaviour.
+Design tokens in `src/styles/tokens.css`. A brand redesign is in progress, so avoid hardcoding colors. Use the token variables.
+There is **no test framework** in this repo. Verification is `npm run build` (runs `tsc -b`), the voice gate at `scripts/voice-check.sh`, and measuring the running page.
 `functions/api/chat.ts` is a stub returning 501 and is **not** wired into the deploy (`wrangler.toml` ships static assets only). Leave it alone unless asked.
 
 ## Open slots
 
-Two placeholders remain in the copy deck, marked `[[like this]]`:
-- Andrew's bio line (three options provided, needs a pick)
-- The IBM/MMG timeline framing
+**One** placeholder remains in the copy deck, marked `[[like this]]`:
+- The IBM/MMG timeline framing, in the Track Record intro
 
-Do not guess at these. Leave the placeholder and flag it.
+Do not guess at it. Leave the placeholder and flag it.
+
+**Resolved 2026-08-20.** Andrew's bio line is picked. Ship exactly this, and do not re-offer the choice:
+
+> Twenty years at IBM and fifteen running his own practice. ZAC is what happens when those stop being separate things.

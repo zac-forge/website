@@ -1312,8 +1312,10 @@ a:focus-visible .lockup-bloom {
   line-height: 1.65;
   color: var(--color-text-body);
 }
-/* Pushed to the bottom edge so both cards align their last line even though
-   only one of the two carries a note. */
+/* Pinned to the bottom edge of the card so it reads as a footnote to the
+   offer rather than as another paragraph. Only Backlog Review carries one, so
+   the two cards match in height but not in where their last line falls. That
+   is intentional: equal weight is the requirement, not identical ragging. */
 .offer-note {
   margin: auto 0 0;
   padding-top: var(--space-4);
