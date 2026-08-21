@@ -62,7 +62,7 @@ const TEAM: TeamMember[] = [
   },
   {
     role: "Creative Director",
-    bio: "Years at Havas and Ogilvy. He and Andrew met on a cross-company team at the IBM Design Lab.",
+    bio: "Associate creative director at Ogilvy. He and Andrew met on a cross-company team at the IBM Design Lab.",
   },
   {
     role: "Senior Engineer",

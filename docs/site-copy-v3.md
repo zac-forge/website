@@ -124,7 +124,7 @@ CTA: `Book a call`
 *Picked 2026-08-20. Ship verbatim. The rejected option was "Two decades at IBM, finishing as technology director at IBM Design Lab in New York." Do not re-offer the choice and do not substitute the rejected line because it is shorter.*
 >
 > **Creative Director**
-> Years at Havas and Ogilvy. He and Andrew met on a cross-company team at the IBM Design Lab.
+> Associate creative director at Ogilvy. He and Andrew met on a cross-company team at the IBM Design Lab.
 >
 > **Senior Engineer**
 > Full stack. Built alongside Andrew at IBM.
