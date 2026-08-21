@@ -123,16 +123,20 @@ CTA: `Book a call`
 
 *Picked 2026-08-20. Ship verbatim. The rejected option was "Two decades at IBM, finishing as technology director at IBM Design Lab in New York." Do not re-offer the choice and do not substitute the rejected line because it is shorter.*
 >
-> **Creative Director**
-> Associate creative director at Ogilvy. He and Andrew met on a cross-company team at the IBM Design Lab.
+> **Design Director**
+> Associate creative director at Ogilvy. Before that, the IBM Design Lab.
 >
 > **Senior Engineer**
-> Full stack. Built alongside Andrew at IBM.
+> Full stack. Built enterprise systems at IBM.
+
+*Revised 2026-08-20. Two corrections and one restructure. Misha was at Ogilvy only, not Havas. His title here is Design Director rather than Creative Director, because this site positions against agencies and "Creative Director" is the most agency-coded title available. And neither bio introduces its subject as Andrew's former colleague any more: that made him the centre and them satellites, which contradicts "One team. No layers." IBM now appears in all three bios as a credential, so the shared history shows without being claimed.*
 
 **Swap in later, once confirmed:**
 
-> **Misha `[[surname]]`** · Creative Director
-> **Luciano `[[surname]]`** · Senior Engineer
+> **Misha `[[surname]]`** · Design Director
+> **Luke `[[surname]]`** · Senior Engineer
+
+*Luciano goes by **Luke**. Use that if and when consent arrives. Surnames still needed: a first name alone beside "Andrew Johnston" reads as junior or as a placeholder.*
 
 *(Same background lines.)*
 

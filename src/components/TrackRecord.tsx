@@ -46,6 +46,13 @@ const CASE_STUDIES: CaseStudy[] = [
  * Name and photo are optional on purpose. Two of the three have not consented
  * to being named yet, so the block ships nameless and adding a name later is a
  * content change rather than a redesign.
+ *
+ * No bio introduces anyone as Andrew's former colleague, even though two of
+ * them are. Defining people by their proximity to the founder makes him the
+ * centre and them satellites, which contradicts "One team. No layers." and
+ * describes a relationship where a credential should be. IBM appears in all
+ * three instead, so the shared history is visible without being asserted.
+ * Phrasing follows the IBM guardrail in CLAUDE.md: worked at, never a client.
  */
 type TeamMember = {
   name?: string;
@@ -61,12 +68,12 @@ const TEAM: TeamMember[] = [
     bio: "Twenty years at IBM and fifteen running his own practice. ZAC is what happens when those stop being separate things.",
   },
   {
-    role: "Creative Director",
-    bio: "Associate creative director at Ogilvy. He and Andrew met on a cross-company team at the IBM Design Lab.",
+    role: "Design Director",
+    bio: "Associate creative director at Ogilvy. Before that, the IBM Design Lab.",
   },
   {
     role: "Senior Engineer",
-    bio: "Full stack. Built alongside Andrew at IBM.",
+    bio: "Full stack. Built enterprise systems at IBM.",
   },
 ];
 

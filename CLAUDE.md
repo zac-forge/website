@@ -75,7 +75,9 @@ These are not stylistic preferences. They are binding.
 | **The $1B is the client's transaction volume, not ZAC's revenue.** Write "over $1 billion in assets sold through the platform." Never "we sold $1 billion in assets." | Accuracy |
 | **The 90% figure is client-reported.** Always attribute: "the client reported support calls dropped by over 90%." | Substantiation |
 | **Never characterize a named client's leadership or internal problems.** | Professional |
-| **Do not name Misha or Luciano** until confirmed. Ship the team block with roles and backgrounds only. Build name and photo as optional fields. | Consent pending |
+| **Do not name Misha or Luke** until confirmed. Still pending as of 2026-08-20. Ship the team block with roles and backgrounds only. Name and photo are already optional props. Luciano goes by **Luke**, and surnames are needed before either can ship. | Consent pending |
+| **Misha was an associate creative director at Ogilvy. Not Havas.** His title on the site is **Design Director**, because "Creative Director" is agency vocabulary on a site that sells against agencies. | Accuracy |
+| **Do not introduce team members as Andrew's former colleagues.** It makes him the centre and them satellites, which contradicts "One team. No layers." IBM appears in each bio as a credential instead. | Positioning |
 
 ---
 
