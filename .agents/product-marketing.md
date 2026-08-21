@@ -2,7 +2,7 @@
 
 *Last updated: 2026-08-20*
 
-> **Status: proposed, not adopted.** This captures the durability positioning argued in `docs/positioning-durability.md`. The live site still sells on price. Nothing here ships until Drew signs off. Sections marked GAP are unverified and must not be treated as fact.
+> **Status: adopted 2026-08-20 and live.** The site now leads on durability. Sections marked GAP are still unverified and must not be treated as fact.
 >
 > **Voice rules in `CLAUDE.md` are binding and override anything here.** Never the word "AI". No contractions, em dashes, semicolons, exclamation points, or emoji.
 
@@ -21,6 +21,8 @@
 - Two-Week Proof: 2 weeks, $5,000, fixed price.
 
 ## Target Audience
+
+**Location:** Ventura, California. The principal is US-based and that is the only location stated publicly. Other team members are elsewhere and the site does not say so, see the geography note in `CLAUDE.md`.
 
 **Target companies:** Mid-market operators with a system the business depends on. Auction houses, field and event operations, multi-site service businesses, institutions with public-facing booking or transaction flows. Not startups building a first product, and not enterprises with a large internal platform team.
 
@@ -81,6 +83,8 @@
 
 **Why customers choose us:** GAP. No win/loss data exists. This is inference from the case studies, not from buyers.
 
+**Handover is a service, not an anecdote.** Confirmed 2026-08-20: numerous projects have been handed over. Worth naming and productizing.
+
 ## Objections
 
 | Objection | Response |
@@ -90,7 +94,9 @@
 | You are more expensive than a freelancer. | Compared against rebuilding in three years, not against an hourly rate. |
 | We do not know what we need yet. | That is the Backlog Review, and it is credited in full against a build. |
 
-**Anti-persona:** Anyone who wants a disposable prototype, a marketing microsite, or the lowest bid. Anyone who wants to buy a vendor relationship rather than own the code. Startups pre-product-market-fit who should be building something throwaway on purpose.
+**Anti-persona:** Anyone who wants a disposable one-off that a non-engineer can now produce themselves with generative tooling. That tier of work has left the market and ZAC should not compete for it. Also: anyone shopping the lowest bid, anyone who wants to buy a vendor relationship rather than own the code, and pre-product-market-fit startups who should be building something throwaway on purpose.
+
+Drew's framing, 2026-08-20: serious buyers over "disposable one-offs that anyone can do with generative tools now." This is the clearest reason the price lead had to go. It aimed at the tier that no longer buys.
 
 ## Switching Dynamics
 

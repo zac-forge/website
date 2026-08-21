@@ -6,9 +6,10 @@
   "description": "One-page marketing site for ZAC (zacforge.com), a senior technology studio.",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build && vite build --ssr src/entry-server.tsx --outDir .prerender --logLevel warn && node scripts/prerender.mjs",
     "preview": "vite preview",
-    "pages:dev": "npm run build && wrangler pages dev dist"
+    "pages:dev": "npm run build && wrangler pages dev dist",
+    "build:client": "tsc -b && vite build"
   },
   "dependencies": {
     "@fontsource/ibm-plex-mono": "^5.3.0",

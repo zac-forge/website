@@ -1,6 +1,6 @@
 # Positioning memo: systems that outlive the engagement
 
-*2026-08-20. A recommendation, not a decision. Nothing on the site has changed.*
+*2026-08-20. **Adopted and shipped the same day.** The four open questions below were answered by Drew and the site now leads on durability.*
 
 > **Context:** the deployed site is a working copy. Misha is redesigning the brand and the site now, so this memo is intended as input to that work, not as a spec to execute against the current design.
 
@@ -111,9 +111,14 @@ The single highest-value thing available right now is four phone calls: Heritage
 
 ---
 
-## Open questions for you
+## Open questions, answered 2026-08-20
 
-1. Does "outlive the engagement" overclaim anywhere? I am relying on the case studies being accurate about what is still in production today.
-2. Is the handover story (moving a client off proprietary software and handing them the system) repeatable, or was Legacy Studios a one-off? If repeatable it becomes a service, not an anecdote.
-3. Do you want inbound narrowed? This trades volume for fit.
-4. Are you willing to revisit prerendering, given it now gates the argument rather than just the SEO score?
+1. **Does the durability claim overclaim?** No. Drew confirmed every case study is accurate and all of those systems are live in production today. The dated claims are safe to make.
+2. **Is handover repeatable?** Yes. "We have handed over numerous projects." This promoted it from a detail inside one case study to a line in the Track record intro: *"Every system below was handed to the people who own it. They run them without us."* It is a practice, not an anecdote, and most competitors cannot say it because handover is where their revenue stops.
+3. **Narrow inbound?** Yes. Drew wants serious buyers over "disposable one-offs that anyone can do with generative tools now." That is a sharper anti-persona than the memo proposed, and it is the strongest argument yet for dropping the price lead: the bottom of this market has fallen out to self-serve tooling, and "affordable now" pointed straight at it.
+4. **Prerendering?** Approved and shipped. The page is now prerendered to static HTML at build time, so the case studies and dates reach crawlers that do not execute JavaScript.
+
+## Still open
+
+- **Customer language.** No interviews yet. Four calls remains the highest-value unstarted work.
+- **Analytics.** Nothing is measured, so there is no way to tell whether this repositioning worked.

@@ -28,6 +28,22 @@ Do not invent marketing copy. If something is missing, ask rather than filling t
 
 ---
 
+## Positioning: durability, not price
+
+**Adopted 2026-08-20.** The site leads on the one claim competitors cannot copy: systems built in 2010 are still in production, and their owners run them without ZAC. See `docs/positioning-durability.md` and `.agents/product-marketing.md`.
+
+- **The price argument is not the lead.** It lives in "Why now" and in "Start here", and nowhere else. Leading with affordability aims at the tier of work that self-serve tooling has taken, which is exactly the buyer ZAC does not want.
+- **Handover is a practice, not an anecdote.** Numerous projects have been handed over. Say so.
+- Do not reintroduce "shelved", "backlog", "affordable", or "cheap" into the promise.
+
+## Geography: state California, say nothing else
+
+Andrew is in Ventura, California. Other team members are outside the US. **Only the California location is public**, in the footer and in the Organization schema.
+
+This is deliberate, not an oversight. A US anchor is a trust signal for a mid-market US buyer. Advertising a team spread across three continents reads as offshore to that same buyer, which undercuts the seniority and continuity the whole positioning rests on. It is not hidden, it simply is not marketing copy. Do not add other locations without asking.
+
+No geo-targeting or geo-restriction is in place, and none is recommended. The pipeline is US-weighted through Andrew's network, and the buyer does not search locally for this service.
+
 ## Hard voice rules
 
 These are not stylistic preferences. They are binding.

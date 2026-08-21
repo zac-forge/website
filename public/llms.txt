@@ -1,13 +1,20 @@
 # ZAC
 
-> A senior technology studio. ZAC advises on what is worth building, builds the
-> systems that follow, and partners as ongoing senior capability, without agency
-> overhead.
+> A senior technology studio. ZAC builds systems that outlive the engagement.
+> Systems built in 2010 are still in production, run by the teams they were
+> handed to. ZAC advises on what is worth building, builds the systems that
+> follow, and partners as ongoing senior capability, without agency overhead.
 
 ZAC is the successor to Mahalo Media Group, a practice run by founder Andrew
-Johnston for over 15 years across more than 100 engagements. The team is small
-and senior: one point of contact, with development, design, and strategy behind
-it, plus specialists brought in when a project calls for more depth.
+Johnston for over 15 years across more than 100 engagements. Based in Ventura,
+California. The team is small and senior: one point of contact, with
+development, design, and strategy behind it, plus specialists brought in when a
+project calls for more depth.
+
+Every engagement ends with the client owning the code outright and their own
+team able to run the system. That is the practice, not an exception: clients
+have been migrated off proprietary software onto open source and handed the
+result to run themselves.
 
 ## Track record
 

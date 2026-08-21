@@ -82,6 +82,13 @@ export function TrackRecord() {
             over 15 years.{TIMELINE_FRAMING ? ` ${TIMELINE_FRAMING}` : ""} Same principal, same
             standards, new economics.
           </p>
+          {/* Confirmed by Drew on 2026-08-20 as repeatable across numerous
+              projects, which is what promotes it from a detail inside one case
+              study to the thing the section is about. Most vendors cannot say
+              this, because handover is where their revenue stops. */}
+          <p className="track-handover">
+            Every system below was handed to the people who own it. They run them without us.
+          </p>
         </Reveal>
 
         <Reveal className="case-list" stagger={0.08}>

@@ -28,22 +28,23 @@ export function Hero() {
             TECHNOLOGY STUDIO
           </motion.p>
           <motion.h1 className="h1" variants={item}>
-            The projects you could not justify are{" "}
-            <span className="text-forge">affordable now.</span>
+            The systems we built in 2010 are{" "}
+            <span className="text-forge">still running.</span>
           </motion.h1>
           <motion.p className="hero-body text-muted" variants={item}>
-            Every company has projects that were worth doing but never worth what they cost.
+            Most custom software does not survive the people who built it. The team moves on, the
+            documentation was never written, and in a few years someone is paying to rebuild it.
           </motion.p>
-          {/* The three examples are the emotional hook, so they are set apart
-              from the paragraph rather than running inside it. */}
+          {/* The promise, set apart from the paragraph. The headline is the
+              proof, so these are what the buyer actually gets rather than a
+              second recital of the case studies. */}
           <motion.ul className="hero-examples" variants={item}>
-            <li>The internal tool nobody funded.</li>
-            <li>The integration that stayed manual.</li>
-            <li>The reporting that still runs on a spreadsheet.</li>
+            <li>You own the code outright.</li>
+            <li>Your team runs it without us.</li>
+            <li>It is still working years after handover.</li>
           </motion.ul>
           <motion.p className="hero-body text-muted" variants={item}>
-            Those projects did not fail a value test. They failed a price test.{" "}
-            <span className="text-forge">The price changed.</span>
+            Most software is disposable. <span className="text-forge">Ours has not been.</span>
           </motion.p>
           <motion.div className="cta-row" variants={item}>
             <Magnetic>
@@ -58,7 +59,7 @@ export function Hero() {
             </a>
           </motion.div>
           <motion.p className="proof-line" variants={item}>
-            15 years. Over 100 engagements. Systems still running since 2010.
+            15 years. Over 100 engagements. Live since 2010 and still in production.
           </motion.p>
         </motion.div>
 

@@ -16,7 +16,9 @@ export function Footer() {
           </a>
         </div>
 
-        <p className="footer-legal">© {year} ZAC Consulting LLC. All rights reserved.</p>
+        <p className="footer-legal">
+          Ventura, California. © {year} ZAC Consulting LLC. All rights reserved.
+        </p>
 
         <nav className="footer-nav" aria-label="Footer">
           <a href="#track-record">Track record</a>
