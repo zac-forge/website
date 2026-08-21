@@ -69,15 +69,30 @@ repo or in client-side code.
 ## Open TODOs
 
 - [x] `hello@zacforge.com` confirmed receiving mail (2026-08-20).
-- [ ] Add the two team names in `src/components/TrackRecord.tsx` once Misha and Luciano consent.
-      The block ships nameless by design and takes name and photo as optional props, so this is
-      a content change, not a redesign.
+- [ ] Add the two team names in `src/components/TrackRecord.tsx` **once Misha and Luke consent**.
+      Names are known and ready: Misha Gervits (Design Director), Luke Monegatto (Senior
+      Engineer). The block ships nameless by design and takes name and photo as optional props,
+      so this is a two-line content change. Consent was still outstanding on 2026-08-20.
 - [ ] Implement `functions/api/chat.ts` for the v1.1 chat assistant. Note that the current
       `wrangler.toml` deploys static assets only, so the `functions/` directory is not wired up
       on the deployed site yet.
 
 Done: page design and copy, brand assets, logo, favicon, booking link
-(`https://cal.com/zacforge/20-min-chat`), OG image.
+(`https://cal.com/zacforge/20-min-chat`), OG image, prerendering to static HTML, durability
+positioning.
+
+## Future updates
+
+Not defects, and not urgent. Parked deliberately.
+
+- [ ] **Analytics.** Nothing on the site is measured, so there is no way to tell whether a copy
+      or positioning change did anything. Deprioritised on 2026-08-20 because organic traffic is
+      not expected in the near term. Worth revisiting once there is traffic to measure.
+- [ ] **Customer language.** The positioning in `.agents/product-marketing.md` is derived from
+      our own case studies rather than from buyers, which makes it circular. Drew is scraping old
+      email for verbatim customer input. The Customer Language section is marked GAP until then.
+- [ ] **Brand red.** The logo sheet declares `#FF2D55` and the palette uses `#E83445`. Resolves
+      in Misha's redesign. Do not chase it separately.
 
 ## Regenerating the OG image
 
