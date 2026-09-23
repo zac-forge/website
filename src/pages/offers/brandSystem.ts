@@ -8,7 +8,7 @@ import type { Offer } from "./types";
 export const brandSystem: Offer = {
   path: "/brand-system",
   row: "04",
-  rowTitle: "AI-READY BRAND SYSTEM",
+  rowTitle: "AI-ready brand system",
   rowStatement: "Make everything your team generates look like you.",
   rowItems: [
     "Brand direction",

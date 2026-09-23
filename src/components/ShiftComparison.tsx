@@ -22,20 +22,20 @@ export function ShiftComparison() {
   // falls away through the information-heavy middle of the page and returns at
   // the end.
   return (
-    <section className="section shift section--grid">
+    <section className="section shift">
       <div className="container shift-grid">
         <Reveal className="shift-copy">
-          <p className="eyebrow">02 / WHAT CHANGED</p>
+          <p className="eyebrow">02 / What changed</p>
           <h2 className="h2 h2--split">
             Your customers stopped searching.{" "}
             <span className="h2-secondary">They started asking.</span>
           </h2>
-          <p className="text-muted">
+          <p>
             For twenty years, people typed a few words into Google and chose from ten links. Now
             more of them ask an assistant and get a short answer with two or three names in it.
             There is no page two.
           </p>
-          <p className="text-muted">
+          <p>
             Assistants decide who to name from what they can read: your site, your reviews, your
             listings, and what other sites say about you. Much of that is technical, and most of it
             is fixable.
@@ -45,7 +45,7 @@ export function ShiftComparison() {
         <Reveal className="shift-compare">
           <div className="compare-header">
             <span>THEN</span>
-            <span className="text-forge">NOW</span>
+            <span className="text-accent">NOW</span>
           </div>
           <ul className="compare-list">
             {COMPARISON.map(([then, now], i) => {

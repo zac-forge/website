@@ -10,15 +10,14 @@ A senior technology studio. Successor practice to Mahalo Media Group, which foun
 
 ## This site is a working copy
 
-**Misha is currently redesigning the brand and the site.** What is deployed at zacforge.com is a working copy, not the final design. Treat it that way:
+**Misha is redesigning the brand and the site, and branch v4 implements his board as it stood on 2026-09-23.** What is deployed at zacforge.com is still the v3 working copy. Treat both that way:
 
-- The current visual direction is **provisional**, held steady so copy and structure work can proceed without churn. It is not a permanent creative decision and it is not a QA target for the redesign.
-- Do not invest in visual polish that the redesign will discard. Refinement against `docs/reference-mockup.jpg` still applies to the working copy, but weigh the cost before doing deep visual work.
-- **Do not start a redesign, and do not introduce a new visual direction.** That work belongs to Misha.
-- Copy, structure, positioning, accessibility, performance, and correctness are all still live and worth doing properly. They carry over to whatever design lands.
-- The brand red mismatch (`#FF2D55` in the logo sheet against `#E83445` in the palette) resolves in the redesign. Do not chase it.
+- The v4 build follows Misha's Figma board (`MacBook Air - 1`, node `6:2`) read in full through the Figma REST API. The board is a **draft**: lorem ipsum throughout, no mobile version, case study imagery undecided. Expect his values to move, and expect them to arrive as token edits, not rebuilds.
+- **Do not introduce a visual direction of your own.** Where the board does not cover a case, extend its nearest scale and record the extension in `design/DESIGN-SYSTEM-NOTES.md`. Where it conflicts with the copy deck or the guardrails, the copy and the guardrails win and the conflict goes in the questions for Misha.
+- Copy, structure, positioning, accessibility, performance, and correctness are all live and worth doing properly.
+- The old brand red mismatch is moot: the board's accent is purple `#9D4DFF`.
 
-Positioning work should be handed to Misha as **input** to the redesign rather than executed against the current design.
+Positioning work is handed to Misha as **input** to the redesign.
 
 ## The copy source of truth
 
@@ -57,7 +56,7 @@ These are not stylistic preferences. They are binding.
 | **No exclamation points** | None. Anywhere. |
 | **No emoji** | |
 | **Oxford comma** | Yes. |
-| **Headings** | Sentence case. Eyebrows are ALL CAPS mono, numbered. |
+| **Headings** | Sentence case. Eyebrows are ALL CAPS, numbered, in the nav's 14px black weight (the board has no mono face). |
 | **Numbers** | Numerals for anything measurable. "41 states," "20 years." |
 
 **Banned vocabulary:** solutions · synergy · cutting-edge · best-in-class · world-class · seamless · robust · empower · unlock · elevate · passionate about · leverage (as a verb) · AI-native · AI-first · AI-powered · ship fast · 10x · force multiplier
@@ -84,9 +83,17 @@ These are not stylistic preferences. They are binding.
 ## Design system
 
 **Adopted 2026-09-23.** Misha's Figma board is the design authority
-(`MacBook Air - 1`, node `6:2`). Until its colour and type can be read, the
-tokens carry the v3 values as provisional. `design/DESIGN-SYSTEM-NOTES.md`
-records where every value came from and what is still open.
+(`MacBook Air - 1`, node `6:2`). The board was read in full the same day
+through the Figma REST API (the MCP quota on Andrew's seat is 20 calls a
+month), and every token cites the node it came from. The board has no
+variables and no styles, so values are literals. `design/DESIGN-SYSTEM-NOTES.md`
+records the reading, every deviation, and the questions for Misha.
+
+The board in one line: `#EBEBEB` ground, white 12px cards, black Avenir
+(900 headings, 400 body), purple `#9D4DFF` accent with blue and red on the
+second and third cards, a yellow-orange-blue Z illustration set, no borders,
+no shadows, no effects. Avenir ships with Apple devices only, so Figtree is
+self-hosted as the open fallback until licensing is settled.
 
 ### Tokens only
 
@@ -121,17 +128,21 @@ Build pages from these. Do not create a second button, card, or eyebrow.
 |---|---|
 | Page column | `.container`, width from `--content-width` and `--gutter` |
 | Section frame and rhythm | `.section`, override `--pad-top` and `--pad-bottom` per section |
-| Section label | `.eyebrow`, ALL CAPS mono, numbered (`01 / TRACK RECORD`) |
-| Headings | `.h1`, `.h2` (`.h2--split` with `.h2-secondary` for a two-tone line), `.h3` |
-| Primary action | `.btn.btn-primary` with the trailing arrow span, wrapped in `<Magnetic>` in the body |
-| Secondary action | `.btn.btn-secondary` |
+| Section label | `.eyebrow`, ALL CAPS, numbered (`01 / Track record`) |
+| Section heading with illustration | `.section-head` with a `.section-art--*` block, art from `public/art/` |
+| Headings | `.h1` and `.h2` (62px display), `.h3` (48px title), `.h2--split` with `.h2-secondary` for a two-tone line |
+| Intro under a heading | `.section-intro` |
+| Primary action | `.btn.btn-primary`, the pill, with the trailing arrow span, wrapped in `<Magnetic>` in the body |
+| Secondary action | `.btn.btn-secondary`, the outlined pill |
 | Inline text action | `.text-link` |
-| Card surface | `.surface` |
-| Service entry | `ServiceRow` (`src/components/ServiceRow.tsx`) |
+| Card surface | `.surface`, white, 12px radius, no border |
+| Undecided imagery | `.placeholder`, the board's grey |
+| Service entry | `ServiceCard` (`src/components/ServiceCard.tsx`) in `.service-grid` |
 | Offer card | `.offer.surface` from `StartHere.tsx` |
-| Case study | `.case` block from `TrackRecord.tsx` |
+| Case study | `.case` block from `TrackRecord.tsx`, alternating, `images` prop for when imagery lands |
+| Numbered step | `.step` from `HowItWorks.tsx`, zigzag with a `.step-figure` circle |
 | Entrance reveal | `<Reveal>` with variants from `src/lib/motion.ts`, never ad hoc Motion props |
-| Brand | `<Wordmark>` and `<ZacMark>` from `Brand.tsx`, never the SVG or a raster of your own |
+| Brand | `<Wordmark>` and `<ZacMark>` from `Brand.tsx`, which serve the board's SVG exports, never an SVG or raster of your own |
 | Booking and email | `BOOKING_URL` and `CONTACT_EMAIL` from `src/lib/links.ts` |
 
 Motion stays reactive, not ambient, and respects `prefers-reduced-motion`.
@@ -153,14 +164,15 @@ Every page is prerendered by `scripts/prerender.mjs` into `dist/<route>/index.ht
 
 | File | v4 status |
 |---|---|
-| `Hero.tsx` | Rewritten: visibility headline, proof line carries IBM and 2010 |
-| `TrackRecord.tsx` | Case studies and team unchanged, hidden hawaii.surf card first behind `HAWAII_CARD` |
-| `ShiftComparison.tsx` | New copy and a five-row THEN/NOW table, animation kept, pull quote and 14 hours block removed |
-| `Services.tsx` | Five rows, each linking to its page, row 04 hidden while `BRAND_SYSTEM` is off, footnote paragraph below |
-| `HowItWorks.tsx` | Copy unchanged |
+| `Hero.tsx` | Visibility headline in the board's two-tone hero, Z illustration right, proof line carries IBM and 2010 |
+| `TrackRecord.tsx` | Board case study layout, alternating, grey image placeholders; team as three cards; hidden hawaii.surf card first behind `HAWAII_CARD` |
+| `ShiftComparison.tsx` | Five-row THEN/NOW table, animation kept, drawn in the accent |
+| `Services.tsx` | Board cards via `ServiceCard`, wrapping grid, accents cycling, row 04 hidden while `BRAND_SYSTEM` is off, footnote paragraph below |
+| `HowItWorks.tsx` | Board zigzag: heading, intro, illustration, signal-flow sequence, three principles as numbered steps with circles |
 | `StartHere.tsx` | Two snapshot cards, no prices, no "two numbers" line |
-| `FinalCTA.tsx` | Copy unchanged |
-| `Footer.tsx` | Copy unchanged, links made absolute so they work from offer pages |
+| `FinalCTA.tsx` | Board closing block: accent headline, mark over a white circle. Copy unchanged |
+| `Footer.tsx` | Copy unchanged, links absolute so they work from offer pages |
+| `Brand.tsx` | Serves the board's wordmark SVG and the closing mark |
 | `pages/OfferPage.tsx` | Shared offer page template: eyebrow, H1, intro, lists, steps, proof, FAQ, CTA. FAQ data also renders the FAQPage schema so the two cannot diverge |
 | `pages/offers/*.ts` | Copy for each offer page, straight from `docs/site-copy-v4.md` |
 | `lib/meta.ts`, `lib/schema.ts` | Per-route head and JSON-LD, consumed by the prerender |
@@ -169,17 +181,18 @@ Every page is prerendered by `scripts/prerender.mjs` into `dist/<route>/index.ht
 
 ## Keep these
 
-The v1 interactions are good and should survive the copy change:
+Two v1 interactions survived the move to Misha's light, flat design and should stay:
 - THEN/NOW row-draw animation in `ShiftComparison`
-- Service row ignition in `ServiceRow`
 - Signal-flow sequence in `HowItWorks`
-- Horizon arc and ember field in `FinalCTA`
+
+Retired with the redesign, files parked in `.superseded/` until Drew says to delete them: the hero forge artwork, mote and ember fields, the horizon arc, and the service row ignition (cards lift on hover instead).
 - Motion is **reactive, not ambient**. Nothing animates until a pointer or keyboard arrives. Respect `prefers-reduced-motion` everywhere.
 
 ## Stack notes
 
-React 19 + TypeScript + Vite · Motion · global CSS · Cloudflare Pages
-Styling is **global CSS, not CSS Modules**. `src/styles/layout.css` (1400 lines) carries section composition, `globals.css` the primitives, `interactive.css` and `motion.css` the behaviour.
+React 19 + TypeScript + Vite · Motion · global CSS · Cloudflare Workers static assets
+Styling is **global CSS, not CSS Modules**. `src/styles/layout.css` carries section composition, `globals.css` the primitives, `interactive.css` and `motion.css` the behaviour. Fonts: Avenir from the system where it exists, Figtree self-hosted (`@fontsource/figtree`, 400 and 900) as the fallback.
+Previews: build locally, then `npx wrangler deploy --name website-<branch>-preview`. Production `website` deploys from main only.
 Design tokens live in `design/tokens.json` and are generated into `src/styles/tokens.css` by `scripts/build-tokens.mjs`. See the Design system section below.
 There is **no test framework** in this repo. Verification is `npm run build` (runs the token gate, then `tsc -b`), the voice gate at `scripts/voice-check.sh`, and measuring the running page.
 `functions/api/chat.ts` is a stub returning 501 and is **not** wired into the deploy (`wrangler.toml` ships static assets only). Leave it alone unless asked.
@@ -198,5 +211,6 @@ Still open in v4, and left out of the build rather than filled:
 - **zacforge.com audit result** for the `/ai-visibility` proof block.
 - **LinkedIn URL** for the `sameAs` schema property.
 - **Misha's review** of Services row 04 and `/brand-system`, and how he is described there. That page also ships with the "Who does the work" paragraph omitted.
+- **Design questions for Misha**, 14 of them, in `design/DESIGN-SYSTEM-NOTES.md`. The stats row and logo band on his board are not built until he answers.
 
 If new copy is ever missing, the rule still stands: ask rather than filling the gap.

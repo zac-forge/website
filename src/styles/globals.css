@@ -1,140 +1,205 @@
 @import "./tokens.css";
 
-* { box-sizing: border-box; }
-html { background: var(--color-bg); color-scheme: dark; scroll-behavior: smooth; }
+/* Primitives. Every value is a token from design/tokens.json, which carries
+   the Figma node each one was read from. Composition lives in layout.css,
+   behaviour in interactive.css and motion.css. */
+
+* {
+  box-sizing: border-box;
+}
+html {
+  background: var(--color-bg);
+  color-scheme: light;
+  scroll-behavior: smooth;
+}
 body {
   margin: 0;
-  background:
-    radial-gradient(900px 600px at 76% 2%, rgb(var(--forge-rgb) / .08), transparent 60%),
-    var(--color-bg);
+  background: var(--color-bg);
   color: var(--color-text);
-  font-family: var(--font-body);
-  font-size: 16px;
-  line-height: 1.6;
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-body);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
-a { color: inherit; text-decoration: none; }
-img, svg { max-width: 100%; display: block; }
-button, input, textarea { font: inherit; }
-::selection { background: rgb(var(--forge-rgb) / .35); color: var(--color-white); }
+a {
+  color: inherit;
+  text-decoration: none;
+}
+img,
+svg {
+  max-width: 100%;
+  display: block;
+}
+button,
+input,
+textarea {
+  font: inherit;
+}
+p {
+  margin: 0;
+}
+::selection {
+  background: rgb(var(--accent-rgb) / 0.25);
+}
 
+/* The page column: 960 inside 160 margins on the board, fluid below it. */
 .container {
   width: min(100% - (2 * var(--gutter)), var(--content-width));
   margin-inline: auto;
 }
-/* Section rhythm.
-   Major sections sit in the 88 to 104px band. Sections still carry their own
-   --pad-top / --pad-bottom so the page alternates dense against open rather
-   than repeating one value; the hero and closing section are the exceptions
-   and set their own. The rebalancing runs in both directions: frames come in
-   where they were running to dead space, components get the room instead. */
+
+/* Section frame. The board leaves 130 to 180px above each section heading
+   and lets the content run out below, so top and bottom are asymmetric.
+   Sections override --pad-top and --pad-bottom where the rhythm calls for it. */
 .section {
   position: relative;
-  padding-top: var(--pad-top, clamp(64px, 7.2vw, 104px));
-  padding-bottom: var(--pad-bottom, clamp(64px, 7.2vw, 104px));
-  border-top: 1px solid var(--color-border);
+  padding-top: var(--pad-top, var(--space-10));
+  padding-bottom: var(--pad-bottom, var(--space-8));
 }
-/* Section labels are technical, not micro. Sized above the metadata token so
-   they read without squinting while keeping the mono, red treatment. */
+
+/* Section label. The board has no eyebrows; the copy deck numbers every
+   section, so the label is set in the nav's 14px black weight and kept quiet
+   in the muted grey. */
 .eyebrow {
-  font: 500 var(--text-label)/1.2 var(--font-mono);
-  color: var(--color-forge);
-  letter-spacing: .11em;
+  margin: 0 0 var(--space-4);
+  font-size: var(--text-small);
+  font-weight: var(--weight-black);
+  line-height: 1;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
+  color: var(--color-text-muted);
 }
-/* Tracking matches the mockup's display setting, which is tighter than the
-   handoff default and is what lets the headlines hold two lines. */
-.h1, .h2, .h3 {
-  font-family: var(--font-display);
-  letter-spacing: -.05em;
+
+/* Two display sizes on the board: 62px for the hero and every section
+   heading, 48px for card titles, step numbers, and client names. */
+.h1,
+.h2,
+.h3 {
+  margin: 0;
+  font-weight: var(--weight-black);
+  letter-spacing: -0.01em;
   text-wrap: balance;
 }
-.h1 { font-size: var(--text-hero); line-height: .94; font-weight: 600; }
-.h2 { font-size: var(--text-h2); line-height: 1.04; font-weight: 600; }
-.h3 { font-size: var(--text-h3); line-height: 1.16; font-weight: 600; }
+.h1,
+.h2 {
+  font-size: var(--text-display);
+  line-height: var(--leading-display);
+}
+.h3 {
+  font-size: var(--text-title);
+  line-height: var(--leading-title);
+}
+.h2--split .h2-secondary {
+  color: var(--color-accent);
+}
 
-.text-muted { color: var(--color-text-muted); }
-.text-forge { color: var(--color-forge); }
+.text-muted {
+  color: var(--color-text-muted);
+}
+.text-accent {
+  color: var(--color-accent);
+}
+.label {
+  font-size: var(--text-label);
+  font-weight: var(--weight-black);
+  line-height: var(--leading-body);
+}
 
-/* One primary CTA specification. The hero and closing buttons use it as-is;
-   the header only overrides its height, never its red, radius, type, arrow
-   behaviour, hover physics, or focus treatment. */
+/* Intro paragraph under a section heading. 505 wide on the board. */
+.section-intro {
+  max-width: var(--copy-width);
+  margin-top: var(--space-4);
+}
+.section-intro + .section-intro {
+  margin-top: var(--space-4);
+}
+
+/* The pill button. One component at two heights: 31 in the body, 24 in the
+   header. The drawn height stays faithful and ::before widens the pointer
+   target to 44px so it still clears the touch minimum. */
 .btn {
-  min-height: 48px;
-  padding: 0 26px;
-  font-size: var(--text-body);
+  --btn-height: var(--button-height);
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  border-radius: var(--radius-md);
+  gap: var(--space-4);
+  min-height: var(--btn-height);
+  padding: 0 var(--space-6);
+  border-radius: var(--radius-full);
   border: 1px solid transparent;
-  font-weight: 600;
+  font-size: var(--text-lead);
+  font-weight: var(--weight-black);
+  line-height: 1;
+  white-space: nowrap;
   transition:
     transform var(--duration-fast) var(--ease-out),
+    box-shadow var(--duration-fast) var(--ease-out),
     background var(--duration-fast) var(--ease-out),
-    border-color var(--duration-fast) var(--ease-out),
-    box-shadow var(--duration-fast) var(--ease-out);
+    border-color var(--duration-fast) var(--ease-out);
+}
+.btn::before {
+  content: "";
+  position: absolute;
+  inset: calc((var(--btn-height) - 44px) / 2) 0;
 }
 .btn-primary {
-  color: var(--color-on-forge);
-  background: var(--color-forge);
-  box-shadow: inset 0 1px rgb(var(--white-rgb) / .22);
+  background: var(--color-accent);
+  color: var(--color-on-accent);
 }
-.btn-primary:hover {
-  transform: translateY(-2px);
-  background: var(--color-forge-hover);
-  box-shadow: 0 8px 32px rgb(var(--forge-rgb) / .22), 0 0 0 1px rgb(var(--forge-hot-rgb) / .25);
-}
+/* No secondary button on the board. Extension: the same pill, outlined. */
 .btn-secondary {
-  color: var(--color-text);
   background: transparent;
-  border-color: var(--color-border-hover);
-}
-.btn-secondary:hover {
-  transform: translateY(-2px);
-  border-color: var(--color-border-strong);
-  background: rgb(var(--white-rgb) / .03);
-}
-.btn:focus-visible, a:focus-visible {
-  outline: 2px solid var(--color-white);
-  outline-offset: 4px;
+  color: var(--color-text);
+  border-color: var(--color-text);
 }
 
-/* The secondary hero action. Carries slightly more presence than plain body
-   text (weight plus a longer resting underline) without competing with the
-   filled primary next to it. */
+/* Inline text action. Not on the board, extended from the nav item. */
 .text-link {
   position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  font-weight: 600;
+  gap: var(--space-2);
+  min-height: 44px;
+  font-weight: var(--weight-black);
 }
 .text-link::after {
   content: "";
   position: absolute;
-  left: 0; right: 0; bottom: -5px;
-  height: 1px;
-  background: var(--color-forge);
-  transform: scaleX(.32);
+  left: 0;
+  right: 0;
+  bottom: calc(50% - 0.75em);
+  height: 2px;
+  background: var(--color-accent);
+  transform: scaleX(0.32);
   transform-origin: left;
   transition: transform var(--duration-fast) var(--ease-out);
 }
-.text-link:hover::after { transform: scaleX(1); }
 
+/* Card surface: white, 12px radius, no border, no shadow at rest. */
 .surface {
-  background: rgb(var(--white-rgb) / .025);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  box-shadow: inset 0 1px rgb(var(--white-rgb) / .045);
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+}
+
+/* Grey stand-in for imagery that is still open with Misha. The board draws
+   its own undecided art as this grey, so the working copy does the same. */
+.placeholder {
+  background: var(--color-placeholder);
+}
+
+.cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-5);
 }
 
 @media (max-width: 760px) {
   .section {
-    padding-top: clamp(52px, 11vw, 72px);
-    padding-bottom: clamp(52px, 11vw, 72px);
+    padding-top: var(--space-9);
+    padding-bottom: var(--space-7);
   }
-  .h1 { font-size: clamp(2.75rem, 12.5vw, 4rem); }
 }

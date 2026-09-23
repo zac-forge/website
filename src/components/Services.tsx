@@ -1,17 +1,16 @@
 import { motion } from "motion/react";
 import { Reveal } from "./Reveal";
-import { ServiceRow } from "./ServiceRow";
-import { Motes } from "./Motes";
+import { ServiceCard } from "./ServiceCard";
 import { fadeUp } from "../lib/motion";
 import { LIVE_OFFERS, FRACTIONAL_LEAD } from "../pages/offers";
 
 /**
- * Five rows in the copy deck, each linking to its page. Row 04 (the brand
- * system) is behind a flag, so the rows are numbered by position at render
- * time rather than carrying the deck's fixed numbers: a visible 03 followed by
- * 05 would read as a defect, and the number is structure, not information.
+ * Five entries in the copy deck, each linking to its page. Entry 04 (the
+ * brand system) is behind a flag. The board draws three cards; the grid here
+ * wraps and the three accents cycle by position, see question 6 in
+ * design/DESIGN-SYSTEM-NOTES.md.
  */
-const ROWS = [
+const CARDS = [
   ...LIVE_OFFERS.map((o) => ({
     key: o.path,
     title: o.rowTitle,
@@ -35,33 +34,21 @@ const ROWS = [
 export function Services() {
   return (
     <section id="services" className="section services">
-      {/* The black band where the shift section ends and the service rows have
-          not started yet. Right third only, and nothing here sits behind copy:
-          one orbital construction line dissolving into black, plus five points.
-          Dropped on narrow screens, where it reads as noise rather than
-          atmosphere. */}
-      <div className="atmos atmos--transition" aria-hidden="true">
-        <svg className="atmos-arc" viewBox="0 0 200 260" fill="none" preserveAspectRatio="none">
-          <ellipse cx="152" cy="130" rx="118" ry="122" />
-        </svg>
-        <Motes count={5} seed={61} />
-      </div>
-
       <div className="container">
         <Reveal>
-          <p className="eyebrow">03 / WHAT WE DO</p>
+          <p className="eyebrow">03 / What we do</p>
+          <h2 className="h2">What we do</h2>
         </Reveal>
-        <Reveal className="service-rows" stagger={0.12}>
-          {ROWS.map((row, i) => (
-            <motion.div key={row.key} variants={fadeUp}>
-              <ServiceRow
-                index={String(i + 1).padStart(2, "0")}
-                title={row.title}
-                statement={row.statement}
-                items={row.items}
-                note={row.note}
-                href={row.href}
-                linkLabel={row.linkLabel}
+        <Reveal className="service-grid" stagger={0.1}>
+          {CARDS.map((card) => (
+            <motion.div key={card.key} variants={fadeUp} style={{ display: "contents" }}>
+              <ServiceCard
+                title={card.title}
+                statement={card.statement}
+                items={card.items}
+                note={card.note}
+                href={card.href}
+                linkLabel={card.linkLabel}
               />
             </motion.div>
           ))}

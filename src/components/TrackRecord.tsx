@@ -17,16 +17,21 @@ type CaseStudy = {
   client: string;
   site?: string;
   body: string;
-  /** Set large. These are the numbers the section trades on. */
+  /** Set in the board's bold figure row. These are the numbers the section trades on. */
   metric?: string;
+  /**
+   * Imagery is still open with Misha (count, size, and ratio). When it lands
+   * it goes here; until then the image column carries the board's grey
+   * placeholder at the one full-size ratio the board shows.
+   */
+  images?: { src: string; alt: string; width: number; height: number }[];
 };
 
 /**
  * First position when live. Drew's own property, said plainly: that candor is
  * the credibility. Ships only with real before and after numbers, which are
- * still open slots in docs/site-copy-v4.md (what the assistants said for N
- * questions on DATE, what changed, how often hawaii.surf is named now), so the
- * card stays behind HAWAII_CARD with the one sentence that needs no numbers.
+ * still open slots in docs/site-copy-v4.md, so the card stays behind
+ * HAWAII_CARD with the one sentence that needs no numbers.
  */
 const HAWAII: CaseStudy = {
   client: "hawaii.surf",
@@ -91,48 +96,85 @@ const TEAM: TeamMember[] = [
   },
 ];
 
+const TEAM_ACCENTS = ["var(--color-accent)", "var(--color-accent-blue)", "var(--color-accent-red)"];
+
 export function TrackRecord() {
+  const studies = HAWAII_CARD ? [HAWAII, ...CASE_STUDIES] : CASE_STUDIES;
+
   return (
     <section id="track-record" className="section track-record">
       <div className="container">
-        <Reveal className="track-intro">
-          <p className="eyebrow">01 / TRACK RECORD</p>
-          <h2 className="h2">We have built this before.</h2>
-          <p className="track-lede">
-            ZAC is the successor to Mahalo Media Group, the practice Andrew Johnston has run for
-            over 15 years.{TIMELINE_FRAMING ? ` ${TIMELINE_FRAMING}` : ""} Same principal, same
-            standards.
-          </p>
-          {/* Confirmed by Drew on 2026-08-20 as repeatable across numerous
-              projects, which is what promotes it from a detail inside one case
-              study to the thing the section is about. Most vendors cannot say
-              this, because handover is where their revenue stops. */}
-          <p className="track-handover">
-            Every system below was handed to the people who own it. They run them without us.
-          </p>
+        <Reveal className="section-head">
+          <div className="track-intro">
+            <p className="eyebrow">01 / Track record</p>
+            <h2 className="h2">We have built this before.</h2>
+            <p className="track-lede">
+              ZAC is the successor to Mahalo Media Group, the practice Andrew Johnston has run for
+              over 15 years.{TIMELINE_FRAMING ? ` ${TIMELINE_FRAMING}` : ""} Same principal, same
+              standards.
+            </p>
+            {/* Confirmed by Drew on 2026-08-20 as repeatable across numerous
+                projects, which is what promotes it from a detail inside one case
+                study to the thing the section is about. */}
+            <p className="track-handover label">
+              Every system below was handed to the people who own it. They run them without us.
+            </p>
+          </div>
+          {/* Nodes 44:437, 44:402, 44:420, and 44:454, composed by eye from
+              the board render, since the exports trim each clip group. */}
+          <div className="section-art section-art--case" aria-hidden="true">
+            <img className="z-a" src="/art/z-case-a.svg" width={199} height={169} alt="" loading="lazy" />
+            <img className="z-b" src="/art/z-case-b.svg" width={102} height={87} alt="" loading="lazy" />
+            <img className="z-c" src="/art/z-case-c.svg" width={61} height={52} alt="" loading="lazy" />
+            <img className="z-d" src="/art/z-case-d.svg" width={61} height={52} alt="" loading="lazy" />
+          </div>
         </Reveal>
 
-        <Reveal className="case-list" stagger={0.08}>
-          {(HAWAII_CARD ? [HAWAII, ...CASE_STUDIES] : CASE_STUDIES).map((study) => (
-            <motion.article className="case" key={study.client} variants={fadeUpSmall}>
-              <h3 className="case-client">
-                {study.client}
-                {study.site ? <span className="case-site">{study.site}</span> : null}
-              </h3>
-              <p className="case-body">{study.body}</p>
-              {study.metric ? <p className="case-metric">{study.metric}</p> : null}
-            </motion.article>
+        <div className="case-list">
+          {studies.map((study) => (
+            <Reveal className="case" key={study.client}>
+              <article className="case-copy">
+                <h3 className="h3 case-client">
+                  {study.client}
+                  {study.site ? <span className="case-site">{study.site}</span> : null}
+                </h3>
+                <p className="case-body">{study.body}</p>
+                {study.metric ? <p className="case-metric">{study.metric}</p> : null}
+              </article>
+              <div className="case-media-list">
+                {study.images?.length ? (
+                  study.images.map((img) => (
+                    <img
+                      key={img.src}
+                      className="case-media"
+                      src={img.src}
+                      alt={img.alt}
+                      width={img.width}
+                      height={img.height}
+                      loading="lazy"
+                    />
+                  ))
+                ) : (
+                  <div className="case-media placeholder" aria-hidden="true" />
+                )}
+              </div>
+            </Reveal>
           ))}
-        </Reveal>
+        </div>
 
         <Reveal className="team" stagger={0.08}>
-          {TEAM.map((member) => (
-            <motion.div className="team-member" key={member.role} variants={fadeUpSmall}>
+          {TEAM.map((member, i) => (
+            <motion.div
+              className="team-member surface"
+              key={member.role}
+              variants={fadeUpSmall}
+              style={{ "--card-accent": TEAM_ACCENTS[i % TEAM_ACCENTS.length] } as React.CSSProperties}
+            >
               {member.photo ? (
                 <img className="team-photo" src={member.photo} alt="" width={72} height={72} />
               ) : null}
-              {member.name ? <p className="team-name">{member.name}</p> : null}
-              <p className="eyebrow team-role">{member.role}</p>
+              {member.name ? <p className="h3 team-name">{member.name}</p> : null}
+              <p className="team-role">{member.role}</p>
               <p className="team-bio">{member.bio}</p>
             </motion.div>
           ))}

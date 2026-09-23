@@ -1,15 +1,10 @@
 import { StrictMode } from "react";
 import { createRoot, hydrateRoot } from "react-dom/client";
 
-// Self-hosted fonts (weights per docs/IMPLEMENTATION.md in the handoff package).
-import "@fontsource/space-grotesk/500.css";
-import "@fontsource/space-grotesk/600.css";
-import "@fontsource/space-grotesk/700.css";
-import "@fontsource/inter/400.css";
-import "@fontsource/inter/500.css";
-import "@fontsource/inter/600.css";
-import "@fontsource/ibm-plex-mono/400.css";
-import "@fontsource/ibm-plex-mono/500.css";
+// Self-hosted open fallback for Avenir, the board's face, which ships with
+// Apple devices only. Two weights, matching the two the board uses.
+import "@fontsource/figtree/400.css";
+import "@fontsource/figtree/900.css";
 
 import "./styles/globals.css";
 import "./styles/motion.css";

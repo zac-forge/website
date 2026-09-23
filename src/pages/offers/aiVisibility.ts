@@ -3,7 +3,7 @@ import type { Offer } from "./types";
 export const aiVisibility: Offer = {
   path: "/ai-visibility",
   row: "01",
-  rowTitle: "AI VISIBILITY",
+  rowTitle: "AI visibility",
   rowStatement: "Get named when customers ask.",
   rowItems: [
     "Real customer questions tested across ChatGPT, Google, Perplexity, and Claude",

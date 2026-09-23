@@ -1,47 +1,22 @@
-/* Button and interaction polish. Kept separate from globals.css (the handoff
-   baseline) so what was refined later stays legible in a diff. */
+/* Hover, focus, and pointer behaviour. The board has no hover states, so
+   everything here is an extension of the drawn state: a small lift, a line
+   that grows, an arrow that nudges. Motion is reactive, never ambient. */
 
-/* Primary keeps its solid red fill. It is the highest-contrast element on a
-   near-black page and translucency would cost that, so the glass here is in
-   the edge treatment: a lit top sheen, a darker lower half, and a bloom that
-   only appears on hover. */
-.btn-primary {
-  position: relative;
-  background: linear-gradient(180deg, var(--color-forge-hover) 0%, var(--color-forge) 58%, var(--color-forge-shade) 100%);
-  box-shadow:
-    inset 0 1px 0 rgb(var(--white-rgb) / 0.34),
-    inset 0 -1px 0 rgb(var(--black-rgb) / 0.22),
-    0 1px 2px rgb(var(--black-rgb) / 0.4);
-  overflow: hidden;
-}
-/* The sheen is a separate layer so it can fade independently of the fill. */
-.btn-primary::before {
-  content: "";
-  position: absolute;
-  inset: 0 0 auto;
-  height: 50%;
-  background: linear-gradient(180deg, rgb(var(--white-rgb) / 0.2), transparent);
-  pointer-events: none;
-  transition: opacity var(--duration-base) var(--ease-out);
-}
-.btn-primary:hover {
+.btn-primary:hover,
+.btn-secondary:hover {
   transform: translateY(-2px);
-  background: linear-gradient(180deg, var(--color-forge-tint) 0%, var(--color-forge-hover) 58%, var(--color-forge) 100%);
-  box-shadow:
-    inset 0 1px 0 rgb(var(--white-rgb) / 0.45),
-    inset 0 -1px 0 rgb(var(--black-rgb) / 0.2),
-    0 10px 34px rgb(var(--forge-rgb) / 0.34),
-    0 0 0 1px rgb(var(--forge-hot-rgb) / 0.28);
+  box-shadow: var(--shadow-lift);
 }
-.btn-primary:hover::before {
-  opacity: 0.75;
+.btn-secondary:hover {
+  background: var(--color-surface);
 }
-.btn-primary:active {
+.btn:active {
   transform: translateY(0);
+  box-shadow: none;
 }
 
-/* Arrow behaviour, defined once on .btn so the header, hero and closing CTAs
-   cannot drift apart. Buttons without a trailing glyph simply do not match. */
+/* Arrow behaviour, defined once so the header, hero, and closing CTAs
+   cannot drift apart. */
 .btn > span:last-child {
   transition: transform var(--duration-base) var(--ease-out);
 }
@@ -50,32 +25,10 @@
   transform: translateX(3px);
 }
 
-/* Secondary is where the actual glass lives: it sits on the dark ground and
-   picks up whatever is behind it. */
-.btn-secondary {
-  background: rgb(var(--white-rgb) / 0.045);
-  -webkit-backdrop-filter: blur(14px) saturate(140%);
-  backdrop-filter: blur(14px) saturate(140%);
-  /* Same border scale as every other component rather than a one-off alpha. */
-  border-color: var(--color-border-hover);
-  box-shadow:
-    inset 0 1px 0 rgb(var(--white-rgb) / 0.12),
-    0 1px 2px rgb(var(--black-rgb) / 0.3);
-}
-.btn-secondary:hover {
-  transform: translateY(-2px);
-  background: rgb(var(--white-rgb) / 0.08);
-  border-color: var(--color-border-strong);
-  box-shadow:
-    inset 0 1px 0 rgb(var(--white-rgb) / 0.18),
-    0 10px 28px rgb(var(--black-rgb) / 0.45);
-}
-
 /* Magnetic wrapper. The transform lives on this element so it composes with
-   the button's own hover lift instead of fighting it. */
+   the button's own hover lift. */
 .magnetic {
-  display: inline-flex;
-  will-change: transform;
+  display: inline-block;
 }
 
 /* Nav underline that grows from the left on hover and focus. */
@@ -87,215 +40,47 @@
   position: absolute;
   left: 0;
   right: 0;
-  bottom: -6px;
-  height: 1px;
-  background: var(--color-forge);
+  bottom: var(--space-2);
+  height: 2px;
+  background: var(--color-accent);
   transform: scaleX(0);
   transform-origin: left;
-  transition: transform var(--duration-base) var(--ease-out);
+  transition: transform var(--duration-fast) var(--ease-out);
 }
 .site-nav a:not(.btn):hover::after,
 .site-nav a:not(.btn):focus-visible::after {
   transform: scaleX(1);
 }
 
-/* Service rows. The lit left edge and the ghost index are already part of the
-   static composition, so hover brightens what is there rather than
-   introducing new furniture. */
-/* The row itself stays put. Only its contents move, which reads as more
-   precise than sliding the whole block sideways. */
-.service-row {
+.text-link:hover::after,
+.text-link:focus-visible::after {
+  transform: scaleX(1);
+}
+
+/* Cards that lead somewhere lift on hover. Cards that do not stay put. */
+.service,
+.offer,
+.team-member {
   transition:
-    border-color var(--duration-base) var(--ease-out),
-    background var(--duration-base) var(--ease-out),
+    transform var(--duration-base) var(--ease-out),
     box-shadow var(--duration-base) var(--ease-out);
 }
-.service-row:hover,
-.service-row:focus-visible,
-.service-row:focus-within {
-  /* Warms toward red rather than becoming red. */
-  border-color: var(--color-border-red-soft);
-  background: linear-gradient(
-    90deg,
-    rgb(var(--forge-rgb) / 0.055),
-    rgb(var(--white-rgb) / 0.012) 42%,
-    rgb(var(--forge-rgb) / 0.018)
-  );
-  box-shadow: inset 0 1px rgb(var(--white-rgb) / 0.04);
-}
-.service-row:hover::before,
-.service-row:focus-within::before {
-  opacity: 1;
-}
-/* A faint internal light spreading about 90px from the signal edge. Clipped by
-   the row's own overflow, so it never spills into the section. Energy in this
-   section is reactive only: nothing here runs on its own. */
-.service-row::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 50%;
-  width: 240px;
-  height: 240px;
-  translate: -46% -50%;
-  border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    rgb(var(--forge-rgb) / 0.16) 0%,
-    rgb(var(--forge-rgb) / 0.05) 42%,
-    transparent 72%
-  );
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity var(--duration-base) var(--ease-out);
-}
-.service-row:hover::after,
-.service-row:focus-within::after {
-  opacity: 1;
-}
-/*
- * The row's ignition.
- *
- * The dot on the signal edge is dim at rest so the row still reads as wired.
- * On interaction it brightens and pops, then releases one particle that
- * crosses to the arrow and dies there.
- *
- * The once-per-entry behaviour is the CSS animation model rather than any
- * state tracking: an animation attached to :hover / :focus-visible starts when
- * the state is entered, runs its single iteration, and holds its end state for
- * as long as the state lasts. Leaving removes it, and returning starts it
- * again, which is exactly the required behaviour with no JavaScript.
- */
-.service-spark {
-  position: absolute;
-  left: 0;
-  top: 50%;
-  width: 5px;
-  height: 5px;
-  translate: 0 -50%;
-  border-radius: 50%;
-  background: radial-gradient(circle, var(--color-white) 0 30%, var(--color-forge-hot) 66%, var(--color-forge));
-  box-shadow: 0 0 8px 2px rgb(var(--forge-rgb) / 0.45);
-  opacity: 0.45;
-  pointer-events: none;
-  transition:
-    opacity var(--duration-base) var(--ease-out),
-    box-shadow var(--duration-base) var(--ease-out);
-}
-.service-row:hover .service-spark,
-.service-row:focus-within .service-spark {
-  opacity: 1;
-  box-shadow:
-    0 0 12px 3px rgb(var(--forge-rgb) / 0.75),
-    0 0 28px 8px rgb(var(--forge-rgb) / 0.28);
-}
-/* `scale` is the individual property, so the pop composes with the dot's own
-   `translate` centring instead of overwriting it. */
-.service-row:hover .service-spark,
-.service-row:focus-visible .service-spark {
-  animation: spark-ignite 380ms var(--ease-out) 1 both;
-}
-
-/*
- * The particle. Travel is expressed in container units so it lands just short
- * of the arrow at every width: the arrow column starts at 40.6% of the row, so
- * 37cqw stops the particle inside the gap before it. A viewport unit would
- * drift, since the row is a clamped container rather than a share of the
- * screen.
- */
-.service-particle {
-  position: absolute;
-  left: 0;
-  top: 50%;
-  width: 4px;
-  height: 4px;
-  translate: 0 -50%;
-  border-radius: 50%;
-  background: radial-gradient(circle, var(--color-white) 0 26%, var(--color-forge-hot) 62%, var(--color-forge));
-  box-shadow: 0 0 8px 2px rgb(var(--forge-rgb) / 0.55);
-  opacity: 0;
-  pointer-events: none;
-}
-/* A short trail behind the core. It is part of the particle rather than an
-   animation of its own, so it costs nothing and cannot drift out of sync. */
-.service-particle::after {
-  content: "";
-  position: absolute;
-  right: 100%;
-  top: 50%;
-  translate: 0 -50%;
-  width: 26px;
-  height: 1.5px;
-  border-radius: 1px;
-  background: linear-gradient(90deg, transparent, rgb(var(--forge-rgb) / 0.6));
-}
-/* The plain `ease-out` keyword, not the site's --ease-out. That curve covers
-   365 of the 474px in its first 200ms and then crawls, which reads as a jump
-   rather than a crossing. This one travels. */
-.service-row:hover .service-particle,
-.service-row:focus-visible .service-particle {
-  animation: service-ignite 640ms ease-out 110ms 1 both;
-}
-.service-row:hover .service-title,
-.service-row:focus-within .service-title,
-.service-row:hover .service-statement,
-.service-row:focus-within .service-statement {
-  transform: translateX(5px);
-}
-.service-row:hover .service-arrow,
-.service-row:focus-within .service-arrow {
-  transform: translateX(4px);
-}
-.service-index {
-  transition: color var(--duration-base) var(--ease-out);
-}
-.service-row:hover .service-index,
-.service-row:focus-within .service-index {
-  color: var(--color-text-ghost-2);
-}
-
-/* Faint technical grid, echoing the drafting lines in the reference mockup.
-   Pure background gradients, so it costs one paint and never animates. Sits
-   behind content via a pseudo-element rather than an extra DOM node. */
-.section--grid {
-  position: relative;
-  isolation: isolate;
-}
-.section--grid::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  background-image:
-    linear-gradient(to right, rgb(var(--white-rgb) / 0.035) 1px, transparent 1px),
-    linear-gradient(to bottom, rgb(var(--white-rgb) / 0.035) 1px, transparent 1px);
-  background-size: 96px 96px;
-  /* Fade the grid out at the edges so it reads as texture, not a table. */
-  -webkit-mask-image: radial-gradient(ellipse 72% 62% at 50% 46%, var(--color-black-pure) 20%, transparent 78%);
-  mask-image: radial-gradient(ellipse 72% 62% at 50% 46%, var(--color-black-pure) 20%, transparent 78%);
-}
-
-/* Interactive targets.
-   Everything clickable clears 44px without changing the visual rhythm: the
-   extra height is padding around the same ink. */
-.brand,
-.footer-brand a,
-.footer-email,
-.text-link {
-  min-height: 44px;
-}
-.text-link {
-  display: inline-flex;
-  align-items: center;
+.service:hover,
+.service:focus-within {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lift);
 }
 
 /* Focus is never communicated by colour alone, and the outline is applied to
    everything focusable rather than just links and buttons. */
 :focus-visible {
-  outline: 2px solid var(--color-white);
+  outline: 2px solid var(--color-accent);
   outline-offset: 3px;
   border-radius: 2px;
+}
+.btn:focus-visible {
+  outline-offset: 4px;
+  border-radius: var(--radius-full);
 }
 
 @media (prefers-reduced-motion: reduce) {

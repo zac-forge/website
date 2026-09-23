@@ -1,6 +1,7 @@
 import { Wordmark } from "./Brand";
 import { CONTACT_EMAIL } from "../lib/links";
 
+/** No footer on the board. A hairline and three quiet columns. Copy unchanged. */
 export function Footer() {
   const year = new Date().getFullYear();
 
@@ -8,7 +9,7 @@ export function Footer() {
     <footer className="site-footer">
       <div className="container footer-inner">
         <div className="footer-brand">
-          <a href="/#top" aria-label="ZACFORGE, back to top">
+          <a href="/#top" aria-label="zacforge, back to top">
             <Wordmark className="footer-wordmark" />
           </a>
           <a className="footer-email" href={`mailto:${CONTACT_EMAIL}`}>

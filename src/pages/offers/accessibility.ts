@@ -3,7 +3,7 @@ import type { Offer } from "./types";
 export const accessibility: Offer = {
   path: "/accessibility",
   row: "03",
-  rowTitle: "ACCESSIBILITY AND PERFORMANCE",
+  rowTitle: "Accessibility and performance",
   rowStatement: "Find what locks people out and slows you down.",
   rowItems: [
     "Manual keyboard and screen reader testing",

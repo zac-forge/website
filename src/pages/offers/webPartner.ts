@@ -3,7 +3,7 @@ import type { Offer } from "./types";
 export const webPartner: Offer = {
   path: "/web-partner",
   row: "02",
-  rowTitle: "WEB PARTNER",
+  rowTitle: "Web partner",
   rowStatement: "One senior team accountable for your site.",
   rowItems: [
     "Fixes and change requests",

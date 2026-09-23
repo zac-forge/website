@@ -17,22 +17,22 @@ const SNAPSHOTS = [
 ];
 
 /**
- * Deliberately the calmest section on the page. No Motes, no atmos layer, no
- * arc. Two equal cards, per the deck's note for Misha.
+ * Deliberately the calmest section on the page. Two equal cards on the
+ * board's card surface, per the deck's note for Misha.
  */
 export function StartHere() {
   return (
     <section id="start-here" className="section start-here">
       <div className="container">
         <Reveal className="start-intro">
-          <p className="eyebrow">05 / START HERE</p>
+          <p className="eyebrow">05 / Start here</p>
           <h2 className="h2">Two ways in. Both small.</h2>
         </Reveal>
 
         <Reveal className="offer-grid" stagger={0.1}>
           {SNAPSHOTS.map((offer) => (
             <motion.article className="offer surface" key={offer.name} variants={fadeUpSmall}>
-              <h3 className="offer-name">{offer.name}</h3>
+              <h3 className="h3 offer-name">{offer.name}</h3>
               <p className="offer-body">{offer.body}</p>
             </motion.article>
           ))}
@@ -45,7 +45,7 @@ export function StartHere() {
             <Magnetic>
               <a className="btn btn-primary" href={BOOKING_URL}>
                 <span>Book a call</span>
-                <span aria-hidden="true"> →</span>
+                <span aria-hidden="true">→</span>
               </a>
             </Magnetic>
           </div>

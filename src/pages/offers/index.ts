@@ -17,7 +17,7 @@ export const LIVE_OFFERS: Offer[] = ALL_OFFERS.filter((o) => !o.flagged || BRAND
  */
 export const FRACTIONAL_LEAD = {
   row: "05",
-  rowTitle: "FRACTIONAL DIGITAL LEAD",
+  rowTitle: "Fractional digital lead",
   rowStatement: "Someone who owns digital, a few hours a week.",
   rowItems: ["Roadmap", "Vendors and tools", "Analytics", "Direction for staff or volunteers", "Budget decisions"],
   serviceName: "Fractional Digital Lead",

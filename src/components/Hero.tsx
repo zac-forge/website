@@ -1,5 +1,4 @@
 import { motion, useReducedMotion } from "motion/react";
-import { HeroArt } from "./HeroArt";
 import { Magnetic } from "./Magnetic";
 import { BOOKING_URL } from "../lib/links";
 import { EASE, staggerContainer } from "../lib/motion";
@@ -12,10 +11,10 @@ const item = {
 };
 
 /**
- * v4 hero, per docs/site-copy-v4.md. The headline does not contain "AI": the
- * offer name carries the word one section down. The hero sells the fear of
- * being left out of the answer, and the proof line carries the durability
- * claim that used to be the headline.
+ * v4 hero copy in the board's hero layout: a two-tone headline with the
+ * second clause in the accent, body copy, the pill button, and the Z
+ * illustration (node 4:89) to the right. The headline does not contain
+ * "AI": the offer name carries the word one section down.
  */
 export function Hero() {
   const shouldReduceMotion = useReducedMotion();
@@ -30,14 +29,13 @@ export function Hero() {
           animate="show"
         >
           <motion.p className="eyebrow" variants={item}>
-            <span className="eyebrow-slash">/</span> ZAC <span className="eyebrow-slash">/</span>{" "}
-            SENIOR WEB PARTNER
+            / ZAC / Senior web partner
           </motion.p>
           <motion.h1 className="h1" variants={item}>
             When a customer asks for a recommendation,{" "}
-            <span className="text-forge">is your name in the answer?</span>
+            <span className="text-accent">is your name in the answer?</span>
           </motion.h1>
-          <motion.p className="hero-body text-muted" variants={item}>
+          <motion.p className="hero-body" variants={item}>
             More of your customers now ask ChatGPT, Google, or Perplexity who to call. The answer
             names two or three businesses. We find out whether you are one of them, fix what keeps
             you out, and stay on as the senior team behind your website.
@@ -46,12 +44,12 @@ export function Hero() {
             <Magnetic>
               <a className="btn btn-primary" href={BOOKING_URL}>
                 <span>Book a call</span>
-                <span aria-hidden="true"> →</span>
+                <span aria-hidden="true">→</span>
               </a>
             </Magnetic>
             <a className="text-link" href="#services">
               <span>See what we check</span>
-              <span aria-hidden="true"> ↓</span>
+              <span aria-hidden="true">↓</span>
             </a>
           </motion.div>
           <motion.p className="proof-line" variants={item}>
@@ -59,11 +57,18 @@ export function Hero() {
           </motion.p>
         </motion.div>
 
-        {/* Deliberately not wrapped in a Motion element. Its entrance is a CSS
-            animation on the image itself, because any transform or opacity on
-            a wrapper would create a stacking context and break the screen
-            blend that drops the artwork's black plate out. */}
-        <HeroArt />
+        {/* Entrance is a CSS animation on the image itself, in motion.css. */}
+        <div className="hero-visual" aria-hidden="true">
+          <img
+            className="hero-art"
+            src="/art/z-hero.svg"
+            width={358}
+            height={311}
+            alt=""
+            decoding="async"
+            fetchPriority="high"
+          />
+        </div>
       </div>
     </section>
   );

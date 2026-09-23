@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Wordmark, ZacMark } from "./Brand";
+import { Wordmark } from "./Brand";
 import { BOOKING_URL } from "../lib/links";
 
 // Absolute hashes so the same header works from the offer pages, where a
@@ -11,14 +11,18 @@ const NAV_LINKS = [
   { href: "/#start-here", label: "Start here" },
 ];
 
+/**
+ * The board's header: wordmark at a 48px inset, nav items in 14px black
+ * weight straight after it, and the pill button at the far right. It sits on
+ * the page ground with no bar of its own; a hairline appears once the page
+ * has moved so the sticky header reads as a surface.
+ */
 export function Header() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  // The bar is transparent over the hero and only materialises once the page
-  // has moved, so the hero reads as full bleed on arrival.
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
+    const onScroll = () => setScrolled(window.scrollY > 8);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -26,10 +30,9 @@ export function Header() {
 
   return (
     <header className="site-header" data-scrolled={scrolled}>
-      <div className="container header-inner">
-        <a href="/#top" className="brand" onClick={() => setOpen(false)} aria-label="ZACFORGE, home">
+      <div className="header-inner">
+        <a href="/#top" className="brand" onClick={() => setOpen(false)} aria-label="zacforge, home">
           <Wordmark className="brand-wordmark" />
-          <ZacMark className="brand-mark-only" />
         </a>
 
         <nav className="site-nav" aria-label="Primary" data-open={open}>
@@ -40,7 +43,7 @@ export function Header() {
           ))}
           <a className="btn btn-primary nav-cta" href={BOOKING_URL}>
             <span>Book a call</span>
-            <span aria-hidden="true"> →</span>
+            <span aria-hidden="true">→</span>
           </a>
         </nav>
 
