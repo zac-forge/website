@@ -11,6 +11,12 @@ const item = {
   show: { opacity: 1, y: 0, transition: { duration: 0.75, ease: EASE } },
 };
 
+/**
+ * v4 hero, per docs/site-copy-v4.md. The headline does not contain "AI": the
+ * offer name carries the word one section down. The hero sells the fear of
+ * being left out of the answer, and the proof line carries the durability
+ * claim that used to be the headline.
+ */
 export function Hero() {
   const shouldReduceMotion = useReducedMotion();
 
@@ -25,26 +31,16 @@ export function Hero() {
         >
           <motion.p className="eyebrow" variants={item}>
             <span className="eyebrow-slash">/</span> ZAC <span className="eyebrow-slash">/</span>{" "}
-            TECHNOLOGY STUDIO
+            SENIOR WEB PARTNER
           </motion.p>
           <motion.h1 className="h1" variants={item}>
-            The systems we built in 2010 are{" "}
-            <span className="text-forge">still running.</span>
+            When a customer asks for a recommendation,{" "}
+            <span className="text-forge">is your name in the answer?</span>
           </motion.h1>
           <motion.p className="hero-body text-muted" variants={item}>
-            Most custom software does not survive the people who built it. The team moves on, the
-            documentation was never written, and in a few years someone is paying to rebuild it.
-          </motion.p>
-          {/* The promise, set apart from the paragraph. The headline is the
-              proof, so these are what the buyer actually gets rather than a
-              second recital of the case studies. */}
-          <motion.ul className="hero-examples" variants={item}>
-            <li>You own the code outright.</li>
-            <li>Your team runs it without us.</li>
-            <li>It is still working years after handover.</li>
-          </motion.ul>
-          <motion.p className="hero-body text-muted" variants={item}>
-            Most software is disposable. <span className="text-forge">Ours has not been.</span>
+            More of your customers now ask ChatGPT, Google, or Perplexity who to call. The answer
+            names two or three businesses. We find out whether you are one of them, fix what keeps
+            you out, and stay on as the senior team behind your website.
           </motion.p>
           <motion.div className="cta-row" variants={item}>
             <Magnetic>
@@ -53,13 +49,13 @@ export function Hero() {
                 <span aria-hidden="true"> →</span>
               </a>
             </Magnetic>
-            <a className="text-link" href="#track-record">
-              <span>See what we have built</span>
+            <a className="text-link" href="#services">
+              <span>See what we check</span>
               <span aria-hidden="true"> ↓</span>
             </a>
           </motion.div>
           <motion.p className="proof-line" variants={item}>
-            15 years. Over 100 engagements. Live since 2010 and still in production.
+            19 years at IBM, including IBM.com. Systems we built in 2010 are still running.
           </motion.p>
         </motion.div>
 

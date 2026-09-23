@@ -3,45 +3,32 @@ import { Reveal } from "./Reveal";
 import { ServiceRow } from "./ServiceRow";
 import { Motes } from "./Motes";
 import { fadeUp } from "../lib/motion";
+import { LIVE_OFFERS, FRACTIONAL_LEAD } from "../pages/offers";
 
-const SERVICES = [
+/**
+ * Five rows in the copy deck, each linking to its page. Row 04 (the brand
+ * system) is behind a flag, so the rows are numbered by position at render
+ * time rather than carrying the deck's fixed numbers: a visible 03 followed by
+ * 05 would read as a defect, and the number is structure, not information.
+ */
+const ROWS = [
+  ...LIVE_OFFERS.map((o) => ({
+    key: o.path,
+    title: o.rowTitle,
+    statement: o.rowStatement,
+    items: o.rowItems,
+    note: o.rowNote,
+    href: o.path,
+    linkLabel: o.rowLink,
+  })),
   {
-    index: "01",
-    title: "ADVISE",
-    statement: "Find out what is worth building.",
-    items: [
-      "Technology strategy",
-      "What to build and in what order",
-      "Second opinions on decisions and vendors",
-      "Workflow analysis",
-      "Architecture and planning",
-    ],
-  },
-  {
-    index: "02",
-    title: "BUILD",
-    statement: "Turn the right ideas into working systems.",
-    items: [
-      "Custom software",
-      "Web applications",
-      "Internal tools",
-      "Workflow automation",
-      "Integrations",
-      "High-performance websites",
-      "Prototypes",
-    ],
-  },
-  {
-    index: "03",
-    title: "PARTNER",
-    statement: "Keep senior capability on hand.",
-    items: [
-      "Fractional technology leadership",
-      "Continuous product development",
-      "Standing senior review",
-      "Specialist teams assembled to the work",
-      "Fixing what someone else built",
-    ],
+    key: "fractional-digital-lead",
+    title: FRACTIONAL_LEAD.rowTitle,
+    statement: FRACTIONAL_LEAD.rowStatement,
+    items: FRACTIONAL_LEAD.rowItems,
+    note: undefined,
+    href: undefined,
+    linkLabel: undefined,
   },
 ];
 
@@ -65,11 +52,25 @@ export function Services() {
           <p className="eyebrow">03 / WHAT WE DO</p>
         </Reveal>
         <Reveal className="service-rows" stagger={0.12}>
-          {SERVICES.map((service) => (
-            <motion.div key={service.index} variants={fadeUp}>
-              <ServiceRow {...service} />
+          {ROWS.map((row, i) => (
+            <motion.div key={row.key} variants={fadeUp}>
+              <ServiceRow
+                index={String(i + 1).padStart(2, "0")}
+                title={row.title}
+                statement={row.statement}
+                items={row.items}
+                note={row.note}
+                href={row.href}
+                linkLabel={row.linkLabel}
+              />
             </motion.div>
           ))}
+        </Reveal>
+        <Reveal>
+          <p className="services-note">
+            We also move organizations off platforms they have outgrown, and repair sites and apps
+            built quickly with AI tools. <a href="/#contact">Ask us about it.</a>
+          </p>
         </Reveal>
       </div>
     </section>

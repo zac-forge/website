@@ -1,55 +1,49 @@
-# ZAC
+# ZAC Forge
 
-> A senior technology studio. ZAC builds systems that outlive the engagement.
-> Systems built in 2010 are still in production, run by the teams they were
-> handed to. ZAC advises on what is worth building, builds the systems that
-> follow, and partners as ongoing senior capability, without agency overhead.
+> A senior web partner. ZAC finds out whether AI assistants recommend a
+> business, fixes what keeps it out, and stays on as the senior team behind
+> its website.
 
 ZAC is the successor to Mahalo Media Group, a practice run by founder Andrew
-Johnston for over 15 years across more than 100 engagements. Based in Ventura,
-California. The team is small and senior: one point of contact, with
-development, design, and strategy behind it, plus specialists brought in when a
-project calls for more depth.
+Johnston for over 15 years, after 19 years at IBM including IBM.com. Based in
+Ventura County, California. Works remotely with clients anywhere in the US.
 
-Every engagement ends with the client owning the code outright and their own
-team able to run the system. That is the practice, not an exception: clients
-have been migrated off proprietary software onto open source and handed the
-result to run themselves.
+## Services
+
+- [AI Visibility](https://zacforge.com/ai-visibility): Tests real customer
+  questions across ChatGPT, Google AI Overviews and AI Mode, Perplexity, and
+  Claude. Fixes crawler access, rendering, structured data, answer content,
+  and third-party mentions. Tracks how often the business is named.
+- [Web Partner](https://zacforge.com/web-partner): Ongoing senior care for a
+  website: fixes, change requests, performance, security, accessibility, a
+  monthly improvement, and visibility tracking. Not a maintenance plan.
+- [Accessibility and Performance](https://zacforge.com/accessibility): Manual
+  testing against WCAG 2.2 AA, performance review, fixes made in the code, and
+  an accessibility statement. No overlays.
+- Fractional Digital Lead: a few hours a week owning an organization's
+  digital roadmap, vendors, and analytics.
+
+## Start here
+
+- AI Visibility Snapshot: 20 real customer questions, three competitors,
+  a crawler access check, and the top five fixes. About a week.
+- Accessibility and Performance Snapshot: manual testing of key pages and
+  the top issues ranked by risk. About a week.
 
 ## Track record
 
 - Heritage Global Partners: all web properties including hgpauction.com, with
-  real-time auction creation from the sale floor on connected tablets. Live since
-  2010, with over $1 billion in assets sold through the platform.
-- Legacy Studios and Teddy Bear Portraits: end-to-end point of sale and same-day
-  photo delivery across 41 states, migrated from proprietary software to open
-  source and handed to the client's own team. Built 2016 to 2019, still running.
-- US Naval Academy and US Marines: branded cadet booking and photo portals, live
+  real-time auction creation from the sale floor. Live since 2010, with over
+  $1 billion in assets sold through the platform.
+- Legacy Studios and Teddy Bear Portraits: point of sale and same-day photo
+  delivery across 41 states. Built 2016 to 2019, still running.
+- US Naval Academy and US Marines: cadet booking and photo portals, live
   since 2017.
 - Legal Access Alameda: web properties for a statewide group of attorneys
   providing disaster response and free legal assistance.
 
-## Services
-
-- [Advise](https://zacforge.com/#services): Technology strategy, what to build and
-  in what order, second opinions on decisions and vendors, workflow analysis,
-  architecture and planning.
-- [Build](https://zacforge.com/#services): Custom software, web applications,
-  internal tools, workflow automation, integrations, high-performance websites,
-  prototypes.
-- [Partner](https://zacforge.com/#services): Fractional technology leadership,
-  continuous product development, standing senior review, specialist teams,
-  fixing what someone else built.
-
-## Start here
-
-- Backlog Review: 2 to 3 weeks, from $6,500. What has been shelved, what is now
-  affordable, and what to do first.
-- Two-Week Proof: 2 weeks, $5,000. The smallest real version of the thing, built
-  for a fixed price.
-
 ## Contact
 
-- [Book a call](https://cal.com/zacforge/20-min-chat): A 20 minute conversation.
-- [Email](mailto:hello@zacforge.com): hello@zacforge.com
+- [Book a call](https://cal.com/zacforge/20-min-chat)
+- [Email](mailto:hello@zacforge.com)
 - [Website](https://zacforge.com/)

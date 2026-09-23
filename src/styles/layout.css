@@ -683,7 +683,7 @@ a:focus-visible .lockup-bloom {
   z-index: 1;
 }
 
-/* ------------------------------------------------------------- 01 / Shift */
+/* ------------------------------------------------------ 02 / What changed */
 /* An open section: it carries the argument, so it gets the breathing room. */
 .shift {
   --pad-top: clamp(66px, 7.2vw, 104px);
@@ -779,57 +779,6 @@ a:focus-visible .lockup-bloom {
   box-shadow:
     0 0 10px 2px rgb(var(--forge-rgb) / 0.75),
     0 0 20px 5px rgb(var(--forge-rgb) / 0.3);
-}
-
-.pull-quote {
-  position: relative;
-  overflow: hidden;
-  margin-top: var(--space-7);
-  padding: clamp(30px, 3.2vw, 40px);
-  border: 1px solid var(--color-border-red);
-  border-radius: var(--radius-md);
-  background: linear-gradient(
-    115deg,
-    rgb(var(--forge-rgb) / 0.07),
-    rgb(var(--forge-rgb) / 0.015) 46%,
-    transparent
-  );
-  box-shadow:
-    0 0 48px rgb(var(--forge-rgb) / 0.1),
-    inset 0 0 36px rgb(var(--forge-rgb) / 0.05);
-}
-/* Dot matrix bleeding in from the right edge, matching the mockup's panel. */
-.pull-quote::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background-image: radial-gradient(rgb(var(--forge-rgb) / 0.55) 1px, transparent 1px);
-  background-size: 7px 7px;
-  opacity: 0.45;
-  -webkit-mask-image: linear-gradient(90deg, transparent 56%, var(--color-black-pure) 100%);
-  mask-image: linear-gradient(90deg, transparent 56%, var(--color-black-pure) 100%);
-}
-.pull-quote p {
-  position: relative;
-  margin: 0;
-  font-size: clamp(1.5rem, 2.36vw, 1.76rem);
-  line-height: 1.22;
-}
-/* The 14 hour proof, sitting under the quote as evidence for it. Must be
-   subordinate to the quote, so it needs to out-specify `.pull-quote p` above:
-   that selector is (0,1,1) and set the quote's 1.76rem on it, which is how
-   this first shipped at quote size and swamped the line it was supporting. */
-.pull-quote p.pull-quote-proof {
-  margin: var(--space-5) 0 0;
-  padding-top: var(--space-5);
-  border-top: 1px solid var(--color-border-red-soft);
-  font-family: var(--font-mono);
-  font-size: var(--text-compact);
-  font-weight: 500;
-  line-height: 1.55;
-  letter-spacing: 0.01em;
-  color: var(--color-text-body);
 }
 
 @media (max-width: 900px) {
@@ -1318,31 +1267,11 @@ a:focus-visible .lockup-bloom {
   letter-spacing: -0.03em;
   line-height: 1.15;
 }
-/* Duration and price on one mono line. Red, because it is the fact the section
-   exists to deliver. */
-.offer-terms {
-  margin: 0;
-  font: 500 var(--text-label) / 1.3 var(--font-mono);
-  letter-spacing: 0.05em;
-  color: var(--color-forge);
-}
 .offer-body {
   margin: var(--space-2) 0 0;
   font-size: var(--text-compact);
   line-height: 1.65;
   color: var(--color-text-body);
-}
-/* Pinned to the bottom edge of the card so it reads as a footnote to the
-   offer rather than as another paragraph. Only Backlog Review carries one, so
-   the two cards match in height but not in where their last line falls. That
-   is intentional: equal weight is the requirement, not identical ragging. */
-.offer-note {
-  margin: auto 0 0;
-  padding-top: var(--space-4);
-  border-top: 1px solid var(--color-border);
-  font-size: var(--text-meta);
-  line-height: 1.5;
-  color: var(--color-text-muted);
 }
 .start-close {
   margin-top: clamp(32px, 3.6vw, 48px);
@@ -1362,9 +1291,6 @@ a:focus-visible .lockup-bloom {
 @media (max-width: 820px) {
   .offer-grid {
     grid-template-columns: minmax(0, 1fr);
-  }
-  .offer-note {
-    margin-top: var(--space-4);
   }
 }
 
@@ -1588,4 +1514,167 @@ a:focus-visible .lockup-bloom {
 }
 .footer-nav a:hover {
   color: var(--color-text);
+}
+
+/* Services: qualifying line and page link under the statement, and the
+   footnote paragraph below the rows. */
+.service-note {
+  margin: var(--space-3) 0 0;
+  font-size: var(--text-compact);
+  line-height: 1.5;
+  color: var(--color-text-muted);
+}
+.service-link {
+  margin-top: var(--space-4);
+  font-size: var(--text-compact);
+}
+.services-note {
+  margin: var(--space-7) 0 0;
+  max-width: var(--copy-width);
+  font-size: var(--text-body);
+  line-height: 1.65;
+  color: var(--color-text-muted);
+}
+.services-note a {
+  color: var(--color-text);
+  text-decoration: underline;
+  text-decoration-color: var(--color-forge);
+  text-underline-offset: 4px;
+}
+
+/* ------------------------------------------------------------ Offer pages */
+/* Shared template for /ai-visibility, /web-partner, /accessibility, and
+   /brand-system. Plain reading layout on the copy column, no atmosphere. Sizes
+   are tokens throughout, see the Design system section of CLAUDE.md. */
+.offer-hero {
+  padding-top: calc(var(--space-11) + var(--space-5));
+  padding-bottom: var(--space-8);
+}
+.offer-title {
+  font-size: var(--text-h2);
+  margin: var(--space-4) 0 var(--space-6);
+  max-width: 20ch;
+}
+.offer-intro {
+  margin: 0;
+  max-width: var(--copy-width);
+  font-size: var(--text-lead);
+  line-height: 1.7;
+  color: var(--color-text-body);
+}
+.offer-intro + .offer-intro {
+  margin-top: var(--space-5);
+}
+.offer-block {
+  --pad-top: var(--space-8);
+  --pad-bottom: var(--space-8);
+}
+.offer-block .h3 {
+  margin: 0 0 var(--space-5);
+}
+.offer-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  max-width: var(--copy-width);
+  display: grid;
+  gap: var(--space-3);
+}
+.offer-list li {
+  position: relative;
+  padding-left: var(--space-5);
+  line-height: 1.6;
+  color: var(--color-text-body);
+}
+.offer-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.75em;
+  width: var(--space-2);
+  height: 1px;
+  background: var(--color-forge);
+}
+.offer-steps {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+  max-width: var(--copy-width);
+  display: grid;
+  gap: var(--space-5);
+}
+.offer-steps li {
+  display: grid;
+  grid-template-columns: var(--space-7) minmax(0, 1fr);
+  gap: var(--space-3);
+}
+.offer-steps li::before {
+  counter-increment: step;
+  content: counter(step, decimal-leading-zero);
+  padding-top: var(--space-1);
+  font: 500 var(--text-label) / 1.4 var(--font-mono);
+  letter-spacing: 0.08em;
+  color: var(--color-forge);
+}
+.offer-step-title,
+.offer-titled-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+.offer-step-body,
+.offer-titled-body,
+.offer-paragraph,
+.offer-faq dd {
+  margin: var(--space-2) 0 0;
+  line-height: 1.65;
+  color: var(--color-text-body);
+}
+.offer-titled {
+  max-width: var(--copy-width);
+  display: grid;
+  gap: var(--space-5);
+}
+.offer-paragraph {
+  max-width: var(--copy-width);
+  font-size: var(--text-lead);
+}
+.offer-paragraph + .offer-paragraph {
+  margin-top: var(--space-5);
+}
+.offer-proof-line {
+  margin: 0;
+  max-width: var(--copy-width);
+  padding-left: var(--space-5);
+  border-left: 2px solid var(--color-forge);
+  font-size: var(--text-lead);
+  line-height: 1.6;
+}
+.offer-proof-line + .offer-proof-line {
+  margin-top: var(--space-4);
+}
+.offer-faq dl {
+  margin: 0;
+  max-width: var(--copy-width);
+  display: grid;
+  gap: var(--space-5);
+}
+.offer-faq dt {
+  font-weight: 600;
+  font-size: var(--text-lead);
+  line-height: 1.4;
+}
+.offer-footnote {
+  margin: var(--space-6) 0 0;
+  max-width: var(--copy-width);
+  font: 400 var(--text-meta) / 1.5 var(--font-mono);
+  color: var(--color-text-faint);
+}
+.offer-cta {
+  --pad-top: var(--space-8);
+  --pad-bottom: var(--space-10);
 }

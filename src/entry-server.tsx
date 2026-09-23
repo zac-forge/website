@@ -20,3 +20,8 @@ export function render(url = "/") {
     </StrictMode>,
   );
 }
+
+/** The route list and per-route head data the prerender iterates over. */
+export { PAGES, canonical } from "./lib/meta";
+export { schemaFor } from "./lib/schema";
+export { SITE_NAME, OG_IMAGE } from "./lib/site";

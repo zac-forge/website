@@ -8,7 +8,7 @@ export function Footer() {
     <footer className="site-footer">
       <div className="container footer-inner">
         <div className="footer-brand">
-          <a href="#top" aria-label="ZACFORGE, back to top">
+          <a href="/#top" aria-label="ZACFORGE, back to top">
             <Wordmark className="footer-wordmark" />
           </a>
           <a className="footer-email" href={`mailto:${CONTACT_EMAIL}`}>
@@ -21,9 +21,9 @@ export function Footer() {
         </p>
 
         <nav className="footer-nav" aria-label="Footer">
-          <a href="#track-record">Track record</a>
-          <a href="#services">What we do</a>
-          <a href="#approach">How we work</a>
+          <a href="/#track-record">Track record</a>
+          <a href="/#services">What we do</a>
+          <a href="/#approach">How we work</a>
         </nav>
       </div>
     </footer>

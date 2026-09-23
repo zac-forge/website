@@ -2,10 +2,13 @@ import { useEffect, useState } from "react";
 import { Wordmark, ZacMark } from "./Brand";
 import { BOOKING_URL } from "../lib/links";
 
+// Absolute hashes so the same header works from the offer pages, where a
+// bare "#services" would point at nothing.
 const NAV_LINKS = [
-  { href: "#track-record", label: "Track record" },
-  { href: "#services", label: "What we do" },
-  { href: "#approach", label: "How we work" },
+  { href: "/#services", label: "What we do" },
+  { href: "/#track-record", label: "Track record" },
+  { href: "/#approach", label: "How we work" },
+  { href: "/#start-here", label: "Start here" },
 ];
 
 export function Header() {
@@ -24,7 +27,7 @@ export function Header() {
   return (
     <header className="site-header" data-scrolled={scrolled}>
       <div className="container header-inner">
-        <a href="#top" className="brand" onClick={() => setOpen(false)} aria-label="ZACFORGE, home">
+        <a href="/#top" className="brand" onClick={() => setOpen(false)} aria-label="ZACFORGE, home">
           <Wordmark className="brand-wordmark" />
           <ZacMark className="brand-mark-only" />
         </a>

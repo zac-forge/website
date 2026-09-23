@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 import { Reveal } from "./Reveal";
 import { fadeUpSmall } from "../lib/motion";
+import { HAWAII_CARD } from "../lib/flags";
 
 /**
  * The IBM and Mahalo Media Group timeline framing. Held open as do-not-guess
@@ -18,6 +19,19 @@ type CaseStudy = {
   body: string;
   /** Set large. These are the numbers the section trades on. */
   metric?: string;
+};
+
+/**
+ * First position when live. Drew's own property, said plainly: that candor is
+ * the credibility. Ships only with real before and after numbers, which are
+ * still open slots in docs/site-copy-v4.md (what the assistants said for N
+ * questions on DATE, what changed, how often hawaii.surf is named now), so the
+ * card stays behind HAWAII_CARD with the one sentence that needs no numbers.
+ */
+const HAWAII: CaseStudy = {
+  client: "hawaii.surf",
+  site: "hawaii.surf",
+  body: "Our own editorial publication on Hawaiian surf history, and our test bed for AI visibility.",
 };
 
 const CASE_STUDIES: CaseStudy[] = [
@@ -87,7 +101,7 @@ export function TrackRecord() {
           <p className="track-lede">
             ZAC is the successor to Mahalo Media Group, the practice Andrew Johnston has run for
             over 15 years.{TIMELINE_FRAMING ? ` ${TIMELINE_FRAMING}` : ""} Same principal, same
-            standards, new economics.
+            standards.
           </p>
           {/* Confirmed by Drew on 2026-08-20 as repeatable across numerous
               projects, which is what promotes it from a detail inside one case
@@ -99,7 +113,7 @@ export function TrackRecord() {
         </Reveal>
 
         <Reveal className="case-list" stagger={0.08}>
-          {CASE_STUDIES.map((study) => (
+          {(HAWAII_CARD ? [HAWAII, ...CASE_STUDIES] : CASE_STUDIES).map((study) => (
             <motion.article className="case" key={study.client} variants={fadeUpSmall}>
               <h3 className="case-client">
                 {study.client}

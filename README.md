@@ -2,12 +2,13 @@
 
 The one-page marketing site for ZAC (`zacforge.com`), a senior technology studio. The site is
 live. Copy is governed by `CLAUDE.md` at the repo root and the copy deck in
-`docs/site-copy-v3.md`, and the voice rules there are binding.
+`docs/site-copy-v4.md`, and the voice rules there are binding.
 
 ## Stack
 
 - React + TypeScript, built with Vite.
-- React Router, so more pages can be added later without a restructure.
+- React Router. The home page plus one offer page per live offer (`src/pages/offers/`),
+  all prerendered to static HTML with their own head and JSON-LD by `scripts/prerender.mjs`.
 - Motion (the current package name for what used to be called Framer Motion) for animation,
   used throughout. Shared easings and variants live in `src/lib/motion.ts`.
 - Global CSS, not CSS Modules. `src/styles/layout.css` carries section composition,
@@ -18,8 +19,8 @@ live. Copy is governed by `CLAUDE.md` at the repo root and the copy deck in
 
 ## Structure
 
-- `src/`: the app. `App.tsx` sets up routing, `pages/Home.tsx` composes the one real page,
-  `components/` holds the sections in page order.
+- `src/`: the app. `App.tsx` sets up routing, `pages/Home.tsx` composes the home page,
+  `pages/OfferPage.tsx` is the shared offer template, `components/` holds the sections in page order.
 - `design/tokens.json`: the design tokens, with provenance for every value. `npm run tokens`
   generates `src/styles/tokens.css` from it, and the build fails if the two disagree or if any
   raw colour appears outside the generated file (`scripts/lint-tokens.mjs`). Never hardcode a

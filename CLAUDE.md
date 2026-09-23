@@ -6,7 +6,7 @@ Repo memory for the ZAC marketing site. Read this before touching copy.
 
 A senior technology studio. Successor practice to Mahalo Media Group, which founder Andrew Johnston ran for 15+ years across 100+ engagements. Not a startup. An established practice operating under new economics.
 
-**Positioning:** experience and proof lead. The economics of building changed, so shelved projects are affordable again.
+**Positioning (v4, adopted 2026-09-23):** AI visibility leads, Web Partner is the retainer. The hero sells the fear of not being in the answer when a customer asks an assistant for a recommendation. Experience and durability are the proof, not the pitch.
 
 ## This site is a working copy
 
@@ -22,19 +22,19 @@ Positioning work should be handed to Misha as **input** to the redesign rather t
 
 ## The copy source of truth
 
-`docs/site-copy-v3.md` carries the complete section-by-section copy, structural changes, and design notes.
+`docs/site-copy-v4.md` carries the complete section-by-section copy, the four offer pages, metadata, schema, and the `llms.txt` replacement. It supersedes v3, which stays in `docs/` for history only.
 
 Do not invent marketing copy. If something is missing, ask rather than filling the gap.
 
 ---
 
-## Positioning: durability, not price
+## Positioning: visibility leads, durability proves
 
-**Adopted 2026-08-20.** The site leads on the one claim competitors cannot copy: systems built in 2010 are still in production, and their owners run them without ZAC. See `docs/positioning-durability.md` and `.agents/product-marketing.md`.
+**Adopted 2026-09-23 (v4).** The site sells the bridge-income offer set: AI Visibility (lead), Web Partner (the retainer), Accessibility and Performance, AI-Ready Brand System (pending Misha, behind a flag), and Fractional Digital Lead. The v3 durability claim, systems built in 2010 still in production and run without ZAC, stays as proof in the hero proof line and in Track record. See `docs/positioning-durability.md` for the reasoning behind that proof.
 
-- **The price argument is not the lead.** It lives in "Why now" and in "Start here", and nowhere else. Leading with affordability aims at the tier of work that self-serve tooling has taken, which is exactly the buyer ZAC does not want.
+- **No prices anywhere.** Not on any page, not in `llms.txt`, not in schema. The Backlog Review and Two-Week Proof offers are retired. The only "$" on the site is the $1 billion Heritage Global Partners figure.
 - **Handover is a practice, not an anecdote.** Numerous projects have been handed over. Say so.
-- Do not reintroduce "shelved", "backlog", "affordable", or "cheap" into the promise.
+- Do not reintroduce "shelved", "backlog", "affordable", or "cheap" into the promise, and do not bring back the "14 hours" build-speed line.
 
 ## Geography: state California, say nothing else
 
@@ -50,7 +50,7 @@ These are not stylistic preferences. They are binding.
 
 | Rule | Detail |
 |---|---|
-| **Never use the word "AI"** | Zero occurrences anywhere on the site: copy, alt text, meta tags, `llms.txt`, `package.json`, and `README.md`. The category label is saturated and buyers discount it. Describe the economics directly instead. |
+| **"AI" is a thing we audit, never a thing we are** | Decided 2026-09-23. "AI" is allowed in offer names, offer page headlines, and plain descriptions of assistants (ChatGPT, Perplexity, Claude). It is never an identity claim about ZAC: no "AI-native", "AI-first", "AI-powered", "AI-driven", and nothing that says ZAC builds with or is made of AI. `package.json` and `README.md` describe the studio without it. The voice gate fails on the compounds and flags every bare use for review. |
 | **No contractions** | "does not," not "doesn't." "That is enough to start," not "That's." |
 | **No em dashes** | Use a full stop or a comma. |
 | **No semicolons** | Split the sentence. |
@@ -141,26 +141,31 @@ only, and a row in this table.
 
 ---
 
-## Section order (v3)
+## Section order (v4)
 
-Hero → **TrackRecord** → ShiftComparison (Why now) → Services → HowItWorks → **StartHere** → FinalCTA
+Hero → TrackRecord → ShiftComparison (What changed) → Services → HowItWorks → StartHere → FinalCTA
 
-Two changes from what is currently deployed: TrackRecord moves from fifth to second, and `StartHere` is a new component.
+Same order as v3. Four offer pages share one template: `/ai-visibility`, `/web-partner`, `/accessibility`, and `/brand-system`. The last is behind the `BRAND_SYSTEM` flag in `src/lib/flags.ts`, off by default, which also hides Services row 04 and keeps it out of the sitemap, schema, and `llms.txt`. The hawaii.surf case study card is behind `HAWAII_CARD`, off until real before and after numbers exist.
+
+Every page is prerendered by `scripts/prerender.mjs` into `dist/<route>/index.html` with its own title, description, canonical, OG tags, and JSON-LD. Assistants do not run JavaScript, so nothing may depend on client rendering.
 
 ## Components
 
-| File | Status |
+| File | v4 status |
 |---|---|
-| `Hero.tsx` | New copy + proof line |
-| `TrackRecord.tsx` | **Full rebuild.** Case studies and team replace the six abstract category chips. |
-| `ShiftComparison.tsx` | New copy, keep the THEN/NOW animation |
-| `Services.tsx` | Minor copy edits |
-| `HowItWorks.tsx` | "AI-NATIVE" principle replaced with "BUILT TO KEEP" |
-| `StartHere.tsx` | **New.** Two offer cards with pricing. |
-| `FinalCTA.tsx` | Copy unchanged. The closing copy is the best on the site. |
-| `Footer.tsx` | Copy unchanged, but its `#about` link and "About" label follow the nav rename to Track record. |
-| `index.html` | Title, meta, OG, add Person schema for Andrew only |
-| `public/llms.txt` | Full rewrite, currently leads with "AI-native" |
+| `Hero.tsx` | Rewritten: visibility headline, proof line carries IBM and 2010 |
+| `TrackRecord.tsx` | Case studies and team unchanged, hidden hawaii.surf card first behind `HAWAII_CARD` |
+| `ShiftComparison.tsx` | New copy and a five-row THEN/NOW table, animation kept, pull quote and 14 hours block removed |
+| `Services.tsx` | Five rows, each linking to its page, row 04 hidden while `BRAND_SYSTEM` is off, footnote paragraph below |
+| `HowItWorks.tsx` | Copy unchanged |
+| `StartHere.tsx` | Two snapshot cards, no prices, no "two numbers" line |
+| `FinalCTA.tsx` | Copy unchanged |
+| `Footer.tsx` | Copy unchanged, links made absolute so they work from offer pages |
+| `pages/OfferPage.tsx` | Shared offer page template: eyebrow, H1, intro, lists, steps, proof, FAQ, CTA. FAQ data also renders the FAQPage schema so the two cannot diverge |
+| `pages/offers/*.ts` | Copy for each offer page, straight from `docs/site-copy-v4.md` |
+| `lib/meta.ts`, `lib/schema.ts` | Per-route head and JSON-LD, consumed by the prerender |
+| `public/llms.txt` | Replaced with the v4 text |
+| `public/sitemap.xml` | Home plus the three live offer pages |
 
 ## Keep these
 
@@ -181,9 +186,17 @@ There is **no test framework** in this repo. Verification is `npm run build` (ru
 
 ## Open slots
 
-**None.** Both `[[like this]]` placeholders were picked on 2026-08-20 and are written into `docs/site-copy-v3.md` inline. Ship them exactly as written and do not re-offer either choice.
+Two slots were picked on 2026-08-20 and stand for v4. Ship them exactly as written and do not re-offer either choice.
 
 - **Andrew's bio line:** "Twenty years at IBM and fifteen running his own practice. ZAC is what happens when those stop being separate things."
 - **IBM/MMG timeline framing:** "It started while he was still at IBM and has outlasted that tenure."
+
+Still open in v4, and left out of the build rather than filled:
+
+- **Web Partner platforms list.** The "What platforms do you work on?" question is omitted from `/web-partner` until Drew confirms the list.
+- **hawaii.surf before and after numbers.** The card and the `/ai-visibility` proof block ship hidden.
+- **zacforge.com audit result** for the `/ai-visibility` proof block.
+- **LinkedIn URL** for the `sameAs` schema property.
+- **Misha's review** of Services row 04 and `/brand-system`, and how he is described there. That page also ships with the "Who does the work" paragraph omitted.
 
 If new copy is ever missing, the rule still stands: ask rather than filling the gap.

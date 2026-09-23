@@ -153,8 +153,9 @@ Nothing else on the page depends on that decision.
   v3 track record (Heritage Global Partners, Legacy Studios, US Naval Academy
   and US Marines, Legal Access Alameda). The logo band presumably carries the
   same set.
-- **"CV/AI tools" chips** (`46:535`, `46:536`) use the word "AI", which has zero
-  permitted occurrences on the site.
+- **"CV/AI tools" chips** (`46:535`, `46:536`). Since v4 "AI" is allowed in offer
+  names and descriptions of assistants, but a chip like this on a case study
+  reads as an identity claim about how the work was made, which is not.
 - **Two component symbols only**: `Button` (`7:32`) and a nav item (`7:17`).
   The button appears at two sizes, 127 x 24 in the header and 164 x 31 in the
   body, with no variant structure visible in metadata. Cards, chips, stat

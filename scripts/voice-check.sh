@@ -28,6 +28,15 @@ hit() { # <label> <paths...> with $PAT preset
   fail=1
 }
 
+hit_perl() { # like hit, but PCRE so lookahead works
+  local label="$1"; shift
+  local out
+  out=$(grep -rInP --exclude-dir=node_modules --exclude-dir=dist \
+        --exclude=voice-check.sh "$PAT" "$@" 2>/dev/null) || return 0
+  printf '\n\033[31mFAIL\033[0m  %s\n%s\n' "$label" "$out"
+  fail=1
+}
+
 review() {
   local label="$1"; shift
   local out
@@ -36,9 +45,15 @@ review() {
   printf '\n\033[33mREVIEW\033[0m  %s\n%s\n' "$label" "$out"
 }
 
-# 1. The word "AI". Case-sensitive so "detail", "chain" and "main" do not hit.
-PAT='\bAI\b'                     hit 'the word "AI"' "${SHIPS[@]}"
+# 1. "AI" as identity. Since 2026-09-23 the bare word is allowed in offer
+#    names, page headlines and descriptions of assistants, so it is a review
+#    item. The compounds that describe ZAC itself are still a hard failure.
 PAT='[Aa][Ii]-(native|first|powered|driven)' hit 'AI-* compound' "${SHIPS[@]}"
+PAT='\bAI\b'                     review '"AI" (allowed for offers and assistants, never as what ZAC is)' "${SHIPS[@]}"
+
+# 1b. No prices anywhere. The only permitted dollar sign is the $1 billion
+#     Heritage Global Partners figure.
+PAT='\$(?!1 billion)[0-9]'        hit_perl 'dollar amount (only "$1 billion" is allowed)' src public index.html
 
 # 2. Em dashes, anywhere at all.
 PAT='—'                          hit 'em dash' "${ALL[@]}"

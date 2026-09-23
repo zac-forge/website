@@ -3,11 +3,11 @@ import { Reveal } from "./Reveal";
 import { EASE } from "../lib/motion";
 
 const COMPARISON = [
-  ["Large delivery teams", "Lean senior team"],
-  ["Long build cycles", "Rapid iteration"],
-  ["Heavy coordination", "Direct collaboration"],
-  ["Ideas waiting on budget", "Ideas tested early"],
-  ["Big upfront commitments", "Value proven quickly"],
+  ["Ten links", "Three names"],
+  ["Keywords", "Questions"],
+  ["A ranking you can check", "An answer that changes run to run"],
+  ["Your site as the brochure", "Your site as the source"],
+  ["Tracked by position", "Tracked by how often you are named"],
 ];
 
 const ROW_STAGGER = 0.09;
@@ -25,19 +25,20 @@ export function ShiftComparison() {
     <section className="section shift section--grid">
       <div className="container shift-grid">
         <Reveal className="shift-copy">
-          <p className="eyebrow">02 / WHY NOW</p>
+          <p className="eyebrow">02 / WHAT CHANGED</p>
           <h2 className="h2 h2--split">
-            The cost of building changed.{" "}
-            <span className="h2-secondary">Your technology plan should too.</span>
+            Your customers stopped searching.{" "}
+            <span className="h2-secondary">They started asking.</span>
           </h2>
           <p className="text-muted">
-            Experience did not get cheaper. Judgment about what is worth building is still the hard
-            part, and it still decides whether a project works.
+            For twenty years, people typed a few words into Google and chose from ten links. Now
+            more of them ask an assistant and get a short answer with two or three names in it.
+            There is no page two.
           </p>
           <p className="text-muted">
-            What changed is everything downstream of that decision. Experienced people now produce
-            far more than they did two years ago, so the arithmetic that killed half your backlog no
-            longer holds.
+            Assistants decide who to name from what they can read: your site, your reviews, your
+            listings, and what other sites say about you. Much of that is technical, and most of it
+            is fixable.
           </p>
         </Reveal>
 
@@ -83,20 +84,6 @@ export function ShiftComparison() {
               );
             })}
           </ul>
-
-          <div className="pull-quote">
-            <p className="h3">
-              Less machinery around the work.
-              <br />
-              <span className="text-forge">More capability applied to it.</span>
-            </p>
-            {/* The site is the example. Concrete and checkable, which is the
-                whole argument of this section in one number. */}
-            <p className="pull-quote-proof">
-              This site is the example. Domain name to live site, including design, email, hosting,
-              and certificates: about 14 hours.
-            </p>
-          </div>
         </Reveal>
       </div>
     </section>
