@@ -57,7 +57,9 @@
 }
 /* "What we do" opens a small menu of the offer pages on desktop. The plain
    link is the mobile form; the two are swapped at the breakpoint. */
-.nav-plain {
+/* Specificity matches the .site-nav a:not(.btn) rule above, which would
+   otherwise show this mobile-only link on desktop beside the menu. */
+.site-nav a.nav-plain {
   display: none;
 }
 .nav-menu {
@@ -182,7 +184,7 @@
   .nav-menu {
     display: none;
   }
-  .nav-plain {
+  .site-nav a.nav-plain {
     display: inline-flex;
   }
 }
