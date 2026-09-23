@@ -509,8 +509,15 @@
   width: 44px;
   height: auto;
 }
+/* The mark is a flex item, and a flex item's automatic minimum width comes
+   from the image's intrinsic 319px, so the size goes on the image itself. */
 .sequence-mark {
   width: 28px;
+  min-width: 0;
+}
+.sequence-mark img {
+  width: 28px;
+  height: auto;
 }
 .sequence-arrow {
   color: var(--color-text-muted);
