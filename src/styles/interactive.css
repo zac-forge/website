@@ -31,35 +31,14 @@
   display: inline-block;
 }
 
-/* Nav underline that grows from the left on hover and focus. Sits just under
-   the text, not at the bottom of the 44px target, and the menu button gets
-   the same treatment so the row reads as one set. */
-.site-nav a:not(.btn),
-.nav-menu-button {
-  position: relative;
-}
-.site-nav a:not(.btn)::after,
-.nav-menu-button::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: calc(50% - 0.85em);
-  height: 2px;
-  background: var(--color-accent);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform var(--duration-fast) var(--ease-out);
-}
-.nav-menu-button::after {
-  right: var(--space-4);
-}
-.site-nav a:not(.btn):hover::after,
-.site-nav a:not(.btn):focus-visible::after,
-.nav-menu-button:hover::after,
-.nav-menu-button:focus-visible::after,
-.nav-menu[data-open="true"] .nav-menu-button::after {
-  transform: scaleX(1);
+/* Nav items: no underline. Hover and focus are shown by colour only in the
+   row, and the focus ring still applies from the global rule. */
+.site-nav a:not(.btn):hover,
+.site-nav a:not(.btn):focus-visible,
+.nav-menu-button:hover,
+.nav-menu-button:focus-visible,
+.nav-menu[data-open="true"] .nav-menu-button {
+  color: var(--color-accent);
 }
 
 .text-link:hover::after,
