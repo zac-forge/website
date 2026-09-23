@@ -137,7 +137,9 @@ Build pages from these. Do not create a second button, card, or eyebrow.
 | Inline text action | `.text-link` |
 | Card surface | `.surface`, white, 12px radius, no border |
 | Undecided imagery | `.placeholder`, the board's grey |
-| Service entry | `ServiceCard` (`src/components/ServiceCard.tsx`) in `.service-grid` |
+| Service entry | `ServiceCard` (`src/components/ServiceCard.tsx`) in `.service-grid`. The whole card is the link, underlined at rest |
+| Offer page cross-links | `.offer-related` block in `OfferPage.tsx`, above the closing CTA |
+| Header offers menu | `WhatWeDoMenu` in `Header.tsx`, plain link below 860px |
 | Offer card | `.offer.surface` from `StartHere.tsx` |
 | Case study | `.case` block from `TrackRecord.tsx`, alternating, `images` prop for when imagery lands |
 | Numbered step | `.step` from `HowItWorks.tsx`, zigzag with a `.step-figure` circle |
@@ -168,7 +170,7 @@ Every page is prerendered by `scripts/prerender.mjs` into `dist/<route>/index.ht
 | `TrackRecord.tsx` | Board case study layout, alternating, grey image placeholders; team as three cards; hidden hawaii.surf card first behind `HAWAII_CARD` |
 | `ShiftComparison.tsx` | Five-row THEN/NOW table, animation kept, drawn in the accent |
 | `Services.tsx` | Board cards via `ServiceCard`, wrapping grid, accents cycling, row 04 hidden while `BRAND_SYSTEM` is off, footnote paragraph below |
-| `HowItWorks.tsx` | Board zigzag: heading, intro, illustration, signal-flow sequence, three principles as numbered steps with circles |
+| `HowItWorks.tsx` | Board zigzag: heading, intro, illustration, three principles as numbered steps with circles |
 | `StartHere.tsx` | Two snapshot cards, no prices, no "two numbers" line |
 | `FinalCTA.tsx` | Board closing block: accent headline, mark over a white circle. Copy unchanged |
 | `Footer.tsx` | Copy unchanged, links absolute so they work from offer pages |
@@ -181,11 +183,10 @@ Every page is prerendered by `scripts/prerender.mjs` into `dist/<route>/index.ht
 
 ## Keep these
 
-Two v1 interactions survived the move to Misha's light, flat design and should stay:
+One v1 interaction survived the move to Misha's light, flat design and should stay:
 - THEN/NOW row-draw animation in `ShiftComparison`
-- Signal-flow sequence in `HowItWorks`
 
-Retired with the redesign, files parked in `.superseded/` until Drew says to delete them: the hero forge artwork, mote and ember fields, the horizon arc, and the service row ignition (cards lift on hover instead).
+Retired with the redesign, files parked in `.superseded/` until Drew says to delete them: the hero forge artwork, mote and ember fields, the horizon arc, and the service row ignition (cards lift on hover instead). The signal-flow sequence in `HowItWorks` was removed on 2026-09-23 at Drew's request; do not bring it back.
 - Motion is **reactive, not ambient**. Nothing animates until a pointer or keyboard arrives. Respect `prefers-reduced-motion` everywhere.
 
 ## Stack notes

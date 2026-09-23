@@ -2,6 +2,7 @@ import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import { Magnetic } from "../components/Magnetic";
 import { BOOKING_URL } from "../lib/links";
+import { LIVE_OFFERS } from "./offers";
 import type { Offer, Block } from "./offers";
 
 /**
@@ -108,6 +109,32 @@ export default function OfferPage({ offer }: { offer: Offer }) {
               ))}
             </dl>
             {offer.footnote ? <p className="offer-footnote">{offer.footnote}</p> : null}
+          </div>
+        </section>
+
+        {/* The way back and the way sideways, above the closing call to
+            action: the home page, and every other live offer. */}
+        <section className="section offer-related" aria-labelledby="offer-related-heading">
+          <div className="container">
+            <h2 className="h3" id="offer-related-heading">
+              Other services
+            </h2>
+            <div className="offer-related-grid">
+              {LIVE_OFFERS.filter((o) => o.path !== offer.path).map((other) => (
+                <a className="offer-related-card surface" href={other.path} key={other.path}>
+                  <span className="offer-related-title">{other.rowTitle}</span>
+                  <span className="offer-related-body">{other.rowStatement}</span>
+                  <span className="text-link offer-related-link">
+                    <span>{other.rowLink}</span>
+                    <span aria-hidden="true">→</span>
+                  </span>
+                </a>
+              ))}
+            </div>
+            <a className="text-link offer-home-link" href="/">
+              <span aria-hidden="true">←</span>
+              <span>Back to the home page</span>
+            </a>
           </div>
         </section>
 

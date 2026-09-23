@@ -55,6 +55,68 @@
   font-weight: var(--weight-black);
   line-height: 1;
 }
+/* "What we do" opens a small menu of the offer pages on desktop. The plain
+   link is the mobile form; the two are swapped at the breakpoint. */
+.nav-plain {
+  display: none;
+}
+.nav-menu {
+  position: relative;
+}
+.nav-menu-button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  min-height: 44px;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  color: var(--color-text);
+  font-size: var(--text-small);
+  font-weight: var(--weight-black);
+  line-height: 1;
+  cursor: pointer;
+}
+.nav-menu-caret {
+  font-size: var(--text-small);
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+.nav-menu[data-open="true"] .nav-menu-caret {
+  transform: translateY(1px);
+}
+.nav-menu-panel {
+  position: absolute;
+  top: 100%;
+  left: calc(var(--space-3) * -1);
+  z-index: 50;
+  min-width: 260px;
+  margin: 0;
+  padding: var(--space-2);
+  list-style: none;
+  box-shadow: var(--shadow-lift);
+  display: none;
+}
+.nav-menu[data-open="true"] .nav-menu-panel {
+  display: block;
+}
+.nav-menu-panel a {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 var(--space-3);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-small);
+  font-weight: var(--weight-black);
+}
+.nav-menu-panel a:hover,
+.nav-menu-panel a:focus-visible {
+  background: var(--color-bg);
+  color: var(--color-accent);
+}
+.nav-menu-panel li:first-child a {
+  color: var(--color-text-muted);
+}
+
 /* The header button is the same component at the board's 24px height. */
 .nav-cta {
   --btn-height: var(--button-height-nav);
@@ -116,6 +178,12 @@
   }
   .nav-toggle {
     display: flex;
+  }
+  .nav-menu {
+    display: none;
+  }
+  .nav-plain {
+    display: inline-flex;
   }
 }
 
@@ -410,9 +478,13 @@
   margin-top: var(--space-7);
 }
 .service {
+  position: relative;
   display: flex;
   flex-direction: column;
   padding: var(--space-6) var(--space-3);
+}
+.service[data-linked="true"] {
+  cursor: pointer;
 }
 .service:nth-child(3n + 1) {
   --card-accent: var(--color-accent);
@@ -452,10 +524,39 @@
   margin-top: var(--space-4);
   color: var(--color-text-muted);
 }
+/* The link is the whole card: its ::before covers the surface, so one
+   element carries the target, the focus ring, and the accessible name. The
+   link is static so that overlay resolves against the card, which means the
+   underline cannot use the ::after rule and is drawn on the text instead.
+   It is full at rest so the link reads as a link before any hover. */
 .service-link {
+  position: static;
   margin-top: auto;
   padding-top: var(--space-5);
   align-self: flex-start;
+  color: var(--card-accent);
+}
+.service-link::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-md);
+}
+.service-link::after {
+  display: none;
+}
+.service-link > span:first-child {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 5px;
+  text-decoration-color: var(--card-accent);
+}
+.service-link:focus-visible {
+  outline: none;
+}
+.service-link:focus-visible::before {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
 }
 .services-note {
   max-width: var(--prose-width);
@@ -481,52 +582,6 @@
 /* Three numbered steps in the board's zigzag: text on one side, a 185px
    circle on the other, alternating. The circles are placeholders on the
    board and stay that way here. */
-.sequence {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: var(--space-3);
-  margin-top: var(--space-7);
-}
-.sequence-node {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-3);
-  min-height: 44px;
-  padding: var(--space-2) var(--space-4);
-  border-radius: var(--radius-full);
-  background: var(--color-surface);
-  box-shadow: 0 0 0 1px transparent;
-  font-size: var(--text-small);
-  font-weight: var(--weight-black);
-  transition: box-shadow var(--duration-base) var(--ease-out);
-}
-.sequence-node[data-lit="true"],
-.sequence-node--zac[data-flare="true"] {
-  box-shadow: 0 0 0 2px var(--color-accent);
-}
-.node-glyph {
-  width: 44px;
-  height: auto;
-}
-/* The mark is a flex item, and a flex item's automatic minimum width comes
-   from the image's intrinsic 319px, so the size goes on the image itself. */
-.sequence-mark {
-  width: 28px;
-  min-width: 0;
-}
-.sequence-mark img {
-  width: 28px;
-  height: auto;
-}
-.sequence-arrow {
-  color: var(--color-text-muted);
-  font-size: var(--text-lead);
-  transition: color var(--duration-base) var(--ease-out);
-}
-.sequence-arrow[data-lit="true"] {
-  color: var(--color-accent);
-}
 .steps {
   margin: var(--space-7) 0 0;
   padding: 0;
@@ -679,9 +734,9 @@
 }
 .footer-inner {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto;
-  gap: var(--space-7);
-  align-items: center;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  gap: var(--space-7) var(--space-9);
+  align-items: start;
 }
 .footer-brand {
   display: flex;
@@ -703,20 +758,39 @@
 }
 .footer-nav {
   display: flex;
-  gap: var(--space-4);
+  flex-direction: column;
+  align-items: flex-start;
+}
+.footer-group {
+  margin-bottom: var(--space-2);
+  font-size: var(--text-small);
+  font-weight: var(--weight-black);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
 }
 .footer-nav a {
   display: inline-flex;
   align-items: center;
-  min-height: 44px;
+  min-height: 36px;
   font-size: var(--text-small);
   font-weight: var(--weight-black);
+}
+.footer-nav a:hover,
+.footer-nav a:focus-visible {
+  color: var(--color-accent);
+}
+.footer-legal {
+  grid-column: 1 / -1;
 }
 
 @media (max-width: 760px) {
   .footer-inner {
     grid-template-columns: minmax(0, 1fr);
-    gap: var(--space-4);
+    gap: var(--space-5);
+  }
+  .offer-related-grid {
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
@@ -832,6 +906,61 @@
   max-width: var(--prose-width);
   font-size: var(--text-small);
   color: var(--color-text-muted);
+}
+.offer-related {
+  --pad-top: var(--space-9);
+  --pad-bottom: 0;
+}
+.offer-related .h3 {
+  margin-bottom: var(--space-5);
+}
+.offer-related-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3);
+}
+.offer-related-card {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-6) var(--space-3);
+  transition:
+    transform var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out);
+}
+.offer-related-card:nth-child(odd) {
+  --card-accent: var(--color-accent);
+}
+.offer-related-card:nth-child(even) {
+  --card-accent: var(--color-accent-blue);
+}
+.offer-related-card:hover,
+.offer-related-card:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lift);
+}
+.offer-related-title {
+  font-size: var(--text-title);
+  font-weight: var(--weight-black);
+  line-height: var(--leading-title);
+  color: var(--card-accent);
+}
+.offer-related-body {
+  margin-top: var(--space-4);
+  font-weight: var(--weight-black);
+}
+.offer-related-link {
+  margin-top: auto;
+  padding-top: var(--space-5);
+  align-self: flex-start;
+  color: var(--card-accent);
+}
+.offer-related-link::after {
+  transform: scaleX(1);
+  background: var(--card-accent);
+  bottom: calc(50% - 0.75em - var(--space-5) / 2);
+}
+.offer-home-link {
+  margin-top: var(--space-6);
 }
 .offer-cta {
   --pad-top: var(--space-8);

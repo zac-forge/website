@@ -12,12 +12,16 @@ type Props = {
 /**
  * One of the board's white cards (nodes 8:105 to 8:107): a 48px coloured
  * title over 16px body. The accent is set by position in layout.css, so the
- * card itself carries no colour. The link, when there is one, sits at the
- * bottom edge whatever the length of the list above it.
+ * card itself carries no colour.
+ *
+ * When the card has a page, the link at the bottom is stretched over the
+ * whole card, so the entire surface is the target and there is still exactly
+ * one link for the keyboard and for screen readers. The link is fully
+ * underlined at rest, not only on hover, so a touch screen sees it too.
  */
 export function ServiceCard({ title, statement, items, note, href, linkLabel }: Props) {
   return (
-    <article className="service surface">
+    <article className="service surface" data-linked={Boolean(href)}>
       <h3 className="h3 service-title">{title}</h3>
       <p className="service-statement">{statement}</p>
       <ul className="service-items">

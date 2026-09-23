@@ -56,7 +56,7 @@ to it:
 | 01 Track record | Board case studies: alternating two-column, 48px accent client name, bold discipline line (the domain), body, bold figure row (the metric). Team as three white cards. Illustration `44:437` and siblings beside the heading |
 | 02 What changed | Not on the board. Two columns in the board's proportions, THEN and NOW table drawn with the accent |
 | 03 What we do | Board cards `8:105` to `8:107`, wrapping, accents cycling |
-| 04 How we work | Board "How it works": heading, intro, illustration `8:69` and `8:86`, three zigzag steps with 185px circles. The signal-flow sequence from v1 sits between intro and steps |
+| 04 How we work | Board "How it works": heading, intro, illustration `8:69` and `8:86`, three zigzag steps with 185px circles |
 | 05 Start here | Two board cards |
 | Closing | Board closing: accent headline, body, pill button, mark `42:346` over a 289px white circle `8:116` |
 | Footer | Not on the board. Hairline and three quiet columns |
@@ -114,8 +114,15 @@ to it:
 15. **The v1 dark-theme interactions** that had no counterpart in a light,
     flat design were retired: the hero forge artwork, the ember and mote
     fields, the horizon arc, and the service row ignition. The THEN and NOW
-    row-draw and the signal-flow sequence survive. The retired files sit in
+    row-draw survives. The signal-flow sequence was kept at first and then
+    removed at Drew's request the same day. The retired files sit in
     `.superseded/` at the repo root until Drew says to delete them.
+16. **Finding the offer pages.** Added at Drew's request on 2026-09-23, none
+    of it on the board: the whole service card is the link with the label
+    underlined at rest, "What we do" in the header opens a small menu of the
+    offer pages on desktop (plain link on mobile), the footer lists the offers
+    as their own group, and each offer page links to the other offers and back
+    to the home page above its closing call to action.
 
 ## Extensions made without Figma coverage
 
