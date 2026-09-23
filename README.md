@@ -20,8 +20,10 @@ live. Copy is governed by `CLAUDE.md` at the repo root and the copy deck in
 
 - `src/`: the app. `App.tsx` sets up routing, `pages/Home.tsx` composes the one real page,
   `components/` holds the sections in page order.
-- `src/styles/tokens.css`: design tokens (color, spacing, radius) as CSS variables. A brand
-  redesign is in progress, so change the palette here rather than hardcoding a colour anywhere.
+- `design/tokens.json`: the design tokens, with provenance for every value. `npm run tokens`
+  generates `src/styles/tokens.css` from it, and the build fails if the two disagree or if any
+  raw colour appears outside the generated file (`scripts/lint-tokens.mjs`). Never hardcode a
+  colour. See `design/DESIGN-SYSTEM-NOTES.md` and the Design system section of `CLAUDE.md`.
 - `functions/api/chat.ts`: a Cloudflare Pages Function stub for a future chat assistant. Not
   implemented yet, returns 501. See the comments in that file for what it will do.
 - `public/`: static files served as-is (favicon, OG image, `llms.txt`, `robots.txt`, sitemap).

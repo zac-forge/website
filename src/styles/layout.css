@@ -12,7 +12,7 @@
 .h2--split .h2-secondary {
   display: block;
   font-weight: 400;
-  color: #d8d7da;
+  color: var(--color-text-secondary);
 }
 
 /* --------------------------------------------------------- Brand lockups */
@@ -83,7 +83,7 @@
   /* 0.38 over the Forge Red measures out at 40% relative luminance, inside the
      35 to 45% the sequence is meant to start from. Very slightly red rather
      than neutral, so the mark reads as unlit metal with heat still in it. */
-  background: #120a0c;
+  background: var(--color-surface-forge);
 }
 .lockup-z-sweep {
   /* Forge, hot and deep red only. Deliberately no white: this is energy moving
@@ -91,9 +91,9 @@
   background: linear-gradient(
     135deg,
     transparent 34%,
-    rgba(158, 31, 45, 0.5) 43%,
-    rgba(255, 104, 117, 0.92) 50%,
-    rgba(232, 52, 69, 0.62) 57%,
+    rgb(var(--forge-deep-rgb) / 0.5) 43%,
+    rgb(var(--forge-hot-rgb) / 0.92) 50%,
+    rgb(var(--forge-rgb) / 0.62) 57%,
     transparent 66%
   );
 }
@@ -131,7 +131,7 @@
   aspect-ratio: 1;
   translate: -50% -50%;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(232, 52, 69, 0.55), transparent 62%);
+  background: radial-gradient(circle, rgb(var(--forge-rgb) / 0.55), transparent 62%);
   filter: blur(6px);
   opacity: 0;
   pointer-events: none;
@@ -161,10 +161,10 @@ a:focus-visible .lockup-bloom {
 /* At the top the bar sits directly on the hero. It only materialises once the
    page has moved, so the hero reads as full-bleed on arrival. */
 .site-header[data-scrolled="true"] {
-  background: rgba(10, 10, 12, 0.82);
+  background: rgb(var(--ink-rgb) / 0.82);
   -webkit-backdrop-filter: blur(16px) saturate(140%);
   backdrop-filter: blur(16px) saturate(140%);
-  border-bottom-color: rgba(255, 255, 255, 0.07);
+  border-bottom-color: rgb(var(--white-rgb) / 0.07);
 }
 .header-inner {
   display: flex;
@@ -372,7 +372,7 @@ a:focus-visible .lockup-bloom {
 .proof-line {
   /* CTAs to proof line 30px */
   margin-top: 30px;
-  color: #cfcdd1;
+  color: var(--color-text-body-strong);
   font: 500 var(--text-meta) / 1.4 var(--font-mono);
   letter-spacing: 0.02em;
   white-space: nowrap;
@@ -408,8 +408,8 @@ a:focus-visible .lockup-bloom {
      radial mask on top of that keeps the extreme corners from ever reading as
      an edge once the substrate below is lit. */
   mix-blend-mode: screen;
-  -webkit-mask-image: radial-gradient(ellipse 74% 72% at 52% 50%, #000 58%, transparent 96%);
-  mask-image: radial-gradient(ellipse 74% 72% at 52% 50%, #000 58%, transparent 96%);
+  -webkit-mask-image: radial-gradient(ellipse 74% 72% at 52% 50%, var(--color-black-pure) 58%, transparent 96%);
+  mask-image: radial-gradient(ellipse 74% 72% at 52% 50%, var(--color-black-pure) 58%, transparent 96%);
   /* Three separate properties that compose instead of colliding: `translate`
      for the pointer parallax, `scale` for the breathing (motion.css), and
      `transform` for the perspective tilt. */
@@ -432,16 +432,16 @@ a:focus-visible .lockup-bloom {
   position: absolute;
   inset: -6% -4% -6% -18%;
   pointer-events: none;
-  -webkit-mask-image: radial-gradient(ellipse 60% 62% at 59% 48%, #000 8%, transparent 82%);
-  mask-image: radial-gradient(ellipse 60% 62% at 59% 48%, #000 8%, transparent 82%);
+  -webkit-mask-image: radial-gradient(ellipse 60% 62% at 59% 48%, var(--color-black-pure) 8%, transparent 82%);
+  mask-image: radial-gradient(ellipse 60% 62% at 59% 48%, var(--color-black-pure) 8%, transparent 82%);
 }
 .hero-grid-layer {
   position: absolute;
   inset: 0;
   opacity: 0.5;
   background-image:
-    linear-gradient(to right, rgba(255, 255, 255, 0.032) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.032) 1px, transparent 1px);
+    linear-gradient(to right, rgb(var(--white-rgb) / 0.032) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(var(--white-rgb) / 0.032) 1px, transparent 1px);
   background-size: 46px 46px;
 }
 .hero-orbits {
@@ -450,7 +450,7 @@ a:focus-visible .lockup-bloom {
   width: 100%;
   height: 100%;
   fill: none;
-  stroke: rgba(232, 52, 69, 0.22);
+  stroke: rgb(var(--forge-rgb) / 0.22);
   stroke-width: 0.12;
   stroke-dasharray: 1.2 1.6;
 }
@@ -464,8 +464,8 @@ a:focus-visible .lockup-bloom {
   border-radius: 50%;
   background: radial-gradient(
     circle,
-    rgba(255, 104, 117, 0.24) 0%,
-    rgba(232, 52, 69, 0.09) 32%,
+    rgb(var(--forge-hot-rgb) / 0.24) 0%,
+    rgb(var(--forge-rgb) / 0.09) 32%,
     transparent 66%
   );
   filter: blur(20px);
@@ -497,8 +497,8 @@ a:focus-visible .lockup-bloom {
   border-radius: 50%;
   background: radial-gradient(
     circle,
-    rgba(255, 104, 117, 0.32) 0%,
-    rgba(232, 52, 69, 0.14) 36%,
+    rgb(var(--forge-hot-rgb) / 0.32) 0%,
+    rgb(var(--forge-rgb) / 0.14) 36%,
     transparent 70%
   );
   filter: blur(16px);
@@ -522,7 +522,7 @@ a:focus-visible .lockup-bloom {
   transition: translate 620ms var(--ease-out);
 }
 .hero-link {
-  stroke: rgba(255, 104, 117, 0.16);
+  stroke: rgb(var(--forge-hot-rgb) / 0.16);
   stroke-width: 0.14;
   vector-effect: non-scaling-stroke;
 }
@@ -544,10 +544,10 @@ a:focus-visible .lockup-bloom {
   position: absolute;
   border-radius: 50%;
   translate: -50% -50%;
-  background: radial-gradient(circle, #fff 0%, var(--color-forge-hot) 55%, transparent 78%);
+  background: radial-gradient(circle, var(--color-white) 0%, var(--color-forge-hot) 55%, transparent 78%);
   box-shadow:
-    0 0 10px 2px rgba(255, 104, 117, 0.7),
-    0 0 24px 6px rgba(232, 52, 69, 0.36);
+    0 0 10px 2px rgb(var(--forge-hot-rgb) / 0.7),
+    0 0 24px 6px rgb(var(--forge-rgb) / 0.36);
 }
 
 @media (max-width: 1024px) {
@@ -662,12 +662,12 @@ a:focus-visible .lockup-bloom {
   inset: 0;
   width: 100%;
   height: 100%;
-  stroke: rgba(232, 52, 69, 0.13);
+  stroke: rgb(var(--forge-rgb) / 0.13);
   stroke-width: 1;
   vector-effect: non-scaling-stroke;
   /* The line has to disappear into black rather than terminate. */
-  -webkit-mask-image: linear-gradient(200deg, #000, transparent 64%);
-  mask-image: linear-gradient(200deg, #000, transparent 64%);
+  -webkit-mask-image: linear-gradient(200deg, var(--color-black-pure), transparent 64%);
+  mask-image: linear-gradient(200deg, var(--color-black-pure), transparent 64%);
 }
 /* Zone C, subtle. Sits in the black beside the section label, clear of the
    diagram and of every block of copy. */
@@ -760,7 +760,7 @@ a:focus-visible .lockup-bloom {
   position: absolute;
   inset: 0;
   display: block;
-  background: linear-gradient(90deg, transparent, rgba(232, 52, 69, 0.35) 40%, var(--color-forge));
+  background: linear-gradient(90deg, transparent, rgb(var(--forge-rgb) / 0.35) 40%, var(--color-forge));
   transform-origin: left;
 }
 /* The lit terminal on each connector. Illuminates as part of the row's
@@ -775,10 +775,10 @@ a:focus-visible .lockup-bloom {
   border-radius: 50%;
   /* Bright centre, controlled falloff, then the glow. Three steps rather than
      a flat dot with a halo. */
-  background: radial-gradient(circle, #fff 0 32%, var(--color-forge-hot) 68%, var(--color-forge) 100%);
+  background: radial-gradient(circle, var(--color-white) 0 32%, var(--color-forge-hot) 68%, var(--color-forge) 100%);
   box-shadow:
-    0 0 10px 2px rgba(232, 52, 69, 0.75),
-    0 0 20px 5px rgba(232, 52, 69, 0.3);
+    0 0 10px 2px rgb(var(--forge-rgb) / 0.75),
+    0 0 20px 5px rgb(var(--forge-rgb) / 0.3);
 }
 
 .pull-quote {
@@ -790,13 +790,13 @@ a:focus-visible .lockup-bloom {
   border-radius: var(--radius-md);
   background: linear-gradient(
     115deg,
-    rgba(232, 52, 69, 0.07),
-    rgba(232, 52, 69, 0.015) 46%,
+    rgb(var(--forge-rgb) / 0.07),
+    rgb(var(--forge-rgb) / 0.015) 46%,
     transparent
   );
   box-shadow:
-    0 0 48px rgba(232, 52, 69, 0.1),
-    inset 0 0 36px rgba(232, 52, 69, 0.05);
+    0 0 48px rgb(var(--forge-rgb) / 0.1),
+    inset 0 0 36px rgb(var(--forge-rgb) / 0.05);
 }
 /* Dot matrix bleeding in from the right edge, matching the mockup's panel. */
 .pull-quote::after {
@@ -804,11 +804,11 @@ a:focus-visible .lockup-bloom {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background-image: radial-gradient(rgba(232, 52, 69, 0.55) 1px, transparent 1px);
+  background-image: radial-gradient(rgb(var(--forge-rgb) / 0.55) 1px, transparent 1px);
   background-size: 7px 7px;
   opacity: 0.45;
-  -webkit-mask-image: linear-gradient(90deg, transparent 56%, #000 100%);
-  mask-image: linear-gradient(90deg, transparent 56%, #000 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 56%, var(--color-black-pure) 100%);
+  mask-image: linear-gradient(90deg, transparent 56%, var(--color-black-pure) 100%);
 }
 .pull-quote p {
   position: relative;
@@ -873,7 +873,7 @@ a:focus-visible .lockup-bloom {
   padding: clamp(28px, 2.9vw, 39px) clamp(24px, 2.6vw, 36px);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.006));
+  background: linear-gradient(90deg, rgb(var(--white-rgb) / 0.02), rgb(var(--white-rgb) / 0.006));
   cursor: default;
 }
 /* Lit left edge, as on the highlighted row in the mockup. Present on every
@@ -894,7 +894,7 @@ a:focus-visible .lockup-bloom {
   align-self: center;
   font: 400 clamp(46px, 4.7vw, 58px) / 1 var(--font-display);
   letter-spacing: -0.04em;
-  color: #212129;
+  color: var(--color-text-ghost-3);
 }
 .service-label {
   align-self: center;
@@ -987,8 +987,8 @@ a:focus-visible .lockup-bloom {
   border-radius: 50%;
   background: radial-gradient(
     circle,
-    rgba(232, 52, 69, 0.13) 0%,
-    rgba(232, 52, 69, 0.045) 36%,
+    rgb(var(--forge-rgb) / 0.13) 0%,
+    rgb(var(--forge-rgb) / 0.045) 36%,
     transparent 74%
   );
   pointer-events: none;
@@ -1004,7 +1004,7 @@ a:focus-visible .lockup-bloom {
   padding: var(--space-5) var(--space-4);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
-  background: rgba(255, 255, 255, 0.018);
+  background: rgb(var(--white-rgb) / 0.018);
   text-align: center;
   font: 500 var(--text-body) / 1.35 var(--font-mono);
   letter-spacing: 0.09em;
@@ -1021,11 +1021,11 @@ a:focus-visible .lockup-bloom {
    which is what makes a 240ms step legible: with a symmetric 600ms transition
    the node barely began to light before the signal moved on. */
 .sequence-node[data-lit="true"] {
-  border-color: rgba(232, 52, 69, 0.62);
+  border-color: rgb(var(--forge-rgb) / 0.62);
   color: var(--color-text);
   box-shadow:
-    0 0 34px rgba(232, 52, 69, 0.18),
-    inset 0 0 26px rgba(232, 52, 69, 0.08);
+    0 0 34px rgb(var(--forge-rgb) / 0.18),
+    inset 0 0 26px rgb(var(--forge-rgb) / 0.08);
   transition-duration: 200ms;
 }
 .node-glyph {
@@ -1037,19 +1037,19 @@ a:focus-visible .lockup-bloom {
 .sequence-node--zac {
   border-color: var(--color-border-red-strong);
   color: var(--color-text);
-  background: linear-gradient(180deg, rgba(232, 52, 69, 0.12), rgba(232, 52, 69, 0.035));
+  background: linear-gradient(180deg, rgb(var(--forge-rgb) / 0.12), rgb(var(--forge-rgb) / 0.035));
   border-width: 2px;
   box-shadow:
-    inset 0 0 56px rgba(232, 52, 69, 0.24),
-    0 0 62px rgba(232, 52, 69, 0.2);
+    inset 0 0 56px rgb(var(--forge-rgb) / 0.24),
+    0 0 62px rgb(var(--forge-rgb) / 0.2);
 }
 /* The signal passing through. Same asymmetry as the other nodes: 180ms up,
    then it falls back to the resting lit state over the node's own 600ms. */
 .sequence-node--zac[data-flare="true"] {
   border-color: var(--color-forge);
   box-shadow:
-    inset 0 0 72px rgba(232, 52, 69, 0.44),
-    0 0 88px rgba(232, 52, 69, 0.34);
+    inset 0 0 72px rgb(var(--forge-rgb) / 0.44),
+    0 0 88px rgb(var(--forge-rgb) / 0.34);
   transition-duration: 180ms;
 }
 .sequence-node--zac::after {
@@ -1057,7 +1057,7 @@ a:focus-visible .lockup-bloom {
   position: absolute;
   inset: -16px;
   border-radius: inherit;
-  background: radial-gradient(ellipse at center, rgba(232, 52, 69, 0.2), transparent 68%);
+  background: radial-gradient(ellipse at center, rgb(var(--forge-rgb) / 0.2), transparent 68%);
   pointer-events: none;
 }
 /* 63px on the 256x163 mark is the same 40px tall as before. */
@@ -1072,7 +1072,7 @@ a:focus-visible .lockup-bloom {
 }
 .sequence-arrow {
   position: relative;
-  color: #55555f;
+  color: var(--color-text-ghost-1);
   font-size: 1.6rem;
   transition: color 500ms var(--ease-out);
 }
@@ -1396,8 +1396,8 @@ a:focus-visible .lockup-bloom {
   pointer-events: none;
   /* Fades upward so the horizon illuminates the environment from below
      rather than bisecting the copy. */
-  -webkit-mask-image: linear-gradient(184deg, transparent 10%, rgba(0, 0, 0, 0.34) 34%, #000 66%);
-  mask-image: linear-gradient(184deg, transparent 10%, rgba(0, 0, 0, 0.34) 34%, #000 66%);
+  -webkit-mask-image: linear-gradient(184deg, transparent 10%, rgb(var(--black-rgb) / 0.34) 34%, var(--color-black-pure) 66%);
+  mask-image: linear-gradient(184deg, transparent 10%, rgb(var(--black-rgb) / 0.34) 34%, var(--color-black-pure) 66%);
   animation: arc-pulse 11s ease-in-out infinite;
 }
 /* Lights making very slow passes along the limb. Each carries its own height,
@@ -1420,11 +1420,11 @@ a:focus-visible .lockup-bloom {
   position: absolute;
   left: -2%;
   border-radius: 50%;
-  background: #fff;
+  background: var(--color-white);
   /* Static, never animated. */
   box-shadow:
-    0 0 12px 3px rgba(255, 104, 117, 0.85),
-    0 0 34px 10px rgba(232, 52, 69, 0.4);
+    0 0 12px 3px rgb(var(--forge-hot-rgb) / 0.85),
+    0 0 34px 10px rgb(var(--forge-rgb) / 0.4);
   opacity: 0;
   animation: arc-travel var(--t-dur, 18s) linear infinite;
   animation-delay: var(--t-delay, 0s);
@@ -1437,7 +1437,7 @@ a:focus-visible .lockup-bloom {
   position: absolute;
   border-radius: 50%;
   background: var(--color-forge-hot);
-  box-shadow: 0 0 5px 1px rgba(255, 104, 117, 0.7);
+  box-shadow: 0 0 5px 1px rgb(var(--forge-hot-rgb) / 0.7);
   opacity: 0;
   animation: arc-ember var(--e-dur, 8s) ease-out infinite;
   animation-delay: var(--e-delay, 0s);
@@ -1469,8 +1469,8 @@ a:focus-visible .lockup-bloom {
   border-radius: 50%;
   background: radial-gradient(
     ellipse at center,
-    rgba(255, 104, 117, 0.14) 0%,
-    rgba(232, 52, 69, 0.05) 40%,
+    rgb(var(--forge-hot-rgb) / 0.14) 0%,
+    rgb(var(--forge-rgb) / 0.05) 40%,
     transparent 70%
   );
   filter: blur(30px);

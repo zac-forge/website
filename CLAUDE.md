@@ -81,6 +81,66 @@ These are not stylistic preferences. They are binding.
 
 ---
 
+## Design system
+
+**Adopted 2026-09-23.** Misha's Figma board is the design authority
+(`MacBook Air - 1`, node `6:2`). Until its colour and type can be read, the
+tokens carry the v3 values as provisional. `design/DESIGN-SYSTEM-NOTES.md`
+records where every value came from and what is still open.
+
+### Tokens only
+
+- **Source of truth is `design/tokens.json`.** `src/styles/tokens.css` is
+  generated from it by `npm run tokens` and must never be edited by hand. The
+  build fails if the two are out of sync.
+- **Never write a raw colour.** No hex, no `rgb()`, `rgba()`, `hsl()` with
+  numeric channels, anywhere in `src/`. Use `var(--color-*)`. For translucent
+  colour use the channel tokens: `rgb(var(--forge-rgb) / .3)`.
+  `scripts/lint-tokens.mjs` fails the build on any raw colour outside the
+  generated tokens file. Two exceptions, documented in the script: the
+  `theme-color` meta in `index.html`, and `tools/`, which never ships.
+- **Never write a raw pixel value for a design decision.** Spacing comes from
+  `--space-*`, type sizes from `--text-*`, radii from `--radius-*`, shadows
+  from `--shadow-*`, durations and easing from `--duration-*` and
+  `--ease-out`. Structural CSS (a 1px hairline, a percentage, a grid track)
+  is fine. A padding, gap, margin, or font size that is a design choice is not.
+- **Adding a token:** add it to `design/tokens.json` with a `$type`, a
+  `$value`, and `$extensions.zac.source` saying where the value came from
+  (Figma variable, Figma style, read off a frame with the node id, or
+  provisional). Run `npm run tokens`. Commit both files.
+- **Do not add a value that has no source.** If the board does not cover a
+  case, extend the nearest existing scale and record the extension in
+  `design/DESIGN-SYSTEM-NOTES.md` under "Extensions made without Figma
+  coverage". Do not invent a new style.
+
+### Components to use
+
+Build pages from these. Do not create a second button, card, or eyebrow.
+
+| Need | Use |
+|---|---|
+| Page column | `.container`, width from `--content-width` and `--gutter` |
+| Section frame and rhythm | `.section`, override `--pad-top` and `--pad-bottom` per section |
+| Section label | `.eyebrow`, ALL CAPS mono, numbered (`01 / TRACK RECORD`) |
+| Headings | `.h1`, `.h2` (`.h2--split` with `.h2-secondary` for a two-tone line), `.h3` |
+| Primary action | `.btn.btn-primary` with the trailing arrow span, wrapped in `<Magnetic>` in the body |
+| Secondary action | `.btn.btn-secondary` |
+| Inline text action | `.text-link` |
+| Card surface | `.surface` |
+| Service entry | `ServiceRow` (`src/components/ServiceRow.tsx`) |
+| Offer card | `.offer.surface` from `StartHere.tsx` |
+| Case study | `.case` block from `TrackRecord.tsx` |
+| Entrance reveal | `<Reveal>` with variants from `src/lib/motion.ts`, never ad hoc Motion props |
+| Brand | `<Wordmark>` and `<ZacMark>` from `Brand.tsx`, never the SVG or a raster of your own |
+| Booking and email | `BOOKING_URL` and `CONTACT_EMAIL` from `src/lib/links.ts` |
+
+Motion stays reactive, not ambient, and respects `prefers-reduced-motion`.
+Any new component gets its styles in the matching global stylesheet
+(`layout.css` for composition, `interactive.css` for behaviour) using tokens
+only, and a row in this table.
+
+---
+
 ## Section order (v3)
 
 Hero → **TrackRecord** → ShiftComparison (Why now) → Services → HowItWorks → **StartHere** → FinalCTA
@@ -115,8 +175,8 @@ The v1 interactions are good and should survive the copy change:
 
 React 19 + TypeScript + Vite · Motion · global CSS · Cloudflare Pages
 Styling is **global CSS, not CSS Modules**. `src/styles/layout.css` (1400 lines) carries section composition, `globals.css` the primitives, `interactive.css` and `motion.css` the behaviour.
-Design tokens in `src/styles/tokens.css`. A brand redesign is in progress, so avoid hardcoding colors. Use the token variables.
-There is **no test framework** in this repo. Verification is `npm run build` (runs `tsc -b`), the voice gate at `scripts/voice-check.sh`, and measuring the running page.
+Design tokens live in `design/tokens.json` and are generated into `src/styles/tokens.css` by `scripts/build-tokens.mjs`. See the Design system section below.
+There is **no test framework** in this repo. Verification is `npm run build` (runs the token gate, then `tsc -b`), the voice gate at `scripts/voice-check.sh`, and measuring the running page.
 `functions/api/chat.ts` is a stub returning 501 and is **not** wired into the deploy (`wrangler.toml` ships static assets only). Leave it alone unless asked.
 
 ## Open slots

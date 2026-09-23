@@ -17,7 +17,7 @@ import { useMemo } from "react";
  * The seed keeps it stable across renders.
  */
 
-const TINTS = ["#E83445", "#F04455", "#FF6875"];
+const TINTS = ["var(--color-forge)", "var(--color-forge-hover)", "var(--color-forge-hot)"];
 
 type Props = {
   count?: number;

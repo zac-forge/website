@@ -7,11 +7,11 @@
    only appears on hover. */
 .btn-primary {
   position: relative;
-  background: linear-gradient(180deg, var(--color-forge-hover) 0%, var(--color-forge) 58%, #cf2c3d 100%);
+  background: linear-gradient(180deg, var(--color-forge-hover) 0%, var(--color-forge) 58%, var(--color-forge-shade) 100%);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.34),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.22),
-    0 1px 2px rgba(0, 0, 0, 0.4);
+    inset 0 1px 0 rgb(var(--white-rgb) / 0.34),
+    inset 0 -1px 0 rgb(var(--black-rgb) / 0.22),
+    0 1px 2px rgb(var(--black-rgb) / 0.4);
   overflow: hidden;
 }
 /* The sheen is a separate layer so it can fade independently of the fill. */
@@ -20,18 +20,18 @@
   position: absolute;
   inset: 0 0 auto;
   height: 50%;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.2), transparent);
+  background: linear-gradient(180deg, rgb(var(--white-rgb) / 0.2), transparent);
   pointer-events: none;
   transition: opacity var(--duration-base) var(--ease-out);
 }
 .btn-primary:hover {
   transform: translateY(-2px);
-  background: linear-gradient(180deg, #f4596a 0%, var(--color-forge-hover) 58%, var(--color-forge) 100%);
+  background: linear-gradient(180deg, var(--color-forge-tint) 0%, var(--color-forge-hover) 58%, var(--color-forge) 100%);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.45),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.2),
-    0 10px 34px rgba(232, 52, 69, 0.34),
-    0 0 0 1px rgba(255, 104, 117, 0.28);
+    inset 0 1px 0 rgb(var(--white-rgb) / 0.45),
+    inset 0 -1px 0 rgb(var(--black-rgb) / 0.2),
+    0 10px 34px rgb(var(--forge-rgb) / 0.34),
+    0 0 0 1px rgb(var(--forge-hot-rgb) / 0.28);
 }
 .btn-primary:hover::before {
   opacity: 0.75;
@@ -53,22 +53,22 @@
 /* Secondary is where the actual glass lives: it sits on the dark ground and
    picks up whatever is behind it. */
 .btn-secondary {
-  background: rgba(255, 255, 255, 0.045);
+  background: rgb(var(--white-rgb) / 0.045);
   -webkit-backdrop-filter: blur(14px) saturate(140%);
   backdrop-filter: blur(14px) saturate(140%);
   /* Same border scale as every other component rather than a one-off alpha. */
   border-color: var(--color-border-hover);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.12),
-    0 1px 2px rgba(0, 0, 0, 0.3);
+    inset 0 1px 0 rgb(var(--white-rgb) / 0.12),
+    0 1px 2px rgb(var(--black-rgb) / 0.3);
 }
 .btn-secondary:hover {
   transform: translateY(-2px);
-  background: rgba(255, 255, 255, 0.08);
-  border-color: #66666F;
+  background: rgb(var(--white-rgb) / 0.08);
+  border-color: var(--color-border-strong);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.18),
-    0 10px 28px rgba(0, 0, 0, 0.45);
+    inset 0 1px 0 rgb(var(--white-rgb) / 0.18),
+    0 10px 28px rgb(var(--black-rgb) / 0.45);
 }
 
 /* Magnetic wrapper. The transform lives on this element so it composes with
@@ -117,11 +117,11 @@
   border-color: var(--color-border-red-soft);
   background: linear-gradient(
     90deg,
-    rgba(232, 52, 69, 0.055),
-    rgba(255, 255, 255, 0.012) 42%,
-    rgba(232, 52, 69, 0.018)
+    rgb(var(--forge-rgb) / 0.055),
+    rgb(var(--white-rgb) / 0.012) 42%,
+    rgb(var(--forge-rgb) / 0.018)
   );
-  box-shadow: inset 0 1px rgba(255, 255, 255, 0.04);
+  box-shadow: inset 0 1px rgb(var(--white-rgb) / 0.04);
 }
 .service-row:hover::before,
 .service-row:focus-within::before {
@@ -141,8 +141,8 @@
   border-radius: 50%;
   background: radial-gradient(
     circle,
-    rgba(232, 52, 69, 0.16) 0%,
-    rgba(232, 52, 69, 0.05) 42%,
+    rgb(var(--forge-rgb) / 0.16) 0%,
+    rgb(var(--forge-rgb) / 0.05) 42%,
     transparent 72%
   );
   opacity: 0;
@@ -174,8 +174,8 @@
   height: 5px;
   translate: 0 -50%;
   border-radius: 50%;
-  background: radial-gradient(circle, #fff 0 30%, var(--color-forge-hot) 66%, var(--color-forge));
-  box-shadow: 0 0 8px 2px rgba(232, 52, 69, 0.45);
+  background: radial-gradient(circle, var(--color-white) 0 30%, var(--color-forge-hot) 66%, var(--color-forge));
+  box-shadow: 0 0 8px 2px rgb(var(--forge-rgb) / 0.45);
   opacity: 0.45;
   pointer-events: none;
   transition:
@@ -186,8 +186,8 @@
 .service-row:focus-within .service-spark {
   opacity: 1;
   box-shadow:
-    0 0 12px 3px rgba(232, 52, 69, 0.75),
-    0 0 28px 8px rgba(232, 52, 69, 0.28);
+    0 0 12px 3px rgb(var(--forge-rgb) / 0.75),
+    0 0 28px 8px rgb(var(--forge-rgb) / 0.28);
 }
 /* `scale` is the individual property, so the pop composes with the dot's own
    `translate` centring instead of overwriting it. */
@@ -211,8 +211,8 @@
   height: 4px;
   translate: 0 -50%;
   border-radius: 50%;
-  background: radial-gradient(circle, #fff 0 26%, var(--color-forge-hot) 62%, var(--color-forge));
-  box-shadow: 0 0 8px 2px rgba(232, 52, 69, 0.55);
+  background: radial-gradient(circle, var(--color-white) 0 26%, var(--color-forge-hot) 62%, var(--color-forge));
+  box-shadow: 0 0 8px 2px rgb(var(--forge-rgb) / 0.55);
   opacity: 0;
   pointer-events: none;
 }
@@ -227,7 +227,7 @@
   width: 26px;
   height: 1.5px;
   border-radius: 1px;
-  background: linear-gradient(90deg, transparent, rgba(232, 52, 69, 0.6));
+  background: linear-gradient(90deg, transparent, rgb(var(--forge-rgb) / 0.6));
 }
 /* The plain `ease-out` keyword, not the site's --ease-out. That curve covers
    365 of the 474px in its first 200ms and then crawls, which reads as a jump
@@ -251,7 +251,7 @@
 }
 .service-row:hover .service-index,
 .service-row:focus-within .service-index {
-  color: #3a3a45;
+  color: var(--color-text-ghost-2);
 }
 
 /* Faint technical grid, echoing the drafting lines in the reference mockup.
@@ -268,12 +268,12 @@
   z-index: -1;
   pointer-events: none;
   background-image:
-    linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    linear-gradient(to right, rgb(var(--white-rgb) / 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(var(--white-rgb) / 0.035) 1px, transparent 1px);
   background-size: 96px 96px;
   /* Fade the grid out at the edges so it reads as texture, not a table. */
-  -webkit-mask-image: radial-gradient(ellipse 72% 62% at 50% 46%, #000 20%, transparent 78%);
-  mask-image: radial-gradient(ellipse 72% 62% at 50% 46%, #000 20%, transparent 78%);
+  -webkit-mask-image: radial-gradient(ellipse 72% 62% at 50% 46%, var(--color-black-pure) 20%, transparent 78%);
+  mask-image: radial-gradient(ellipse 72% 62% at 50% 46%, var(--color-black-pure) 20%, transparent 78%);
 }
 
 /* Interactive targets.
@@ -293,7 +293,7 @@
 /* Focus is never communicated by colour alone, and the outline is applied to
    everything focusable rather than just links and buttons. */
 :focus-visible {
-  outline: 2px solid #fff;
+  outline: 2px solid var(--color-white);
   outline-offset: 3px;
   border-radius: 2px;
 }

@@ -1,51 +1,72 @@
+/* GENERATED FILE. Do not edit.
+   Source: design/tokens.json, written by scripts/build-tokens.mjs.
+   Provenance for every value is in the JSON and in
+   design/DESIGN-SYSTEM-NOTES.md. */
 :root {
-  /* Color */
-  --color-black: #09090B;
-  --color-bg: #0C0C0F;
+
+  /* color */
+  --color-black: #09090B;  /* Deepest ground. */
+  --color-bg: #0C0C0F;  /* Page background. */
   --color-surface-1: #121216;
   --color-surface-2: #18181D;
   --color-surface-3: #202026;
-  --color-forge: #E83445;
+  --color-surface-forge: #120A0C;  /* Red-tinted dark surface behind the unlit brand mark. */
+  --color-forge: #E83445;  /* Brand red. The logo sheet declares #FF2D55. The mismatch resolves in the redesign, do not chase it. */
   --color-forge-hover: #F04455;
   --color-forge-deep: #9E1F2D;
   --color-forge-hot: #FF6875;
-  --color-text: #F4F2F0;
+  --color-forge-shade: #CF2C3D;  /* Bottom stop of the primary button gradient. */
+  --color-forge-tint: #F4596A;  /* Top stop of the primary button hover gradient. */
+  --color-on-forge: #0B0B0D;  /* Text on a red fill. */
+  --color-white: #FFFFFF;  /* Hot cores of glows, focus rings, selection text. */
+  --color-black-pure: #000000;  /* Mask gradients only. Not a paint colour. */
+  --color-text: #F4F2F0;  /* Headlines and primary text. */
+  --color-text-secondary: #D8D7DA;  /* Second line of a two-tone heading. */
+  --color-text-body-strong: #CFCDD1;
+  --color-text-body: #CBC9CF;
   --color-text-muted: #A6A4AA;
   --color-text-faint: #737179;
-  --color-text-body: #CBC9CF;
+  --color-text-ghost-1: #55555F;  /* Ghosted structural text, lightest step. */
+  --color-text-ghost-2: #3A3A45;
+  --color-text-ghost-3: #212129;  /* Service row index numerals at rest. */
   --color-border: #29292F;
   --color-border-hover: #414149;
-  /* Red borders are part of the same system, not per-component opacities:
-     soft is the interactive/active state, strong is reserved for ZAC itself. */
-  --color-border-red-soft: rgba(232, 52, 69, .42);
-  --color-border-red: rgba(232, 52, 69, .5);
-  --color-border-red-strong: rgba(232, 52, 69, .8);
+  --color-border-strong: #66666F;  /* Secondary button hover border. */
+  --color-border-red-soft: rgb(232 52 69 / .42);  /* Interactive and active state. */
+  --color-border-red: rgb(232 52 69 / .5);
+  --color-border-red-strong: rgb(232 52 69 / .8);  /* Reserved for ZAC itself. */
 
-  /* Fonts */
+  /* channel: RGB channel triples for translucent glows, sheens, and masks. Use as rgb(var(--forge-rgb) / .35). Keeping the channels here means a brand red change re-tints every glow on the page. */
+  --forge-rgb: 232 52 69;
+  --forge-hot-rgb: 255 104 117;
+  --forge-deep-rgb: 158 31 45;
+  --white-rgb: 255 255 255;
+  --black-rgb: 0 0 0;
+  --ink-rgb: 10 10 12;  /* Header glass when scrolled. */
+
+  /* font */
   --font-display: "Space Grotesk", system-ui, sans-serif;
   --font-body: "Inter", system-ui, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, monospace;
 
-  /* Type.
-     One body system in three bands, so nothing is sized ad hoc:
-       meta     technical metadata only, never a meaningful paragraph
-       compact  compact explanatory copy inside dense components
-       body     primary marketing body
-       lead     hero and closing lead paragraphs
-     `label` is the mono section-label size, sitting just under body so the
-     landmarks read as navigation rather than legal footnotes. */
+  /* weight */
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  /* text: One body system in three bands: meta (technical metadata), compact (dense components), body, lead. label is the mono eyebrow size. */
   --text-meta: .78125rem;
   --text-compact: .9375rem;
   --text-label: .96875rem;
   --text-body: 1rem;
   --text-lead: 1.0625rem;
   --text-xl: 1.5rem;
-  /* 64px floor, 88px ceiling. The mockup measures nearer 99px, but the
-     approved direction caps the headline here so the rest of the type system
-     can come up to meet it rather than being dwarfed. */
-  --text-hero: clamp(4rem, 6vw, 5.5rem);
+  --text-h3: clamp(1.6rem, 2.27vw, 2.05rem);
+  --text-h2: clamp(2.35rem, 3.82vw, 3.45rem);
+  --text-hero: clamp(4rem, 6vw, 5.5rem);  /* 64px floor, 88px ceiling. */
 
-  /* Space */
+  /* space */
   --space-1: 4px;
   --space-2: 8px;
   --space-3: 12px;
@@ -58,18 +79,24 @@
   --space-10: 128px;
   --space-11: 160px;
 
-  /* Radius */
+  /* radius */
   --radius-sm: 4px;
   --radius-md: 8px;
   --radius-lg: 16px;
   --radius-full: 999px;
 
-  /* Layout */
-  --content-width: 1280px;
+  /* shadow: Named so components stop composing ad hoc shadow stacks. Figma effect styles unread. */
+  --shadow-raise: 0 1px 2px rgb(0 0 0 / .4);
+  --shadow-sheen: inset 0 1px 0 rgb(255 255 255 / .34), inset 0 -1px 0 rgb(0 0 0 / .22);
+  --shadow-glow-forge: 0 10px 34px rgb(232 52 69 / .34), 0 0 0 1px rgb(255 104 117 / .28);
+  --shadow-surface-inset: inset 0 1px rgb(255 255 255 / .045);
+
+  /* layout */
+  --content-width: 1280px;  /* Live site. Misha's Air - 1 frame reads 960px (1280 minus two 160px margins). Held until confirmed, see notes. */
   --copy-width: 680px;
   --gutter: clamp(24px, 3.4vw, 48px);
 
-  /* Motion */
+  /* motion */
   --duration-fast: 160ms;
   --duration-base: 280ms;
   --duration-slow: 700ms;
