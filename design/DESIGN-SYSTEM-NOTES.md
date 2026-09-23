@@ -130,6 +130,15 @@ the rebuild, and so the eventual real tokens can be checked against them.
 
 No footer beyond the closing block. No mobile version of this board.
 
+## Open by design: case study images
+
+Drew confirmed on 2026-09-23 that Misha is still deciding how the case
+studies carry images (how many, what size, what ratio). The
+`figma-geometry.case-study-block` measurements above are a snapshot of a
+draft, not a spec. Build the case study component so that image count and
+ratio are props and tokens, and expect to revise it once the board is final.
+Nothing else on the page depends on that decision.
+
 ## Missing or inconsistent
 
 - **No variables, and styles unreadable.** The board is built from literal
