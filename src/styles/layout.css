@@ -627,8 +627,9 @@
 }
 
 /* -------------------------------------------------------- 06 / Who we are */
-/* The sky band (198:551): sweeps top left and bottom right, three 190px
-   circles, name under each. */
+/* The sky band (198:551): sweeps top left and bottom right, three white
+   text cards. A photo, when one exists, is cropped to comp 7's 190px circle
+   (211:1380) at the top of its card. */
 .who-we-are {
   --pad-top: var(--space-10);
   --pad-bottom: var(--space-10);
@@ -639,8 +640,12 @@
 .team {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--space-7);
+  gap: var(--space-3);
   margin-top: var(--space-6);
+}
+.team-member {
+  padding: var(--space-6) var(--space-5);
+  color: var(--color-text);
 }
 .team-photo {
   width: var(--team-circle);
@@ -648,8 +653,11 @@
   border-radius: var(--radius-full);
   object-fit: cover;
 }
+.team-photo {
+  margin-bottom: var(--space-5);
+}
 .team-name {
-  margin: var(--space-5) 0 0;
+  margin: 0;
   font-size: var(--text-subtitle);
   font-weight: var(--weight-black);
   line-height: var(--leading-title);

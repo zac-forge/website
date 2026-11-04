@@ -85,7 +85,7 @@ Previews: build locally, then `npx wrangler deploy --name website-<branch>-previ
 - [x] `hello@zacforge.com` confirmed receiving mail (2026-08-20). v5 uses `drew@zacforge.com`
       on the site, in schema, and in `llms.txt`, per the copy deck.
 - [ ] Add the two team names in `src/components/WhoWeAre.tsx` **once Misha and Luke consent**.
-      Names are known and ready: Misha Gervits (Design Director), Luke Monegatto (Senior
+      Names are known and ready: Misha Gervits (Design Principal), Luke Monegatto (Principal
       Engineer). The block ships nameless by design and takes name and photo as optional props,
       so this is a two-line content change. Consent was still outstanding on 2026-08-20.
 - [ ] Implement `functions/api/chat.ts` for the v1.1 chat assistant, and route it from

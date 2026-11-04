@@ -74,8 +74,9 @@ These are not stylistic preferences. They are binding.
 | **The $1B is the client's transaction volume, not ZAC's revenue.** Write "over $1 billion in assets sold through the platform." Never "we sold $1 billion in assets." | Accuracy |
 | **The 90% figure is client-reported.** Always attribute: "the client reported support calls dropped by over 90%." | Substantiation |
 | **Never characterize a named client's leadership or internal problems.** | Professional |
-| **Do not name Misha or Luke** until they confirm. Still pending as of 2026-08-20, and the site ships nameless. Full names are known and ready: **Misha Gervits**, Design Director, and **Luke Monegatto**, Senior Engineer (Luciano goes by Luke). Do not add them to `WhoWeAre.tsx` until Drew says consent is given. Name and photo are already optional props, so it is a two-line change. | Consent pending |
-| **Misha was an associate creative director at Ogilvy. Not Havas.** His title on the site is **Design Director**, because "Creative Director" is agency vocabulary on a site that sells against agencies. | Accuracy |
+| **Do not name Misha or Luke** until they confirm. Still pending as of 2026-11-04, and the site ships them by role. Full names are known and ready: **Misha Gervits**, Design Principal, and **Luke Monegatto**, Principal Engineer (Luciano goes by Luke). Do not add them to `WhoWeAre.tsx` until Drew says consent is given. Name and photo are already optional props, so it is a two-line change. | Consent pending |
+| **Team titles** (Drew, 2026-11-04): Andrew is **Founder, Principal**, Misha is **Design Principal**, Luke is **Principal Engineer**. These are the role labels in Who we are. "Creative Director" stays off the site, because it is agency vocabulary on a site that sells against agencies. | Positioning |
+| **Misha was an associate creative director at Ogilvy. Not Havas.** | Accuracy |
 | **Do not introduce team members as Andrew's former colleagues.** It makes him the centre and them satellites, which contradicts "One team. No layers." IBM appears in each bio as a credential instead. | Positioning |
 
 ---
@@ -176,7 +177,7 @@ Every page is prerendered by `scripts/prerender.mjs` into `dist/<route>.html` wi
 | `RealityCheck.tsx` | The visual stop: maroon band, the five questions as white cards, CTA to `#contact`, link to `/reality-check`, the Fix Week line |
 | `WhatWeFix.tsx` | Six one-line rows; Brand system plain text while `BRAND_SYSTEM` is off |
 | `HowWeWork.tsx` | Check, Fix, Partner `FlowRow`, three principles |
-| `WhoWeAre.tsx` | Sky band, three people by role, Andrew named; the other two names wait for consent |
+| `WhoWeAre.tsx` | Sky band, three text-only white cards (role and bio), Andrew named; the other two names wait for consent; a photo, when given, is cropped to a 190px circle on its card |
 | `Closing.tsx`, `ContactForm.tsx` | The form, also rendered on `/reality-check` |
 | `Footer.tsx` | Links absolute so they work from offer pages |
 | `Brand.tsx` | Serves the board's wordmark SVG and the closing mark |

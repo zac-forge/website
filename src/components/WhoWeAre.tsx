@@ -17,23 +17,25 @@ type TeamMember = { name?: string; photo?: string; role: string; bio: string };
 const TEAM: TeamMember[] = [
   {
     name: "Andrew Johnston",
-    role: "Founder",
+    role: "Founder, Principal",
     bio: "Nineteen years at IBM and fifteen running his own practice. ZAC is what happens when those stop being separate things.",
   },
   {
-    role: "Design director",
+    role: "Design Principal",
     bio: "Associate creative director at Ogilvy, then design lead on work for Walmart, Viacom, and Nike, and at the IBM Design Lab.",
   },
   {
-    role: "Senior engineer",
+    role: "Principal Engineer",
     bio: "Senior engineer at IBM. WordPress and PHP, React and Node, and mobile.",
   },
 ];
 
 /**
- * Comp 7's sky band (198:551) with sweeps top left and bottom right, three
- * 190px circles with a name under each (211:1376 to 211:1382). Neutral
- * placeholders until photos exist, not stock.
+ * Comp 7's sky band (198:551) with sweeps top left and bottom right. Comp 7
+ * draws a 190px circle above each name (211:1380 to 211:1382); Drew removed
+ * the grey placeholders on 2026-11-04, so the three are text-only white cards
+ * until real photos exist. A card with a photo shows it cropped to that
+ * circle. Andrew's is the only one to add when it arrives.
  */
 export function WhoWeAre() {
   return (
@@ -49,12 +51,10 @@ export function WhoWeAre() {
         </Reveal>
         <Reveal className="team" stagger={0.08}>
           {TEAM.map((m) => (
-            <motion.div className="team-member" key={m.role} variants={fadeUpSmall}>
+            <motion.div className="team-member surface" key={m.role} variants={fadeUpSmall}>
               {m.photo ? (
                 <img className="team-photo" src={m.photo} alt="" width={190} height={190} loading="lazy" />
-              ) : (
-                <div className="team-photo placeholder" aria-hidden="true" />
-              )}
+              ) : null}
               <h3 className="team-name">{m.name ?? m.role}</h3>
               {m.name ? <p className="team-role">{m.role}</p> : null}
               <p className="team-bio">{m.bio}</p>
