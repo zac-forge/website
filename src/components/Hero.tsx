@@ -1,6 +1,5 @@
 import { motion, useReducedMotion } from "motion/react";
 import { Magnetic } from "./Magnetic";
-import { BOOKING_URL } from "../lib/links";
 import { EASE, staggerContainer } from "../lib/motion";
 
 const container = staggerContainer(0.1, 0.05);
@@ -11,16 +10,17 @@ const item = {
 };
 
 /**
- * v4 hero copy in the board's hero layout: a two-tone headline with the
- * second clause in the accent, body copy, the pill button, and the Z
- * illustration (node 4:89) to the right. The headline does not contain
- * "AI": the offer name carries the word one section down.
+ * v5 hero on comp 7's navy band (198:428) with the rounded sweep at the
+ * bottom left. Misha's headline is the H1, the proof. The problem line is the
+ * body. Comp 7 sets the headline in light caps with "still running" heavy:
+ * the build keeps sentence case (CLAUDE.md) and carries the emphasis with the
+ * two existing weights.
  */
 export function Hero() {
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <section id="top" className="hero">
+    <section id="top" className="hero band band--navy">
       <div className="container hero-grid">
         <motion.div
           className="hero-copy"
@@ -29,31 +29,32 @@ export function Hero() {
           animate="show"
         >
           <motion.p className="eyebrow" variants={item}>
-            / ZAC / Senior web partner
+            / ZAC / Senior team, plain answers
           </motion.p>
-          <motion.h1 className="h1" variants={item}>
-            When a customer asks for a recommendation,{" "}
-            <span className="text-accent">is your name in the answer?</span>
+          <motion.h1 className="h1 hero-title" variants={item}>
+            <span className="hero-title-light">The systems we built in 2010 are</span>{" "}
+            <span>still running.</span>
           </motion.h1>
           <motion.p className="hero-body" variants={item}>
-            More of your customers now ask ChatGPT, Google, or Perplexity who to call. The answer
-            names two or three businesses. We find out whether you are one of them, fix what keeps
-            you out, and stay on as the senior team behind your website.
+            AI made everyone an IT expert. It didn't make it work. If you built something with AI
+            this year, or paid someone who did, and it half works, looks like everyone else's, or
+            nobody can find it, send it to us. We'll check it, free, and tell you straight.
           </motion.p>
           <motion.div className="cta-row" variants={item}>
             <Magnetic>
-              <a className="btn btn-primary" href={BOOKING_URL}>
-                <span>Book a call</span>
+              <a className="btn btn-primary" href="#reality-check">
+                <span>Get a Reality Check</span>
                 <span aria-hidden="true">→</span>
               </a>
             </Magnetic>
-            <a className="text-link" href="#services">
-              <span>See what we check</span>
+            <a className="text-link" href="#track-record">
+              <span>See what we've built</span>
               <span aria-hidden="true">↓</span>
             </a>
           </motion.div>
           <motion.p className="proof-line" variants={item}>
-            19 years at IBM, including IBM.com. Systems we built in 2010 are still running.
+            19 years at IBM, including IBM.com, and a practice run alongside it since 2010 for
+            clients who still run what we built.
           </motion.p>
         </motion.div>
 

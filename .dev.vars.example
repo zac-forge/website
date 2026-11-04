@@ -1,1 +1,4 @@
+# Copy to .dev.vars for `npx wrangler dev`. All optional, see README.md.
+RESEND_API_KEY=
+TURNSTILE_SECRET_KEY=
 ANTHROPIC_API_KEY=

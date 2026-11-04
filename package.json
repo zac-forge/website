@@ -6,7 +6,7 @@
   "description": "One-page marketing site for ZAC (zacforge.com), a senior technology studio.",
   "scripts": {
     "dev": "vite",
-    "build": "node scripts/build-tokens.mjs --check && node scripts/lint-tokens.mjs && tsc -b && vite build && vite build --ssr src/entry-server.tsx --outDir .prerender --logLevel warn && node scripts/prerender.mjs",
+    "build": "node scripts/build-tokens.mjs --check && node scripts/lint-tokens.mjs && tsc -b && tsc -p functions && vite build && vite build --ssr src/entry-server.tsx --outDir .prerender --logLevel warn && node scripts/prerender.mjs",
     "preview": "vite preview",
     "pages:dev": "npm run build && wrangler pages dev dist",
     "build:client": "node scripts/build-tokens.mjs --check && node scripts/lint-tokens.mjs && tsc -b && vite build",

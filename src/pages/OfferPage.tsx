@@ -1,13 +1,15 @@
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import { Magnetic } from "../components/Magnetic";
-import { BOOKING_URL } from "../lib/links";
+import { Closing } from "../components/Closing";
 import { LIVE_OFFERS } from "./offers";
 import type { Offer, Block } from "./offers";
 
 /**
- * Shared offer page template: eyebrow, H1, intro, lists, steps, proof, FAQ,
- * closing CTA. Deliberately no entrance animation on the copy. These pages
+ * Shared offer page template: a navy band hero (eyebrow, H1, the v5 line
+ * placing the page behind the Reality Check, intro), then lists, steps,
+ * proof, FAQ, related offers, the closing CTA, and on /reality-check the
+ * contact form. Deliberately no entrance animation on the copy. These pages
  * exist to be read by assistants that do not run JavaScript, so the text is
  * plain markup with no inline opacity for a script to undo.
  */
@@ -63,10 +65,11 @@ export default function OfferPage({ offer }: { offer: Offer }) {
     <>
       <Header />
       <main className="offer-page">
-        <section id="top" className="offer-hero">
+        <section id="top" className="offer-hero band band--navy">
           <div className="container">
             <p className="eyebrow">{offer.eyebrow}</p>
             <h1 className="h1 offer-title">{offer.h1}</h1>
+            {offer.subline ? <p className="offer-subline">{offer.subline}</p> : null}
             {offer.intro.map((p) => (
               <p className="offer-intro" key={p}>
                 {p}
@@ -122,10 +125,10 @@ export default function OfferPage({ offer }: { offer: Offer }) {
             <div className="offer-related-grid">
               {LIVE_OFFERS.filter((o) => o.path !== offer.path).map((other) => (
                 <a className="offer-related-card surface" href={other.path} key={other.path}>
-                  <span className="offer-related-title">{other.rowTitle}</span>
-                  <span className="offer-related-body">{other.rowStatement}</span>
+                  <span className="offer-related-title">{other.navTitle}</span>
+                  <span className="offer-related-body">{other.summary}</span>
                   <span className="text-link offer-related-link">
-                    <span>{other.rowLink}</span>
+                    <span>More</span>
                     <span aria-hidden="true">→</span>
                   </span>
                 </a>
@@ -142,14 +145,16 @@ export default function OfferPage({ offer }: { offer: Offer }) {
           <div className="container">
             <div className="cta-row">
               <Magnetic>
-                <a className="btn btn-primary" href={BOOKING_URL}>
-                  <span>Book a call</span>
-                  <span aria-hidden="true"> →</span>
+                <a className="btn btn-primary" href={offer.cta.href}>
+                  <span>{offer.cta.label}</span>
+                  <span aria-hidden="true">→</span>
                 </a>
               </Magnetic>
             </div>
           </div>
         </section>
+
+        {offer.form ? <Closing /> : null}
       </main>
       <Footer />
     </>

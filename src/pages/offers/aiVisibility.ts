@@ -2,18 +2,8 @@ import type { Offer } from "./types";
 
 export const aiVisibility: Offer = {
   path: "/ai-visibility",
-  row: "01",
-  rowTitle: "AI visibility",
-  rowStatement: "Get named when customers ask.",
-  rowItems: [
-    "Real customer questions tested across ChatGPT, Google, Perplexity, and Claude",
-    "Crawler access and rendering",
-    "Structured data",
-    "Pages that answer what customers ask",
-    "Reviews, listings, and mentions",
-    "Monthly tracking",
-  ],
-  rowLink: "How the audit works",
+  navTitle: "AI Visibility",
+  summary: "Get named when customers ask ChatGPT, Google, or Perplexity who to call.",
   title: "AI Visibility Audit | ZAC Forge",
   description:
     "Find out whether ChatGPT, Google, Perplexity, and Claude recommend your business or your competitors, and what to fix first.",
@@ -22,6 +12,7 @@ export const aiVisibility: Offer = {
     "Tests real customer questions across ChatGPT, Google AI Overviews and AI Mode, Perplexity, and Claude. Fixes crawler access, rendering, structured data, answer content, and third-party mentions. Tracks how often the business is named.",
   eyebrow: "AI VISIBILITY",
   h1: "AI visibility: get named when customers ask.",
+  subline: "Usually the fix for question 4 on the Reality Check.",
   intro: [
     "Ask ChatGPT who the best [your category] near you is. It will name a few businesses. We find out whether you are one of them, why or why not, and what to fix first.",
   ],
@@ -57,10 +48,6 @@ export const aiVisibility: Offer = {
       kind: "numbered",
       items: [
         {
-          title: "Snapshot.",
-          body: "20 real questions, you against three competitors, the crawler check, and the top five fixes. About a week.",
-        },
-        {
           title: "Full audit.",
           body: "50 questions, up to five competitors, the full technical review, the sources assistants rely on for your category, and a 90-day plan.",
         },
@@ -72,7 +59,7 @@ export const aiVisibility: Offer = {
     },
   ],
   // The hawaii.surf before and after, and the zacforge.com result, are open
-  // slots in docs/site-copy-v4.md. Only the sentence that needs no numbers
+  // slots in docs/site-copy-v4.md, still open in v5. Only the sentence that needs no numbers
   // ships until they are filled.
   proof: ["We run the same audit on our own site."],
   faq: [
@@ -101,4 +88,5 @@ export const aiVisibility: Offer = {
         "Technical fixes can show up within weeks, as assistants re-read your site. Reviews and mentions take longer. We re-test at 30 days and track monthly after that.",
     },
   ],
+  cta: { label: "Start with a Reality Check", href: "/reality-check" },
 };

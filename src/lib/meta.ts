@@ -8,14 +8,15 @@ export type PageMeta = {
   ogTitle: string;
 };
 
+/** docs/site-copy-v5.md, "Metadata and schema". */
 const HOME_DESCRIPTION =
-  "Find out whether ChatGPT, Google, and Perplexity recommend your business, then fix what keeps you out. A senior web partner with 19 years at IBM behind it.";
+  "AI made everyone an IT expert. It didn't make it work. A free five-question check from a senior team with 19 years at IBM behind it, then a fixed-price fix.";
 
 export const HOME_META: PageMeta = {
   path: "/",
-  title: "ZAC Forge | AI Visibility and Senior Web Partner",
+  title: "ZAC Forge | Built it with AI? We'll check it.",
   description: HOME_DESCRIPTION,
-  ogTitle: "Is your name in the answer?",
+  ogTitle: "The systems we built in 2010 are still running.",
 };
 
 /** Every prerendered route and its head. Consumed by the prerender and by

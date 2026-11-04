@@ -1,13 +1,15 @@
 /**
  * JSON-LD per route, server-rendered by scripts/prerender.mjs.
  *
- * Rules from docs/site-copy-v4.md: ProfessionalService for ZAC Forge, Person
+ * Rules from docs/site-copy-v5.md: ProfessionalService for ZAC Forge, Person
  * for Andrew only (the other two team members are unnamed on the page pending
- * consent), one Service per live offer with provider ZAC Forge, and FAQPage on
- * each offer page matching the visible questions exactly. No offers, no
- * price properties, anywhere.
+ * consent), one Service per live offer with provider ZAC Forge (the Reality
+ * Check, the Fix Week, AI Visibility, Accessibility and Performance, Web
+ * Partner, and the Brand System once its flag is on), and FAQPage on each
+ * offer page matching the visible questions exactly. No offers, no price
+ * properties, anywhere.
  */
-import { LIVE_OFFERS, FRACTIONAL_LEAD } from "../pages/offers";
+import { LIVE_OFFERS } from "../pages/offers";
 import type { Offer } from "../pages/offers";
 import { HOME_META, canonical } from "./meta";
 import { CONTACT_EMAIL } from "./links";
@@ -23,7 +25,10 @@ const organization = {
   alternateName: "ZAC",
   legalName: "ZAC Consulting LLC",
   url: `${SITE_URL}/`,
-  logo: `${SITE_URL}/brand/zacforge-lockup.webp`,
+  // The v3 lockup.webp this used to name was retired with the redesign and
+  // no longer exists. The 180px raster mark stands in, since search engines
+  // do not take SVG for a logo.
+  logo: `${SITE_URL}/brand/favicon-180.png`,
   image: OG_IMAGE,
   email: CONTACT_EMAIL,
   description: HOME_META.description,
@@ -33,10 +38,7 @@ const organization = {
     addressRegion: "CA",
     addressCountry: "US",
   },
-  areaServed: [
-    { "@type": "AdministrativeArea", name: "Ventura County, CA" },
-    { "@type": "Country", name: "United States" },
-  ],
+  areaServed: { "@type": "Country", name: "United States" },
   // sameAs (LinkedIn) is an open slot in the copy deck: no URL was supplied.
   founder: { "@id": PERSON_ID },
 };
@@ -60,10 +62,7 @@ function service(name: string, description: string, url?: string) {
 }
 
 function services() {
-  return [
-    ...LIVE_OFFERS.map((o) => service(o.serviceName, o.serviceDescription, canonical(o.path))),
-    service(FRACTIONAL_LEAD.serviceName, FRACTIONAL_LEAD.serviceDescription),
-  ];
+  return LIVE_OFFERS.map((o) => service(o.serviceName, o.serviceDescription, canonical(o.path)));
 }
 
 export function homeSchema() {

@@ -32,13 +32,34 @@
 }
 
 /* Nav items: no underline. Hover and focus are shown by colour only in the
-   row, and the focus ring still applies from the global rule. */
+   row, and the focus ring still applies from the global rule. The header is
+   navy, so the row uses the sky band colour, and the white menu panels (the
+   desktop offers menu, the mobile menu) keep the accent. */
 .site-nav a:not(.btn):hover,
 .site-nav a:not(.btn):focus-visible,
 .nav-menu-button:hover,
 .nav-menu-button:focus-visible,
 .nav-menu[data-open="true"] .nav-menu-button {
+  color: var(--color-band-sky);
+}
+.site-nav .nav-menu-panel a:not(.btn):hover,
+.site-nav .nav-menu-panel a:not(.btn):focus-visible {
   color: var(--color-accent);
+}
+.site-header :focus-visible {
+  outline-color: currentColor;
+}
+.site-header .nav-menu-panel :focus-visible {
+  outline-color: var(--color-accent);
+}
+@media (max-width: 860px) {
+  .site-nav a:not(.btn):hover,
+  .site-nav a:not(.btn):focus-visible {
+    color: var(--color-accent);
+  }
+  .site-header .site-nav :focus-visible {
+    outline-color: var(--color-accent);
+  }
 }
 
 .text-link:hover::after,
@@ -46,19 +67,9 @@
   transform: scaleX(1);
 }
 
-/* Cards that lead somewhere lift on hover. Cards that do not stay put. */
-.service,
-.offer,
-.team-member {
-  transition:
-    transform var(--duration-base) var(--ease-out),
-    box-shadow var(--duration-base) var(--ease-out);
-}
-.service:hover,
-.service:focus-within {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-lift);
-}
+/* Cards that lead somewhere lift on hover (.offer-related-card, in
+   layout.css). The case and check cards do not lead anywhere, so they stay
+   put. */
 
 /* Focus is never communicated by colour alone, and the outline is applied to
    everything focusable rather than just links and buttons. */

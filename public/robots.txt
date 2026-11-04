@@ -1,4 +1,24 @@
+# Production robots.txt. Preview hosts never see this file: the Worker in
+# functions/worker.ts answers /robots.txt with Disallow on any host that is
+# not zacforge.com.
+
 User-agent: *
+Allow: /
+
+# Named so the intent is explicit. The wildcard above already allows them.
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
 Allow: /
 
 Sitemap: https://zacforge.com/sitemap.xml

@@ -1,34 +1,41 @@
 # ZAC Forge
 
-> A senior web partner. ZAC finds out whether AI assistants recommend a
-> business, fixes what keeps it out, and stays on as the senior team behind
-> its website.
+> A senior web and software team. ZAC checks sites, apps, and brands that were
+> built with AI tools or by someone who has since left, says plainly what is
+> wrong, and fixes it for a fixed price.
 
-ZAC is the successor to Mahalo Media Group, a practice run by founder Andrew
-Johnston for over 15 years, after 19 years at IBM including IBM.com. Based in
-Ventura County, California. Works remotely with clients anywhere in the US.
-
-## Services
-
-- [AI Visibility](https://zacforge.com/ai-visibility): Tests real customer
-  questions across ChatGPT, Google AI Overviews and AI Mode, Perplexity, and
-  Claude. Fixes crawler access, rendering, structured data, answer content,
-  and third-party mentions. Tracks how often the business is named.
-- [Web Partner](https://zacforge.com/web-partner): Ongoing senior care for a
-  website: fixes, change requests, performance, security, accessibility, a
-  monthly improvement, and visibility tracking. Not a maintenance plan.
-- [Accessibility and Performance](https://zacforge.com/accessibility): Manual
-  testing against WCAG 2.2 AA, performance review, fixes made in the code, and
-  an accessibility statement. No overlays.
-- Fractional Digital Lead: a few hours a week owning an organization's
-  digital roadmap, vendors, and analytics.
+ZAC is built on the practice Andrew Johnston has run since 2010, after 19 years
+at IBM including IBM.com and the IBM Design Lab. Works remotely with clients
+anywhere in the US.
 
 ## Start here
 
-- AI Visibility Snapshot: 20 real customer questions, three competitors,
-  a crawler access check, and the top five fixes. About a week.
-- Accessibility and Performance Snapshot: manual testing of key pages and
-  the top issues ranked by risk. About a week.
+- [The Reality Check](https://zacforge.com/reality-check): a free five-question
+  check on anything built with AI tools or inherited: does it work, is it fast,
+  can everyone use it, can anyone find it, does it look like you or like AI.
+  One short scorecard in plain English with the evidence and what a fix takes.
+- [The Fix Week](https://zacforge.com/fix-week): one week, fixed price. The
+  worst thing on the scorecard fixed, one screen redesigned so it looks like
+  the client and not like AI, and a ranked list of what is left.
+
+## Services
+
+- [AI Visibility](https://zacforge.com/ai-visibility): tests real customer
+  questions across ChatGPT, Google, and Perplexity; fixes crawler access,
+  structured data, answer content, and third-party mentions; tracks how often
+  the business is named.
+- [Accessibility and Performance](https://zacforge.com/accessibility): manual
+  testing against WCAG 2.2 AA, performance review, fixes made in the code. No
+  overlays.
+- [Web Partner](https://zacforge.com/web-partner): ongoing senior care after
+  the fix: updates, backups, monitoring, change requests, one improvement a
+  month, and visibility tracking. Not a maintenance plan.
+- Rescue: finishing and hardening sites and apps built quickly with AI tools,
+  or rebuilding them when they cannot be saved.
+- Platform Escape: moving organizations off platforms they have outgrown onto
+  something they own.
+- AI-Ready Brand System: senior brand design turned into tokens, components,
+  and kits so AI-made work stays on brand.
 
 ## Track record
 
@@ -36,14 +43,17 @@ Ventura County, California. Works remotely with clients anywhere in the US.
   real-time auction creation from the sale floor. Live since 2010, with over
   $1 billion in assets sold through the platform.
 - Legacy Studios and Teddy Bear Portraits: point of sale and same-day photo
-  delivery across 41 states. Built 2016 to 2019, still running.
-- US Naval Academy and US Marines: cadet booking and photo portals, live
-  since 2017.
+  delivery across 41 states. Built 2016 to 2019, still running, now maintained
+  by an outside vendor unchanged.
+- US Naval Academy and US Military Academy: cadet booking and photo portals,
+  live since 2017.
 - Legal Access Alameda: web properties for a statewide group of attorneys
-  providing disaster response and free legal assistance.
+  providing disaster response and free legal assistance, built and rebuilt
+  over several years.
 
 ## Contact
 
+- [Send us what you built](https://zacforge.com/#contact)
 - [Book a call](https://cal.com/zacforge/20-min-chat)
-- [Email](mailto:hello@zacforge.com)
+- [Email](mailto:drew@zacforge.com)
 - [Website](https://zacforge.com/)

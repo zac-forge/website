@@ -145,8 +145,10 @@ p {
   position: absolute;
   inset: calc((var(--btn-height) - 44px) / 2) 0;
 }
+/* Comp 7 fills the body buttons with the deep purple (211:1408) and keeps
+   the light accent for the header button only, see .nav-cta. */
 .btn-primary {
-  background: var(--color-accent);
+  background: var(--color-accent-deep);
   color: var(--color-on-accent);
 }
 /* No secondary button on the board. Extension: the same pill, outlined. */
@@ -188,6 +190,86 @@ p {
    its own undecided art as this grey, so the working copy does the same. */
 .placeholder {
   background: var(--color-placeholder);
+}
+
+/* Colour band from comp 7: a full-width section on one of the three band
+   colours, with the rounded sweep corners set per band in layout.css. Text,
+   eyebrows, links, and the focus ring follow the band's own foreground so
+   nothing on a band falls back to a colour meant for the grey ground. */
+.band {
+  --band-fg: var(--color-on-band);
+  --band-muted: rgb(var(--white-rgb) / 0.82);
+  background: var(--band-bg);
+  color: var(--band-fg);
+}
+.band--navy {
+  --band-bg: var(--color-band-navy);
+}
+.band--maroon {
+  --band-bg: var(--color-band-maroon);
+}
+/* Black on the sky blue, as the comp sets it (211:1379). */
+.band--sky {
+  --band-bg: var(--color-band-sky);
+  --band-fg: var(--color-text);
+  --band-muted: var(--color-text);
+}
+.band .eyebrow,
+.band .proof-line {
+  color: var(--band-muted);
+}
+.band .text-link::after {
+  background: currentColor;
+}
+.band :focus-visible {
+  outline-color: currentColor;
+}
+
+/* Form fields. Not on any board. White on the ground with a 1px border in
+   the muted grey, which clears the 3:1 boundary contrast for inputs. */
+.field {
+  display: grid;
+  gap: var(--space-2);
+}
+.field-label {
+  font-size: var(--text-label);
+  font-weight: var(--weight-black);
+}
+.field-input {
+  width: 100%;
+  min-height: 44px;
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-surface);
+  color: var(--color-text);
+  border: 1px solid var(--color-text-muted);
+  border-radius: var(--radius-sm);
+}
+.field-input:focus-visible {
+  outline-offset: 1px;
+}
+.field-textarea {
+  resize: vertical;
+  min-height: calc(var(--space-10) + var(--space-7));
+}
+/* Honeypot: out of view and out of the accessibility tree. */
+.field-trap {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .cta-row {

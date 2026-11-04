@@ -142,6 +142,82 @@ to it:
 - `motion.*` durations and easing, carried from v3.
 - The secondary (outlined) button, the text link, and the footer.
 
+## v5: comp 7 (2026-11-04)
+
+The v5 build (`docs/site-copy-v5.md`, `docs/site-v5-build-plan.md`) pulls the
+layout toward Misha's **comp 7**, node `198:427` "MacBook Air - 7" in the same
+file. Drew approved on 2026-11-04 reading it once, through the REST API, and
+treating its new values as **provisional tokens**. Board `6:2` remains the
+source for everything comp 7 does not change.
+
+**The read:** one `GET /v1/files/{key}/nodes?ids=198:427` (fills and text
+styles, no geometry paths) and one PNG render. Nothing else was requested.
+
+**Tokens added, all `figma-comp7:<node>` in `tokens.json`, all provisional:**
+
+| Token | Value | Node |
+|---|---|---|
+| `color.band-navy` | `#3B5480` | `198:428`, hero band |
+| `color.band-maroon` | `#682738` | `198:429`, What changed band |
+| `color.band-sky` | `#6EBFDC` | `198:551`, Who we are band |
+| `color.accent-deep` | `#56246F` | `211:1408`, body button fill |
+| `color.on-band` | `#FFFFFF` | `198:457`, hero headline |
+| `text.subtitle` | 32px at 1280 | `211:1257` and the other 32px titles |
+| `radius.sweep` | 240px at 1280 | measured off the render, see below |
+| `radius.sweep-lg` | 380px at 1280 | measured off the render, `198:429` top right |
+| `layout.flow-circle` | 133px | `211:1260` |
+| `layout.team-circle` | 190px | `211:1380` |
+
+**Sweep radii are measured, not read.** The response did not include
+geometry, so the corner radii of the three band vectors were measured off the
+render (about 240px on every sweep except the maroon band's top right, about
+380px) and scale down with the viewport. Replace them with the path values
+when the comp is next read with `geometry=paths`.
+
+**How v5 maps onto comp 7:**
+
+| Copy section | Built as |
+|---|---|
+| Header | Board header, now on navy on every page. Wordmark drawn white with a CSS filter on the board's SVG export, header button in the light accent as `198:430` |
+| Hero | Navy band with the bottom-left sweep, the board's Z (`4:89`) |
+| Logo band | Comp 7's row of five circles (`198:528`), set as muted text names per the deck |
+| 01 Track record | Comp 7's split head (heading left, intro right). Four stacked white cards, text first, the number set large, per the deck. The comp's screenshot collage is not used |
+| 02 What changed | Maroon band, sweeps top right and bottom left. The three-step row below it on the ground, arrows drawing once (the kept THEN and NOW interaction) |
+| 03 Reality Check | Not on comp 7. Five white cards on the ground |
+| 04 What we fix | Six hairline rows, not the comp's three columns |
+| 05 How we work | Heading with the v4 `8:69` and `8:86` art, a Check, Fix, Partner flow row, three principle columns |
+| 06 Who we are | Sky band, sweeps top left and bottom right, three 190px circles |
+| Closing | The contact form beside the v4 closing circle and mark |
+
+**Deviations from comp 7, each deliberate:**
+
+1. **Headings stay sentence case.** Comp 7 sets every heading in caps, and the
+   hero in Avenir 300 with "still running" in 800 italic. CLAUDE.md requires
+   sentence case. The hero keeps the emphasis with the two loaded weights,
+   400 for the lead-in and 900 for "still running." Question 20.
+2. **The maroon band is on What changed, as the comp draws it.** The copy deck
+   asks for the Reality Check to be the visual stop "in Misha's maroon band".
+   The build plan and the comp put the band on What changed. The build follows
+   the comp. Question 15.
+3. **Body buttons in the deep purple.** Comp 7 fills the hero and closing
+   buttons with `#56246F` and keeps `#9D4DFF` for the header button only. Every
+   body `.btn-primary` now uses `color.accent-deep`. Question 22.
+4. **Comp 7's new illustrations are not exported.** The paper-plane set
+   (`198:460` to `198:511`), the three What we do marks (`211:1272` to
+   `211:1323`), and the big closing Z (`211:1384`) would need further reads.
+   The v4 case-study Z set stands in on the maroon band. Question 16.
+
+**Extensions without coverage in either board:**
+
+- Offer page heroes on the navy band with the hero's sweep, so the navy
+  header always sits on navy.
+- Band foregrounds: white on navy and maroon, black on sky, eyebrows at 82%
+  white on the dark bands, and the focus ring in the band's foreground.
+- Nav hover on navy in the sky band colour. The accent on navy is about 2:1.
+- Form fields: white, 1px border in `color.text-muted` for 3:1 boundary
+  contrast, 4px radius.
+- The flow row's arrows, drawn as a line and a chevron in `currentColor`.
+
 ## Questions for Misha
 
 1. **Avenir.** The board is set in Avenir and Avenir Next. Is there a web
@@ -175,6 +251,36 @@ to it:
 13. **Team.** The nav on the board has "Senior team" but no team section is
     drawn. The build uses three cards. Is that the intent?
 14. **Footer.** None on the board. The build has a hairline and three columns.
+15. **Reality Check placement.** The copy deck wants the Reality Check to be
+    the visual stop on the page, in the maroon band. Comp 7 has the maroon band
+    on What changed and no Reality Check section. The build follows the comp
+    and puts the check on five white cards. Should the maroon band move?
+16. **Comp 7 illustrations.** The paper-plane set on the maroon band, the three
+    What we do marks, and the big closing Z are not exported yet. Final enough
+    to export?
+17. **Closing.** Comp 7 shows an email link and Book a call over the big Z. v5
+    replaces both with a contact form. The build keeps the v4 circle and mark
+    beside the form. Big Z, circle, or neither?
+18. **What we fix.** Comp 7 draws three columns with marks. v5 has six short
+    rows. The build uses hairline rows. Should the first three carry the marks,
+    as the deck suggests?
+19. **How we work.** Comp 7 has a five-step process (Intro, Deep dive, Design,
+    Production, Reassess) and a Tools, Zacforge, Client diagram. v5 has three
+    steps and no diagram copy. The build shows the three steps and leaves the
+    diagram out.
+20. **Caps.** Comp 7 sets headings in caps, and the hero in a light weight with
+    a heavy italic. The site's voice rules require sentence case, and only 400
+    and 900 are loaded. Is caps the direction, and is a light weight coming?
+21. **Navy header everywhere.** The header sits on navy on every page and each
+    offer page opens on a navy band. Intended?
+22. **Two purples.** Deep `#56246F` for body buttons, light `#9D4DFF` for the
+    header button, as the comp draws them. Confirm both, and which one carries
+    links and numbers.
+23. **Sweep radii.** Measured off the render at about 240px and 380px. What
+    are the drawn values, and how should they behave on a phone?
+24. **Case study imagery.** Comp 7 shows a collage of full screenshots. The v5
+    deck asks for text-first cards with one tight crop at most. The build ships
+    the cards with no image until a crop is chosen.
 
 ## Structure of MacBook Air - 1 (node 6:2), for reference
 

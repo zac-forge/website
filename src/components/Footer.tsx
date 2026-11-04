@@ -27,7 +27,7 @@ export function Footer() {
           </p>
           {LIVE_OFFERS.map((offer) => (
             <a key={offer.path} href={offer.path}>
-              {offer.rowTitle}
+              {offer.navTitle}
             </a>
           ))}
         </nav>
@@ -37,8 +37,9 @@ export function Footer() {
             Site
           </p>
           <a href="/#track-record">Track record</a>
-          <a href="/#services">What we do</a>
-          <a href="/#approach">How we work</a>
+          <a href="/#what-we-fix">What we fix</a>
+          <a href="/#how-we-work">How we work</a>
+          <a href="/#who-we-are">Who we are</a>
         </nav>
 
         <p className="footer-legal">

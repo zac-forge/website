@@ -2,5 +2,16 @@ name = "website"
 compatibility_date = "2026-08-01"
 compatibility_flags = ["nodejs_compat"]
 
+# The Worker serves the contact form (POST /api/contact) and adds noindex on
+# every host that is not zacforge.com. Everything else is the static build.
+main = "functions/worker.ts"
+
 [assets]
 directory = "./dist"
+binding = "ASSETS"
+# Through the Worker first, so preview hosts get the noindex header on every
+# page, not only on /api routes.
+run_worker_first = true
+
+[observability]
+enabled = true

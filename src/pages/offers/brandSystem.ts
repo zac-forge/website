@@ -7,19 +7,8 @@ import type { Offer } from "./types";
  */
 export const brandSystem: Offer = {
   path: "/brand-system",
-  row: "04",
-  rowTitle: "AI-ready brand system",
-  rowStatement: "Make everything your team generates look like you.",
-  rowItems: [
-    "Brand direction",
-    "Identity and type",
-    "Design tokens",
-    "Component library",
-    "Rules files for AI coding tools",
-    "Claude Design, Canva, and Figma kits",
-    "Staff training",
-  ],
-  rowLink: "How the brand system works",
+  navTitle: "Brand system",
+  summary: "Senior design turned into files your AI tools follow, so everything your team makes looks like you.",
   flagged: true,
   title: "AI-Ready Brand System | ZAC Forge",
   description:
@@ -29,6 +18,7 @@ export const brandSystem: Offer = {
     "Senior brand design turned into design tokens, components, rules files for AI coding tools, and Claude Design, Canva, and Figma kits, so AI-made work stays on brand.",
   eyebrow: "AI-READY BRAND SYSTEM",
   h1: "A brand system your AI tools follow.",
+  subline: "Usually the fix for question 5.",
   intro: [
     "Your team already makes pages, posts, and decks with AI. Without a system, every tool falls back on the same defaults: the same fonts, the same icons, the same gradients. The result looks like everyone else. A brand system is how you stop that.",
   ],
@@ -87,4 +77,5 @@ export const brandSystem: Offer = {
         "One working session. After that, they use the tools they already use, and the output comes back on brand.",
     },
   ],
+  cta: { label: "Start with a Reality Check", href: "/reality-check" },
 };

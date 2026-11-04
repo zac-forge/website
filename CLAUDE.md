@@ -10,7 +10,7 @@ A senior technology studio. Successor practice to Mahalo Media Group, which foun
 
 ## This site is a working copy
 
-**Misha is redesigning the brand and the site, and branch v4 implements his board as it stood on 2026-09-23.** What is deployed at zacforge.com is still the v3 working copy. Treat both that way:
+**Misha is redesigning the brand and the site. Branch v4 implemented his board as it stood on 2026-09-23, and branch v5 pulls the layout toward his comp 7 (`MacBook Air - 7`, node `198:427`, read 2026-11-04, its colour bands taken as provisional tokens).** What is deployed at zacforge.com is still the v3 working copy until v5 merges. Treat all of it that way:
 
 - The v4 build follows Misha's Figma board (`MacBook Air - 1`, node `6:2`) read in full through the Figma REST API. The board is a **draft**: lorem ipsum throughout, no mobile version, case study imagery undecided. Expect his values to move, and expect them to arrive as token edits, not rebuilds.
 - **Do not introduce a visual direction of your own.** Where the board does not cover a case, extend its nearest scale and record the extension in `design/DESIGN-SYSTEM-NOTES.md`. Where it conflicts with the copy deck or the guardrails, the copy and the guardrails win and the conflict goes in the questions for Misha.
@@ -31,7 +31,7 @@ Do not invent marketing copy. If something is missing, ask rather than filling t
 
 **Adopted 2026-09-23 (v4), superseded by v5 on 2026-11-03 except where v5 says v4 copy stands.** The site sold the bridge-income offer set: AI Visibility (lead), Web Partner (the retainer), Accessibility and Performance, AI-Ready Brand System (pending Misha, behind a flag), and Fractional Digital Lead. The v3 durability claim, systems built in 2010 still in production and run without ZAC, stays as proof in the hero proof line and in Track record. See `docs/positioning-durability.md` for the reasoning behind that proof.
 
-- **No prices anywhere.** Not on any page, not in `llms.txt`, not in schema. The Backlog Review and Two-Week Proof offers are retired. The only "$" on the site is the $1 billion Heritage Global Partners figure.
+- **No prices anywhere.** Not on any page, not in `llms.txt`, not in schema. The Backlog Review and Two-Week Proof offers are retired, and so are the Snapshots. The only "$" on the site is the $1 billion Heritage Global Partners figure, written "$1B+" on its v5 case study card.
 - **Handover is a practice, not an anecdote.** Numerous projects have been handed over. Say so.
 - Do not reintroduce "shelved", "backlog", "affordable", or "cheap" into the promise, and do not bring back the "14 hours" build-speed line.
 
@@ -74,7 +74,7 @@ These are not stylistic preferences. They are binding.
 | **The $1B is the client's transaction volume, not ZAC's revenue.** Write "over $1 billion in assets sold through the platform." Never "we sold $1 billion in assets." | Accuracy |
 | **The 90% figure is client-reported.** Always attribute: "the client reported support calls dropped by over 90%." | Substantiation |
 | **Never characterize a named client's leadership or internal problems.** | Professional |
-| **Do not name Misha or Luke** until they confirm. Still pending as of 2026-08-20, and the site ships nameless. Full names are known and ready: **Misha Gervits**, Design Director, and **Luke Monegatto**, Senior Engineer (Luciano goes by Luke). Do not add them to `TrackRecord.tsx` until Drew says consent is given. Name and photo are already optional props, so it is a two-line change. | Consent pending |
+| **Do not name Misha or Luke** until they confirm. Still pending as of 2026-08-20, and the site ships nameless. Full names are known and ready: **Misha Gervits**, Design Director, and **Luke Monegatto**, Senior Engineer (Luciano goes by Luke). Do not add them to `WhoWeAre.tsx` until Drew says consent is given. Name and photo are already optional props, so it is a two-line change. | Consent pending |
 | **Misha was an associate creative director at Ogilvy. Not Havas.** His title on the site is **Design Director**, because "Creative Director" is agency vocabulary on a site that sells against agencies. | Accuracy |
 | **Do not introduce team members as Andrew's former colleagues.** It makes him the centre and them satellites, which contradicts "One team. No layers." IBM appears in each bio as a credential instead. | Positioning |
 
@@ -137,15 +137,17 @@ Build pages from these. Do not create a second button, card, or eyebrow.
 | Inline text action | `.text-link` |
 | Card surface | `.surface`, white, 12px radius, no border |
 | Undecided imagery | `.placeholder`, the board's grey |
-| Service entry | `ServiceCard` (`src/components/ServiceCard.tsx`) in `.service-grid`. The whole card is the link, underlined at rest |
+| Colour band (comp 7) | `.band` with `.band--navy`, `.band--maroon`, or `.band--sky`; sweep corners from `--radius-sweep` and `--radius-sweep-lg`, set per section in `layout.css` |
+| Step row with arrows | `FlowRow` (`src/components/FlowRow.tsx`), circles, arrows that draw once, title and line under each |
+| Heading left, intro right | `.split-head` with `.split-head-copy` |
 | Offer page cross-links | `.offer-related` block in `OfferPage.tsx`, above the closing CTA |
 | Header offers menu | `WhatWeDoMenu` in `Header.tsx`, plain link below 860px |
-| Offer card | `.offer.surface` from `StartHere.tsx` |
-| Case study | `.case` block from `TrackRecord.tsx`, alternating, `images` prop for when imagery lands |
-| Numbered step | `.step` from `HowItWorks.tsx`, zigzag with a `.step-figure` circle |
+| Case study | `.case.surface` card from `TrackRecord.tsx`, text first, `figure` set large, optional single `image` |
+| Contact form | `ContactForm` (`src/components/ContactForm.tsx`) inside `Closing`, fields `.field` / `.field-label` / `.field-input`, posts to `/api/contact` |
+| Screen-reader-only text | `.sr-only` |
 | Entrance reveal | `<Reveal>` with variants from `src/lib/motion.ts`, never ad hoc Motion props |
 | Brand | `<Wordmark>` and `<ZacMark>` from `Brand.tsx`, which serve the board's SVG exports, never an SVG or raster of your own |
-| Booking and email | `BOOKING_URL` and `CONTACT_EMAIL` from `src/lib/links.ts` |
+| Booking and email | `BOOKING_URL`, `CONTACT_EMAIL`, and `CONTACT_ENDPOINT` from `src/lib/links.ts` |
 
 Motion stays reactive, not ambient, and respects `prefers-reduced-motion`.
 Any new component gets its styles in the matching global stylesheet
@@ -154,39 +156,43 @@ only, and a row in this table.
 
 ---
 
-## Section order (v4)
+## Section order (v5)
 
-Hero → TrackRecord → ShiftComparison (What changed) → Services → HowItWorks → StartHere → FinalCTA
+Hero → LogoBand → TrackRecord → WhatChanged → RealityCheck → WhatWeFix → HowWeWork → WhoWeAre → Closing
 
-Same order as v3. Four offer pages share one template: `/ai-visibility`, `/web-partner`, `/accessibility`, and `/brand-system`. The last is behind the `BRAND_SYSTEM` flag in `src/lib/flags.ts`, off by default, which also hides Services row 04 and keeps it out of the sitemap, schema, and `llms.txt`. The hawaii.surf case study card is behind `HAWAII_CARD`, off until real before and after numbers exist.
+Six offer pages share one template: `/reality-check`, `/fix-week`, `/ai-visibility`, `/accessibility`, `/web-partner`, and `/brand-system`. The last is behind the `BRAND_SYSTEM` flag in `src/lib/flags.ts`, off by default, which keeps the page out of the routes, menus, sitemap, and schema and leaves the What we fix row as plain text. v5's `llms.txt` lists the brand system without a link, as the copy deck has it. The hawaii.surf case study card is behind `HAWAII_CARD`, off until real before and after numbers exist.
 
-Every page is prerendered by `scripts/prerender.mjs` into `dist/<route>/index.html` with its own title, description, canonical, OG tags, and JSON-LD. Assistants do not run JavaScript, so nothing may depend on client rendering.
+Every page is prerendered by `scripts/prerender.mjs` into `dist/<route>.html` with its own title, description, canonical, OG tags, and JSON-LD. Assistants do not run JavaScript, so nothing may depend on client rendering.
 
 ## Components
 
-| File | v4 status |
+| File | v5 status |
 |---|---|
-| `Hero.tsx` | Visibility headline in the board's two-tone hero, Z illustration right, proof line carries IBM and 2010 |
-| `TrackRecord.tsx` | Board case study layout, alternating, grey image placeholders; team as three cards; hidden hawaii.surf card first behind `HAWAII_CARD` |
-| `ShiftComparison.tsx` | Five-row THEN/NOW table, animation kept, drawn in the accent |
-| `Services.tsx` | Board cards via `ServiceCard`, wrapping grid, accents cycling, row 04 hidden while `BRAND_SYSTEM` is off, footnote paragraph below |
-| `HowItWorks.tsx` | Board zigzag: heading, intro, illustration, three principles as numbered steps with circles |
-| `StartHere.tsx` | Two snapshot cards, no prices, no "two numbers" line |
-| `FinalCTA.tsx` | Board closing block: accent headline, mark over a white circle. Copy unchanged |
-| `Footer.tsx` | Copy unchanged, links absolute so they work from offer pages |
+| `Header.tsx` | Navy on every page, nav What we do (menu), Track record, How we work, Who we are, CTA "Get a Reality Check" to `/#reality-check` |
+| `Hero.tsx` | Navy band, Misha's headline as the H1, the problem as the body, proof line carries IBM and 2010 |
+| `LogoBand.tsx` | "Where our team has worked", names as muted text, never labelled as clients |
+| `TrackRecord.tsx` | Split head, four stacked case study cards; Legal Access ships with only its filled sentence; hidden hawaii.surf card first behind `HAWAII_CARD` |
+| `WhatChanged.tsx` | Maroon band, then the three-step `FlowRow` |
+| `RealityCheck.tsx` | The five questions as cards, CTA to `#contact`, link to `/reality-check`, the Fix Week line |
+| `WhatWeFix.tsx` | Six one-line rows; Brand system plain text while `BRAND_SYSTEM` is off |
+| `HowWeWork.tsx` | Check, Fix, Partner `FlowRow`, three principles |
+| `WhoWeAre.tsx` | Sky band, three people by role, Andrew named; the other two names wait for consent |
+| `Closing.tsx`, `ContactForm.tsx` | The form, also rendered on `/reality-check` |
+| `Footer.tsx` | Links absolute so they work from offer pages |
 | `Brand.tsx` | Serves the board's wordmark SVG and the closing mark |
-| `pages/OfferPage.tsx` | Shared offer page template: eyebrow, H1, intro, lists, steps, proof, FAQ, CTA. FAQ data also renders the FAQPage schema so the two cannot diverge |
+| `pages/OfferPage.tsx` | Shared offer page template: navy band hero with eyebrow, H1, v5 subline, intro, then lists, steps, proof, FAQ, related offers, CTA, optional form. FAQ data also renders the FAQPage schema so the two cannot diverge |
 | `pages/offers/*.ts` | Copy for each offer page, straight from `docs/site-copy-v5.md` (v4 body copy where v5 says it stands) |
 | `lib/meta.ts`, `lib/schema.ts` | Per-route head and JSON-LD, consumed by the prerender |
-| `public/llms.txt` | Replaced with the v4 text |
-| `public/sitemap.xml` | Home plus the three live offer pages |
+| `functions/worker.ts`, `functions/api/contact.ts` | The Worker: static assets, `POST /api/contact`, noindex on every non-production host |
+| `public/llms.txt` | Replaced with the v5 text |
+| `sitemap.xml` | Written by the prerender from the live routes: home plus five offer pages |
 
 ## Keep these
 
 One v1 interaction survived the move to Misha's light, flat design and should stay:
-- THEN/NOW row-draw animation in `ShiftComparison`
+- The THEN/NOW row-draw. v5 has no comparison table, so it lives on as the arrows in `FlowRow`, which draw once, in order. `ShiftComparison.tsx` is parked in `.superseded/`.
 
-Retired with the redesign, files parked in `.superseded/` until Drew says to delete them: the hero forge artwork, mote and ember fields, the horizon arc, and the service row ignition (cards lift on hover instead). The signal-flow sequence in `HowItWorks` was removed on 2026-09-23 at Drew's request; do not bring it back.
+Retired with the redesign, files parked in `.superseded/` until Drew says to delete them: the hero forge artwork, mote and ember fields, the horizon arc, the service row ignition, and, with v5, `Services`, `ServiceCard`, `HowItWorks`, `StartHere`, `FinalCTA`, and `ShiftComparison`. The signal-flow sequence in `HowItWorks` was removed on 2026-09-23 at Drew's request; do not bring it back.
 - Motion is **reactive, not ambient**. Nothing animates until a pointer or keyboard arrives. Respect `prefers-reduced-motion` everywhere.
 
 ## Stack notes
@@ -195,23 +201,27 @@ React 19 + TypeScript + Vite · Motion · global CSS · Cloudflare Workers stati
 Styling is **global CSS, not CSS Modules**. `src/styles/layout.css` carries section composition, `globals.css` the primitives, `interactive.css` and `motion.css` the behaviour. Fonts: Avenir from the system where it exists, Figtree self-hosted (`@fontsource/figtree`, 400 and 900) as the fallback.
 Previews: build locally, then `npx wrangler deploy --name website-<branch>-preview`. Production `website` deploys from main only.
 Design tokens live in `design/tokens.json` and are generated into `src/styles/tokens.css` by `scripts/build-tokens.mjs`. See the Design system section below.
-There is **no test framework** in this repo. Verification is `npm run build` (runs the token gate, then `tsc -b`), the voice gate at `scripts/voice-check.sh`, and measuring the running page.
-`functions/api/chat.ts` is a stub returning 501 and is **not** wired into the deploy (`wrangler.toml` ships static assets only). Leave it alone unless asked.
+There is **no test framework** in this repo. Verification is `npm run build` (runs the token gate, then `tsc -b` and `tsc -p functions`), the voice gate at `scripts/voice-check.sh`, and measuring the running page (`npx wrangler dev` serves the Worker locally).
+`wrangler.toml` runs `functions/worker.ts` in front of the static assets (`run_worker_first`). It decides production by hostname: anything not `zacforge.com` gets `X-Robots-Tag: noindex` and a `Disallow` robots.txt. The contact form keys (`RESEND_API_KEY`, `TURNSTILE_SECRET_KEY`, `VITE_TURNSTILE_SITE_KEY`) are optional, see README.md.
+`functions/api/chat.ts` is a stub returning 501 and is **not** routed by the Worker. Leave it alone unless asked.
 
 ## Open slots
 
 Two slots were picked on 2026-08-20 and stand for v4. Ship them exactly as written and do not re-offer either choice.
 
 - **Andrew's bio line:** "Twenty years at IBM and fifteen running his own practice. ZAC is what happens when those stop being separate things."
-- **IBM/MMG timeline framing:** "It started while he was still at IBM and has outlasted that tenure."
+- **IBM/MMG timeline framing:** "It started while he was still at IBM and has outlasted that tenure." v5 words it "and outlasted that tenure" in Track record.
 
-Still open in v4, and left out of the build rather than filled:
+The v5 deck fills the Web Partner platforms answer, and it ships.
 
-- **Web Partner platforms list.** The "What platforms do you work on?" question is omitted from `/web-partner` until Drew confirms the list.
+Still open in v5. Slots with working text ship that text; slots without it are left out rather than filled:
+
+- **Legal Access Alameda** URL, years, what was built, and its number. The card ships with its one filled sentence.
+- **Design director and senior engineer** bio lines, pending each person's confirmation. The deck's working versions ship, by role.
 - **hawaii.surf before and after numbers.** The card and the `/ai-visibility` proof block ship hidden.
 - **zacforge.com audit result** for the `/ai-visibility` proof block.
 - **LinkedIn URL** for the `sameAs` schema property.
 - **Misha's review** of Services row 04 and `/brand-system`, and how he is described there. That page also ships with the "Who does the work" paragraph omitted.
-- **Design questions for Misha**, 14 of them, in `design/DESIGN-SYSTEM-NOTES.md`. The stats row and logo band on his board are not built until he answers.
+- **Design questions for Misha**, 24 of them (10 new from comp 7), in `design/DESIGN-SYSTEM-NOTES.md`. The v4 stats row is not built until he answers.
 
 If new copy is ever missing, the rule still stands: ask rather than filling the gap.

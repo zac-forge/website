@@ -2,7 +2,7 @@
 
 The one-page marketing site for ZAC (`zacforge.com`), a senior technology studio. The site is
 live. Copy is governed by `CLAUDE.md` at the repo root and the copy deck in
-`docs/site-copy-v4.md`, and the voice rules there are binding.
+`docs/site-copy-v5.md`, and the voice rules there are binding.
 
 ## Stack
 
@@ -14,8 +14,10 @@ live. Copy is governed by `CLAUDE.md` at the repo root and the copy deck in
 - Global CSS, not CSS Modules. `src/styles/layout.css` carries section composition,
   `globals.css` the primitives, `interactive.css` and `motion.css` the behaviour, and
   `tokens.css` the design tokens as CSS variables. Use the tokens, never hardcode a colour.
-- Cloudflare Pages for hosting, Cloudflare Pages Functions (`functions/`) for server-side logic.
-  No persistent Node server, the Functions run on the Workers runtime.
+- Cloudflare Workers with static assets for hosting. `wrangler.toml` points `main` at
+  `functions/worker.ts`, which serves the prerendered `dist/` through the `ASSETS` binding,
+  handles `POST /api/contact`, and adds `X-Robots-Tag: noindex` (plus a `Disallow` robots.txt)
+  on every host that is not `zacforge.com`, so previews are never indexed.
 
 ## Structure
 
@@ -25,8 +27,9 @@ live. Copy is governed by `CLAUDE.md` at the repo root and the copy deck in
   generates `src/styles/tokens.css` from it, and the build fails if the two disagree or if any
   raw colour appears outside the generated file (`scripts/lint-tokens.mjs`). Never hardcode a
   colour. See `design/DESIGN-SYSTEM-NOTES.md` and the Design system section of `CLAUDE.md`.
-- `functions/api/chat.ts`: a Cloudflare Pages Function stub for a future chat assistant. Not
-  implemented yet, returns 501. See the comments in that file for what it will do.
+- `functions/worker.ts`: the Worker entry. `functions/api/contact.ts`: the contact form handler.
+- `functions/api/chat.ts`: a Pages-style stub for a future chat assistant. Not routed by the
+  Worker, returns 501. See the comments in that file for what it will do.
 - `public/`: static files served as-is (favicon, OG image, `llms.txt`, `robots.txt`, sitemap).
 
 ## Running locally
@@ -43,42 +46,50 @@ Start the Vite dev server (the app only, no Functions):
 npm run dev
 ```
 
-To test the Cloudflare Pages Function locally too, build first and run it through Wrangler:
+To run the Worker locally too (the contact form, the preview noindex), build first:
 
 ```bash
-npm run pages:dev
+npm run build && npx wrangler dev
 ```
 
-This runs `npm run build` and then `wrangler pages dev dist`, so `/api/chat` is actually served.
-If you want to test it with a real key, copy `.dev.vars.example` to `.dev.vars` and fill one in.
-`.dev.vars` is gitignored and never committed.
+Local secrets go in `.dev.vars`, which is gitignored and never committed:
 
 ```bash
 cp .dev.vars.example .dev.vars
 ```
 
-## Deploying to Cloudflare Pages
+## Environment
 
-Connect this repo to Cloudflare Pages via Git integration so pushes to `main` auto-deploy. In
-the Cloudflare dashboard: Pages, create a project, connect this repo, set the build command to
-`npm run build` and the output directory to `dist`.
+The contact form works with none of these set. With the keys out, the handler logs each
+submission to the Worker console (observability is on in `wrangler.toml`) and its thank-you page
+offers a prefilled mailto, so nothing is lost.
 
-### Setting the Anthropic API key in production
+| Name | Where | What it does |
+|---|---|---|
+| `RESEND_API_KEY` | Worker secret | Sends each submission to drew@zacforge.com through Resend. The sending domain must be verified in Resend first. |
+| `TURNSTILE_SECRET_KEY` | Worker secret | Verifies the Turnstile token on submit. Set it together with the site key below, or every submission fails the check. |
+| `VITE_TURNSTILE_SITE_KEY` | Build environment | Public Turnstile site key, baked into the form at build time. Without it the widget is not rendered. |
+| `CONTACT_TO`, `CONTACT_FROM` | Worker vars, optional | Override the recipient (default drew@zacforge.com) and the sender (default `ZAC Forge <site@zacforge.com>`). |
+| `ANTHROPIC_API_KEY` | Unused | For the future chat assistant only. |
 
-Once the assistant is implemented, set `ANTHROPIC_API_KEY` as an encrypted environment variable
-in the Cloudflare Pages project settings (Settings, Environment variables). Never put it in the
-repo or in client-side code.
+Set a secret with `npx wrangler secret put RESEND_API_KEY` (add `--name website-v5-preview` for
+a preview Worker). Never put a key in the repo or in client-side code.
+
+## Deploying
+
+Previews: build locally, then `npx wrangler deploy --name website-<branch>-preview`. Production
+(`website`) deploys from `main` only.
 
 ## Open TODOs
 
-- [x] `hello@zacforge.com` confirmed receiving mail (2026-08-20).
-- [ ] Add the two team names in `src/components/TrackRecord.tsx` **once Misha and Luke consent**.
+- [x] `hello@zacforge.com` confirmed receiving mail (2026-08-20). v5 uses `drew@zacforge.com`
+      on the site, in schema, and in `llms.txt`, per the copy deck.
+- [ ] Add the two team names in `src/components/WhoWeAre.tsx` **once Misha and Luke consent**.
       Names are known and ready: Misha Gervits (Design Director), Luke Monegatto (Senior
       Engineer). The block ships nameless by design and takes name and photo as optional props,
       so this is a two-line content change. Consent was still outstanding on 2026-08-20.
-- [ ] Implement `functions/api/chat.ts` for the v1.1 chat assistant. Note that the current
-      `wrangler.toml` deploys static assets only, so the `functions/` directory is not wired up
-      on the deployed site yet.
+- [ ] Implement `functions/api/chat.ts` for the v1.1 chat assistant, and route it from
+      `functions/worker.ts`. It is not served today.
 
 Done: page design and copy, brand assets, logo, favicon, booking link
 (`https://cal.com/zacforge/20-min-chat`), OG image, prerendering to static HTML, durability

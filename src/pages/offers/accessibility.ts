@@ -2,18 +2,8 @@ import type { Offer } from "./types";
 
 export const accessibility: Offer = {
   path: "/accessibility",
-  row: "03",
-  rowTitle: "Accessibility and performance",
-  rowStatement: "Find what locks people out and slows you down.",
-  rowItems: [
-    "Manual keyboard and screen reader testing",
-    "WCAG 2.2 AA",
-    "Accessibility statement",
-    "Page weight and third-party scripts",
-    "Core Web Vitals",
-    "Fixed in the code, not covered with an overlay",
-  ],
-  rowLink: "How we test",
+  navTitle: "Accessibility and performance",
+  summary: "Fixed in the code, not covered with a widget.",
   title: "Accessibility and Performance Audit | ZAC Forge",
   description:
     "Manual accessibility testing against WCAG 2.2 AA and a performance review, with fixes made in your code, not covered with an overlay.",
@@ -22,6 +12,7 @@ export const accessibility: Offer = {
     "Manual testing against WCAG 2.2 AA, performance review, fixes made in the code, and an accessibility statement. No overlays.",
   eyebrow: "ACCESSIBILITY AND PERFORMANCE",
   h1: "Accessibility and performance, fixed in the code.",
+  subline: "Usually the fix for question 3.",
   intro: [
     "We do not sell a scan or a widget. We test your site by hand, fix the code, and document what we did.",
     "In 2025, 3,948 website accessibility lawsuits were filed in the US, 787 of them in California. 983 targeted sites that already had an overlay widget installed.",
@@ -70,4 +61,5 @@ export const accessibility: Offer = {
   ],
   footnote:
     "Sources: EcomBack 2025 ADA Website Accessibility Lawsuit Report. HHS press release on the Section 504 deadline extension.",
+  cta: { label: "Start with a Reality Check", href: "/reality-check" },
 };

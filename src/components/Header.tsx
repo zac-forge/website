@@ -1,14 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import { Wordmark } from "./Brand";
-import { BOOKING_URL } from "../lib/links";
 import { LIVE_OFFERS } from "../pages/offers";
 
 // Absolute hashes so the same header works from the offer pages, where a
 // bare "#services" would point at nothing.
 const NAV_LINKS = [
   { href: "/#track-record", label: "Track record" },
-  { href: "/#approach", label: "How we work" },
-  { href: "/#start-here", label: "Start here" },
+  { href: "/#how-we-work", label: "How we work" },
+  { href: "/#who-we-are", label: "Who we are" },
 ];
 
 /**
@@ -63,14 +62,14 @@ function WhatWeDoMenu({ onNavigate }: { onNavigate: () => void }) {
       </button>
       <ul id="what-we-do-menu" className="nav-menu-panel surface">
         <li>
-          <a href="/#services" onClick={onNavigate}>
-            All services
+          <a href="/#what-we-fix" onClick={onNavigate}>
+            What we fix
           </a>
         </li>
         {LIVE_OFFERS.map((offer) => (
           <li key={offer.path}>
             <a href={offer.path} onClick={onNavigate}>
-              {offer.rowTitle}
+              {offer.navTitle}
             </a>
           </li>
         ))}
@@ -81,9 +80,9 @@ function WhatWeDoMenu({ onNavigate }: { onNavigate: () => void }) {
 
 /**
  * The board's header: wordmark at a 48px inset, nav items in 14px black
- * weight straight after it, and the pill button at the far right. It sits on
- * the page ground with no bar of its own; a hairline appears once the page
- * has moved so the sticky header reads as a surface.
+ * weight straight after it, and the pill button at the far right. On comp 7
+ * it sits on the navy hero band, so it is navy on every page and each page
+ * opens on a navy band beneath it.
  */
 export function Header() {
   const [open, setOpen] = useState(false);
@@ -107,7 +106,7 @@ export function Header() {
         <nav className="site-nav" aria-label="Primary" data-open={open}>
           {/* Desktop: the menu. Mobile: a plain link, swapped in by CSS. */}
           <WhatWeDoMenu onNavigate={close} />
-          <a className="nav-plain" href="/#services" onClick={close}>
+          <a className="nav-plain" href="/#what-we-fix" onClick={close}>
             What we do
           </a>
           {NAV_LINKS.map((link) => (
@@ -115,8 +114,8 @@ export function Header() {
               {link.label}
             </a>
           ))}
-          <a className="btn btn-primary nav-cta" href={BOOKING_URL}>
-            <span>Book a call</span>
+          <a className="btn btn-primary nav-cta" href="/#reality-check" onClick={close}>
+            <span>Get a Reality Check</span>
             <span aria-hidden="true">→</span>
           </a>
         </nav>

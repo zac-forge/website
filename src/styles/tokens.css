@@ -16,6 +16,11 @@
   --color-accent-red: #E83E39;  /* Third card accent. */
   --color-on-accent: #FFFFFF;  /* Text and arrow on the accent fill. */
   --color-rule: #7B00FF;  /* The two 1px vertical lines on the board. Read as column guides, not used in the build. Question 3 for Misha. */
+  --color-band-navy: #3B5480;  /* Hero band, the header, and the offer page heroes. Provisional. */
+  --color-band-maroon: #682738;  /* What changed band. Provisional. */
+  --color-band-sky: #6EBFDC;  /* Who we are band. Provisional. */
+  --color-accent-deep: #56246F;  /* Body primary button fill on comp 7. The header button keeps color.accent. Provisional. */
+  --color-on-band: #FFFFFF;  /* Text on the navy and maroon bands. */
 
   /* channel: RGB triples for translucent colour: rgb(var(--accent-rgb) / .2). Not a Figma concept. */
   --accent-rgb: 157 77 255;
@@ -34,6 +39,7 @@
   --text-body: 1rem;  /* 16px. */
   --text-label: 1rem;  /* 16px at weight 900. Discipline lines and the chips under a case study. */
   --text-lead: 1.125rem;  /* 18px at weight 900. The body button label. Extended to offer page step titles and questions. */
+  --text-subtitle: clamp(1.5rem, 2.5vw, 2rem);  /* 32px at 1280. Step titles in the flow rows, question titles, team names. Provisional. */
   --text-title: clamp(2rem, 3.75vw, 3rem);  /* 48px at 1280. Card titles, step numbers, client names. */
   --text-display: clamp(2.5rem, 4.84vw, 3.875rem);  /* 62px at 1280. The hero headline and every section heading. */
 
@@ -59,6 +65,8 @@
   --radius-sm: 4px;  /* Chips and images. */
   --radius-md: 12px;  /* Cards. */
   --radius-full: 999px;  /* The pill button and the closing circle. */
+  --radius-sweep: clamp(64px, 18.75vw, 240px);  /* The rounded sweep corner on the colour bands. 240 at 1280, scaled down on small screens. Provisional. */
+  --radius-sweep-lg: clamp(96px, 29.7vw, 380px);  /* The wider sweep, top right of the What changed band. Provisional. */
 
   /* shadow */
   --shadow-lift: 0 8px 24px rgb(0 0 0 / .08);  /* Hover lift on cards and the button. The board has no effects, so this is the only shadow and it only appears on interaction. */
@@ -76,6 +84,8 @@
   --button-height: 32px;  /* The body button is 31 tall on the board. */
   --button-height-nav: 24px;
   --case-image-ratio: 374 / 262;  /* The one full-size case study image on the board. Provisional, imagery is still open with Misha. */
+  --flow-circle: 133px;  /* Circles in the three-step and process rows. */
+  --team-circle: 190px;  /* Team photo placeholder. */
 
   /* motion */
   --duration-fast: 160ms;

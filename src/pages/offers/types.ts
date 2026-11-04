@@ -1,6 +1,6 @@
 /**
- * Offer page content model. One shape for all four pages so the template and
- * the FAQPage schema read the same data and cannot diverge.
+ * Offer page content model. One shape for every offer page so the template
+ * and the FAQPage schema read the same data and cannot diverge.
  */
 export type TitledItem = { title: string; body: string };
 
@@ -15,15 +15,11 @@ export type Faq = { question: string; answer: string };
 export type Offer = {
   /** Route path, also the canonical URL path. */
   path: string;
-  /** Services row number on the home page, as in the copy deck. */
-  row: string;
-  /** Home page row title, ALL CAPS. */
-  rowTitle: string;
-  rowStatement: string;
-  rowItems: string[];
-  rowNote?: string;
-  rowLink: string;
-  /** Behind a flag: omitted from routes, rows, sitemap, schema, and llms.txt. */
+  /** Name in the header menu, the footer, and the related offers block. */
+  navTitle: string;
+  /** One line under the name in the related offers block, from the copy deck. */
+  summary: string;
+  /** Behind a flag: omitted from routes, menus, sitemap, and schema. */
   flagged?: boolean;
   /** Document head. */
   title: string;
@@ -34,9 +30,15 @@ export type Offer = {
   /** Page body. */
   eyebrow: string;
   h1: string;
+  /** The v5 line under the H1 that places a fix behind the Reality Check. */
+  subline?: string;
   intro: string[];
   blocks: Block[];
   proof?: string[];
   faq: Faq[];
   footnote?: string;
+  /** The closing call to action. */
+  cta: { label: string; href: string };
+  /** Render the contact form on the page, as /reality-check does. */
+  form?: boolean;
 };
