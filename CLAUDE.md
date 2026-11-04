@@ -6,7 +6,7 @@ Repo memory for the ZAC marketing site. Read this before touching copy.
 
 A senior technology studio. Successor practice to Mahalo Media Group, which founder Andrew Johnston ran for 15+ years across 100+ engagements. Not a startup. An established practice operating under new economics.
 
-**Positioning (v4, adopted 2026-09-23):** AI visibility leads, Web Partner is the retainer. The hero sells the fear of not being in the answer when a customer asks an assistant for a recommendation. Experience and durability are the proof, not the pitch.
+**Positioning (v5, adopted 2026-11-03):** one problem, one front door. The problem: AI made everyone an IT expert, it didn't make it work. The front door: a free Reality Check (five questions on anything built with AI tools or inherited). The paid step: the Fix Week. AI Visibility, Rescue, Accessibility, Brand System, Platform Escape, and Web Partner are fixes behind that door. Experience and durability are the proof, not the pitch. Supersedes the v4 positioning below.
 
 ## This site is a working copy
 
@@ -21,7 +21,7 @@ Positioning work is handed to Misha as **input** to the redesign.
 
 ## The copy source of truth
 
-`docs/site-copy-v4.md` carries the complete section-by-section copy, the four offer pages, metadata, schema, and the `llms.txt` replacement. It supersedes v3, which stays in `docs/` for history only.
+`docs/site-copy-v5.md` carries the complete section-by-section copy, the offer pages, metadata, schema, the contact form spec, and the `llms.txt` replacement. It supersedes v4, which stays in `docs/` for history only (the `/ai-visibility`, `/accessibility`, and `/brand-system` body copy still comes from v4, as v5 says). The build steps for v5 are in `docs/site-v5-build-plan.md`.
 
 Do not invent marketing copy. If something is missing, ask rather than filling the gap.
 
@@ -29,7 +29,7 @@ Do not invent marketing copy. If something is missing, ask rather than filling t
 
 ## Positioning: visibility leads, durability proves
 
-**Adopted 2026-09-23 (v4).** The site sells the bridge-income offer set: AI Visibility (lead), Web Partner (the retainer), Accessibility and Performance, AI-Ready Brand System (pending Misha, behind a flag), and Fractional Digital Lead. The v3 durability claim, systems built in 2010 still in production and run without ZAC, stays as proof in the hero proof line and in Track record. See `docs/positioning-durability.md` for the reasoning behind that proof.
+**Adopted 2026-09-23 (v4), superseded by v5 on 2026-11-03 except where v5 says v4 copy stands.** The site sold the bridge-income offer set: AI Visibility (lead), Web Partner (the retainer), Accessibility and Performance, AI-Ready Brand System (pending Misha, behind a flag), and Fractional Digital Lead. The v3 durability claim, systems built in 2010 still in production and run without ZAC, stays as proof in the hero proof line and in Track record. See `docs/positioning-durability.md` for the reasoning behind that proof.
 
 - **No prices anywhere.** Not on any page, not in `llms.txt`, not in schema. The Backlog Review and Two-Week Proof offers are retired. The only "$" on the site is the $1 billion Heritage Global Partners figure.
 - **Handover is a practice, not an anecdote.** Numerous projects have been handed over. Say so.
@@ -50,7 +50,7 @@ These are not stylistic preferences. They are binding.
 | Rule | Detail |
 |---|---|
 | **"AI" is a thing we audit, never a thing we are** | Decided 2026-09-23. "AI" is allowed in offer names, offer page headlines, and plain descriptions of assistants (ChatGPT, Perplexity, Claude). It is never an identity claim about ZAC: no "AI-native", "AI-first", "AI-powered", "AI-driven", and nothing that says ZAC builds with or is made of AI. `package.json` and `README.md` describe the studio without it. The voice gate fails on the compounds and flags every bare use for review. |
-| **No contractions** | "does not," not "doesn't." "That is enough to start," not "That's." |
+| **Contractions are fine** | Changed 2026-11-03 (decision 41). Use them where a person would; do not force them. The earlier "no contractions" rule was inferred from v1 copy, never decided. |
 | **No em dashes** | Use a full stop or a comma. |
 | **No semicolons** | Split the sentence. |
 | **No exclamation points** | None. Anywhere. |
@@ -176,7 +176,7 @@ Every page is prerendered by `scripts/prerender.mjs` into `dist/<route>/index.ht
 | `Footer.tsx` | Copy unchanged, links absolute so they work from offer pages |
 | `Brand.tsx` | Serves the board's wordmark SVG and the closing mark |
 | `pages/OfferPage.tsx` | Shared offer page template: eyebrow, H1, intro, lists, steps, proof, FAQ, CTA. FAQ data also renders the FAQPage schema so the two cannot diverge |
-| `pages/offers/*.ts` | Copy for each offer page, straight from `docs/site-copy-v4.md` |
+| `pages/offers/*.ts` | Copy for each offer page, straight from `docs/site-copy-v5.md` (v4 body copy where v5 says it stands) |
 | `lib/meta.ts`, `lib/schema.ts` | Per-route head and JSON-LD, consumed by the prerender |
 | `public/llms.txt` | Replaced with the v4 text |
 | `public/sitemap.xml` | Home plus the three live offer pages |
