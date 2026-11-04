@@ -218,6 +218,13 @@ p {
 .band .proof-line {
   color: var(--band-muted);
 }
+/* The deep purple button sinks into the navy and the maroon, so on the dark
+   bands the primary button takes the header's light accent. White on it is
+   large text. */
+.band--navy .btn-primary,
+.band--maroon .btn-primary {
+  background: var(--color-accent);
+}
 .band .text-link::after {
   background: currentColor;
 }

@@ -35,15 +35,15 @@ CTA: `Get a Reality Check` (anchors to the Reality Check section)
 
 > **/ ZAC / SENIOR TEAM, PLAIN ANSWERS**
 >
-> # The systems we built in 2010 are still running.
+> # Built it with AI? Find out if it actually works.
 >
-> AI made everyone an IT expert. It didn't make it work. If you built something with AI this year, or paid someone who did, and it half works, looks like everyone else's, or nobody can find it, send it to us. We'll check it, free, and tell you straight.
+> Send us your site, app, or brand. A senior team checks it on five questions and tells you straight, free. If something's wrong, we fix it for a fixed price.
 >
-> **[Get a Reality Check →]**  ·  [See what we've built ↓]
+> **[Get a free Reality Check →]** (anchors to the Reality Check section)  ·  [See what we've built ↓]
 >
-> 19 years at IBM, including IBM.com, and a practice run alongside it since 2010 for clients who still run what we built.
+> Decades of Fortune 50 experience. Systems we built in 2010 still run today.
 
-*Misha's headline stays. The problem line is the second sentence of the body, not the H1; the H1 is the proof, the body is the problem. The "19 years / 15 years" line is the `[[timeline wording]]` slot; ship it as written unless Drew changes it.*
+*Revised by Drew on November 4, 2026, before launch. The H1 now asks the question and the 2010 proof moves to the proof line, which replaces the earlier "19 years / 15 years" timeline wording. The OG image is regenerated from this hero.*
 
 ## 3. Logo band
 
@@ -360,7 +360,7 @@ Remove the "Snapshot" step from the `/ai-visibility` "How it works" list; the Re
 
 **Home title:** `ZAC Forge | Built it with AI? We'll check it.`
 **Home meta description:** `AI made everyone an IT expert. It didn't make it work. A free five-question check from a senior team with 19 years at IBM behind it, then a fixed-price fix.`
-**OG title:** `The systems we built in 2010 are still running.`
+**OG title:** `Built it with AI? We'll check it.`
 
 **Schema (JSON-LD, server-rendered):**
 

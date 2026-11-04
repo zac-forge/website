@@ -16,7 +16,7 @@ export const HOME_META: PageMeta = {
   path: "/",
   title: "ZAC Forge | Built it with AI? We'll check it.",
   description: HOME_DESCRIPTION,
-  ogTitle: "The systems we built in 2010 are still running.",
+  ogTitle: "Built it with AI? We'll check it.",
 };
 
 /** Every prerendered route and its head. Consumed by the prerender and by

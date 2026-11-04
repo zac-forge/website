@@ -1,15 +1,16 @@
 <!doctype html>
 <!--
-  Source for public/og-image.jpg. This is a local generator, not part of the
-  built site, so it is deliberately outside public/ and never deployed.
+  Source for public/og-image.jpg. A local generator, not part of the built
+  site, so it lives outside public/ and is never deployed.
 
-  To regenerate:
-    python3 -m http.server 4599   (from the repo root)
-    open http://localhost:4599/tools/og-card.html
-    screenshot the 1200x630 .og-card element, save to public/og-image.jpg
+  It mirrors the v5 hero in src/components/Hero.tsx: the navy band with its
+  sweep, the eyebrow, the two-weight headline, the proof line, and the
+  board's Z (public/art/z-hero.svg). Colours are copied from
+  design/tokens.json. Change this file whenever the hero copy changes.
 
-  It pulls the real font files and the real design tokens so the card cannot
-  drift away from the live site.
+  To regenerate, render the 1200 x 630 .og-card at 2x and downscale to
+  exactly 1200 x 630 (see README.md, "Regenerating the OG image"). The OG
+  title in the page head is separate: it lives in src/lib/meta.ts.
 -->
 <html lang="en">
   <head>
@@ -17,136 +18,93 @@
     <title>ZAC Forge OG card</title>
     <style>
       @font-face {
-        font-family: "Space Grotesk";
-        font-weight: 600;
+        font-family: "Figtree";
+        font-weight: 400;
         font-display: block;
-        src: url("../node_modules/@fontsource/space-grotesk/files/space-grotesk-latin-600-normal.woff2")
-          format("woff2");
+        src: url("../node_modules/@fontsource/figtree/files/figtree-latin-400-normal.woff2") format("woff2");
       }
       @font-face {
-        font-family: "IBM Plex Mono";
-        font-weight: 500;
+        font-family: "Figtree";
+        font-weight: 900;
         font-display: block;
-        src: url("../node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-500-normal.woff2")
-          format("woff2");
+        src: url("../node_modules/@fontsource/figtree/files/figtree-latin-900-normal.woff2") format("woff2");
       }
 
-      /* Tokens copied from src/styles/tokens.css. */
+      /* Copied from design/tokens.json. */
       :root {
-        --color-bg: #0c0c0f;
-        --color-forge: #e83445;
-        --color-text: #f4f2f0;
-        --color-text-muted: #a6a4aa;
-        --font-display: "Space Grotesk", system-ui, sans-serif;
-        --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+        --color-bg: #ebebeb;
+        --color-band-navy: #3b5480;
+        --color-on-band: #ffffff;
+        --font-sans: Avenir, "Avenir Next", Figtree, system-ui, sans-serif;
       }
 
       * {
         box-sizing: border-box;
       }
+      html,
       body {
         margin: 0;
-        background: #17171b;
+        background: var(--color-bg);
       }
 
       .og-card {
         width: 1200px;
         height: 630px;
-        position: relative;
         overflow: hidden;
         display: grid;
-        grid-template-columns: 54% 46%;
+        grid-template-columns: minmax(0, 1fr) 330px;
+        gap: 56px;
         align-items: center;
-        padding: 64px;
-        background:
-          radial-gradient(760px 520px at 78% 6%, rgba(232, 52, 69, 0.1), transparent 60%),
-          var(--color-bg);
+        padding: 0 80px 24px;
+        background: var(--color-band-navy);
+        border-bottom-left-radius: 200px;
+        color: var(--color-on-band);
+        font-family: var(--font-sans);
+        -webkit-font-smoothing: antialiased;
       }
 
       .eyebrow {
-        font: 500 17px/1.2 var(--font-mono);
-        color: var(--color-forge);
-        letter-spacing: 0.12em;
+        margin: 0 0 24px;
+        font-size: 17px;
+        font-weight: 900;
+        letter-spacing: 0.08em;
         text-transform: uppercase;
-        margin: 0 0 28px;
+        color: rgb(255 255 255 / 0.82);
       }
-
       .headline {
-        font-family: var(--font-display);
-        font-weight: 600;
-        font-size: 66px;
-        line-height: 1.0;
-        letter-spacing: -0.035em;
-        color: var(--color-text);
-        margin: 0 0 34px;
+        margin: 0 0 32px;
+        font-size: 68px;
+        font-weight: 900;
+        line-height: 1.08;
+        letter-spacing: -0.01em;
       }
-      .headline span {
-        color: var(--color-forge);
+      .headline .light {
+        font-weight: 400;
       }
-
       .proof {
-        font: 500 13px/1.5 var(--font-mono);
-        color: var(--color-text-muted);
-        letter-spacing: 0.03em;
-        text-transform: uppercase;
         margin: 0;
-        white-space: nowrap;
-      }
-
-      .art {
-        position: relative;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        max-width: 560px;
+        text-wrap: balance;
+        font-size: 21px;
+        line-height: 1.4;
+        color: rgb(255 255 255 / 0.82);
       }
       .art img {
-        width: 132%;
-        max-width: none;
+        width: 100%;
+        height: auto;
         display: block;
-        /* Same feathering the live hero uses, so the artwork's own black
-           plate does not read as a pasted rectangle. */
-        -webkit-mask-image: radial-gradient(
-          ellipse 60% 56% at 50% 50%,
-          #000 30%,
-          rgba(0, 0, 0, 0.55) 60%,
-          transparent 86%
-        );
-        mask-image: radial-gradient(
-          ellipse 60% 56% at 50% 50%,
-          #000 30%,
-          rgba(0, 0, 0, 0.55) 60%,
-          transparent 86%
-        );
-      }
-      .glow {
-        position: absolute;
-        left: 62%;
-        top: 44%;
-        width: 340px;
-        height: 340px;
-        margin: -170px 0 0 -170px;
-        border-radius: 50%;
-        background: radial-gradient(
-          circle,
-          rgba(232, 52, 69, 0.26) 0,
-          rgba(232, 52, 69, 0.08) 32%,
-          transparent 68%
-        );
-        filter: blur(14px);
       }
     </style>
   </head>
   <body>
     <div class="og-card">
       <div>
-        <p class="eyebrow">ZAC / Senior web partner</p>
-        <h1 class="headline">Is your name <span>in the answer?</span></h1>
-        <p class="proof">19 years at IBM, including IBM.com. Systems we built in 2010 are still running.</p>
+        <p class="eyebrow">/ ZAC / Senior team, plain answers</p>
+        <h1 class="headline"><span class="light">Built it with AI?</span> Find out if it actually works.</h1>
+        <p class="proof">Decades of Fortune 50 experience. Systems we built in 2010 still run today.</p>
       </div>
       <div class="art">
-        <div class="glow"></div>
-        <img src="../public/art/hero-z.webp" alt="" />
+        <img src="../public/art/z-hero.svg" alt="" />
       </div>
     </div>
   </body>

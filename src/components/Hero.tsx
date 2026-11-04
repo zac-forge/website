@@ -11,10 +11,11 @@ const item = {
 
 /**
  * v5 hero on comp 7's navy band (198:428) with the rounded sweep at the
- * bottom left. Misha's headline is the H1, the proof. The problem line is the
- * body. Comp 7 sets the headline in light caps with "still running" heavy:
- * the build keeps sentence case (CLAUDE.md) and carries the emphasis with the
- * two existing weights.
+ * bottom left. Copy set by Drew on 2026-11-04: the question leads, the 2010
+ * proof moves to the proof line. Comp 7 sets its headline light with the
+ * last phrase heavy; the build keeps sentence case (CLAUDE.md) and carries
+ * that emphasis with the two existing weights. public/og-image.jpg is
+ * rendered from this copy by tools/og-card.html, so change both together.
  */
 export function Hero() {
   const shouldReduceMotion = useReducedMotion();
@@ -32,18 +33,17 @@ export function Hero() {
             / ZAC / Senior team, plain answers
           </motion.p>
           <motion.h1 className="h1 hero-title" variants={item}>
-            <span className="hero-title-light">The systems we built in 2010 are</span>{" "}
-            <span>still running.</span>
+            <span className="hero-title-light">Built it with AI?</span>{" "}
+            <span>Find out if it actually works.</span>
           </motion.h1>
           <motion.p className="hero-body" variants={item}>
-            AI made everyone an IT expert. It didn't make it work. If you built something with AI
-            this year, or paid someone who did, and it half works, looks like everyone else's, or
-            nobody can find it, send it to us. We'll check it, free, and tell you straight.
+            Send us your site, app, or brand. A senior team checks it on five questions and tells
+            you straight, free. If something's wrong, we fix it for a fixed price.
           </motion.p>
           <motion.div className="cta-row" variants={item}>
             <Magnetic>
               <a className="btn btn-primary" href="#reality-check">
-                <span>Get a Reality Check</span>
+                <span>Get a free Reality Check</span>
                 <span aria-hidden="true">→</span>
               </a>
             </Magnetic>
@@ -53,8 +53,7 @@ export function Hero() {
             </a>
           </motion.div>
           <motion.p className="proof-line" variants={item}>
-            19 years at IBM, including IBM.com, and a practice run alongside it since 2010 for
-            clients who still run what we built.
+            Decades of Fortune 50 experience. Systems we built in 2010 still run today.
           </motion.p>
         </motion.div>
 

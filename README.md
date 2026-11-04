@@ -110,20 +110,17 @@ Not defects, and not urgent. Parked deliberately.
 
 ## Regenerating the OG image
 
-`public/og-image.jpg` is rendered from `tools/og-card.html`, which pulls the real font files and
-the real design tokens so the card cannot drift away from the live site. It is deliberately kept
-out of `public/` so it never ships. To regenerate after a copy or brand change:
+`public/og-image.jpg` is rendered from `tools/og-card.html`, which mirrors the hero in
+`src/components/Hero.tsx` (navy band, eyebrow, headline, proof line, the board's Z) with the
+real font files and token values. It is kept out of `public/` so it never ships. The card must
+stay in sync with the hero, so any hero copy change means editing the card and regenerating.
+
+Render the 1200x630 `.og-card` element at 2x in Chrome (open the file directly, or serve the
+repo root with `python3 -m http.server 4599`), crop to the card, and downscale to exactly
+1200x630. On macOS the downscale is:
 
 ```bash
-python3 -m http.server 4599    # from the repo root
+sips -z 630 1200 card@2x.png -s format jpeg -s formatOptions 88 --out public/og-image.jpg
 ```
 
-Open `http://localhost:4599/tools/og-card.html` at a 1200x630 viewport, screenshot it at 2x, then
-downscale to exactly 1200x630 and save as `public/og-image.jpg`. On macOS the downscale is:
-
-```bash
-sips -z 630 1200 shot@2x.png -s format jpeg -s formatOptions 88 --out public/og-image.jpg
-```
-
-The card must stay in sync with the hero. Its eyebrow, headline, and proof line are the hero's,
-so any copy change to the hero means regenerating this image.
+The OG title is not on the card. It lives in `src/lib/meta.ts`.

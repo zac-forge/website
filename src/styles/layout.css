@@ -513,11 +513,6 @@
 .reality-check .check {
   color: var(--color-text);
 }
-/* The deep purple button disappears into the maroon, so on this band the
-   body button takes the header's light accent. White on it is large text. */
-.reality-check .btn-primary {
-  background: var(--color-accent);
-}
 .section-intro--wide {
   max-width: var(--prose-width);
 }

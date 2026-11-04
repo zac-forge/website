@@ -200,9 +200,13 @@ when the comp is next read with `geometry=paths`.
    the visual stop "in Misha's maroon band", and Drew moved it there on
    2026-11-04. On the band the body button takes the light accent, since the
    deep purple sinks into the maroon. Question 15.
-3. **Body buttons in the deep purple.** Comp 7 fills the hero and closing
-   buttons with `#56246F` and keeps `#9D4DFF` for the header button only. Every
-   body `.btn-primary` now uses `color.accent-deep`. Question 22.
+   The same applies on the navy band (Drew, 2026-11-04): any primary button on
+   a dark band uses the light accent.
+3. **Body buttons in the deep purple, except on dark bands.** Comp 7 fills
+   the hero and closing buttons with `#56246F` and keeps `#9D4DFF` for the
+   header button only. Body `.btn-primary` uses `color.accent-deep` on the
+   ground. On the navy and maroon bands it uses `color.accent`, because the
+   deep purple nearly disappears there (Drew, 2026-11-04). Question 22.
 4. **Comp 7's new illustrations are not exported.** The paper-plane set
    (`198:460` to `198:511`), the three What we do marks (`211:1272` to
    `211:1323`), and the big closing Z (`211:1384`) would need further reads.
