@@ -418,19 +418,13 @@
 }
 
 /* ------------------------------------------------------ 02 / What changed */
-/* The maroon band (198:429): the wide sweep top right, the standard sweep
-   bottom left. The three-step row sits on the ground beneath it. */
-.what-changed .band {
-  border-top-right-radius: var(--radius-sweep-lg);
-  border-bottom-left-radius: var(--radius-sweep);
-  --pad-top: var(--space-10);
-  --pad-bottom: var(--space-10);
-}
+/* On the ground since the maroon band moved to the Reality Check. The
+   three-step row follows the copy. */
 .what-changed .section-intro {
   max-width: var(--prose-width);
 }
 .flow-wrap {
-  padding-block: var(--space-9) var(--space-4);
+  padding-block: var(--space-4) var(--space-9);
 }
 
 /* Step row: circle, arrow to the next, title, one line (211:1257 to
@@ -508,8 +502,22 @@
 }
 
 /* ------------------------------------------------- 03 / The Reality Check */
-/* Not on comp 7. The front door, so it gets the strongest card treatment on
-   the ground: five white cards, the number in the accent. */
+/* The visual stop: comp 7's maroon band (198:429), wide sweep top right,
+   standard sweep bottom left, the five questions as white cards on it. */
+.reality-check {
+  --pad-top: var(--space-10);
+  --pad-bottom: var(--space-10);
+  border-top-right-radius: var(--radius-sweep-lg);
+  border-bottom-left-radius: var(--radius-sweep);
+}
+.reality-check .check {
+  color: var(--color-text);
+}
+/* The deep purple button disappears into the maroon, so on this band the
+   body button takes the header's light accent. White on it is large text. */
+.reality-check .btn-primary {
+  background: var(--color-accent);
+}
 .section-intro--wide {
   max-width: var(--prose-width);
 }
@@ -544,7 +552,7 @@
 }
 .inline-link {
   font-weight: var(--weight-black);
-  color: var(--color-accent-deep);
+  color: inherit;
   text-decoration: underline;
   text-decoration-thickness: 2px;
   text-underline-offset: 4px;

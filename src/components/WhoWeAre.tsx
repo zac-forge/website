@@ -18,7 +18,7 @@ const TEAM: TeamMember[] = [
   {
     name: "Andrew Johnston",
     role: "Founder",
-    bio: "Twenty years at IBM and fifteen running his own practice. ZAC is what happens when those stop being separate things.",
+    bio: "Nineteen years at IBM and fifteen running his own practice. ZAC is what happens when those stop being separate things.",
   },
   {
     role: "Design director",

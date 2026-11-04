@@ -19,15 +19,14 @@ const QUESTIONS = [
 ];
 
 /**
- * The front door. Not on comp 7. The copy deck wants it as the visual stop on
- * the page and names the maroon band for it, while the build plan and the
- * comp put the maroon band on What changed. The build follows the comp and
- * gives this section the strongest card treatment on the ground instead,
- * question 15.
+ * The front door, and the visual stop on the page: comp 7's maroon band
+ * (198:429) with its two sweeps, moved here from What changed by Drew on
+ * 2026-11-04, as the copy deck asks. The five questions sit on it as white
+ * cards. Logged for Misha, question 15.
  */
 export function RealityCheck() {
   return (
-    <section id="reality-check" className="section reality-check" aria-labelledby="reality-check-heading">
+    <section id="reality-check" className="section band band--maroon reality-check" aria-labelledby="reality-check-heading">
       <div className="container">
         <Reveal>
           <p className="eyebrow">03 / The Reality Check</p>

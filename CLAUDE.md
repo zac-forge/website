@@ -49,7 +49,7 @@ These are not stylistic preferences. They are binding.
 
 | Rule | Detail |
 |---|---|
-| **"AI" is a thing we audit, never a thing we are** | Decided 2026-09-23. "AI" is allowed in offer names, offer page headlines, and plain descriptions of assistants (ChatGPT, Perplexity, Claude). It is never an identity claim about ZAC: no "AI-native", "AI-first", "AI-powered", "AI-driven", and nothing that says ZAC builds with or is made of AI. `package.json` and `README.md` describe the studio without it. The voice gate fails on the compounds and flags every bare use for review. |
+| **"AI" names the problem, the offers, and the mechanism, never ZAC's identity** | Decided 2026-09-23, revised 2026-11-04 to match the v5 copy. "AI" is allowed in offer names, offer page headlines, plain descriptions of assistants (ChatGPT, Perplexity, Claude), the problem ZAC fixes, and as the mechanism in how the work gets done ("AI does the volume. We do the judgment."). It is never ZAC's identity: no "AI-native", "AI-first", "AI-powered", "AI-driven", and nothing that says ZAC is an AI company or is made of AI. `package.json` and `README.md` describe the studio without it. The voice gate fails on the compounds and flags every bare use for review. |
 | **Contractions are fine** | Changed 2026-11-03 (decision 41). Use them where a person would; do not force them. The earlier "no contractions" rule was inferred from v1 copy, never decided. |
 | **No em dashes** | Use a full stop or a comma. |
 | **No semicolons** | Split the sentence. |
@@ -172,8 +172,8 @@ Every page is prerendered by `scripts/prerender.mjs` into `dist/<route>.html` wi
 | `Hero.tsx` | Navy band, Misha's headline as the H1, the problem as the body, proof line carries IBM and 2010 |
 | `LogoBand.tsx` | "Where our team has worked", names as muted text, never labelled as clients |
 | `TrackRecord.tsx` | Split head, four stacked case study cards; Legal Access ships with only its filled sentence; hidden hawaii.surf card first behind `HAWAII_CARD` |
-| `WhatChanged.tsx` | Maroon band, then the three-step `FlowRow` |
-| `RealityCheck.tsx` | The five questions as cards, CTA to `#contact`, link to `/reality-check`, the Fix Week line |
+| `WhatChanged.tsx` | On the ground, the v4 Z set beside the copy, then the three-step `FlowRow` |
+| `RealityCheck.tsx` | The visual stop: maroon band, the five questions as white cards, CTA to `#contact`, link to `/reality-check`, the Fix Week line |
 | `WhatWeFix.tsx` | Six one-line rows; Brand system plain text while `BRAND_SYSTEM` is off |
 | `HowWeWork.tsx` | Check, Fix, Partner `FlowRow`, three principles |
 | `WhoWeAre.tsx` | Sky band, three people by role, Andrew named; the other two names wait for consent |
@@ -209,7 +209,7 @@ There is **no test framework** in this repo. Verification is `npm run build` (ru
 
 Two slots were picked on 2026-08-20 and stand for v4. Ship them exactly as written and do not re-offer either choice.
 
-- **Andrew's bio line:** "Twenty years at IBM and fifteen running his own practice. ZAC is what happens when those stop being separate things."
+- **Andrew's bio line:** "Nineteen years at IBM and fifteen running his own practice. ZAC is what happens when those stop being separate things." Changed from "Twenty" by Drew on 2026-11-04 so the bio matches the hero's 19 years.
 - **IBM/MMG timeline framing:** "It started while he was still at IBM and has outlasted that tenure." v5 words it "and outlasted that tenure" in Track record.
 
 The v5 deck fills the Web Partner platforms answer, and it ships.

@@ -8,15 +8,17 @@ const STEPS = [
 ];
 
 /**
- * Comp 7's maroon band (198:429) with its two sweeps, the heading and copy on
- * the band, and the three-step row on the ground below it (211:1257 to
- * 211:1264). The comp's paper-plane illustration (198:460 to 198:511) is not
- * exported yet, so the v4 case-study Z set stands in, question 16.
+ * Comp 7 draws this section on its maroon band (198:429). Drew moved the band
+ * to the Reality Check on 2026-11-04 so the check is the visual stop, as the
+ * copy deck asks, so this section sits on the ground. The three-step row
+ * follows it (211:1257 to 211:1264). The comp's paper-plane illustration
+ * (198:460 to 198:511) is not exported yet, so the v4 case-study Z set stands
+ * in, question 16.
  */
 export function WhatChanged() {
   return (
     <section id="what-changed" className="what-changed" aria-labelledby="what-changed-heading">
-      <div className="section band band--maroon">
+      <div className="section">
         <div className="container section-head">
           <Reveal>
             <p className="eyebrow">02 / What changed</p>

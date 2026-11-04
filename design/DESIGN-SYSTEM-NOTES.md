@@ -182,8 +182,8 @@ when the comp is next read with `geometry=paths`.
 | Hero | Navy band with the bottom-left sweep, the board's Z (`4:89`) |
 | Logo band | Comp 7's row of five circles (`198:528`), set as muted text names per the deck |
 | 01 Track record | Comp 7's split head (heading left, intro right). Four stacked white cards, text first, the number set large, per the deck. The comp's screenshot collage is not used |
-| 02 What changed | Maroon band, sweeps top right and bottom left. The three-step row below it on the ground, arrows drawing once (the kept THEN and NOW interaction) |
-| 03 Reality Check | Not on comp 7. Five white cards on the ground |
+| 02 What changed | On the ground. The three-step row below the copy, arrows drawing once (the kept THEN and NOW interaction) |
+| 03 Reality Check | Not on comp 7. Comp 7's maroon band, sweeps top right and bottom left, five white cards on it |
 | 04 What we fix | Six hairline rows, not the comp's three columns |
 | 05 How we work | Heading with the v4 `8:69` and `8:86` art, a Check, Fix, Partner flow row, three principle columns |
 | 06 Who we are | Sky band, sweeps top left and bottom right, three 190px circles |
@@ -195,10 +195,11 @@ when the comp is next read with `geometry=paths`.
    hero in Avenir 300 with "still running" in 800 italic. CLAUDE.md requires
    sentence case. The hero keeps the emphasis with the two loaded weights,
    400 for the lead-in and 900 for "still running." Question 20.
-2. **The maroon band is on What changed, as the comp draws it.** The copy deck
-   asks for the Reality Check to be the visual stop "in Misha's maroon band".
-   The build plan and the comp put the band on What changed. The build follows
-   the comp. Question 15.
+2. **The maroon band is on the Reality Check, not What changed.** Comp 7
+   draws it on What changed. The copy deck asks for the Reality Check to be
+   the visual stop "in Misha's maroon band", and Drew moved it there on
+   2026-11-04. On the band the body button takes the light accent, since the
+   deep purple sinks into the maroon. Question 15.
 3. **Body buttons in the deep purple.** Comp 7 fills the hero and closing
    buttons with `#56246F` and keeps `#9D4DFF` for the header button only. Every
    body `.btn-primary` now uses `color.accent-deep`. Question 22.
@@ -251,10 +252,11 @@ when the comp is next read with `geometry=paths`.
 13. **Team.** The nav on the board has "Senior team" but no team section is
     drawn. The build uses three cards. Is that the intent?
 14. **Footer.** None on the board. The build has a hairline and three columns.
-15. **Reality Check placement.** The copy deck wants the Reality Check to be
-    the visual stop on the page, in the maroon band. Comp 7 has the maroon band
-    on What changed and no Reality Check section. The build follows the comp
-    and puts the check on five white cards. Should the maroon band move?
+15. **Maroon band moved.** Comp 7 has the maroon band on What changed and no
+    Reality Check section. Drew moved the band to the Reality Check on
+    2026-11-04 so the check is the visual stop, as the copy deck asks, with
+    the five questions as white cards on it and the light accent button. Does
+    that hold up in your direction, and what should What changed carry now?
 16. **Comp 7 illustrations.** The paper-plane set on the maroon band, the three
     What we do marks, and the big closing Z are not exported yet. Final enough
     to export?
