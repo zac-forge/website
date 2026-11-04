@@ -39,7 +39,7 @@ export const realityCheck: Offer = {
         },
         {
           title: "Does it look like you, or like AI?",
-          body: "Our design director reads it against your business, and shows what one screen would look like done right.",
+          body: "Our design principal reads it against your business, and shows what one screen would look like done right.",
         },
       ],
     },

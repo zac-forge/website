@@ -14,7 +14,7 @@ const QUESTIONS = [
   },
   {
     q: "Does it look like you, or like AI?",
-    a: "Our design director's read, and what one screen would look like done right.",
+    a: "Our design principal's read, and what one screen would look like done right.",
   },
 ];
 

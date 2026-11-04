@@ -65,7 +65,7 @@ export const webPartner: Offer = {
     {
       question: "Who does the work?",
       answer:
-        "Andrew Johnston leads every account. A senior engineer and a design director join when the work calls for them.",
+        "Andrew Johnston leads every account. A principal engineer and a design principal join when the work calls for them.",
     },
   ],
   cta: { label: "Start with a Reality Check", href: "/reality-check" },

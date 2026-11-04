@@ -27,7 +27,7 @@ export const fixWeek: Offer = {
         },
         {
           title: "One screen redesigned.",
-          body: "The page or screen that looks most like AI made it, redesigned by our design director so it looks like you. Built when it fits in the week; otherwise delivered ready to build.",
+          body: "The page or screen that looks most like AI made it, redesigned by our design principal so it looks like you. Built when it fits in the week; otherwise delivered ready to build.",
         },
         {
           title: "A ranked list of what's left.",
@@ -76,7 +76,7 @@ export const fixWeek: Offer = {
     {
       question: "Who does the work?",
       answer:
-        "Andrew Johnston on the fix, with a senior engineer when it calls for one. Our design director on the redesign. The people you talk to.",
+        "Andrew Johnston on the fix, with a principal engineer when it calls for one. Our design principal on the redesign. The people you talk to.",
     },
   ],
   cta: { label: "Start with a Reality Check", href: "/reality-check" },

@@ -131,7 +131,7 @@ CTA: `Get a Reality Check` (anchors to the Reality Check section)
 > What ChatGPT, Google, and Perplexity say when a customer asks, with screenshots.
 >
 > ### 5. Does it look like you, or like AI?
-> Our design director's read, and what one screen would look like done right.
+> Our design principal's read, and what one screen would look like done right.
 >
 > **[Get a Reality Check →]**  ·  [How the check works](/reality-check)
 >
@@ -181,13 +181,13 @@ CTA: `Get a Reality Check` (anchors to the Reality Check section)
 
 > **06 / WHO WE ARE**
 >
-> **Andrew Johnston, founder.** Twenty years at IBM and fifteen running his own practice. ZAC is what happens when those stop being separate things.
+> **Andrew Johnston, Founder, Principal.** Nineteen years at IBM and fifteen running his own practice. ZAC is what happens when those stop being separate things.
 >
-> **Design director.** `[[Misha's line, pending his confirmation of public name and wording. Working version:]]` Associate creative director at Ogilvy, then design lead on work for Walmart, Viacom, and Nike, and at the IBM Design Lab.
+> **Design Principal.** `[[Misha's line, pending his confirmation of public name and wording. Working version:]]` Associate creative director at Ogilvy, then design lead on work for Walmart, Viacom, and Nike, and at the IBM Design Lab.
 >
-> **Senior engineer.** `[[Luke's line, pending. Working version:]]` Senior engineer at IBM. WordPress and PHP, React and Node, and mobile.
+> **Principal Engineer.** `[[Luke's line, pending. Working version:]]` Senior engineer at IBM. WordPress and PHP, React and Node, and mobile.
 
-*Ship by role until names are confirmed (names are known: Misha Gervits, Design Director; Luke Monegatto, Senior Engineer; add them only when Drew says consent is given). Photos when they exist; neutral placeholders until then, not stock.*
+*Ship by role until names are confirmed (names are known: Misha Gervits, Design Principal; Luke Monegatto, Principal Engineer; add them only when Drew says consent is given). Titles, the nineteen years, and text-only cards set by Drew on November 4, 2026: no placeholder circles; a real photo, when one exists, is cropped to a circle on its card. Not stock.*
 
 ## 10. Closing
 
@@ -222,7 +222,7 @@ CTA: `Get a Reality Check` (anchors to the Reality Check section)
 2. **Is it fast?** Load time and Core Web Vitals, measured on a real phone and a real connection.
 3. **Can everyone use it?** Keyboard only, then a screen reader, against WCAG 2.2 AA.
 4. **Can anyone find it?** We ask ChatGPT, Google, and Perplexity the questions your customers ask and show you who gets named. Often it's not you.
-5. **Does it look like you, or like AI?** Our design director reads it against your business, and shows what one screen would look like done right.
+5. **Does it look like you, or like AI?** Our design principal reads it against your business, and shows what one screen would look like done right.
 
 ### What you get
 
@@ -269,7 +269,7 @@ Then the scorecard says so, and you've lost nothing.
 ### What you get
 
 1. **The worst thing, fixed.** Whatever the scorecard put at the top: the broken sign-in, the form that drops submissions, the page that takes nine seconds, the site ChatGPT can't read. Fixed in your code, tested, and documented.
-2. **One screen redesigned.** The page or screen that looks most like AI made it, redesigned by our design director so it looks like you. Built when it fits in the week; otherwise delivered ready to build.
+2. **One screen redesigned.** The page or screen that looks most like AI made it, redesigned by our design principal so it looks like you. Built when it fits in the week; otherwise delivered ready to build.
 3. **A ranked list of what's left.** Everything else from the scorecard, in order, with what each one would take. So you can decide what's next, or do some of it yourself.
 
 ### How it works
@@ -294,7 +294,7 @@ Yes, if it's on the scorecard. We'll tell you if we'd pick differently and why.
 To the code and hosting for the fix, and to your brand assets for the redesign. We don't touch anything outside the agreed scope.
 
 **Who does the work?**
-Andrew Johnston on the fix, with a senior engineer when it calls for one. Our design director on the redesign. The people you talk to.
+Andrew Johnston on the fix, with a principal engineer when it calls for one. Our design principal on the redesign. The people you talk to.
 
 > **[Start with a Reality Check →](/reality-check)**
 
@@ -339,7 +339,7 @@ Anything you'd otherwise email a developer about: new pages, copy and image chan
 WordPress, custom builds on modern frameworks, and most hosted platforms. If you built it on an AI tool and want off, see Platform Escape.
 
 **Who does the work?**
-Andrew Johnston leads every account. A senior engineer and a design director join when the work calls for them.
+Andrew Johnston leads every account. A principal engineer and a design principal join when the work calls for them.
 
 > **[Start with a Reality Check →](/reality-check)**
 

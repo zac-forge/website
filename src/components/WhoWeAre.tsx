@@ -3,7 +3,7 @@ import { Reveal } from "./Reveal";
 import { fadeUpSmall } from "../lib/motion";
 
 /**
- * Name and photo are optional on purpose. The design director and the senior
+ * Name and photo are optional on purpose. The design principal and the principal
  * engineer have not consented to being named, so they ship by role, and
  * adding a name later is a content change. Names are known (CLAUDE.md) and
  * go in only when Drew says consent is given.
