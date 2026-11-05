@@ -359,7 +359,8 @@ Remove the "Snapshot" step from the `/ai-visibility` "How it works" list; the Re
 # Metadata and schema
 
 **Home title:** `ZAC Forge | Built it with AI? We'll check it.`
-**Home meta description:** `AI made everyone an IT expert. It didn't make it work. A free five-question check from a senior team with 19 years at IBM behind it, then a fixed-price fix.`
+**Home meta description:** `Built it with AI? A senior team with decades of Fortune 50 experience checks it free on five questions, then fixes what's wrong for a fixed price.`
+*Revised by Drew on November 4, 2026, to match the new hero. The same text is the og:description, the twitter:description, and the Organization description in the schema.*
 **OG title:** `Built it with AI? We'll check it.`
 
 **Schema (JSON-LD, server-rendered):**
