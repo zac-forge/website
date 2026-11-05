@@ -876,9 +876,6 @@
     grid-template-columns: minmax(0, 1fr);
     gap: var(--space-5);
   }
-  .offer-related-grid {
-    grid-template-columns: minmax(0, 1fr);
-  }
 }
 
 /* ------------------------------------------------------------ Offer pages */
@@ -1034,6 +1031,9 @@
   box-shadow: var(--shadow-lift);
 }
 .offer-related-title {
+  /* A long single word ("Accessibility") must never run past the card. */
+  overflow-wrap: break-word;
+  hyphens: auto;
   font-size: var(--text-title);
   font-weight: var(--weight-black);
   line-height: var(--leading-title);
@@ -1053,6 +1053,14 @@
   transform: scaleX(1);
   background: var(--card-accent);
   bottom: calc(50% - 0.75em - var(--space-5) / 2);
+}
+/* One card per row on a phone. This lives after the two-column rule above:
+   it used to sit in the footer's media block earlier in the file, where the
+   later base rule overrode it and kept two 126px columns at 360px. */
+@media (max-width: 760px) {
+  .offer-related-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 .offer-home-link {
   margin-top: var(--space-6);
