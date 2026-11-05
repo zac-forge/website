@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router";
 import Home from "./pages/Home.tsx";
 import OfferPage from "./pages/OfferPage.tsx";
+import ContactResult from "./pages/ContactResult.tsx";
 import { LIVE_OFFERS } from "./pages/offers";
 import { metaFor } from "./lib/meta";
 
@@ -29,6 +30,9 @@ export function AppRoutes() {
       <RouteTitle />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/contact/thanks" element={<ContactResult variant="thanks" />} />
+        <Route path="/contact/not-sent" element={<ContactResult variant="not-sent" />} />
+        <Route path="/contact/error" element={<ContactResult variant="error" />} />
         {LIVE_OFFERS.map((offer) => (
           <Route key={offer.path} path={offer.path} element={<OfferPage offer={offer} />} />
         ))}

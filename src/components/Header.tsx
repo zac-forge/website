@@ -84,7 +84,7 @@ function WhatWeDoMenu({ onNavigate }: { onNavigate: () => void }) {
  * it sits on the navy hero band, so it is navy on every page and each page
  * opens on a navy band beneath it.
  */
-export function Header() {
+export function Header({ hideCta = false }: { hideCta?: boolean } = {}) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const close = () => setOpen(false);
@@ -114,10 +114,12 @@ export function Header() {
               {link.label}
             </a>
           ))}
-          <a className="btn btn-primary nav-cta" href="/#reality-check" onClick={close}>
-            <span>Get a Reality Check</span>
-            <span aria-hidden="true">→</span>
-          </a>
+          {hideCta ? null : (
+            <a className="btn btn-primary nav-cta" href="/#reality-check" onClick={close}>
+              <span>Get a Reality Check</span>
+              <span aria-hidden="true">→</span>
+            </a>
+          )}
         </nav>
 
         <button

@@ -148,6 +148,7 @@ Build pages from these. Do not create a second button, card, or eyebrow.
 | Screen-reader-only text | `.sr-only` |
 | Entrance reveal | `<Reveal>` with variants from `src/lib/motion.ts`, never ad hoc Motion props |
 | Brand | `<Wordmark>` and `<ZacMark>` from `Brand.tsx`, which serve the board's SVG exports, never an SVG or raster of your own |
+| Favicon | `public/favicon.svg` (the wordmark's Z, black on `#EBEBEB`), `public/favicon.ico` (16, 32, 48), `public/brand/favicon-64.png`, and the 180px apple-touch icon on a solid ground, all rendered from that SVG |
 | Booking and email | `BOOKING_URL`, `CONTACT_EMAIL`, and `CONTACT_ENDPOINT` from `src/lib/links.ts` |
 
 Motion stays reactive, not ambient, and respects `prefers-reduced-motion`.
@@ -179,6 +180,7 @@ Every page is prerendered by `scripts/prerender.mjs` into `dist/<route>.html` wi
 | `HowWeWork.tsx` | Check, Fix, Partner `FlowRow`, three principles |
 | `WhoWeAre.tsx` | Sky band, three text-only white cards (role and bio), Andrew named; the other two names wait for consent; a photo, when given, is cropped to a 190px circle on its card |
 | `Closing.tsx`, `ContactForm.tsx` | The form, also rendered on `/reality-check` |
+| `pages/ContactResult.tsx` | The pages after the form at `/contact/thanks`, `/contact/not-sent`, `/contact/error`: navy band, Z, noindex, out of the sitemap. The handler fills `[data-slot]` elements and `#contact-data` so hydration matches. The thank-you page hides the header CTA |
 | `Footer.tsx` | Links absolute so they work from offer pages |
 | `Brand.tsx` | Serves the board's wordmark SVG and the closing mark |
 | `pages/OfferPage.tsx` | Shared offer page template: navy band hero with eyebrow, H1, v5 subline, intro, then lists, steps, proof, FAQ, related offers, CTA, optional form. FAQ data also renders the FAQPage schema so the two cannot diverge |

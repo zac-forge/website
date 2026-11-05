@@ -45,7 +45,15 @@ const esc = (s) =>
   String(s).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 const meta = (attr, key, value) => `    <meta ${attr}="${key}" content="${esc(value)}" />`;
 
+const ROBOTS_INDEX = '<meta name="robots" content="index, follow, max-image-preview:large" />';
+if (!template.includes(ROBOTS_INDEX)) {
+  console.error("prerender: index.html is missing the robots meta it expects");
+  process.exit(1);
+}
+
 function head(page) {
+  // Result pages after the contact form: never indexed, nothing to share.
+  if (page.noindex) return meta("name", "description", page.description);
   const url = canonical(page.path);
   const ld = JSON.stringify(schemaFor(page.path), null, 2).replace(/<\//g, "<\\/");
   return [
@@ -78,6 +86,7 @@ for (const page of PAGES) {
   const html = template
     .replace("<title>ZAC Forge</title>", `<title>${esc(page.title)}</title>`)
     .replace("<!--app-head-->", head(page))
+    .replace(ROBOTS_INDEX, page.noindex ? '<meta name="robots" content="noindex, nofollow" />' : ROBOTS_INDEX)
     .replace("<!--app-html-->", appHtml);
   const file = page.path === "/" ? templatePath : path.join(dist, `${page.path.replace(/^\//, "")}.html`);
   mkdirSync(path.dirname(file), { recursive: true });
@@ -89,7 +98,8 @@ for (const page of PAGES) {
 // The sitemap comes from the same route list, so a flagged page can never be
 // listed before its file exists.
 const today = new Date().toISOString().slice(0, 10);
-const urls = PAGES.map(
+const listed = PAGES.filter((p) => !p.noindex);
+const urls = listed.map(
   (p) =>
     `  <url>\n    <loc>${canonical(p.path)}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>${p.path === "/" ? "1.0" : "0.8"}</priority>\n  </url>`,
 ).join("\n");
@@ -97,7 +107,7 @@ writeFileSync(
   path.join(dist, "sitemap.xml"),
   `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`,
 );
-console.log(`prerender: sitemap.xml lists ${PAGES.length} pages`);
+console.log(`prerender: sitemap.xml lists ${listed.length} pages`);
 
 // The SSR bundle is a build artifact, never a deployed one. wrangler ships
 // everything under dist/, which is why this is built outside it and removed.

@@ -6,6 +6,9 @@ export type PageMeta = {
   title: string;
   description: string;
   ogTitle: string;
+  /** Not for search: robots noindex, no canonical, Open Graph, or JSON-LD, and
+   *  left out of the sitemap. The contact form result pages. */
+  noindex?: boolean;
 };
 
 /** docs/site-copy-v5.md, "Metadata and schema". */
@@ -29,6 +32,12 @@ export const PAGES: PageMeta[] = [
     description: o.description,
     ogTitle: o.title.replace(" | ZAC Forge", ""),
   })),
+  // Served by functions/api/contact.ts after a form submission.
+  ...[
+    { path: "/contact/thanks", title: "Thank you | ZAC Forge" },
+    { path: "/contact/not-sent", title: "Thank you | ZAC Forge" },
+    { path: "/contact/error", title: "Something is missing | ZAC Forge" },
+  ].map((p) => ({ ...p, description: HOME_DESCRIPTION, ogTitle: p.title, noindex: true })),
 ];
 
 export function canonical(path: string): string {

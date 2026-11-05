@@ -49,7 +49,8 @@ export default {
       response = await env.ASSETS.fetch(request);
     }
 
-    if (production) return response;
+    // The contact result pages are noindex everywhere, production included.
+    if (production && !url.pathname.startsWith("/contact/")) return response;
     const tagged = new Response(response.body, response);
     tagged.headers.set("X-Robots-Tag", "noindex, nofollow");
     return tagged;

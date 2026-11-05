@@ -739,6 +739,80 @@
   }
 }
 
+/* ------------------------------------------------- Contact result pages */
+/* The pages after the contact form (src/pages/ContactResult.tsx): the hero's
+   navy band, sweep, and grid, copy left, the board's Z right. */
+.result {
+  padding-top: var(--space-8);
+  padding-bottom: var(--space-10);
+  border-bottom-left-radius: var(--radius-sweep);
+}
+.result-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) var(--hero-art);
+  gap: var(--space-9);
+  align-items: center;
+}
+.result-title {
+  max-width: 18ch;
+}
+.result-intro {
+  max-width: var(--copy-width);
+  margin-top: var(--space-6);
+  font-size: var(--text-lead);
+  font-weight: var(--weight-black);
+}
+.result-steps {
+  margin: var(--space-5) 0 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+  max-width: var(--prose-width);
+  display: grid;
+  gap: var(--space-4);
+}
+.result-steps li {
+  display: grid;
+  grid-template-columns: var(--space-7) minmax(0, 1fr);
+  gap: var(--space-3);
+  align-items: baseline;
+}
+.result-steps li::before {
+  counter-increment: step;
+  content: counter(step);
+  font-size: var(--text-subtitle);
+  font-weight: var(--weight-black);
+  line-height: 1;
+}
+.result-errors {
+  margin: var(--space-6) 0 0;
+  padding-left: var(--space-5);
+  max-width: var(--prose-width);
+  display: grid;
+  gap: var(--space-2);
+}
+.result-line {
+  max-width: var(--copy-width);
+  margin-top: var(--space-6);
+}
+.result .cta-row {
+  margin-top: var(--space-5);
+}
+.result-visual img {
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 900px) {
+  .result-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-7);
+  }
+  .result-visual {
+    max-width: calc(var(--hero-art) * 0.5);
+  }
+}
+
 /* ---------------------------------------------------------------- Footer */
 /* No footer on the board. A hairline and three quiet columns. */
 .site-footer {

@@ -11,6 +11,8 @@
 // keys exist. See README.md for both keys.
 
 export interface ContactEnv {
+  /** The static site, for the prerendered result pages. */
+  ASSETS?: Fetcher;
   RESEND_API_KEY?: string;
   TURNSTILE_SECRET_KEY?: string;
   /** Optional overrides. Defaults below. */
@@ -127,7 +129,42 @@ function page(status: number, title: string, inner: string): Response {
   });
 }
 
-function thanks(s: Submission, delivered: boolean, to: string): Response {
+// The result pages are prerendered by the site build (src/pages/ContactResult.tsx)
+// at /contact/thanks, /contact/not-sent, and /contact/error. The handler fetches
+// the template, rewrites the [data-slot] elements, and embeds the same values
+// as #contact-data so the client hydrates to exactly what the HTML shows.
+
+type Variant = "thanks" | "not-sent" | "error";
+type ContactData = { firstName?: string; errors?: string[]; mailto?: string };
+
+function firstName(name: string): string {
+  return (name.trim().split(/\s+/)[0] ?? "").slice(0, 40);
+}
+
+async function result(request: Request, env: ContactEnv, variant: Variant, status: number, data: ContactData, fallback: () => Response): Promise<Response> {
+  if (!env.ASSETS) return fallback();
+  const tpl = await env.ASSETS.fetch(new Request(new URL(`/contact/${variant}`, request.url)));
+  if (!tpl.ok) {
+    console.error("contact: result template missing", variant, tpl.status);
+    return fallback();
+  }
+  const json = JSON.stringify(data).replace(/</g, "\\u003c");
+  const rewritten = new HTMLRewriter()
+    .on("head", { element: (e) => void e.append(`<script id="contact-data" type="application/json">${json}</script>`, { html: true }) })
+    .on('[data-slot="name"]', { element: (e) => void e.setInnerContent(data.firstName ? `, ${data.firstName}` : "") })
+    .on('[data-slot="mailto"]', { element: (e) => void (data.mailto && e.setAttribute("href", data.mailto)) })
+    .on('[data-slot="errors"]', {
+      element: (e) => void e.setInnerContent((data.errors ?? []).map((x) => `<li>${esc(x)}</li>`).join(""), { html: true }),
+    })
+    .transform(tpl);
+  return new Response(rewritten.body, {
+    status,
+    headers: { "content-type": "text/html; charset=utf-8", "cache-control": "no-store", "x-robots-tag": "noindex, nofollow" },
+  });
+}
+
+// Plain fallbacks, used only when the templates cannot be fetched.
+function thanksFallback(s: Submission, delivered: boolean, to: string): Response {
   if (delivered) {
     return page(200, "Thank you", `<h1>Thank you.</h1><p>Your message reached us.</p>`);
   }
@@ -141,7 +178,7 @@ function thanks(s: Submission, delivered: boolean, to: string): Response {
   );
 }
 
-function invalid(errors: string[], s: Submission, to: string): Response {
+function invalidFallback(errors: string[], s: Submission, to: string): Response {
   return page(
     400,
     "Something is missing",
@@ -149,6 +186,16 @@ function invalid(errors: string[], s: Submission, to: string): Response {
 <ul>${errors.map((e) => `<li>${esc(e)}</li>`).join("")}</ul>
 <p><a href="/#contact">Go back to the form</a>, or <a href="${esc(mailto(s, to))}">email it to ${esc(to)}</a> instead.</p>`,
   );
+}
+
+function thanks(request: Request, env: ContactEnv, s: Submission, delivered: boolean, to: string) {
+  return delivered
+    ? result(request, env, "thanks", 200, { firstName: firstName(s.name) }, () => thanksFallback(s, true, to))
+    : result(request, env, "not-sent", 200, { mailto: mailto(s, to) }, () => thanksFallback(s, false, to));
+}
+
+function invalid(request: Request, env: ContactEnv, errors: string[], s: Submission, to: string) {
+  return result(request, env, "error", 400, { errors, mailto: mailto(s, to) }, () => invalidFallback(errors, s, to));
 }
 
 // ---------------------------------------------------------------- Handler
@@ -163,20 +210,20 @@ export async function handleContact(request: Request, env: ContactEnv): Promise<
   try {
     form = await request.formData();
   } catch {
-    return invalid(["The form did not arrive in a shape we could read."], { name: "", email: "", message: "", url: "" }, to);
+    return invalid(request, env, ["The form did not arrive in a shape we could read."], { name: "", email: "", message: "", url: "" }, to);
   }
   const get = (k: string) => String(form.get(k) ?? "").trim();
   const s: Submission = { name: get("name"), email: get("email"), message: get("message"), url: get("url") };
 
   // Honeypot filled: a bot. Answer as if it worked and do nothing.
-  if (get("company")) return thanks(s, true, to);
+  if (get("company")) return thanks(request, env, s, true, to);
 
   const errors = validate(s);
-  if (errors.length) return invalid(errors, s, to);
+  if (errors.length) return invalid(request, env, errors, s, to);
 
   if (env.TURNSTILE_SECRET_KEY) {
     const ok = await verifyTurnstile(env.TURNSTILE_SECRET_KEY, get("cf-turnstile-response"), request.headers.get("cf-connecting-ip"));
-    if (!ok) return invalid(["The spam check did not pass. Please try again."], s, to);
+    if (!ok) return invalid(request, env, ["The spam check did not pass. Please try again."], s, to);
   }
 
   let delivered = false;
@@ -191,5 +238,5 @@ export async function handleContact(request: Request, env: ContactEnv): Promise<
     // Keys out, or Resend failed: the submission is kept in the Worker log.
     console.log("contact: submission not emailed", JSON.stringify({ ...s, at: new Date().toISOString() }));
   }
-  return thanks(s, delivered, to);
+  return thanks(request, env, s, delivered, to);
 }
