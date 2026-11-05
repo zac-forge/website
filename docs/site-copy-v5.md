@@ -296,7 +296,7 @@ To the code and hosting for the fix, and to your brand assets for the redesign. 
 **Who does the work?**
 Andrew Johnston on the fix, with a principal engineer when it calls for one. Our design principal on the redesign. The people you talk to.
 
-> **[Start with a Reality Check →](/reality-check)**
+> **[Start with a Reality Check →](/#contact)** (straight to the contact form, focus on Name; changed by Drew on November 4, 2026)
 
 ---
 
@@ -341,7 +341,7 @@ WordPress, custom builds on modern frameworks, and most hosted platforms. If you
 **Who does the work?**
 Andrew Johnston leads every account. A principal engineer and a design principal join when the work calls for them.
 
-> **[Start with a Reality Check →](/reality-check)**
+> **[Start with a Reality Check →](/#contact)** (straight to the contact form, focus on Name; changed by Drew on November 4, 2026)
 
 ---
 
@@ -350,7 +350,7 @@ Andrew Johnston leads every account. A principal engineer and a design principal
 `/ai-visibility`, `/accessibility`, and `/brand-system` keep their v4 body copy. Two changes each:
 
 1. Replace the eyebrow and add one line under the H1: *"Usually the fix for question 4 on the Reality Check."* (visibility) / *"Usually the fix for question 3."* (accessibility) / *"Usually the fix for question 5."* (brand system).
-2. Replace the closing CTA with **[Start with a Reality Check →](/reality-check)**.
+2. Replace the closing CTA with **[Start with a Reality Check →](/#contact)** (straight to the contact form, focus on Name; changed by Drew on November 4, 2026).
 
 Remove the "Snapshot" step from the `/ai-visibility` "How it works" list; the Reality Check replaces it. The rest stands. `/brand-system` stays behind its flag until Misha signs off.
 

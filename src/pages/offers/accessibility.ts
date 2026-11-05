@@ -61,5 +61,5 @@ export const accessibility: Offer = {
   ],
   footnote:
     "Sources: EcomBack 2025 ADA Website Accessibility Lawsuit Report. HHS press release on the Section 504 deadline extension.",
-  cta: { label: "Start with a Reality Check", href: "/reality-check" },
+  cta: { label: "Start with a Reality Check", href: "/#contact" },
 };

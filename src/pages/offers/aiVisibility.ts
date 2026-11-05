@@ -88,5 +88,5 @@ export const aiVisibility: Offer = {
         "Technical fixes can show up within weeks, as assistants re-read your site. Reviews and mentions take longer. We re-test at 30 days and track monthly after that.",
     },
   ],
-  cta: { label: "Start with a Reality Check", href: "/reality-check" },
+  cta: { label: "Start with a Reality Check", href: "/#contact" },
 };

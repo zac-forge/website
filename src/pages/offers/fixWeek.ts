@@ -79,5 +79,5 @@ export const fixWeek: Offer = {
         "Andrew Johnston on the fix, with a principal engineer when it calls for one. Our design principal on the redesign. The people you talk to.",
     },
   ],
-  cta: { label: "Start with a Reality Check", href: "/reality-check" },
+  cta: { label: "Start with a Reality Check", href: "/#contact" },
 };

@@ -77,5 +77,5 @@ export const brandSystem: Offer = {
         "One working session. After that, they use the tools they already use, and the output comes back on brand.",
     },
   ],
-  cta: { label: "Start with a Reality Check", href: "/reality-check" },
+  cta: { label: "Start with a Reality Check", href: "/#contact" },
 };
