@@ -44,7 +44,8 @@ function BackLink() {
  * The pages after the contact form, in the hero's layout: navy band with the
  * bottom-left sweep, copy left, the board's Z right. Copy for the thank-you
  * page set by Drew on 2026-11-04. The two other pages keep the wording the
- * handler has always used. All three are noindex and out of the sitemap.
+ * handler has always used, except delivery failed, reworded by Drew on
+ * 2026-11-04. All three are noindex and out of the sitemap.
  */
 export default function ContactResult({ variant }: { variant: ContactResultVariant }) {
   const [data] = useState(readContactData);
@@ -87,23 +88,21 @@ export default function ContactResult({ variant }: { variant: ContactResultVaria
 
               {variant === "not-sent" ? (
                 <>
-                  <h1 className="h1 result-title">Thank you.</h1>
+                  <h1 className="h1 result-title">Something went wrong on our end.</h1>
                   <p className="result-intro">
-                    We have your message. Our email delivery isn't switched on yet, so please send it
-                    by email too, so nothing gets lost.
+                    Your message didn't send. Nothing's wrong on your side.{" "}
+                    <a className="inline-link" href={mailto} data-slot="mailto">
+                      Email it to {CONTACT_EMAIL}
+                    </a>{" "}
+                    instead, or <a className="inline-link" href={BOOKING_URL}>book a 20-minute call</a>.
                   </p>
                   <div className="cta-row result-actions">
                     <Magnetic>
-                      <a className="btn btn-primary" href={mailto} data-slot="mailto">
-                        <span>Email it to {CONTACT_EMAIL}</span>
+                      <a className="btn btn-primary" href={BOOKING_URL}>
+                        <span>Book a 20-minute call</span>
                         <span aria-hidden="true">→</span>
                       </a>
                     </Magnetic>
-                  </div>
-                  <p className="result-line">
-                    Or <a className="inline-link" href={BOOKING_URL}>book a 20-minute call</a>.
-                  </p>
-                  <div className="cta-row result-actions">
                     <BackLink />
                   </div>
                 </>

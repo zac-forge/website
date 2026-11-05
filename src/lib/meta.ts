@@ -35,7 +35,7 @@ export const PAGES: PageMeta[] = [
   // Served by functions/api/contact.ts after a form submission.
   ...[
     { path: "/contact/thanks", title: "Thank you | ZAC Forge" },
-    { path: "/contact/not-sent", title: "Thank you | ZAC Forge" },
+    { path: "/contact/not-sent", title: "Something went wrong | ZAC Forge" },
     { path: "/contact/error", title: "Something is missing | ZAC Forge" },
   ].map((p) => ({ ...p, description: HOME_DESCRIPTION, ogTitle: p.title, noindex: true })),
 ];

@@ -170,11 +170,10 @@ function thanksFallback(s: Submission, delivered: boolean, to: string): Response
   }
   return page(
     200,
-    "Thank you",
-    `<h1>Thank you.</h1>
-<p>We have your message. Our email delivery isn't switched on yet, so please send it by email too, so nothing gets lost.</p>
-<p><a class="btn" href="${esc(mailto(s, to))}">Email it to ${esc(to)}</a></p>
-<p>Or <a href="${BOOKING_URL}">book a 20-minute call</a>.</p>`,
+    "Something went wrong",
+    `<h1>Something went wrong on our end.</h1>
+<p>Your message didn't send. Nothing's wrong on your side. <a href="${esc(mailto(s, to))}">Email it to ${esc(to)}</a> instead, or <a href="${BOOKING_URL}">book a 20-minute call</a>.</p>
+<p><a class="btn" href="${BOOKING_URL}">Book a 20-minute call</a></p>`,
   );
 }
 
