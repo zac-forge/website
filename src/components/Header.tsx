@@ -115,7 +115,7 @@ export function Header({ hideCta = false }: { hideCta?: boolean } = {}) {
             </a>
           ))}
           {hideCta ? null : (
-            <a className="btn btn-primary nav-cta" href="/#reality-check" onClick={close}>
+            <a className="btn btn-primary nav-cta" href="/#contact" onClick={close}>
               <span>Get a Reality Check</span>
               <span aria-hidden="true">→</span>
             </a>

@@ -5,6 +5,7 @@ import OfferPage from "./pages/OfferPage.tsx";
 import ContactResult from "./pages/ContactResult.tsx";
 import { LIVE_OFFERS } from "./pages/offers";
 import { metaFor } from "./lib/meta";
+import { ContactFocus } from "./components/ContactFocus";
 
 /**
  * Keeps document.title in step with the route on the client. The prerender
@@ -28,6 +29,7 @@ export function AppRoutes() {
   return (
     <>
       <RouteTitle />
+      <ContactFocus />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/contact/thanks" element={<ContactResult variant="thanks" />} />

@@ -170,7 +170,8 @@ Every page is prerendered by `scripts/prerender.mjs` into `dist/<route>.html` wi
 
 | File | v5 status |
 |---|---|
-| `Header.tsx` | Navy on every page, nav What we do (menu), Track record, How we work, Who we are, CTA "Get a Reality Check" to `/#reality-check` |
+| `Header.tsx` | Navy on every page, nav What we do (menu), Track record, How we work, Who we are, CTA "Get a Reality Check" to `/#contact` |
+| `ContactFocus.tsx` | Every `#contact` link scrolls the Name field into view below the sticky header and focuses it, on click and on arrival with the hash |
 | `Hero.tsx` | Navy band, "Built it with AI? Find out if it actually works.", proof line carries Fortune 50 and 2010. `public/og-image.jpg` is rendered from it by `tools/og-card.html` |
 | `LogoBand.tsx` | "Where our team has worked", names as muted text, never labelled as clients |
 | `TrackRecord.tsx` | Split head, four stacked case study cards; Legal Access ships with only its filled sentence; hidden hawaii.surf card first behind `HAWAII_CARD` |

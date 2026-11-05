@@ -29,7 +29,7 @@ Every section is server-rendered HTML. Nothing on the page depends on client-sid
 ## 1. Header
 
 Nav: `What we do` · `Track record` · `How we work` · `Who we are`
-CTA: `Get a Reality Check` (anchors to the Reality Check section)
+CTA: `Get a Reality Check` (goes straight to the contact form, `/#contact`, with focus on the Name field; changed by Drew on November 4, 2026)
 
 ## 2. Hero
 
@@ -39,7 +39,7 @@ CTA: `Get a Reality Check` (anchors to the Reality Check section)
 >
 > Send us your site, app, or brand. A senior team checks it on five questions and tells you straight, free. If something's wrong, we fix it for a fixed price.
 >
-> **[Get a free Reality Check →]** (anchors to the Reality Check section)  ·  [See what we've built ↓]
+> **[Get a free Reality Check →]** (goes straight to the contact form, `/#contact`, with focus on the Name field)  ·  [See what we've built ↓]
 >
 > Decades of Fortune 50 experience. Systems we built in 2010 still run today.
 
