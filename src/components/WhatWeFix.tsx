@@ -18,12 +18,12 @@ const FIXES: Fix[] = [
   },
   {
     title: "Rescue.",
-    line: "A site or app built quickly with AI tools, finished and made solid, or rebuilt if it can't be saved.",
+    line: "A site or app built quickly with AI tools, finished and made solid. Rebuilt if it can't be saved.",
     link: { label: "Ask us", href: "#contact" },
   },
   {
     title: "Accessibility and performance.",
-    line: "Fixed in the code, not covered with a widget.",
+    line: "Corrected in the code, not covered with a widget.",
     link: { label: "More", href: "/accessibility" },
   },
   {
@@ -38,7 +38,7 @@ const FIXES: Fix[] = [
   },
   {
     title: "Web Partner.",
-    line: "After the fix, one senior team keeps it running and makes it better every month.",
+    line: "One senior team keeps it running and makes it better every month.",
     link: { label: "More", href: "/web-partner" },
   },
 ];
@@ -51,12 +51,12 @@ const FIXES: Fix[] = [
  */
 export function WhatWeFix() {
   return (
-    <section id="what-we-fix" className="section what-we-fix" aria-labelledby="what-we-fix-heading">
+    <section id="what-we-do" className="section what-we-fix" aria-labelledby="what-we-do-heading">
       <div className="container">
         <Reveal>
-          <p className="eyebrow">04 / What we fix</p>
-          <h2 className="h2" id="what-we-fix-heading">
-            The bigger fixes, when the check calls for them.
+          <p className="eyebrow">04 / The bigger jobs</p>
+          <h2 className="h2" id="what-we-do-heading">
+            When the scorecard calls for more.
           </h2>
         </Reveal>
         <Reveal stagger={0.06}>
@@ -67,7 +67,7 @@ export function WhatWeFix() {
                 <p className="fix-line">{fix.line}</p>
                 {fix.link ? (
                   <a className="text-link fix-link" href={fix.link.href}>
-                    <span>{fix.link.label}</span>
+                    <span>{fix.link.label}</span>{" "}
                     <span aria-hidden="true">→</span>
                     <span className="sr-only">: {fix.title.replace(/\.$/, "")}</span>
                   </a>

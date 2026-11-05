@@ -14,9 +14,9 @@ export function Closing() {
       <div className="container">
         <Reveal className="closing-grid">
           <div>
-            <p className="eyebrow">Bring us the problem</p>
+            <p className="eyebrow">Start here</p>
             <h2 className="h2 closing-heading" id="contact-heading">
-              Send us what you built.
+              Bring us the problem.
             </h2>
             <ContactForm />
           </div>

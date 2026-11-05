@@ -29,7 +29,7 @@ function readContactData(): ContactData {
 const NEXT_STEPS = [
   "Andrew replies within one business day to confirm we have what we need.",
   "We check it. A few days. We don't change anything.",
-  "You get the scorecard. Five questions, plain English, by email. If something's worth fixing, a fixed price to fix it. If not, we'll say so.",
+  "You get the scorecard. Five questions, plain English, by email. If something's worth doing, one agreed price to put it right. If not, we'll say so.",
 ];
 
 function BackLink() {
@@ -77,7 +77,7 @@ export default function ContactResult({ variant }: { variant: ContactResultVaria
                   <div className="cta-row">
                     <Magnetic>
                       <a className="btn btn-primary" href={BOOKING_URL}>
-                        <span>Book a 20-minute call</span>
+                        <span>Book a 20-minute call</span>{" "}
                         <span aria-hidden="true">→</span>
                       </a>
                     </Magnetic>
@@ -99,7 +99,7 @@ export default function ContactResult({ variant }: { variant: ContactResultVaria
                   <div className="cta-row result-actions">
                     <Magnetic>
                       <a className="btn btn-primary" href={BOOKING_URL}>
-                        <span>Book a 20-minute call</span>
+                        <span>Book a 20-minute call</span>{" "}
                         <span aria-hidden="true">→</span>
                       </a>
                     </Magnetic>

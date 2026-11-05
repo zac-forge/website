@@ -30,7 +30,7 @@ export function WhatChanged() {
               take a small team. The standard didn't change. The speed did.
             </p>
             <p className="section-intro">
-              What also changed: everyone else got the same tools. Sites, apps, brands, and content
+              Everyone else got the same tools, too. Sites, apps, brands, and content
               that used to need a team now get made in an afternoon. A lot of it half works, looks
               like everything else, and the person who made it can't fix it. That's where we come
               in.

@@ -2,33 +2,36 @@
 
 > A senior web and software team. ZAC checks sites, apps, and brands that were
 > built with AI tools or by someone who has since left, says plainly what is
-> wrong, and fixes it for a fixed price.
+> wrong, and puts it right for one agreed price.
 
-ZAC is built on the practice Andrew Johnston has run since 2010, after 19 years
-at IBM including IBM.com and the IBM Design Lab. Works remotely with clients
-anywhere in the US.
+ZAC is built on the practice Andrew Johnston has run since 2010, with decades
+of Fortune 50 experience, including IBM.com and the IBM Design Lab. Works
+remotely with clients anywhere in the US.
 
 ## Start here
 
 - [The Reality Check](https://zacforge.com/reality-check): a free five-question
   check on anything built with AI tools or inherited: does it work, is it fast,
   can everyone use it, can anyone find it, does it look like you or like AI.
-  One short scorecard in plain English with the evidence and what a fix takes.
-- [The Fix Week](https://zacforge.com/fix-week): one week, fixed price. The
-  worst thing on the scorecard fixed, one screen redesigned so it looks like
+  One short scorecard in plain English with the evidence and what putting it
+  right would take.
+- [The Handoff](https://zacforge.com/handoff): one week, one agreed price. The
+  worst thing on the scorecard resolved, one screen redesigned so it looks like
   the client and not like AI, and a ranked list of what is left.
 
 ## Services
 
-- [AI Visibility](https://zacforge.com/ai-visibility): tests real customer
-  questions across ChatGPT, Google, and Perplexity; fixes crawler access,
-  structured data, answer content, and third-party mentions; tracks how often
-  the business is named.
+- [AI Visibility](https://zacforge.com/ai-visibility): starts with the free
+  Reality Check, which asks ChatGPT, Google, and Perplexity the questions
+  customers ask and shows who gets named. Then the work, quoted from the
+  check: crawler access, structured data, answer pages, and third-party
+  mentions, in order of impact. Then the same questions tracked every month as
+  part of a Web Partner plan.
 - [Accessibility and Performance](https://zacforge.com/accessibility): manual
-  testing against WCAG 2.2 AA, performance review, fixes made in the code. No
-  overlays.
-- [Web Partner](https://zacforge.com/web-partner): ongoing senior care after
-  the fix: updates, backups, monitoring, change requests, one improvement a
+  testing against WCAG 2.2 AA, performance review, corrections made in the
+  code. No overlays.
+- [Web Partner](https://zacforge.com/web-partner): ongoing senior care
+  covering updates, backups, monitoring, change requests, one improvement a
   month, and visibility tracking. Not a maintenance plan.
 - Rescue: finishing and hardening sites and apps built quickly with AI tools,
   or rebuilding them when they cannot be saved.
@@ -48,12 +51,12 @@ anywhere in the US.
 - US Naval Academy and US Military Academy: cadet booking and photo portals,
   live since 2017.
 - Legal Access Alameda: web properties for a statewide group of attorneys
-  providing disaster response and free legal assistance, built and rebuilt
-  over several years.
+  providing disaster response and free legal assistance. A client across
+  several years and several rebuilds.
 
 ## Contact
 
-- [Send us what you built](https://zacforge.com/#contact)
+- [Bring us the problem](https://zacforge.com/#contact)
 - [Book a call](https://cal.com/zacforge/20-min-chat)
 - [Email](mailto:drew@zacforge.com)
 - [Website](https://zacforge.com/)

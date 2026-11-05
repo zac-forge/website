@@ -60,6 +60,25 @@ function BlockView({ block }: { block: Block }) {
   }
 }
 
+/**
+ * The subline may carry one inline link, written [text](/path), so the line
+ * placing a page behind the Reality Check can link to it. Plain text
+ * otherwise.
+ */
+function Subline({ text }: { text: string }) {
+  const m = text.match(/^(.*)\[([^\]]+)\]\(([^)]+)\)(.*)$/);
+  if (!m) return <p className="offer-subline">{text}</p>;
+  return (
+    <p className="offer-subline">
+      {m[1]}
+      <a className="inline-link" href={m[3]}>
+        {m[2]}
+      </a>
+      {m[4]}
+    </p>
+  );
+}
+
 export default function OfferPage({ offer }: { offer: Offer }) {
   return (
     <>
@@ -69,7 +88,7 @@ export default function OfferPage({ offer }: { offer: Offer }) {
           <div className="container">
             <p className="eyebrow">{offer.eyebrow}</p>
             <h1 className="h1 offer-title">{offer.h1}</h1>
-            {offer.subline ? <p className="offer-subline">{offer.subline}</p> : null}
+            {offer.subline ? <Subline text={offer.subline} /> : null}
             {offer.intro.map((p) => (
               <p className="offer-intro" key={p}>
                 {p}
@@ -128,14 +147,14 @@ export default function OfferPage({ offer }: { offer: Offer }) {
                   <span className="offer-related-title">{other.navTitle}</span>
                   <span className="offer-related-body">{other.summary}</span>
                   <span className="text-link offer-related-link">
-                    <span>More</span>
+                    <span>More</span>{" "}
                     <span aria-hidden="true">→</span>
                   </span>
                 </a>
               ))}
             </div>
             <a className="text-link offer-home-link" href="/">
-              <span aria-hidden="true">←</span>
+              <span aria-hidden="true">←</span>{" "}
               <span>Back to the home page</span>
             </a>
           </div>
@@ -146,7 +165,7 @@ export default function OfferPage({ offer }: { offer: Offer }) {
             <div className="cta-row">
               <Magnetic>
                 <a className="btn btn-primary" href={offer.cta.href}>
-                  <span>{offer.cta.label}</span>
+                  <span>{offer.cta.label}</span>{" "}
                   <span aria-hidden="true">→</span>
                 </a>
               </Magnetic>

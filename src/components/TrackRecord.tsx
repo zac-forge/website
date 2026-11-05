@@ -41,7 +41,7 @@ const CASE_STUDIES: CaseStudy[] = [
   {
     client: "Heritage Global Partners",
     meta: "hgpauction.com · Live since 2010",
-    body: "Every web property rebuilt, including the flagship auction site. Real-time uploads and auction creation from the sale floor on connected tablets, in 2010. The platform has carried over $1 billion in asset sales since launch. Sixteen years in production, maintained by someone else.",
+    body: "Every web property rebuilt, including the flagship auction site. Real-time uploads and auction creation from the sale floor on connected tablets, in 2010. The platform has carried over $1 billion in asset sales since launch. 16 years in production, maintained by someone else.",
     figure: "$1B+",
     figureCaption: "in asset sales through the platform",
   },
@@ -58,8 +58,10 @@ const CASE_STUDIES: CaseStudy[] = [
     figure: "Live since 2017",
   },
   {
+    // TODO(Drew): URL, years, and the number for this card. Until they
+    // arrive the meta line and the figure stay empty rather than invented.
     client: "Legal Access Alameda",
-    body: "Web properties for a statewide group of attorneys providing disaster response and free legal assistance, built and rebuilt over several years.",
+    body: "Web properties for a statewide group of attorneys providing disaster response and free legal assistance. A client across several years and several rebuilds.",
   },
 ];
 
@@ -81,8 +83,7 @@ export function TrackRecord() {
           </div>
           <div className="split-head-copy">
             <p>
-              ZAC is built on the practice Andrew Johnston has run since 2010. {TIMELINE_FRAMING}{" "}
-              Same principal, same standards, new economics.
+              ZAC is built on the practice Andrew Johnston has run since 2010. {TIMELINE_FRAMING}
             </p>
             {/* Confirmed by Drew on 2026-08-20 as repeatable across numerous
                 projects, which is why it is a section claim, not a detail. */}

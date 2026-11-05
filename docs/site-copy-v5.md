@@ -1,5 +1,7 @@
 # Site Copy v5: the Reality Check
 
+**Amended November 5, 2026.** The Fix Week is now the Handoff at `/handoff`, and much of the copy below was reworded. `docs/copy-pass-2026-11-05.md` wins wherever it disagrees with this deck.
+
 *November 4, 2026. Supersedes Site Copy v4 (`site-copy-v2.md`). Written to be handed to Claude Code against `github.com/zac-forge/website`. Direction per `decisions-log.md` decisions 31 to 42. Voice per `voice-guide.md`: contractions fine, no em dashes, no exclamation points, no prices, "AI" names the problem and the offers but never describes ZAC.*
 
 **What changed from v4**

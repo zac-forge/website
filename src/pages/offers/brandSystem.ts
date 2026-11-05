@@ -18,7 +18,7 @@ export const brandSystem: Offer = {
     "Senior brand design turned into design tokens, components, rules files for AI coding tools, and Claude Design, Canva, and Figma kits, so AI-made work stays on brand.",
   eyebrow: "AI-READY BRAND SYSTEM",
   h1: "A brand system your AI tools follow.",
-  subline: "Usually the fix for question 5.",
+  subline: "Usually what question 5 on our free [Reality Check](/reality-check) points to.",
   intro: [
     "Your team already makes pages, posts, and decks with AI. Without a system, every tool falls back on the same defaults: the same fonts, the same icons, the same gradients. The result looks like everyone else. A brand system is how you stop that.",
   ],

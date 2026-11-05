@@ -13,7 +13,7 @@ export type PageMeta = {
 
 /** docs/site-copy-v5.md, "Metadata and schema". */
 const HOME_DESCRIPTION =
-  "Built it with AI? A senior team with decades of Fortune 50 experience checks it free on five questions, then fixes what's wrong for a fixed price.";
+  "Built it with AI? A senior team with decades of Fortune 50 experience checks it free on five questions, then puts right what's wrong for one agreed price.";
 
 export const HOME_META: PageMeta = {
   path: "/",

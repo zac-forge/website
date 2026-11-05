@@ -31,7 +31,7 @@ export function RealityCheck() {
         <Reveal>
           <p className="eyebrow">03 / The Reality Check</p>
           <h2 className="h2" id="reality-check-heading">
-            Send us what you built. We'll tell you straight.
+            Five questions. One straight answer.
           </h2>
           <p className="section-intro section-intro--wide">
             Free. Five questions. A short scorecard in plain English, with the evidence, and what it
@@ -55,7 +55,7 @@ export function RealityCheck() {
           <div className="cta-row">
             <Magnetic>
               <a className="btn btn-primary" href="#contact">
-                <span>Get a Reality Check</span>
+                <span>Get a Reality Check</span>{" "}
                 <span aria-hidden="true">→</span>
               </a>
             </Magnetic>
@@ -64,11 +64,12 @@ export function RealityCheck() {
             </a>
           </div>
           <p className="check-next">
-            Then, if you want it fixed: <strong>the Fix Week.</strong> One week, fixed price. We fix
-            the worst thing on the scorecard, redesign the one screen that looks most like AI made
-            it, and hand back a ranked list of what's left.{" "}
-            <a className="inline-link" href="/fix-week">
-              What a Fix Week covers <span aria-hidden="true">→</span>
+            If something needs work, the next step is <strong>the Handoff.</strong> One week, one
+            price agreed up front. We take the worst thing on the scorecard off your plate, redesign
+            the one screen that looks most like AI made it, and hand back a ranked list of what's
+            left.{" "}
+            <a className="inline-link" href="/handoff">
+              What the Handoff covers <span aria-hidden="true">→</span>
             </a>
           </p>
         </Reveal>

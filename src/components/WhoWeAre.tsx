@@ -18,7 +18,7 @@ const TEAM: TeamMember[] = [
   {
     name: "Andrew Johnston",
     role: "Founder, Principal",
-    bio: "Nineteen years at IBM and fifteen running his own practice. ZAC is what happens when those stop being separate things.",
+    bio: "Decades of Fortune 50 experience, and a practice of his own alongside it since 2010. ZAC is what happens when those stop being separate things.",
   },
   {
     role: "Design Principal",
@@ -26,7 +26,7 @@ const TEAM: TeamMember[] = [
   },
   {
     role: "Principal Engineer",
-    bio: "Senior engineer at IBM. WordPress and PHP, React and Node, and mobile.",
+    bio: "Principal engineer at IBM. WordPress, PHP, React, Node, and mobile.",
   },
 ];
 

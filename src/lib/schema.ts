@@ -4,7 +4,7 @@
  * Rules from docs/site-copy-v5.md: ProfessionalService for ZAC Forge, Person
  * for Andrew only (the other two team members are unnamed on the page pending
  * consent), one Service per live offer with provider ZAC Forge (the Reality
- * Check, the Fix Week, AI Visibility, Accessibility and Performance, Web
+ * Check, the Handoff, AI Visibility, Accessibility and Performance, Web
  * Partner, and the Brand System once its flag is on), and FAQPage on each
  * offer page matching the visible questions exactly. No offers, no price
  * properties, anywhere.
@@ -34,7 +34,6 @@ const organization = {
   description: HOME_META.description,
   address: {
     "@type": "PostalAddress",
-    addressLocality: "Ventura",
     addressRegion: "CA",
     addressCountry: "US",
   },
@@ -47,7 +46,7 @@ const person = {
   "@type": "Person",
   "@id": PERSON_ID,
   name: "Andrew Johnston",
-  jobTitle: "Founder",
+  jobTitle: "Founder, Principal",
   worksFor: { "@id": ORG_ID },
 };
 

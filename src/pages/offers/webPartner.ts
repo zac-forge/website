@@ -4,15 +4,15 @@ import type { Offer } from "./types";
 export const webPartner: Offer = {
   path: "/web-partner",
   navTitle: "Web Partner",
-  summary: "After the fix, one senior team keeps it running and makes it better every month.",
+  summary: "One senior team keeps it running and makes it better every month.",
   title: "Web Partner | ZAC Forge",
   description:
-    "After the fix, one senior team keeps your site running and makes it better every month. Not a maintenance plan.",
+    "One senior team keeps your site running and makes it better every month. Not a maintenance plan.",
   serviceName: "Web Partner",
   serviceDescription:
-    "Ongoing senior care after the fix: updates, backups, monitoring, change requests, one improvement a month, and visibility tracking. Not a maintenance plan.",
+    "Ongoing senior care: updates, backups, monitoring, change requests, one improvement a month, and visibility tracking. Not a maintenance plan.",
   eyebrow: "WEB PARTNER",
-  h1: "Keep it fixed. Make it better.",
+  h1: "Keep it running. Make it better.",
   intro: [
     "Updates and backups are the floor. What you're paying for is one senior person who knows your site, answers when you ask, and improves it every month.",
   ],
@@ -24,7 +24,7 @@ export const webPartner: Offer = {
         "Core, plugin, and theme updates",
         "Verified off-site backups",
         "Uptime and security monitoring",
-        "A set amount of change requests each month",
+        "A set number of change requests each month",
         "One proactive improvement each month",
         "A monthly check of how often ChatGPT, Google, and Perplexity name you",
       ],
@@ -47,7 +47,7 @@ export const webPartner: Offer = {
       heading: "How it starts",
       kind: "paragraphs",
       items: [
-        "Most clients come to Web Partner after a Fix Week. Every project we finish includes 30 days of care, so you see how we work before you commit. Plans start with three months, then run month to month with 30 days' notice.",
+        "Most clients come to Web Partner after a Handoff. Every project we finish includes 30 days of care, so you see how we work before you commit. Plans start with three months, then run month to month with 30 days' notice.",
       ],
     },
   ],
@@ -55,7 +55,7 @@ export const webPartner: Offer = {
     {
       question: "What counts as a change request?",
       answer:
-        "Anything you'd otherwise email a developer about: new pages, copy and image changes, forms, fixes, small features. If something is bigger than a month's allowance, we quote it separately before starting.",
+        "Anything you'd otherwise email a developer about: new pages, copy and image changes, forms, corrections, small features. If something is bigger than a month's allowance, we quote it separately before starting.",
     },
     {
       question: "What platforms do you work on?",

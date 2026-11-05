@@ -2,19 +2,19 @@ import type { Offer } from "./types";
 
 export const accessibility: Offer = {
   path: "/accessibility",
-  navTitle: "Accessibility and performance",
-  summary: "Fixed in the code, not covered with a widget.",
-  title: "Accessibility and Performance Audit | ZAC Forge",
+  navTitle: "Accessibility and Performance",
+  summary: "Corrected in the code, not covered with a widget.",
+  title: "Accessibility and Performance | ZAC Forge",
   description:
-    "Manual accessibility testing against WCAG 2.2 AA and a performance review, with fixes made in your code, not covered with an overlay.",
+    "Manual accessibility testing against WCAG 2.2 AA and a performance review, with corrections made in your code, not covered with an overlay.",
   serviceName: "Accessibility and Performance",
   serviceDescription:
-    "Manual testing against WCAG 2.2 AA, performance review, fixes made in the code, and an accessibility statement. No overlays.",
+    "Manual testing against WCAG 2.2 AA, performance review, corrections made in the code, and an accessibility statement. No overlays.",
   eyebrow: "ACCESSIBILITY AND PERFORMANCE",
-  h1: "Accessibility and performance, fixed in the code.",
-  subline: "Usually the fix for question 3.",
+  h1: "Accessibility and performance, corrected in the code.",
+  subline: "Usually what question 3 on our free [Reality Check](/reality-check) points to.",
   intro: [
-    "We do not sell a scan or a widget. We test your site by hand, fix the code, and document what we did.",
+    "We don't sell a scan or a widget. We test your site by hand, correct the code, and document what we did.",
     "In 2025, 3,948 website accessibility lawsuits were filed in the US, 787 of them in California. 983 targeted sites that already had an overlay widget installed.",
   ],
   blocks: [
@@ -33,8 +33,8 @@ export const accessibility: Offer = {
       heading: "What you get",
       kind: "bullets",
       items: [
-        "Findings in plain English, ranked by risk, with the top 10 fixed first",
-        "Fixes in your theme, components, and content",
+        "Findings in plain English, ranked by risk, with the top 10 handled first",
+        "Corrections in your theme, components, and content",
         "An accessibility statement and a short conformance summary",
         "Removal of any overlay",
         "Optional quarterly re-check as part of a Web Partner plan",

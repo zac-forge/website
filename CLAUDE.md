@@ -6,7 +6,7 @@ Repo memory for the ZAC marketing site. Read this before touching copy.
 
 A senior technology studio. Successor practice to Mahalo Media Group, which founder Andrew Johnston ran for 15+ years across 100+ engagements. Not a startup. An established practice operating under new economics.
 
-**Positioning (v5, adopted 2026-11-03):** one problem, one front door. The problem: AI made everyone an IT expert, it didn't make it work. The front door: a free Reality Check (five questions on anything built with AI tools or inherited). The paid step: the Fix Week. AI Visibility, Rescue, Accessibility, Brand System, Platform Escape, and Web Partner are fixes behind that door. Experience and durability are the proof, not the pitch. Supersedes the v4 positioning below.
+**Positioning (v5, adopted 2026-11-03):** one problem, one front door. The problem: AI made everyone an IT expert, it didn't make it work. The front door: a free Reality Check (five questions on anything built with AI tools or inherited). The paid step: the Handoff (named the Fix Week until 2026-11-05). AI Visibility, Rescue, Accessibility, Brand System, Platform Escape, and Web Partner are fixes behind that door. Experience and durability are the proof, not the pitch. Supersedes the v4 positioning below.
 
 ## This site is a working copy
 
@@ -21,7 +21,7 @@ Positioning work is handed to Misha as **input** to the redesign.
 
 ## The copy source of truth
 
-`docs/site-copy-v5.md` carries the complete section-by-section copy, the offer pages, metadata, schema, the contact form spec, and the `llms.txt` replacement. It supersedes v4, which stays in `docs/` for history only (the `/ai-visibility`, `/accessibility`, and `/brand-system` body copy still comes from v4, as v5 says). The build steps for v5 are in `docs/site-v5-build-plan.md`.
+`docs/site-copy-v5.md` carries the complete section-by-section copy, amended by `docs/copy-pass-2026-11-05.md`, which wins where they differ. Together they carry the offer pages, metadata, schema, the contact form spec, and the `llms.txt` replacement. v5 supersedes v4, which stays in `docs/` for history only (the `/ai-visibility`, `/accessibility`, and `/brand-system` body copy still comes from v4, as v5 says). The build steps for v5 are in `docs/site-v5-build-plan.md`.
 
 Do not invent marketing copy. If something is missing, ask rather than filling the gap.
 
@@ -37,7 +37,7 @@ Do not invent marketing copy. If something is missing, ask rather than filling t
 
 ## Geography: state California, say nothing else
 
-Andrew is in Ventura, California. Other team members are outside the US. **Only the California location is public**, in the footer and in the Organization schema.
+Andrew is in Ventura, California. Other team members are outside the US. **Only the California location is public**, as `addressRegion` CA in the Organization schema. Drew took "Ventura, California." out of the footer and the locality out of the schema on 2026-11-05, and may add a location back later.
 
 This is deliberate, not an oversight. A US anchor is a trust signal for a mid-market US buyer. Advertising a team spread across three continents reads as offshore to that same buyer, which undercuts the seniority and continuity the whole positioning rests on. It is not hidden, it simply is not marketing copy. Do not add other locations without asking.
 
@@ -162,7 +162,7 @@ only, and a row in this table.
 
 Hero → LogoBand → TrackRecord → WhatChanged → RealityCheck → WhatWeFix → HowWeWork → WhoWeAre → Closing
 
-Six offer pages share one template: `/reality-check`, `/fix-week`, `/ai-visibility`, `/accessibility`, `/web-partner`, and `/brand-system`. The last is behind the `BRAND_SYSTEM` flag in `src/lib/flags.ts`, off by default, which keeps the page out of the routes, menus, sitemap, and schema and leaves the What we fix row as plain text. v5's `llms.txt` lists the brand system without a link, as the copy deck has it. The hawaii.surf case study card is behind `HAWAII_CARD`, off until real before and after numbers exist.
+Six offer pages share one template: `/reality-check`, `/handoff` (`/fix-week` 301s there from `functions/worker.ts`), `/ai-visibility`, `/accessibility`, `/web-partner`, and `/brand-system`. The last is behind the `BRAND_SYSTEM` flag in `src/lib/flags.ts`, off by default, which keeps the page out of the routes, menus, sitemap, and schema and leaves the What we fix row as plain text. v5's `llms.txt` lists the brand system without a link, as the copy deck has it. The hawaii.surf case study card is behind `HAWAII_CARD`, off until real before and after numbers exist.
 
 Every page is prerendered by `scripts/prerender.mjs` into `dist/<route>.html` with its own title, description, canonical, OG tags, and JSON-LD. Assistants do not run JavaScript, so nothing may depend on client rendering.
 
@@ -176,9 +176,9 @@ Every page is prerendered by `scripts/prerender.mjs` into `dist/<route>.html` wi
 | `LogoBand.tsx` | "Where our team has worked", names as muted text, never labelled as clients |
 | `TrackRecord.tsx` | Split head, four stacked case study cards; Legal Access ships with only its filled sentence; hidden hawaii.surf card first behind `HAWAII_CARD` |
 | `WhatChanged.tsx` | On the ground, the v4 Z set beside the copy, then the three-step `FlowRow` |
-| `RealityCheck.tsx` | The visual stop: maroon band, the five questions as white cards, CTA to `#contact`, link to `/reality-check`, the Fix Week line |
-| `WhatWeFix.tsx` | Six one-line rows; Brand system plain text while `BRAND_SYSTEM` is off |
-| `HowWeWork.tsx` | Check, Fix, Partner `FlowRow`, three principles |
+| `RealityCheck.tsx` | The visual stop: maroon band, the five questions as white cards, CTA to `#contact`, link to `/reality-check`, the Handoff line |
+| `WhatWeFix.tsx` | "04 / The bigger jobs", anchor `#what-we-do`, six one-line rows; Brand system plain text while `BRAND_SYSTEM` is off |
+| `HowWeWork.tsx` | Check, Handoff, Partner `FlowRow`, three principles |
 | `WhoWeAre.tsx` | Sky band, three text-only white cards (role and bio), Andrew named; the other two names wait for consent; a photo, when given, is cropped to a 190px circle on its card |
 | `Closing.tsx`, `ContactForm.tsx` | The form, also rendered on `/reality-check` |
 | `pages/ContactResult.tsx` | The pages after the form at `/contact/thanks`, `/contact/not-sent`, `/contact/error`: navy band, Z, noindex, out of the sitemap. The handler fills `[data-slot]` elements and `#contact-data` so hydration matches. The thank-you page hides the header CTA |
@@ -213,17 +213,17 @@ There is **no test framework** in this repo. Verification is `npm run build` (ru
 
 Two slots were picked on 2026-08-20 and stand for v4. Ship them exactly as written and do not re-offer either choice.
 
-- **Andrew's bio line:** "Nineteen years at IBM and fifteen running his own practice. ZAC is what happens when those stop being separate things." Changed from "Twenty" by Drew on 2026-11-04 so the bio matches the hero's 19 years.
+- **Andrew's bio line:** "Decades of Fortune 50 experience, and a practice of his own alongside it since 2010. ZAC is what happens when those stop being separate things." Set by Drew on 2026-11-05, replacing the "Nineteen years at IBM" line. No year counts for people anywhere on the site.
 - **IBM/MMG timeline framing:** "It started while he was still at IBM and has outlasted that tenure." v5 words it "and outlasted that tenure" in Track record.
 
 The v5 deck fills the Web Partner platforms answer, and it ships.
 
 Still open in v5. Slots with working text ship that text; slots without it are left out rather than filled:
 
-- **Legal Access Alameda** URL, years, what was built, and its number. The card ships with its one filled sentence.
-- **Design director and senior engineer** bio lines, pending each person's confirmation. The deck's working versions ship, by role.
+- **Legal Access Alameda** URL, years, and its number. The card ships with the 2026-11-05 body and a TODO in `TrackRecord.tsx`.
+- **Design Principal and Principal Engineer** bio lines, pending each person's confirmation. The deck's working versions ship, by role.
 - **hawaii.surf before and after numbers.** The card and the `/ai-visibility` proof block ship hidden.
-- **zacforge.com audit result** for the `/ai-visibility` proof block.
+- **zacforge.com check result** for the `/ai-visibility` proof block.
 - **LinkedIn URL** for the `sameAs` schema property.
 - **Misha's review** of Services row 04 and `/brand-system`, and how he is described there. That page also ships with the "Who does the work" paragraph omitted.
 - **Design questions for Misha**, 24 of them (10 new from comp 7), in `design/DESIGN-SYSTEM-NOTES.md`. The v4 stats row is not built until he answers.

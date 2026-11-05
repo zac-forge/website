@@ -37,13 +37,13 @@ export function Footer() {
             Site
           </p>
           <a href="/#track-record">Track record</a>
-          <a href="/#what-we-fix">What we fix</a>
+          <a href="/#what-we-do">What we do</a>
           <a href="/#how-we-work">How we work</a>
           <a href="/#who-we-are">Who we are</a>
         </nav>
 
         <p className="footer-legal">
-          Ventura, California. © {year} ZAC Consulting LLC. All rights reserved.
+          © {year} ZAC Consulting LLC. All rights reserved.
         </p>
       </div>
     </footer>

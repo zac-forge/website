@@ -1,10 +1,11 @@
 // Worker entry for zacforge.com. Wired in wrangler.toml as `main`.
 //
 // Everything is the prerendered static site in dist/, served through the
-// ASSETS binding, with two exceptions:
+// ASSETS binding, with three exceptions:
 //
 //   1. POST /api/contact runs the contact form handler.
-//   2. On any host that is not the production domain (workers.dev previews,
+//   2. /fix-week 301s to /handoff, the offer's name since 2026-11-05.
+//   3. On any host that is not the production domain (workers.dev previews,
 //      the website-<branch>-preview Workers), every response carries
 //      X-Robots-Tag: noindex and /robots.txt disallows everything. Production
 //      is decided by hostname, so a preview cannot be indexed and production
@@ -25,6 +26,7 @@ interface Env extends ContactEnv {
 const APEX_HOST = "zacforge.com";
 const WWW_HOST = "www.zacforge.com";
 const PRODUCTION_HOSTS = new Set([APEX_HOST]);
+const FIX_WEEK_PATHS = new Set(["/fix-week", "/fix-week/", "/fix-week.html"]);
 
 export default {
   async fetch(request, env): Promise<Response> {
@@ -34,6 +36,12 @@ export default {
     // to the apex: a 301 with the path and query preserved.
     if (url.hostname === WWW_HOST) {
       return Response.redirect(`https://${APEX_HOST}${url.pathname}${url.search}`, 301);
+    }
+
+    // The Fix Week was renamed the Handoff on 2026-11-05. The old route, in
+    // every form the static assets would have answered to, moves for good.
+    if (FIX_WEEK_PATHS.has(url.pathname)) {
+      return Response.redirect(`${url.origin}/handoff${url.search}`, 301);
     }
 
     const production = PRODUCTION_HOSTS.has(url.hostname);

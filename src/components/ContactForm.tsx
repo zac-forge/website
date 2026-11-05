@@ -97,7 +97,7 @@ export function ContactForm() {
       <div className="cta-row contact-actions">
         <Magnetic>
           <button className="btn btn-primary" type="submit">
-            <span>Send it</span>
+            <span>Send it</span>{" "}
             <span aria-hidden="true">→</span>
           </button>
         </Magnetic>

@@ -62,8 +62,8 @@ function WhatWeDoMenu({ onNavigate }: { onNavigate: () => void }) {
       </button>
       <ul id="what-we-do-menu" className="nav-menu-panel surface">
         <li>
-          <a href="/#what-we-fix" onClick={onNavigate}>
-            What we fix
+          <a href="/#what-we-do" onClick={onNavigate}>
+            What we do
           </a>
         </li>
         {LIVE_OFFERS.map((offer) => (
@@ -106,7 +106,7 @@ export function Header({ hideCta = false }: { hideCta?: boolean } = {}) {
         <nav className="site-nav" aria-label="Primary" data-open={open}>
           {/* Desktop: the menu. Mobile: a plain link, swapped in by CSS. */}
           <WhatWeDoMenu onNavigate={close} />
-          <a className="nav-plain" href="/#what-we-fix" onClick={close}>
+          <a className="nav-plain" href="/#what-we-do" onClick={close}>
             What we do
           </a>
           {NAV_LINKS.map((link) => (
@@ -116,7 +116,7 @@ export function Header({ hideCta = false }: { hideCta?: boolean } = {}) {
           ))}
           {hideCta ? null : (
             <a className="btn btn-primary nav-cta" href="/#contact" onClick={close}>
-              <span>Get a Reality Check</span>
+              <span>Get a Reality Check</span>{" "}
               <span aria-hidden="true">→</span>
             </a>
           )}

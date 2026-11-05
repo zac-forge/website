@@ -7,14 +7,14 @@ export const realityCheck: Offer = {
   summary: "Send us what you built. We'll tell you straight.",
   title: "The Reality Check | ZAC Forge",
   description:
-    "Built something with AI and it half works? Send it to us. A free five-question check, in plain English, with what it would take to fix.",
+    "Built something with AI and it half works? Send it to us. A free five-question check, in plain English, with what it would take to put right.",
   serviceName: "The Reality Check",
   serviceDescription:
-    "A free five-question check on anything built with AI tools or inherited: does it work, is it fast, can everyone use it, can anyone find it, does it look like you or like AI. One short scorecard in plain English with the evidence and what a fix takes.",
+    "A free five-question check on anything built with AI tools or inherited: does it work, is it fast, can everyone use it, can anyone find it, does it look like you or like AI. One short scorecard in plain English with the evidence and what putting it right would take.",
   eyebrow: "THE REALITY CHECK",
   h1: "Send us what you built. We'll tell you straight.",
   intro: [
-    "Everyone can build a site, an app, or a brand now. Most of it half works. You already suspect yours does, or you wouldn't be here. The Reality Check is a free, honest look at it from a senior team, five questions, one short scorecard, no obligation.",
+    "Everyone can build a site, an app, or a brand now. Most of it half works. You already suspect yours does, or you wouldn't be here. The Reality Check is a free, honest look at it from a senior team. Five questions, one short scorecard, no obligation.",
   ],
   blocks: [
     {
@@ -47,7 +47,7 @@ export const realityCheck: Offer = {
       heading: "What you get",
       kind: "paragraphs",
       items: [
-        "A one-page scorecard. Each question gets a verdict in plain English, the evidence, and what a fix would take. Nothing you need a developer to translate.",
+        "A one-page scorecard. Each question gets a verdict in plain English, the evidence, and what putting it right would take. Nothing you need a developer to translate.",
       ],
     },
     {
@@ -61,7 +61,7 @@ export const realityCheck: Offer = {
         { title: "We check it.", body: "A few days. We don't touch anything." },
         {
           title: "You read the scorecard.",
-          body: "Then decide. If you want it fixed, the Fix Week is the next step. If you don't, you still know where you stand.",
+          body: "Then decide. If you want it handled, the Handoff is the next step. If you don't, you still know where you stand.",
         },
       ],
     },
@@ -70,12 +70,12 @@ export const realityCheck: Offer = {
     {
       question: "Why is it free?",
       answer:
-        "Because the check is how we find out whether we can help. If we can, you'll see it in the scorecard and we'll quote the fix. If we can't, we'll say so.",
+        "Because the check is how we find out whether we can help. If we can, you'll see it in the scorecard and we'll quote the work. If we can't, we'll say so.",
     },
     {
       question: "Is this a sales pitch?",
       answer:
-        "It ends with a quote if there's something worth fixing. The scorecard itself is yours either way, and it'll say so when something isn't worth the money.",
+        "It ends with a quote if there's something worth doing. The scorecard itself is yours either way, and it'll say so when something isn't worth the money.",
     },
     {
       question: "What can you check?",

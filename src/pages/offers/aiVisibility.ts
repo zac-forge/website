@@ -4,7 +4,7 @@ export const aiVisibility: Offer = {
   path: "/ai-visibility",
   navTitle: "AI Visibility",
   summary: "Get named when customers ask ChatGPT, Google, or Perplexity who to call.",
-  title: "AI Visibility Audit | ZAC Forge",
+  title: "AI Visibility | ZAC Forge",
   description:
     "Find out whether ChatGPT, Google, Perplexity, and Claude recommend your business or your competitors, and what to fix first.",
   serviceName: "AI Visibility",
@@ -12,7 +12,7 @@ export const aiVisibility: Offer = {
     "Tests real customer questions across ChatGPT, Google AI Overviews and AI Mode, Perplexity, and Claude. Fixes crawler access, rendering, structured data, answer content, and third-party mentions. Tracks how often the business is named.",
   eyebrow: "AI VISIBILITY",
   h1: "AI visibility: get named when customers ask.",
-  subline: "Usually the fix for question 4 on the Reality Check.",
+  subline: "Usually what question 4 on our free [Reality Check](/reality-check) points to.",
   intro: [
     "Ask ChatGPT who the best [your category] near you is. It will name a few businesses. We find out whether you are one of them, why or why not, and what to fix first.",
   ],
@@ -48,12 +48,16 @@ export const aiVisibility: Offer = {
       kind: "numbered",
       items: [
         {
-          title: "Full audit.",
-          body: "50 questions, up to five competitors, the full technical review, the sources assistants rely on for your category, and a 90-day plan.",
+          title: "Reality Check.",
+          body: "We ask ChatGPT, Google, and Perplexity the questions your customers ask and show you who gets named. Free.",
         },
         {
-          title: "Fix and track.",
-          body: "We make the fixes, then track the same questions every month as part of a Web Partner plan.",
+          title: "The work.",
+          body: "Crawler access, structured data, answer pages, and third-party mentions, done in order of what moves the needle. Quoted from the check.",
+        },
+        {
+          title: "Track.",
+          body: "The same questions every month as part of a Web Partner plan.",
         },
       ],
     },
@@ -61,7 +65,7 @@ export const aiVisibility: Offer = {
   // The hawaii.surf before and after, and the zacforge.com result, are open
   // slots in docs/site-copy-v4.md, still open in v5. Only the sentence that needs no numbers
   // ships until they are filled.
-  proof: ["We run the same audit on our own site."],
+  proof: ["We run the same check on our own site."],
   faq: [
     {
       question: "Can you guarantee we will be recommended?",
@@ -85,7 +89,7 @@ export const aiVisibility: Offer = {
     {
       question: "How long before anything changes?",
       answer:
-        "Technical fixes can show up within weeks, as assistants re-read your site. Reviews and mentions take longer. We re-test at 30 days and track monthly after that.",
+        "Technical fixes can show up within weeks, as assistants re-read your site. Reviews and mentions take longer. We check again at 30 days and track monthly after that.",
     },
   ],
   cta: { label: "Start with a Reality Check", href: "/#contact" },

@@ -38,17 +38,17 @@ export function Hero() {
           </motion.h1>
           <motion.p className="hero-body" variants={item}>
             Send us your site, app, or brand. A senior team checks it on five questions and tells
-            you straight, free. If something's wrong, we fix it for a fixed price.
+            you straight, free. If something's wrong, we put it right for one agreed price.
           </motion.p>
           <motion.div className="cta-row" variants={item}>
             <Magnetic>
               <a className="btn btn-primary" href="/#contact">
-                <span>Get a free Reality Check</span>
+                <span>Get a free Reality Check</span>{" "}
                 <span aria-hidden="true">→</span>
               </a>
             </Magnetic>
             <a className="text-link" href="#track-record">
-              <span>See what we've built</span>
+              <span>See what we've built</span>{" "}
               <span aria-hidden="true">↓</span>
             </a>
           </motion.div>
