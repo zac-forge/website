@@ -10,6 +10,10 @@
 .btn-secondary:hover {
   background: var(--color-surface);
 }
+.band .btn-secondary:hover {
+  color: var(--color-text);
+  border-color: var(--color-surface);
+}
 .btn:active {
   transform: translateY(0);
   box-shadow: none;

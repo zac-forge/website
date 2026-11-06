@@ -172,11 +172,11 @@ Every page is prerendered by `scripts/prerender.mjs` into `dist/<route>.html` wi
 |---|---|
 | `Header.tsx` | Navy on every page, nav What we do (menu), Track record, How we work, Who we are, CTA "Get a Reality Check" to `/#contact` |
 | `ContactFocus.tsx` | Every `#contact` link scrolls the Name field into view below the sticky header and focuses it, on click and on arrival with the hash |
-| `Hero.tsx` | Navy band, "Built it with AI? Find out if it actually works.", proof line carries Fortune 50 and 2010. `public/og-image.jpg` is rendered from it by `tools/og-card.html` |
+| `Hero.tsx` | Navy band, "Built it with AI? Find out if it actually works.", proof line carries Fortune 50 and 2010, outlined "Book a 20-minute call" pill to `BOOKING_URL` beside the primary CTA. `public/og-image.jpg` is rendered from it by `tools/og-card.html` |
 | `LogoBand.tsx` | "Where our team has worked", names as muted text, never labelled as clients |
 | `TrackRecord.tsx` | Split head, four stacked case study cards; Legal Access ships with only its filled sentence; hidden hawaii.surf card first behind `HAWAII_CARD` |
 | `WhatChanged.tsx` | On the ground, the v4 Z set beside the copy, then the three-step `FlowRow` |
-| `RealityCheck.tsx` | The visual stop: maroon band, the five questions as white cards, CTA to `#contact`, link to `/reality-check`, the Handoff line |
+| `RealityCheck.tsx` | The visual stop: maroon band, the five questions as white cards, CTA to `#contact`, "Book a 20-minute call" secondary pill, link to `/reality-check`, the Handoff line |
 | `WhatWeFix.tsx` | "04 / The bigger jobs", anchor `#what-we-do`, six one-line rows; Brand system plain text while `BRAND_SYSTEM` is off |
 | `HowWeWork.tsx` | Check, Handoff, Partner `FlowRow`, three principles |
 | `WhoWeAre.tsx` | Sky band, three text-only white cards (role and bio), Andrew named; the other two names wait for consent; a photo, when given, is cropped to a 190px circle on its card |

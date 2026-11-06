@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 import { Reveal } from "./Reveal";
 import { Magnetic } from "./Magnetic";
+import { BOOKING_URL } from "../lib/links";
 import { fadeUpSmall } from "../lib/motion";
 
 /** Five lines, shown in full: no accordion, no carousel. */
@@ -59,6 +60,9 @@ export function RealityCheck() {
                 <span aria-hidden="true">→</span>
               </a>
             </Magnetic>
+            <a className="btn btn-secondary" href={BOOKING_URL}>
+              <span>Book a 20-minute call</span>
+            </a>
             <a className="text-link" href="/reality-check">
               <span>How the check works</span>
             </a>

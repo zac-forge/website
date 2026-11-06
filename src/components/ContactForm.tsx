@@ -101,10 +101,10 @@ export function ContactForm() {
             <span aria-hidden="true">→</span>
           </button>
         </Magnetic>
+        <a className="btn btn-secondary" href={BOOKING_URL}>
+          <span>Book a 20-minute call</span>
+        </a>
       </div>
-      <p className="contact-alt">
-        Or <a href={BOOKING_URL}>book a 20-minute call</a> if you'd rather talk first.
-      </p>
       <p className="contact-alt">
         <a href={mailto}>Or email {CONTACT_EMAIL}</a>
       </p>

@@ -135,6 +135,10 @@ to it:
 - `text.lead` 18px, from the body button label, extended to offer page step
   titles and questions.
 - `shadow.lift`, the only shadow, on hover only.
+- `.btn-secondary` on the navy and maroon bands takes the band's white
+  foreground for its text and outline, and fills white with black text on
+  hover. Added 2026-11-05 for the "Book a 20-minute call" pill beside the
+  hero, Reality Check, and form CTAs.
 - `space.*` as a scale. The board's gaps are snapped to it, sources in the
   JSON say which measurement each step came from.
 - `layout.gutter` curve between the 24px mobile margin and the 160px desktop

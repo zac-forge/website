@@ -236,6 +236,12 @@ p {
 .band--maroon .btn-primary {
   background: var(--color-accent);
 }
+/* The outlined pill takes the band's foreground, so it reads on navy and
+   maroon and stays black on sky. */
+.band .btn-secondary {
+  color: var(--band-fg);
+  border-color: var(--band-fg);
+}
 .band .text-link::after {
   background: currentColor;
 }
