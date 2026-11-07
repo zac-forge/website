@@ -1,20 +1,20 @@
 import type { Offer } from "./types";
 
-/** Copy from docs/site-copy-v5.md, "/web-partner", which rewrites the v4 page. */
+/** Copy from docs/site-copy-v5.md, "/web-partner", amended by the copy pass of 2026-11-06. */
 export const webPartner: Offer = {
   path: "/web-partner",
   navTitle: "Web Partner",
   summary: "One senior team keeps it running and makes it better every month.",
   title: "Web Partner | ZAC Forge",
   description:
-    "One senior team keeps your site running and makes it better every month. Not a maintenance plan.",
+    "One senior team keeps your site running and makes it better every month. Month to month. Scales with you.",
   serviceName: "Web Partner",
   serviceDescription:
     "Ongoing senior care: updates, backups, monitoring, change requests, one improvement a month, and visibility tracking. Not a maintenance plan.",
   eyebrow: "WEB PARTNER",
-  h1: "Keep it running. Make it better.",
+  h1: "Keep it fixed. Make it better.",
   intro: [
-    "Updates and backups are the floor. What you're paying for is one senior person who knows your site, answers when you ask, and improves it every month.",
+    "Updates and backups are the floor. You're paying for one senior person who knows your site, answers when you ask, and improves it every month.",
   ],
   blocks: [
     {
@@ -35,19 +35,26 @@ export const webPartner: Offer = {
       items: [
         {
           title: "Web Partner.",
-          body: "Everything above, with replies within two business days.",
+          body: "Everything above, with replies within 2 business days.",
         },
         {
           title: "Web Partner Plus.",
-          body: "Everything above, with more change requests, competitor tracking, two new or updated answer pages a month, a quarterly accessibility and performance re-check, a monthly call, and next-business-day replies.",
+          body: "Everything above, plus more change requests, competitor tracking, 2 new or updated answer pages a month, a quarterly accessibility and performance re-check, a monthly call, and next-business-day replies.",
         },
+      ],
+    },
+    {
+      heading: "Need more than a website?",
+      kind: "paragraphs",
+      items: [
+        "Some clients need a senior team on more than the site: a platform, an internal tool, a workflow, a brand. Web Partner scales to that. Design, engineering, and automation from the same people, sized to your budget, month to month.",
       ],
     },
     {
       heading: "How it starts",
       kind: "paragraphs",
       items: [
-        "Most clients come to Web Partner after a Handoff. Every project we finish includes 30 days of care, so you see how we work before you commit. Plans start with three months, then run month to month with 30 days' notice.",
+        "Most clients come after a Fix Week. Every project includes 30 days of care. Plans start at 3 months, then month to month with 30 days' notice.",
       ],
     },
   ],
@@ -68,5 +75,5 @@ export const webPartner: Offer = {
         "Andrew Johnston leads every account. A principal engineer and a design principal join when the work calls for them.",
     },
   ],
-  cta: { label: "Start with a Reality Check", href: "/#contact" },
+  cta: { label: "Start with a Reality Check", href: "/reality-check" },
 };

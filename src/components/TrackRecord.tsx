@@ -2,12 +2,11 @@ import { Reveal } from "./Reveal";
 import { HAWAII_CARD } from "../lib/flags";
 
 /**
- * The IBM and Mahalo Media Group timeline framing, picked by Drew on
- * 2026-08-20 and carried into v5 as "outlasted". It stays a named field
- * because it is the one sentence here whose factual claim depends on Andrew's
- * actual dates.
+ * The copy pass of 2026-11-06 replaced the intro ("ZAC is built on the
+ * practice Andrew Johnston has run since 2010", with the IBM timeline
+ * framing) with the handover line alone. The framing is in git history if
+ * it comes back.
  */
-const TIMELINE_FRAMING = "It started while he was still at IBM and outlasted that tenure.";
 
 type CaseStudy = {
   client: string;
@@ -41,20 +40,20 @@ const CASE_STUDIES: CaseStudy[] = [
   {
     client: "Heritage Global Partners",
     meta: "hgpauction.com · Live since 2010",
-    body: "Every web property rebuilt, including the flagship auction site. Real-time uploads and auction creation from the sale floor on connected tablets, in 2010. The platform has carried over $1 billion in asset sales since launch. 16 years in production, maintained by someone else.",
+    body: "Every web property rebuilt, with real-time auction creation from the sale floor on connected tablets in 2010. Over $1 billion in assets sold through the platform since, and 16 years in production, maintained by someone else.",
     figure: "$1B+",
     figureCaption: "in asset sales through the platform",
   },
   {
     client: "Legacy Studios · Teddy Bear Portraits",
     meta: "teddybearportraits.com · Built 2016 to 2019 · Still running",
-    body: "End-to-end point of sale for onsite use across 41 states. Tablets connected to a central database, so parents saw their photos in real time and bought the same day. We moved them off proprietary software onto open source and handed it over. The client reported support calls dropped by over 90%. The platform is now maintained by an outside vendor, unchanged.",
+    body: "Point of sale in 41 states, with tablets on a central database so parents bought photos the same day. We moved them to open source and handed it over, and the client reported support calls dropped by over 90%.",
     figure: "41 states",
   },
   {
     client: "US Naval Academy · US Military Academy",
     meta: "usna.legacystudios.com · usma.legacystudios.com · Live since 2017",
-    body: "A separately branded cadet portal for each academy, built on the platform already shipped for Teddy Bear Portraits. Bookings, photos, and information for the full photo experience. Delivered through Legacy Studios, and still running.",
+    body: "A separately branded cadet portal for each academy, built on the platform already shipped for Teddy Bear Portraits. Bookings, photos, and information for the full photo experience, delivered through Legacy Studios and still running.",
     figure: "Live since 2017",
   },
   {
@@ -78,18 +77,13 @@ export function TrackRecord() {
       <div className="container">
         <Reveal className="split-head">
           <div>
-            <p className="eyebrow">01 / Track record</p>
-            <h2 className="h2">We've built this before.</h2>
+            <p className="eyebrow">04 / Track record</p>
+            <h2 className="h2">Still running.</h2>
           </div>
           <div className="split-head-copy">
-            <p>
-              ZAC is built on the practice Andrew Johnston has run since 2010. {TIMELINE_FRAMING}
-            </p>
             {/* Confirmed by Drew on 2026-08-20 as repeatable across numerous
                 projects, which is why it is a section claim, not a detail. */}
-            <p className="label">
-              Every system below was handed to the people who own it. They run them without us.
-            </p>
+            <p>Every system below was handed to the people who own it. They run it without us.</p>
           </div>
         </Reveal>
 

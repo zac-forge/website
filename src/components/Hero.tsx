@@ -1,6 +1,5 @@
 import { motion, useReducedMotion } from "motion/react";
 import { Magnetic } from "./Magnetic";
-import { BOOKING_URL } from "../lib/links";
 import { EASE, staggerContainer } from "../lib/motion";
 
 const container = staggerContainer(0.1, 0.05);
@@ -31,15 +30,15 @@ export function Hero() {
           animate="show"
         >
           <motion.p className="eyebrow" variants={item}>
-            / ZAC / Senior team, plain answers
+            / ZAC / A senior team
           </motion.p>
           <motion.h1 className="h1 hero-title" variants={item}>
             <span className="hero-title-light">Built it with AI?</span>{" "}
             <span>Find out if it actually works.</span>
           </motion.h1>
           <motion.p className="hero-body" variants={item}>
-            Send us your site, app, or brand. A senior team checks it on five questions and tells
-            you straight, free. If something's wrong, we put it right for one agreed price.
+            Send us your site, app, or brand. Senior people check it on 5 questions and tell you
+            straight. Free. A person reads it, not a scanner.
           </motion.p>
           <motion.div className="cta-row" variants={item}>
             <Magnetic>
@@ -48,9 +47,6 @@ export function Hero() {
                 <span aria-hidden="true">→</span>
               </a>
             </Magnetic>
-            <a className="btn btn-secondary" href={BOOKING_URL}>
-              <span>Book a 20-minute call</span>
-            </a>
             <a className="text-link" href="#track-record">
               <span>See what we've built</span>{" "}
               <span aria-hidden="true">↓</span>

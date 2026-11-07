@@ -30,7 +30,7 @@ function BlockView({ block }: { block: Block }) {
             <li key={item.title}>
               <div>
                 <h3 className="offer-step-title">{item.title}</h3>
-                <p className="offer-step-body">{item.body}</p>
+                {item.body ? <p className="offer-step-body">{item.body}</p> : null}
               </div>
             </li>
           ))}

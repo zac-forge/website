@@ -12,23 +12,23 @@ type Fix = { title: string; line: string; link?: { label: string; href: string }
  */
 const FIXES: Fix[] = [
   {
-    title: "AI Visibility.",
+    title: "AI visibility.",
     line: "Get named when customers ask ChatGPT, Google, or Perplexity who to call.",
     link: { label: "More", href: "/ai-visibility" },
   },
   {
     title: "Rescue.",
-    line: "A site or app built quickly with AI tools, finished and made solid. Rebuilt if it can't be saved.",
+    line: "Finish and harden what AI started, or rebuild it if it can't be saved.",
     link: { label: "Ask us", href: "#contact" },
   },
   {
     title: "Accessibility and performance.",
-    line: "Corrected in the code, not covered with a widget.",
+    line: "Fixed in the code, not covered with a widget.",
     link: { label: "More", href: "/accessibility" },
   },
   {
     title: "Brand system.",
-    line: "Senior design turned into files your AI tools follow, so everything your team makes looks like you.",
+    line: "Senior design your AI tools follow, so everything looks like you.",
     link: BRAND_SYSTEM ? { label: "More", href: "/brand-system" } : undefined,
   },
   {
@@ -54,9 +54,9 @@ export function WhatWeFix() {
     <section id="what-we-do" className="section what-we-fix" aria-labelledby="what-we-do-heading">
       <div className="container">
         <Reveal>
-          <p className="eyebrow">04 / The bigger jobs</p>
+          <p className="eyebrow">05 / Bigger fixes</p>
           <h2 className="h2" id="what-we-do-heading">
-            When the scorecard calls for more.
+            When the check calls for more.
           </h2>
         </Reveal>
         <Reveal stagger={0.06}>

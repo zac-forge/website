@@ -4,7 +4,7 @@
  * Rules from docs/site-copy-v5.md: ProfessionalService for ZAC Forge, Person
  * for Andrew only (the other two team members are unnamed on the page pending
  * consent), one Service per live offer with provider ZAC Forge (the Reality
- * Check, the Handoff, AI Visibility, Accessibility and Performance, Web
+ * Check, the Fix Week, AI Visibility, Accessibility and Performance, Web
  * Partner, and the Brand System once its flag is on), and FAQPage on each
  * offer page matching the visible questions exactly. No offers, no price
  * properties, anywhere.

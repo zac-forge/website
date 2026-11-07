@@ -4,7 +4,8 @@
 // ASSETS binding, with three exceptions:
 //
 //   1. POST /api/contact runs the contact form handler.
-//   2. /fix-week 301s to /handoff, the offer's name since 2026-11-05.
+//   2. /handoff 301s to /fix-week. The paid week carried that name from
+//      2026-11-05 to 2026-11-06 and is the Fix Week again.
 //   3. On any host that is not the production domain (workers.dev previews,
 //      the website-<branch>-preview Workers), every response carries
 //      X-Robots-Tag: noindex and /robots.txt disallows everything. Production
@@ -26,7 +27,7 @@ interface Env extends ContactEnv {
 const APEX_HOST = "zacforge.com";
 const WWW_HOST = "www.zacforge.com";
 const PRODUCTION_HOSTS = new Set([APEX_HOST]);
-const FIX_WEEK_PATHS = new Set(["/fix-week", "/fix-week/", "/fix-week.html"]);
+const OLD_WEEK_PATHS = new Set(["/handoff", "/handoff/", "/handoff.html"]);
 
 export default {
   async fetch(request, env): Promise<Response> {
@@ -38,10 +39,10 @@ export default {
       return Response.redirect(`https://${APEX_HOST}${url.pathname}${url.search}`, 301);
     }
 
-    // The Fix Week was renamed the Handoff on 2026-11-05. The old route, in
-    // every form the static assets would have answered to, moves for good.
-    if (FIX_WEEK_PATHS.has(url.pathname)) {
-      return Response.redirect(`${url.origin}/handoff${url.search}`, 301);
+    // The one-day name for the Fix Week. Its route, in every form the static
+    // assets would have answered to, moves back for good.
+    if (OLD_WEEK_PATHS.has(url.pathname)) {
+      return Response.redirect(`${url.origin}/fix-week${url.search}`, 301);
     }
 
     const production = PRODUCTION_HOSTS.has(url.hostname);

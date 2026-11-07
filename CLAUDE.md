@@ -6,7 +6,7 @@ Repo memory for the ZAC marketing site. Read this before touching copy.
 
 A senior technology studio. Successor practice to Mahalo Media Group, which founder Andrew Johnston ran for 15+ years across 100+ engagements. Not a startup. An established practice operating under new economics.
 
-**Positioning (v5, adopted 2026-11-03):** one problem, one front door. The problem: AI made everyone an IT expert, it didn't make it work. The front door: a free Reality Check (five questions on anything built with AI tools or inherited). The paid step: the Handoff (named the Fix Week until 2026-11-05). AI Visibility, Rescue, Accessibility, Brand System, Platform Escape, and Web Partner are fixes behind that door. Experience and durability are the proof, not the pitch. Supersedes the v4 positioning below.
+**Positioning (v5, adopted 2026-11-03):** one problem, one front door. The problem: AI made everyone an IT expert, it didn't make it work. The front door: a free Reality Check (five questions on anything built with AI tools or inherited). The paid step: the Fix Week (called the Handoff from 2026-11-05 to 2026-11-06, `/handoff` 301s to `/fix-week`). AI Visibility, Rescue, Accessibility, Brand System, Platform Escape, and Web Partner are fixes behind that door. Experience and durability are the proof, not the pitch. Supersedes the v4 positioning below.
 
 ## This site is a working copy
 
@@ -21,7 +21,7 @@ Positioning work is handed to Misha as **input** to the redesign.
 
 ## The copy source of truth
 
-`docs/site-copy-v5.md` carries the complete section-by-section copy, amended by `docs/copy-pass-2026-11-05.md`, which wins where they differ. Together they carry the offer pages, metadata, schema, the contact form spec, and the `llms.txt` replacement. v5 supersedes v4, which stays in `docs/` for history only (the `/ai-visibility`, `/accessibility`, and `/brand-system` body copy still comes from v4, as v5 says). The build steps for v5 are in `docs/site-v5-build-plan.md`.
+`docs/site-copy-v5.md` carries the complete section-by-section copy, amended by `docs/copy-pass-2026-11-05.md` and then by Drew's copy pass of 2026-11-06 (branch `copy-nov6`), which wins where they differ. Together they carry the offer pages, metadata, schema, the contact form spec, and the `llms.txt` replacement. v5 supersedes v4, which stays in `docs/` for history only (the `/ai-visibility`, `/accessibility`, and `/brand-system` body copy still comes from v4, as v5 says). The build steps for v5 are in `docs/site-v5-build-plan.md`.
 
 Do not invent marketing copy. If something is missing, ask rather than filling the gap.
 
@@ -160,9 +160,9 @@ only, and a row in this table.
 
 ## Section order (v5)
 
-Hero → LogoBand → TrackRecord → WhatChanged → RealityCheck → WhatWeFix → HowWeWork → WhoWeAre → Closing
+Hero → LogoBand → Problem → RealityCheck → FixWeek → TrackRecord → WhatWeFix → HowWeWork → ExperienceStrip → WhoWeAre → Closing (order from the 2026-11-06 copy pass)
 
-Six offer pages share one template: `/reality-check`, `/handoff` (`/fix-week` 301s there from `functions/worker.ts`), `/ai-visibility`, `/accessibility`, `/web-partner`, and `/brand-system`. The last is behind the `BRAND_SYSTEM` flag in `src/lib/flags.ts`, off by default, which keeps the page out of the routes, menus, sitemap, and schema and leaves the What we fix row as plain text. v5's `llms.txt` lists the brand system without a link, as the copy deck has it. The hawaii.surf case study card is behind `HAWAII_CARD`, off until real before and after numbers exist.
+Six offer pages share one template: `/reality-check`, `/fix-week` (`/handoff` 301s there from `functions/worker.ts`), `/ai-visibility`, `/accessibility`, `/web-partner`, and `/brand-system`. The last is behind the `BRAND_SYSTEM` flag in `src/lib/flags.ts`, off by default, which keeps the page out of the routes, menus, sitemap, and schema and leaves the What we fix row as plain text. v5's `llms.txt` lists the brand system without a link, as the copy deck has it. The hawaii.surf case study card is behind `HAWAII_CARD`, off until real before and after numbers exist.
 
 Every page is prerendered by `scripts/prerender.mjs` into `dist/<route>.html` with its own title, description, canonical, OG tags, and JSON-LD. Assistants do not run JavaScript, so nothing may depend on client rendering.
 
@@ -175,10 +175,12 @@ Every page is prerendered by `scripts/prerender.mjs` into `dist/<route>.html` wi
 | `Hero.tsx` | Navy band, "Built it with AI? Find out if it actually works.", proof line carries Fortune 50 and 2010, outlined "Book a 20-minute call" pill to `BOOKING_URL` beside the primary CTA. `public/og-image.jpg` is rendered from it by `tools/og-card.html` |
 | `LogoBand.tsx` | "Where our team has worked", names as muted text, never labelled as clients |
 | `TrackRecord.tsx` | Split head, four stacked case study cards; Legal Access ships with only its filled sentence; hidden hawaii.surf card first behind `HAWAII_CARD` |
-| `WhatChanged.tsx` | On the ground, the v4 Z set beside the copy, then the three-step `FlowRow` |
-| `RealityCheck.tsx` | The visual stop: maroon band, the five questions as white cards, CTA to `#contact`, "Book a 20-minute call" secondary pill, link to `/reality-check`, the Handoff line |
-| `WhatWeFix.tsx` | "04 / The bigger jobs", anchor `#what-we-do`, six one-line rows; Brand system plain text while `BRAND_SYSTEM` is off |
-| `HowWeWork.tsx` | Check, Handoff, Partner `FlowRow`, three principles |
+| `Problem.tsx` | "01 / The problem", on the ground with the v4 Z set, reuses the parked What changed layout classes. `WhatChanged.tsx` is in `.superseded/` |
+| `FixWeek.tsx` | "03 / The Fix Week", heading, one paragraph, link to `/fix-week`, existing primitives only |
+| `RealityCheck.tsx` | The visual stop: maroon band, the 5 questions as white cards, CTA to `#contact`, link to `/reality-check` |
+| `WhatWeFix.tsx` | "05 / Bigger fixes", anchor `#what-we-do`, six one-line rows; Brand system plain text while `BRAND_SYSTEM` is off |
+| `HowWeWork.tsx` | Check, Fix, Partner `FlowRow`, three tiles |
+| `LogoBand.tsx` `ExperienceStrip` | The logo band again, label screen-reader only, four experience lines |
 | `WhoWeAre.tsx` | Sky band, three text-only white cards (role and bio), Andrew named; the other two names wait for consent; a photo, when given, is cropped to a 190px circle on its card |
 | `Closing.tsx`, `ContactForm.tsx` | The form, also rendered on `/reality-check` |
 | `pages/ContactResult.tsx` | The pages after the form at `/contact/thanks`, `/contact/not-sent`, `/contact/error`: navy band, Z, noindex, out of the sitemap. The handler fills `[data-slot]` elements and `#contact-data` so hydration matches. The thank-you page hides the header CTA |

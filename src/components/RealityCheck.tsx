@@ -1,43 +1,39 @@
 import { motion } from "motion/react";
 import { Reveal } from "./Reveal";
 import { Magnetic } from "./Magnetic";
-import { BOOKING_URL } from "../lib/links";
 import { fadeUpSmall } from "../lib/motion";
 
 /** Five lines, shown in full: no accordion, no carousel. */
 const QUESTIONS = [
-  { q: "Does it work?", a: "Security, sign-in, data, and what happens when something fails." },
-  { q: "Is it fast?", a: "Load time and Core Web Vitals, measured, not guessed." },
-  { q: "Can everyone use it?", a: "Keyboard and screen reader tests against WCAG 2.2 AA." },
+  { q: "Does it work?", a: "Sign-in, forms, data, and what happens when it fails." },
+  { q: "Is it fast?", a: "Measured on a real phone." },
+  { q: "Can everyone use it?", a: "Keyboard, screen reader, WCAG 2.2 AA." },
   {
     q: "Can anyone find it?",
-    a: "What ChatGPT, Google, and Perplexity say when a customer asks, with screenshots.",
+    a: "What ChatGPT, Google, and Perplexity say when a customer asks. Screenshots.",
   },
-  {
-    q: "Does it look like you, or like AI?",
-    a: "Our design principal's read, and what one screen would look like done right.",
-  },
+  { q: "Does it look like you?", a: "Our design principal's read." },
 ];
 
 /**
  * The front door, and the visual stop on the page: comp 7's maroon band
  * (198:429) with its two sweeps, moved here from What changed by Drew on
  * 2026-11-04, as the copy deck asks. The five questions sit on it as white
- * cards. Logged for Misha, question 15.
+ * cards. Logged for Misha, question 15. The paid step moved out to its own
+ * section, FixWeek, in the copy pass of 2026-11-06.
  */
 export function RealityCheck() {
   return (
     <section id="reality-check" className="section band band--maroon reality-check" aria-labelledby="reality-check-heading">
       <div className="container">
         <Reveal>
-          <p className="eyebrow">03 / The Reality Check</p>
+          <p className="eyebrow">02 / The Reality Check</p>
           <h2 className="h2" id="reality-check-heading">
-            Five questions. One straight answer.
+            Send us what you built. We'll tell you straight.
           </h2>
           <p className="section-intro section-intro--wide">
-            Free. Five questions. A short scorecard in plain English, with the evidence, and what it
-            would take to fix. Whether it's a site, an app, a brand, a landing page, or a workflow,
-            and whether AI made it or someone you hired did.
+            Free. 5 questions. A one-page scorecard in plain English, with evidence and what a fix
+            would take. Checked by people, not software.
           </p>
         </Reveal>
 
@@ -56,26 +52,14 @@ export function RealityCheck() {
           <div className="cta-row">
             <Magnetic>
               <a className="btn btn-primary" href="#contact">
-                <span>Get a Reality Check</span>{" "}
+                <span>Get a free Reality Check</span>{" "}
                 <span aria-hidden="true">→</span>
               </a>
             </Magnetic>
-            <a className="btn btn-secondary" href={BOOKING_URL}>
-              <span>Book a 20-minute call</span>
-            </a>
             <a className="text-link" href="/reality-check">
-              <span>How the check works</span>
+              <span>How it works</span>
             </a>
           </div>
-          <p className="check-next">
-            If something needs work, the next step is <strong>the Handoff.</strong> One week, one
-            price agreed up front. We take the worst thing on the scorecard off your plate, redesign
-            the one screen that looks most like AI made it, and hand back a ranked list of what's
-            left.{" "}
-            <a className="inline-link" href="/handoff">
-              What the Handoff covers <span aria-hidden="true">→</span>
-            </a>
-          </p>
         </Reveal>
       </div>
     </section>

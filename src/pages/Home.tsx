@@ -1,16 +1,18 @@
 import { Header } from "../components/Header";
 import { Hero } from "../components/Hero";
-import { LogoBand } from "../components/LogoBand";
-import { TrackRecord } from "../components/TrackRecord";
-import { WhatChanged } from "../components/WhatChanged";
+import { LogoBand, ExperienceStrip } from "../components/LogoBand";
+import { Problem } from "../components/Problem";
 import { RealityCheck } from "../components/RealityCheck";
+import { FixWeek } from "../components/FixWeek";
+import { TrackRecord } from "../components/TrackRecord";
 import { WhatWeFix } from "../components/WhatWeFix";
 import { HowWeWork } from "../components/HowWeWork";
 import { WhoWeAre } from "../components/WhoWeAre";
 import { Closing } from "../components/Closing";
 import { Footer } from "../components/Footer";
 
-/** v5 order, docs/site-copy-v5.md: one problem, one front door. */
+/** Section order from the copy pass of 2026-11-06: the problem, the free
+ *  check, the paid week, then the proof and the bigger fixes. */
 export default function Home() {
   return (
     <>
@@ -18,11 +20,13 @@ export default function Home() {
       <main>
         <Hero />
         <LogoBand />
-        <TrackRecord />
-        <WhatChanged />
+        <Problem />
         <RealityCheck />
+        <FixWeek />
+        <TrackRecord />
         <WhatWeFix />
         <HowWeWork />
+        <ExperienceStrip />
         <WhoWeAre />
         <Closing />
       </main>

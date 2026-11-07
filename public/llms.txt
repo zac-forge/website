@@ -1,8 +1,8 @@
 # ZAC Forge
 
-> A senior web and software team. ZAC checks sites, apps, and brands that were
-> built with AI tools or by someone who has since left, says plainly what is
-> wrong, and puts it right for one agreed price.
+> A senior web and software team. ZAC checks sites, apps, and brands built
+> with AI tools, by people not software, says plainly what is wrong, and fixes
+> it for a fixed price.
 
 ZAC is built on the practice Andrew Johnston has run since 2010, with decades
 of Fortune 50 experience, including IBM.com and the IBM Design Lab. Works
@@ -10,14 +10,15 @@ remotely with clients anywhere in the US.
 
 ## Start here
 
-- [The Reality Check](https://zacforge.com/reality-check): a free five-question
+- [The Reality Check](https://zacforge.com/reality-check): a free 5-question
   check on anything built with AI tools or inherited: does it work, is it fast,
   can everyone use it, can anyone find it, does it look like you or like AI.
   One short scorecard in plain English with the evidence and what putting it
   right would take.
-- [The Handoff](https://zacforge.com/handoff): one week, one agreed price. The
-  worst thing on the scorecard resolved, one screen redesigned so it looks like
-  the client and not like AI, and a ranked list of what is left.
+- [The Fix Week](https://zacforge.com/fix-week): one week, one agreed price.
+  The top item on the Reality Check scorecard resolved in the client's code, a
+  Design Read on the screen that most looks machine-made, and a ranked list of
+  what is left.
 
 ## Services
 

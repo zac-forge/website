@@ -18,7 +18,7 @@ const TEAM: TeamMember[] = [
   {
     name: "Andrew Johnston",
     role: "Founder, Principal",
-    bio: "Decades of Fortune 50 experience, and a practice of his own alongside it since 2010. ZAC is what happens when those stop being separate things.",
+    bio: "Decades of Fortune 50 experience, and a practice of his own alongside it since 2010.",
   },
   {
     role: "Design Principal",
@@ -26,7 +26,7 @@ const TEAM: TeamMember[] = [
   },
   {
     role: "Principal Engineer",
-    bio: "Principal engineer at IBM. WordPress, PHP, React, Node, and mobile.",
+    bio: "Principal engineer at IBM: WordPress, PHP, React, Node, and mobile.",
   },
 ];
 
@@ -42,7 +42,7 @@ export function WhoWeAre() {
     <section id="who-we-are" className="section band band--sky who-we-are" aria-labelledby="who-we-are-heading">
       <div className="container">
         <Reveal>
-          <p className="eyebrow">06 / Who we are</p>
+          <p className="eyebrow">07 / Who we are</p>
           {/* The deck has no heading here beyond the eyebrow. This keeps the
               document outline whole without adding words to the page. */}
           <h2 className="sr-only" id="who-we-are-heading">

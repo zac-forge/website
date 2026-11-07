@@ -11,15 +11,15 @@ export type PageMeta = {
   noindex?: boolean;
 };
 
-/** docs/site-copy-v5.md, "Metadata and schema". */
+/** Copy pass of 2026-11-06, "Metadata". */
 const HOME_DESCRIPTION =
-  "Built it with AI? A senior team with decades of Fortune 50 experience checks it free on five questions, then puts right what's wrong for one agreed price.";
+  "AI is fast, confident, and wrong without telling you. A free 5-question check by senior people with decades of Fortune 50 experience, then a fixed-price fix.";
 
 export const HOME_META: PageMeta = {
   path: "/",
   title: "ZAC Forge | Built it with AI? We'll check it.",
   description: HOME_DESCRIPTION,
-  ogTitle: "Built it with AI? We'll check it.",
+  ogTitle: "Built it with AI? Find out if it actually works.",
 };
 
 /** Every prerendered route and its head. Consumed by the prerender and by

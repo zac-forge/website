@@ -2,7 +2,8 @@
  * Offer page content model. One shape for every offer page so the template
  * and the FAQPage schema read the same data and cannot diverge.
  */
-export type TitledItem = { title: string; body: string };
+/** body is optional on numbered steps, for a step that is one line. */
+export type TitledItem = { title: string; body?: string };
 
 export type Block =
   | { heading: string; kind: "bullets"; items: string[] }
