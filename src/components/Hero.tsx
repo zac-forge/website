@@ -1,5 +1,6 @@
 import { motion, useReducedMotion } from "motion/react";
 import { Magnetic } from "./Magnetic";
+import { BOOKING_URL } from "../lib/links";
 import { EASE, staggerContainer } from "../lib/motion";
 
 const container = staggerContainer(0.1, 0.05);
@@ -47,6 +48,9 @@ export function Hero() {
                 <span aria-hidden="true">→</span>
               </a>
             </Magnetic>
+            <a className="btn btn-secondary" href={BOOKING_URL}>
+              <span>Book a 20-minute call</span>
+            </a>
             <a className="text-link" href="#track-record">
               <span>See what we've built</span>{" "}
               <span aria-hidden="true">↓</span>

@@ -72,5 +72,5 @@ export const fixWeek: Offer = {
     },
     { question: "No scorecard yet?", answer: "Start with the free Reality Check." },
   ],
-  cta: { label: "Start with a Reality Check", href: "/reality-check" },
+  cta: { label: "Start with a Reality Check", href: "/#contact" },
 };

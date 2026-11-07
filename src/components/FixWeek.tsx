@@ -16,9 +16,9 @@ export function FixWeek() {
             One week. Start with what matters most.
           </h2>
           <p className="section-intro section-intro--wide">
-            When the scorecard shows something worth fixing, a senior team takes it from here. The
-            top item resolved in your code, a Design Read on the screen that most looks
-            machine-made, and the rest ranked. One price, agreed before day one.
+            When the scorecard shows something worth fixing, a senior team takes over. The top item
+            resolved in your code, a Design Read on the screen that most looks machine-made, and the
+            rest ranked. One price, agreed up front.
           </p>
           <div className="cta-row check-close">
             <a className="text-link" href="/fix-week">

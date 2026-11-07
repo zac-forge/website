@@ -1,7 +1,6 @@
 import { Reveal } from "./Reveal";
 import { ZacMark } from "./Brand";
 import { ContactForm } from "./ContactForm";
-import { BOOKING_URL } from "../lib/links";
 
 /**
  * The closing block, v5: eyebrow, heading, and the contact form, with the
@@ -20,9 +19,6 @@ export function Closing() {
               Send us what you built.
             </h2>
             <ContactForm />
-            <p className="contact-alt">
-              Or <a href={BOOKING_URL}>book a 20-minute call</a> if you'd rather talk first.
-            </p>
           </div>
           <div className="closing-circle surface" aria-hidden="true">
             <ZacMark />

@@ -2,10 +2,8 @@ import { Reveal } from "./Reveal";
 import { HAWAII_CARD } from "../lib/flags";
 
 /**
- * The copy pass of 2026-11-06 replaced the intro ("ZAC is built on the
- * practice Andrew Johnston has run since 2010", with the IBM timeline
- * framing) with the handover line alone. The framing is in git history if
- * it comes back.
+ * The copy pass of 2026-11-06 dropped the IBM timeline framing from the
+ * intro, at Drew's direction. It is in git history if it comes back.
  */
 
 type CaseStudy = {
@@ -83,7 +81,10 @@ export function TrackRecord() {
           <div className="split-head-copy">
             {/* Confirmed by Drew on 2026-08-20 as repeatable across numerous
                 projects, which is why it is a section claim, not a detail. */}
-            <p>Every system below was handed to the people who own it. They run it without us.</p>
+            <p>
+              Built on the practice Andrew Johnston has run since 2010. Every system below was handed
+              to the people who own it. They run it without us.
+            </p>
           </div>
         </Reveal>
 

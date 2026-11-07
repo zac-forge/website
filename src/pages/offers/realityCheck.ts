@@ -48,7 +48,7 @@ export const realityCheck: Offer = {
       kind: "numbered",
       items: [
         { title: "Send it.", body: "A link is enough." },
-        { title: "We check it.", body: "A few days. We don't touch anything." },
+        { title: "Give us a few days.", body: "Nothing on your site changes." },
         { title: "You read the scorecard and decide." },
       ],
     },
@@ -57,7 +57,7 @@ export const realityCheck: Offer = {
     {
       question: "Why is it free?",
       answer:
-        "It's how we find out whether we can help. If we can, we quote the fix. If we can't, we say so.",
+        "So you can see whether we can help before you spend anything. If we can, you get a quote. If we can't, you hear that too.",
     },
     {
       question: "Is it automated?",
@@ -71,7 +71,7 @@ export const realityCheck: Offer = {
     {
       question: "Do I need to give you access?",
       answer:
-        "A link is enough for most of it. Code access lets us check question 1 properly. We don't change anything.",
+        "A link covers most of it. Code access gets you a full answer on question 1. Nothing on your end changes.",
     },
     { question: "What if it's fine?", answer: "Then the scorecard says so." },
   ],

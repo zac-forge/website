@@ -56,7 +56,7 @@ These are not stylistic preferences. They are binding.
 | **No exclamation points** | None. Anywhere. |
 | **No emoji** | |
 | **Oxford comma** | Yes. |
-| **Headings** | Sentence case. Eyebrows are ALL CAPS, numbered, in the nav's 14px black weight (the board has no mono face). |
+| **Headings** | Sentence case, under 10 words (Drew, 2026-11-06). Eyebrows are ALL CAPS, numbered, in the nav's 14px black weight (the board has no mono face). |
 | **Numbers** | Numerals for anything measurable. "41 states," "20 years." |
 
 **Banned vocabulary:** solutions · synergy · cutting-edge · best-in-class · world-class · seamless · robust · empower · unlock · elevate · passionate about · leverage (as a verb) · AI-native · AI-first · AI-powered · ship fast · 10x · force multiplier
