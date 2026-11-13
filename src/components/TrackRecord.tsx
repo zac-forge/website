@@ -31,8 +31,8 @@ type CaseStudy = {
  * github.com/zac-forge/cccv-demo and the live index (/sermons.json): 1,703
  * sermons dated 2001-07-29 to 2026-11-11, 1,534 audio files moved to
  * archive.org, a 70-URL sitemap covered by the redirects file where a page
- * moved. The link is the church's current deployment; cccv-one.vercel.app
- * is the retired pitch demo. Kept out of llms.txt and the schema until
+ * moved. The link is the church's current deployment. Kept out of
+ * llms.txt and the schema until
  * ccconejovalley.com is live. Placement is question 39 for Misha.
  */
 const RECENT: CaseStudy = {
