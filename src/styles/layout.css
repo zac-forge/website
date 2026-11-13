@@ -502,7 +502,7 @@
 /* ------------------------------------------------------------ Fix Week */
 .fix-week {
   --pad-top: var(--space-10);
-  --pad-bottom: var(--space-8);
+  --pad-bottom: 0;
 }
 .fix-week .h2 {
   max-width: calc(var(--copy-width) + var(--space-6));
@@ -526,6 +526,15 @@
 }
 .track-inner {
   padding-left: var(--track-indent);
+}
+/* Recent work: one card on the ground before the Still Running band, in
+   that section's card style and indent. Not on MB11, question 39. */
+.recent-work {
+  --pad-top: var(--space-9);
+  --pad-bottom: var(--space-9);
+}
+.recent-work .case-list {
+  margin-top: var(--space-5);
 }
 .case-grid {
   display: grid;

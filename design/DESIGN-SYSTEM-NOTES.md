@@ -430,6 +430,13 @@ offer, including the /ai-visibility headline.
 38. **Tablet and phone.** The comp is desktop only. The calls made are in the
     v6 section above. Anything you would set differently?
 
+39. **Recent work block.** A fifth project (Calvary Chapel Conejo Valley)
+    sits in its own "Recent work" block, on the ground directly before the
+    Still Running band, in the same case card style and indent, with the
+    sunburst artwork from the CCCV site. It is kept apart from Still Running,
+    which is systems that have run for years without us. Not on MB11. Where
+    and how should it sit? (Drew, 2026-11-12)
+
 ## Structure of MacBook Air - 1 (node 6:2), for reference
 
 1280 wide, 6924 tall. Positions from the board's top left.

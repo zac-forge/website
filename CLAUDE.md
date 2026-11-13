@@ -165,7 +165,7 @@ only, and a row in this table.
 
 ## Section order (v5)
 
-Hero → LogoBand → Problem → RealityCheck → FixWeek → TrackRecord → WhatWeFix → HowWeWork → ExperienceStrip → WhoWeAre → Closing (order from the 2026-11-06 copy pass)
+Hero → LogoBand → Problem → RealityCheck → FixWeek → RecentWork → TrackRecord → WhatWeFix → HowWeWork → ExperienceStrip → WhoWeAre → Closing (order from the 2026-11-06 copy pass)
 
 Six offer pages share one template: `/reality-check`, `/fix-week` (`/handoff` 301s there from `functions/worker.ts`; labelled "The Fix" in nav, footer, eyebrows, buttons, and its title, while body copy and the schema `name` keep "the Fix Week"), `/ai-visibility`, `/accessibility`, `/web-partner`, and `/brand-system`. The last is behind the `BRAND_SYSTEM` flag in `src/lib/flags.ts`, off by default, which keeps the page out of the routes, menus, sitemap, and schema and leaves the What we fix row as plain text. v5's `llms.txt` lists the brand system without a link, as the copy deck has it. The hawaii.surf case study card is behind `HAWAII_CARD`, off until real before and after numbers exist.
 
@@ -179,7 +179,7 @@ Every page is prerendered by `scripts/prerender.mjs` into `dist/<route>.html` wi
 | `ContactFocus.tsx` | Every `#contact` link scrolls the Name field into view below the sticky header and focuses it, on click and on arrival with the hash |
 | `Hero.tsx` | Blue band with MB11's line art and Z, "Built it with AI? Find out if it actually works.", proof line carries Fortune 50 and 2010, outlined "Book a 20-minute call" pill to `BOOKING_URL` beside the primary CTA. `public/og-image.jpg` is rendered from it by `tools/og-card.html` (still the v5 look) |
 | `LogoBand.tsx` | "Where our team has worked", names as muted text, never labelled as clients |
-| `TrackRecord.tsx` | Grey band, four stacked cases with screenshots (hgpauction.com, Teddy Bear Portraits, usna.legacystudios.com cropped clear of all insignia, Legal Access); Legal Access ships with only its filled sentence; hidden hawaii.surf card first behind `HAWAII_CARD` |
+| `TrackRecord.tsx` | `RecentWork` first (Drew, 2026-11-12): one CCCV card on the ground in the same card style, kept out of llms.txt and schema until ccconejovalley.com is live. Then `TrackRecord`: grey band, four stacked cases with screenshots (hgpauction.com, Teddy Bear Portraits, usna.legacystudios.com cropped clear of all insignia, Legal Access); Legal Access ships with only its filled sentence; hidden hawaii.surf card first behind `HAWAII_CARD` |
 | `Problem.tsx` | "Problem", on the ground with MB11's Z set, "wrong" in red and "without telling you." light italic |
 | `FixWeek.tsx` | "The Fix Week", heading, one paragraph, link to `/fix-week`, MB11's four-piece Z |
 | `RealityCheck.tsx` | Blue band: heading, four icon points, dotted rule, the 5 questions numbered 1 to 5, CTA to `#contact`, booking pill, link to `/reality-check` |
@@ -233,6 +233,6 @@ Still open in v5. Slots with working text ship that text; slots without it are l
 - **zacforge.com check result** for the `/ai-visibility` proof block.
 - **LinkedIn URL** for the `sameAs` schema property.
 - **Misha's review** of Services row 04 and `/brand-system`, and how he is described there. That page also ships with the "Who does the work" paragraph omitted.
-- **Design questions for Misha**, 38 of them (14 new from MB11), in `design/DESIGN-SYSTEM-NOTES.md`. The v4 stats row is not built until he answers.
+- **Design questions for Misha**, 39 of them (15 new since MB11), in `design/DESIGN-SYSTEM-NOTES.md`. The v4 stats row is not built until he answers.
 
 If new copy is ever missing, the rule still stands: ask rather than filling the gap.

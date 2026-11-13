@@ -10,6 +10,8 @@ type CaseStudy = {
   client: string;
   /** URL and years, one line. */
   meta?: string;
+  /** Makes the meta line's first part (the address) a link. */
+  link?: string;
   body: string;
   /** Set large. The number the card trades on. */
   figure?: string;
@@ -20,6 +22,30 @@ type CaseStudy = {
    * card keeps the same slot in the board's placeholder grey.
    */
   image?: { base: string; alt: string };
+};
+
+/**
+ * Recent work, Drew 2026-11-12: the first project a visitor sees, before
+ * Still Running and kept apart from it, because that section is systems
+ * that have run for years without us. Figures checked that day against
+ * github.com/zac-forge/cccv-demo and the live index (/sermons.json): 1,703
+ * sermons dated 2001-07-29 to 2026-11-11, 1,534 audio files moved to
+ * archive.org, a 70-URL sitemap covered by the redirects file where a page
+ * moved. The link is the church's current deployment; cccv-one.vercel.app
+ * is the retired pitch demo. Kept out of llms.txt and the schema until
+ * ccconejovalley.com is live. Placement is question 39 for Misha.
+ */
+const RECENT: CaseStudy = {
+  client: "Calvary Chapel Conejo Valley",
+  meta: "cccv.ccconejovalley.workers.dev · Launching soon",
+  link: "https://cccv.ccconejovalley.workers.dev",
+  body: "1,703 sermons from 2001 to 2026 sat on a hosted platform with no backup. We rescued the full archive, moved the audio to permanent public hosting, and rebuilt the site on a stack the church owns, for close to nothing a month. All 70 old URLs still work, with a redirect wherever a page moved.",
+  figure: "1,703",
+  figureCaption: "sermons saved",
+  image: {
+    base: "/work/cccv",
+    alt: "The sunburst over the Conejo Valley, artwork from the Calvary Chapel Conejo Valley site",
+  },
 };
 
 /** Behind HAWAII_CARD until real before and after numbers exist. */
@@ -76,6 +102,80 @@ const CASE_STUDIES: CaseStudy[] = [
   },
 ];
 
+/** The meta line, with its address linked when the study has a link. */
+function Meta({ study }: { study: CaseStudy }) {
+  const meta = study.meta ?? "";
+  if (!study.link) return <p className="case-meta">{meta}</p>;
+  const [address, ...rest] = meta.split(" · ");
+  return (
+    <p className="case-meta">
+      <span>
+        <a className="inline-link" href={study.link}>
+          {address}
+        </a>
+        {rest.length ? ` · ${rest.join(" · ")}` : null}
+      </span>
+    </p>
+  );
+}
+
+/** One case study card, shared by Recent work and Still Running. */
+function CaseCard({ study }: { study: CaseStudy }) {
+  return (
+    <article className="case case-grid">
+      <h3 className="case-client">{study.client}</h3>
+      {study.image ? (
+        <img
+          className="case-image"
+          src={`${study.image.base}-720.webp`}
+          srcSet={`${study.image.base}-360.webp 360w, ${study.image.base}-720.webp 720w`}
+          sizes="(max-width: 760px) calc(100vw - 48px), 302px"
+          alt={study.image.alt}
+          width={302}
+          height={170}
+          loading="lazy"
+          decoding="async"
+        />
+      ) : (
+        <div className="case-image placeholder" aria-hidden="true" />
+      )}
+      <div className="case-copy">
+        {study.meta ? <Meta study={study} /> : null}
+        <p className="case-body case-text">{study.body}</p>
+        {study.figure ? (
+          <p className="case-figure">
+            <span className="case-figure-value">{study.figure}</span>
+            {study.figureCaption ? (
+              <span className="case-figure-caption">{study.figureCaption}</span>
+            ) : null}
+          </p>
+        ) : null}
+      </div>
+    </article>
+  );
+}
+
+/**
+ * Recent work: one card in the Still Running card style, on the ground just
+ * before that band. Its label is the section heading, set as an eyebrow.
+ */
+export function RecentWork() {
+  return (
+    <section id="recent-work" className="section recent-work" aria-labelledby="recent-work-heading">
+      <div className="container track-inner">
+        <Reveal>
+          <h2 className="eyebrow" id="recent-work-heading">
+            Recent work
+          </h2>
+          <div className="case-list">
+            <CaseCard study={RECENT} />
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
 /**
  * Track record on MB11's grey band 394:1892 (curve top left, cut bottom
  * right). Heading left and intro right (366:1384, 367:1622), then the four
@@ -107,36 +207,7 @@ export function TrackRecord() {
         <div className="case-list">
           {studies.map((study) => (
             <Reveal key={study.client}>
-              <article className="case case-grid">
-                <h3 className="case-client">{study.client}</h3>
-                {study.image ? (
-                  <img
-                    className="case-image"
-                    src={`${study.image.base}-720.webp`}
-                    srcSet={`${study.image.base}-360.webp 360w, ${study.image.base}-720.webp 720w`}
-                    sizes="(max-width: 760px) calc(100vw - 48px), 302px"
-                    alt={study.image.alt}
-                    width={302}
-                    height={170}
-                    loading="lazy"
-                    decoding="async"
-                  />
-                ) : (
-                  <div className="case-image placeholder" aria-hidden="true" />
-                )}
-                <div className="case-copy">
-                  {study.meta ? <p className="case-meta">{study.meta}</p> : null}
-                  <p className="case-body case-text">{study.body}</p>
-                  {study.figure ? (
-                    <p className="case-figure">
-                      <span className="case-figure-value">{study.figure}</span>
-                      {study.figureCaption ? (
-                        <span className="case-figure-caption">{study.figureCaption}</span>
-                      ) : null}
-                    </p>
-                  ) : null}
-                </div>
-              </article>
+              <CaseCard study={study} />
             </Reveal>
           ))}
         </div>

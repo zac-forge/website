@@ -4,7 +4,7 @@ import { LogoBand, ExperienceStrip } from "../components/LogoBand";
 import { Problem } from "../components/Problem";
 import { RealityCheck } from "../components/RealityCheck";
 import { FixWeek } from "../components/FixWeek";
-import { TrackRecord } from "../components/TrackRecord";
+import { RecentWork, TrackRecord } from "../components/TrackRecord";
 import { WhatWeFix } from "../components/WhatWeFix";
 import { HowWeWork } from "../components/HowWeWork";
 import { WhoWeAre } from "../components/WhoWeAre";
@@ -23,6 +23,7 @@ export default function Home() {
         <Problem />
         <RealityCheck />
         <FixWeek />
+        <RecentWork />
         <TrackRecord />
         <WhatWeFix />
         <HowWeWork />
