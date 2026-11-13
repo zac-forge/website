@@ -11,7 +11,7 @@ export const aiVisibility: Offer = {
   serviceDescription:
     "Tests real customer questions across ChatGPT, Google AI Overviews and AI Mode, Perplexity, and Claude. Fixes crawler access, rendering, structured data, answer content, and third-party mentions. Tracks how often the business is named.",
   eyebrow: "AI VISIBILITY",
-  h1: "AI visibility: get named when customers ask.",
+  h1: "AI Visibility: get named when customers ask.",
   subline: "Usually what question 4 on our free [Reality Check](/reality-check) points to.",
   intro: [
     "Ask ChatGPT who the best [your category] near you is. It will name a few businesses. We find out whether you are one of them, why or why not, and what to fix first.",

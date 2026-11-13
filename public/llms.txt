@@ -43,10 +43,10 @@ remotely with clients anywhere in the US.
 
 ## Track record
 
-- Heritage Global: all web properties including hgpauction.com, with
+- Heritage Global Partners: all web properties including hgpauction.com, with
   real-time auction creation from the sale floor. Live since 2010, with over
   $1 billion in assets sold through the platform.
-- Teddy Bear Portraits: point of sale and same-day photo
+- Teddy Bear Portraits (Legacy Studios): point of sale and same-day photo
   delivery across 41 states. Built 2016 to 2019, still running, now maintained
   by an outside vendor unchanged.
 - US Naval Academy and US Military Academy: cadet booking and photo portals,

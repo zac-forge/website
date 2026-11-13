@@ -388,6 +388,12 @@ names the offer. The schema Service keeps "The Fix Week" and adds
 matters most." In How we work, "One week" in the Fix step links to
 /fix-week, so the step and the section read as one offer.
 
+Follow-up (Drew, 2026-11-12): titles keep "| ZAC Forge". llms.txt (and the
+schema, should client names ever go in it) uses the full names "Heritage
+Global Partners" and "Teddy Bear Portraits (Legacy Studios)"; the page shows
+the comp's short names. "AI Visibility" is capitalised wherever it names the
+offer, including the /ai-visibility headline.
+
 ### Added with MB11 (2026-11-12)
 
 25. **Blue contrast.** `#2483C5` fails AA for white body text (4.10:1) and the

@@ -26,7 +26,7 @@ type CaseStudy = {
 const HAWAII: CaseStudy = {
   client: "hawaii.surf",
   meta: "hawaii.surf",
-  body: "Our own editorial publication on Hawaiian surf history, and our test bed for AI visibility.",
+  body: "Our own editorial publication on Hawaiian surf history, and our test bed for AI Visibility.",
 };
 
 /**
