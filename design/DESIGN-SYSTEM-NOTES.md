@@ -361,6 +361,33 @@ read off their vector paths into `band.*` tokens.
 
 Still open for Misha: 26, 29, 30, and 33 to 38.
 
+### Copy to the comp, and "The Fix" (Drew, 2026-11-12, second round)
+
+This reverses the first round's copy calls. MB11's own wording now wins
+wherever it differs from the shipped copy:
+
+- Buttons "FREE Reality Check" (hero, Reality Check section, /reality-check).
+- Reality Check points "Completely FREE assessment" and "Short list of 5
+  questions".
+- Client names "Heritage Global" and "Teddy Bear Portraits".
+- The comp's casing and punctuation: "Still Running", "When the Check calls
+  for more", "AI Visibility", "Check. Fix. Partner", "Send us what you built"
+  (no closing periods where the comp has none). This overrides the sentence
+  case rule for these headings.
+
+Kept: "HIPAA-regulated healthcare systems", the nav and Team / Principals
+naming, "Let's talk" to the booking page, the questions numbered 1 to 5, and
+the quiet typo fixes ("Let's", "$1B+", no trailing periods on fix titles).
+
+**The Fix.** The offer is still the Fix Week. Its short label is "The Fix" in
+the nav menu, footer, eyebrows (THE FIX), the home link ("What the Fix
+covers"), the related-offer cards, the page title ("The Fix: one week, fixed
+price | ZAC Forge"), and llms.txt's link. Body copy keeps "Fix Week" where it
+names the offer. The schema Service keeps "The Fix Week" and adds
+`alternateName: "The Fix"`. The headline stays "One week. Start with what
+matters most." In How we work, "One week" in the Fix step links to
+/fix-week, so the step and the section read as one offer.
+
 ### Added with MB11 (2026-11-12)
 
 25. **Blue contrast.** `#2483C5` fails AA for white body text (4.10:1) and the

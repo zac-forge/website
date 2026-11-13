@@ -50,10 +50,11 @@ const person = {
   worksFor: { "@id": ORG_ID },
 };
 
-function service(name: string, description: string, url?: string) {
+function service(name: string, description: string, url?: string, alternateName?: string) {
   return {
     "@type": "Service",
     name,
+    ...(alternateName ? { alternateName } : {}),
     description,
     provider: { "@id": ORG_ID },
     ...(url ? { url } : {}),
@@ -61,7 +62,7 @@ function service(name: string, description: string, url?: string) {
 }
 
 function services() {
-  return LIVE_OFFERS.map((o) => service(o.serviceName, o.serviceDescription, canonical(o.path)));
+  return LIVE_OFFERS.map((o) => service(o.serviceName, o.serviceDescription, canonical(o.path), o.serviceAlternateName));
 }
 
 export function homeSchema() {
@@ -84,7 +85,7 @@ export function offerSchema(offer: Offer) {
         isPartOf: { "@type": "WebSite", url: `${SITE_URL}/`, name: SITE_NAME },
         about: { "@id": ORG_ID },
       },
-      service(offer.serviceName, offer.serviceDescription, canonical(offer.path)),
+      service(offer.serviceName, offer.serviceDescription, canonical(offer.path), offer.serviceAlternateName),
       {
         "@type": "FAQPage",
         mainEntity: offer.faq.map((f) => ({

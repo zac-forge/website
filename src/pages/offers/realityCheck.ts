@@ -75,6 +75,6 @@ export const realityCheck: Offer = {
     },
     { question: "What if it's fine?", answer: "Then the scorecard says so." },
   ],
-  cta: { label: "Get a free Reality Check", href: "#contact" },
+  cta: { label: "FREE Reality Check", href: "#contact" },
   form: true,
 };

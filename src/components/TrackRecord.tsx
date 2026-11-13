@@ -40,7 +40,7 @@ const HAWAII: CaseStudy = {
  */
 const CASE_STUDIES: CaseStudy[] = [
   {
-    client: "Heritage Global Partners",
+    client: "Heritage Global",
     meta: "hgpauction.com · Live since 2010",
     body: "Every web property rebuilt, with real-time auction creation from the sale floor on connected tablets in 2010. Over $1 billion in assets sold through the platform since, and 16 years in production, maintained by someone else.",
     figure: "$1B+",
@@ -48,7 +48,7 @@ const CASE_STUDIES: CaseStudy[] = [
     image: { base: "/work/heritage-global", alt: "Screenshot of the hgpauction.com home page" },
   },
   {
-    client: "Legacy Studios · Teddy Bear Portraits",
+    client: "Teddy Bear Portraits",
     meta: "teddybearportraits.com · Built 2016 to 2019 · Still running",
     body: "Point of sale in 41 states, with tablets on a central database so parents bought photos the same day. We moved them to open source and handed it over, and the client reported support calls dropped by over 90%.",
     figure: "41 states",
@@ -93,7 +93,7 @@ export function TrackRecord() {
           <div>
             <p className="eyebrow">Track record</p>
             <h2 className="h2" id="track-record-heading">
-              <span className="h-light">Still</span> running.
+              <span className="h-light">Still</span> Running
             </h2>
           </div>
           {/* Confirmed by Drew on 2026-08-20 as repeatable across numerous

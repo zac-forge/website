@@ -5,8 +5,8 @@ export type FlowStep = {
   title: string;
   /** MB11's ring icon for the step, a file in public/art/mb11/ (110 x 110). */
   icon?: string;
-  /** One paragraph per entry. A line break inside an entry is kept. */
-  body?: string[];
+  /** One paragraph per entry. A line break inside a string entry is kept. */
+  body?: React.ReactNode[];
 };
 
 const STEP_STAGGER = 0.18;
@@ -46,8 +46,8 @@ export function FlowRow({ steps, label }: { steps: FlowStep[]; label: string }) 
           ) : null}
           {step.body ? (
             <div className="flow-body case-text">
-              {step.body.map((para) => (
-                <p key={para}>{para}</p>
+              {step.body.map((para, i) => (
+                <p key={i}>{para}</p>
               ))}
             </div>
           ) : null}

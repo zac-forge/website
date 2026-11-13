@@ -17,7 +17,7 @@ export function Closing() {
           <div>
             <p className="eyebrow">Connect</p>
             <h2 className="h2 closing-heading" id="contact-heading">
-              Send us <span className="h-light">what you built.</span>
+              Send us <span className="h-light">what you built</span>
             </h2>
             <ContactForm />
           </div>

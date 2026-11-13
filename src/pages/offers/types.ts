@@ -27,6 +27,8 @@ export type Offer = {
   description: string;
   /** schema.org Service name and description. */
   serviceName: string;
+  /** A shorter label the site also uses for the offer ("The Fix"). */
+  serviceAlternateName?: string;
   serviceDescription: string;
   /** Page body. */
   eyebrow: string;

@@ -15,8 +15,8 @@ remotely with clients anywhere in the US.
   can everyone use it, can anyone find it, does it look like you or like AI.
   One short scorecard in plain English with the evidence and what putting it
   right would take.
-- [The Fix Week](https://zacforge.com/fix-week): one week, one agreed price.
-  The top item on the Reality Check scorecard resolved in the client's code, a
+- [The Fix](https://zacforge.com/fix-week): the Fix Week, one week, one agreed
+  price. The top item on the Reality Check scorecard resolved in the client's code, a
   Design Read on the screen that most looks machine-made, and a ranked list of
   what is left.
 
@@ -43,10 +43,10 @@ remotely with clients anywhere in the US.
 
 ## Track record
 
-- Heritage Global Partners: all web properties including hgpauction.com, with
+- Heritage Global: all web properties including hgpauction.com, with
   real-time auction creation from the sale floor. Live since 2010, with over
   $1 billion in assets sold through the platform.
-- Legacy Studios and Teddy Bear Portraits: point of sale and same-day photo
+- Teddy Bear Portraits: point of sale and same-day photo
   delivery across 41 states. Built 2016 to 2019, still running, now maintained
   by an outside vendor unchanged.
 - US Naval Academy and US Military Academy: cadet booking and photo portals,

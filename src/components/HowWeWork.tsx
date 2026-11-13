@@ -15,8 +15,15 @@ const PROCESS = [
   {
     title: "Fix",
     icon: "/art/mb11/flow-fix.svg",
+    // "One week" links to /fix-week, so the step and the Fix section read
+    // as one offer (Drew, 2026-11-12). No words added.
     body: [
-      "One week or one project, fixed price. You get: it done, in your code, before and after.",
+      <>
+        <a className="inline-link" href="/fix-week">
+          One week
+        </a>{" "}
+        or one project, fixed price. You get: it done, in your code, before and after.
+      </>,
       "We tell you what's not worth fixing.\nA lot of it isn't.",
     ],
   },
@@ -43,7 +50,7 @@ export function HowWeWork() {
           <div>
             <p className="eyebrow">How we work</p>
             <h2 className="h2" id="how-we-work-heading">
-              Check. Fix. Partner.
+              Check. Fix. Partner
             </h2>
           </div>
           <div className="art-split-art how-art" aria-hidden="true">

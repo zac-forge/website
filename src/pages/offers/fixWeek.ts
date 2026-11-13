@@ -2,19 +2,23 @@ import type { Offer } from "./types";
 
 /**
  * The paid week, named the Fix Week again in the copy pass of 2026-11-06.
+ * Since 2026-11-12 its short label is "The Fix" in the nav, footer,
+ * eyebrows, and the page title; body copy keeps "Fix Week" where it
+ * describes the offer, and the schema carries both names.
  * functions/worker.ts 301s the route it had for a day back to this one.
  */
 export const fixWeek: Offer = {
   path: "/fix-week",
-  navTitle: "The Fix Week",
+  navTitle: "The Fix",
   summary: "One week. Start with what matters most.",
-  title: "The Fix Week | ZAC Forge",
+  title: "The Fix: one week, fixed price | ZAC Forge",
   description:
     "One week, one agreed price. The top item on your Reality Check scorecard resolved in your code, a Design Read on the screen that most looks machine-made, and the rest ranked.",
   serviceName: "The Fix Week",
+  serviceAlternateName: "The Fix",
   serviceDescription:
     "One week, one agreed price. The top item on the Reality Check scorecard resolved in the client's code, a Design Read on the screen that most looks machine-made, and a ranked list of what is left.",
-  eyebrow: "THE FIX WEEK",
+  eyebrow: "THE FIX",
   h1: "One week. Start with what matters most.",
   intro: [
     "AI got it as far as it could. The Fix Week is where a senior team takes it from here. One price, agreed before day one.",

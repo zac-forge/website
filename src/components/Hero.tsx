@@ -43,7 +43,7 @@ export function Hero() {
           <motion.div className="cta-row" variants={item}>
             <Magnetic>
               <a className="btn btn-primary" href="/#contact">
-                <span>Get a free Reality Check</span>{" "}
+                <span>FREE Reality Check</span>{" "}
                 <span aria-hidden="true">→</span>
               </a>
             </Magnetic>

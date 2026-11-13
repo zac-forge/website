@@ -12,7 +12,7 @@ type Fix = { title: string; line: string; link?: { label: string; href: string }
  */
 const FIXES: Fix[] = [
   {
-    title: "AI visibility",
+    title: "AI Visibility",
     line: "Get named when customers ask ChatGPT, Google, or Perplexity who to call.",
     link: { label: "More", href: "/ai-visibility" },
   },
@@ -58,7 +58,7 @@ export function WhatWeFix() {
           <p className="eyebrow">Bigger fixes</p>
           <h2 className="h2" id="what-we-do-heading">
             <span className="h-light">When</span> the Check <span className="h-light">calls for</span>{" "}
-            more.
+            more
           </h2>
         </Reveal>
       </div>

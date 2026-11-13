@@ -5,14 +5,12 @@ import { BOOKING_URL } from "../lib/links";
 import { fadeUpSmall } from "../lib/motion";
 
 /**
- * MB11's four icon points (365:1297 to 365:1345 over 365:1329 to 365:1336).
- * The comp's lines are close to the live intro, which is split here into
- * its four sentences. The comp's "Completely FREE assessment" and "Short
- * list of 5 questions" wordings are on the list for Drew.
+ * MB11's four icon points (365:1297 to 365:1345 over 365:1329 to 365:1336),
+ * in the comp's wording (Drew, 2026-11-12).
  */
 const POINTS = [
-  { icon: "icon-free", w: 88, h: 41, text: "Free." },
-  { icon: "icon-question", w: 64, h: 63, text: "5 questions." },
+  { icon: "icon-free", w: 88, h: 41, text: "Completely FREE assessment" },
+  { icon: "icon-question", w: 64, h: 63, text: "Short list of 5 questions" },
   {
     icon: "icon-scorecard",
     w: 51,
@@ -81,7 +79,7 @@ export function RealityCheck() {
           <div className="cta-row">
             <Magnetic>
               <a className="btn btn-primary" href="#contact">
-                <span>Get a free Reality Check</span>{" "}
+                <span>FREE Reality Check</span>{" "}
                 <span aria-hidden="true">→</span>
               </a>
             </Magnetic>

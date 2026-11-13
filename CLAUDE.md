@@ -56,7 +56,7 @@ These are not stylistic preferences. They are binding.
 | **No exclamation points** | None. Anywhere. |
 | **No emoji** | |
 | **Oxford comma** | Yes. |
-| **Headings** | Sentence case, 10 words or fewer (Drew, 2026-11-06). Eyebrows follow MB11: the arrow, then the label in capitals (written in sentence case in the markup, capitalised by CSS), Helvetica bold 16px, unnumbered. |
+| **Headings** | Sentence case, 10 words or fewer (Drew, 2026-11-06). Exception (Drew, 2026-11-12): on the home page Misha's MB11 wording and casing win, e.g. "Still Running", "When the Check calls for more", "AI Visibility", and "FREE Reality Check" on buttons. Eyebrows follow MB11: the arrow, then the label in capitals (written in sentence case in the markup, capitalised by CSS), Helvetica bold 16px, unnumbered. |
 | **Numbers** | Numerals for anything measurable. "41 states," "20 years." |
 
 **Banned vocabulary:** solutions · synergy · cutting-edge · best-in-class · world-class · seamless · robust · empower · unlock · elevate · passionate about · leverage (as a verb) · AI-native · AI-first · AI-powered · ship fast · 10x · force multiplier
@@ -167,7 +167,7 @@ only, and a row in this table.
 
 Hero → LogoBand → Problem → RealityCheck → FixWeek → TrackRecord → WhatWeFix → HowWeWork → ExperienceStrip → WhoWeAre → Closing (order from the 2026-11-06 copy pass)
 
-Six offer pages share one template: `/reality-check`, `/fix-week` (`/handoff` 301s there from `functions/worker.ts`), `/ai-visibility`, `/accessibility`, `/web-partner`, and `/brand-system`. The last is behind the `BRAND_SYSTEM` flag in `src/lib/flags.ts`, off by default, which keeps the page out of the routes, menus, sitemap, and schema and leaves the What we fix row as plain text. v5's `llms.txt` lists the brand system without a link, as the copy deck has it. The hawaii.surf case study card is behind `HAWAII_CARD`, off until real before and after numbers exist.
+Six offer pages share one template: `/reality-check`, `/fix-week` (`/handoff` 301s there from `functions/worker.ts`; labelled "The Fix" in nav, footer, eyebrows, buttons, and its title, while body copy and the schema `name` keep "the Fix Week"), `/ai-visibility`, `/accessibility`, `/web-partner`, and `/brand-system`. The last is behind the `BRAND_SYSTEM` flag in `src/lib/flags.ts`, off by default, which keeps the page out of the routes, menus, sitemap, and schema and leaves the What we fix row as plain text. v5's `llms.txt` lists the brand system without a link, as the copy deck has it. The hawaii.surf case study card is behind `HAWAII_CARD`, off until real before and after numbers exist.
 
 Every page is prerendered by `scripts/prerender.mjs` into `dist/<route>.html` with its own title, description, canonical, OG tags, and JSON-LD. Assistants do not run JavaScript, so nothing may depend on client rendering.
 
