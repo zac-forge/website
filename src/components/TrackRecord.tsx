@@ -45,7 +45,7 @@ const CASE_STUDIES: CaseStudy[] = [
     body: "Every web property rebuilt, with real-time auction creation from the sale floor on connected tablets in 2010. Over $1 billion in assets sold through the platform since, and 16 years in production, maintained by someone else.",
     figure: "$1B+",
     figureCaption: "in asset sales through the platform",
-    image: { base: "/work/heritage-global", alt: "Screenshot of the Heritage Global website" },
+    image: { base: "/work/heritage-global", alt: "Screenshot of the hgpauction.com home page" },
   },
   {
     client: "Legacy Studios · Teddy Bear Portraits",
@@ -59,9 +59,13 @@ const CASE_STUDIES: CaseStudy[] = [
     meta: "usna.legacystudios.com · usma.legacystudios.com · Live since 2017",
     body: "A separately branded cadet portal for each academy, built on the platform already shipped for Teddy Bear Portraits. Bookings, photos, and information for the full photo experience, delivered through Legacy Studios and still running.",
     figure: "Live since 2017",
-    // No image: MB11's screenshot here (359:1133) is the official usna.edu
-    // home page with the Academy crest, which the DoD guardrail rules out,
-    // and it is not the Legacy Studios portal this card describes.
+    // Drew's usna.legacystudios.com shot, cropped to the headline and
+    // buttons so no insignia shows (DoD guardrail). MB11's own image here
+    // (359:1133) was the official usna.edu page with the crest.
+    image: {
+      base: "/work/service-academies",
+      alt: "Screenshot of the Legacy Studios U.S. Naval Academy official portraits site",
+    },
   },
   {
     // TODO(Drew): URL, years, and the number for this card. Until they

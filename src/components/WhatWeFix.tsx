@@ -57,7 +57,7 @@ export function WhatWeFix() {
         <Reveal className="container">
           <p className="eyebrow">Bigger fixes</p>
           <h2 className="h2" id="what-we-do-heading">
-            <span className="h-light">When</span> the check <span className="h-light">calls for</span>{" "}
+            <span className="h-light">When</span> the Check <span className="h-light">calls for</span>{" "}
             more.
           </h2>
         </Reveal>

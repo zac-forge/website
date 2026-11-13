@@ -1,14 +1,16 @@
 import { useEffect, useRef, useState } from "react";
 import { Wordmark } from "./Brand";
 import { LIVE_OFFERS } from "../pages/offers";
+import { BOOKING_URL } from "../lib/links";
 
 // Absolute hashes so the same header works from the offer pages, where a
-// bare "#services" would point at nothing. Labels and order from MB11
-// (357:791), in sentence case: "Case Studies" is set "Case studies".
+// bare "#services" would point at nothing. Labels and order set by Drew on
+// 2026-11-12 over MB11's (357:791): Connect stays the form section, the nav
+// does not repeat it.
 const NAV_LINKS = [
   { href: "/#track-record", label: "Case studies" },
-  { href: "/#who-we-are", label: "Senior team" },
-  { href: "/#contact", label: "Connect" },
+  { href: "/#how-we-work", label: "How we work" },
+  { href: "/#who-we-are", label: "Team" },
 ];
 
 /**
@@ -82,7 +84,7 @@ function WhatWeDoMenu({ onNavigate }: { onNavigate: () => void }) {
 /**
  * MB11's header (357:786 to 359:1106): wordmark at a 40px inset, nav items
  * in 14px black weight straight after it, and the purple "Let's talk" pill
- * at the far right. It sits on the blue hero band, so it is blue on every
+ * at the far right, which books the 20-minute call (Drew, 2026-11-12). It sits on the blue hero band, so it is blue on every
  * page and each page opens on a blue band beneath it.
  */
 export function Header({ hideCta = false }: { hideCta?: boolean } = {}) {
@@ -116,7 +118,7 @@ export function Header({ hideCta = false }: { hideCta?: boolean } = {}) {
             </a>
           ))}
           {hideCta ? null : (
-            <a className="btn btn-primary nav-cta" href="/#contact" onClick={close}>
+            <a className="btn btn-primary nav-cta" href={BOOKING_URL} onClick={close}>
               <span>Let's talk</span>{" "}
               <span aria-hidden="true">→</span>
             </a>

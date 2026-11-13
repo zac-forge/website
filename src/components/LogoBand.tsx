@@ -41,14 +41,14 @@ export function LogoBand({
 /**
  * The credibility strip, MB11 388:1867 to 388:1871: four lines in the comp
  * blue, Helvetica Light 32px, in the comp's order. Its label stays for
- * screen readers only. The HIPAA line carries a year count, which CLAUDE.md
- * rules out for people, so it is on the list for Drew with an alternative.
+ * screen readers only. The HIPAA line drops the comp's year count (Drew,
+ * 2026-11-12), per the no-year-counts rule.
  */
 const EXPERIENCE = [
   "Accessibility under IBM.com standards",
   "Salesforce integration for 20,000 users",
   "Systems running since 2010",
-  "5 years in HIPAA-regulated healthcare",
+  "HIPAA-regulated healthcare systems",
 ];
 
 export function ExperienceStrip() {

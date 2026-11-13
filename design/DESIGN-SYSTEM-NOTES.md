@@ -346,6 +346,21 @@ read off their vector paths into `band.*` tokens.
     the cards with no image until a crop is chosen.
 
 
+### Decided by Drew, 2026-11-12
+
+- 25: the darker blue `#227CBA` is accepted.
+- 27, 28: replaced by Drew's own screenshots. Heritage shows hgpauction.com.
+  The academies card shows usna.legacystudios.com, cropped to the headline
+  and buttons so no insignia shows. The USMA shot has cap badges on every
+  cadet and is not used.
+- 31, 32: nav is What we do, Case studies, How we work, Team, and "Let's
+  talk" books the 20-minute call. Connect stays the form section.
+- Copy: live wording kept for the buttons, the Reality Check points, and the
+  client names. "When the Check calls for more." The HIPAA line is
+  "HIPAA-regulated healthcare systems".
+
+Still open for Misha: 26, 29, 30, and 33 to 38.
+
 ### Added with MB11 (2026-11-12)
 
 25. **Blue contrast.** `#2483C5` fails AA for white body text (4.10:1) and the

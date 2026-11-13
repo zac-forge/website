@@ -1,6 +1,6 @@
 # Team photos
 
-Drop a photo here and rebuild. The Senior team circles on the home page pick
+Drop a photo here and rebuild. The team circles on the home page pick
 it up by file name, no code change:
 
 | File name (any of .webp, .avif, .jpg, .jpeg, .png) | Card |

@@ -175,11 +175,11 @@ Every page is prerendered by `scripts/prerender.mjs` into `dist/<route>.html` wi
 
 | File | v5 status |
 |---|---|
-| `Header.tsx` | Blue on every page, nav What we do (menu), Case studies, Senior team, Connect, CTA "Let's talk" to `/#contact` |
+| `Header.tsx` | Blue on every page, nav What we do (menu), Case studies, How we work, Team, CTA "Let's talk" to `BOOKING_URL` (Drew, 2026-11-12) |
 | `ContactFocus.tsx` | Every `#contact` link scrolls the Name field into view below the sticky header and focuses it, on click and on arrival with the hash |
 | `Hero.tsx` | Blue band with MB11's line art and Z, "Built it with AI? Find out if it actually works.", proof line carries Fortune 50 and 2010, outlined "Book a 20-minute call" pill to `BOOKING_URL` beside the primary CTA. `public/og-image.jpg` is rendered from it by `tools/og-card.html` (still the v5 look) |
 | `LogoBand.tsx` | "Where our team has worked", names as muted text, never labelled as clients |
-| `TrackRecord.tsx` | Grey band, four stacked cases with screenshots (the academies slot is a placeholder: the comp's image is usna.edu with the crest); Legal Access ships with only its filled sentence; hidden hawaii.surf card first behind `HAWAII_CARD` |
+| `TrackRecord.tsx` | Grey band, four stacked cases with screenshots (hgpauction.com, Teddy Bear Portraits, usna.legacystudios.com cropped clear of all insignia, Legal Access); Legal Access ships with only its filled sentence; hidden hawaii.surf card first behind `HAWAII_CARD` |
 | `Problem.tsx` | "Problem", on the ground with MB11's Z set, "wrong" in red and "without telling you." light italic |
 | `FixWeek.tsx` | "The Fix Week", heading, one paragraph, link to `/fix-week`, MB11's four-piece Z |
 | `RealityCheck.tsx` | Blue band: heading, four icon points, dotted rule, the 5 questions numbered 1 to 5, CTA to `#contact`, booking pill, link to `/reality-check` |
