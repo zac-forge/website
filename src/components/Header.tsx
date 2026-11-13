@@ -3,11 +3,12 @@ import { Wordmark } from "./Brand";
 import { LIVE_OFFERS } from "../pages/offers";
 
 // Absolute hashes so the same header works from the offer pages, where a
-// bare "#services" would point at nothing.
+// bare "#services" would point at nothing. Labels and order from MB11
+// (357:791), in sentence case: "Case Studies" is set "Case studies".
 const NAV_LINKS = [
-  { href: "/#track-record", label: "Track record" },
-  { href: "/#how-we-work", label: "How we work" },
-  { href: "/#who-we-are", label: "Who we are" },
+  { href: "/#track-record", label: "Case studies" },
+  { href: "/#who-we-are", label: "Senior team" },
+  { href: "/#contact", label: "Connect" },
 ];
 
 /**
@@ -79,10 +80,10 @@ function WhatWeDoMenu({ onNavigate }: { onNavigate: () => void }) {
 }
 
 /**
- * The board's header: wordmark at a 48px inset, nav items in 14px black
- * weight straight after it, and the pill button at the far right. On comp 7
- * it sits on the navy hero band, so it is navy on every page and each page
- * opens on a navy band beneath it.
+ * MB11's header (357:786 to 359:1106): wordmark at a 40px inset, nav items
+ * in 14px black weight straight after it, and the purple "Let's talk" pill
+ * at the far right. It sits on the blue hero band, so it is blue on every
+ * page and each page opens on a blue band beneath it.
  */
 export function Header({ hideCta = false }: { hideCta?: boolean } = {}) {
   const [open, setOpen] = useState(false);
@@ -116,7 +117,7 @@ export function Header({ hideCta = false }: { hideCta?: boolean } = {}) {
           ))}
           {hideCta ? null : (
             <a className="btn btn-primary nav-cta" href="/#contact" onClick={close}>
-              <span>Get a Reality Check</span>{" "}
+              <span>Let's talk</span>{" "}
               <span aria-hidden="true">→</span>
             </a>
           )}

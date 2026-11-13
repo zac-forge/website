@@ -12,54 +12,87 @@ import { fadeUpSmall } from "../lib/motion";
  * person's confirmation. The deck's working versions ship, as the build plan
  * says, and no bio introduces anyone as Andrew's former colleague.
  */
-type TeamMember = { name?: string; photo?: string; role: string; bio: string };
+type TeamMember = { slug: string; name?: string; role: string; bio: string };
 
 const TEAM: TeamMember[] = [
   {
+    slug: "andrew-johnston",
     name: "Andrew Johnston",
     role: "Founder, Principal",
     bio: "Decades of Fortune 50 experience, and a practice of his own alongside it since 2010.",
   },
   {
+    slug: "design-principal",
     role: "Design Principal",
     bio: "Associate creative director at Ogilvy, then design lead on work for Walmart, Viacom, and Nike, and at the IBM Design Lab.",
   },
   {
+    slug: "principal-engineer",
     role: "Principal Engineer",
     bio: "Principal engineer at IBM: WordPress, PHP, React, Node, and mobile.",
   },
 ];
 
 /**
- * Comp 7's sky band (198:551) with sweeps top left and bottom right. Comp 7
- * draws a 190px circle above each name (211:1380 to 211:1382); Drew removed
- * the grey placeholders on 2026-11-04, so the three are text-only white cards
- * until real photos exist. A card with a photo shows it cropped to that
- * circle. Andrew's is the only one to add when it arrives.
+ * Photos are found by file name in src/assets/team/ at build time (see the
+ * README there), so adding one is a file drop and a rebuild.
+ */
+const PHOTOS = import.meta.glob("../assets/team/*.{webp,avif,jpg,jpeg,png}", {
+  eager: true,
+  query: "?url",
+  import: "default",
+}) as Record<string, string>;
+
+function photoFor(slug: string) {
+  return Object.entries(PHOTOS).find(([path]) => path.split("/").pop()?.startsWith(`${slug}.`))?.[1];
+}
+
+function initials(name: string) {
+  return name
+    .split(/\s+/)
+    .map((part) => part[0])
+    .join("")
+    .slice(0, 2)
+    .toUpperCase();
+}
+
+/**
+ * Team, MB11 372:1736 and 372:1735 on the grey band 394:1894 (cut top left,
+ * curve bottom right). Three white 176px circles (376:1749 to 376:1751),
+ * then name, role, and bio. The comp's names and bios are placeholders, so
+ * the live ones ship. Until a photo exists a named person's circle shows
+ * their initials; an unnamed role's circle stays plain white, as drawn.
  */
 export function WhoWeAre() {
   return (
-    <section id="who-we-are" className="section band band--sky who-we-are" aria-labelledby="who-we-are-heading">
+    <section id="who-we-are" className="section band band--grey who-we-are" aria-labelledby="who-we-are-heading">
       <div className="container">
         <Reveal>
-          <p className="eyebrow">07 / Who we are</p>
-          {/* The deck has no heading here beyond the eyebrow. This keeps the
-              document outline whole without adding words to the page. */}
-          <h2 className="sr-only" id="who-we-are-heading">
-            Who we are
+          <p className="eyebrow">Team</p>
+          <h2 className="h2" id="who-we-are-heading">
+            Principals
           </h2>
         </Reveal>
         <Reveal className="team" stagger={0.08}>
-          {TEAM.map((m) => (
-            <motion.div className="team-member surface" key={m.role} variants={fadeUpSmall}>
-              {m.photo ? (
-                <img className="team-photo" src={m.photo} alt="" width={190} height={190} loading="lazy" />
-              ) : null}
-              <h3 className="team-name">{m.name ?? m.role}</h3>
-              {m.name ? <p className="team-role">{m.role}</p> : null}
-              <p className="team-bio">{m.bio}</p>
-            </motion.div>
-          ))}
+          {TEAM.map((m) => {
+            const photo = photoFor(m.slug);
+            return (
+              <motion.div className="team-member" key={m.slug} variants={fadeUpSmall}>
+                <div className="team-circle" aria-hidden="true">
+                  {photo ? (
+                    <img className="team-photo" src={photo} alt="" width={176} height={176} loading="lazy" />
+                  ) : m.name ? (
+                    <span className="team-initials">{initials(m.name)}</span>
+                  ) : null}
+                </div>
+                <div className="team-text">
+                  <h3 className="team-name">{m.name ?? m.role}</h3>
+                  {m.name ? <p className="team-role">{m.role}</p> : null}
+                  <p className="team-bio copy">{m.bio}</p>
+                </div>
+              </motion.div>
+            );
+          })}
         </Reveal>
       </div>
     </section>

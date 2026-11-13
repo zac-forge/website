@@ -58,7 +58,7 @@ export default function ContactResult({ variant }: { variant: ContactResultVaria
           visitor has just asked for one. */}
       <Header hideCta={variant === "thanks"} />
       <main>
-        <section id="top" className="result band band--navy">
+        <section id="top" className="result band band--blue">
           <div className="container result-grid">
             <div className="result-copy">
               {variant === "thanks" ? (

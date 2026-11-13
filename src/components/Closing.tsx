@@ -3,10 +3,11 @@ import { ZacMark } from "./Brand";
 import { ContactForm } from "./ContactForm";
 
 /**
- * The closing block, v5: eyebrow, heading, and the contact form, with the
- * mark over a white circle beside it (v4 board 8:116 and 42:346; comp 7 draws
- * the big Z here instead, question 17). Also rendered on /reality-check,
- * whose "How it works" points at "the form below".
+ * Connect, MB11 391:1886 and 391:1885: eyebrow, heading, and the live
+ * contact form, with the mark over a white circle beside it, as the comp's
+ * screenshot of the form (384:1811) shows. The comp's stray "Principals"
+ * (390:1884) is a leftover and is not built. Also rendered on
+ * /reality-check, whose "How it works" points at "the form below".
  */
 export function Closing() {
   return (
@@ -14,9 +15,9 @@ export function Closing() {
       <div className="container">
         <Reveal className="closing-grid">
           <div>
-            <p className="eyebrow">Start here</p>
+            <p className="eyebrow">Connect</p>
             <h2 className="h2 closing-heading" id="contact-heading">
-              Send us what you built.
+              Send us <span className="h-light">what you built.</span>
             </h2>
             <ContactForm />
           </div>

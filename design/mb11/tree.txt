@@ -1,0 +1,415 @@
+357:763 FRAME 'MacBook Air - 11' 0,0 1280x8027 fill=['#EBEBEB']
+  357:764 VECTOR 'Rectangle 3517' 0,-11 1280x568 fill=['#2483C5']
+  360:1260 VECTOR 'Rectangle 3518' -10,1194 1290x966 fill=['#2483C5']
+  394:1892 VECTOR 'Rectangle 3552' -10,2631 1290x1495 fill=['#D6D6D6']
+  394:1894 VECTOR 'Rectangle 3554' -10,6099 1292x561 fill=['#D6D6D6']
+  394:1893 VECTOR 'Rectangle 3553' -10,4392 1290x606 fill=['#2483C5']
+  394:1888 FRAME 'Frame 6953' 1196,1154 100x100
+  388:1865 VECTOR 'Line 296' 1204,4792 104x51 stroke=['#FFFFFF']/1.0
+  365:1314 FRAME 'Layer_1' 724,1514 51x64
+    365:1315 GROUP 'VbjFhO' 724,1514 51x64
+      365:1316 GROUP 'Group' 724,1514 51x64
+        365:1317 VECTOR 'Vector' 724,1514 51x64 fill=['#FFFFFF']
+        365:1318 VECTOR 'Vector' 753,1552 13x13 fill=['#FFFFFF']
+        365:1319 VECTOR 'Vector' 753,1536 13x13 fill=['#FFFFFF']
+        365:1320 VECTOR 'Vector' 734,1541 14x5 fill=['#FFFFFF']
+        365:1321 VECTOR 'Vector' 734,1556 14x5 fill=['#FFFFFF']
+  365:1336 TEXT 'Short list of 5 questions' 383,1606 171x76 fill=['#FFFFFF'] [Avenir 300 14.0/20 ls=0.0  LEFT] "Short list of 5 questions "
+  365:1329 TEXT 'A one-page scorecard in plain English, with evidence and what a fix would take.' 633,1606 232x60 fill=['#FFFFFF'] [Avenir 300 14.0/20 ls=0.0  LEFT] "A one-page scorecard in plain English, with evidence and what a fix would take."
+  366:1370 TEXT 'When the scorecard shows something worth fixing, a senior team takes over. The top item resolved in your code, a Design Read on the screen that most looks machine-made, and the rest ranked. One price, agreed up front.' 141,2459 427x100 fill=['#000000'] [Avenir 300 14.0/20 ls=0.0  LEFT] "When the scorecard shows something worth fixing, a senior team takes over. The top item resolved in your code, a Design Read on the screen that most looks machine-made, and the rest ranked. One price, agreed up front.
+"
+  365:1332 TEXT 'Checked by people, not software.' 930,1606 230x40 fill=['#FFFFFF'] [Avenir 300 14.0/20 ls=0.0  LEFT] "Checked by people, not software."
+  357:786 FRAME 'Layer_1' 41,20 103x19
+    357:787 TEXT 'zacforge' 65,17 70x24 fill=['#FFFFFF'] [Avenir Next 400 17.666942596435547/24 ls=0.0  LEFT] "zacforge"
+    357:788 VECTOR 'Vector' 43,23 13x6 fill=['#FFFFFF']
+    357:789 VECTOR 'Vector' 41,26 16x13 fill=['#FFFFFF']
+    357:790 VECTOR 'Vector' 58,21 3x3 fill=['#FFFFFF']
+  357:791 GROUP 'Group 1' 162,7 435x50
+    357:792 INSTANCE 'Lorem ipsum' 270,7 93x50
+      I357:792;7:13 TEXT 'What we do' 270,7 93x50 fill=['#FFFFFF'] [Avenir 900 14.0/50 ls=0.0  LEFT] "Case Studies"
+    357:793 INSTANCE 'Lorem ipsum' 386,7 93x50
+      I357:793;7:13 TEXT 'What we do' 386,7 93x50 fill=['#FFFFFF'] [Avenir 900 14.0/50 ls=0.0  LEFT] "Senior team"
+    357:794 INSTANCE 'Lorem ipsum' 494,7 103x50
+      I357:794;7:13 TEXT 'What we do' 494,7 103x50 fill=['#FFFFFF'] [Avenir 900 14.0/50 ls=0.0  LEFT] "Connect"
+    357:795 INSTANCE 'Lorem ipsum' 162,7 93x50
+      I357:795;7:13 TEXT 'What we do' 162,7 93x50 fill=['#FFFFFF'] [Avenir 900 14.0/50 ls=0.0  LEFT] "What we do"
+  357:796 TEXT 'Built it with AI?  Find out if it actually works.' 157,144 610x242 fill=['#FFFFFF'] [Avenir 300 64.0/59 ls=0.0  LEFT] "Built it with AI?  Find out if it actually works."
+  360:1262 TEXT 'Send us what you built. We'll tell you straight.' 136,1347 540x126 fill=['#FFFFFF'] [Helvetica 300 48.0/50 ls=0.0  LEFT] "Send us what you built. We'll tell you straight."
+  376:1755 TEXT 'When the Check calls for more' 136,4292 758x50 fill=['#000000'] [Helvetica 700 48.0/50 ls=0.0  LEFT] "When the Check calls for more"
+  366:1367 TEXT 'One week. Start with what matters most.' 136,2325 540x126 fill=['#000000'] [Helvetica 300 48.0/50 ls=0.0  LEFT] "One week. Start with what matters most.
+"
+  369:1636 TEXT 'Check. Fix. Partner' 136,5211 436x50 fill=['#000000'] [Helvetica 700 48.0/50 ls=0.0  LEFT] "Check. Fix. Partner"
+  372:1735 TEXT 'Principals' 136,6189 463x50 fill=['#000000'] [Helvetica 700 48.0/50 ls=0.0  LEFT] "Principals "
+  390:1884 TEXT 'Principals' 136,6841 230x50 fill=['#000000'] [Helvetica 700 48.0/50 ls=0.0  LEFT] "Principals"
+  369:1639 TEXT 'Check' 209,5480 97x50 fill=['#000000'] [Helvetica 700 32.0/50 ls=0.0  LEFT] "Check"
+  370:1676 TEXT 'Fix' 594,5480 47x50 fill=['#000000'] [Helvetica 700 32.0/50 ls=0.0  LEFT] "Fix"
+  370:1677 TEXT 'Partner' 915,5480 113x50 fill=['#000000'] [Helvetica 700 32.0/50 ls=0.0  LEFT] "Partner"
+  366:1384 TEXT 'Still Running' 250,2769 282x50 fill=['#000000'] [Helvetica 700 48.0/50 ls=0.0  LEFT] "Still Running"
+  365:1349 TEXT 'Does it work?' 136,1748 194x50 fill=['#F4F1EA'] [Helvetica 700 24.0/50 ls=0.0  LEFT] "Does it work?"
+  376:1759 TEXT 'AI Visibility' 172,4488 130x24 fill=['#FDD41A'] [Helvetica 700 24.0/24 ls=0.0  LEFT] "AI Visibility"
+  376:1760 TEXT 'Rescue' 592,4488 86x24 fill=['#FDC90E'] [Helvetica 700 24.0/24 ls=0.0  LEFT] "Rescue"
+  376:1761 TEXT 'Accessibility and performance.' 915,4488 230x48 fill=['#FDD41A'] [Helvetica 700 24.0/24 ls=0.0  CENTER] "Accessibility and performance."
+  376:1762 TEXT 'Brand system' 157,4750 159x50 fill=['#FDD41A'] [Helvetica 700 24.0/50 ls=0.0  LEFT] "Brand system"
+  376:1763 TEXT 'Platform escape.' 538,4750 193x50 fill=['#FDD41A'] [Helvetica 700 24.0/50 ls=0.0  LEFT] "Platform escape."
+  376:1764 TEXT 'Web Partner' 959,4750 142x50 fill=['#FDD41A'] [Helvetica 700 24.0/50 ls=0.0  LEFT] "Web Partner"
+  376:1742 TEXT 'Lorem ipsum' 204,6509 151x50 fill=['#000000'] [Helvetica 700 24.0/50 ls=0.0  LEFT] "Lorem ipsum"
+  365:1363 TEXT '4. Can anyone find it?' 146,1895 250x50 fill=['#F4F1EA'] [Helvetica 700 24.0/50 ls=0.0  LEFT] "4. Can anyone find it?"
+  365:1350 TEXT '2. Is it fast?' 554,1748 133x50 fill=['#F4F1EA'] [Helvetica 700 24.0/50 ls=0.0  LEFT] "2. Is it fast?"
+  365:1365 TEXT 'Does it look like you?' 544,1896 283x50 fill=['#F4F1EA'] [Helvetica 700 24.0/50 ls=0.0  LEFT] "Does it look like you?"
+  376:1743 TEXT 'Lorem Ipsum' 564,6509 151x50 fill=['#000000'] [Helvetica 700 24.0/50 ls=0.0  LEFT] "Lorem Ipsum"
+  366:1368 TEXT 'THE FIX WEEK' 168,2266 114x59 fill=['#000000'] [Helvetica 700 16.0/59 ls=0.0  LEFT] "THE FIX WEEK"
+  369:1637 TEXT 'HOW WE WORK' 168,5152 125x59 fill=['#000000'] [Helvetica 700 16.0/59 ls=0.0  LEFT] "HOW WE WORK"
+  360:1263 TEXT 'REALITY CHECK' 168,1288 130x59 fill=['#FFFFFF'] [Helvetica 700 16.0/59 ls=0.0  LEFT] "REALITY CHECK"
+  376:1756 TEXT 'BIGGER FIXES' 168,4233 114x59 fill=['#000000'] [Helvetica 700 16.0/59 ls=0.0  LEFT] "BIGGER FIXES"
+  365:1351 TEXT 'Can everyone use it?' 865,1748 306x37 fill=['#F4F1EA'] [Helvetica 700 24.0/37 ls=0.0  LEFT] "Can everyone use it?"
+  372:1736 TEXT 'TEAM' 168,6130 46x59 fill=['#000000'] [Helvetica 700 16.0/59 ls=0.0  LEFT] "TEAM"
+  376:1744 TEXT 'Lorem Ipsum' 913,6509 159x37 fill=['#000000'] [Helvetica 700 24.0/37 ls=0.0  LEFT] "Lorem Ipsum"
+  366:1385 TEXT 'TRACK RECORD' 282,2710 130x59 fill=['#000000'] [Helvetica 700 16.0/59 ls=0.0  LEFT] "TRACK RECORD"
+  365:1353 TEXT 'Sign-in, forms, data, and what happens when it fails.' 173,1802 220x40 fill=['#FFFFFF'] [Avenir 300 14.0/20 ls=0.0  LEFT] "Sign-in, forms, data, and what happens when it fails."
+  360:1267 TEXT 'PROBLEM' 168,823 81x59 fill=['#000000'] [Helvetica 700 16.0/59 ls=0.0  LEFT] "PROBLEM"
+  359:1097 TEXT 'AI is fast, confident, and wrong without telling you.' 136,882 493x123 fill=['#1E1E1E'] [Helvetica 700 48.0/41 ls=0.0  LEFT] "AI is fast, confident, and wrong without telling you."
+  357:874 TEXT 'It built your site in an afternoon. It also skipped the sign-in test, the phone, the screen reader, and the question of whether anyone can find you. It won't say so. Someone has to check.' 136,1034 439x54 fill=['#1E1E1E'] [Avenir 300 14.0/18 ls=0.0  LEFT] "It built your site in an afternoon. It also skipped the sign-in test, the phone, the screen reader, and the question of whether anyone can find you. It won't say so. Someone has to check."
+  365:1360 TEXT 'Measured on a real phone.' 581,1802 220x20 fill=['#FFFFFF'] [Avenir 300 14.0/20 ls=0.0  LEFT] "Measured on a real phone."
+  365:1362 TEXT 'Keyboard, screen reader, WCAG 2.2 AA.' 903,1802 220x60 fill=['#FFFFFF'] [Avenir 300 14.0/20 ls=0.0  LEFT] "Keyboard, screen reader, WCAG 2.2 AA.
+"
+  376:1745 TEXT 'Sign-in, forms, data, and what happens when it fails.' 204,6563 220x40 fill=['#000000'] [Avenir 300 14.0/20 ls=0.0  LEFT] "Sign-in, forms, data, and what happens when it fails."
+  365:1364 TEXT 'What ChatGPT, Google, and Perplexity say when a customer asks. Screenshots.' 173,1949 266x40 fill=['#FFFFFF'] [Avenir 300 14.0/20 ls=0.0  LEFT] "What ChatGPT, Google, and Perplexity say when a customer asks. Screenshots."
+  365:1335 TEXT 'Completely FREE assessment' 121,1606 220x20 fill=['#FFFFFF'] [Avenir 300 14.0/20 ls=0.0  LEFT] "Completely FREE assessment "
+  365:1366 TEXT 'Our design principal's read.' 581,1950 266x20 fill=['#FFFFFF'] [Avenir 300 14.0/20 ls=0.0  LEFT] "Our design principal's read."
+  376:1746 TEXT 'Measured on a real phone.' 564,6563 220x20 fill=['#000000'] [Avenir 300 14.0/20 ls=0.0  LEFT] "Measured on a real phone."
+  376:1747 TEXT 'Keyboard, screen reader, WCAG 2.2 AA.' 894,6563 220x60 fill=['#000000'] [Avenir 300 14.0/20 ls=0.0  LEFT] "Keyboard, screen reader, WCAG 2.2 AA.
+"
+  357:1034 FRAME 'Button' 157,420 185x35
+    357:1035 VECTOR 'Vector' 157,421 185x33 fill=['#56246F']
+    357:1036 TEXT 'FREE Reality Check' 175,429 129x19 fill=['#FFFFFF'] [Avenir 900 14.0/19 ls=0.0  LEFT] "FREE Reality Check"
+    357:1037 VECTOR 'Arrow 1' 311,438 15x0 stroke=['#FFFFFF']/1.5811388492584229
+  367:1611 FRAME 'Button' 563,2041 185x35
+    367:1612 VECTOR 'Vector' 563,2042 185x33 fill=['#56246F']
+    367:1613 TEXT 'FREE Reality Check' 581,2050 129x19 fill=['#FFFFFF'] [Avenir 900 14.0/19 ls=0.0  LEFT] "FREE Reality Check"
+    367:1614 VECTOR 'Arrow 1' 717,2060 15x0 stroke=['#FFFFFF']/1.5811388492584229
+  359:1106 FRAME 'Button' 1045,18 185x35
+    359:1107 VECTOR 'Vector' 1095,19 135x33 fill=['#56246F']
+    359:1108 TEXT 'Lets talk' 1119,27 57x19 fill=['#FFFFFF'] [Avenir 900 14.0/19 ls=0.0  LEFT] "Lets talk"
+    359:1109 VECTOR 'Arrow 1' 1199,36 15x0 stroke=['#FFFFFF']/1.5811388492584229
+  357:1058 TEXT 'Send us your site, app, or brand. Senior people check it on 5 questions and tell you straight. Free. A person reads it, not a scanner.' 157,345 435x36 fill=['#FFFFFF'] [Avenir 300 14.0/18 ls=0.0  LEFT] "Send us your site, app, or brand. Senior people check it on 5 questions and tell you straight. Free. A person reads it, not a scanner."
+  358:1079 RECTANGLE 'image 466' 14,605 1266x126 fill=['IMAGE']
+  359:1111 TEXT 'Heritage Global' 250,2873 354x51 fill=['#1E1E1E'] [Helvetica 300 32.0/51 ls=0.0  LEFT] "Heritage Global"
+  359:1112 RECTANGLE 'Screenshot 2026-10-30 at 12.13.48 PM 1' 250,2940 302x170 fill=['IMAGE'] stroke=['#C2C2C2']/1.0 r=8.0
+  359:1116 TEXT 'Every web property rebuilt, with real-time auction creation from the sale floor on connected tablets in 2010. Over $1 billion in assets sold through the platform since, and 16 years in production, maintained by someone else.' 633,2963 408x72 fill=['#1E1E1E'] [Helvetica 300 14.0/18 ls=0.0  LEFT] "Every web property rebuilt, with real-time auction creation from the sale floor on connected tablets in 2010. Over $1 billion in assets sold through the platform since, and 16 years in production, maintained by someone else."
+  367:1623 TEXT 'hgpauction.com · Live since 2010' 656,2936 223x18 fill=['#1E1E1E'] [Helvetica 700 14.0/18 ls=0.0  LEFT] "hgpauction.com · Live since 2010"
+  367:1627 TEXT 'teddybearportraits.com · Built 2016 to 2019 · Still running' 656,3233 380x18 fill=['#1E1E1E'] [Helvetica 700 14.0/18 ls=0.0  LEFT] "teddybearportraits.com · Built 2016 to 2019 · Still running"
+  367:1631 TEXT 'usna.legacystudios.com · usma.legacystudios.com · Live since 2017' 656,3520 456x18 fill=['#1E1E1E'] [Helvetica 700 14.0/18 ls=0.0  LEFT] "usna.legacystudios.com · usma.legacystudios.com · Live since 2017"
+  367:1626 TEXT 'in asset sales through the platform' 633,3096 233x18 fill=['#1E1E1E'] [Helvetica 700 14.0/18 ls=0.0  LEFT] "in asset sales through the platform"
+  367:1630 TEXT '41 states' 633,3357 172x18 fill=['#1E1E1E'] [Helvetica 700 40.0/18 ls=0.0  LEFT] "41 states"
+  367:1625 TEXT '$1Billion +' 633,3061 202x18 fill=['#1E1E1E'] [Helvetica 700 40.0/18 ls=0.0  LEFT] "$1Billion +"
+  367:1632 TEXT 'Live since 2017' 633,3644 294x18 fill=['#1E1E1E'] [Helvetica 700 40.0/18 ls=0.0  LEFT] "Live since 2017"
+  367:1622 TEXT 'Built on the practice Andrew Johnston has run since 2010. Every system below was handed to the people who own it. They run it without us.' 633,2779 408x54 fill=['#1E1E1E'] [Helvetica 300 14.0/18 ls=0.0  LEFT] "Built on the practice Andrew Johnston has run since 2010. Every system below was handed to the people who own it. They run it without us."
+  359:1122 TEXT 'Point of sale in 41 states, with tablets on a central database so parents bought photos the same day. We moved them to open source and handed it over, and the client reported support calls dropped by over 90%.' 633,3260 408x72 fill=['#1E1E1E'] [Helvetica 300 14.0/18 ls=0.0  LEFT] "Point of sale in 41 states, with tablets on a central database so parents bought photos the same day. We moved them to open source and handed it over, and the client reported support calls dropped by over 90%."
+  359:1117 TEXT 'Teddy Bear Portraits' 250,3166 354x51 fill=['#1E1E1E'] [Helvetica 300 32.0/51 ls=0.0  LEFT] "Teddy Bear Portraits"
+  359:1118 RECTANGLE 'Screenshot 2026-10-30 at 12.13.48 PM 2' 250,3233 302x170 fill=['IMAGE'] stroke=['#C2C2C2']/1.0 r=8.0
+  367:1633 TEXT 'A separately branded cadet portal for each academy, built on the platform already shipped for Teddy Bear Portraits. Bookings, photos, and information for the full photo experience, delivered through Legacy Studios and still running.' 633,3547 408x72 fill=['#1E1E1E'] [Helvetica 300 14.0/18 ls=0.0  LEFT] "A separately branded cadet portal for each academy, built on the platform already shipped for Teddy Bear Portraits. Bookings, photos, and information for the full photo experience, delivered through Legacy Studios and still running."
+  359:1123 TEXT 'US Naval Academy · US Military Academy' 250,3459 580x102 fill=['#1E1E1E'] [Helvetica 300 32.0/51 ls=0.0  LEFT] "US Naval Academy · US Military Academy"
+  359:1128 TEXT 'Legal Access Alameda' 250,3768 354x51 fill=['#1E1E1E'] [Helvetica 300 32.0/51 ls=0.0  LEFT] "Legal Access Alameda"
+  359:1132 TEXT 'Web properties for a statewide group of attorneys providing disaster response and free legal assistance. A client across several years and several rebuilds.' 633,3835 408x54 fill=['#1E1E1E'] [Helvetica 300 14.0/18 ls=0.0  LEFT] "Web properties for a statewide group of attorneys providing disaster response and free legal assistance. A client across several years and several rebuilds."
+  376:1765 TEXT 'Get named when customers ask ChatGPT, Google, or Perplexity who to call.' 114,4545 246x54 fill=['#FFFFFF'] [Helvetica 300 14.0/18 ls=0.0  LEFT] "Get named when customers ask ChatGPT, Google, or Perplexity who to call."
+  376:1766 TEXT 'Finish and harden what AI started, or rebuild it if it can't be saved.' 512,4545 246x36 fill=['#FFFFFF'] [Helvetica 300 14.0/18 ls=0.0  LEFT] "Finish and harden what AI started, or rebuild it if it can't be saved."
+  376:1767 TEXT 'Fixed in the code, not covered with a widget.' 907,4545 246x36 fill=['#FFFFFF'] [Helvetica 300 14.0/18 ls=0.0  LEFT] "Fixed in the code, not covered with a widget."
+  376:1768 TEXT 'Senior design your AI tools follow, so everything looks like you.' 114,4816 246x36 fill=['#FFFFFF'] [Helvetica 300 14.0/18 ls=0.0  LEFT] "Senior design your AI tools follow, so everything looks like you."
+  376:1769 TEXT 'Off the platform you've outgrown, onto something you own.' 512,4816 246x36 fill=['#FFFFFF'] [Helvetica 300 14.0/18 ls=0.0  LEFT] "Off the platform you've outgrown, onto something you own."
+  376:1770 TEXT 'One senior team keeps it running and makes it better every month.' 907,4816 246x36 fill=['#FFFFFF'] [Helvetica 300 14.0/18 ls=0.0  LEFT] "One senior team keeps it running and makes it better every month."
+  374:1738 TEXT 'Free. You get: the scorecard and what a fix would take.  The people on the call do the work.' 157,5554 245x72 fill=['#1E1E1E'] [Helvetica 300 14.0/18 ls=0.0  LEFT] "Free. You get: the scorecard and what a fix would take.  The people on the call do the work."
+  374:1739 TEXT 'One week or one project, fixed price. You get: it done, in your code, before and after.  We tell you what's not worth fixing. A lot of it isn't. ' 507,5554 255x126 fill=['#1E1E1E'] [Helvetica 300 14.0/18 ls=0.0  LEFT] "One week or one project, fixed price. You get: it done, in your code, before and after.  We tell you what's not worth fixing.
+A lot of it isn't. "
+  374:1740 TEXT 'Monthly, month to month. You get: one senior person who knows your site and improves it every month.  You own the code, the accounts, and the files.  If we vanished tomorrow, you'd be fine.' 846,5554 260x144 fill=['#1E1E1E'] [Helvetica 300 14.0/18 ls=0.0  LEFT] "Monthly, month to month. You get: one senior person who knows your site and improves it every month.
+ You own the code, the accounts, and the files. 
+If we vanished tomorrow, you'd be fine."
+  359:1133 RECTANGLE 'image 463' 250,3520 307x169 fill=['IMAGE'] stroke=['#717171']/1.0 r=8.0
+  359:1134 RECTANGLE 'image 462' 250,3834 303x167 fill=['IMAGE'] stroke=['#808080']/1.0 r=8.0
+  360:1259 GROUP 'Group 1000005906' 748,823 352x235
+    359:1136 GROUP 'Clip path group' 976,925 125x125
+      359:1137 GROUP 'clippath-1' 976,925 125x125
+        359:1138 VECTOR 'Vector' 976,925 125x125 fill=['#000000']
+      359:1139 GROUP 'Group' 873,783 340x341
+        359:1140 GROUP 'Group' 873,783 340x341
+          359:1141 GROUP 'Group' 950,822 250x250
+            359:1142 VECTOR 'Vector' 962,905 220x89 fill=['GRADIENT_LINEAR']
+            359:1143 VECTOR 'Vector' 1011,872 123x63 fill=['GRADIENT_LINEAR']
+            359:1144 VECTOR 'Vector' 1002,935 133x66 fill=['GRADIENT_LINEAR']
+            359:1145 VECTOR 'Vector' 1060,920 101x57 fill=['GRADIENT_LINEAR']
+            359:1146 VECTOR 'Vector' 987,882 101x57 fill=['#C5B42F']
+          359:1147 GROUP 'Group' 873,818 304x305
+            359:1148 VECTOR 'Vector' 930,919 157x72 fill=['GRADIENT_LINEAR']
+            359:1149 VECTOR 'Vector' 1007,965 157x72 fill=['GRADIENT_LINEAR']
+            359:1150 VECTOR 'Vector' 898,891 123x63 fill=['GRADIENT_LINEAR']
+            359:1151 VECTOR 'Vector' 949,959 133x66 fill=['GRADIENT_LINEAR']
+            359:1152 VECTOR 'Vector' 965,985 133x66 fill=['GRADIENT_LINEAR']
+    359:1153 GROUP 'Clip path group' 928,874 61x61
+      359:1154 GROUP 'clippath-1' 928,874 61x61
+        359:1155 VECTOR 'Vector' 928,874 61x61 fill=['#000000']
+      359:1156 GROUP 'Group' 878,805 165x165
+        359:1157 GROUP 'Group' 878,805 165x165
+          359:1158 GROUP 'Group' 916,824 122x122
+            359:1159 VECTOR 'Vector' 921,864 107x43 fill=['GRADIENT_LINEAR']
+            359:1160 VECTOR 'Vector' 945,848 60x31 fill=['GRADIENT_LINEAR']
+            359:1161 VECTOR 'Vector' 941,879 65x32 fill=['GRADIENT_LINEAR']
+            359:1162 VECTOR 'Vector' 969,872 49x28 fill=['GRADIENT_LINEAR']
+            359:1163 VECTOR 'Vector' 934,853 49x28 fill=['#C5B42F']
+          359:1164 GROUP 'Group' 878,822 148x148
+            359:1165 VECTOR 'Vector' 906,871 76x35 fill=['GRADIENT_LINEAR']
+            359:1166 VECTOR 'Vector' 943,894 76x35 fill=['GRADIENT_LINEAR']
+            359:1167 VECTOR 'Vector' 891,857 60x31 fill=['GRADIENT_LINEAR']
+            359:1168 VECTOR 'Vector' 915,890 65x32 fill=['GRADIENT_LINEAR']
+            359:1169 VECTOR 'Vector' 923,903 65x32 fill=['GRADIENT_LINEAR']
+    359:1170 GROUP 'Clip path group' 941,997 61x61
+      359:1171 GROUP 'clippath-1' 941,997 61x61
+        359:1172 VECTOR 'Vector' 941,997 61x61 fill=['#000000']
+      359:1173 GROUP 'Group' 890,928 165x165
+        359:1174 GROUP 'Group' 890,928 165x165
+          359:1175 GROUP 'Group' 928,947 122x122
+            359:1176 VECTOR 'Vector' 934,988 107x43 fill=['GRADIENT_LINEAR']
+            359:1177 VECTOR 'Vector' 958,972 60x31 fill=['GRADIENT_LINEAR']
+            359:1178 VECTOR 'Vector' 953,1002 65x32 fill=['GRADIENT_LINEAR']
+            359:1179 VECTOR 'Vector' 982,995 49x28 fill=['GRADIENT_LINEAR']
+            359:1180 VECTOR 'Vector' 946,977 49x28 fill=['#C5B42F']
+          359:1181 GROUP 'Group' 890,946 148x148
+            359:1182 VECTOR 'Vector' 918,994 76x35 fill=['GRADIENT_LINEAR']
+            359:1183 VECTOR 'Vector' 956,1017 76x35 fill=['GRADIENT_LINEAR']
+            359:1184 VECTOR 'Vector' 903,981 60x31 fill=['GRADIENT_LINEAR']
+            359:1185 VECTOR 'Vector' 927,1014 65x32 fill=['GRADIENT_LINEAR']
+            359:1186 VECTOR 'Vector' 936,1027 65x32 fill=['GRADIENT_LINEAR']
+    359:1187 GROUP 'Clip path group' 748,823 222x223
+      359:1188 GROUP 'clippath-1' 748,823 222x223
+        359:1189 VECTOR 'Vector' 748,823 222x223 fill=['#000000']
+      359:1190 GROUP 'Group' 564,570 606x606
+        359:1191 GROUP 'Group' 564,570 606x606
+          359:1192 GROUP 'Group' 702,640 445x446
+            359:1193 VECTOR 'Vector' 724,789 392x158 fill=['GRADIENT_LINEAR']
+            359:1194 VECTOR 'Vector' 811,729 220x113 fill=['GRADIENT_LINEAR']
+            359:1195 VECTOR 'Vector' 794,841 238x118 fill=['GRADIENT_LINEAR']
+            359:1196 VECTOR 'Vector' 898,815 180x102 fill=['GRADIENT_LINEAR']
+            359:1197 VECTOR 'Vector' 768,748 180x102 fill=['#C5B42F']
+          359:1198 GROUP 'Group' 564,634 541x542
+            359:1199 VECTOR 'Vector' 666,812 279x129 fill=['GRADIENT_LINEAR']
+            359:1200 VECTOR 'Vector' 804,895 279x129 fill=['GRADIENT_LINEAR']
+            359:1201 VECTOR 'Vector' 610,762 220x113 fill=['GRADIENT_LINEAR']
+            359:1202 VECTOR 'Vector' 699,884 238x118 fill=['GRADIENT_LINEAR']
+            359:1203 VECTOR 'Vector' 729,931 238x118 fill=['GRADIENT_LINEAR']
+  358:1060 GROUP 'Clip path group' 803,116 334x290
+    358:1061 GROUP 'clippath' 803,116 334x290
+      358:1062 VECTOR 'Vector' 803,116 334x290 fill=['#000000']
+    358:1063 GROUP 'Group' 669,20 623x498
+      358:1064 GROUP 'Group' 669,20 623x498
+        358:1065 GROUP 'Group' 669,164 491x354
+          358:1066 VECTOR 'Vector' 669,164 491x334 fill=['GRADIENT_LINEAR']
+          358:1067 VECTOR 'Vector' 849,304 285x214 fill=['GRADIENT_LINEAR']
+          358:1068 VECTOR 'Vector' 716,217 307x226 fill=['GRADIENT_LINEAR']
+          358:1069 VECTOR 'Vector' 718,329 238x186 fill=['GRADIENT_LINEAR']
+          358:1070 VECTOR 'Vector' 866,261 238x186 fill=['#C5B42F']
+        358:1071 GROUP 'Group' 754,20 538x297
+          358:1072 VECTOR 'Vector' 781,63 358x254 fill=['GRADIENT_LINEAR']
+          358:1073 VECTOR 'Vector' 1007,81 285x214 fill=['GRADIENT_LINEAR']
+          358:1074 VECTOR 'Vector' 754,20 307x226 fill=['GRADIENT_LINEAR']
+          358:1075 VECTOR 'Vector' 922,45 307x226 fill=['GRADIENT_LINEAR']
+  359:1206 LINE 'Line 270' 898,386 357x0 stroke=['#FFFFFF']/1.0
+  377:1772 LINE 'Line 288' -15,265 105x0 stroke=['#FFFFFF']/1.0
+  359:1207 LINE 'Line 271' 777,131 295x130 stroke=['#FFFFFF']/1.0
+  377:1797 LINE 'Line 290' -104,1380 295x130 stroke=['#FFFFFF']/1.0
+  359:1254 LINE 'Line 274' 876,-102 0x333 stroke=['#FFFFFF']/1.0
+  366:1369 VECTOR 'Line 280' 141,2290 9x9 fill=['#000000'] stroke=['#2483C5']/1.9493588209152222
+  376:1757 VECTOR 'Line 287' 141,4257 9x9 stroke=['#2483C5']/1.9493588209152222
+  360:1264 VECTOR 'Line 277' 141,1312 9x9 stroke=['#FFFFFF']/1.9493588209152222
+  369:1638 VECTOR 'Line 285' 141,5176 9x9 fill=['#000000'] stroke=['#2483C5']/1.9493588209152222
+  372:1737 VECTOR 'Line 286' 141,6154 9x9 fill=['#000000'] stroke=['#2483C5']/1.9493588209152222
+  359:1255 LINE 'Line 275' 1155,193 0x408 stroke=['#FFFFFF']/1.0
+  359:1256 LINE 'Line 276' 561,498 558x0 stroke=['#FFFFFF']/1.0
+  359:1225 LINE 'Line 273' 120,102 548x0 stroke=['#FFFFFF']/1.0
+  367:1628 VECTOR 'Line 283' 633,3238 9x9 fill=['#000000'] stroke=['#2483C5']/1.9493588209152222
+  377:1798 LINE 'Line 291' 756,1288 455x0 stroke=['#FFFFFF']/1.0
+  377:1802 LINE 'Line 293' -74,4739 210x0 stroke=['#FFFFFF']/1.0
+  377:1799 LINE 'Line 292' -453,1842 548x0 stroke=['#FFFFFF']/1.0
+  367:1624 VECTOR 'Line 282' 633,2941 9x9 fill=['#000000'] stroke=['#2483C5']/1.9493588209152222
+  366:1386 VECTOR 'Line 281' 255,2734 9x9 fill=['#000000'] stroke=['#2483C5']/1.9493588209152222
+  367:1634 VECTOR 'Line 284' 633,3525 9x9 fill=['#000000'] stroke=['#2483C5']/1.9493588209152222
+  359:1224 LINE 'Line 272' 767,177 323x252 stroke=['#FFFFFF']/1.0
+  360:1268 VECTOR 'Line 278' 141,847 9x9 fill=['#000000'] stroke=['#2483C5']/1.9493588209152222
+  365:1297 FRAME 'Layer_1' 990,1514 72x67
+    365:1298 GROUP 'uClysr' 991,1515 70x65
+      365:1299 GROUP 'Group' 991,1515 70x65
+        365:1300 VECTOR 'Vector' 991,1538 70x42 fill=['#FFFFFF'] stroke=['#FFFFFF']/3.485059976577759
+        365:1301 VECTOR 'Vector' 1011,1515 22x22 fill=['#FFFFFF'] stroke=['#FFFFFF']/3.485059976577759
+        365:1302 VECTOR 'Vector' 1036,1557 17x13 fill=['#FFFFFF'] stroke=['#FFFFFF']/3.485059976577759
+    365:1303 VECTOR 'Vector' 1009,1551 20x18 stroke=['#FFFFFF']/7.744577407836914
+  365:1337 FRAME 'Layer_1' 168,1527 88x41
+    365:1338 GROUP 'Group' 191,1542 44x12
+      365:1339 VECTOR 'Vector' 191,1542 11x12 fill=['#FFFFFF']
+      365:1340 VECTOR 'Vector' 201,1542 11x12 fill=['#FFFFFF']
+      365:1341 VECTOR 'Vector' 213,1542 11x12 fill=['#FFFFFF']
+      365:1342 VECTOR 'Vector' 224,1542 11x12 fill=['#FFFFFF']
+    365:1343 VECTOR 'Vector' 168,1527 88x41 fill=['#FFFFFF']
+  365:1345 FRAME 'Layer_1' 446,1515 64x63
+    365:1346 VECTOR 'Vector' 466,1530 20x29 fill=['#FFFFFF']
+    365:1347 VECTOR 'Vector' 446,1515 64x63 fill=['#FFFFFF']
+  365:1352 LINE 'Line 279' 116,1709 1044x0 stroke=['#FFFFFF']/1.0
+  376:1748 GROUP 'Group 1000005907' 756,2299 317x214
+    366:1542 GROUP 'Clip path group' 933,2373 140x140
+      366:1543 GROUP 'clippath-1' 933,2373 140x140
+        366:1544 VECTOR 'Vector' 933,2373 140x140 fill=['#000000']
+      366:1545 GROUP 'Group' 817,2214 381x382
+        366:1546 GROUP 'Group' 817,2214 381x382
+          366:1547 GROUP 'Group' 904,2258 280x281
+            366:1548 VECTOR 'Vector' 918,2351 246x100 fill=['GRADIENT_LINEAR']
+            366:1549 VECTOR 'Vector' 973,2314 138x71 fill=['GRADIENT_LINEAR']
+            366:1550 VECTOR 'Vector' 962,2385 150x74 fill=['GRADIENT_LINEAR']
+            366:1551 VECTOR 'Vector' 1027,2368 113x64 fill=['GRADIENT_LINEAR']
+            366:1552 VECTOR 'Vector' 945,2326 113x64 fill=['#C5B42F']
+          366:1553 GROUP 'Group' 817,2254 340x341
+            366:1554 VECTOR 'Vector' 881,2366 176x81 fill=['GRADIENT_LINEAR']
+            366:1555 VECTOR 'Vector' 968,2418 176x81 fill=['GRADIENT_LINEAR']
+            366:1556 VECTOR 'Vector' 846,2335 138x71 fill=['GRADIENT_LINEAR']
+            366:1557 VECTOR 'Vector' 902,2411 150x74 fill=['GRADIENT_LINEAR']
+            366:1558 VECTOR 'Vector' 921,2441 150x74 fill=['GRADIENT_LINEAR']
+    366:1559 GROUP 'Clip path group' 756,2299 140x140
+      366:1560 GROUP 'clippath-1' 756,2299 140x140
+        366:1561 VECTOR 'Vector' 756,2299 140x140 fill=['#000000']
+      366:1562 GROUP 'Group' 630,2217 381x381
+        366:1563 GROUP 'Group' 630,2217 381x381
+          366:1564 GROUP 'Group' 644,2274 280x280
+            366:1565 VECTOR 'Vector' 665,2361 247x99 fill=['GRADIENT_LINEAR']
+            366:1566 VECTOR 'Vector' 718,2428 138x71 fill=['GRADIENT_LINEAR']
+            366:1567 VECTOR 'Vector' 717,2354 150x73 fill=['GRADIENT_LINEAR']
+            366:1568 VECTOR 'Vector' 688,2380 113x64 fill=['GRADIENT_LINEAR']
+            366:1569 VECTOR 'Vector' 770,2422 113x64 fill=['#C5B42F']
+          366:1570 GROUP 'Group' 671,2217 341x341
+            366:1571 VECTOR 'Vector' 772,2365 176x80 fill=['GRADIENT_LINEAR']
+            366:1572 VECTOR 'Vector' 684,2313 176x80 fill=['GRADIENT_LINEAR']
+            366:1573 VECTOR 'Vector' 844,2406 138x71 fill=['GRADIENT_LINEAR']
+            366:1574 VECTOR 'Vector' 777,2327 150x73 fill=['GRADIENT_LINEAR']
+            366:1575 VECTOR 'Vector' 758,2297 150x73 fill=['GRADIENT_LINEAR']
+    366:1576 GROUP 'Clip path group' 899,2320 96x78
+      366:1577 GROUP 'clippath-1' 899,2320 96x78
+        366:1578 VECTOR 'Vector' 899,2320 96x78 fill=['#000000']
+      366:1579 GROUP 'Group' 800,2236 248x227
+        366:1580 GROUP 'Group' 800,2236 248x227
+          366:1581 GROUP 'Group' 835,2243 182x167
+            366:1582 VECTOR 'Vector' 877,2254 100x149 fill=['GRADIENT_LINEAR']
+            366:1583 VECTOR 'Vector' 863,2276 64x87 fill=['GRADIENT_LINEAR']
+            366:1584 VECTOR 'Vector' 905,2288 68x93 fill=['GRADIENT_LINEAR']
+            366:1585 VECTOR 'Vector' 906,2266 56x72 fill=['GRADIENT_LINEAR']
+            366:1586 VECTOR 'Vector' 866,2310 56x72 fill=['#C5B42F']
+          366:1587 GROUP 'Group' 818,2269 229x195
+            366:1588 VECTOR 'Vector' 880,2320 77x108 fill=['GRADIENT_LINEAR']
+            366:1589 VECTOR 'Vector' 927,2275 77x108 fill=['GRADIENT_LINEAR']
+            366:1590 VECTOR 'Vector' 855,2359 64x87 fill=['GRADIENT_LINEAR']
+            366:1591 VECTOR 'Vector' 912,2330 68x93 fill=['GRADIENT_LINEAR']
+            366:1592 VECTOR 'Vector' 934,2323 68x93 fill=['GRADIENT_LINEAR']
+    366:1593 GROUP 'Clip path group' 830,2414 96x79
+      366:1594 GROUP 'clippath-1' 830,2414 96x79
+        366:1595 VECTOR 'Vector' 830,2414 96x79 fill=['#000000']
+      366:1596 GROUP 'Group' 777,2349 248x228
+        366:1597 GROUP 'Group' 777,2349 248x228
+          366:1598 GROUP 'Group' 808,2403 182x167
+            366:1599 VECTOR 'Vector' 848,2409 99x150 fill=['GRADIENT_LINEAR']
+            366:1600 VECTOR 'Vector' 898,2449 64x87 fill=['GRADIENT_LINEAR']
+            366:1601 VECTOR 'Vector' 852,2431 68x93 fill=['GRADIENT_LINEAR']
+            366:1602 VECTOR 'Vector' 864,2475 56x72 fill=['GRADIENT_LINEAR']
+            366:1603 VECTOR 'Vector' 903,2430 56x72 fill=['#C5B42F']
+          366:1604 GROUP 'Group' 777,2349 229x196
+            366:1605 VECTOR 'Vector' 868,2384 76x109 fill=['GRADIENT_LINEAR']
+            366:1606 VECTOR 'Vector' 821,2429 76x109 fill=['GRADIENT_LINEAR']
+            366:1607 VECTOR 'Vector' 906,2367 64x87 fill=['GRADIENT_LINEAR']
+            366:1608 VECTOR 'Vector' 845,2389 68x93 fill=['GRADIENT_LINEAR']
+            366:1609 VECTOR 'Vector' 823,2396 68x93 fill=['GRADIENT_LINEAR']
+  370:1640 GROUP 'Clip path group' 758,5139 194x195
+    370:1641 GROUP 'clippath-1' 758,5139 194x195
+      370:1642 VECTOR 'Vector' 758,5139 194x195 fill=['#000000']
+    370:1643 GROUP 'Group' 583,5025 530x531
+      370:1644 GROUP 'Group' 583,5025 530x531
+        370:1645 GROUP 'Group' 603,5104 390x390
+          370:1646 VECTOR 'Vector' 631,5225 343x139 fill=['GRADIENT_LINEAR']
+          370:1647 VECTOR 'Vector' 704,5318 192x99 fill=['GRADIENT_LINEAR']
+          370:1648 VECTOR 'Vector' 704,5215 208x103 fill=['GRADIENT_LINEAR']
+          370:1649 VECTOR 'Vector' 663,5251 157x90 fill=['GRADIENT_LINEAR']
+          370:1650 VECTOR 'Vector' 777,5310 157x90 fill=['#C5B42F']
+        370:1651 GROUP 'Group' 640,5025 474x475
+          370:1652 VECTOR 'Vector' 780,5231 245x113 fill=['GRADIENT_LINEAR']
+          370:1653 VECTOR 'Vector' 659,5158 245x113 fill=['GRADIENT_LINEAR']
+          370:1654 VECTOR 'Vector' 881,5288 192x99 fill=['GRADIENT_LINEAR']
+          370:1655 VECTOR 'Vector' 787,5177 208x103 fill=['GRADIENT_LINEAR']
+          370:1656 VECTOR 'Vector' 760,5136 208x103 fill=['GRADIENT_LINEAR']
+  370:1657 GROUP 'Clip path group' 938,5178 126x126
+    370:1658 GROUP 'clippath-1' 938,5178 126x126
+      370:1659 VECTOR 'Vector' 938,5178 126x126 fill=['#000000']
+    370:1660 GROUP 'Group' 834,5035 342x342
+      370:1661 GROUP 'Group' 834,5035 342x342
+        370:1662 GROUP 'Group' 912,5075 252x252
+          370:1663 VECTOR 'Vector' 924,5159 221x89 fill=['GRADIENT_LINEAR']
+          370:1664 VECTOR 'Vector' 974,5125 124x63 fill=['GRADIENT_LINEAR']
+          370:1665 VECTOR 'Vector' 964,5189 134x66 fill=['GRADIENT_LINEAR']
+          370:1666 VECTOR 'Vector' 1023,5173 102x57 fill=['GRADIENT_LINEAR']
+          370:1667 VECTOR 'Vector' 949,5136 102x57 fill=['#C5B42F']
+        370:1668 GROUP 'Group' 834,5072 306x306
+          370:1669 VECTOR 'Vector' 891,5173 158x72 fill=['GRADIENT_LINEAR']
+          370:1670 VECTOR 'Vector' 970,5219 158x72 fill=['GRADIENT_LINEAR']
+          370:1671 VECTOR 'Vector' 860,5145 124x63 fill=['GRADIENT_LINEAR']
+          370:1672 VECTOR 'Vector' 911,5213 134x66 fill=['GRADIENT_LINEAR']
+          370:1673 VECTOR 'Vector' 928,5240 134x66 fill=['GRADIENT_LINEAR']
+  371:1678 FRAME 'Layer_1' 202,5346 110x110
+    371:1679 VECTOR 'Vector' 235,5382 45x35 fill=['#2483C5']
+    371:1680 VECTOR 'Vector' 202,5346 83x78 fill=['#2483C5']
+    371:1681 VECTOR 'Vector' 223,5377 89x79 fill=['#2483C5']
+  372:1694 FRAME 'Layer_1' 554,5346 110x110
+    372:1696 VECTOR 'Vector' 554,5346 83x78 fill=['#2483C5']
+    372:1697 VECTOR 'Vector' 575,5377 89x79 fill=['#2483C5']
+    372:1698 FRAME 'Layer_1' 580,5372 57x57
+      372:1699 GROUP 'C9tDPG' 580,5372 57x57
+        372:1700 GROUP 'Group' 580,5372 57x57
+          372:1701 VECTOR 'Vector' 580,5372 57x57 fill=['#2483C5'] stroke=['#2483C5']/1.0
+          372:1702 VECTOR 'Vector' 580,5372 28x25 fill=['#2483C5'] stroke=['#2483C5']/1.0
+          372:1703 VECTOR 'Vector' 612,5401 24x28 fill=['#2483C5'] stroke=['#2483C5']/1.0
+          372:1704 VECTOR 'Vector' 592,5403 13x13 fill=['#2483C5'] stroke=['#2483C5']/1.0
+          372:1705 VECTOR 'Vector' 587,5418 3x3 fill=['#2483C5'] stroke=['#2483C5']/1.0
+  372:1715 FRAME 'Layer_1' 910,5346 110x110
+    372:1716 VECTOR 'Vector' 910,5346 83x78 fill=['#2483C5']
+    372:1717 VECTOR 'Vector' 931,5377 89x79 fill=['#2483C5']
+  371:1683 VECTOR 'Arrow 10' 355,5506 160x0 stroke=['#000000']/2.0
+  371:1684 VECTOR 'Arrow 11' 706,5506 161x0 stroke=['#000000']/2.0
+  372:1726 FRAME 'Layer_1' 934,5370 63x60
+    372:1727 GROUP 'ObIOgc' 934,5370 63x60
+      372:1728 GROUP 'Group' 934,5370 63x60
+        372:1729 VECTOR 'Vector' 956,5391 41x38 fill=['#2483C5'] stroke=['#2483C5']/1.0
+        372:1730 VECTOR 'Vector' 934,5390 31x40 fill=['#2483C5'] stroke=['#2483C5']/1.0
+        372:1731 VECTOR 'Vector' 956,5370 19x20 fill=['#2483C5'] stroke=['#2483C5']/1.0
+        372:1732 VECTOR 'Vector' 961,5377 9x6 fill=['#2483C5'] stroke=['#2483C5']/1.0
+  376:1749 ELLIPSE 'Ellipse 271' 191,6292 176x176 fill=['#FFFFFF']
+  376:1750 ELLIPSE 'Ellipse 272' 554,6292 176x176 fill=['#FFFFFF']
+  376:1751 ELLIPSE 'Ellipse 273' 904,6292 176x176 fill=['#FFFFFF']
+  377:1776 FRAME 'Button' 172,4612 185x35
+    377:1777 VECTOR 'Vector' 172,4613 125x33 stroke=['#FFFFFF']/1.0
+    377:1778 TEXT 'More' 199,4621 36x19 fill=['#FFFFFF'] [Avenir 900 14.0/19 ls=0.0  LEFT] "More"
+    377:1779 VECTOR 'Arrow 1' 249,4630 15x0 stroke=['#FFFFFF']/1.5811388492584229
+  377:1785 FRAME 'Button' 976,4612 185x35
+    377:1786 VECTOR 'Vector' 976,4613 125x33 stroke=['#FFFFFF']/1.0
+    377:1787 TEXT 'More' 1003,4621 36x19 fill=['#FFFFFF'] [Avenir 900 14.0/19 ls=0.0  LEFT] "More"
+    377:1788 VECTOR 'Arrow 1' 1053,4630 15x0 stroke=['#FFFFFF']/1.5811388492584229
+  377:1781 FRAME 'Button' 580,4612 185x35
+    377:1782 VECTOR 'Vector' 580,4613 125x33 stroke=['#FFFFFF']/1.0
+    377:1783 TEXT 'Ask us' 607,4621 44x19 fill=['#FFFFFF'] [Avenir 900 14.0/19 ls=0.0  LEFT] "Ask us"
+    377:1784 VECTOR 'Arrow 1' 667,4630 15x0 stroke=['#FFFFFF']/1.5811388492584229
+  377:1789 FRAME 'Button' 976,4875 185x35
+    377:1790 VECTOR 'Vector' 976,4876 125x33 stroke=['#FFFFFF']/1.0
+    377:1791 TEXT 'More' 1003,4884 36x19 fill=['#FFFFFF'] [Avenir 900 14.0/19 ls=0.0  LEFT] "More"
+    377:1792 VECTOR 'Arrow 1' 1053,4894 15x0 stroke=['#FFFFFF']/1.5811388492584229
+  377:1793 FRAME 'Button' 580,4875 185x35
+    377:1794 VECTOR 'Vector' 580,4876 125x33 stroke=['#FFFFFF']/1.0
+    377:1795 TEXT 'Ask us' 607,4884 44x19 fill=['#FFFFFF'] [Avenir 900 14.0/19 ls=0.0  LEFT] "Ask us"
+    377:1796 VECTOR 'Arrow 1' 667,4894 15x0 stroke=['#FFFFFF']/1.5811388492584229
+  377:1804 LINE 'Line 294' 1100,1930 295x130 stroke=['#FFFFFF']/1.0
+  384:1811 RECTANGLE 'Screenshot 2026-11-12 at 1.47.06 PM 1' 86,6781 1107x926 fill=['IMAGE']
+  388:1867 TEXT 'Salesforce integration for 20,000 users' 448,5796 212x114 fill=['#2483C5'] [Helvetica 300 32.0/38 ls=0.0  LEFT] "Salesforce integration for 20,000 users"
+  388:1868 TEXT 'Accessibility under IBM.com standards' 157,5796 246x114 fill=['#2483C5'] [Helvetica 300 32.0/38 ls=0.0  LEFT] "Accessibility under IBM.com standards"
+  388:1871 TEXT '5 years in HIPAA-regulated healthcare' 954,5796 211x152 fill=['#2483C5'] [Helvetica 300 32.0/38 ls=0.0  LEFT] "5 years in HIPAA-regulated healthcare"
+  388:1870 TEXT 'Systems running since 2010' 717,5796 171x114 fill=['#2483C5'] [Helvetica 300 32.0/38 ls=0.0  LEFT] "Systems running since 2010"
+  390:1883 RECTANGLE 'Rectangle 3551' 47,6719 1185x225 fill=['#EBEBEB']
+  391:1885 TEXT 'Send us what you built' 136,6816 496x50 fill=['#000000'] [Helvetica 700 48.0/50 ls=0.0  LEFT] "Send us what you built"
+  391:1886 TEXT 'CONNECT' 168,6757 80x59 fill=['#000000'] [Helvetica 700 16.0/59 ls=0.0  LEFT] "CONNECT"
+  391:1887 VECTOR 'Line 297' 141,6781 9x9 fill=['#000000'] stroke=['#2483C5']/1.9493588209152222

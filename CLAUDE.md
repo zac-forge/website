@@ -10,7 +10,7 @@ A senior technology studio. Successor practice to Mahalo Media Group, which foun
 
 ## This site is a working copy
 
-**Misha is redesigning the brand and the site. Branch v4 implemented his board as it stood on 2026-09-23, and branch v5 pulls the layout toward his comp 7 (`MacBook Air - 7`, node `198:427`, read 2026-11-04, its colour bands taken as provisional tokens).** What is deployed at zacforge.com is still the v3 working copy until v5 merges. Treat all of it that way:
+**Misha is redesigning the brand and the site. Branch v4 implemented his board as it stood on 2026-09-23, branch v5 pulled the layout toward his comp 7 (`MacBook Air - 7`, node `198:427`), and branch v6-mb11 (2026-11-12) builds the home page from his `MacBook Air - 11` (node `357:763`), cached in `design/mb11/`. MB11 is now the design authority for the home page and for the shared primitives (bands, type, buttons, eyebrows); comp 7 and board `6:2` only where MB11 is silent.** zacforge.com serves v5 until v6 is approved and merged. Treat all of it as a working copy:
 
 - The v4 build follows Misha's Figma board (`MacBook Air - 1`, node `6:2`) read in full through the Figma REST API. The board is a **draft**: lorem ipsum throughout, no mobile version, case study imagery undecided. Expect his values to move, and expect them to arrive as token edits, not rebuilds.
 - **Do not introduce a visual direction of your own.** Where the board does not cover a case, extend its nearest scale and record the extension in `design/DESIGN-SYSTEM-NOTES.md`. Where it conflicts with the copy deck or the guardrails, the copy and the guardrails win and the conflict goes in the questions for Misha.
@@ -56,7 +56,7 @@ These are not stylistic preferences. They are binding.
 | **No exclamation points** | None. Anywhere. |
 | **No emoji** | |
 | **Oxford comma** | Yes. |
-| **Headings** | Sentence case, 10 words or fewer (Drew, 2026-11-06). Eyebrows are ALL CAPS, numbered, in the nav's 14px black weight (the board has no mono face). |
+| **Headings** | Sentence case, 10 words or fewer (Drew, 2026-11-06). Eyebrows follow MB11: the arrow, then the label in capitals (written in sentence case in the markup, capitalised by CSS), Helvetica bold 16px, unnumbered. |
 | **Numbers** | Numerals for anything measurable. "41 states," "20 years." |
 
 **Banned vocabulary:** solutions · synergy · cutting-edge · best-in-class · world-class · seamless · robust · empower · unlock · elevate · passionate about · leverage (as a verb) · AI-native · AI-first · AI-powered · ship fast · 10x · force multiplier
@@ -90,11 +90,13 @@ month), and every token cites the node it came from. The board has no
 variables and no styles, so values are literals. `design/DESIGN-SYSTEM-NOTES.md`
 records the reading, every deviation, and the questions for Misha.
 
-The board in one line: `#EBEBEB` ground, white 12px cards, black Avenir
-(900 headings, 400 body), purple `#9D4DFF` accent with blue and red on the
-second and third cards, a yellow-orange-blue Z illustration set, no borders,
-no shadows, no effects. Avenir ships with Apple devices only, so Figtree is
-self-hosted as the open fallback until licensing is settled.
+MB11 in one line: `#EBEBEB` ground, blue bands (`#227CBA`, the comp's
+`#2483C5` darkened for AA) and grey bands (`#D6D6D6`), each with one angular
+cut and one curved corner, Helvetica headings mixing light and bold runs,
+Avenir and Helvetica Light 14px body, purple `#56246F` pill buttons, yellow
+fix titles, white dotted line art, and the gradient Z set. Avenir and
+Helvetica ship with Apple devices only, so Figtree (300, 400, 900) is
+self-hosted for Avenir and Helvetica falls back to Arial.
 
 ### Tokens only
 
@@ -129,21 +131,24 @@ Build pages from these. Do not create a second button, card, or eyebrow.
 |---|---|
 | Page column | `.container`, width from `--content-width` and `--gutter` |
 | Section frame and rhythm | `.section`, override `--pad-top` and `--pad-bottom` per section |
-| Section label | `.eyebrow`, ALL CAPS, numbered (`01 / Track record`) |
-| Section heading with illustration | `.section-head` with a `.section-art--*` block, art from `public/art/` |
-| Headings | `.h1` and `.h2` (62px display), `.h3` (48px title), `.h2--split` with `.h2-secondary` for a two-tone line |
+| Section label | `.eyebrow`: the arrow (a mask, `--eyebrow-arrow`) and the label, capitalised by CSS |
+| Copy beside an illustration | `.art-split` with `.art-split-art`, art from `public/art/mb11/` |
+| Headings | `.h1` (64px hero), `.h2` (48px), `.h3`; bold by default, `.h-light` for the light run, `.h-aside` light italic, `.h-alert` the red word |
+| Body copy at the comp's size | `.copy` (Avenir Light 14px, 16px on phones), `.case-text` (Helvetica Light 14px) |
 | Intro under a heading | `.section-intro` |
 | Primary action | `.btn.btn-primary`, the pill, with the trailing arrow span, wrapped in `<Magnetic>` in the body |
 | Secondary action | `.btn.btn-secondary`, the outlined pill |
 | Inline text action | `.text-link` |
 | Card surface | `.surface`, white, 12px radius, no border |
 | Undecided imagery | `.placeholder`, the board's grey |
-| Colour band (comp 7) | `.band` with `.band--navy`, `.band--maroon`, or `.band--sky`; sweep corners from `--radius-sweep` and `--radius-sweep-lg`, set per section in `layout.css` |
-| Step row with arrows | `FlowRow` (`src/components/FlowRow.tsx`), circles, arrows that draw once, title and line under each |
+| Colour band (MB11) | `.band` with `.band--blue` or `.band--grey`; the cut and curve come from the `band.*` tokens (`--band-clip-*`, `--band-curve-*`), set per section in `layout.css` and scaled by `--band-k` |
+| Dotted line art on a band | `<img class="band-lines">` from `public/art/mb11/lines-*.svg`, laid on the 1280 frame, hidden below 900px |
+| Step row with arrows | `FlowRow` (`src/components/FlowRow.tsx`), ring icon, title, arrows that draw once, paragraphs under each |
 | Heading left, intro right | `.split-head` with `.split-head-copy` |
 | Offer page cross-links | `.offer-related` block in `OfferPage.tsx`, above the closing CTA |
 | Header offers menu | `WhatWeDoMenu` in `Header.tsx`, plain link below 860px |
-| Case study | `.case.surface` card from `TrackRecord.tsx`, text first, `figure` set large, optional single `image` |
+| Case study | `.case.case-grid` from `TrackRecord.tsx`: name across, screenshot left (`public/work/<base>-360.webp` and `-720.webp`, placeholder without one), meta, body, and `figure` right |
+| Team photo | Drop `andrew-johnston`, `design-principal`, or `principal-engineer` (.webp, .jpg, .png) in `src/assets/team/` and rebuild; initials or a plain circle until then |
 | Contact form | `ContactForm` (`src/components/ContactForm.tsx`) inside `Closing`, fields `.field` / `.field-label` / `.field-input`, posts to `/api/contact` |
 | Screen-reader-only text | `.sr-only` |
 | Entrance reveal | `<Reveal>` with variants from `src/lib/motion.ts`, never ad hoc Motion props |
@@ -170,23 +175,23 @@ Every page is prerendered by `scripts/prerender.mjs` into `dist/<route>.html` wi
 
 | File | v5 status |
 |---|---|
-| `Header.tsx` | Navy on every page, nav What we do (menu), Track record, How we work, Who we are, CTA "Get a Reality Check" to `/#contact` |
+| `Header.tsx` | Blue on every page, nav What we do (menu), Case studies, Senior team, Connect, CTA "Let's talk" to `/#contact` |
 | `ContactFocus.tsx` | Every `#contact` link scrolls the Name field into view below the sticky header and focuses it, on click and on arrival with the hash |
-| `Hero.tsx` | Navy band, "Built it with AI? Find out if it actually works.", proof line carries Fortune 50 and 2010, outlined "Book a 20-minute call" pill to `BOOKING_URL` beside the primary CTA. `public/og-image.jpg` is rendered from it by `tools/og-card.html` |
+| `Hero.tsx` | Blue band with MB11's line art and Z, "Built it with AI? Find out if it actually works.", proof line carries Fortune 50 and 2010, outlined "Book a 20-minute call" pill to `BOOKING_URL` beside the primary CTA. `public/og-image.jpg` is rendered from it by `tools/og-card.html` (still the v5 look) |
 | `LogoBand.tsx` | "Where our team has worked", names as muted text, never labelled as clients |
-| `TrackRecord.tsx` | Split head, four stacked case study cards; Legal Access ships with only its filled sentence; hidden hawaii.surf card first behind `HAWAII_CARD` |
-| `Problem.tsx` | "01 / The problem", on the ground with the v4 Z set, reuses the parked What changed layout classes. `WhatChanged.tsx` is in `.superseded/` |
-| `FixWeek.tsx` | "03 / The Fix Week", heading, one paragraph, link to `/fix-week`, existing primitives only |
-| `RealityCheck.tsx` | The visual stop: maroon band, the 5 questions as white cards, CTA to `#contact`, link to `/reality-check` |
-| `WhatWeFix.tsx` | "05 / Bigger fixes", anchor `#what-we-do`, six one-line rows; Brand system plain text while `BRAND_SYSTEM` is off |
-| `HowWeWork.tsx` | Check, Fix, Partner `FlowRow`, three tiles |
-| `LogoBand.tsx` `ExperienceStrip` | The logo band again, label screen-reader only, four experience lines |
-| `WhoWeAre.tsx` | Sky band, three text-only white cards (role and bio), Andrew named; the other two names wait for consent; a photo, when given, is cropped to a 190px circle on its card |
-| `Closing.tsx`, `ContactForm.tsx` | The form, also rendered on `/reality-check` |
-| `pages/ContactResult.tsx` | The pages after the form at `/contact/thanks`, `/contact/not-sent`, `/contact/error`: navy band, Z, noindex, out of the sitemap. The handler fills `[data-slot]` elements and `#contact-data` so hydration matches. The thank-you page hides the header CTA |
+| `TrackRecord.tsx` | Grey band, four stacked cases with screenshots (the academies slot is a placeholder: the comp's image is usna.edu with the crest); Legal Access ships with only its filled sentence; hidden hawaii.surf card first behind `HAWAII_CARD` |
+| `Problem.tsx` | "Problem", on the ground with MB11's Z set, "wrong" in red and "without telling you." light italic |
+| `FixWeek.tsx` | "The Fix Week", heading, one paragraph, link to `/fix-week`, MB11's four-piece Z |
+| `RealityCheck.tsx` | Blue band: heading, four icon points, dotted rule, the 5 questions numbered 1 to 5, CTA to `#contact`, booking pill, link to `/reality-check` |
+| `WhatWeFix.tsx` | "Bigger fixes", anchor `#what-we-do`, heading on the ground, six fixes in a 3 x 2 grid on a blue band with outlined pills; Brand system has no pill while `BRAND_SYSTEM` is off |
+| `HowWeWork.tsx` | Check, Fix, Partner `FlowRow` with ring icons, each step carrying its principle lines |
+| `LogoBand.tsx` `ExperienceStrip` | The credibility strip: four lines in blue Helvetica Light, label screen-reader only |
+| `WhoWeAre.tsx` | "Team", heading "Principals", grey band, three 176px circles then name, role, bio; Andrew named; the other two names wait for consent |
+| `Closing.tsx`, `ContactForm.tsx` | "Connect", the form and the mark in its circle, also rendered on `/reality-check` |
+| `pages/ContactResult.tsx` | The pages after the form at `/contact/thanks`, `/contact/not-sent`, `/contact/error`: blue band, Z, noindex, out of the sitemap. The handler fills `[data-slot]` elements and `#contact-data` so hydration matches. The thank-you page hides the header CTA |
 | `Footer.tsx` | Links absolute so they work from offer pages |
 | `Brand.tsx` | Serves the board's wordmark SVG and the closing mark |
-| `pages/OfferPage.tsx` | Shared offer page template: navy band hero with eyebrow, H1, v5 subline, intro, then lists, steps, proof, FAQ, related offers, CTA, optional form. FAQ data also renders the FAQPage schema so the two cannot diverge |
+| `pages/OfferPage.tsx` | Shared offer page template: blue band hero with eyebrow, H1, v5 subline, intro, then lists, steps, proof, FAQ, related offers, CTA, optional form. FAQ data also renders the FAQPage schema so the two cannot diverge |
 | `pages/offers/*.ts` | Copy for each offer page, straight from `docs/site-copy-v5.md` (v4 body copy where v5 says it stands) |
 | `lib/meta.ts`, `lib/schema.ts` | Per-route head and JSON-LD, consumed by the prerender |
 | `functions/worker.ts`, `functions/api/contact.ts` | The Worker: static assets, `POST /api/contact`, noindex on every non-production host |
@@ -228,6 +233,6 @@ Still open in v5. Slots with working text ship that text; slots without it are l
 - **zacforge.com check result** for the `/ai-visibility` proof block.
 - **LinkedIn URL** for the `sameAs` schema property.
 - **Misha's review** of Services row 04 and `/brand-system`, and how he is described there. That page also ships with the "Who does the work" paragraph omitted.
-- **Design questions for Misha**, 24 of them (10 new from comp 7), in `design/DESIGN-SYSTEM-NOTES.md`. The v4 stats row is not built until he answers.
+- **Design questions for Misha**, 38 of them (14 new from MB11), in `design/DESIGN-SYSTEM-NOTES.md`. The v4 stats row is not built until he answers.
 
 If new copy is ever missing, the rule still stands: ask rather than filling the gap.

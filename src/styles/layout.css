@@ -1,6 +1,8 @@
-/* Section composition, measured against board 6:2 (MacBook Air - 1) in
-   Misha's Figma file. design/DESIGN-SYSTEM-NOTES.md records the reading and
-   the deviations. Tokens only: every colour, size, and gap is a variable. */
+/* Section composition for the home page, measured against MacBook Air - 11
+   (node 357:763) in Misha's Figma file, cached in design/mb11/. The result
+   pages, footer, and offer pages below keep their v5 layouts and pick up the
+   MB11 tokens. design/DESIGN-SYSTEM-NOTES.md records the reading and every
+   deviation. Tokens only: every colour, size, and gap is a variable. */
 
 /* ---------------------------------------------------------------- Brand */
 .lockup {
@@ -14,17 +16,16 @@
 }
 
 /* ---------------------------------------------------------------- Header */
-/* Sits outside the content column: 48px inset on the board against the
-   160px page margin. On comp 7 it sits on the navy hero band, so it is navy
-   on every page and each page opens on a navy band, white text throughout. */
+/* MB11 357:786 to 359:1106: on the blue hero band, so blue on every page,
+   and each page opens on a blue band beneath it. */
 .site-header {
   position: sticky;
   top: 0;
   z-index: 40;
-  background: var(--color-band-navy);
+  background: var(--color-band-blue);
   color: var(--color-on-band);
 }
-/* The wordmark export is black lettering. On navy it is drawn white. */
+/* The wordmark export is black lettering. On blue it is drawn white. */
 .site-header .brand-wordmark img {
   filter: brightness(0) invert(1);
 }
@@ -43,8 +44,8 @@
 .site-nav {
   display: flex;
   align-items: center;
-  gap: var(--space-4);
-  margin-left: var(--space-1);
+  gap: var(--space-6);
+  margin-left: var(--space-2);
   flex: 1;
 }
 .site-nav a:not(.btn) {
@@ -98,12 +99,10 @@
   list-style: none;
   box-shadow: var(--shadow-lift);
   display: none;
+  color: var(--color-text);
 }
 .nav-menu[data-open="true"] .nav-menu-panel {
   display: block;
-}
-.nav-menu-panel {
-  color: var(--color-text);
 }
 .nav-menu-panel a {
   display: flex;
@@ -123,15 +122,10 @@
   color: var(--color-text-muted);
 }
 
-/* The header button is the same component at the board's 24px height, in
-   the light accent, as comp 7 draws it (198:430). */
+/* "Let's talk", the purple pill at the far right (359:1107, 135 x 33). */
 .nav-cta {
-  background: var(--color-accent);
   --btn-height: var(--button-height-nav);
   margin-left: auto;
-  padding: 0 var(--space-5);
-  gap: var(--space-3);
-  font-size: var(--text-small);
 }
 .nav-toggle {
   display: none;
@@ -182,9 +176,8 @@
     transform: translateY(0);
   }
   .nav-cta {
-    --btn-height: var(--button-height);
     margin: var(--space-2) 0 0;
-    font-size: var(--text-lead);
+    align-self: flex-start;
   }
   .nav-toggle {
     display: flex;
@@ -197,36 +190,88 @@
   }
 }
 
+/* ------------------------------------------------------- Band geometry */
+/* Each MB11 band has one angular cut (clip-path) and one curved corner
+   (border-radius), both from the band tokens, which scale with --band-k.
+   The dotted line art is one SVG per band, laid on the 1280 frame's
+   coordinates, centred, and dropped below 900px where it would only clutter. */
+.hero,
+.reality-check,
+.track-record,
+.fixes-band,
+.who-we-are {
+  position: relative;
+  overflow: hidden;
+}
+.band > .container,
+.fixes-band > div {
+  position: relative;
+  z-index: 1;
+}
+.band-lines {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 1280px;
+  max-width: none;
+  height: auto;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+@media (max-width: 760px) {
+  :root {
+    --band-k: var(--band-k-compact);
+  }
+}
+@media (max-width: 900px) {
+  .band-lines {
+    display: none;
+  }
+}
+
 /* ------------------------------------------------------------------ Hero */
-/* Comp 7: the navy band (198:428) under the header, copy left, the Z right,
-   and the sweep at the bottom left. */
+/* 357:764: the blue band under the header, cut at the bottom left. The
+   headline sits 144 from the frame top, 74 below the header. */
 .hero {
-  padding-top: var(--space-8);
+  padding-top: calc(var(--space-8) + var(--space-3));
   padding-bottom: var(--space-10);
-  border-bottom-left-radius: var(--radius-sweep);
+  clip-path: var(--band-clip-hero);
+}
+.band-lines--hero {
+  top: calc(var(--header-height) * -1);
 }
 .hero-grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr) var(--hero-art);
   gap: var(--space-9);
-  align-items: center;
+  align-items: start;
 }
-/* "Still running" carries the weight, as on the comp, in the two weights
-   the site has (the comp's 300 and 800 italic are not loaded). */
-.hero-title-light {
-  font-weight: var(--weight-regular);
+.hero-copy {
+  padding-left: var(--hero-indent);
+}
+.hero-title {
+  max-width: calc(var(--copy-width) + var(--space-9));
+}
+.hero-title-lead {
+  display: block;
 }
 .hero-body {
-  max-width: var(--copy-width);
-  margin-top: var(--space-6);
+  max-width: calc(var(--copy-width) - var(--space-8));
+  margin-top: var(--space-5);
 }
 .hero .cta-row {
-  margin-top: var(--space-6);
+  margin-top: calc(var(--space-6) + var(--space-2));
+  gap: var(--space-4);
 }
 .proof-line {
-  margin-top: var(--space-6);
-  max-width: var(--copy-width);
-  font-size: var(--text-small);
+  margin-top: var(--space-5);
+  /* Ends before x=561, where the dotted line 359:1256 starts. */
+  max-width: calc(var(--copy-width) - var(--space-9) - var(--space-2));
+}
+/* 358:1060 sits 28 above the headline's top. */
+.hero-visual {
+  margin-top: calc((var(--space-6) - var(--space-1)) * -1);
+  justify-self: end;
 }
 .hero-art {
   width: 100%;
@@ -234,30 +279,45 @@
 }
 
 @media (max-width: 900px) {
+  .hero {
+    padding-top: var(--space-8);
+  }
   .hero-grid {
     grid-template-columns: minmax(0, 1fr);
     gap: var(--space-7);
   }
+  .hero-copy {
+    padding-left: 0;
+  }
   .hero-visual {
-    max-width: calc(var(--hero-art) * 0.66);
+    order: -1;
+    margin-top: 0;
+    justify-self: start;
+    max-width: calc(var(--hero-art) * 0.5);
   }
 }
 
 /* ------------------------------------------------------------ Logo band */
-/* Comp 7 draws five grey circles (198:528). Text, muted, until each mark is
-   cleared. */
+/* 358:1079 is a flat image of this band. Built as text in its arrangement:
+   a small spaced label centred over five muted names. */
 .logo-band {
-  padding-block: var(--space-9) var(--space-4);
+  padding-block: var(--space-8) 0;
 }
 .logo-band-label {
+  margin: 0;
+  font-size: var(--text-small);
+  font-weight: var(--weight-black);
+  letter-spacing: 0.12em;
   text-align: center;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
 }
 .logo-band-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   gap: var(--space-4) var(--space-7);
-  margin: var(--space-5) 0 0;
+  margin: var(--space-6) 0 0;
   padding: 0;
   list-style: none;
   font-size: var(--text-subtitle);
@@ -271,279 +331,131 @@
   }
 }
 
-/* ------------------------------------------------- Section head with art */
-/* What changed and How we work carry an illustration to the right of the
-   heading, v4 board pieces until comp 7's own are exported. The pieces are exported as separate SVGs and
-   composed here at their board offsets. */
-.section-head {
+/* ------------------------------------------------- Copy beside an illustration */
+/* Problem, the Fix Week, and How we work: copy left, the section's Z set
+   right, top aligned, each drawn at its exported size. */
+.art-split {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: var(--space-8);
-  align-items: start;
-}
-.section-art {
-  position: relative;
-  flex: none;
-}
-.section-art img {
-  position: absolute;
-  height: auto;
-}
-.section-art--how {
-  width: 335px;
-  height: 240px;
-}
-.section-art--how img:first-child {
-  left: 0;
-  top: 0;
-  width: 318px;
-}
-.section-art--how img:last-child {
-  left: 109px;
-  top: 145px;
-  width: 205px;
-}
-.section-art--case {
-  width: 316px;
-  height: 240px;
-}
-.section-art--case .z-a {
-  left: 0;
-  top: 0;
-  width: 199px;
-}
-.section-art--case .z-b {
-  left: 195px;
-  top: 103px;
-  width: 102px;
-}
-.section-art--case .z-c {
-  left: 204px;
-  top: 54px;
-  width: 61px;
-}
-.section-art--case .z-d {
-  left: 120px;
-  top: 174px;
-  width: 61px;
-}
-
-@media (max-width: 900px) {
-  .section-head {
-    grid-template-columns: minmax(0, 1fr);
-  }
-  .section-art {
-    display: none;
-  }
-}
-
-/* Heading left, intro right: comp 7's track record head (211:1243, 211:1247). */
-.split-head {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: minmax(0, var(--copy-width)) minmax(0, 1fr);
   gap: var(--space-7) var(--space-9);
   align-items: start;
 }
-.split-head-copy {
-  display: grid;
-  gap: var(--space-4);
-  padding-top: var(--space-6);
+.art-split-art {
+  justify-self: center;
 }
-@media (max-width: 860px) {
-  .split-head {
-    grid-template-columns: minmax(0, 1fr);
-  }
-  .split-head-copy {
-    padding-top: 0;
-  }
-}
-
-/* ------------------------------------------------------ 01 / Track record */
-/* Four cards, stacked, full width, text first, the number set large. */
-.case-list {
-  display: grid;
-  gap: var(--space-3);
-  margin-top: var(--space-8);
-}
-.case {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 18rem);
-  gap: var(--space-6) var(--space-9);
-  align-items: start;
-  padding: var(--space-7) var(--space-6);
-}
-.case-client {
-  margin: 0;
-  font-size: var(--text-subtitle);
-  font-weight: var(--weight-black);
-  line-height: var(--leading-title);
-  color: var(--color-accent);
-}
-.case-meta {
-  margin-top: var(--space-2);
-  font-size: var(--text-small);
-  font-weight: var(--weight-black);
-  color: var(--color-text-muted);
-}
-.case-body {
-  margin-top: var(--space-5);
-  max-width: var(--prose-width);
-}
-.case-figure {
-  display: grid;
-  gap: var(--space-2);
-  align-self: center;
-}
-.case-figure-value {
-  font-size: var(--text-display);
-  font-weight: var(--weight-black);
-  line-height: var(--leading-title);
-  letter-spacing: -0.01em;
-}
-.case-figure-caption {
-  font-weight: var(--weight-black);
-}
-.case-image {
-  grid-column: 1 / -1;
-  width: 100%;
+.art-split-art img {
   height: auto;
-  border-radius: var(--radius-sm);
+}
+.section-intro.copy {
+  max-width: calc(var(--copy-width) - var(--space-8));
+  margin-top: var(--space-6);
 }
 
-@media (max-width: 760px) {
-  .case {
+@media (max-width: 900px) {
+  .art-split {
     grid-template-columns: minmax(0, 1fr);
-    padding: var(--space-6) var(--space-5);
+  }
+  .art-split-art {
+    justify-self: start;
+    max-width: 60%;
   }
 }
 
-/* ------------------------------------------------------ 02 / What changed */
-/* On the ground since the maroon band moved to the Reality Check. The
-   three-step row follows the copy. */
-.what-changed .section-intro {
-  max-width: var(--prose-width);
+/* --------------------------------------------------------------- Problem */
+.problem {
+  --pad-top: var(--space-10);
+  --pad-bottom: var(--space-9);
 }
-.flow-wrap {
-  padding-block: var(--space-4) var(--space-9);
+.problem-heading {
+  max-width: var(--copy-width);
+}
+.problem .art-split-art {
+  width: var(--problem-art);
 }
 
-/* Step row: circle, arrow to the next, title, one line (211:1257 to
-   211:1264). The arrow draws once, in order, as the THEN and NOW rows did. */
-.flow {
-  --flow-gap: var(--space-7);
+/* ------------------------------------------------------- Reality Check */
+/* 360:1260: curve top right, cut bottom left. */
+.reality-check {
+  --pad-top: calc(var(--space-9) + var(--space-4));
+  --pad-bottom: var(--space-9);
+  clip-path: var(--band-clip-rc);
+  border-top-right-radius: var(--band-curve-rc);
+}
+.rc-heading {
+  max-width: calc(var(--copy-width) + var(--space-6));
+}
+/* Four icon points, 365:1297 to 365:1345: the icon centred over a bulleted
+   line, the icons vertically centred in the tallest one's box. */
+.rc-points {
   display: grid;
-  grid-template-columns: repeat(var(--flow-count), minmax(0, 1fr));
-  gap: var(--space-7) var(--flow-gap);
-  margin: 0;
-  padding: 0;
-  list-style: none;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-6);
+  margin-top: var(--space-7);
 }
-.flow-step {
+.rc-point-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--rc-icon-height);
+}
+.rc-point-icon img {
+  height: auto;
+}
+.rc-point-text {
   position: relative;
+  margin-top: var(--space-5);
+  padding-left: var(--space-4);
 }
-.flow-figure {
-  width: var(--flow-circle);
-  height: var(--flow-circle);
-  border-radius: var(--radius-full);
-}
-.flow-arrow {
-  position: absolute;
-  top: calc(var(--flow-circle) / 2);
-  left: calc(var(--flow-circle) + var(--space-5));
-  right: calc(var(--space-5) - var(--flow-gap));
-  height: 2px;
-  background: currentColor;
-  transform-origin: left;
-}
-.flow-arrow::after {
+.rc-point-text::before {
   content: "";
   position: absolute;
-  right: 0;
-  top: 50%;
-  width: var(--space-3);
-  height: var(--space-3);
-  border-top: 2px solid currentColor;
-  border-right: 2px solid currentColor;
-  transform: translateY(-50%) rotate(45deg);
-  transform-origin: center;
+  left: var(--space-1);
+  top: 0.6em;
+  width: var(--space-1);
+  height: var(--space-1);
+  border-radius: var(--radius-full);
+  background: currentColor;
 }
-.flow-title {
-  margin: var(--space-5) 0 0;
-  font-size: var(--text-subtitle);
-  font-weight: var(--weight-black);
-  line-height: var(--leading-title);
+/* 365:1352: the dotted rule between the points and the questions. */
+.rc-rule {
+  height: 1px;
+  margin-top: var(--space-6);
+  background-image: repeating-linear-gradient(to right, currentColor 0 2px, transparent 2px 4px);
 }
-.flow-body {
-  margin-top: var(--space-3);
-  max-width: 22rem;
-}
-
-@media (max-width: 760px) {
-  .flow {
-    grid-template-columns: minmax(0, 1fr);
-  }
-  .flow-step {
-    display: grid;
-    grid-template-columns: calc(var(--flow-circle) / 2) minmax(0, 1fr);
-    gap: 0 var(--space-5);
-    align-items: start;
-  }
-  .flow-figure {
-    grid-row: span 2;
-    width: calc(var(--flow-circle) / 2);
-    height: calc(var(--flow-circle) / 2);
-  }
-  .flow-arrow {
-    display: none;
-  }
-  .flow-title {
-    margin-top: 0;
-  }
-}
-
-/* ------------------------------------------------- 03 / The Reality Check */
-/* The visual stop: comp 7's maroon band (198:429), wide sweep top right,
-   standard sweep bottom left, the five questions as white cards on it. */
-.reality-check {
-  --pad-top: var(--space-10);
-  --pad-bottom: var(--space-10);
-  border-top-right-radius: var(--radius-sweep-lg);
-  border-bottom-left-radius: var(--radius-sweep);
-}
-.reality-check .check {
-  color: var(--color-text);
-}
-.section-intro--wide {
-  max-width: var(--prose-width);
-}
-.check-grid {
+/* The five questions, 365:1349 to 365:1366: three columns, the number
+   hanging so the title and its line share a left edge. */
+.rc-questions {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--space-3);
+  gap: var(--space-7) var(--space-6);
   margin-top: var(--space-7);
 }
-.check {
-  padding: var(--space-6) var(--space-5);
+.rc-question {
+  position: relative;
+  padding-left: calc(var(--space-6) + var(--space-1));
 }
-.check-title {
+.rc-question-title {
   margin: 0;
-  font-size: var(--text-subtitle);
-  font-weight: var(--weight-black);
+  font-family: var(--font-display);
+  font-size: var(--text-card);
+  font-weight: var(--weight-bold);
   line-height: var(--leading-title);
-  text-wrap: balance;
+  color: var(--color-on-band-soft);
 }
-.check-number {
-  color: var(--color-accent);
+.rc-question-number {
+  position: absolute;
+  left: var(--space-2);
 }
-.check-body {
-  margin-top: var(--space-4);
+.rc-question-body {
+  margin-top: var(--space-3);
+  max-width: 17rem;
 }
-.check-close {
+.rc-close {
   margin-top: var(--space-7);
 }
-.check-next {
-  max-width: var(--prose-width);
-  margin-top: var(--space-6);
+.rc-close .cta-row {
+  justify-content: center;
+  gap: var(--space-4);
 }
 .inline-link {
   font-weight: var(--weight-black);
@@ -553,137 +465,493 @@
   text-underline-offset: 4px;
 }
 
-@media (max-width: 960px) {
-  .check-grid {
+@media (max-width: 900px) {
+  .rc-points {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-6) var(--space-5);
+  }
+  .rc-questions {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 @media (max-width: 620px) {
-  .check-grid {
+  .rc-points {
     grid-template-columns: minmax(0, 1fr);
   }
-}
-
-/* ------------------------------------------------------- 04 / What we fix */
-/* Six one-line rows, hairline separated, in the THEN and NOW table's style. */
-.fix-list {
-  margin: var(--space-7) 0 0;
-  padding: 0;
-  list-style: none;
-  border-top: 1px solid var(--color-line);
-}
-.fix {
-  display: grid;
-  grid-template-columns: minmax(0, 16rem) minmax(0, 1fr) minmax(0, 6rem);
-  gap: var(--space-2) var(--space-6);
-  align-items: center;
-  padding-block: var(--space-4);
-  border-bottom: 1px solid var(--color-line);
-}
-.fix-title {
-  margin: 0;
-  font-size: var(--text-lead);
-  font-weight: var(--weight-black);
-  line-height: var(--leading-title);
-}
-.fix-link {
-  justify-self: end;
-}
-
-@media (max-width: 760px) {
-  .fix {
-    grid-template-columns: minmax(0, 1fr);
+  .rc-point {
+    display: grid;
+    grid-template-columns: calc(var(--rc-icon-height) + var(--space-3)) minmax(0, 1fr);
+    gap: var(--space-4);
+    align-items: center;
   }
-  .fix-link {
-    justify-self: start;
+  .rc-point-icon {
+    justify-content: flex-start;
   }
-}
-
-/* ------------------------------------------------------- 05 / How we work */
-.how-we-work .flow {
-  margin-top: var(--space-7);
-}
-.principles {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--space-7) var(--space-7);
-  margin-top: var(--space-9);
-}
-.principle-title {
-  margin: 0;
-  font-size: var(--text-subtitle);
-  font-weight: var(--weight-black);
-  line-height: var(--leading-title);
-}
-.principle-body {
-  margin-top: var(--space-4);
-}
-
-@media (max-width: 860px) {
-  .principles {
+  .rc-point-text {
+    margin-top: 0;
+  }
+  .rc-questions {
     grid-template-columns: minmax(0, 1fr);
     gap: var(--space-6);
   }
+  .rc-close .cta-row {
+    justify-content: flex-start;
+  }
 }
 
-/* -------------------------------------------------------- 06 / Who we are */
-/* The sky band (198:551): sweeps top left and bottom right, three white
-   text cards. A photo, when one exists, is cropped to comp 7's 190px circle
-   (211:1380) at the top of its card. */
-.who-we-are {
+/* ------------------------------------------------------------ Fix Week */
+.fix-week {
   --pad-top: var(--space-10);
+  --pad-bottom: var(--space-8);
+}
+.fix-week .h2 {
+  max-width: calc(var(--copy-width) + var(--space-6));
+}
+.fix-week-link {
+  margin-top: var(--space-4);
+}
+.art-split-art--fixweek {
+  width: var(--fixweek-art);
+}
+
+/* ------------------------------------------------------- Track record */
+/* 394:1892: curve top left, cut bottom right. Everything sits 114 in from
+   the heading line, on a two-column grid: the 302 screenshot column and the
+   408 copy column, which the intro shares. */
+.track-record {
+  --pad-top: var(--space-9);
   --pad-bottom: var(--space-10);
-  border-top-left-radius: var(--radius-sweep);
-  border-bottom-right-radius: var(--radius-sweep);
-  margin-top: var(--space-9);
+  clip-path: var(--band-clip-track);
+  border-top-left-radius: var(--band-curve-track);
+}
+.track-inner {
+  padding-left: var(--track-indent);
+}
+.case-grid {
+  display: grid;
+  grid-template-columns: var(--case-image) minmax(0, var(--case-copy));
+  column-gap: calc(var(--space-8) + var(--space-4));
+  align-items: start;
+}
+.track-intro {
+  padding-top: calc(var(--space-7) - var(--space-1));
+}
+/* Helvetica Light 14 on 18: the case, fix, and step text (359:1116). */
+.case-text {
+  font-family: var(--font-display);
+  font-size: var(--text-copy);
+  font-weight: var(--weight-light);
+  line-height: var(--leading-copy);
+}
+.case-list {
+  display: grid;
+  gap: var(--space-7);
+  margin-top: var(--space-7);
+}
+.case {
+  color: var(--color-ink);
+}
+.case-client {
+  grid-column: 1 / -1;
+  margin: 0 0 var(--space-5);
+  font-family: var(--font-display);
+  font-size: var(--text-subtitle);
+  font-weight: var(--weight-light);
+  line-height: var(--leading-title);
+}
+.case-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: var(--case-image-ratio);
+  object-fit: cover;
+  object-position: top;
+  border: 1px solid var(--color-image-stroke);
+  border-radius: var(--radius-image);
+}
+/* On the grey band the board's placeholder grey would vanish, so the empty
+   slot takes the ground colour inside the same keyline. */
+.case-image.placeholder {
+  background: var(--color-bg);
+}
+.case-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-family: var(--font-display);
+  font-size: var(--text-copy);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-copy);
+}
+.case-meta::before {
+  content: "";
+  flex: none;
+  width: var(--space-3);
+  height: var(--space-3);
+  background: var(--color-accent-blue);
+  mask: url("/art/mb11/eyebrow-arrow.svg") center / contain no-repeat;
+}
+.case-body {
+  margin-top: var(--space-2);
+}
+/* 367:1631 runs past the copy column on the comp rather than wrap. */
+@media (min-width: 1081px) {
+  .case-meta {
+    white-space: nowrap;
+  }
+}
+.case-figure {
+  display: grid;
+  gap: var(--space-2);
+  margin-top: var(--space-5);
+  font-family: var(--font-display);
+}
+.case-figure-value {
+  font-size: var(--text-figure);
+  font-weight: var(--weight-bold);
+  line-height: 1.1;
+}
+.case-figure-caption {
+  font-size: var(--text-copy);
+  font-weight: var(--weight-bold);
+}
+
+@media (max-width: 1080px) {
+  .track-inner {
+    padding-left: 0;
+  }
+}
+@media (max-width: 900px) {
+  .case-grid {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+    column-gap: var(--space-6);
+  }
+}
+@media (max-width: 760px) {
+  .case-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .track-intro {
+    padding-top: var(--space-5);
+  }
+  .case-copy {
+    margin-top: var(--space-5);
+  }
+}
+
+/* -------------------------------------------------------- Bigger fixes */
+/* The heading on the ground (376:1755), then the grid on the blue band
+   394:1893: cut top left, curve bottom right. Three 246 columns spread to
+   the edges, title centred, line left, pill centred. Subgrid lines the
+   lines and pills up across a row whatever the title's length. */
+.what-we-fix-head {
+  --pad-top: var(--space-10);
+  --pad-bottom: var(--space-7);
+}
+.fixes-band {
+  padding-block: var(--space-9);
+  clip-path: var(--band-clip-fixes);
+  border-bottom-right-radius: var(--band-curve-fixes);
+}
+.fix-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, var(--fix-column)));
+  justify-content: space-between;
+  row-gap: var(--space-9);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.fix {
+  display: grid;
+  grid-row: span 3;
+  grid-template-rows: subgrid;
+  row-gap: 0;
+  justify-items: center;
+}
+.fix-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--text-card);
+  font-weight: var(--weight-bold);
+  line-height: 1;
+  text-align: center;
+  text-wrap: balance;
+  color: var(--color-highlight);
+}
+.fix-line {
+  justify-self: stretch;
+  margin-top: var(--space-4);
+}
+.fix-link {
+  margin-top: var(--space-5);
+}
+
+@media (max-width: 900px) {
+  .fix-grid {
+    grid-template-columns: repeat(2, minmax(0, var(--fix-column)));
+    justify-content: space-around;
+    row-gap: var(--space-8);
+  }
+}
+@media (max-width: 620px) {
+  .fix-grid {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: var(--space-7);
+  }
+  .fix {
+    justify-items: start;
+  }
+  .fix-title {
+    text-align: left;
+  }
+  .fix-line {
+    margin-top: var(--space-3);
+  }
+  .fix-link {
+    margin-top: var(--space-4);
+  }
+}
+
+/* ---------------------------------------------------------- How we work */
+.how-we-work {
+  --pad-top: var(--space-11);
+  --pad-bottom: 0;
+}
+/* 370:1640 and 370:1657 composed at their frame offsets. */
+.how-art {
+  position: relative;
+  width: calc(var(--flow-circle) * 2.78);
+  aspect-ratio: 306 / 195;
+  margin-top: calc(var(--space-6) * -1);
+}
+.how-art img {
+  position: absolute;
+}
+.how-art-a {
+  left: 0;
+  top: 0;
+  width: 63.4%;
+}
+.how-art-b {
+  left: 58.8%;
+  top: 20%;
+  width: 41.2%;
+}
+
+/* Step row, 369:1639 to 374:1740: icon and title centred in each column,
+   the arrow between titles, the paragraphs below. The arrow draws once, in
+   order, as the THEN and NOW rows did. */
+.flow {
+  --flow-gap: var(--space-7);
+  display: grid;
+  grid-template-columns: repeat(var(--flow-count), minmax(0, 1fr));
+  gap: var(--space-7) var(--flow-gap);
+  margin: calc(var(--space-8) + var(--space-4)) 0 0;
+  padding: 0;
+  list-style: none;
+}
+.flow-step {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.flow-figure {
+  width: var(--flow-circle);
+  height: var(--flow-circle);
+  border-radius: var(--radius-full);
+}
+.flow-title {
+  margin: var(--space-5) 0 0;
+  font-family: var(--font-display);
+  font-size: var(--text-step);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-title);
+}
+.flow-arrow {
+  position: absolute;
+  top: calc(var(--flow-circle) + var(--space-5) + var(--text-step) * 0.6);
+  left: calc(50% + var(--space-9));
+  right: calc(var(--space-9) - 50% - var(--flow-gap));
+  height: 2px;
+  background: var(--color-ink);
+  transform-origin: left;
+}
+.flow-arrow::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: var(--space-3);
+  height: var(--space-3);
+  border-top: 2px solid var(--color-ink);
+  border-right: 2px solid var(--color-ink);
+  transform: translateY(-50%) rotate(45deg);
+  transform-origin: center;
+}
+.flow-body {
+  display: grid;
+  gap: var(--space-4);
+  width: 100%;
+  max-width: 16.5rem;
+  margin-top: var(--space-6);
+  white-space: pre-line;
+  color: var(--color-ink);
+}
+
+@media (max-width: 760px) {
+  .flow {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-7);
+  }
+  .flow-step {
+    display: grid;
+    grid-template-columns: calc(var(--flow-circle) * 0.6) minmax(0, 1fr);
+    gap: 0 var(--space-5);
+    align-items: center;
+  }
+  .flow-figure {
+    width: calc(var(--flow-circle) * 0.6);
+    height: calc(var(--flow-circle) * 0.6);
+  }
+  .flow-title {
+    margin-top: 0;
+  }
+  .flow-arrow {
+    display: none;
+  }
+  .flow-body {
+    grid-column: 2;
+    max-width: none;
+    margin-top: var(--space-3);
+  }
+}
+
+/* --------------------------------------------------- Credibility strip */
+/* 388:1867 to 388:1871: four lines in the comp blue, Helvetica Light 32,
+   on the ground under How we work. Large text, so 3.44:1 passes. */
+.strip {
+  padding-block: var(--space-9) calc(var(--space-10) + var(--space-4));
+}
+.strip-list {
+  display: grid;
+  /* 388:1868, 388:1867, 388:1870, 388:1871 are 246, 212, 171, 211 wide. */
+  grid-template-columns: minmax(0, 246fr) minmax(0, 212fr) minmax(0, 171fr) minmax(0, 211fr);
+  gap: var(--space-6) var(--space-7);
+  margin: 0;
+  padding: 0 0 0 var(--hero-indent);
+  list-style: none;
+  font-family: var(--font-display);
+  font-size: var(--text-subtitle);
+  font-weight: var(--weight-light);
+  line-height: var(--leading-strip);
+  color: var(--color-accent-blue);
+}
+@media (max-width: 900px) {
+  .strip-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding-left: 0;
+  }
+}
+@media (max-width: 760px) {
+  .strip {
+    padding-block: var(--space-8) var(--space-9);
+  }
+  .strip-list {
+    font-size: var(--text-card);
+  }
+}
+
+/* ------------------------------------------------------------- The team */
+/* 394:1894: cut top left, curve bottom right. Three white 176 circles,
+   then name, role, and bio. */
+.who-we-are {
+  --pad-top: var(--space-7);
+  --pad-bottom: var(--space-8);
+  clip-path: var(--band-clip-team);
+  border-bottom-right-radius: var(--band-curve-team);
 }
 .team {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--space-3);
-  margin-top: var(--space-6);
+  gap: var(--space-7) var(--space-6);
+  margin-top: var(--space-7);
 }
 .team-member {
-  padding: var(--space-6) var(--space-5);
-  color: var(--color-text);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--color-ink);
+}
+.team-circle {
+  display: grid;
+  place-items: center;
+  width: var(--team-circle);
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: var(--radius-full);
+  background: var(--color-surface);
 }
 .team-photo {
-  width: var(--team-circle);
-  height: var(--team-circle);
-  border-radius: var(--radius-full);
+  width: 100%;
+  height: 100%;
   object-fit: cover;
 }
-.team-photo {
-  margin-bottom: var(--space-5);
+.team-initials {
+  font-family: var(--font-display);
+  font-size: var(--text-heading);
+  font-weight: var(--weight-light);
+  line-height: 1;
+  letter-spacing: 0.04em;
+}
+.team-text {
+  width: min(100%, calc(var(--team-circle) + var(--space-8)));
+  margin-top: var(--space-6);
 }
 .team-name {
   margin: 0;
-  font-size: var(--text-subtitle);
-  font-weight: var(--weight-black);
+  font-family: var(--font-display);
+  font-size: var(--text-card);
+  font-weight: var(--weight-bold);
   line-height: var(--leading-title);
 }
 .team-role {
   margin-top: var(--space-1);
-  font-size: var(--text-label);
+  font-size: var(--text-small);
   font-weight: var(--weight-black);
 }
 .team-bio {
-  margin-top: var(--space-4);
+  margin-top: var(--space-3);
 }
 
-@media (max-width: 860px) {
+@media (max-width: 760px) {
   .team {
     grid-template-columns: minmax(0, 1fr);
   }
-  .team-photo {
-    width: calc(var(--team-circle) / 2);
-    height: calc(var(--team-circle) / 2);
+  .team-member {
+    display: grid;
+    grid-template-columns: calc(var(--team-circle) * 0.55) minmax(0, 1fr);
+    gap: var(--space-5);
+    align-items: start;
+  }
+  .team-circle {
+    width: calc(var(--team-circle) * 0.55);
+  }
+  .team-initials {
+    font-size: var(--text-card);
+  }
+  .team-text {
+    width: auto;
+    margin-top: 0;
   }
 }
 
-/* -------------------------------------------------------------- Closing */
-/* Eyebrow, heading, the form, and the mark over a white circle. */
+/* -------------------------------------------------------------- Connect */
+/* 391:1886 and 391:1885: eyebrow, heading, the form, and the mark over a
+   white circle, as the comp's screenshot of the form shows. */
 .closing {
+  --pad-top: var(--space-10);
   --pad-bottom: var(--space-11);
 }
 .closing-grid {
@@ -693,7 +961,7 @@
   align-items: center;
 }
 .closing-heading {
-  color: var(--color-accent-deep);
+  color: var(--color-ink);
 }
 .contact-form {
   display: grid;
@@ -741,11 +1009,11 @@
 
 /* ------------------------------------------------- Contact result pages */
 /* The pages after the contact form (src/pages/ContactResult.tsx): the hero's
-   navy band, sweep, and grid, copy left, the board's Z right. */
+   blue band, sweep, and grid, copy left, the board's Z right. */
 .result {
   padding-top: var(--space-8);
   padding-bottom: var(--space-10);
-  border-bottom-left-radius: var(--radius-sweep);
+  clip-path: var(--band-clip-hero);
 }
 .result-grid {
   display: grid;
@@ -879,13 +1147,13 @@
 }
 
 /* ------------------------------------------------------------ Offer pages */
-/* Shared template for every offer page. Opens on the navy band with the
+/* Shared template for every offer page. Opens on the blue band with the
    hero's sweep (an extension: comp 7 covers the home page only), then a
    reading column in the board's type scale. */
 .offer-hero {
   padding-top: var(--space-8);
-  padding-bottom: var(--space-9);
-  border-bottom-left-radius: var(--radius-sweep);
+  padding-bottom: var(--space-10);
+  clip-path: var(--band-clip-hero);
 }
 .offer-subline {
   max-width: var(--prose-width);

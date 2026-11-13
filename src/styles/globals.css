@@ -59,40 +59,79 @@ p {
   padding-bottom: var(--pad-bottom, var(--space-8));
 }
 
-/* Section label. The board has no eyebrows; the copy deck numbers every
-   section, so the label is set in the nav's 14px black weight and kept quiet
-   in the muted grey. */
+/* Section label, MB11 (360:1267 and 360:1268): Helvetica bold 16px in
+   capitals, after the comp's small arrow, blue on the ground and white on
+   a blue band. The arrow is a mask so it takes --eyebrow-arrow. */
 .eyebrow {
-  margin: 0 0 var(--space-4);
-  font-size: var(--text-small);
-  font-weight: var(--weight-black);
-  line-height: 1;
-  letter-spacing: 0.08em;
+  --eyebrow-arrow: var(--color-accent-blue);
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin: 0 0 var(--space-3);
+  font-family: var(--font-display);
+  font-size: var(--text-eyebrow);
+  font-weight: var(--weight-bold);
+  line-height: 1.2;
   text-transform: uppercase;
-  color: var(--color-text-muted);
+  color: var(--color-ink);
+}
+.eyebrow::before {
+  content: "";
+  flex: none;
+  width: var(--space-3);
+  height: var(--space-3);
+  background: var(--eyebrow-arrow);
+  mask: url("/art/mb11/eyebrow-arrow.svg") center / contain no-repeat;
 }
 
-/* Two display sizes on the board: 62px for the hero and every section
-   heading, 48px for card titles, step numbers, and client names. */
+/* MB11 headings: Helvetica, 64px in the hero and 48px for every section
+   heading, each mixing a light run with a bold run. Bold is the default and
+   .h-light marks the light run, so the emphasis lives in the markup. */
 .h1,
 .h2,
 .h3 {
   margin: 0;
-  font-weight: var(--weight-black);
-  letter-spacing: -0.01em;
+  font-family: var(--font-display);
+  font-weight: var(--weight-bold);
+  letter-spacing: 0;
   text-wrap: balance;
 }
-.h1,
+.h1 {
+  font-size: var(--text-hero);
+  line-height: var(--leading-hero);
+}
 .h2 {
-  font-size: var(--text-display);
-  line-height: var(--leading-display);
+  font-size: var(--text-heading);
+  line-height: var(--leading-heading);
 }
 .h3 {
   font-size: var(--text-title);
   line-height: var(--leading-title);
 }
-.h2--split .h2-secondary {
-  color: var(--color-accent);
+.h-light {
+  font-weight: var(--weight-light);
+}
+/* 359:1097: "without telling you." in Helvetica Light Oblique. */
+.h-aside {
+  font-weight: var(--weight-light);
+  font-style: italic;
+}
+/* 359:1097: "wrong" in the comp's red. 48px bold, large text. */
+.h-alert {
+  color: var(--color-accent-red);
+}
+/* Body copy in the comp's 14px light (357:1058, 359:1116). Phones get the
+   16px body size, an extension: 14px light is too thin to read at arm's
+   length. */
+.copy {
+  font-size: var(--text-copy);
+  font-weight: var(--weight-light);
+  line-height: var(--leading-copy);
+}
+@media (max-width: 760px) {
+  .copy {
+    font-size: var(--text-body);
+  }
 }
 
 .text-muted {
@@ -116,21 +155,22 @@ p {
   margin-top: var(--space-4);
 }
 
-/* The pill button. One component at two heights: 31 in the body, 24 in the
-   header. The drawn height stays faithful and ::before widens the pointer
-   target to 44px so it still clears the touch minimum. */
+/* The pill button, MB11 357:1034: 33px, Avenir black 14px, the drawn
+   arrow trailing. The drawn height stays faithful and ::before widens the
+   pointer target to 44px so it still clears the touch minimum. */
 .btn {
   --btn-height: var(--button-height);
   position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: var(--space-4);
+  gap: var(--space-3);
   min-height: var(--btn-height);
-  padding: 0 var(--space-6);
+  padding: 0 var(--space-4) 0 calc(var(--space-4) + var(--space-1) / 2);
   border-radius: var(--radius-full);
   border: 1px solid transparent;
-  font-size: var(--text-lead);
+  font-family: var(--font-sans);
+  font-size: var(--text-small);
   font-weight: var(--weight-black);
   line-height: 1;
   white-space: nowrap;
@@ -156,13 +196,22 @@ p {
   position: absolute;
   inset: calc((var(--btn-height) - 44px) / 2) 0;
 }
-/* Comp 7 fills the body buttons with the deep purple (211:1408) and keeps
-   the light accent for the header button only, see .nav-cta. */
+/* The arrow glyph stays in the markup, hidden from assistive tech, and is
+   drawn as the comp's arrow (357:1037) in the label colour. */
+.btn > span[aria-hidden="true"] {
+  flex: none;
+  width: var(--space-4);
+  height: var(--space-3);
+  font-size: 0;
+  background: currentColor;
+  mask: url("/art/mb11/arrow.svg") center / contain no-repeat;
+}
+/* MB11 fills every primary button with the deep purple (357:1035). */
 .btn-primary {
   background: var(--color-accent-deep);
   color: var(--color-on-accent);
 }
-/* No secondary button on the board. Extension: the same pill, outlined. */
+/* The outlined pill, MB11 377:1777: 1px keyline in the label colour. */
 .btn-secondary {
   background: transparent;
   color: var(--color-text);
@@ -203,41 +252,32 @@ p {
   background: var(--color-placeholder);
 }
 
-/* Colour band from comp 7: a full-width section on one of the three band
-   colours, with the rounded sweep corners set per band in layout.css. Text,
-   eyebrows, links, and the focus ring follow the band's own foreground so
-   nothing on a band falls back to a colour meant for the grey ground. */
+/* Colour band, MB11: full width, the blue (357:764, 360:1260, 394:1893)
+   or the grey (394:1892, 394:1894). Each band's cut and curved corner are
+   set per section in layout.css from the band tokens. Text, eyebrows,
+   links, and the focus ring follow the band's own foreground. */
 .band {
-  --band-fg: var(--color-on-band);
-  --band-muted: rgb(var(--white-rgb) / 0.82);
+  --band-fg: var(--color-ink);
+  --band-muted: var(--color-ink);
   background: var(--band-bg);
   color: var(--band-fg);
 }
-.band--navy {
-  --band-bg: var(--color-band-navy);
+.band--blue {
+  --band-bg: var(--color-band-blue);
+  --band-fg: var(--color-on-band);
+  --band-muted: var(--color-on-band);
 }
-.band--maroon {
-  --band-bg: var(--color-band-maroon);
-}
-/* Black on the sky blue, as the comp sets it (211:1379). */
-.band--sky {
-  --band-bg: var(--color-band-sky);
-  --band-fg: var(--color-text);
-  --band-muted: var(--color-text);
+.band--grey {
+  --band-bg: var(--color-band-grey);
 }
 .band .eyebrow,
 .band .proof-line {
   color: var(--band-muted);
 }
-/* The deep purple button sinks into the navy and the maroon, so on the dark
-   bands the primary button takes the header's light accent. White on it is
-   large text. */
-.band--navy .btn-primary,
-.band--maroon .btn-primary {
-  background: var(--color-accent);
+.band--blue .eyebrow {
+  --eyebrow-arrow: var(--color-on-band);
 }
-/* The outlined pill takes the band's foreground, so it reads on navy and
-   maroon and stays black on sky. */
+/* The outlined pill takes the band's foreground. */
 .band .btn-secondary {
   color: var(--band-fg);
   border-color: var(--band-fg);

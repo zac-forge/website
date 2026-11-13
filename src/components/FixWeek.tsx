@@ -1,31 +1,35 @@
 import { Reveal } from "./Reveal";
 
 /**
- * 03 / The Fix Week, copy pass of 2026-11-06. Until then the paid step was a
- * paragraph under the Reality Check. It is its own section now, built only
- * from the existing primitives (eyebrow, h2, section intro, text link) on
- * the ground, so it adds no new style.
+ * The Fix Week, MB11 366:1368, 366:1367, 366:1370, on the ground with the
+ * four-piece Z set 376:1748 to the right. The link to /fix-week stays from
+ * the live page (the comp has none), so the offer page keeps its one
+ * internal link from home.
  */
 export function FixWeek() {
   return (
-    <section id="fix-week" className="section" aria-labelledby="fix-week-heading">
-      <div className="container">
+    <section id="fix-week" className="section fix-week" aria-labelledby="fix-week-heading">
+      <div className="container art-split">
         <Reveal>
-          <p className="eyebrow">03 / The Fix Week</p>
+          <p className="eyebrow">The Fix Week</p>
           <h2 className="h2" id="fix-week-heading">
-            One week. Start with what matters most.
+            <span className="h-light">One week. Start with</span> what matters{" "}
+            <span className="h-light">most.</span>
           </h2>
-          <p className="section-intro section-intro--wide">
+          <p className="section-intro copy">
             When the scorecard shows something worth fixing, a senior team takes over. The top item
             resolved in your code, a Design Read on the screen that most looks machine-made, and the
             rest ranked. One price, agreed up front.
           </p>
-          <div className="cta-row check-close">
+          <div className="cta-row fix-week-link">
             <a className="text-link" href="/fix-week">
               <span>What a Fix Week covers</span> <span aria-hidden="true">→</span>
             </a>
           </div>
         </Reveal>
+        <div className="art-split-art art-split-art--fixweek" aria-hidden="true">
+          <img src="/art/mb11/fixweek-art.svg" width={317} height={214} alt="" loading="lazy" />
+        </div>
       </div>
     </section>
   );

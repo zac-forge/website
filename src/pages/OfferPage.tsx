@@ -6,7 +6,7 @@ import { LIVE_OFFERS } from "./offers";
 import type { Offer, Block } from "./offers";
 
 /**
- * Shared offer page template: a navy band hero (eyebrow, H1, the v5 line
+ * Shared offer page template: a blue band hero (eyebrow, H1, the v5 line
  * placing the page behind the Reality Check, intro), then lists, steps,
  * proof, FAQ, related offers, the closing CTA, and on /reality-check the
  * contact form. Deliberately no entrance animation on the copy. These pages
@@ -84,7 +84,7 @@ export default function OfferPage({ offer }: { offer: Offer }) {
     <>
       <Header />
       <main className="offer-page">
-        <section id="top" className="offer-hero band band--navy">
+        <section id="top" className="offer-hero band band--blue">
           <div className="container">
             <p className="eyebrow">{offer.eyebrow}</p>
             <h1 className="h1 offer-title">{offer.h1}</h1>

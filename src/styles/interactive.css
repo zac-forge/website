@@ -35,16 +35,20 @@
   display: inline-block;
 }
 
-/* Nav items: no underline. Hover and focus are shown by colour only in the
-   row, and the focus ring still applies from the global rule. The header is
-   navy, so the row uses the sky band colour, and the white menu panels (the
-   desktop offers menu, the mobile menu) keep the accent. */
+/* Nav items on the blue header. Colour alone cannot carry hover here: no
+   colour lighter than white is left, and the comp's yellow gives 3.13:1 on
+   the blue, short of 4.5 for 14px text. So hover and focus draw a 2px bar
+   in the yellow under the item, and the text stays white. The white menu
+   panels (the desktop offers menu, the mobile menu) keep the accent. */
 .site-nav a:not(.btn):hover,
 .site-nav a:not(.btn):focus-visible,
 .nav-menu-button:hover,
 .nav-menu-button:focus-visible,
 .nav-menu[data-open="true"] .nav-menu-button {
-  color: var(--color-band-sky);
+  text-decoration: underline;
+  text-decoration-color: var(--color-highlight);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
 }
 .site-nav .nav-menu-panel a:not(.btn):hover,
 .site-nav .nav-menu-panel a:not(.btn):focus-visible {
@@ -60,6 +64,7 @@
   .site-nav a:not(.btn):hover,
   .site-nav a:not(.btn):focus-visible {
     color: var(--color-accent);
+    text-decoration-color: var(--color-accent);
   }
   .site-header .site-nav :focus-visible {
     outline-color: var(--color-accent);

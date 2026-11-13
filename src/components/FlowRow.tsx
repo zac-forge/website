@@ -1,15 +1,20 @@
 import { motion, useReducedMotion } from "motion/react";
 import { EASE, VIEWPORT } from "../lib/motion";
 
-export type FlowStep = { title: string; body?: string };
+export type FlowStep = {
+  title: string;
+  /** MB11's ring icon for the step, a file in public/art/mb11/ (110 x 110). */
+  icon?: string;
+  /** One paragraph per entry. A line break inside an entry is kept. */
+  body?: string[];
+};
 
 const STEP_STAGGER = 0.18;
 
 /**
- * Comp 7's step row: a grey circle per step, an arrow to the next, the step
- * title under the circle (nodes 211:1257 to 211:1264 and the process row
- * 211:1346 to 211:1357). Used for the three-step row under What changed and
- * the process row under How we work.
+ * MB11's step row (369:1639 to 374:1740): a ring icon per step, the title
+ * under it, an arrow from each title to the next (371:1683, 371:1684), and
+ * the step's paragraphs below.
  *
  * The arrows carry the one v1 interaction kept through every redesign, the
  * THEN and NOW row-draw: each line draws left to right once, in order, when
@@ -23,7 +28,12 @@ export function FlowRow({ steps, label }: { steps: FlowStep[]; label: string }) 
     <ol className="flow" aria-label={label} style={{ "--flow-count": steps.length } as React.CSSProperties}>
       {steps.map((step, i) => (
         <li className="flow-step" key={step.title}>
-          <div className="flow-figure placeholder" aria-hidden="true" />
+          {step.icon ? (
+            <img className="flow-figure" src={step.icon} width={110} height={110} alt="" aria-hidden="true" loading="lazy" />
+          ) : (
+            <div className="flow-figure placeholder" aria-hidden="true" />
+          )}
+          <h3 className="flow-title">{step.title}</h3>
           {i < steps.length - 1 ? (
             <motion.span
               className="flow-arrow"
@@ -34,8 +44,13 @@ export function FlowRow({ steps, label }: { steps: FlowStep[]; label: string }) 
               transition={{ duration: 0.68, ease: EASE, delay: 0.2 + i * STEP_STAGGER }}
             />
           ) : null}
-          <h3 className="flow-title">{step.title}</h3>
-          {step.body ? <p className="flow-body">{step.body}</p> : null}
+          {step.body ? (
+            <div className="flow-body case-text">
+              {step.body.map((para) => (
+                <p key={para}>{para}</p>
+              ))}
+            </div>
+          ) : null}
         </li>
       ))}
     </ol>

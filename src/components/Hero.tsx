@@ -11,18 +11,20 @@ const item = {
 };
 
 /**
- * v5 hero on comp 7's navy band (198:428) with the rounded sweep at the
- * bottom left. Copy set by Drew on 2026-11-04: the question leads, the 2010
- * proof moves to the proof line. Comp 7 sets its headline light with the
- * last phrase heavy; the build keeps sentence case (CLAUDE.md) and carries
- * that emphasis with the two existing weights. public/og-image.jpg is
- * rendered from this copy by tools/og-card.html, so change both together.
+ * MB11 hero (357:796, 357:1058, 357:1034) on the blue band 357:764 with its
+ * angled cut at the bottom left, the gradient Z (358:1060), and the dotted
+ * line art. Copy is the live copy of 2026-11-06. The comp has no eyebrow,
+ * booking pill, or proof line here; the booking pill (Drew, 2026-11-05) and
+ * the proof line (CLAUDE.md: Fortune 50 and 2010 carry the proof) stay, and
+ * both are on the list for Misha. public/og-image.jpg is rendered from this
+ * copy by tools/og-card.html, so change both together.
  */
 export function Hero() {
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <section id="top" className="hero band band--navy">
+    <section id="top" className="hero band band--blue">
+      <img className="band-lines band-lines--hero" src="/art/mb11/lines-hero.svg" width={1280} height={568} alt="" aria-hidden="true" />
       <div className="container hero-grid">
         <motion.div
           className="hero-copy"
@@ -30,14 +32,11 @@ export function Hero() {
           initial={shouldReduceMotion ? false : "hidden"}
           animate="show"
         >
-          <motion.p className="eyebrow" variants={item}>
-            / ZAC / A senior team
-          </motion.p>
           <motion.h1 className="h1 hero-title" variants={item}>
-            <span className="hero-title-light">Built it with AI?</span>{" "}
+            <span className="h-light hero-title-lead">Built it with AI?</span>{" "}
             <span>Find out if it actually works.</span>
           </motion.h1>
-          <motion.p className="hero-body" variants={item}>
+          <motion.p className="hero-body copy" variants={item}>
             Send us your site, app, or brand. Senior people check it on 5 questions and tell you
             straight. Free. A person reads it, not a scanner.
           </motion.p>
@@ -51,12 +50,8 @@ export function Hero() {
             <a className="btn btn-secondary" href={BOOKING_URL}>
               <span>Book a 20-minute call</span>
             </a>
-            <a className="text-link" href="#track-record">
-              <span>See what we've built</span>{" "}
-              <span aria-hidden="true">↓</span>
-            </a>
           </motion.div>
-          <motion.p className="proof-line" variants={item}>
+          <motion.p className="proof-line copy" variants={item}>
             Decades of Fortune 50 experience. Systems we built in 2010 still run today.
           </motion.p>
         </motion.div>
@@ -65,9 +60,9 @@ export function Hero() {
         <div className="hero-visual" aria-hidden="true">
           <img
             className="hero-art"
-            src="/art/z-hero.svg"
-            width={358}
-            height={311}
+            src="/art/mb11/hero-z.svg"
+            width={334}
+            height={290}
             alt=""
             decoding="async"
             fetchPriority="high"

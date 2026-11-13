@@ -12,68 +12,71 @@ type Fix = { title: string; line: string; link?: { label: string; href: string }
  */
 const FIXES: Fix[] = [
   {
-    title: "AI visibility.",
+    title: "AI visibility",
     line: "Get named when customers ask ChatGPT, Google, or Perplexity who to call.",
     link: { label: "More", href: "/ai-visibility" },
   },
   {
-    title: "Rescue.",
+    title: "Rescue",
     line: "Finish and harden what AI started, or rebuild it if it can't be saved.",
     link: { label: "Ask us", href: "#contact" },
   },
   {
-    title: "Accessibility and performance.",
+    title: "Accessibility and performance",
     line: "Fixed in the code, not covered with a widget.",
     link: { label: "More", href: "/accessibility" },
   },
   {
-    title: "Brand system.",
+    title: "Brand system",
     line: "Senior design your AI tools follow, so everything looks like you.",
     link: BRAND_SYSTEM ? { label: "More", href: "/brand-system" } : undefined,
   },
   {
-    title: "Platform escape.",
+    title: "Platform escape",
     line: "Off the platform you've outgrown, onto something you own.",
     link: { label: "Ask us", href: "#contact" },
   },
   {
-    title: "Web Partner.",
+    title: "Web Partner",
     line: "One senior team keeps it running and makes it better every month.",
     link: { label: "More", href: "/web-partner" },
   },
 ];
 
 /**
- * Comp 7's "What we do" draws three columns with gradient marks (211:1268 to
- * 211:1323) for the v4 three-column set. The deck asks for six
- * one-line rows, so the rows are hairline-separated in the THEN and NOW
- * table's style and the marks wait for Misha, question 18.
+ * Bigger fixes, MB11 376:1756 and 376:1755 on the ground, then the six
+ * fixes as a three by two grid on the blue band 394:1893 (cut top left,
+ * curve bottom right): yellow title, one line, an outlined "More" or "Ask
+ * us" pill. Titles drop their trailing periods, as the comp sets four of
+ * them. Brand system has no pill while its page is off, as on the comp.
  */
 export function WhatWeFix() {
   return (
-    <section id="what-we-do" className="section what-we-fix" aria-labelledby="what-we-do-heading">
-      <div className="container">
-        <Reveal>
-          <p className="eyebrow">05 / Bigger fixes</p>
+    <section id="what-we-do" className="what-we-fix" aria-labelledby="what-we-do-heading">
+      <div className="section what-we-fix-head">
+        <Reveal className="container">
+          <p className="eyebrow">Bigger fixes</p>
           <h2 className="h2" id="what-we-do-heading">
-            When the check calls for more.
+            <span className="h-light">When</span> the check <span className="h-light">calls for</span>{" "}
+            more.
           </h2>
         </Reveal>
-        <Reveal stagger={0.06}>
-          <ul className="fix-list">
+      </div>
+      <div className="band band--blue fixes-band">
+        <img className="band-lines band-lines--fixes" src="/art/mb11/lines-bigger-fixes.svg" width={1280} height={607} alt="" aria-hidden="true" loading="lazy" />
+        <Reveal className="container" stagger={0.06}>
+          <ul className="fix-grid">
             {FIXES.map((fix) => (
               <motion.li className="fix" key={fix.title} variants={fadeUpSmall}>
                 <h3 className="fix-title">{fix.title}</h3>
-                <p className="fix-line">{fix.line}</p>
+                <p className="fix-line case-text">{fix.line}</p>
                 {fix.link ? (
-                  <a className="text-link fix-link" href={fix.link.href}>
-                    <span>{fix.link.label}</span>{" "}
+                  <a className="btn btn-secondary fix-link" href={fix.link.href}>
+                    <span>{fix.link.label}</span>
+                    <span className="sr-only">: {fix.title}</span>{" "}
                     <span aria-hidden="true">→</span>
-                    <span className="sr-only">: {fix.title.replace(/\.$/, "")}</span>
                   </a>
-                ) : (
-                  <span className="fix-link" aria-hidden="true" />
-                )}
+                ) : null}
               </motion.li>
             ))}
           </ul>

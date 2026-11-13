@@ -2,7 +2,8 @@ import { StrictMode } from "react";
 import { createRoot, hydrateRoot } from "react-dom/client";
 
 // Self-hosted open fallback for Avenir, the board's face, which ships with
-// Apple devices only. Two weights, matching the two the board uses.
+// Apple devices only. MB11 sets body copy in Avenir Light, hence the 300.
+import "@fontsource/figtree/300.css";
 import "@fontsource/figtree/400.css";
 import "@fontsource/figtree/900.css";
 

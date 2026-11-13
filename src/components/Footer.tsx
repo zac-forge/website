@@ -36,10 +36,10 @@ export function Footer() {
           <p className="footer-group" id="footer-site">
             Site
           </p>
-          <a href="/#track-record">Track record</a>
           <a href="/#what-we-do">What we do</a>
+          <a href="/#track-record">Case studies</a>
           <a href="/#how-we-work">How we work</a>
-          <a href="/#who-we-are">Who we are</a>
+          <a href="/#who-we-are">Senior team</a>
         </nav>
 
         <p className="footer-legal">

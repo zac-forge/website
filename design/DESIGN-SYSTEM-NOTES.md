@@ -227,6 +227,59 @@ when the comp is next read with `geometry=paths`.
   contrast, 4px radius.
 - The flow row's arrows, drawn as a line and a chevron in `currentColor`.
 
+## v6: MacBook Air - 11 (2026-11-12)
+
+The home page now follows Misha's **MacBook Air - 11**, node `357:763`
+(1280 x 8027, desktop only), on branch `v6-mb11`. It supersedes comp 7 and
+board `6:2` wherever it speaks. Everything read from it is cached in
+`design/mb11/` (see the README there), and the build works from that cache.
+Tokens read off it are sourced `figma-mb11:<node>` in `tokens.json`.
+
+**The read:** REST API node tree with geometry, 1x and 2x renders, SVG
+exports, image fills. MCP: one `get_variable_defs` (`{}`, still no
+variables) and one `get_design_context`.
+
+**What MB11 changes, as tokens:** the blue band and the grey band replace
+navy, maroon, and sky. The accent role moves to the button purple `#56246F`
+(the light `#9D4DFF` is gone from the comp). Headings move to Helvetica,
+light and bold runs mixed in one line, 64px hero and 48px sections. Body copy
+is 14px Avenir Light or Helvetica Light. Eyebrows are an arrow and a capital
+label, unnumbered. Bands carry one angular cut and one curved corner each,
+read off their vector paths into `band.*` tokens.
+
+### Deviations from MB11, each deliberate
+
+| Where | Comp | Build | Why |
+|---|---|---|---|
+| Every blue band | `#2483C5` | `#227CBA` | `#2483C5` gives white 4.10:1 and the yellow fix titles 2.85:1, both failing WCAG AA. `#227CBA` is the same hue 5% darker: white 4.51:1, yellow 3.13:1 (24px bold, large text), cream 3.99:1. `#2483C5` stays as drawn where it is decoration or large text on the ground (eyebrow arrows, step rings, the strip at 3.44:1). |
+| Hero | No eyebrow, booking pill, or proof line | Booking pill and proof line kept, eyebrow and "See what we've built" dropped | Drew kept the booking pills on 2026-11-05. CLAUDE.md has the proof line carry Fortune 50 and 2010. The proof line wraps before x=561 so it clears the dotted line 359:1256, and the band is 630 tall instead of 557. |
+| Reality Check | Button only | Booking pill and the "How it works" link to /reality-check kept | As above, and the link is the page's internal path to /reality-check. |
+| Fix Week | No link | "What a Fix Week covers" link kept | The only link from home to /fix-week. |
+| Case study names | Above the image column, the Naval one overflowing into the image | Span both columns | One line each, no overlap. |
+| Case screenshots | Three flipped by a node transform | Upright | Read as accidental. |
+| Naval/Military Academy screenshot | usna.edu home page with the Academy crest | Placeholder slot | DoD guardrail, and it is not the Legacy Studios portal the card describes. |
+| Logo band | Flat image (358:1079) | Live text in the same arrangement | Text is crisper, accessible, and indexable. |
+| Problem heading leading | 41 on 48 | 50 on 48, as every other heading | One heading leading. Question for Misha. |
+| Team | Lorem names and copied bios, no role line | Live names, roles, and bios; initials in Andrew's circle; plain circles for the two unnamed roles | Placeholders in the comp. Consent rule for names. A photo dropped in `src/assets/team/` replaces the circle. |
+| Nav hover | Not drawn | 2px yellow underline, text stays white | A colour change alone cannot reach 4.5:1 on the blue. |
+| Footer | None | The live footer, restyled by tokens | Nothing to replace it with. |
+| CONNECT "Principals" (390:1884) | Stray text | Not built | Leftover, per Drew. |
+
+### Extensions made without MB11 coverage (the comp is desktop only)
+
+- **≤ 900px:** hero single column with the Z above the headline at half size;
+  the Problem, Fix Week, and How we work art drops below the copy at 60%; the
+  dotted line art is hidden; Reality Check points 2 x 2 and questions in two
+  columns; cases keep two columns at 2:3; fixes 2-up; the strip 2 x 2; the
+  closing circle hidden, as in v5.
+- **≤ 760px:** band corners scale to 45% (`layout.band-k-compact`); body copy
+  goes from 14px to 16px; cases stack name, image, copy; the step row turns
+  vertical with the ring left and the arrows hidden; team cards put a 97px
+  circle left of the text; the strip drops to 24px.
+- **≤ 620px:** Reality Check points set the icon left of its line; questions
+  and fixes go to one column, fixes left aligned.
+- The header keeps its menu button below 860px.
+
 ## Questions for Misha
 
 1. **Avenir.** The board is set in Avenir and Avenir Next. Is there a web
@@ -291,6 +344,43 @@ when the comp is next read with `geometry=paths`.
 24. **Case study imagery.** Comp 7 shows a collage of full screenshots. The v5
     deck asks for text-first cards with one tight crop at most. The build ships
     the cards with no image until a crop is chosen.
+
+
+### Added with MB11 (2026-11-12)
+
+25. **Blue contrast.** `#2483C5` fails AA for white body text (4.10:1) and the
+    yellow fix titles (2.85:1). The build uses `#227CBA`. Keep that, or pick
+    another blue?
+26. **Helvetica.** Headings are Helvetica Light and Bold. Windows has Arial,
+    which has no light weight, so the light runs render regular there. A
+    licensed webfont, an open alternative, or accept it?
+27. **Naval and Military Academy image.** The comp's screenshot is the
+    official usna.edu home page with the Academy crest, which the DoD
+    guardrail rules out, and the card describes the Legacy Studios portal.
+    Can we have a screenshot of usna.legacystudios.com without insignia?
+28. **Heritage image.** The screenshot is Heritage Global Inc.'s corporate
+    site, and the card is about hgpauction.com. Intended?
+29. **Flipped screenshots.** Three of the four are flipped vertically in the
+    comp. The build shows them upright. Accidental?
+30. **Problem heading leading.** 41 on 48, tighter than every other heading
+    (50 on 48). Intended, or one leading for all?
+31. **Nav.** "Case studies", "Senior team", "Connect", and "How we work" left
+    out of the nav. The team section is "Team" (eyebrow) and "Principals"
+    (heading) while the nav says "Senior team". One name?
+32. **"Let's talk".** It goes to the form, like "Connect". Should it go to
+    the 20-minute call booking instead?
+33. **Hero and Reality Check extras.** The build keeps the booking pill and
+    the proof line in the hero, and the booking pill and "How it works" link
+    in the Reality Check, which the comp leaves out. Where do you want them?
+34. **Nav hover.** A yellow 2px underline. A colour change alone cannot
+    reach 4.5:1 on the blue. OK?
+35. **Footer.** None in the comp. The live footer is kept, restyled.
+36. **Rescue's yellow.** `#FDC90E`, the other titles `#FDD41A`. Treated as one
+    yellow.
+37. **Team circles.** Initials for Andrew until a photo arrives, plain white
+    for the two unnamed roles. OK, or something else in the circles?
+38. **Tablet and phone.** The comp is desktop only. The calls made are in the
+    v6 section above. Anything you would set differently?
 
 ## Structure of MacBook Air - 1 (node 6:2), for reference
 
