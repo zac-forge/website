@@ -515,8 +515,11 @@ body:has(.subpage-hero) .site-header:not([data-scrolled="true"]):not(:has(.site-
 .case {
   color: var(--color-ink);
 }
+/* The client name sits over the screenshot column only and wraps there, as
+   on MB11, never into the copy column (Drew, 2026-11-13). The copy starts
+   level with the screenshot. Full width once the card stacks on phones. */
 .case-client {
-  grid-column: 1 / -1;
+  grid-column: 1;
   margin: 0 0 var(--space-5);
   font-family: var(--font-display);
   font-size: var(--text-subtitle);
@@ -559,8 +562,14 @@ body:has(.subpage-hero) .site-header:not([data-scrolled="true"]):not(:has(.site-
    status, three labelled lines, the number, then the product as the link.
    Labels and status in the figure caption's bold. */
 .case-images {
+  grid-column: 1;
+  grid-row: 2;
   display: grid;
   gap: var(--space-3);
+}
+.case > .case-copy {
+  grid-column: 2;
+  grid-row: 2;
 }
 .case-industry {
   margin: 0;
@@ -633,6 +642,11 @@ body:has(.subpage-hero) .site-header:not([data-scrolled="true"]):not(:has(.site-
 @media (max-width: 760px) {
   .case-grid {
     grid-template-columns: minmax(0, 1fr);
+  }
+  .case-images,
+  .case > .case-copy {
+    grid-column: 1;
+    grid-row: auto;
   }
   .track-intro {
     padding-top: var(--space-5);

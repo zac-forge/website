@@ -218,7 +218,7 @@ export function TrackRecord() {
           <div>
             <p className="eyebrow">Case studies</p>
             <h2 className="h2" id="track-record-heading">
-              <span className="h-light">Still</span> Running
+              <span className="h-light">Built to</span> last
             </h2>
           </div>
           {/* Intro from Drew's batch 2, 2026-11-13. Handover was confirmed
