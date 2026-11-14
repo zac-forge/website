@@ -166,7 +166,7 @@ only, and a row in this table.
 
 ## Section order (v5)
 
-Hero → LogoBand → Problem → RealityCheck → FixWeek → WhatWeFix → TrackRecord (Case studies) → HowWeWork → ExperienceStrip → WhoWeAre → Closing (Drew, 2026-11-13)
+Hero → LogoBand → Problem → RealityCheck → FixWeek → WhatWeFix → TrackRecord (Case studies) → HowWeWork → ExperienceStrip → WhoWeAre → HomeFaq → Closing (Drew, 2026-11-13)
 
 Six offer pages share one template: `/reality-check`, `/fix-week` (`/handoff` 301s there from `functions/worker.ts`; labelled "The Fix" in nav, footer, eyebrows, buttons, and its title, while body copy and the schema `name` keep "the Fix Week"), `/ai-visibility`, `/accessibility`, `/web-partner`, and `/brand-system`. The last is behind the `BRAND_SYSTEM` flag in `src/lib/flags.ts`, off by default, which keeps the page out of the routes, menus, sitemap, and schema and leaves the What we fix row as plain text. v5's `llms.txt` lists the brand system without a link, as the copy deck has it. The hawaii.surf case study card is behind `HAWAII_CARD`, off until real before and after numbers exist.
 
@@ -188,6 +188,7 @@ Every page is prerendered by `scripts/prerender.mjs` into `dist/<route>.html` wi
 | `HowWeWork.tsx` | Check, Fix, Partner `FlowRow` with ring icons, each step carrying its principle lines |
 | `LogoBand.tsx` `ExperienceStrip` | The credibility strip: four lines in blue Helvetica Light, label screen-reader only |
 | `WhoWeAre.tsx` | "Team", heading "Principals", grey band, three 176px circles then name, role, bio; Andrew named; the other two names wait for consent |
+| `HomeFaq.tsx` | "FAQ", heading "Questions", the offer pages' FAQ list, between Team and Connect. Data in `src/pages/homeFaq.ts`, which also feeds the home FAQPage schema |
 | `Closing.tsx`, `ContactForm.tsx` | "Connect", the form and the mark in its circle, also rendered on `/reality-check` |
 | `pages/ContactResult.tsx` | The pages after the form at `/contact/thanks`, `/contact/not-sent`, `/contact/error`: blue band, Z, noindex, out of the sitemap. The handler fills `[data-slot]` elements and `#contact-data` so hydration matches. The thank-you page hides the header CTA |
 | `Footer.tsx` | Links absolute so they work from offer pages |
@@ -222,7 +223,7 @@ There is **no test framework** in this repo. Verification is `npm run build` (ru
 
 Two slots were picked on 2026-08-20 and stand for v4. Ship them exactly as written and do not re-offer either choice.
 
-- **Andrew's bio line:** "Decades of Fortune 50 experience, and a practice of his own alongside it since 2010. ZAC is what happens when those stop being separate things." Set by Drew on 2026-11-05, replacing the "Nineteen years at IBM" line. No year counts for people anywhere on the site.
+- **Andrew's bio line:** "Led global web work at IBM across several roles, including lead developer for IBM.com in North America and technical director at the IBM Design Lab. He has run his own practice since 2010." Set by Drew on 2026-11-13. No year counts for people anywhere on the site.
 - **IBM/MMG timeline framing:** "It started while he was still at IBM and has outlasted that tenure." v5 words it "and outlasted that tenure" in Track record.
 
 The v5 deck fills the Web Partner platforms answer, and it ships.

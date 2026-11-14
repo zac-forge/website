@@ -2,14 +2,20 @@
  * Offer page content model. One shape for every offer page so the template
  * and the FAQPage schema read the same data and cannot diverge.
  */
-/** body is optional on numbered steps, for a step that is one line. */
-export type TitledItem = { title: string; body?: string };
+/**
+ * body is optional on numbered steps, for a step that is one line. A titled
+ * item may carry a short bullet list under its body.
+ */
+export type TitledItem = { title: string; body?: string; bullets?: string[] };
+
+/** Any block may open and close with plain paragraphs around its items. */
+type Frame = { heading: string; intro?: string[]; outro?: string[] };
 
 export type Block =
-  | { heading: string; kind: "bullets"; items: string[] }
-  | { heading: string; kind: "numbered"; items: TitledItem[] }
-  | { heading: string; kind: "titled"; items: TitledItem[] }
-  | { heading: string; kind: "paragraphs"; items: string[] };
+  | (Frame & { kind: "bullets"; items: string[] })
+  | (Frame & { kind: "numbered"; items: TitledItem[] })
+  | (Frame & { kind: "titled"; items: TitledItem[] })
+  | (Frame & { kind: "paragraphs"; items: string[] });
 
 export type Faq = { question: string; answer: string };
 

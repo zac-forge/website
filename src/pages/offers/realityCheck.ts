@@ -17,9 +17,7 @@ export const realityCheck: Offer = {
   eyebrow: "THE REALITY CHECK",
   h1: "Send us what you built. We'll tell you straight.",
   intro: [
-    // The deck has "Nothing automated; a person reads it." Split at the
-    // semicolon, per the voice rules in CLAUDE.md.
-    "A free look at your site, app, or brand by a senior team. 5 questions, one page, no obligation. Nothing automated. A person reads it.",
+    "A free look at your site, app, or brand by senior people. 5 questions, one page, no obligation. Tools take the measurements. A person does the judging and writes the page.",
   ],
   blocks: [
     {
@@ -31,12 +29,18 @@ export const realityCheck: Offer = {
           body: "Sign-in, forms, data, and what happens when it fails. We read the code if you give us access.",
         },
         { title: "Is it fast?", body: "Measured on a real phone." },
-        { title: "Can everyone use it?", body: "Keyboard, screen reader, WCAG 2.2 AA." },
+        {
+          title: "Can everyone use it?",
+          body: "Tested by hand with a keyboard and a screen reader, against WCAG 2.2 AA, the published standard.",
+        },
         {
           title: "Can anyone find it?",
-          body: "What ChatGPT, Google, and Perplexity say when a customer asks. Screenshots.",
+          body: "What ChatGPT, Google, and Perplexity say when a customer asks for someone like you.",
         },
-        { title: "Does it look like you?", body: "Our design principal's read." },
+        {
+          title: "Does it look like you?",
+          body: "Whether it looks like your business or like a template. Our design principal makes the call.",
+        },
       ],
     },
     {
@@ -52,7 +56,10 @@ export const realityCheck: Offer = {
       items: [
         { title: "Send it.", body: "A link is enough." },
         { title: "Give us a few days.", body: "Nothing on your site changes." },
-        { title: "You read the scorecard and decide." },
+        {
+          title: "You read the scorecard and decide.",
+          body: "Fix it with us, fix it yourself, or leave it. The scorecard is yours either way.",
+        },
       ],
     },
   ],
@@ -60,7 +67,7 @@ export const realityCheck: Offer = {
     {
       question: "Why is it free?",
       answer:
-        "So you can see whether we can help before you spend anything. If we can, you get a quote. If we can't, you hear that too.",
+        "Because it's how we meet clients. You see how we work before you spend anything. If we can help, you get a quote. If we can't, we say so.",
     },
     {
       question: "Is it automated?",
@@ -69,7 +76,7 @@ export const realityCheck: Offer = {
     },
     {
       question: "What can you check?",
-      answer: "Websites, web apps, mobile apps, landing pages, brand work, workflows.",
+      answer: "Websites, web apps, mobile apps, landing pages, and brand work. Built with AI or not.",
     },
     {
       question: "Do I need to give you access?",

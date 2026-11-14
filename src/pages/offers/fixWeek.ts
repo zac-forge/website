@@ -14,31 +14,34 @@ export const fixWeek: Offer = {
   menuLine: "One week on what matters most.",
   title: "The Fix: one week, fixed price | ZAC Forge",
   description:
-    "One week, one agreed price. The top item on your Reality Check scorecard resolved in your code, a Design Read on the screen that most looks machine-made, and the rest ranked.",
+    "One week, one agreed price. The top item on your Reality Check scorecard resolved in your code, a design review of the screen that looks most machine-made, and the rest ranked.",
   serviceName: "The Fix Week",
   serviceAlternateName: "The Fix",
   serviceDescription:
-    "One week, one agreed price. The top item on the Reality Check scorecard resolved in the client's code, a Design Read on the screen that most looks machine-made, and a ranked list of what is left.",
+    "One week, one agreed price. The top item on the Reality Check scorecard resolved in the client's code, a design review of the screen that looks most machine-made, and a ranked list of what is left.",
   heroTitle: "The Fix",
   heroIcon: { src: "/art/subpage/subpage-icon-fix.svg", width: 41, height: 54 },
   eyebrow: "THE FIX",
   h1: "One week. Start with what matters most.",
   intro: [
-    "AI got it as far as it could. The Fix Week is where a senior team takes it from here. One price, agreed before day one.",
+    "Your scorecard shows what's wrong. The Fix Week fixes the top problem and tells you what to do about the rest. One price, agreed in writing before any work starts. If it isn't fixed, it's free.",
   ],
   blocks: [
     {
       heading: "What you get",
       kind: "numbered",
       items: [
-        { title: "The top item, resolved.", body: "In your code, tested, documented." },
         {
-          title: "A Design Read.",
-          body: "One page from our design principal on the screen that most looks machine-made: 5 specific fixes, the first one applied if it fits the week.",
+          title: "The top problem, fixed.",
+          body: "In your code, tested, and written up so the next developer can follow it.",
+        },
+        {
+          title: "A design review.",
+          body: "One page from our design principal on the screen that looks most machine-made, with 5 specific fixes. We apply the first one if it fits the week.",
         },
         {
           title: "The rest, ranked.",
-          body: "Everything else on the scorecard with what each takes. Do it with us, in-house, or not at all.",
+          body: "Everything else on the scorecard, in order, with what each would take to fix. Do it with us, do it in-house, or skip it. Some of it won't be worth doing.",
         },
       ],
     },
@@ -47,15 +50,18 @@ export const fixWeek: Offer = {
       kind: "titled",
       items: [
         { title: "Day 1.", body: "Scope and price in writing." },
-        { title: "Days 2 to 4.", body: "The work, in your repo." },
-        { title: "Day 5.", body: "Before and after, side by side. 30 days of care after." },
+        { title: "Days 2 to 4.", body: "The work, in your code." },
+        {
+          title: "Day 5.",
+          body: "Before and after, side by side. For 30 days after, we monitor and maintain the work we did, at no charge.",
+        },
       ],
     },
     {
       heading: "After the week",
       kind: "paragraphs",
       items: [
-        "Most clients take another item off the list or move to Web Partner. Some do neither. The list is yours.",
+        "Take another item off the list, move to Web Partner, or stop there. The list is yours.",
       ],
     },
   ],
@@ -65,17 +71,27 @@ export const fixWeek: Offer = {
       answer: "We say so during scoping and quote it as its own project.",
     },
     {
+      question: "Do you build from scratch?",
+      answer:
+        "Yes. If what you have isn't worth saving, or you have nothing yet, we build it properly from the ground up. A new build doesn't fit in a week, so we quote it as its own project. You own all of it.",
+    },
+    {
       question: "Can I pick the item?",
       answer: "If it's on the scorecard, yes. If we'd pick differently, we'll say why.",
     },
     {
+      question: "What if the fix doesn't work?",
+      answer:
+        'Then it\'s free. On day 1 we agree in writing what "fixed" means. If we don\'t get there, you don\'t pay.',
+    },
+    {
       question: "What do you need from me?",
-      answer: "Access to the code and hosting, and your brand assets.",
+      answer: "Access to the code and hosting, and your logo, fonts, and colors if you have them.",
     },
     {
       question: "Who does the work?",
       answer:
-        "Andrew Johnston, with a principal engineer when the work calls for one, and our design principal on the Design Read. The people you talk to.",
+        "Andrew Johnston, with a principal engineer when the work calls for one, and our design principal on the design review. The people you talk to.",
     },
     { question: "No scorecard yet?", answer: "Start with the free Reality Check." },
   ],

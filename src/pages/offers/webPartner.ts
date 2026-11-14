@@ -4,11 +4,11 @@ import type { Offer } from "./types";
 export const webPartner: Offer = {
   path: "/web-partner",
   navTitle: "Web Partner",
-  summary: "One senior team keeps it running and makes it better every month.",
+  summary: "One senior person who knows your site keeps it running and improves it every month.",
   menuLine: "A senior person on your site, month to month.",
   title: "Web Partner | ZAC Forge",
   description:
-    "One senior team keeps your site running and makes it better every month. Month to month. Scales with you.",
+    "One senior person who knows your site keeps it running and improves it every month. Month to month. Scales with you.",
   serviceName: "Web Partner",
   serviceDescription:
     "Ongoing senior care: updates, backups, monitoring, change requests, one improvement a month, and visibility tracking. Not a maintenance plan.",
@@ -24,11 +24,11 @@ export const webPartner: Offer = {
       heading: "Every plan includes",
       kind: "bullets",
       items: [
-        "Core, plugin, and theme updates",
+        "Software updates (on WordPress: core, plugins, and theme)",
         "Verified off-site backups",
         "Uptime and security monitoring",
-        "A set number of change requests each month",
-        "One proactive improvement each month",
+        "A monthly allowance of change requests, agreed when we scope your plan",
+        "One improvement each month that you didn't have to ask for",
         "A monthly check of how often ChatGPT, Google, and Perplexity name you",
       ],
     },
@@ -42,7 +42,7 @@ export const webPartner: Offer = {
         },
         {
           title: "Web Partner Plus.",
-          body: "Everything above, plus more change requests, competitor tracking, 2 new or updated answer pages a month, a quarterly accessibility and performance re-check, a monthly call, and next-business-day replies.",
+          body: "Everything above, plus a larger allowance of change requests, competitor tracking, 2 new or updated pages a month that answer your customers' questions, a quarterly accessibility and performance re-check, a monthly call, and next-business-day replies.",
         },
       ],
     },
@@ -50,14 +50,14 @@ export const webPartner: Offer = {
       heading: "Need more than a website?",
       kind: "paragraphs",
       items: [
-        "Some clients need a senior team on more than the site: a platform, an internal tool, a workflow, a brand. Web Partner scales to that. Design, engineering, and automation from the same people, sized to your budget, month to month.",
+        "If you need a senior team on more than the site (a platform, an internal tool, a workflow, a brand), Web Partner scales to that. Design, engineering, and automation from the same people, sized to your budget, month to month or on a longer term.",
       ],
     },
     {
       heading: "How it starts",
       kind: "paragraphs",
       items: [
-        "Most clients come after a Fix Week. Every project includes 30 days of care. Plans start at 3 months, then month to month with 30 days' notice.",
+        "Web Partner usually follows a Fix Week, so we already know your site. Every project includes 30 days of care first: we monitor and maintain the work we did, at no charge. After that, plans run month to month. Cancel with 30 days' notice. Longer terms are available if you want one.",
       ],
     },
   ],
@@ -70,12 +70,17 @@ export const webPartner: Offer = {
     {
       question: "What platforms do you work on?",
       answer:
-        "WordPress, custom builds on modern frameworks, and most hosted platforms. If you built it on an AI tool and want off, see Platform Escape.",
+        "WordPress, custom builds on modern frameworks, and most hosted platforms. If you built it on an AI tool and want off, [ask us about moving platforms](/#contact).",
     },
     {
       question: "Who does the work?",
       answer:
         "Andrew Johnston leads every account. A principal engineer and a design principal join when the work calls for them.",
+    },
+    {
+      question: "What if I want to leave?",
+      answer:
+        "Give 30 days' notice. The code, the accounts, and the files are yours the whole time, so there's nothing to ask us for.",
     },
   ],
   cta: { label: "Start with a Reality Check", href: "/#contact" },

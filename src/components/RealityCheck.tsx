@@ -8,7 +8,10 @@ import { fadeUpSmall } from "../lib/motion";
 const QUESTIONS = [
   { q: "Does it work?", a: "Sign-in, forms, data, and what happens when it fails." },
   { q: "Is it fast?", a: "Measured on a real phone." },
-  { q: "Can everyone use it?", a: "Keyboard, screen reader, WCAG 2.2 AA." },
+  {
+    q: "Can everyone use it?",
+    a: "Tested by hand with a keyboard and a screen reader, against WCAG 2.2 AA, the published standard.",
+  },
   {
     q: "Can anyone find it?",
     a: "What ChatGPT, Google, and Perplexity say when a customer asks for someone like you.",

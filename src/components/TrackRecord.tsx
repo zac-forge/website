@@ -105,14 +105,17 @@ const CASE_STUDIES: CaseStudy[] = [
     ],
   },
   {
-    client: "Legal Access Alameda",
+    // Drew, 2026-11-13: the portal itself, built for Legal Access Alameda.
+    // No screenshot of disasterlegalservicesca.org yet, so the grey slot.
+    client: "Disaster Legal Services California",
     industry: "Nonprofit legal aid",
-    status: "Long-term client",
+    status: "Live through the 2025 Los Angeles fires",
     built:
-      "The statewide disaster legal aid portal: one place for Californians hit by wildfires, earthquakes, and other disasters to find free legal help. Accessible and simple to use.",
-    proof: "The free disaster legal aid portal for all of California.",
-    product: { label: "California disaster legal aid portal" },
-    images: [{ base: "/work/legal-access-alameda", alt: "Screenshot of the Legal Access Alameda website" }],
+      "California's disaster legal services portal, for Legal Access Alameda and the Disaster Legal Assistance Collaborative, a statewide alliance of legal aid groups and volunteer attorneys. One place for Californians hit by wildfires, earthquakes, and floods to find free legal help. Accessible and simple to use.",
+    proof: "It carried survivors of the 2025 Los Angeles fires to free legal help, in 7 languages.",
+    figure: "7",
+    figureCaption: "languages",
+    product: { label: "disasterlegalservicesca.org", href: "https://disasterlegalservicesca.org/" },
   },
 ];
 
@@ -133,8 +136,9 @@ function CaseImage({ image }: { image: { base: string; alt: string } }) {
 }
 
 /**
- * One case study card: client across, screenshots left, then industry,
- * status, the labelled lines, the number, and the product link.
+ * One case study card: client over the screenshots, then the industry and
+ * status on one line (Drew, 2026-11-13), the labelled lines, the number, and
+ * the product link.
  */
 function CaseCard({ study }: { study: CaseStudy }) {
   const facts: [string, string | undefined][] = [
@@ -153,8 +157,11 @@ function CaseCard({ study }: { study: CaseStudy }) {
         )}
       </div>
       <div className="case-copy">
-        {study.industry ? <p className="case-industry case-text">{study.industry}</p> : null}
-        {study.status ? <p className="case-status">{study.status}</p> : null}
+        {study.industry || study.status ? (
+          <p className="case-industry case-text">
+            {[study.industry, study.status].filter(Boolean).join(" · ")}
+          </p>
+        ) : null}
         <dl className="case-facts">
           {facts.map(([label, text]) =>
             text ? (

@@ -44,7 +44,14 @@ function BlockView({ block }: { block: Block }) {
           {block.items.map((item) => (
             <div key={item.title}>
               <h3 className="offer-titled-title">{item.title}</h3>
-              <p className="offer-titled-body">{item.body}</p>
+              {item.body ? <p className="offer-titled-body">{item.body}</p> : null}
+              {item.bullets ? (
+                <ul className="offer-list">
+                  {item.bullets.map((b) => (
+                    <li key={b}>{b}</li>
+                  ))}
+                </ul>
+              ) : null}
             </div>
           ))}
         </div>
@@ -62,21 +69,43 @@ function BlockView({ block }: { block: Block }) {
   }
 }
 
-/**
- * The subline may carry one inline link, written [text](/path), so the line
- * placing a page behind the Reality Check can link to it. Plain text
- * otherwise.
- */
-function Subline({ text }: { text: string }) {
-  const m = text.match(/^(.*)\[([^\]]+)\]\(([^)]+)\)(.*)$/);
-  if (!m) return <p className="offer-subline">{text}</p>;
+/** The paragraphs a block may open or close with, in the paragraph style. */
+function Paragraphs({ items }: { items?: string[] }) {
+  if (!items?.length) return null;
   return (
-    <p className="offer-subline">
+    <>
+      {items.map((item) => (
+        <p className="offer-paragraph" key={item}>
+          {item}
+        </p>
+      ))}
+    </>
+  );
+}
+
+/**
+ * The subline and FAQ answers may carry one inline link, written
+ * [text](/path), so the line placing a page behind the Reality Check can
+ * link to it. Plain text otherwise. The schema strips the markup.
+ */
+function InlineText({ text }: { text: string }) {
+  const m = text.match(/^(.*)\[([^\]]+)\]\(([^)]+)\)(.*)$/);
+  if (!m) return <>{text}</>;
+  return (
+    <>
       {m[1]}
       <a className="inline-link" href={m[3]}>
         {m[2]}
       </a>
       {m[4]}
+    </>
+  );
+}
+
+function Subline({ text }: { text: string }) {
+  return (
+    <p className="offer-subline">
+      <InlineText text={text} />
     </p>
   );
 }
@@ -106,7 +135,9 @@ export default function OfferPage({ offer }: { offer: Offer }) {
           <section className="section offer-block" key={block.heading}>
             <div className="container">
               <h2 className="h3">{block.heading}</h2>
+              <Paragraphs items={block.intro} />
               <BlockView block={block} />
+              <Paragraphs items={block.outro} />
             </div>
           </section>
         ))}
@@ -131,7 +162,9 @@ export default function OfferPage({ offer }: { offer: Offer }) {
               {offer.faq.map((f) => (
                 <div className="faq-item" key={f.question}>
                   <dt>{f.question}</dt>
-                  <dd>{f.answer}</dd>
+                  <dd>
+                    <InlineText text={f.answer} />
+                  </dd>
                 </div>
               ))}
             </dl>

@@ -8,6 +8,7 @@ import { TrackRecord } from "../components/TrackRecord";
 import { WhatWeFix } from "../components/WhatWeFix";
 import { HowWeWork } from "../components/HowWeWork";
 import { WhoWeAre } from "../components/WhoWeAre";
+import { HomeFaq } from "../components/HomeFaq";
 import { Closing } from "../components/Closing";
 import { Footer } from "../components/Footer";
 
@@ -28,6 +29,7 @@ export default function Home() {
         <HowWeWork />
         <ExperienceStrip />
         <WhoWeAre />
+        <HomeFaq />
         <Closing />
       </main>
       <Footer />

@@ -15,9 +15,10 @@ export const aiVisibility: Offer = {
   heroIcon: { src: "/art/subpage/subpage-icon-ai-visibility.svg", width: 45, height: 49 },
   eyebrow: "AI VISIBILITY",
   h1: "AI Visibility: get named when customers ask.",
-  subline: "Usually what question 4 on our free [Reality Check](/reality-check) points to.",
+  subline:
+    "Question 4 on our free [Reality Check](/reality-check) tells you whether you have this problem. This page is the fix.",
   intro: [
-    "Ask ChatGPT who the best [your category] near you is. It will name a few businesses. We find out whether you are one of them, why or why not, and what to fix first.",
+    "Ask ChatGPT to recommend a business like yours. It will name a few. We find out whether you're one of them, why or why not, and what to fix first.",
   ],
   blocks: [
     {
@@ -26,11 +27,11 @@ export const aiVisibility: Offer = {
       items: [
         {
           title: "Can the assistants read your site?",
-          body: "Firewall and CDN settings, robots.txt, and whether your content is in the page or only appears after JavaScript runs. Many AI crawlers do not run JavaScript, and some hosting setups block them by default.",
+          body: "Some hosting setups block AI crawlers by default, and many crawlers can't read content that only appears after JavaScript runs. We check your firewall, CDN, and robots.txt settings, and what's actually in the page.",
         },
         {
           title: "Do they understand what you are?",
-          body: "Structured data for your business, services, people, and location.",
+          body: "Structured data is a label in your code that tells a machine your business name, services, people, and location. We check that it's there and that it's right.",
         },
         {
           title: "Do you answer the questions customers ask?",
@@ -56,7 +57,7 @@ export const aiVisibility: Offer = {
         },
         {
           title: "The work.",
-          body: "Crawler access, structured data, answer pages, and third-party mentions, done in order of what moves the needle. Quoted from the check.",
+          body: "Crawler access, structured data, answer pages, and third-party mentions, done in order of what will change the answers most. Quoted after the check.",
         },
         {
           title: "Track.",
@@ -65,10 +66,11 @@ export const aiVisibility: Offer = {
       ],
     },
   ],
-  // The hawaii.surf before and after, and the zacforge.com result, are open
-  // slots in docs/site-copy-v4.md, still open in v5. Only the sentence that needs no numbers
-  // ships until they are filled.
-  proof: ["We run the same check on our own site."],
+  // Drew, 2026-11-13. The hawaii.surf before and after, and the zacforge.com
+  // result, are still open slots.
+  proof: [
+    "This is a new offer, and we don't have a client result to publish yet. We run the same check on our own site. When we have a before and after worth showing, it goes here.",
+  ],
   faq: [
     {
       question: "Can you guarantee we will be recommended?",

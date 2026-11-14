@@ -6,10 +6,11 @@
  * consent), one Service per live offer with provider ZAC Forge (the Reality
  * Check, the Fix Week, AI Visibility, Accessibility and Performance, Web
  * Partner, and the Brand System once its flag is on), and FAQPage on each
- * offer page matching the visible questions exactly. No offers, no price
+ * offer page and on the home page, matching the visible questions exactly. No offers, no price
  * properties, anywhere.
  */
 import { LIVE_OFFERS } from "../pages/offers";
+import { HOME_FAQ } from "../pages/homeFaq";
 import type { Offer } from "../pages/offers";
 import { HOME_META, canonical } from "./meta";
 import { CONTACT_EMAIL } from "./links";
@@ -61,6 +62,23 @@ function service(name: string, description: string, url?: string, alternateName?
   };
 }
 
+/** FAQPage from the visible questions and answers, word for word. */
+function faqPage(faq: { question: string; answer: string }[]) {
+  return {
+    "@type": "FAQPage",
+    mainEntity: faq.map((f) => ({
+      "@type": "Question",
+      name: plainText(f.question),
+      acceptedAnswer: { "@type": "Answer", text: plainText(f.answer) },
+    })),
+  };
+}
+
+/** Drops the [text](/path) link markup an answer may carry, keeping the text. */
+function plainText(text: string) {
+  return text.replace(/\[([^\]]+)\]\([^)]+\)/g, (_match, label: string) => label);
+}
+
 function services() {
   return LIVE_OFFERS.map((o) => service(o.serviceName, o.serviceDescription, canonical(o.path), o.serviceAlternateName));
 }
@@ -68,7 +86,7 @@ function services() {
 export function homeSchema() {
   return {
     "@context": "https://schema.org",
-    "@graph": [organization, person, ...services()],
+    "@graph": [organization, person, ...services(), faqPage(HOME_FAQ)],
   };
 }
 
@@ -86,14 +104,7 @@ export function offerSchema(offer: Offer) {
         about: { "@id": ORG_ID },
       },
       service(offer.serviceName, offer.serviceDescription, canonical(offer.path), offer.serviceAlternateName),
-      {
-        "@type": "FAQPage",
-        mainEntity: offer.faq.map((f) => ({
-          "@type": "Question",
-          name: f.question,
-          acceptedAnswer: { "@type": "Answer", text: f.answer },
-        })),
-      },
+      faqPage(offer.faq),
     ],
   };
 }

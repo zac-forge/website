@@ -22,7 +22,8 @@ const PROCESS = [
         <a className="inline-link" href="/fix-week">
           One week
         </a>{" "}
-        or one project, fixed price. You get: it done, in your code, before and after.
+        or one project, fixed price. You get: the fix, made in your code, with a before and after you
+        can see.
       </>,
       "We tell you what's not worth fixing.\nA lot of it isn't.",
     ],
@@ -31,7 +32,7 @@ const PROCESS = [
     title: "Partner",
     icon: "/art/mb11/flow-partner.svg",
     body: [
-      "Monthly, month to month. You get: one senior person who knows your site and improves it every month.",
+      "Month to month, or a longer term if you want one. You get: one senior person who knows your site and improves it every month.",
       "You own the code, the accounts, and the files.",
       "If we vanished tomorrow, you'd be fine.",
     ],

@@ -20,9 +20,13 @@ export function FixWeek() {
           <p className="section-intro copy">
             When the scorecard shows something worth fixing, we fix it. In one week, the same senior
             people fix the top problem in your code, show you what makes your design look
-            machine-made, and rank everything else by what it's worth. If what you have isn't worth
-            saving, we'll say so and build it properly from the ground up. One price, agreed before
-            we start.
+            machine-made, and rank everything else by how much it matters. One price, agreed before
+            we start. If it isn't fixed, it's free.
+          </p>
+          <p className="section-intro copy">
+            Not worth saving, or starting from nothing? We build it properly from the ground up. A new
+            build takes longer than a week, so we quote it as its own project. You own all of it when
+            it's done.
           </p>
           <div className="cta-row fix-week-link">
             <a className="text-link" href="/fix-week">

@@ -19,7 +19,7 @@ const TEAM: TeamMember[] = [
     slug: "andrew-johnston",
     name: "Andrew Johnston",
     role: "Founder, Principal",
-    bio: "Decades of Fortune 50 experience, and a practice of his own alongside it since 2010.",
+    bio: "Led global web work at IBM across several roles, including lead developer for IBM.com in North America and technical director at the IBM Design Lab. He has run his own practice since 2010.",
   },
   {
     slug: "design-principal",

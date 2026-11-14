@@ -1245,6 +1245,10 @@ body:has(.subpage-hero) .site-header:not([data-scrolled="true"]):not(:has(.site-
 .offer-block .h3 {
   margin-bottom: var(--space-5);
 }
+/* The home FAQ uses the home heading (.h2) over the same list. */
+.offer-faq .h2 {
+  margin-bottom: var(--space-7);
+}
 .offer-list {
   margin: 0;
   padding: 0;
@@ -1307,6 +1311,15 @@ body:has(.subpage-hero) .site-header:not([data-scrolled="true"]):not(:has(.site-
 }
 .offer-paragraph {
   max-width: var(--prose-width);
+}
+/* A block's opening or closing paragraphs, and a bullet list under a
+   titled item, spaced like the existing paragraph runs (2026-11-13). */
+.offer-paragraph + :is(.offer-list, .offer-steps, .offer-titled),
+:is(.offer-list, .offer-steps, .offer-titled) + .offer-paragraph {
+  margin-top: var(--space-5);
+}
+.offer-titled .offer-list {
+  margin-top: var(--space-3);
 }
 .offer-paragraph + .offer-paragraph {
   margin-top: var(--space-4);

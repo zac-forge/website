@@ -17,8 +17,8 @@ remotely with clients anywhere in the US.
   right would take.
 - [The Fix](https://zacforge.com/fix-week): the Fix Week, one week, one agreed
   price. The top item on the Reality Check scorecard resolved in the client's code, a
-  Design Read on the screen that most looks machine-made, and a ranked list of
-  what is left.
+  design review of the screen that looks most machine-made, and a ranked list of
+  what is left. If it isn't fixed, it's free.
 
 ## Services
 
@@ -34,8 +34,8 @@ remotely with clients anywhere in the US.
 - [Web Partner](https://zacforge.com/web-partner): ongoing senior care
   covering updates, backups, monitoring, change requests, one improvement a
   month, and visibility tracking. Not a maintenance plan.
-- Rescue: finishing and hardening sites and apps built quickly with AI tools,
-  or rebuilding them when they cannot be saved.
+- Rescue: finishing what AI started and making it safe to run. If it can't be
+  saved, we build it properly from the ground up.
 - Platform Escape: moving organizations off platforms they have outgrown onto
   something they own.
 - AI-Ready Brand System: senior brand design turned into tokens, components,
@@ -46,14 +46,15 @@ remotely with clients anywhere in the US.
 - Heritage Global Partners: all web properties including hgpauction.com, with
   real-time auction creation from the sale floor. Live since 2010, with over
   $1 billion in assets sold through the platform.
-- Teddy Bear Portraits (Legacy Studios): point of sale and same-day photo
-  delivery across 41 states. Built 2016 to 2019, still running, now maintained
-  by an outside vendor unchanged.
-- US Naval Academy and US Military Academy: cadet booking and photo portals,
-  live since 2017.
-- Legal Access Alameda: web properties for a statewide group of attorneys
-  providing disaster response and free legal assistance. A client across
-  several years and several rebuilds.
+- Legacy Studios (Teddy Bear Portraits): a custom back end on WordPress and
+  open source, with tablet point of sale on one central database, across 41
+  states. The same platform runs separately branded portals for the US Naval
+  Academy and the US Military Academy. Built 2016 to 2019, still running, now
+  maintained by another team.
+- [Disaster Legal Services California](https://disasterlegalservicesca.org/):
+  California's disaster legal services portal, for Legal Access Alameda and the
+  Disaster Legal Assistance Collaborative. It carried survivors of the 2025 Los
+  Angeles fires to free legal help, in 7 languages.
 
 ## Contact
 

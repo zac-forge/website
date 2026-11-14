@@ -18,17 +18,17 @@ const FIXES: Fix[] = [
   },
   {
     title: "Rescue",
-    line: "Finish and harden what AI started. If it can't be saved, we build it properly from the ground up.",
+    line: "Finish what AI started and make it safe to run. If it can't be saved, we build it properly from the ground up.",
     link: { label: "Ask about a rescue", href: "#contact" },
   },
   {
     title: "Accessibility and performance",
-    line: "Public agencies face federal deadlines in April 2027 and April 2028. We fix it in the code, not with a widget.",
+    line: "Public agencies and federally funded health providers face federal accessibility deadlines in 2027 and 2028. We fix the site's code. We don't cover it with a widget.",
     link: { label: "See Accessibility", href: "/accessibility" },
   },
   {
     title: "Brand system",
-    line: "Senior design your AI tools follow, so everything looks like you.",
+    line: "Our design principal sets your look once, as rules your AI tools follow. What they make after that looks like you.",
     // Drew, 2026-11-13: always a link. To the form while the page is off.
     link: BRAND_SYSTEM
       ? { label: "Ask about a brand system", href: "/brand-system" }
@@ -41,7 +41,7 @@ const FIXES: Fix[] = [
   },
   {
     title: "Web Partner",
-    line: "One senior team keeps it running and makes it better every month.",
+    line: "One senior person who knows your site keeps it running and improves it every month.",
     link: { label: "See Web Partner", href: "/web-partner" },
   },
 ];
