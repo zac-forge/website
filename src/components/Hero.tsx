@@ -1,5 +1,6 @@
 import { motion, useReducedMotion } from "motion/react";
 import { Magnetic } from "./Magnetic";
+import { SubpageHero } from "./SubpageHero";
 import { BOOKING_URL } from "../lib/links";
 import { EASE, staggerContainer } from "../lib/motion";
 
@@ -11,9 +12,11 @@ const item = {
 };
 
 /**
- * MB11 hero (357:796, 357:1058, 357:1034) on the blue band 357:764 with its
- * angled cut at the bottom left, the gradient Z (358:1060), and the dotted
- * line art. Copy is the live copy of 2026-11-06. The comp has no eyebrow or
+ * Misha's home banner of 2026-11-13 (412:1907 and its siblings, cached in
+ * design/home-hero/): the offer pages' swoosh band through SubpageHero's
+ * home variant, with the header clear over it at the top, the headline,
+ * subline, and buttons, and the gradient Z (412:1934, the same art as MB11's
+ * 358:1060). The band has no dotted line art now. Copy is the live copy of 2026-11-06. The comp has no eyebrow or
  * booking pill here; the booking pill (Drew, 2026-11-05) stays. The proof
  * line under the buttons was removed by Drew on 2026-11-13. public/og-image.jpg
  * is rendered from this copy by tools/og-card.html, so change both together.
@@ -22,9 +25,8 @@ export function Hero() {
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <section id="top" className="hero band band--blue">
-      <img className="band-lines band-lines--hero" src="/art/mb11/lines-hero.svg" width={1280} height={568} alt="" aria-hidden="true" />
-      <div className="container hero-grid">
+    <SubpageHero variant="home">
+      <div className="hero-grid">
         <motion.div
           className="hero-copy"
           variants={container}
@@ -65,6 +67,6 @@ export function Hero() {
           />
         </div>
       </div>
-    </section>
+    </SubpageHero>
   );
 }

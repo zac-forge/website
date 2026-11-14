@@ -1,8 +1,14 @@
-import type { CSSProperties } from "react";
+import type { CSSProperties, ReactNode } from "react";
 
 type Props = {
-  /** The page name, set large. The page's h1. */
-  title: string;
+  /**
+   * "offer" (the default) sets the icon and the page name. "home" is Misha's
+   * home banner (412:1907 and its siblings, 2026-11-13): the same band and
+   * swoosh, with the home hero's own content passed as children.
+   */
+  variant?: "offer" | "home";
+  /** The page name, set large. The page's h1. Offer variant only. */
+  title?: string;
   /** A white line icon from public/art/subpage/, set over the title. */
   icon?: { src: string; width: number; height: number };
   /**
@@ -12,6 +18,8 @@ type Props = {
    * are approved every page passes nothing and the band stays flat blue.
    */
   accent?: string;
+  /** The home variant's content. */
+  children?: ReactNode;
 };
 
 /**
@@ -24,11 +32,12 @@ type Props = {
  * header and its wordmark and nav are the site header above. The art was
  * generated from the nodes' vector geometry, see design/subpage-heroes/.
  */
-export function SubpageHero({ title, icon, accent }: Props) {
+export function SubpageHero({ variant = "offer", title, icon, accent, children }: Props) {
   const style = accent ? ({ "--hero-accent": accent } as CSSProperties) : undefined;
+  const className = `subpage-hero${variant === "home" ? " subpage-hero--home" : ""} band band--blue`;
 
   return (
-    <section id="top" className="subpage-hero band band--blue" style={style}>
+    <section id="top" className={className} style={style}>
       <img
         className="subpage-hero-art"
         src="/art/subpage/subpage-swoosh.svg"
@@ -39,14 +48,18 @@ export function SubpageHero({ title, icon, accent }: Props) {
         decoding="async"
       />
       <div className="container">
-        <div className="subpage-hero-copy">
-          {icon ? (
-            <span className="subpage-hero-icon" aria-hidden="true">
-              <img src={icon.src} width={icon.width} height={icon.height} alt="" />
-            </span>
-          ) : null}
-          <h1 className="h1 subpage-hero-title">{title}</h1>
-        </div>
+        {variant === "home" ? (
+          children
+        ) : (
+          <div className="subpage-hero-copy">
+            {icon ? (
+              <span className="subpage-hero-icon" aria-hidden="true">
+                <img src={icon.src} width={icon.width} height={icon.height} alt="" />
+              </span>
+            ) : null}
+            <h1 className="h1 subpage-hero-title">{title}</h1>
+          </div>
+        )}
       </div>
     </section>
   );

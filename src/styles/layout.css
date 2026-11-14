@@ -221,7 +221,6 @@ body:has(.subpage-hero) .site-header:not([data-scrolled="true"]):not(:has(.site-
    (border-radius), both from the band tokens, which scale with --band-k.
    The dotted line art is one SVG per band, laid on the 1280 frame's
    coordinates, centred, and dropped below 900px where it would only clutter. */
-.hero,
 .reality-check,
 .track-record,
 .fixes-band,
@@ -256,15 +255,17 @@ body:has(.subpage-hero) .site-header:not([data-scrolled="true"]):not(:has(.site-
 }
 
 /* ------------------------------------------------------------------ Hero */
-/* 357:764: the blue band under the header, cut at the bottom left. The
-   headline sits 144 from the frame top, 74 below the header. */
-.hero {
-  padding-top: calc(var(--space-8) + var(--space-3));
-  padding-bottom: var(--space-10);
-  clip-path: var(--band-clip-hero);
-}
-.band-lines--hero {
-  top: calc(var(--header-height) * -1);
+/* Misha's home banner (412:1907 and siblings, 2026-11-13): SubpageHero's
+   home variant, so the band, swoosh, cut, and clear header are the offer
+   heroes'. On the 1280 x 568 frame, header included, the headline's top is
+   at 155 (85 under the header, set as 88), the subline at 356, the buttons
+   at 431, and the band ends at 568. The subline sets in 3 lines at the 16px
+   desktop floor (2 at the comp's 14), so the buttons sit about 35 lower and
+   the bottom padding gives that back to keep the band at 568. Specificity
+   beats .subpage-hero below. */
+.subpage-hero.subpage-hero--home {
+  padding-top: calc(var(--header-height) + var(--space-8) + var(--space-5));
+  padding-bottom: var(--space-8);
 }
 .hero-grid {
   display: grid;
@@ -285,7 +286,7 @@ body:has(.subpage-hero) .site-header:not([data-scrolled="true"]):not(:has(.site-
   max-width: calc(var(--copy-width) - var(--space-8));
   margin-top: var(--space-5);
 }
-.hero .cta-row {
+.hero-copy .cta-row {
   margin-top: calc(var(--space-6) + var(--space-2));
   gap: var(--space-4);
 }
@@ -300,8 +301,8 @@ body:has(.subpage-hero) .site-header:not([data-scrolled="true"]):not(:has(.site-
 }
 
 @media (max-width: 900px) {
-  .hero {
-    padding-top: var(--space-8);
+  .subpage-hero.subpage-hero--home {
+    padding-top: calc(var(--header-height) + var(--space-8));
   }
   .hero-grid {
     grid-template-columns: minmax(0, 1fr);
@@ -315,6 +316,14 @@ body:has(.subpage-hero) .site-header:not([data-scrolled="true"]):not(:has(.site-
     margin-top: 0;
     justify-self: start;
     max-width: calc(var(--hero-art) * 0.5);
+  }
+}
+
+/* Phones: the Z drops below the buttons, so the headline and both buttons
+   come first (Drew asked for below or hidden, 2026-11-13). */
+@media (max-width: 760px) {
+  .hero-visual {
+    order: 0;
   }
 }
 

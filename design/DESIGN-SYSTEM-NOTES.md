@@ -161,6 +161,12 @@ to it:
   comps. The band runs up under the header, which is clear at the top of an
   offer page and blue once it scrolls. Height from the new
   `--subpage-hero-height` token.
+- **Home banner** (2026-11-13), Misha's 412:1907 and siblings, cached in
+  `design/home-hero/`: `SubpageHero`'s home variant, so the same swoosh band
+  and clear header as the offer pages. The Z (412:1934) is the existing
+  `hero-z.svg`. The subline sets in 3 lines at the 16px desktop floor, so
+  the bottom padding is trimmed to keep the band at 568. On phones the Z
+  sits below the buttons. The hero's dotted line art is retired.
 - **Reality Check line art.** With the icon points gone (Drew), the first
   dotted line of `lines-reality-check.svg` crossed question 1. It now stops
   left of the content column.
