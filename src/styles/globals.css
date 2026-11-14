@@ -270,8 +270,7 @@ p {
 .band--grey {
   --band-bg: var(--color-band-grey);
 }
-.band .eyebrow,
-.band .proof-line {
+.band .eyebrow {
   color: var(--band-muted);
 }
 .band--blue .eyebrow {

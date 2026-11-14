@@ -4,12 +4,15 @@ export const accessibility: Offer = {
   path: "/accessibility",
   navTitle: "Accessibility and Performance",
   summary: "Corrected in the code, not covered with a widget.",
+  menuLine: "Usable by everyone, fast on every phone.",
   title: "Accessibility and Performance | ZAC Forge",
   description:
     "Manual accessibility testing against WCAG 2.2 AA and a performance review, with corrections made in your code, not covered with an overlay.",
   serviceName: "Accessibility and Performance",
   serviceDescription:
     "Manual testing against WCAG 2.2 AA, performance review, corrections made in the code, and an accessibility statement. No overlays.",
+  heroTitle: "Accessibility & Performance",
+  heroIcon: { src: "/art/subpage/subpage-icon-accessibility.svg", width: 47, height: 47 },
   eyebrow: "ACCESSIBILITY AND PERFORMANCE",
   h1: "Accessibility and performance, corrected in the code.",
   subline: "Usually what question 3 on our free [Reality Check](/reality-check) points to.",

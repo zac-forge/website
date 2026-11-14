@@ -4,22 +4,6 @@ import { Magnetic } from "./Magnetic";
 import { BOOKING_URL } from "../lib/links";
 import { fadeUpSmall } from "../lib/motion";
 
-/**
- * MB11's four icon points (365:1297 to 365:1345 over 365:1329 to 365:1336),
- * in the comp's wording (Drew, 2026-11-12).
- */
-const POINTS = [
-  { icon: "icon-free", w: 88, h: 41, text: "Completely FREE assessment" },
-  { icon: "icon-question", w: 64, h: 63, text: "Short list of 5 questions" },
-  {
-    icon: "icon-scorecard",
-    w: 51,
-    h: 64,
-    text: "A one-page scorecard in plain English, with evidence and what a fix would take.",
-  },
-  { icon: "icon-people", w: 72, h: 67, text: "Checked by people, not software." },
-];
-
 /** Five lines, shown in full: no accordion, no carousel. */
 const QUESTIONS = [
   { q: "Does it work?", a: "Sign-in, forms, data, and what happens when it fails." },
@@ -34,8 +18,9 @@ const QUESTIONS = [
 
 /**
  * The front door, on MB11's blue band 360:1260 (curve top right, cut bottom
- * left): heading, four icon points, a dotted rule, the five questions
- * numbered 1 to 5 (the comp numbers only 2 and 4), and the button. The
+ * left): heading, the five questions numbered 1 to 5 (the comp numbers only
+ * 2 and 4), and the button. The comp's four icon points and the dotted rule
+ * under them were removed by Drew on 2026-11-13. The
  * booking pill and the "How it works" link to /reality-check stay from the
  * live page; the comp has the button only.
  */
@@ -50,19 +35,6 @@ export function RealityCheck() {
             <span className="h-light">Send us what you built.</span> We'll tell you straight.
           </h2>
         </Reveal>
-
-        <Reveal className="rc-points" stagger={0.06}>
-          {POINTS.map((p) => (
-            <motion.div className="rc-point" key={p.icon} variants={fadeUpSmall}>
-              <span className="rc-point-icon" aria-hidden="true">
-                <img src={`/art/mb11/${p.icon}.svg`} width={p.w} height={p.h} alt="" loading="lazy" />
-              </span>
-              <p className="rc-point-text copy">{p.text}</p>
-            </motion.div>
-          ))}
-        </Reveal>
-
-        <div className="rc-rule" aria-hidden="true" />
 
         <Reveal className="rc-questions" stagger={0.06}>
           {QUESTIONS.map((item, i) => (

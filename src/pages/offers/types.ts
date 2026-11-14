@@ -20,6 +20,8 @@ export type Offer = {
   navTitle: string;
   /** One line under the name in the related offers block, from the copy deck. */
   summary: string;
+  /** One line under the name in the header's What we do menu (Drew, 2026-11-13). */
+  menuLine?: string;
   /** Behind a flag: omitted from routes, menus, sitemap, and schema. */
   flagged?: boolean;
   /** Document head. */
@@ -30,7 +32,17 @@ export type Offer = {
   /** A shorter label the site also uses for the offer ("The Fix"). */
   serviceAlternateName?: string;
   serviceDescription: string;
-  /** Page body. */
+  /** The page name in the hero, in the wording of Misha's comps (2026-11-13). */
+  heroTitle: string;
+  /** The white line icon over the hero title, from public/art/subpage/. */
+  heroIcon?: { src: string; width: number; height: number };
+  /**
+   * The colour the hero band fades to, as a CSS value (a colour token). Unset,
+   * the band stays the flat band blue. See SubpageHero.
+   */
+  accent?: string;
+  /** Page body. The eyebrow is no longer shown on the page since the shared
+   *  hero (2026-11-13), and is kept for when it comes back. */
   eyebrow: string;
   h1: string;
   /** The v5 line under the H1 that places a fix behind the Reality Check. */

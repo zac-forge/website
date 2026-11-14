@@ -134,8 +134,9 @@ Build pages from these. Do not create a second button, card, or eyebrow.
 | Section label | `.eyebrow`: the arrow (a mask, `--eyebrow-arrow`) and the label, capitalised by CSS |
 | Copy beside an illustration | `.art-split` with `.art-split-art`, art from `public/art/mb11/` |
 | Headings | `.h1` (64px hero), `.h2` (48px), `.h3`; bold by default, `.h-light` for the light run, `.h-aside` light italic, `.h-alert` the red word |
-| Body copy at the comp's size | `.copy` (Avenir Light 14px, 16px on phones), `.case-text` (Helvetica Light 14px) |
+| Body copy at the comp's size | `.copy` (Avenir Light 14px, 16px on phones and at 1024px and wider), `.case-text` (Helvetica Light 14px, 16px at 1024px and wider). Body and caption text is never under 16px at desktop widths (Drew, 2026-11-13); labels stay at 14 |
 | Intro under a heading | `.section-intro` |
+| Offer page hero | `SubpageHero` (`src/components/SubpageHero.tsx`), art from `public/art/subpage/`, recolour a page with its offer's `accent` |
 | Primary action | `.btn.btn-primary`, the pill, with the trailing arrow span, wrapped in `<Magnetic>` in the body |
 | Secondary action | `.btn.btn-secondary`, the outlined pill |
 | Inline text action | `.text-link` |
@@ -165,7 +166,7 @@ only, and a row in this table.
 
 ## Section order (v5)
 
-Hero → LogoBand → Problem → RealityCheck → FixWeek → RecentWork → TrackRecord → WhatWeFix → HowWeWork → ExperienceStrip → WhoWeAre → Closing (order from the 2026-11-06 copy pass)
+Hero → LogoBand → Problem → RealityCheck → FixWeek → WhatWeFix → TrackRecord (Case studies) → HowWeWork → ExperienceStrip → WhoWeAre → Closing (Drew, 2026-11-13)
 
 Six offer pages share one template: `/reality-check`, `/fix-week` (`/handoff` 301s there from `functions/worker.ts`; labelled "The Fix" in nav, footer, eyebrows, buttons, and its title, while body copy and the schema `name` keep "the Fix Week"), `/ai-visibility`, `/accessibility`, `/web-partner`, and `/brand-system`. The last is behind the `BRAND_SYSTEM` flag in `src/lib/flags.ts`, off by default, which keeps the page out of the routes, menus, sitemap, and schema and leaves the What we fix row as plain text. v5's `llms.txt` lists the brand system without a link, as the copy deck has it. The hawaii.surf case study card is behind `HAWAII_CARD`, off until real before and after numbers exist.
 
@@ -175,14 +176,14 @@ Every page is prerendered by `scripts/prerender.mjs` into `dist/<route>.html` wi
 
 | File | v5 status |
 |---|---|
-| `Header.tsx` | Blue on every page, nav What we do (menu), Case studies, How we work, Team, CTA "Let's talk" to `BOOKING_URL` (Drew, 2026-11-12) |
+| `Header.tsx` | Blue on every page (clear over an offer page hero until the page scrolls), nav What we do (menu, each offer with its `menuLine` under the name), Case studies, How we work, Team, CTA "Let's talk" to `BOOKING_URL` (Drew, 2026-11-12) |
 | `ContactFocus.tsx` | Every `#contact` link scrolls the Name field into view below the sticky header and focuses it, on click and on arrival with the hash |
-| `Hero.tsx` | Blue band with MB11's line art and Z, "Built it with AI? Find out if it actually works.", proof line carries Fortune 50 and 2010, outlined "Book a 20-minute call" pill to `BOOKING_URL` beside the primary CTA. `public/og-image.jpg` is rendered from it by `tools/og-card.html` (still the v5 look) |
+| `Hero.tsx` | Blue band with MB11's line art and Z, "Built it with AI? Find out if it actually works.", no proof line (removed 2026-11-13), outlined "Book a 20-minute call" pill to `BOOKING_URL` beside the primary CTA. `public/og-image.jpg` is rendered from it by `tools/og-card.html` (still the v5 look) |
 | `LogoBand.tsx` | "Where our team has worked", names as muted text, never labelled as clients |
-| `TrackRecord.tsx` | `RecentWork` first (Drew, 2026-11-12): one CCCV card on the ground in the same card style, kept out of llms.txt and schema until ccconejovalley.com is live. Then `TrackRecord`: grey band, four stacked cases with screenshots (hgpauction.com, Teddy Bear Portraits, usna.legacystudios.com cropped clear of all insignia, Legal Access); Legal Access ships with only its filled sentence; hidden hawaii.surf card first behind `HAWAII_CARD` |
+| `TrackRecord.tsx` | Case studies (Drew, 2026-11-13: Recent work merged in), grey band, eyebrow "Case studies", heading "Still Running", anchor `#track-record`. Five cards, one structure: client, product name linked to the URL (the URL is never shown), one line, status, one number. CCCV first (kept out of llms.txt and schema until ccconejovalley.com is live), then Heritage Global, Teddy Bear Portraits, Legacy Studios (screenshot cropped clear of all insignia), Legal Access Alameda (no link or number yet). Invented labels carry `TODO(Drew)`. Hidden hawaii.surf card first behind `HAWAII_CARD` |
 | `Problem.tsx` | "Problem", on the ground with MB11's Z set, "wrong" in red and "without telling you." light italic |
 | `FixWeek.tsx` | "The Fix Week", heading, one paragraph, link to `/fix-week`, MB11's four-piece Z |
-| `RealityCheck.tsx` | Blue band: heading, four icon points, dotted rule, the 5 questions numbered 1 to 5, CTA to `#contact`, booking pill, link to `/reality-check` |
+| `RealityCheck.tsx` | Blue band: heading, the 5 questions numbered 1 to 5, CTA to `#contact`, booking pill, link to `/reality-check`. The icon points and dotted rule were removed 2026-11-13 |
 | `WhatWeFix.tsx` | "Bigger fixes", anchor `#what-we-do`, heading on the ground, six fixes in a 3 x 2 grid on a blue band with outlined pills; Brand system has no pill while `BRAND_SYSTEM` is off |
 | `HowWeWork.tsx` | Check, Fix, Partner `FlowRow` with ring icons, each step carrying its principle lines |
 | `LogoBand.tsx` `ExperienceStrip` | The credibility strip: four lines in blue Helvetica Light, label screen-reader only |
@@ -191,7 +192,8 @@ Every page is prerendered by `scripts/prerender.mjs` into `dist/<route>.html` wi
 | `pages/ContactResult.tsx` | The pages after the form at `/contact/thanks`, `/contact/not-sent`, `/contact/error`: blue band, Z, noindex, out of the sitemap. The handler fills `[data-slot]` elements and `#contact-data` so hydration matches. The thank-you page hides the header CTA |
 | `Footer.tsx` | Links absolute so they work from offer pages |
 | `Brand.tsx` | Serves the board's wordmark SVG and the closing mark |
-| `pages/OfferPage.tsx` | Shared offer page template: blue band hero with eyebrow, H1, v5 subline, intro, then lists, steps, proof, FAQ, related offers, CTA, optional form. FAQ data also renders the FAQPage schema so the two cannot diverge |
+| `SubpageHero.tsx` | The offer page hero from Misha's 417:2047 and siblings: band with swoosh art, icon, page name as the h1, `accent` prop for the colour the band fades to (unset, flat blue) |
+| `pages/OfferPage.tsx` | Shared offer page template: `SubpageHero` (`heroTitle`, `heroIcon`, `accent`), then the headline (the offer's `h1` field, set as an h2), v5 subline, intro, then lists, steps, proof, FAQ, related offers, CTA, optional form. FAQ data also renders the FAQPage schema so the two cannot diverge |
 | `pages/offers/*.ts` | Copy for each offer page, straight from `docs/site-copy-v5.md` (v4 body copy where v5 says it stands) |
 | `lib/meta.ts`, `lib/schema.ts` | Per-route head and JSON-LD, consumed by the prerender |
 | `functions/worker.ts`, `functions/api/contact.ts` | The Worker: static assets, `POST /api/contact`, noindex on every non-production host |
@@ -233,6 +235,6 @@ Still open in v5. Slots with working text ship that text; slots without it are l
 - **zacforge.com check result** for the `/ai-visibility` proof block.
 - **LinkedIn URL** for the `sameAs` schema property.
 - **Misha's review** of Services row 04 and `/brand-system`, and how he is described there. That page also ships with the "Who does the work" paragraph omitted.
-- **Design questions for Misha**, 39 of them (15 new since MB11), in `design/DESIGN-SYSTEM-NOTES.md`. The v4 stats row is not built until he answers.
+- **Design questions for Misha**, 43 of them (19 new since MB11), in `design/DESIGN-SYSTEM-NOTES.md`. The v4 stats row is not built until he answers.
 
 If new copy is ever missing, the rule still stands: ask rather than filling the gap.

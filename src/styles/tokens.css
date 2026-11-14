@@ -97,6 +97,7 @@
   --copy-width: 505px;  /* Section intros and the closing body. */
   --prose-width: 568px;  /* The case studies intro and the step bodies. */
   --hero-art: 334px;
+  --subpage-hero-height: 568px;  /* The offer page hero band at 1280, header included. The header is its own blue bar, so the section takes this less the header height. */
   --step-circle: 185px;
   --closing-circle: 289px;
   --button-height: 33px;  /* The body button is 31 tall on the board. */

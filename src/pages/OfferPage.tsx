@@ -2,12 +2,14 @@ import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import { Magnetic } from "../components/Magnetic";
 import { Closing } from "../components/Closing";
+import { SubpageHero } from "../components/SubpageHero";
 import { LIVE_OFFERS } from "./offers";
 import type { Offer, Block } from "./offers";
 
 /**
- * Shared offer page template: a blue band hero (eyebrow, H1, the v5 line
- * placing the page behind the Reality Check, intro), then lists, steps,
+ * Shared offer page template: the shared SubpageHero (icon and page name),
+ * then the headline, the v5 line placing the page behind the Reality Check,
+ * and the intro, then lists, steps,
  * proof, FAQ, related offers, the closing CTA, and on /reality-check the
  * contact form. Deliberately no entrance animation on the copy. These pages
  * exist to be read by assistants that do not run JavaScript, so the text is
@@ -84,10 +86,13 @@ export default function OfferPage({ offer }: { offer: Offer }) {
     <>
       <Header />
       <main className="offer-page">
-        <section id="top" className="offer-hero band band--blue">
+        <SubpageHero title={offer.heroTitle} icon={offer.heroIcon} accent={offer.accent} />
+
+        {/* The headline, the line placing the page behind the Reality
+            Check, and the intro, on the ground under the hero. */}
+        <section className="section offer-lead">
           <div className="container">
-            <p className="eyebrow">{offer.eyebrow}</p>
-            <h1 className="h1 offer-title">{offer.h1}</h1>
+            <h2 className="h2 offer-title">{offer.h1}</h2>
             {offer.subline ? <Subline text={offer.subline} /> : null}
             {offer.intro.map((p) => (
               <p className="offer-intro" key={p}>

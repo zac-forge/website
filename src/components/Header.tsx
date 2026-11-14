@@ -15,7 +15,8 @@ const NAV_LINKS = [
 
 /**
  * "What we do" as a small menu on desktop: the section link first, then one
- * entry per live offer page. Opens on hover, on click, and on keyboard focus,
+ * entry per live offer page, each with its one-line context under the name
+ * (Drew, 2026-11-13). Opens on hover, on click, and on keyboard focus,
  * and closes on Escape, on an outside click, and when focus leaves. Every
  * link is in the prerendered HTML whether or not the menu is open, so
  * assistants that do not run JavaScript still find the offer pages.
@@ -72,7 +73,10 @@ function WhatWeDoMenu({ onNavigate }: { onNavigate: () => void }) {
         {LIVE_OFFERS.map((offer) => (
           <li key={offer.path}>
             <a href={offer.path} onClick={onNavigate}>
-              {offer.navTitle}
+              <span className="nav-menu-title">{offer.navTitle}</span>
+              {/* The space keeps name and line apart in the plain text that
+                  assistants read. */}
+              {offer.menuLine ? <> <span className="nav-menu-line">{offer.menuLine}</span></> : null}
             </a>
           </li>
         ))}

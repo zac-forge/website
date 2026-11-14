@@ -4,12 +4,15 @@ export const aiVisibility: Offer = {
   path: "/ai-visibility",
   navTitle: "AI Visibility",
   summary: "Get named when customers ask ChatGPT, Google, or Perplexity who to call.",
+  menuLine: "Get named when people ask AI who to call.",
   title: "AI Visibility | ZAC Forge",
   description:
     "Find out whether ChatGPT, Google, Perplexity, and Claude recommend your business or your competitors, and what to fix first.",
   serviceName: "AI Visibility",
   serviceDescription:
     "Tests real customer questions across ChatGPT, Google AI Overviews and AI Mode, Perplexity, and Claude. Fixes crawler access, rendering, structured data, answer content, and third-party mentions. Tracks how often the business is named.",
+  heroTitle: "AI Visibility",
+  heroIcon: { src: "/art/subpage/subpage-icon-ai-visibility.svg", width: 45, height: 49 },
   eyebrow: "AI VISIBILITY",
   h1: "AI Visibility: get named when customers ask.",
   subline: "Usually what question 4 on our free [Reality Check](/reality-check) points to.",

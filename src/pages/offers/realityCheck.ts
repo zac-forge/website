@@ -5,12 +5,15 @@ export const realityCheck: Offer = {
   path: "/reality-check",
   navTitle: "The Reality Check",
   summary: "Send us what you built. We'll tell you straight.",
+  menuLine: "Free. Five questions, straight answers.",
   title: "The Reality Check | ZAC Forge",
   description:
     "Built something with AI? A free 5-question check by senior people, not a scanner. Plain-English scorecard and what a fix would take.",
   serviceName: "The Reality Check",
   serviceDescription:
     "A free 5-question check on anything built with AI tools or inherited: does it work, is it fast, can everyone use it, can anyone find it, does it look like you. One page in plain English with the evidence and what a fix would take. Checked by people, not software.",
+  heroTitle: "Reality Check",
+  heroIcon: { src: "/art/subpage/subpage-icon-reality-check.svg", width: 49, height: 48 },
   eyebrow: "THE REALITY CHECK",
   h1: "Send us what you built. We'll tell you straight.",
   intro: [

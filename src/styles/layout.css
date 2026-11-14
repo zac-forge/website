@@ -25,6 +25,15 @@
   background: var(--color-band-blue);
   color: var(--color-on-band);
 }
+/* Over an offer page's hero the header is clear until the page scrolls,
+   so the band runs up behind it as on the comps (417:2047 and siblings).
+   The open mobile menu keeps the header's own blue. */
+.site-header {
+  transition: background var(--duration-fast) var(--ease-out);
+}
+body:has(.subpage-hero) .site-header:not([data-scrolled="true"]):not(:has(.site-nav[data-open="true"])) {
+  background: transparent;
+}
 /* The wordmark export is black lettering. On blue it is drawn white. */
 .site-header .brand-wordmark img {
   filter: brightness(0) invert(1);
@@ -94,6 +103,8 @@
   left: calc(var(--space-3) * -1);
   z-index: 50;
   min-width: 260px;
+  width: max-content;
+  max-width: calc(100vw - var(--space-7));
   margin: 0;
   padding: var(--space-2);
   list-style: none;
@@ -112,6 +123,21 @@
   border-radius: var(--radius-sm);
   font-size: var(--text-small);
   font-weight: var(--weight-black);
+}
+/* An offer entry: the name, then its one-line context under it. Body size,
+   per the 16px desktop floor for body and caption text (Drew, 2026-11-13). */
+.nav-menu-panel a:has(.nav-menu-line) {
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: var(--space-1);
+  padding-block: var(--space-2);
+}
+.nav-menu-line {
+  font-size: var(--text-body);
+  font-weight: var(--weight-light);
+  line-height: var(--leading-copy);
+  color: var(--color-text-muted);
 }
 .nav-menu-panel a:hover,
 .nav-menu-panel a:focus-visible {
@@ -263,11 +289,6 @@
   margin-top: calc(var(--space-6) + var(--space-2));
   gap: var(--space-4);
 }
-.proof-line {
-  margin-top: var(--space-5);
-  /* Ends before x=561, where the dotted line 359:1256 starts. */
-  max-width: calc(var(--copy-width) - var(--space-9) - var(--space-2));
-}
 /* 358:1060 sits 28 above the headline's top. */
 .hero-visual {
   margin-top: calc((var(--space-6) - var(--space-1)) * -1);
@@ -384,44 +405,6 @@
 .rc-heading {
   max-width: calc(var(--copy-width) + var(--space-6));
 }
-/* Four icon points, 365:1297 to 365:1345: the icon centred over a bulleted
-   line, the icons vertically centred in the tallest one's box. */
-.rc-points {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: var(--space-6);
-  margin-top: var(--space-7);
-}
-.rc-point-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: var(--rc-icon-height);
-}
-.rc-point-icon img {
-  height: auto;
-}
-.rc-point-text {
-  position: relative;
-  margin-top: var(--space-5);
-  padding-left: var(--space-4);
-}
-.rc-point-text::before {
-  content: "";
-  position: absolute;
-  left: var(--space-1);
-  top: 0.6em;
-  width: var(--space-1);
-  height: var(--space-1);
-  border-radius: var(--radius-full);
-  background: currentColor;
-}
-/* 365:1352: the dotted rule between the points and the questions. */
-.rc-rule {
-  height: 1px;
-  margin-top: var(--space-6);
-  background-image: repeating-linear-gradient(to right, currentColor 0 2px, transparent 2px 4px);
-}
 /* The five questions, 365:1349 to 365:1366: three columns, the number
    hanging so the title and its line share a left edge. */
 .rc-questions {
@@ -466,30 +449,11 @@
 }
 
 @media (max-width: 900px) {
-  .rc-points {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--space-6) var(--space-5);
-  }
   .rc-questions {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 @media (max-width: 620px) {
-  .rc-points {
-    grid-template-columns: minmax(0, 1fr);
-  }
-  .rc-point {
-    display: grid;
-    grid-template-columns: calc(var(--rc-icon-height) + var(--space-3)) minmax(0, 1fr);
-    gap: var(--space-4);
-    align-items: center;
-  }
-  .rc-point-icon {
-    justify-content: flex-start;
-  }
-  .rc-point-text {
-    margin-top: 0;
-  }
   .rc-questions {
     grid-template-columns: minmax(0, 1fr);
     gap: var(--space-6);
@@ -526,15 +490,6 @@
 }
 .track-inner {
   padding-left: var(--track-indent);
-}
-/* Recent work: one card on the ground before the Still Running band, in
-   that section's card style and indent. Not on MB11, question 39. */
-.recent-work {
-  --pad-top: var(--space-9);
-  --pad-bottom: var(--space-9);
-}
-.recent-work .case-list {
-  margin-top: var(--space-5);
 }
 .case-grid {
   display: grid;
@@ -602,6 +557,15 @@
 }
 .case-body {
   margin-top: var(--space-2);
+}
+/* Status or years, under the line, in the figure caption's bold. An
+   extension (2026-11-13): MB11 carries status in the URL line. */
+.case-status {
+  margin-top: var(--space-2);
+  font-family: var(--font-display);
+  font-size: var(--text-copy);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-copy);
 }
 /* 367:1631 runs past the copy column on the comp rather than wrap. */
 @media (min-width: 1081px) {
@@ -1159,10 +1123,63 @@
 /* Shared template for every offer page. Opens on the blue band with the
    hero's sweep (an extension: comp 7 covers the home page only), then a
    reading column in the board's type scale. */
-.offer-hero {
-  padding-top: var(--space-8);
+/* The shared hero (SubpageHero.tsx), Misha's 417:2047 and its four
+   siblings: the band from the blue at the top to the page's accent at the
+   bottom (flat blue until the accents are approved), the home hero's cut,
+   and the swoosh art laid on the 1280 x 568 frame, which includes the
+   header, so it starts a header's height above the section. The icon sits
+   on a line 162 under the header (232 on the frame), the title 26 below. */
+.subpage-hero {
+  --hero-accent: var(--color-band-blue);
+  position: relative;
+  overflow: hidden;
+  /* Runs up under the header, as the comps draw it: the header is clear
+     while the page is at the top (below), so the swoosh and any accent
+     show behind the wordmark and nav. */
+  margin-top: calc(var(--header-height) * -1);
+  min-height: var(--subpage-hero-height);
+  padding-top: calc(var(--header-height) + var(--space-9));
   padding-bottom: var(--space-10);
+  background: linear-gradient(to bottom, var(--color-band-blue), var(--hero-accent));
   clip-path: var(--band-clip-hero);
+}
+.subpage-hero-art {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: max(1280px, 100%);
+  max-width: none;
+  height: auto;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+.subpage-hero-copy {
+  padding-left: var(--hero-indent);
+}
+.subpage-hero-icon {
+  display: flex;
+  align-items: flex-end;
+  height: var(--space-8);
+}
+.subpage-hero-icon img {
+  height: auto;
+}
+.subpage-hero-title {
+  max-width: calc(var(--copy-width) + var(--space-9));
+  margin-top: var(--space-5);
+}
+@media (max-width: 900px) {
+  .subpage-hero {
+    min-height: 0;
+    padding-top: calc(var(--header-height) + var(--space-8));
+  }
+  .subpage-hero-copy {
+    padding-left: 0;
+  }
+}
+.offer-lead {
+  --pad-top: var(--space-9);
+  --pad-bottom: var(--space-4);
 }
 .offer-subline {
   max-width: var(--prose-width);
@@ -1172,7 +1189,6 @@
 }
 .offer-title {
   max-width: 20ch;
-  margin-top: var(--space-4);
 }
 .offer-intro {
   max-width: var(--prose-width);
@@ -1345,4 +1361,23 @@
 .offer-cta {
   --pad-top: var(--space-8);
   --pad-bottom: var(--space-11);
+}
+
+/* ------------------------------------------------- Desktop type floor */
+/* Drew, 2026-11-13: at 1024 and wider, body and caption text is never under
+   16px. MB11 sets it at 14. Labels (nav, buttons, eyebrows, the logo band
+   label, team roles, footer group names and links) stay at their 14. Phones
+   already get 16 for .copy. */
+@media (min-width: 1024px) {
+  .copy,
+  .case-text,
+  .case-meta,
+  .case-status,
+  .case-figure-caption,
+  .contact-alt,
+  .footer-email,
+  .footer-legal,
+  .offer-footnote {
+    font-size: var(--text-body);
+  }
 }

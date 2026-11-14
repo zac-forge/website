@@ -16,6 +16,8 @@ export const brandSystem: Offer = {
   serviceName: "AI-Ready Brand System",
   serviceDescription:
     "Senior brand design turned into design tokens, components, rules files for AI coding tools, and Claude Design, Canva, and Figma kits, so AI-made work stays on brand.",
+  // No comp for this page yet (behind BRAND_SYSTEM), so the nav name and no icon.
+  heroTitle: "Brand system",
   eyebrow: "AI-READY BRAND SYSTEM",
   h1: "A brand system your AI tools follow.",
   subline: "Usually what question 5 on our free [Reality Check](/reality-check) points to.",

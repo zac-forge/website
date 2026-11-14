@@ -11,6 +11,7 @@ export const fixWeek: Offer = {
   path: "/fix-week",
   navTitle: "The Fix",
   summary: "One week. Start with what matters most.",
+  menuLine: "One week on what matters most.",
   title: "The Fix: one week, fixed price | ZAC Forge",
   description:
     "One week, one agreed price. The top item on your Reality Check scorecard resolved in your code, a Design Read on the screen that most looks machine-made, and the rest ranked.",
@@ -18,6 +19,8 @@ export const fixWeek: Offer = {
   serviceAlternateName: "The Fix",
   serviceDescription:
     "One week, one agreed price. The top item on the Reality Check scorecard resolved in the client's code, a Design Read on the screen that most looks machine-made, and a ranked list of what is left.",
+  heroTitle: "The Fix",
+  heroIcon: { src: "/art/subpage/subpage-icon-fix.svg", width: 41, height: 54 },
   eyebrow: "THE FIX",
   h1: "One week. Start with what matters most.",
   intro: [

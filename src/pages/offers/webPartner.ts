@@ -5,12 +5,15 @@ export const webPartner: Offer = {
   path: "/web-partner",
   navTitle: "Web Partner",
   summary: "One senior team keeps it running and makes it better every month.",
+  menuLine: "A senior person on your site, month to month.",
   title: "Web Partner | ZAC Forge",
   description:
     "One senior team keeps your site running and makes it better every month. Month to month. Scales with you.",
   serviceName: "Web Partner",
   serviceDescription:
     "Ongoing senior care: updates, backups, monitoring, change requests, one improvement a month, and visibility tracking. Not a maintenance plan.",
+  heroTitle: "Web Partner",
+  heroIcon: { src: "/art/subpage/subpage-icon-web-partner.svg", width: 50, height: 50 },
   eyebrow: "WEB PARTNER",
   h1: "Keep it fixed. Make it better.",
   intro: [

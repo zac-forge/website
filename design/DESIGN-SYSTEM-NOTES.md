@@ -146,6 +146,25 @@ to it:
 - `motion.*` durations and easing, carried from v3.
 - The secondary (outlined) button, the text link, and the footer.
 
+### 2026-11-13 extensions
+
+- **Desktop type floor.** At 1024px and wider, body and caption text
+  (`.copy`, `.case-text`, case meta, status, and figure captions, the
+  contact line, the footer email and legal line, the offer footnote, and
+  the menu lines) is 16px, not MB11's 14. Labels stay at 14 (Drew).
+- **Offer page hero** (`SubpageHero.tsx`) from Misha's 417:2047, 417:2079,
+  417:2020, 417:1972, and 417:2111, read through the REST API and cached in
+  `design/subpage-heroes/`. The swoosh art and the five icons in
+  `public/art/subpage/` were generated from the nodes' vector geometry
+  (the image endpoint was rate limited) and checked against Figma's render.
+  The band cut is the home hero's (`--band-clip-hero`), identical on the
+  comps. The band runs up under the header, which is clear at the top of an
+  offer page and blue once it scrolls. Height from the new
+  `--subpage-hero-height` token.
+- **Reality Check line art.** With the icon points gone (Drew), the first
+  dotted line of `lines-reality-check.svg` crossed question 1. It now stops
+  left of the content column.
+
 ## v5: comp 7 (2026-11-04)
 
 The v5 build (`docs/site-copy-v5.md`, `docs/site-v5-build-plan.md`) pulls the
@@ -436,6 +455,31 @@ offer, including the /ai-visibility headline.
     sunburst artwork from the CCCV site. It is kept apart from Still Running,
     which is systems that have run for years without us. Not on MB11. Where
     and how should it sit? (Drew, 2026-11-12)
+
+### Added with the home batch and offer page heroes (2026-11-13)
+
+40. **Offer page hero accents.** Your five heroes run the band from blue at
+    the top to a colour per page at the bottom: Reality Check `#9D4DFF`,
+    The Fix `#00BC13`, AI Visibility `#E83E39`, Web Partner `#FDD41A`,
+    Accessibility and Performance `#973B19`. The build has the hook
+    (`accent` on each offer, `--hero-accent` on the section) but every page
+    ships flat blue until the colours are approved. White title contrast
+    over the bottom of the yellow and green bands needs checking when they
+    land.
+
+41. **Accessibility hero title weight.** "Accessibility & Performance" is
+    Helvetica Light (300) on 417:2128, the other four titles Bold. The build
+    sets all five Bold. Intended?
+
+42. **Offer page structure under the hero.** The comps show the hero only.
+    The page's headline, the line placing it behind the Reality Check, and
+    the intro now sit on the ground under the band, then the existing body.
+    The eyebrow is gone from these pages. Anything you would set differently?
+
+43. **Case studies.** Recent work and Still Running are merged (Drew), CCCV
+    first, every card in one structure: client, product name (the link),
+    one line, status, one number. The status is a new bold line under the
+    one line. Question 39 is superseded.
 
 ## Structure of MacBook Air - 1 (node 6:2), for reference
 
