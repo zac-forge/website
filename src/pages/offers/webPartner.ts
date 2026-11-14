@@ -14,6 +14,8 @@ export const webPartner: Offer = {
     "Ongoing senior care: updates, backups, monitoring, change requests, one improvement a month, and visibility tracking. Not a maintenance plan.",
   heroTitle: "Web Partner",
   heroIcon: { src: "/art/subpage/subpage-icon-web-partner.svg", width: 50, height: 50 },
+  accent: "var(--color-offer-web-partner)",
+  cardIcon: "/art/offer-cards/icon-web-partner.svg",
   eyebrow: "WEB PARTNER",
   h1: "Keep it fixed. Make it better.",
   intro: [

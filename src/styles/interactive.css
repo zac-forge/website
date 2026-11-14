@@ -76,7 +76,7 @@
   transform: scaleX(1);
 }
 
-/* Cards that lead somewhere lift on hover (.offer-related-card, in
+/* Cards that lead somewhere lift on hover (.offer-card, in
    layout.css). The case and check cards do not lead anywhere, so they stay
    put. */
 

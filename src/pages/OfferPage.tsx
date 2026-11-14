@@ -1,8 +1,10 @@
+import type { CSSProperties } from "react";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import { Magnetic } from "../components/Magnetic";
 import { Closing } from "../components/Closing";
 import { SubpageHero } from "../components/SubpageHero";
+import { HERO_ACCENTS } from "../lib/flags";
 import { LIVE_OFFERS } from "./offers";
 import type { Offer, Block } from "./offers";
 
@@ -110,12 +112,39 @@ function Subline({ text }: { text: string }) {
   );
 }
 
+/**
+ * One "Other services" card, Misha's 423:2429 set (2026-11-13): the offer's
+ * line icon, its name in its own colour, its one line, and "More" in the
+ * same colour. The link is stretched over the card, so the whole card
+ * clicks through, and is named for the offer for screen readers.
+ */
+function OfferCard({ offer }: { offer: Offer }) {
+  const style = {
+    "--card-accent": offer.accent ?? "var(--color-band-blue)",
+    ...(offer.cardIcon ? { "--card-icon": `url("${offer.cardIcon}")` } : {}),
+  } as CSSProperties;
+  return (
+    <article className="offer-card" style={style}>
+      {offer.cardIcon ? <span className="offer-card-icon" aria-hidden="true" /> : null}
+      <h3 className="offer-card-title">{offer.navTitle}</h3>
+      <p className="offer-card-body case-text">{offer.summary}</p>
+      <a className="offer-card-link" href={offer.path} aria-label={`More about ${offer.navTitle}`}>
+        More <span aria-hidden="true">→</span>
+      </a>
+    </article>
+  );
+}
+
 export default function OfferPage({ offer }: { offer: Offer }) {
   return (
     <>
       <Header />
       <main className="offer-page">
-        <SubpageHero title={offer.heroTitle} icon={offer.heroIcon} accent={offer.accent} />
+        <SubpageHero
+          title={offer.heroTitle}
+          icon={offer.heroIcon}
+          accent={HERO_ACCENTS ? offer.accent : undefined}
+        />
 
         {/* The headline, the line placing the page behind the Reality
             Check, and the intro, on the ground under the hero. */}
@@ -182,14 +211,7 @@ export default function OfferPage({ offer }: { offer: Offer }) {
             </h2>
             <div className="offer-related-grid">
               {LIVE_OFFERS.filter((o) => o.path !== offer.path).map((other) => (
-                <a className="offer-related-card surface" href={other.path} key={other.path}>
-                  <span className="offer-related-title">{other.navTitle}</span>
-                  <span className="offer-related-body">{other.summary}</span>
-                  <span className="text-link offer-related-link">
-                    <span>More</span>{" "}
-                    <span aria-hidden="true">→</span>
-                  </span>
-                </a>
+                <OfferCard offer={other} key={other.path} />
               ))}
             </div>
             <a className="text-link offer-home-link" href="/">

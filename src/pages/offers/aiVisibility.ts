@@ -13,6 +13,8 @@ export const aiVisibility: Offer = {
     "Tests real customer questions across ChatGPT, Google AI Overviews and AI Mode, Perplexity, and Claude. Fixes crawler access, rendering, structured data, answer content, and third-party mentions. Tracks how often the business is named.",
   heroTitle: "AI Visibility",
   heroIcon: { src: "/art/subpage/subpage-icon-ai-visibility.svg", width: 45, height: 49 },
+  accent: "var(--color-offer-ai-visibility)",
+  cardIcon: "/art/offer-cards/icon-ai-visibility.svg",
   eyebrow: "AI VISIBILITY",
   h1: "AI Visibility: get named when customers ask.",
   subline:

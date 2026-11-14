@@ -146,7 +146,7 @@ Build pages from these. Do not create a second button, card, or eyebrow.
 | Dotted line art on a band | `<img class="band-lines">` from `public/art/mb11/lines-*.svg`, laid on the 1280 frame, hidden below 900px |
 | Step row with arrows | `FlowRow` (`src/components/FlowRow.tsx`), ring icon, title, arrows that draw once, paragraphs under each |
 | Heading left, intro right | `.split-head` with `.split-head-copy` |
-| Offer page cross-links | `.offer-related` block in `OfferPage.tsx`, above the closing CTA |
+| Offer page cross-links | `.offer-related` block in `OfferPage.tsx`, above the closing CTA: `OfferCard` per other live offer (Misha's 423:2428 set), icon from `public/art/offer-cards/`, title and "More" link in the offer's `accent` (`--color-offer-*`), link stretched over the card with `aria-label` "More about …" |
 | Header offers menu | `WhatWeDoMenu` in `Header.tsx`, plain link below 860px |
 | Case study | `.case.case-grid` from `TrackRecord.tsx`: name across, screenshot left (`public/work/<base>-360.webp` and `-720.webp`, placeholder without one), meta, body, and `figure` right |
 | Team photo | Drop `andrew-johnston`, `design-principal`, or `principal-engineer` (.webp, .jpg, .png) in `src/assets/team/` and rebuild; initials or a plain circle until then |
@@ -237,6 +237,6 @@ Still open in v5. Slots with working text ship that text; slots without it are l
 - **zacforge.com check result** for the `/ai-visibility` proof block.
 - **LinkedIn URL** for the `sameAs` schema property.
 - **Misha's review** of Services row 04 and `/brand-system`, and how he is described there. That page also ships with the "Who does the work" paragraph omitted.
-- **Design questions for Misha**, 43 of them (19 new since MB11), in `design/DESIGN-SYSTEM-NOTES.md`. The v4 stats row is not built until he answers.
+- **Design questions for Misha**, 44 of them (20 new since MB11), in `design/DESIGN-SYSTEM-NOTES.md`. The v4 stats row is not built until he answers.
 
 If new copy is ever missing, the rule still stands: ask rather than filling the gap.

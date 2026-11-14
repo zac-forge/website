@@ -21,6 +21,8 @@ export const fixWeek: Offer = {
     "One week, one agreed price. The top item on the Reality Check scorecard resolved in the client's code, a design review of the screen that looks most machine-made, and a ranked list of what is left. If it isn't fixed, it's free.",
   heroTitle: "The Fix",
   heroIcon: { src: "/art/subpage/subpage-icon-fix.svg", width: 41, height: 54 },
+  accent: "var(--color-offer-fix)",
+  cardIcon: "/art/offer-cards/icon-fix.svg",
   eyebrow: "THE FIX",
   h1: "One week. Start with what matters most.",
   intro: [

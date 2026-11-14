@@ -13,6 +13,10 @@ export const accessibility: Offer = {
     "Manual accessibility testing and code fixes to WCAG 2.1 AA, for public agencies facing ADA Title II deadlines, HHS-funded health providers facing Section 504 deadlines, and private businesses. Findings ranked by risk, fixes made in the code, and a written record. No overlays.",
   heroTitle: "Accessibility & Performance",
   heroIcon: { src: "/art/subpage/subpage-icon-accessibility.svg", width: 47, height: 47 },
+  // TODO(Misha): no card design for Accessibility and Performance yet. The
+  // site blue and the hero's accessibility icon stand in (question 44).
+  accent: "var(--color-offer-accessibility)",
+  cardIcon: "/art/subpage/subpage-icon-accessibility.svg",
   eyebrow: "ACCESSIBILITY AND PERFORMANCE",
   h1: "Accessibility and performance, corrected in the code.",
   subline: "Question 3 on our free [Reality Check](/reality-check) shows where you stand.",

@@ -14,6 +14,8 @@ export const realityCheck: Offer = {
     "A free 5-question check on anything built with AI tools or inherited: does it work, is it fast, can everyone use it, can anyone find it, does it look like you. One page in plain English with the evidence and what a fix would take. Checked by people, not software.",
   heroTitle: "Reality Check",
   heroIcon: { src: "/art/subpage/subpage-icon-reality-check.svg", width: 49, height: 48 },
+  accent: "var(--color-offer-reality-check)",
+  cardIcon: "/art/offer-cards/icon-reality-check.svg",
   eyebrow: "THE REALITY CHECK",
   h1: "Send us what you built. We'll tell you straight.",
   intro: [

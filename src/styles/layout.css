@@ -1371,53 +1371,73 @@ body:has(.subpage-hero) .site-header:not([data-scrolled="true"]):not(:has(.site-
 .offer-related .h3 {
   margin-bottom: var(--space-5);
 }
+/* Misha's offer cards (423:2428 to 423:2470, 2026-11-13): two 495 x 224
+   white cards a row, 19 apart across and 12 down, a 1px grey keyline,
+   14px corners. Inside, from 73 in and 23 down: the 40px line icon, the
+   40px bold title in the offer's colour, the one line, and "More" with its
+   arrow in the same colour. Each colour (--card-accent) is the offer's
+   --color-offer-* token, set inline from Offer.accent. */
 .offer-related-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--space-3);
+  gap: var(--space-3) calc(var(--space-4) + var(--space-1));
 }
-.offer-related-card {
+.offer-card {
+  position: relative;
   display: flex;
   flex-direction: column;
-  padding: var(--space-6) var(--space-3);
+  align-items: flex-start;
+  padding: var(--space-5) var(--space-7) var(--space-5) calc(var(--space-7) + var(--space-5));
+  background: var(--color-surface);
+  border: 1px solid var(--color-card-stroke);
+  border-radius: var(--radius-card);
+  color: var(--color-ink);
   transition:
     transform var(--duration-base) var(--ease-out),
     box-shadow var(--duration-base) var(--ease-out);
 }
-.offer-related-card:nth-child(odd) {
-  --card-accent: var(--color-accent);
-}
-.offer-related-card:nth-child(even) {
-  --card-accent: var(--color-accent-blue);
-}
-.offer-related-card:hover,
-.offer-related-card:focus-visible {
+.offer-card:hover,
+.offer-card:has(.offer-card-link:focus-visible) {
   transform: translateY(-3px);
   box-shadow: var(--shadow-lift);
 }
-.offer-related-title {
+.offer-card-icon {
+  width: var(--space-7);
+  height: calc(var(--space-7) - var(--space-2));
+  background: var(--color-ink);
+  mask: var(--card-icon) left center / contain no-repeat;
+}
+.offer-card-title {
+  margin: var(--space-3) 0 0;
   /* A long single word ("Accessibility") must never run past the card. */
   overflow-wrap: break-word;
   hyphens: auto;
-  font-size: var(--text-title);
-  font-weight: var(--weight-black);
+  font-family: var(--font-display);
+  font-size: var(--text-offer-card);
+  font-weight: var(--weight-bold);
   line-height: var(--leading-title);
   color: var(--card-accent);
 }
-.offer-related-body {
-  margin-top: var(--space-4);
-  font-weight: var(--weight-black);
+.offer-card-body {
+  margin-top: var(--space-2);
 }
-.offer-related-link {
+.offer-card-link {
   margin-top: auto;
-  padding-top: var(--space-5);
-  align-self: flex-start;
+  padding-top: var(--space-4);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-display);
+  font-size: var(--text-small);
+  font-weight: var(--weight-bold);
   color: var(--card-accent);
 }
-.offer-related-link::after {
-  transform: scaleX(1);
-  background: var(--card-accent);
-  bottom: calc(50% - 0.75em - var(--space-5) / 2);
+/* The link covers the card, so the whole card clicks through. */
+.offer-card-link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-card);
 }
 /* One card per row on a phone. This lives after the two-column rule above:
    it used to sit in the footer's media block earlier in the file, where the
@@ -1425,6 +1445,10 @@ body:has(.subpage-hero) .site-header:not([data-scrolled="true"]):not(:has(.site-
 @media (max-width: 760px) {
   .offer-related-grid {
     grid-template-columns: minmax(0, 1fr);
+  }
+  .offer-card {
+    padding-left: var(--space-5);
+    padding-right: var(--space-5);
   }
 }
 .offer-home-link {

@@ -43,10 +43,13 @@ export type Offer = {
   /** The white line icon over the hero title, from public/art/subpage/. */
   heroIcon?: { src: string; width: number; height: number };
   /**
-   * The colour the hero band fades to, as a CSS value (a colour token). Unset,
-   * the band stays the flat band blue. See SubpageHero.
+   * The offer's one colour, as a colour token: its "Other services" card
+   * title and link now, and the colour its hero band fades to once
+   * HERO_ACCENTS is on (src/lib/flags.ts).
    */
   accent?: string;
+  /** The line icon on its "Other services" card, from public/art/offer-cards/. */
+  cardIcon?: string;
   /** Page body. The eyebrow is no longer shown on the page since the shared
    *  hero (2026-11-13), and is kept for when it comes back. */
   eyebrow: string;

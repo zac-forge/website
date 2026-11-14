@@ -488,6 +488,18 @@ offer, including the /ai-visibility headline.
     status in bold, Problem / What we built / Proof with bold labels, the
     number, then the product name as the link. Question 39 is superseded.
 
+44. **Accessibility and Performance card.** Your offer card set
+    (423:2428 to 423:2470) covers four offers. The fifth card ships with the
+    site blue and the hero's accessibility icon (422:2206) as placeholders.
+    What colour and icon should it have? Also: your "More" links are blue
+    on every card, but Drew asked for each link in its offer's colour, and
+    the four title colours are darkened for WCAG AA on white: The Fix
+    #F28F3F to #BC5B0D, Web Partner #16CB3E to #0F892A, The Reality Check
+    #9D4DFF to #9945FF, AI Visibility #2483C5 to #227CBA (the band blue).
+    Each colour is one token per offer and will also drive that offer's
+    hero accent once HERO_ACCENTS is on, which differs from the hero colours
+    in question 40. Which set wins for the heroes?
+
 ## Structure of MacBook Air - 1 (node 6:2), for reference
 
 1280 wide, 6924 tall. Positions from the board's top left.
