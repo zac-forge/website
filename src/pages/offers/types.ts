@@ -42,12 +42,13 @@ export type Offer = {
   heroTitle: string;
   /** The white line icon over the hero title, from public/art/subpage/. */
   heroIcon?: { src: string; width: number; height: number };
-  /**
-   * The offer's one colour, as a colour token: its "Other services" card
-   * title and link now, and the colour its hero band fades to once
-   * HERO_ACCENTS is on (src/lib/flags.ts).
-   */
+  /** The offer's card colour, a --color-offer-* token: its "Other services" card title. */
   accent?: string;
+  /**
+   * The colour the offer's hero band fades to, a --color-hero-* token, from
+   * Misha's hero frames (design question 40). Differs from accent for now.
+   */
+  heroAccent?: string;
   /** The line icon on its "Other services" card, from public/art/offer-cards/. */
   cardIcon?: string;
   /** Page body. The eyebrow is no longer shown on the page since the shared

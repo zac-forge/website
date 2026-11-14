@@ -472,6 +472,17 @@ offer, including the /ai-visibility headline.
     ships flat blue until the colours are approved. White title contrast
     over the bottom of the yellow and green bands needs checking when they
     land.
+    **Update 2026-11-13:** turned on at Drew's request, the band running from
+    the site blue at the top to the page's colour at the bottom, as drawn.
+    Checked white on the gradient at the lightest point behind the page name
+    (down to 75% of the band, the deepest it reaches on a phone): Reality
+    Check, AI Visibility, and Accessibility ship your colours. The Fix's
+    #00BC13 (3.01:1) is darkened to #008D0E (4.53:1), and Web Partner's
+    #FDD41A (1.94:1) to #947A01 (4.52:1), the hue kept, so Web Partner reads
+    as a dark mustard rather than yellow. **The hero colours and the card
+    colours (question 44) are still two different sets, for you to unify:**
+    The Fix is green here and orange on its card, Web Partner yellow here and
+    green on its card, AI Visibility red here and blue on its card.
 
 41. **Accessibility hero title weight.** "Accessibility & Performance" is
     Helvetica Light (300) on 417:2128, the other four titles Bold. The build
@@ -497,8 +508,8 @@ offer, including the /ai-visibility headline.
     site blue #227CBA on every card, underlined, and the title takes a blue
     underline on hover, read from your underlined Reality Check. Each title
     colour is one token per offer and will also drive that offer's hero
-    accent once HERO_ACCENTS is on, which differs from the hero colours in
-    question 40. Which set wins for the heroes?
+    accent, which differs from the hero colours in question 40 (the heroes
+    use the question 40 set since 2026-11-13). One set should win.
 
 ## Structure of MacBook Air - 1 (node 6:2), for reference
 

@@ -16,6 +16,7 @@ export const accessibility: Offer = {
   // TODO(Misha): no card design for Accessibility and Performance yet. The
   // site blue and the hero's accessibility icon stand in (question 44).
   accent: "var(--color-offer-accessibility)",
+  heroAccent: "var(--color-hero-accessibility)",
   cardIcon: "/art/subpage/subpage-icon-accessibility.svg",
   eyebrow: "ACCESSIBILITY AND PERFORMANCE",
   h1: "Accessibility and performance, corrected in the code.",

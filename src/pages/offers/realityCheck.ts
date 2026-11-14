@@ -15,6 +15,7 @@ export const realityCheck: Offer = {
   heroTitle: "Reality Check",
   heroIcon: { src: "/art/subpage/subpage-icon-reality-check.svg", width: 49, height: 48 },
   accent: "var(--color-offer-reality-check)",
+  heroAccent: "var(--color-hero-reality-check)",
   cardIcon: "/art/offer-cards/icon-reality-check.svg",
   eyebrow: "THE REALITY CHECK",
   h1: "Send us what you built. We'll tell you straight.",

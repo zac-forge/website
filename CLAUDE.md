@@ -136,7 +136,7 @@ Build pages from these. Do not create a second button, card, or eyebrow.
 | Headings | `.h1` (64px hero), `.h2` (48px), `.h3`; bold by default, `.h-light` for the light run, `.h-aside` light italic, `.h-alert` the red word |
 | Body copy at the comp's size | `.copy` (Avenir Light 14px, 16px on phones and at 1024px and wider), `.case-text` (Helvetica Light 14px, 16px at 1024px and wider). Body and caption text is never under 16px at desktop widths (Drew, 2026-11-13); labels stay at 14 |
 | Intro under a heading | `.section-intro` |
-| Offer page hero | `SubpageHero` (`src/components/SubpageHero.tsx`), art from `public/art/subpage/`, recolour a page with its offer's `accent` |
+| Offer page hero | `SubpageHero` (`src/components/SubpageHero.tsx`), art from `public/art/subpage/`, recolour a page with its offer's `heroAccent` (a `--color-hero-*` token) |
 | Primary action | `.btn.btn-primary`, the pill, with the trailing arrow span, wrapped in `<Magnetic>` in the body |
 | Secondary action | `.btn.btn-secondary`, the outlined pill |
 | Inline text action | `.text-link` |
@@ -194,7 +194,7 @@ Every page is prerendered by `scripts/prerender.mjs` into `dist/<route>.html` wi
 | `pages/NotFound.tsx` | The 404, in the result pages' layout: "Page not found", one line, links to Home and the five offers. Catch-all route, prerendered to `dist/404.html`, which `functions/worker.ts` serves with status 404 for any path the assets lack. noindex, out of the sitemap |
 | `Footer.tsx` | Links absolute so they work from offer pages |
 | `Brand.tsx` | Serves the board's wordmark SVG and the closing mark |
-| `SubpageHero.tsx` | The offer page hero from Misha's 417:2047 and siblings: band with swoosh art, icon, page name as the h1, `accent` prop for the colour the band fades to (unset, flat blue). `variant="home"` is the home banner (412:1907), with the home hero's content as children |
+| `SubpageHero.tsx` | The offer page hero from Misha's 417:2047 and siblings: band with swoosh art, icon, page name (a `p` at h1 size), `accent` prop for the colour the band fades to: each offer's `heroAccent` (`--color-hero-*`, Misha's question 40 colours, The Fix and Web Partner darkened for AA). Unset on the home banner, which stays flat blue. `variant="home"` is the home banner (412:1907), with the home hero's content as children |
 | `pages/OfferPage.tsx` | Shared offer page template: `SubpageHero` (`heroTitle`, `heroIcon`, `accent`), then the headline (the offer's `h1` field, set as an h2), v5 subline, intro, then lists, steps, proof, FAQ, related offers, CTA, optional form. FAQ data also renders the FAQPage schema so the two cannot diverge |
 | `pages/offers/*.ts` | Copy for each offer page, straight from `docs/site-copy-v5.md` (v4 body copy where v5 says it stands) |
 | `lib/meta.ts`, `lib/schema.ts` | Per-route head and JSON-LD, consumed by the prerender |

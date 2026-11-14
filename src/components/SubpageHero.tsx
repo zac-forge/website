@@ -12,10 +12,9 @@ type Props = {
   /** A white line icon from public/art/subpage/, set over the title. */
   icon?: { src: string; width: number; height: number };
   /**
-   * The colour the band fades to at the bottom, as a CSS value, normally a
-   * colour token: `var(--color-accent)`. Misha's comps run each page from the
-   * band blue at the top to its own colour at the bottom. Until those colours
-   * are approved every page passes nothing and the band stays flat blue.
+   * The colour the band fades to at the bottom, a --color-hero-* token. As in
+   * Misha's frames, the band runs from the site blue at the top to the page's
+   * colour at the bottom. Unset (the home banner), the band stays flat blue.
    */
   accent?: string;
   /** The home variant's content. */

@@ -15,6 +15,7 @@ export const webPartner: Offer = {
   heroTitle: "Web Partner",
   heroIcon: { src: "/art/subpage/subpage-icon-web-partner.svg", width: 50, height: 50 },
   accent: "var(--color-offer-web-partner)",
+  heroAccent: "var(--color-hero-web-partner)",
   cardIcon: "/art/offer-cards/icon-web-partner.svg",
   eyebrow: "WEB PARTNER",
   h1: "Keep it fixed. Make it better.",

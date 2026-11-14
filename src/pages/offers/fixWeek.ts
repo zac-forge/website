@@ -22,6 +22,7 @@ export const fixWeek: Offer = {
   heroTitle: "The Fix",
   heroIcon: { src: "/art/subpage/subpage-icon-fix.svg", width: 41, height: 54 },
   accent: "var(--color-offer-fix)",
+  heroAccent: "var(--color-hero-fix)",
   cardIcon: "/art/offer-cards/icon-fix.svg",
   eyebrow: "THE FIX",
   h1: "One week. Start with what matters most.",

@@ -4,7 +4,6 @@ import { Footer } from "../components/Footer";
 import { Magnetic } from "../components/Magnetic";
 import { Closing } from "../components/Closing";
 import { SubpageHero } from "../components/SubpageHero";
-import { HERO_ACCENTS } from "../lib/flags";
 import { LIVE_OFFERS } from "./offers";
 import type { Offer, Block } from "./offers";
 
@@ -147,7 +146,7 @@ export default function OfferPage({ offer }: { offer: Offer }) {
         <SubpageHero
           title={offer.heroTitle}
           icon={offer.heroIcon}
-          accent={HERO_ACCENTS ? offer.accent : undefined}
+          accent={offer.heroAccent}
         />
 
         {/* The headline, the line placing the page behind the Reality

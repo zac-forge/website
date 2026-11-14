@@ -14,6 +14,7 @@ export const aiVisibility: Offer = {
   heroTitle: "AI Visibility",
   heroIcon: { src: "/art/subpage/subpage-icon-ai-visibility.svg", width: 45, height: 49 },
   accent: "var(--color-offer-ai-visibility)",
+  heroAccent: "var(--color-hero-ai-visibility)",
   cardIcon: "/art/offer-cards/icon-ai-visibility.svg",
   eyebrow: "AI VISIBILITY",
   h1: "AI Visibility: get named when customers ask.",
