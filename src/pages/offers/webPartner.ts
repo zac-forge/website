@@ -6,7 +6,7 @@ export const webPartner: Offer = {
   navTitle: "Web Partner",
   summary: "One senior person who knows your site keeps it running and improves it every month.",
   menuLine: "A senior person on your site, month to month.",
-  title: "Web Partner | ZAC Forge",
+  title: "Web Partner: senior website care, month to month | ZAC Forge",
   description:
     "One senior person who knows your site keeps it running and improves it every month. Month to month. Scales with you.",
   serviceName: "Web Partner",

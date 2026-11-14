@@ -5,12 +5,12 @@ export const accessibility: Offer = {
   navTitle: "Accessibility and Performance",
   summary: "Corrected in the code, not covered with a widget.",
   menuLine: "Usable by everyone, fast on every phone.",
-  title: "Accessibility and Performance | ZAC Forge",
+  title: "Accessibility fixes for ADA Title II deadlines | ZAC Forge",
   description:
-    "Federal accessibility deadlines arrive in 2027 and 2028 for public agencies and HHS-funded health providers. We test by hand, fix the code to WCAG 2.1 AA, and document it.",
+    "Public agencies and HHS-funded health providers face accessibility deadlines in 2027 and 2028. We test by hand, fix the code to WCAG 2.1 AA, and document it.",
   serviceName: "Accessibility and Performance",
   serviceDescription:
-    "Manual testing against WCAG 2.2 AA, performance review, corrections made in the code, and an accessibility statement. No overlays.",
+    "Manual accessibility testing and code fixes to WCAG 2.1 AA, for public agencies facing ADA Title II deadlines, HHS-funded health providers facing Section 504 deadlines, and private businesses. Findings ranked by risk, fixes made in the code, and a written record. No overlays.",
   heroTitle: "Accessibility & Performance",
   heroIcon: { src: "/art/subpage/subpage-icon-accessibility.svg", width: 47, height: 47 },
   eyebrow: "ACCESSIBILITY AND PERFORMANCE",

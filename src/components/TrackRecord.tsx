@@ -43,9 +43,9 @@ const HAWAII: CaseStudy = {
  * Four cards, copy from Drew's batch 2 of 2026-11-13. Teddy Bear Portraits
  * and the academy portals are one card: same client, same system. Phrasing
  * rules: the $1B is volume through the platform, never "we sold", and the
- * 90% is client-reported. CCCV stays out of llms.txt and the schema until
- * ccconejovalley.com is live, and its link is the current deployment until
- * then.
+ * 90% is client-reported. CCCV is in llms.txt (Drew, 2026-11-13) but stays
+ * out of the schema until ccconejovalley.com is live, and its link is the
+ * current deployment until then.
  */
 const CASE_STUDIES: CaseStudy[] = [
   {

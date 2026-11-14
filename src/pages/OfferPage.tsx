@@ -121,7 +121,8 @@ export default function OfferPage({ offer }: { offer: Offer }) {
             Check, and the intro, on the ground under the hero. */}
         <section className="section offer-lead">
           <div className="container">
-            <h2 className="h2 offer-title">{offer.h1}</h2>
+            {/* The page's one h1, set at h2 size under the hero. */}
+            <h1 className="h2 offer-title">{offer.h1}</h1>
             {offer.subline ? <Subline text={offer.subline} /> : null}
             {offer.intro.map((p) => (
               <p className="offer-intro" key={p}>

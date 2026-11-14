@@ -7,7 +7,7 @@ export type PageMeta = {
   description: string;
   ogTitle: string;
   /** Not for search: robots noindex, no canonical, Open Graph, or JSON-LD, and
-   *  left out of the sitemap. The contact form result pages. */
+   *  left out of the sitemap. The contact form result pages and the 404. */
   noindex?: boolean;
 };
 
@@ -37,6 +37,8 @@ export const PAGES: PageMeta[] = [
     { path: "/contact/thanks", title: "Thank you | ZAC Forge" },
     { path: "/contact/not-sent", title: "Something went wrong | ZAC Forge" },
     { path: "/contact/error", title: "Something is missing | ZAC Forge" },
+    // Written to dist/404.html; functions/worker.ts serves it with status 404.
+    { path: "/404", title: "Page not found | ZAC Forge" },
   ].map((p) => ({ ...p, description: HOME_DESCRIPTION, ogTitle: p.title, noindex: true })),
 ];
 
@@ -45,5 +47,5 @@ export function canonical(path: string): string {
 }
 
 export function metaFor(path: string): PageMeta {
-  return PAGES.find((p) => p.path === path) ?? HOME_META;
+  return PAGES.find((p) => p.path === path) ?? PAGES.find((p) => p.path === "/404") ?? HOME_META;
 }

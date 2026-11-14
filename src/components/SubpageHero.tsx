@@ -7,7 +7,7 @@ type Props = {
    * swoosh, with the home hero's own content passed as children.
    */
   variant?: "offer" | "home";
-  /** The page name, set large. The page's h1. Offer variant only. */
+  /** The page name, set large, as a label. Offer variant only. */
   title?: string;
   /** A white line icon from public/art/subpage/, set over the title. */
   icon?: { src: string; width: number; height: number };
@@ -57,7 +57,9 @@ export function SubpageHero({ variant = "offer", title, icon, accent, children }
                 <img src={icon.src} width={icon.width} height={icon.height} alt="" />
               </span>
             ) : null}
-            <h1 className="h1 subpage-hero-title">{title}</h1>
+            {/* The page name is a label, set at h1 size. The headline under
+                the hero is the page's h1 (SEO pass, 2026-11-13). */}
+            <p className="h1 subpage-hero-title">{title}</p>
           </div>
         )}
       </div>

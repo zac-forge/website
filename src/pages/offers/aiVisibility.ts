@@ -5,7 +5,7 @@ export const aiVisibility: Offer = {
   navTitle: "AI Visibility",
   summary: "Get named when customers ask ChatGPT, Google, or Perplexity who to call.",
   menuLine: "Get named when people ask AI who to call.",
-  title: "AI Visibility | ZAC Forge",
+  title: "AI Visibility: get named by ChatGPT and Google AI | ZAC Forge",
   description:
     "Find out whether ChatGPT, Google, Perplexity, and Claude recommend your business or your competitors, and what to fix first.",
   serviceName: "AI Visibility",

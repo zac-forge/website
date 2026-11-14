@@ -18,7 +18,8 @@ remotely with clients anywhere in the US.
 - [The Fix](https://zacforge.com/fix-week): the Fix Week, one week, one agreed
   price. The top item on the Reality Check scorecard resolved in the client's code, a
   design review of the screen that looks most machine-made, and a ranked list of
-  what is left. If it isn't fixed, it's free.
+  what is left. If it isn't fixed, it's free. New builds from the ground up are
+  quoted as their own project.
 
 ## Services
 
@@ -29,8 +30,10 @@ remotely with clients anywhere in the US.
   mentions, in order of impact. Then the same questions tracked every month as
   part of a Web Partner plan.
 - [Accessibility and Performance](https://zacforge.com/accessibility): manual
-  testing against WCAG 2.2 AA, performance review, corrections made in the
-  code. No overlays.
+  testing and code fixes to WCAG 2.1 AA, the standard named by the ADA Title
+  II and HHS Section 504 web rules, with deadlines in 2027 and 2028 for
+  public agencies and HHS-funded health providers. Findings ranked by risk,
+  a written record, and no overlays. ZAC does not certify legal compliance.
 - [Web Partner](https://zacforge.com/web-partner): ongoing senior care
   covering updates, backups, monitoring, change requests, one improvement a
   month, and visibility tracking. Not a maintenance plan.
@@ -43,6 +46,9 @@ remotely with clients anywhere in the US.
 
 ## Track record
 
+- Calvary Chapel Conejo Valley: 1,703 sermons from 2001 to 2026 rescued from
+  a hosted platform with no backup, and the site rebuilt on a stack the
+  church owns. Launching soon.
 - Heritage Global Partners: all web properties including hgpauction.com, with
   real-time auction creation from the sale floor. Live since 2010, with over
   $1 billion in assets sold through the platform.
@@ -58,7 +64,7 @@ remotely with clients anywhere in the US.
 
 ## Contact
 
-- [Bring us the problem](https://zacforge.com/#contact)
+- [Send us what you built](https://zacforge.com/#contact)
 - [Book a call](https://cal.com/zacforge/20-min-chat)
 - [Email](mailto:drew@zacforge.com)
 - [Website](https://zacforge.com/)

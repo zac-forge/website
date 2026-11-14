@@ -6,7 +6,8 @@
  * consent), one Service per live offer with provider ZAC Forge (the Reality
  * Check, the Fix Week, AI Visibility, Accessibility and Performance, Web
  * Partner, and the Brand System once its flag is on), and FAQPage on each
- * offer page and on the home page, matching the visible questions exactly. No offers, no price
+ * offer page and on the home page, matching the visible questions exactly,
+ * and a two-step BreadcrumbList (Home, then the page) on each offer page. No offers, no price
  * properties, anywhere.
  */
 import { LIVE_OFFERS } from "../pages/offers";
@@ -33,9 +34,10 @@ const organization = {
   image: OG_IMAGE,
   email: CONTACT_EMAIL,
   description: HOME_META.description,
+  // Region only, no street or city (Drew, 2026-11-13: HI, was CA).
   address: {
     "@type": "PostalAddress",
-    addressRegion: "CA",
+    addressRegion: "HI",
     addressCountry: "US",
   },
   areaServed: { "@type": "Country", name: "United States" },
@@ -104,6 +106,13 @@ export function offerSchema(offer: Offer) {
         about: { "@id": ORG_ID },
       },
       service(offer.serviceName, offer.serviceDescription, canonical(offer.path), offer.serviceAlternateName),
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
+          { "@type": "ListItem", position: 2, name: offer.navTitle, item: canonical(offer.path) },
+        ],
+      },
       faqPage(offer.faq),
     ],
   };

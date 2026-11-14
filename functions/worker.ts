@@ -1,7 +1,8 @@
 // Worker entry for zacforge.com. Wired in wrangler.toml as `main`.
 //
 // Everything is the prerendered static site in dist/, served through the
-// ASSETS binding, with three exceptions:
+// ASSETS binding (a path it does not have gets dist/404.html with status
+// 404), with three exceptions:
 //
 //   1. POST /api/contact runs the contact form handler.
 //   2. /handoff 301s to /fix-week. The paid week carried that name from
@@ -56,6 +57,13 @@ export default {
       });
     } else {
       response = await env.ASSETS.fetch(request);
+      // Unknown paths, and the 404 page's own URL: the prerendered 404 page
+      // (dist/404.html) with status 404, so it is never indexed as a page.
+      const notFoundPath = url.pathname === "/404" || url.pathname === "/404.html";
+      if ((response.status === 404 || notFoundPath) && (request.method === "GET" || request.method === "HEAD")) {
+        const page = await env.ASSETS.fetch(new Request(new URL("/404", url), { method: request.method }));
+        response = new Response(page.body, { status: 404, headers: page.headers });
+      }
     }
 
     // The contact result pages are noindex everywhere, production included.

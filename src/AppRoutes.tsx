@@ -3,6 +3,7 @@ import { Routes, Route, useLocation } from "react-router";
 import Home from "./pages/Home.tsx";
 import OfferPage from "./pages/OfferPage.tsx";
 import ContactResult from "./pages/ContactResult.tsx";
+import NotFound from "./pages/NotFound.tsx";
 import { LIVE_OFFERS } from "./pages/offers";
 import { metaFor } from "./lib/meta";
 import { ContactFocus } from "./components/ContactFocus";
@@ -38,6 +39,7 @@ export function AppRoutes() {
         {LIVE_OFFERS.map((offer) => (
           <Route key={offer.path} path={offer.path} element={<OfferPage offer={offer} />} />
         ))}
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </>
   );

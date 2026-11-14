@@ -12,13 +12,13 @@ export const fixWeek: Offer = {
   navTitle: "The Fix",
   summary: "One week. Start with what matters most.",
   menuLine: "One week on what matters most.",
-  title: "The Fix: one week, fixed price | ZAC Forge",
+  title: "Fix an AI-built website in one week, fixed price | ZAC Forge",
   description:
-    "One week, one agreed price. The top item on your Reality Check scorecard resolved in your code, a design review of the screen that looks most machine-made, and the rest ranked.",
+    "One week, one agreed price. We fix the top problem on your Reality Check scorecard in your code and rank the rest. If it isn't fixed, it's free.",
   serviceName: "The Fix Week",
   serviceAlternateName: "The Fix",
   serviceDescription:
-    "One week, one agreed price. The top item on the Reality Check scorecard resolved in the client's code, a design review of the screen that looks most machine-made, and a ranked list of what is left.",
+    "One week, one agreed price. The top item on the Reality Check scorecard resolved in the client's code, a design review of the screen that looks most machine-made, and a ranked list of what is left. If it isn't fixed, it's free.",
   heroTitle: "The Fix",
   heroIcon: { src: "/art/subpage/subpage-icon-fix.svg", width: 41, height: 54 },
   eyebrow: "THE FIX",

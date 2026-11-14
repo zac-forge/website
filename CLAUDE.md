@@ -35,9 +35,9 @@ Do not invent marketing copy. If something is missing, ask rather than filling t
 - **Handover is a practice, not an anecdote.** Numerous projects have been handed over. Say so.
 - Do not reintroduce "shelved", "backlog", "affordable", or "cheap" into the promise, and do not bring back the "14 hours" build-speed line.
 
-## Geography: state California, say nothing else
+## Geography: state the region, say nothing else
 
-Andrew is in Ventura, California. Other team members are outside the US. **Only the California location is public**, as `addressRegion` CA in the Organization schema. Drew took "Ventura, California." out of the footer and the locality out of the schema on 2026-11-05, and may add a location back later.
+Other team members are outside the US. **Only one US state is public**, as `addressRegion` in the Organization schema: **HI since 2026-11-13** (Drew, SEO pass; it was CA, from Andrew in Ventura, California). No street address and no city. Drew took "Ventura, California." out of the footer and the locality out of the schema on 2026-11-05, and may add a location back later.
 
 This is deliberate, not an oversight. A US anchor is a trust signal for a mid-market US buyer. Advertising a team spread across three continents reads as offshore to that same buyer, which undercuts the seniority and continuity the whole positioning rests on. It is not hidden, it simply is not marketing copy. Do not add other locations without asking.
 
@@ -180,7 +180,7 @@ Every page is prerendered by `scripts/prerender.mjs` into `dist/<route>.html` wi
 | `ContactFocus.tsx` | Every `#contact` link scrolls the Name field into view below the sticky header and focuses it, on click and on arrival with the hash |
 | `Hero.tsx` | Misha's home banner (412:1907, 2026-11-13) through `SubpageHero variant="home"`: the offer heroes' swoosh band, header clear at the top, MB11's Z on the right (below the buttons on phones), no line art, "Built it with AI? Find out if it actually works.", no proof line (removed 2026-11-13), outlined "Book a 20-minute call" pill to `BOOKING_URL` beside the primary CTA. `public/og-image.jpg` is rendered from it by `tools/og-card.html` (still the v5 look) |
 | `LogoBand.tsx` | "Where our team has worked", names as muted text, never labelled as clients |
-| `TrackRecord.tsx` | Case studies (Drew, 2026-11-13, batch 2 copy), grey band, eyebrow "Case studies", heading "Built to last" (Drew, 2026-11-13), client name over the screenshot column only, anchor `#track-record`. Four cards: client, industry, status, then labelled Problem / What we built / Proof lines (a missing line drops its label), the number, and the product name as the link (the URL is never shown). CCCV (kept out of llms.txt and schema until ccconejovalley.com is live), Heritage Global Partners, Legacy Studios (Teddy Bear Portraits) with both screenshots and USNA and USMA portal links (academy shot cropped clear of all insignia), Legal Access Alameda (no link, label as text). Hidden hawaii.surf card first behind `HAWAII_CARD` |
+| `TrackRecord.tsx` | Case studies (Drew, 2026-11-13, batch 2 copy), grey band, eyebrow "Case studies", heading "Built to last" (Drew, 2026-11-13), client name over the screenshot column only, anchor `#track-record`. Four cards: client, industry, status, then labelled Problem / What we built / Proof lines (a missing line drops its label), the number, and the product name as the link (the URL is never shown). CCCV (in llms.txt since 2026-11-13 at Drew's request, still out of the schema until ccconejovalley.com is live), Heritage Global Partners, Legacy Studios (Teddy Bear Portraits) with both screenshots and USNA and USMA portal links (academy shot cropped clear of all insignia), Legal Access Alameda (no link, label as text). Hidden hawaii.surf card first behind `HAWAII_CARD` |
 | `Problem.tsx` | "Problem", on the ground with MB11's Z set, "wrong" in red and "without telling you." light italic |
 | `FixWeek.tsx` | "The Fix Week", heading, one paragraph, link to `/fix-week`, MB11's four-piece Z |
 | `RealityCheck.tsx` | Blue band: heading, the 5 questions numbered 1 to 5, CTA to `#contact`, booking pill, link to `/reality-check`. The icon points and dotted rule were removed 2026-11-13 |
@@ -191,6 +191,7 @@ Every page is prerendered by `scripts/prerender.mjs` into `dist/<route>.html` wi
 | `HomeFaq.tsx` | "FAQ", heading "Questions", the offer pages' FAQ list, between Team and Connect. Data in `src/pages/homeFaq.ts`, which also feeds the home FAQPage schema |
 | `Closing.tsx`, `ContactForm.tsx` | "Connect", the form and the mark in its circle, also rendered on `/reality-check` |
 | `pages/ContactResult.tsx` | The pages after the form at `/contact/thanks`, `/contact/not-sent`, `/contact/error`: blue band, Z, noindex, out of the sitemap. The handler fills `[data-slot]` elements and `#contact-data` so hydration matches. The thank-you page hides the header CTA |
+| `pages/NotFound.tsx` | The 404, in the result pages' layout: "Page not found", one line, links to Home and the five offers. Catch-all route, prerendered to `dist/404.html`, which `functions/worker.ts` serves with status 404 for any path the assets lack. noindex, out of the sitemap |
 | `Footer.tsx` | Links absolute so they work from offer pages |
 | `Brand.tsx` | Serves the board's wordmark SVG and the closing mark |
 | `SubpageHero.tsx` | The offer page hero from Misha's 417:2047 and siblings: band with swoosh art, icon, page name as the h1, `accent` prop for the colour the band fades to (unset, flat blue). `variant="home"` is the home banner (412:1907), with the home hero's content as children |

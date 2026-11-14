@@ -6,7 +6,7 @@ export const realityCheck: Offer = {
   navTitle: "The Reality Check",
   summary: "Send us what you built. We'll tell you straight.",
   menuLine: "Free. Five questions, straight answers.",
-  title: "The Reality Check | ZAC Forge",
+  title: "Reality Check: free review of AI-built websites | ZAC Forge",
   description:
     "Built something with AI? A free 5-question check by senior people, not a scanner. Plain-English scorecard and what a fix would take.",
   serviceName: "The Reality Check",
