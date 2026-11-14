@@ -50,9 +50,12 @@
   text-decoration-thickness: 2px;
   text-underline-offset: 6px;
 }
+/* The dropdown's links: no yellow underline (Drew, 2026-11-13). The grey
+   row and the accent colour carry hover there. */
 .site-nav .nav-menu-panel a:not(.btn):hover,
 .site-nav .nav-menu-panel a:not(.btn):focus-visible {
   color: var(--color-accent);
+  text-decoration: none;
 }
 .site-header :focus-visible {
   outline-color: currentColor;
