@@ -1375,7 +1375,7 @@ body:has(.subpage-hero) .site-header:not([data-scrolled="true"]):not(:has(.site-
    white cards a row, 19 apart across and 12 down, a 1px grey keyline,
    14px corners. Inside, from 73 in and 23 down: the 40px line icon, the
    40px bold title in the offer's colour, the one line, and "More" with its
-   arrow in the same colour. Each colour (--card-accent) is the offer's
+   arrow in the site blue. The title colour (--card-accent) is the offer's
    --color-offer-* token, set inline from Offer.accent. */
 .offer-related-grid {
   display: grid;
@@ -1417,10 +1417,22 @@ body:has(.subpage-hero) .site-header:not([data-scrolled="true"]):not(:has(.site-
   font-weight: var(--weight-bold);
   line-height: var(--leading-title);
   color: var(--card-accent);
+  text-decoration: underline transparent;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 4px;
+  transition: text-decoration-color var(--duration-fast) var(--ease-out);
+}
+/* Misha's hover (the comp's underlined Reality Check): the title takes a
+   blue underline. */
+.offer-card:hover .offer-card-title,
+.offer-card:has(.offer-card-link:focus-visible) .offer-card-title {
+  text-decoration-color: var(--color-band-blue);
 }
 .offer-card-body {
   margin-top: var(--space-2);
 }
+/* "More" in the site blue on every card (4.51:1, AA at 14px), underlined,
+   with the larger arrow, as on 423:2446 and 423:2448. */
 .offer-card-link {
   margin-top: auto;
   padding-top: var(--space-4);
@@ -1430,7 +1442,16 @@ body:has(.subpage-hero) .site-header:not([data-scrolled="true"]):not(:has(.site-
   font-family: var(--font-display);
   font-size: var(--text-small);
   font-weight: var(--weight-bold);
-  color: var(--card-accent);
+  color: var(--color-band-blue);
+}
+.offer-card-more {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+.offer-card-arrow {
+  font-size: var(--text-lead);
+  line-height: 1;
 }
 /* The link covers the card, so the whole card clicks through. */
 .offer-card-link::after {

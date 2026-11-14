@@ -25,11 +25,11 @@
   --color-on-band-soft: #F4F1EA;  /* Question titles on the blue band, 24px bold only. */
   --color-image-stroke: #C2C2C2;  /* 1px keyline on case study screenshots. */
   --color-card-stroke: #9D9D9D;  /* 1px keyline on the offer cards. */
-  --color-offer-reality-check: #9945FF;  /* The Reality Check's colour: card title and link, and its hero accent later. Misha's #9D4DFF (4.25:1 on white) darkened to 4.52:1 for WCAG AA. */
-  --color-offer-fix: #BC5B0D;  /* The Fix's colour: card title and link, and its hero accent later. Misha's #F28F3F (2.39:1 on white) darkened to 4.53:1 for WCAG AA. */
-  --color-offer-ai-visibility: #227CBA;  /* AI Visibility's colour: card title and link, and its hero accent later. Misha's #2483C5 darkened to 4.51:1, the same value as color.band-blue. */
-  --color-offer-accessibility: #227CBA;  /* Accessibility and Performance's colour. Placeholder, the site blue, until Misha designs it (question 44). */
-  --color-offer-web-partner: #0F892A;  /* Web Partner's colour: card title and link, and its hero accent later. Misha's #16CB3E (2.18:1 on white) darkened to 4.53:1 for WCAG AA. */
+  --color-offer-reality-check: #9D4DFF;  /* The Reality Check's colour: card title, and its hero accent later. Misha's value, 4.25:1 on white, AA for large text. */
+  --color-offer-fix: #EC7210;  /* The Fix's colour: card title, and its hero accent later. Misha's #F28F3F (2.39:1 on white) darkened only to 3:1, AA for large text. */
+  --color-offer-ai-visibility: #2483C5;  /* AI Visibility's colour: card title, and its hero accent later. Misha's value, 4.10:1 on white, AA for large text. */
+  --color-offer-accessibility: #227CBA;  /* Accessibility and Performance's colour. Placeholder, the site blue, until Misha designs it (question 44). Card title only. */
+  --color-offer-web-partner: #13AC34;  /* Web Partner's colour: card title, and its hero accent later. Misha's #16CB3E (2.18:1 on white) darkened only to 3:1, AA for large text. */
 
   /* channel: RGB triples for translucent colour: rgb(var(--accent-rgb) / .2). Not a Figma concept. */
   --accent-rgb: 86 36 111;

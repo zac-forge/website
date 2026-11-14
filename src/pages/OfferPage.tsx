@@ -115,7 +115,8 @@ function Subline({ text }: { text: string }) {
 /**
  * One "Other services" card, Misha's 423:2429 set (2026-11-13): the offer's
  * line icon, its name in its own colour, its one line, and "More" in the
- * same colour. The link is stretched over the card, so the whole card
+ * site blue, underlined, as he draws it. The link is stretched over the
+ * card, so the whole card
  * clicks through, and is named for the offer for screen readers.
  */
 function OfferCard({ offer }: { offer: Offer }) {
@@ -129,7 +130,10 @@ function OfferCard({ offer }: { offer: Offer }) {
       <h3 className="offer-card-title">{offer.navTitle}</h3>
       <p className="offer-card-body case-text">{offer.summary}</p>
       <a className="offer-card-link" href={offer.path} aria-label={`More about ${offer.navTitle}`}>
-        More <span aria-hidden="true">→</span>
+        <span className="offer-card-more">More</span>
+        <span className="offer-card-arrow" aria-hidden="true">
+          →
+        </span>
       </a>
     </article>
   );
