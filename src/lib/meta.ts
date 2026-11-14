@@ -6,6 +6,8 @@ export type PageMeta = {
   title: string;
   description: string;
   ogTitle: string;
+  /** This page's own 1200 x 630 card in public/og/, made by tools/og-images.mjs. */
+  ogImage?: string;
   /** Not for search: robots noindex, no canonical, Open Graph, or JSON-LD, and
    *  left out of the sitemap. The contact form result pages and the 404. */
   noindex?: boolean;
@@ -20,6 +22,7 @@ export const HOME_META: PageMeta = {
   title: "ZAC Forge | Built it with AI? We'll check it.",
   description: HOME_DESCRIPTION,
   ogTitle: "Built it with AI? Find out if it actually works.",
+  ogImage: `${SITE_URL}/og/home.jpg`,
 };
 
 /** Every prerendered route and its head. Consumed by the prerender and by
@@ -31,6 +34,7 @@ export const PAGES: PageMeta[] = [
     title: o.title,
     description: o.description,
     ogTitle: o.title.replace(" | ZAC Forge", ""),
+    ogImage: `${SITE_URL}/og${o.path}.jpg`,
   })),
   // Served by functions/api/contact.ts after a form submission.
   ...[

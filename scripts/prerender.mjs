@@ -62,7 +62,7 @@ function head(page) {
     meta("property", "og:type", "website"),
     meta("property", "og:title", page.ogTitle),
     meta("property", "og:description", page.description),
-    meta("property", "og:image", OG_IMAGE),
+    meta("property", "og:image", page.ogImage ?? OG_IMAGE),
     meta("property", "og:image:width", "1200"),
     meta("property", "og:image:height", "630"),
     meta("property", "og:image:alt", `${SITE_NAME}. ${page.ogTitle}`),
@@ -71,7 +71,7 @@ function head(page) {
     meta("name", "twitter:card", "summary_large_image"),
     meta("name", "twitter:title", page.ogTitle),
     meta("name", "twitter:description", page.description),
-    meta("name", "twitter:image", OG_IMAGE),
+    meta("name", "twitter:image", page.ogImage ?? OG_IMAGE),
     `    <script type="application/ld+json">\n${ld}\n    </script>`,
   ].join("\n");
 }

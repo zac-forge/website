@@ -11,6 +11,7 @@
     "pages:dev": "npm run build && wrangler pages dev dist",
     "build:client": "node scripts/build-tokens.mjs --check && node scripts/lint-tokens.mjs && tsc -b && vite build",
     "tokens": "node scripts/build-tokens.mjs",
+    "og": "node tools/og-images.mjs",
     "lint:tokens": "node scripts/lint-tokens.mjs"
   },
   "dependencies": {

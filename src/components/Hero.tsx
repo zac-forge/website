@@ -18,8 +18,8 @@ const item = {
  * subline, and buttons, and the gradient Z (412:1934, the same art as MB11's
  * 358:1060). The band has no dotted line art now. Copy is the live copy of 2026-11-06. The comp has no eyebrow or
  * booking pill here; the booking pill (Drew, 2026-11-05) stays. The proof
- * line under the buttons was removed by Drew on 2026-11-13. public/og-image.jpg
- * is rendered from this copy by tools/og-card.html, so change both together.
+ * line under the buttons was removed by Drew on 2026-11-13. The OG cards
+ * (public/og/) are drawn from this hero by `npm run og`; rerun it after a change.
  */
 export function Hero() {
   const shouldReduceMotion = useReducedMotion();

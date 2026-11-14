@@ -108,19 +108,20 @@ Not defects, and not urgent. Parked deliberately.
 - [ ] **Brand red.** The logo sheet declares `#FF2D55` and the palette uses `#E83445`. Resolves
       in Misha's redesign. Do not chase it separately.
 
-## Regenerating the OG image
+## Regenerating the OG images
 
-`public/og-image.jpg` is rendered from `tools/og-card.html`, which mirrors the hero in
-`src/components/Hero.tsx` (navy band, eyebrow, headline, proof line, the board's Z) with the
-real font files and token values. It is kept out of `public/` so it never ships. The card must
-stay in sync with the hero, so any hero copy change means editing the card and regenerating.
+Each page has its own 1200x630 card in `public/og/` (`home.jpg`, `reality-check.jpg`,
+`fix-week.jpg`, `ai-visibility.jpg`, `accessibility.jpg`, `web-partner.jpg`), and
+`public/og-image.jpg` is a copy of the home card (the schema's organization image).
+`tools/og-images.mjs` draws them from each page's hero band: the swoosh art, the white
+wordmark, and the page's own icon, name, and headline, read from the built HTML in `dist/`,
+so a card always matches its page. Home uses its headline and the Z. Text stays inside
+x 100 to 1100 and y 60 to 530.
 
-Render the 1200x630 `.og-card` element at 2x in Chrome (open the file directly, or serve the
-repo root with `python3 -m http.server 4599`), crop to the card, and downscale to exactly
-1200x630. On macOS the downscale is:
+After any change to a hero, a page name, or a headline:
 
 ```bash
-sips -z 630 1200 card@2x.png -s format jpeg -s formatOptions 88 --out public/og-image.jpg
+npm run build && npm run og
 ```
 
-The OG title is not on the card. It lives in `src/lib/meta.ts`.
+It needs Google Chrome (headless) and macOS `sips`. Commit the regenerated JPEGs.
