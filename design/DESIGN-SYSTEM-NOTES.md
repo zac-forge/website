@@ -481,8 +481,9 @@ offer, including the /ai-visibility headline.
     #FDD41A (1.94:1) to #947A01 (4.52:1), the hue kept, so Web Partner reads
     as a dark mustard rather than yellow. **The hero colours and the card
     colours (question 44) are still two different sets, for you to unify:**
-    The Fix is green here and orange on its card, Web Partner yellow here and
-    green on its card, AI Visibility red here and blue on its card.
+    The Fix is green in both since Drew swapped the card colours, Web
+    Partner yellow here and orange on its card, AI Visibility red here and
+    blue on its card.
 
 41. **Accessibility hero title weight.** "Accessibility & Performance" is
     Helvetica Light (300) on 417:2128, the other four titles Bold. The build
@@ -504,7 +505,8 @@ offer, including the /ai-visibility headline.
     site blue and the hero's accessibility icon (422:2206) as placeholders.
     What colour and icon should it have? The other titles ship in your
     colours, except The Fix #F28F3F and Web Partner #16CB3E, darkened only
-    to the 3:1 large-text minimum on white (#EC7210, #13AC34). "More" is the
+    to the 3:1 large-text minimum on white (#EC7210, #13AC34), and Drew then
+    swapped those two: The Fix's card is green and Web Partner's orange. "More" is the
     site blue #227CBA on every card, underlined, and the title takes a blue
     underline on hover, read from your underlined Reality Check. Each title
     colour is one token per offer and will also drive that offer's hero

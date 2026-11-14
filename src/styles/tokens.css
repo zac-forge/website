@@ -26,10 +26,10 @@
   --color-image-stroke: #C2C2C2;  /* 1px keyline on case study screenshots. */
   --color-card-stroke: #9D9D9D;  /* 1px keyline on the offer cards. */
   --color-offer-reality-check: #9D4DFF;  /* The Reality Check's colour: card title, and its hero accent later. Misha's value, 4.25:1 on white, AA for large text. */
-  --color-offer-fix: #EC7210;  /* The Fix's colour: card title, and its hero accent later. Misha's #F28F3F (2.39:1 on white) darkened only to 3:1, AA for large text. */
+  --color-offer-fix: #13AC34;  /* The Fix's card colour, green (Drew, 2026-11-13: swapped with Web Partner). Misha's #16CB3E (2.18:1 on white) darkened only to 3:1, AA for large text. */
   --color-offer-ai-visibility: #2483C5;  /* AI Visibility's colour: card title, and its hero accent later. Misha's value, 4.10:1 on white, AA for large text. */
   --color-offer-accessibility: #227CBA;  /* Accessibility and Performance's colour. Placeholder, the site blue, until Misha designs it (question 44). Card title only. */
-  --color-offer-web-partner: #13AC34;  /* Web Partner's colour: card title, and its hero accent later. Misha's #16CB3E (2.18:1 on white) darkened only to 3:1, AA for large text. */
+  --color-offer-web-partner: #EC7210;  /* Web Partner's card colour, orange (Drew, 2026-11-13: swapped with The Fix). Misha's #F28F3F (2.39:1 on white) darkened only to 3:1, AA for large text. */
   --color-hero-reality-check: #9D4DFF;  /* The colour /reality-check's hero band fades to. Misha's value: white page name 4.62:1 at its lightest. */
   --color-hero-fix: #008D0E;  /* The colour /fix-week's hero band fades to. Misha's #00BC13 gave the white page name 3.01:1, darkened to 4.53:1. */
   --color-hero-ai-visibility: #E83E39;  /* The colour /ai-visibility's hero band fades to. Misha's value: white page name 4.97:1 at its lightest. */
