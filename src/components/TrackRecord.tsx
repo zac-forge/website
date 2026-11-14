@@ -106,7 +106,7 @@ const CASE_STUDIES: CaseStudy[] = [
   },
   {
     // Drew, 2026-11-13: the portal itself, built for Legal Access Alameda.
-    // No screenshot of disasterlegalservicesca.org yet, so the grey slot.
+    // Screenshot from Drew, source in design/case-sources/dlac-portal.jpg.
     client: "Disaster Legal Services California",
     industry: "Nonprofit legal aid",
     status: "Live through the 2025 Los Angeles fires",
@@ -116,6 +116,12 @@ const CASE_STUDIES: CaseStudy[] = [
     figure: "7",
     figureCaption: "languages",
     product: { label: "disasterlegalservicesca.org", href: "https://disasterlegalservicesca.org/" },
+    images: [
+      {
+        base: "/work/dlac-portal",
+        alt: "Disaster Legal Services California home page: Get Help Now, free legal help for survivors of California disasters.",
+      },
+    ],
   },
 ];
 
