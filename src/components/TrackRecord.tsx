@@ -3,150 +3,197 @@ import { HAWAII_CARD } from "../lib/flags";
 
 /**
  * Case studies, Drew 2026-11-13: Recent work (CCCV) and Still Running merged
- * into one section, every card in one structure. The longer card bodies of
- * 2026-11-06 and 2026-11-12 are in git history (bf9f0c1) if they come back.
+ * into one section, every card in one structure (batch 2 copy).
  */
+
+type Link = { label: string; href: string };
 
 type CaseStudy = {
   client: string;
-  /** A readable product name. The URL is only its link, never shown. */
-  product: string;
-  link?: string;
-  /** One line: what it does. */
-  line: string;
+  industry?: string;
   /** Status, or the years it has run. */
   status?: string;
+  /** The three labelled lines. A card without a problem omits the label. */
+  problem?: string;
+  built: string;
+  proof?: string;
   /** Set large. The one hard number the card trades on. */
   figure?: string;
   figureCaption?: string;
+  /** The product name, linked to the site. Without an href it shows as text. */
+  product?: { label: string; href?: string };
+  /** Further sites on the same platform, linked after the product. */
+  moreLinks?: Link[];
   /**
-   * One screenshot, MB11 359:1112 to 359:1134, served from public/work/ at
-   * 360 and 720 wide (`<base>-360.webp`, `<base>-720.webp`). Without one the
-   * card keeps the same slot in the board's placeholder grey.
+   * Screenshots, MB11 359:1112 to 359:1134, served from public/work/ at 360
+   * and 720 wide (`<base>-360.webp`, `<base>-720.webp`), stacked in the
+   * image column. Without one the card keeps the slot in the board's grey.
    */
-  image?: { base: string; alt: string };
+  images?: { base: string; alt: string }[];
 };
 
 /** Behind HAWAII_CARD until real before and after numbers exist. */
 const HAWAII: CaseStudy = {
   client: "hawaii.surf",
-  product: "hawaii.surf",
-  link: "https://hawaii.surf",
-  line: "Our own editorial publication on Hawaiian surf history, and our test bed for AI Visibility.",
+  built: "Our own editorial publication on Hawaiian surf history, and our test bed for AI Visibility.",
+  product: { label: "hawaii.surf", href: "https://hawaii.surf" },
 };
 
 /**
- * CCCV first, then the systems that have run for years. Phrasing rules: the
- * $1B is volume through the platform, never "we sold". CCCV's figures were
- * checked on 2026-11-12 (1,703 sermons, 2001 to 2026) and it stays out of
- * llms.txt and the schema until ccconejovalley.com is live.
+ * Four cards, copy from Drew's batch 2 of 2026-11-13. Teddy Bear Portraits
+ * and the academy portals are one card: same client, same system. Phrasing
+ * rules: the $1B is volume through the platform, never "we sold", and the
+ * 90% is client-reported. CCCV stays out of llms.txt and the schema until
+ * ccconejovalley.com is live, and its link is the current deployment until
+ * then.
  */
 const CASE_STUDIES: CaseStudy[] = [
   {
     client: "Calvary Chapel Conejo Valley",
-    // TODO(Drew): product label invented 2026-11-13, confirm.
-    product: "CCCV Sermon Archive",
-    link: "https://cccv.ccconejovalley.workers.dev",
-    // TODO(Drew): one line cut down from the 2026-11-12 body, confirm.
-    line: "We rescued the full sermon archive and rebuilt the site on a stack the church owns.",
+    industry: "Faith-based nonprofit",
     status: "Launching soon",
+    problem: "1,703 sermons from 2001 to 2026 sat on a hosted platform with no backup.",
+    built:
+      "We rescued the full archive, moved the audio to permanent public hosting, and rebuilt the site on a stack the church owns, for close to nothing a month.",
+    proof: "All 70 old URLs still work.",
     figure: "1,703",
     figureCaption: "sermons saved",
-    image: {
-      base: "/work/cccv",
-      alt: "The sunburst over the Conejo Valley, artwork from the Calvary Chapel Conejo Valley site",
-    },
+    product: { label: "Sermon archive and church website", href: "https://cccv.ccconejovalley.workers.dev" },
+    images: [
+      {
+        base: "/work/cccv",
+        alt: "The sunburst over the Conejo Valley, artwork from the Calvary Chapel Conejo Valley site",
+      },
+    ],
   },
   {
-    client: "Heritage Global",
-    product: "HGP Auction Platform",
-    link: "https://hgpauction.com",
-    // TODO(Drew): one line cut down from the 2026-11-06 body, confirm.
-    line: "Real-time auction creation from the sale floor on connected tablets, built in 2010.",
+    client: "Heritage Global Partners",
+    industry: "Industrial auctions and asset sales",
     status: "Live since 2010",
+    problem: "An outdated design and a weak server setup. The site kept crashing under load.",
+    built:
+      "A new design system, new site architecture and code on an up-to-date WordPress, and a custom server environment built for the load. Auction listings created on tablets straight from the sale floor.",
+    proof: "Stable since launch, without interruption.",
     figure: "$1B+",
     figureCaption: "in asset sales through the platform",
-    image: { base: "/work/heritage-global", alt: "Screenshot of the hgpauction.com home page" },
+    product: { label: "HGP auction platform", href: "https://hgpauction.com" },
+    images: [{ base: "/work/heritage-global", alt: "Screenshot of the hgpauction.com home page" }],
   },
   {
-    client: "Teddy Bear Portraits",
-    // TODO(Drew): product label invented 2026-11-13, confirm.
-    product: "Photo Point of Sale",
-    link: "https://teddybearportraits.com",
-    // TODO(Drew): one line cut down from the 2026-11-06 body, confirm.
-    line: "Tablets on a central database, so parents bought photos the same day.",
+    client: "Legacy Studios (Teddy Bear Portraits)",
+    industry: "School and academy portraits",
     status: "Built 2016 to 2019 · Still running",
+    problem: "A bloated proprietary system, controlled by a vendor that made it hard to leave.",
+    built:
+      "A custom back end on WordPress and open source, with tablet point of sale on one central database so parents bought photos the same day. The same platform runs separately branded portals for the US Naval Academy and the US Military Academy. Then we handed the keys back.",
+    proof:
+      "The client reported support calls dropped by over 90%. Still running, now maintained by another team.",
     figure: "41 states",
-    image: { base: "/work/teddy-bear-portraits", alt: "Screenshot of the Teddy Bear Portraits website" },
+    product: { label: "School and academy photo platform", href: "https://teddybearportraits.com" },
+    moreLinks: [
+      { label: "USNA portal", href: "https://usna.legacystudios.com" },
+      { label: "USMA portal", href: "https://usma.legacystudios.com" },
+    ],
+    images: [
+      { base: "/work/teddy-bear-portraits", alt: "Screenshot of the Teddy Bear Portraits website" },
+      // Drew's usna.legacystudios.com shot, cropped to the headline and
+      // buttons so no insignia shows (DoD guardrail).
+      {
+        base: "/work/service-academies",
+        alt: "Screenshot of the Legacy Studios U.S. Naval Academy official portraits site",
+      },
+    ],
   },
   {
-    // TODO(Drew): client set to Legacy Studios (was "US Naval Academy · US
-    // Military Academy"), product label invented, and the figure ("2") is
-    // new. Confirm all three. No insignia anywhere on this card (DoD).
-    client: "Legacy Studios",
-    product: "USNA and USMA Cadet Portals",
-    link: "https://usna.legacystudios.com",
-    line: "A separately branded cadet portal for each academy, built on the Teddy Bear Portraits platform.",
-    status: "Live since 2017",
-    figure: "2",
-    figureCaption: "academy portals on one platform",
-    // Drew's usna.legacystudios.com shot, cropped to the headline and
-    // buttons so no insignia shows (DoD guardrail).
-    image: {
-      base: "/work/service-academies",
-      alt: "Screenshot of the Legacy Studios U.S. Naval Academy official portraits site",
-    },
-  },
-  {
-    // TODO(Drew): product label invented 2026-11-13, confirm. URL, years,
-    // and the number are still open slots, so the card has no link and no
-    // figure rather than invented ones.
     client: "Legal Access Alameda",
-    product: "Attorney Network Websites",
-    line: "Web properties for a statewide group of attorneys providing disaster response and free legal assistance.",
-    status: "A client across several years and several rebuilds",
-    image: { base: "/work/legal-access-alameda", alt: "Screenshot of the Legal Access Alameda website" },
+    industry: "Nonprofit legal aid",
+    status: "Long-term client",
+    built:
+      "The statewide disaster legal aid portal: one place for Californians hit by wildfires, earthquakes, and other disasters to find free legal help. Accessible and simple to use.",
+    proof: "The free disaster legal aid portal for all of California.",
+    product: { label: "California disaster legal aid portal" },
+    images: [{ base: "/work/legal-access-alameda", alt: "Screenshot of the Legal Access Alameda website" }],
   },
 ];
 
-/** One case study card: client, product, line, status, number. */
+function CaseImage({ image }: { image: { base: string; alt: string } }) {
+  return (
+    <img
+      className="case-image"
+      src={`${image.base}-720.webp`}
+      srcSet={`${image.base}-360.webp 360w, ${image.base}-720.webp 720w`}
+      sizes="(max-width: 760px) calc(100vw - 48px), 302px"
+      alt={image.alt}
+      width={302}
+      height={170}
+      loading="lazy"
+      decoding="async"
+    />
+  );
+}
+
+/**
+ * One case study card: client across, screenshots left, then industry,
+ * status, the labelled lines, the number, and the product link.
+ */
 function CaseCard({ study }: { study: CaseStudy }) {
+  const facts: [string, string | undefined][] = [
+    ["Problem", study.problem],
+    ["What we built", study.built],
+    ["Proof", study.proof],
+  ];
   return (
     <article className="case case-grid">
       <h3 className="case-client">{study.client}</h3>
-      {study.image ? (
-        <img
-          className="case-image"
-          src={`${study.image.base}-720.webp`}
-          srcSet={`${study.image.base}-360.webp 360w, ${study.image.base}-720.webp 720w`}
-          sizes="(max-width: 760px) calc(100vw - 48px), 302px"
-          alt={study.image.alt}
-          width={302}
-          height={170}
-          loading="lazy"
-          decoding="async"
-        />
-      ) : (
-        <div className="case-image placeholder" aria-hidden="true" />
-      )}
+      <div className="case-images">
+        {study.images?.length ? (
+          study.images.map((image) => <CaseImage image={image} key={image.base} />)
+        ) : (
+          <div className="case-image placeholder" aria-hidden="true" />
+        )}
+      </div>
       <div className="case-copy">
-        <p className="case-meta">
-          {study.link ? (
-            <a className="inline-link" href={study.link}>
-              {study.product}
-            </a>
-          ) : (
-            <span>{study.product}</span>
-          )}
-        </p>
-        <p className="case-body case-text">{study.line}</p>
+        {study.industry ? <p className="case-industry case-text">{study.industry}</p> : null}
         {study.status ? <p className="case-status">{study.status}</p> : null}
+        <dl className="case-facts">
+          {facts.map(([label, text]) =>
+            text ? (
+              <div className="case-fact" key={label}>
+                <dt className="case-fact-label">{label}</dt>
+                <dd className="case-text">{text}</dd>
+              </div>
+            ) : null,
+          )}
+        </dl>
         {study.figure ? (
           <p className="case-figure">
             <span className="case-figure-value">{study.figure}</span>
             {study.figureCaption ? (
               <span className="case-figure-caption">{study.figureCaption}</span>
             ) : null}
+          </p>
+        ) : null}
+        {study.product ? (
+          <p className={`case-meta case-product${study.product.href ? "" : " case-product--plain"}`}>
+            {study.product.href ? (
+              <a className="inline-link" href={study.product.href}>
+                {study.product.label}
+              </a>
+            ) : (
+              <span>{study.product.label}</span>
+            )}
+          </p>
+        ) : null}
+        {study.moreLinks ? (
+          <p className="case-more-links case-text">
+            {study.moreLinks.map((link, i) => (
+              <span key={link.href}>
+                {i > 0 ? " · " : null}
+                <a className="inline-link" href={link.href}>
+                  {link.label}
+                </a>
+              </span>
+            ))}
           </p>
         ) : null}
       </div>
@@ -157,7 +204,7 @@ function CaseCard({ study }: { study: CaseStudy }) {
 /**
  * Case studies on MB11's grey band 394:1892 (curve top left, cut bottom
  * right). Heading left and intro right (366:1384, 367:1622), then the cases
- * stacked: client name across, screenshot left, the rest right. The comp's
+ * stacked: client name across, screenshots left, the rest right. The comp's
  * flipped screenshots are used upright. No carousel. The id stays
  * track-record because the nav and older links point at it.
  */
@@ -174,11 +221,10 @@ export function TrackRecord() {
               <span className="h-light">Still</span> Running
             </h2>
           </div>
-          {/* Confirmed by Drew on 2026-08-20 as repeatable across numerous
-              projects, which is why it is a section claim, not a detail. */}
+          {/* Intro from Drew's batch 2, 2026-11-13. Handover was confirmed
+              on 2026-08-20 as repeatable across numerous projects. */}
           <p className="track-intro case-text">
-            Built on the practice Andrew Johnston has run since 2010. Every system below was handed
-            to the people who own it. They run it without us.
+            Every system below was built by our team and handed to the people who own it.
           </p>
         </Reveal>
 

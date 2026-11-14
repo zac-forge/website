@@ -477,9 +477,10 @@ offer, including the /ai-visibility headline.
     The eyebrow is gone from these pages. Anything you would set differently?
 
 43. **Case studies.** Recent work and Still Running are merged (Drew), CCCV
-    first, every card in one structure: client, product name (the link),
-    one line, status, one number. The status is a new bold line under the
-    one line. Question 39 is superseded.
+    first, four cards (Teddy Bear Portraits and the academy portals are one
+    card, with both screenshots stacked). Each card: client, industry,
+    status in bold, Problem / What we built / Proof with bold labels, the
+    number, then the product name as the link. Question 39 is superseded.
 
 ## Structure of MacBook Air - 1 (node 6:2), for reference
 

@@ -11,9 +11,12 @@ const QUESTIONS = [
   { q: "Can everyone use it?", a: "Keyboard, screen reader, WCAG 2.2 AA." },
   {
     q: "Can anyone find it?",
-    a: "What ChatGPT, Google, and Perplexity say when a customer asks. Screenshots.",
+    a: "What ChatGPT, Google, and Perplexity say when a customer asks for someone like you.",
   },
-  { q: "Does it look like you?", a: "Our design principal's read." },
+  {
+    q: "Does it look like you?",
+    a: "Whether it looks like your business or like a template. Our design principal makes the call.",
+  },
 ];
 
 /**
@@ -34,6 +37,10 @@ export function RealityCheck() {
           <h2 className="h2 rc-heading" id="reality-check-heading">
             <span className="h-light">Send us what you built.</span> We'll tell you straight.
           </h2>
+          {/* Where the icon points were (Drew, 2026-11-13). */}
+          <p className="section-intro copy">
+            You get one page in plain English: what we found, the evidence, and what a fix would take.
+          </p>
         </Reveal>
 
         <Reveal className="rc-questions" stagger={0.06}>

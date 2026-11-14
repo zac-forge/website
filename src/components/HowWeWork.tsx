@@ -50,7 +50,7 @@ export function HowWeWork() {
           <div>
             <p className="eyebrow">How we work</p>
             <h2 className="h2" id="how-we-work-heading">
-              Check. Fix. Partner
+              Check. Fix. Partner.
             </h2>
           </div>
           <div className="art-split-art how-art" aria-hidden="true">

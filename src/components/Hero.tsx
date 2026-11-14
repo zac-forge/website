@@ -36,8 +36,8 @@ export function Hero() {
             <span>Find out if it actually works.</span>
           </motion.h1>
           <motion.p className="hero-body copy" variants={item}>
-            Send us your site, app, or brand. Senior people check it on 5 questions and tell you
-            straight. Free. A person reads it, not a scanner.
+            Send us your site, app, or brand. A senior person checks it against 5 questions and
+            tells you what's wrong, in plain English. Free.
           </motion.p>
           <motion.div className="cta-row" variants={item}>
             <Magnetic>

@@ -18,9 +18,11 @@ export function FixWeek() {
             <span className="h-light">most.</span>
           </h2>
           <p className="section-intro copy">
-            When the scorecard shows something worth fixing, a senior team takes over. The top item
-            resolved in your code, a Design Read on the screen that most looks machine-made, and the
-            rest ranked. One price, agreed up front.
+            When the scorecard shows something worth fixing, we fix it. In one week, the same senior
+            people fix the top problem in your code, show you what makes your design look
+            machine-made, and rank everything else by what it's worth. If what you have isn't worth
+            saving, we'll say so and build it properly from the ground up. One price, agreed before
+            we start.
           </p>
           <div className="cta-row fix-week-link">
             <a className="text-link" href="/fix-week">
