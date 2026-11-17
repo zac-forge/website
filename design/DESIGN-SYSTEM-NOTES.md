@@ -126,6 +126,15 @@ to it:
 
 ## Extensions made without Figma coverage
 
+- Drew's changes of 2026-11-17, departing from the comps at his request:
+  the Bigger fixes eyebrow and heading sit inside the blue band 394:1893
+  (MB11 sets them on the ground), the Problem section's Z set 360:1259 is
+  removed and the copy runs as one column, the hero Z is hidden at 760px
+  and narrower, the "Other services" card titles are all the site blue
+  instead of Misha's per-offer colours (423:2428), and the "Other services"
+  label is the site eyebrow. `/faq` uses the offer hero with no icon, since
+  the hero icons are drawn per offer. Worth raising with Misha alongside
+  questions 40 and 44.
 - `color.line` (hairlines) reuses the placeholder grey. The board has no
   neutral between ground and text.
 - `channel.*` RGB triples for translucent colour, used for selection and

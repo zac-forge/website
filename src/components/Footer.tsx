@@ -40,6 +40,7 @@ export function Footer() {
           <a href="/#track-record">Case studies</a>
           <a href="/#how-we-work">How we work</a>
           <a href="/#who-we-are">Team</a>
+          <a href="/faq">FAQ</a>
         </nav>
 
         <p className="footer-legal">

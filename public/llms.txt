@@ -62,6 +62,12 @@ remotely with clients anywhere in the US.
   Disaster Legal Assistance Collaborative. It carried survivors of the 2025 Los
   Angeles fires to free legal help, in 7 languages.
 
+## Questions
+
+- [FAQ](https://zacforge.com/faq): what the Reality Check and the Fix cost,
+  who does the work, how ZAC uses AI, who owns what is built, and what
+  accessibility fixes cover.
+
 ## Contact
 
 - [Send us what you built](https://zacforge.com/#contact)

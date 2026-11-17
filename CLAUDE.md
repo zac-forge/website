@@ -37,9 +37,9 @@ Do not invent marketing copy. If something is missing, ask rather than filling t
 
 ## Geography: state the region, say nothing else
 
-Other team members are outside the US. **Only one US state is public**, as `addressRegion` in the Organization schema: **HI since 2026-11-13** (Drew, SEO pass; it was CA, from Andrew in Ventura, California). No street address and no city. Drew took "Ventura, California." out of the footer and the locality out of the schema on 2026-11-05, and may add a location back later.
+Other team members are outside the US. **No US state is public since 2026-11-17** (Drew): the Organization schema's `PostalAddress` carries `addressCountry` "US" only, and `areaServed` is "US". No region, street, or city. Before that the region was HI (2026-11-13) and CA (from Andrew in Ventura, California). Drew took "Ventura, California." out of the footer and the locality out of the schema on 2026-11-05, and may add a location back later. Do not add copy that says US only.
 
-This is deliberate, not an oversight. A US anchor is a trust signal for a mid-market US buyer. Advertising a team spread across three continents reads as offshore to that same buyer, which undercuts the seniority and continuity the whole positioning rests on. It is not hidden, it simply is not marketing copy. Do not add other locations without asking.
+This is deliberate, not an oversight. The US anchor is a trust signal for a mid-market US buyer. Advertising a team spread across three continents reads as offshore to that same buyer, which undercuts the seniority and continuity the whole positioning rests on. It is not hidden, it simply is not marketing copy. Do not add other locations without asking.
 
 No geo-targeting or geo-restriction is in place, and none is recommended. The pipeline is US-weighted through Andrew's network, and the buyer does not search locally for this service.
 
@@ -146,7 +146,7 @@ Build pages from these. Do not create a second button, card, or eyebrow.
 | Dotted line art on a band | `<img class="band-lines">` from `public/art/mb11/lines-*.svg`, laid on the 1280 frame, hidden below 900px |
 | Step row with arrows | `FlowRow` (`src/components/FlowRow.tsx`), ring icon, title, arrows that draw once, paragraphs under each |
 | Heading left, intro right | `.split-head` with `.split-head-copy` |
-| Offer page cross-links | `.offer-related` block in `OfferPage.tsx`, above the closing CTA: `OfferCard` per other live offer (Misha's 423:2428 set), icon from `public/art/offer-cards/`, title and "More" link in the offer's `accent` (`--color-offer-*`), link stretched over the card with `aria-label` "More about …" |
+| Offer page cross-links | `RelatedOffers` (`src/components/RelatedOffers.tsx`), above the closing CTA: an `.eyebrow` label, an offer card per other live offer (Misha's 423:2428 set), icon from `public/art/offer-cards/`, title and "More" in the site blue, link stretched over the card with `aria-label` "More about …" |
 | Header offers menu | `WhatWeDoMenu` in `Header.tsx`, plain link below 860px |
 | Case study | `.case.case-grid` from `TrackRecord.tsx`: name across, screenshot left (`public/work/<base>-360.webp` and `-720.webp`, placeholder without one), meta, body, and `figure` right |
 | Team photo | Drop `andrew-johnston`, `design-principal`, or `principal-engineer` (.webp, .jpg, .png) in `src/assets/team/` and rebuild; initials or a plain circle until then |
@@ -166,7 +166,7 @@ only, and a row in this table.
 
 ## Section order (v5)
 
-Hero → LogoBand → Problem → RealityCheck → FixWeek → WhatWeFix → TrackRecord (Case studies) → HowWeWork → ExperienceStrip → WhoWeAre → HomeFaq → Closing (Drew, 2026-11-13)
+Hero → LogoBand → Problem → RealityCheck → FixWeek → WhatWeFix → TrackRecord (Case studies) → HowWeWork → ExperienceStrip → WhoWeAre → Closing (Drew, 2026-11-13; the FAQ moved to `/faq` on 2026-11-17)
 
 Six offer pages share one template: `/reality-check`, `/fix-week` (`/handoff` 301s there from `functions/worker.ts`; labelled "The Fix" in nav, footer, eyebrows, buttons, and its title, while body copy and the schema `name` keep "the Fix Week"), `/ai-visibility`, `/accessibility`, `/web-partner`, and `/brand-system`. The last is behind the `BRAND_SYSTEM` flag in `src/lib/flags.ts`, off by default, which keeps the page out of the routes, menus, sitemap, and schema and leaves the What we fix row as plain text. v5's `llms.txt` lists the brand system without a link, as the copy deck has it. The hawaii.surf case study card is behind `HAWAII_CARD`, off until real before and after numbers exist.
 
@@ -178,21 +178,22 @@ Every page is prerendered by `scripts/prerender.mjs` into `dist/<route>.html` wi
 |---|---|
 | `Header.tsx` | Blue on every page (clear over an offer page hero until the page scrolls), nav What we do (menu, each offer with its `menuLine` under the name), Case studies, How we work, Team, CTA "Let's talk" to `BOOKING_URL` (Drew, 2026-11-12) |
 | `ContactFocus.tsx` | Every `#contact` link scrolls the Name field into view below the sticky header and focuses it, on click and on arrival with the hash |
-| `Hero.tsx` | Misha's home banner (412:1907, 2026-11-13) through `SubpageHero variant="home"`: the offer heroes' swoosh band, header clear at the top, MB11's Z on the right (below the buttons on phones), no line art, "Built it with AI? Find out if it actually works.", no proof line (removed 2026-11-13), outlined "Book a 20-minute call" pill to `BOOKING_URL` beside the primary CTA. each page's OG card in `public/og/` (and `public/og-image.jpg`, the home card) is drawn from its hero by `npm run og` (`tools/og-images.mjs`), so rerun it after any hero, page name, or headline change |
+| `Hero.tsx` | Misha's home banner (412:1907, 2026-11-13) through `SubpageHero variant="home"`: the offer heroes' swoosh band, header clear at the top, MB11's Z on the right (hidden at 760px and narrower since 2026-11-17), no line art, "Built it with AI? Find out if it actually works.", no proof line (removed 2026-11-13), outlined "Book a 20-minute call" pill to `BOOKING_URL` beside the primary CTA. each page's OG card in `public/og/` (and `public/og-image.jpg`, the home card) is drawn from its hero by `npm run og` (`tools/og-images.mjs`), so rerun it after any hero, page name, or headline change |
 | `LogoBand.tsx` | "Where our team has worked", names as muted text, never labelled as clients |
 | `TrackRecord.tsx` | Case studies (Drew, 2026-11-13, batch 2 copy), grey band, eyebrow "Case studies", heading "Built to last" (Drew, 2026-11-13), client name over the screenshot column only, anchor `#track-record`. Four cards: client, industry, status, then labelled Problem / What we built / Proof lines (a missing line drops its label), the number, and the product name as the link (the URL is never shown). CCCV (in llms.txt since 2026-11-13 at Drew's request, still out of the schema until ccconejovalley.com is live), Heritage Global Partners, Legacy Studios (Teddy Bear Portraits) with both screenshots and USNA and USMA portal links (academy shot cropped clear of all insignia), Legal Access Alameda (no link, label as text). Hidden hawaii.surf card first behind `HAWAII_CARD` |
-| `Problem.tsx` | "Problem", on the ground with MB11's Z set, "wrong" in red and "without telling you." light italic |
+| `Problem.tsx` | "Problem", on the ground, one column, no art (the Z set was removed 2026-11-17), "wrong" in red and "without telling you." light italic |
 | `FixWeek.tsx` | "The Fix Week", heading, one paragraph, link to `/fix-week`, MB11's four-piece Z |
 | `RealityCheck.tsx` | Blue band: heading, the 5 questions numbered 1 to 5, CTA to `#contact`, booking pill, link to `/reality-check`. The icon points and dotted rule were removed 2026-11-13 |
-| `WhatWeFix.tsx` | "Bigger fixes", anchor `#what-we-do`, heading on the ground, six fixes in a 3 x 2 grid on a blue band with outlined pills whose labels name the destination ("See AI Visibility", "Ask about a rescue"); Brand system's pill goes to `#contact` while `BRAND_SYSTEM` is off |
+| `WhatWeFix.tsx` | "Bigger fixes", anchor `#what-we-do`, eyebrow and heading inside the blue band since 2026-11-17, directly after The Fix, six fixes in a 3 x 2 grid on a blue band with outlined pills whose labels name the destination ("See AI Visibility", "Ask about a rescue"); Brand system's pill goes to `#contact` while `BRAND_SYSTEM` is off |
 | `HowWeWork.tsx` | Check, Fix, Partner `FlowRow` with ring icons, each step carrying its principle lines |
 | `LogoBand.tsx` `ExperienceStrip` | The credibility strip: four lines in blue Helvetica Light, label screen-reader only |
 | `WhoWeAre.tsx` | "Team", heading "Principals", grey band, three 176px circles then name, role, bio; Andrew named; the other two names wait for consent |
-| `HomeFaq.tsx` | "FAQ", heading "Questions", the offer pages' FAQ list, between Team and Connect. Data in `src/pages/homeFaq.ts`, which also feeds the home FAQPage schema |
+| `pages/FaqPage.tsx` | `/faq` (Drew, 2026-11-17), moved off the home page (`HomeFaq.tsx` parked in `.superseded/`): `SubpageHero` with the name "FAQ" and no icon, h1 "Questions", the 7 questions from `src/pages/faq.ts` (which also feeds its FAQPage schema), `RelatedOffers` labelled "What we do", the offers' closing CTA. BreadcrumbList Home > FAQ, OG card `public/og/faq.jpg`, in the sitemap and `llms.txt`, linked from the footer, not in the main nav |
+| `RelatedOffers.tsx` | The offer cards block on offer pages ("Other services") and `/faq`: label as an `.eyebrow` h2, card titles and "More" all in the site blue (Drew, 2026-11-17, over Misha's per-offer colours, which stay on `Offer.accent` unused) |
 | `Closing.tsx`, `ContactForm.tsx` | "Connect", the form and the mark in its circle, also rendered on `/reality-check` |
 | `pages/ContactResult.tsx` | The pages after the form at `/contact/thanks`, `/contact/not-sent`, `/contact/error`: blue band, Z, noindex, out of the sitemap. The handler fills `[data-slot]` elements and `#contact-data` so hydration matches. The thank-you page hides the header CTA |
 | `pages/NotFound.tsx` | The 404, in the result pages' layout: "Page not found", one line, links to Home and the five offers. Catch-all route, prerendered to `dist/404.html`, which `functions/worker.ts` serves with status 404 for any path the assets lack. noindex, out of the sitemap |
-| `Footer.tsx` | Links absolute so they work from offer pages |
+| `Footer.tsx` | Links absolute so they work from offer pages. The Site group ends with FAQ (`/faq`) |
 | `Brand.tsx` | Serves the board's wordmark SVG and the closing mark |
 | `SubpageHero.tsx` | The offer page hero from Misha's 417:2047 and siblings: band with swoosh art, icon, page name (a `p` at h1 size), `accent` prop for the colour the band fades to: each offer's `heroAccent` (`--color-hero-*`, Misha's question 40 colours, The Fix and Web Partner darkened for AA). Unset on the home banner, which stays flat blue. `variant="home"` is the home banner (412:1907), with the home hero's content as children |
 | `pages/OfferPage.tsx` | Shared offer page template: `SubpageHero` (`heroTitle`, `heroIcon`, `accent`), then the headline (the offer's `h1` field, set as an h2), v5 subline, intro, then lists, steps, proof, FAQ, related offers, CTA, optional form. FAQ data also renders the FAQPage schema so the two cannot diverge |
@@ -200,7 +201,7 @@ Every page is prerendered by `scripts/prerender.mjs` into `dist/<route>.html` wi
 | `lib/meta.ts`, `lib/schema.ts` | Per-route head and JSON-LD, consumed by the prerender |
 | `functions/worker.ts`, `functions/api/contact.ts` | The Worker: static assets, `POST /api/contact`, noindex on every non-production host |
 | `public/llms.txt` | Replaced with the v5 text |
-| `sitemap.xml` | Written by the prerender from the live routes: home plus five offer pages |
+| `sitemap.xml` | Written by the prerender from the live routes: home, five offer pages, and `/faq` |
 
 ## Keep these
 

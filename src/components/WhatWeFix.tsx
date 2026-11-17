@@ -47,27 +47,32 @@ const FIXES: Fix[] = [
 ];
 
 /**
- * Bigger fixes, MB11 376:1756 and 376:1755 on the ground, then the six
- * fixes as a three by two grid on the blue band 394:1893 (cut top left,
- * curve bottom right): yellow title, one line, an outlined pill whose label
- * names its destination (Drew, 2026-11-13). Titles drop their trailing
- * periods, as the comp sets four of them.
+ * Bigger fixes, MB11 376:1756 and 376:1755, now with the eyebrow and heading
+ * inside the blue band 394:1893 (cut top left, curve bottom right), directly
+ * after The Fix (Drew, 2026-11-17), then the six fixes as a three by two
+ * grid: yellow title, one line, an outlined pill whose label names its
+ * destination (Drew, 2026-11-13). On the band the heading and lines are
+ * white (4.51:1), the titles yellow at 24px bold (3.13:1, large text), and
+ * the pills take the band's foreground. Titles drop their trailing periods,
+ * as the comp sets four of them.
  */
 export function WhatWeFix() {
   return (
-    <section id="what-we-do" className="what-we-fix" aria-labelledby="what-we-do-heading">
-      <div className="section what-we-fix-head">
-        <Reveal className="container">
+    <section
+      id="what-we-do"
+      className="what-we-fix band band--blue fixes-band"
+      aria-labelledby="what-we-do-heading"
+    >
+      <img className="band-lines band-lines--fixes" src="/art/mb11/lines-bigger-fixes.svg" width={1280} height={607} alt="" aria-hidden="true" loading="lazy" />
+      <div className="container">
+        <Reveal className="what-we-fix-head">
           <p className="eyebrow">Bigger fixes</p>
           <h2 className="h2" id="what-we-do-heading">
             <span className="h-light">When</span> the Check <span className="h-light">calls for</span>{" "}
             more
           </h2>
         </Reveal>
-      </div>
-      <div className="band band--blue fixes-band">
-        <img className="band-lines band-lines--fixes" src="/art/mb11/lines-bigger-fixes.svg" width={1280} height={607} alt="" aria-hidden="true" loading="lazy" />
-        <Reveal className="container" stagger={0.06}>
+        <Reveal stagger={0.06}>
           <ul className="fix-grid">
             {FIXES.map((fix) => (
               <motion.li className="fix" key={fix.title} variants={fadeUpSmall}>

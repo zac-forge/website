@@ -319,11 +319,12 @@ body:has(.subpage-hero) .site-header:not([data-scrolled="true"]):not(:has(.site-
   }
 }
 
-/* Phones: the Z drops below the buttons, so the headline and both buttons
-   come first (Drew asked for below or hidden, 2026-11-13). */
+/* Phones: no Z (Drew, 2026-11-17; it sat below the buttons from
+   2026-11-13). The grid is one item, so no gap is left, and the band ends
+   after the buttons with its own bottom padding. */
 @media (max-width: 760px) {
   .hero-visual {
-    order: 0;
+    display: none;
   }
 }
 
@@ -362,7 +363,7 @@ body:has(.subpage-hero) .site-header:not([data-scrolled="true"]):not(:has(.site-
 }
 
 /* ------------------------------------------------- Copy beside an illustration */
-/* Problem, the Fix Week, and How we work: copy left, the section's Z set
+/* The Fix Week and How we work: copy left, the section's Z set
    right, top aligned, each drawn at its exported size. */
 .art-split {
   display: grid;
@@ -396,11 +397,13 @@ body:has(.subpage-hero) .site-header:not([data-scrolled="true"]):not(:has(.site-
   --pad-top: var(--space-10);
   --pad-bottom: var(--space-9);
 }
+/* No art since 2026-11-17: the heading runs to the hero title's measure and
+   the intro sits under it, so the block reads as one column. */
 .problem-heading {
-  max-width: var(--copy-width);
+  max-width: calc(var(--copy-width) + var(--space-11) + var(--space-9));
 }
-.problem .art-split-art {
-  width: var(--problem-art);
+.problem .section-intro.copy {
+  max-width: var(--prose-width);
 }
 
 /* ------------------------------------------------------- Reality Check */
@@ -666,18 +669,25 @@ body:has(.subpage-hero) .site-header:not([data-scrolled="true"]):not(:has(.site-
 }
 
 /* -------------------------------------------------------- Bigger fixes */
-/* The heading on the ground (376:1755), then the grid on the blue band
-   394:1893: cut top left, curve bottom right. Three 246 columns spread to
-   the edges, title centred, line left, pill centred. Subgrid lines the
-   lines and pills up across a row whatever the title's length. */
-.what-we-fix-head {
-  --pad-top: var(--space-10);
-  --pad-bottom: var(--space-7);
-}
+/* One blue band 394:1893 (cut top left, curve bottom right), the eyebrow
+   and heading 376:1755 now inside it, directly after The Fix (Drew,
+   2026-11-17). The band sits a section's gap below The Fix, as the heading
+   did on the ground. Three 246 columns spread to the edges, title centred,
+   line left, pill centred. Subgrid lines the lines and pills up across a
+   row whatever the title's length. */
 .fixes-band {
+  margin-top: var(--space-10);
   padding-block: var(--space-9);
   clip-path: var(--band-clip-fixes);
   border-bottom-right-radius: var(--band-curve-fixes);
+}
+.what-we-fix-head {
+  margin-bottom: var(--space-8);
+}
+/* The dotted art was drawn for the grid alone, so it starts under the
+   heading. */
+.band-lines--fixes {
+  top: calc(var(--space-9) + var(--space-11));
 }
 .fix-grid {
   display: grid;
@@ -1368,15 +1378,15 @@ body:has(.subpage-hero) .site-header:not([data-scrolled="true"]):not(:has(.site-
   --pad-top: var(--space-9);
   --pad-bottom: 0;
 }
-.offer-related .h3 {
+.offer-related-heading {
   margin-bottom: var(--space-5);
 }
 /* Misha's offer cards (423:2428 to 423:2470, 2026-11-13): two 495 x 224
    white cards a row, 19 apart across and 12 down, a 1px grey keyline,
    14px corners. Inside, from 73 in and 23 down: the 40px line icon, the
-   40px bold title in the offer's colour, the one line, and "More" with its
-   arrow in the site blue. The title colour (--card-accent) is the offer's
-   --color-offer-* token, set inline from Offer.accent. */
+   40px bold title, the one line, and "More" with its arrow. Titles and
+   "More" are both the site blue (Drew, 2026-11-17, over Misha's per-offer
+   colours): 4.51:1 on white. */
 .offer-related-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1416,7 +1426,7 @@ body:has(.subpage-hero) .site-header:not([data-scrolled="true"]):not(:has(.site-
   font-size: var(--text-offer-card);
   font-weight: var(--weight-bold);
   line-height: var(--leading-title);
-  color: var(--card-accent);
+  color: var(--color-band-blue);
   text-decoration: underline transparent;
   text-decoration-thickness: 3px;
   text-underline-offset: 4px;

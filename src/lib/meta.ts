@@ -25,6 +25,17 @@ export const HOME_META: PageMeta = {
   ogImage: `${SITE_URL}/og/home.jpg`,
 };
 
+/** /faq (Drew, 2026-11-17). Title and description summarise the 7
+ *  questions on the page, no new claims. */
+export const FAQ_META: PageMeta = {
+  path: "/faq",
+  title: "FAQ: cost, ownership, and who does the work | ZAC Forge",
+  description:
+    "What the Reality Check and the Fix cost, who does the work, how we use AI, who owns what we build, and what our accessibility fixes cover.",
+  ogTitle: "FAQ: cost, ownership, and who does the work",
+  ogImage: `${SITE_URL}/og/faq.jpg`,
+};
+
 /** Every prerendered route and its head. Consumed by the prerender and by
  *  the client-side title effect. */
 export const PAGES: PageMeta[] = [
@@ -36,6 +47,7 @@ export const PAGES: PageMeta[] = [
     ogTitle: o.title.replace(" | ZAC Forge", ""),
     ogImage: `${SITE_URL}/og${o.path}.jpg`,
   })),
+  FAQ_META,
   // Served by functions/api/contact.ts after a form submission.
   ...[
     { path: "/contact/thanks", title: "Thank you | ZAC Forge" },

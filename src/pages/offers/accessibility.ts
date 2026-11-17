@@ -119,9 +119,6 @@ export const accessibility: Offer = {
       ],
     },
   ],
-  proof: [
-    "Our IBM.com work shipped under IBM's internal accessibility standards. We also built California's disaster legal services portal to be accessible and simple to use.",
-  ],
   faq: [
     {
       question: "Will this make us ADA compliant?",

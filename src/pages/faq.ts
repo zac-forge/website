@@ -1,11 +1,11 @@
 import type { Faq } from "./offers";
 
 /**
- * The home page FAQ (Drew, 2026-11-13). One list for the visible section
- * (src/components/HomeFaq.tsx) and the home FAQPage schema, so the two
- * cannot diverge.
+ * The site FAQ, written for the home page (Drew, 2026-11-13) and moved to
+ * its own page at /faq (Drew, 2026-11-17). One list for the visible page
+ * (src/pages/FaqPage.tsx) and its FAQPage schema, so the two cannot diverge.
  */
-export const HOME_FAQ: Faq[] = [
+export const FAQ: Faq[] = [
   {
     question: "What does it cost?",
     answer:

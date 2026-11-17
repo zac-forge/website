@@ -1,10 +1,9 @@
-import type { CSSProperties } from "react";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import { Magnetic } from "../components/Magnetic";
 import { Closing } from "../components/Closing";
 import { SubpageHero } from "../components/SubpageHero";
-import { LIVE_OFFERS } from "./offers";
+import { RelatedOffers } from "../components/RelatedOffers";
 import type { Offer, Block } from "./offers";
 
 /**
@@ -111,33 +110,6 @@ function Subline({ text }: { text: string }) {
   );
 }
 
-/**
- * One "Other services" card, Misha's 423:2429 set (2026-11-13): the offer's
- * line icon, its name in its own colour, its one line, and "More" in the
- * site blue, underlined, as he draws it. The link is stretched over the
- * card, so the whole card
- * clicks through, and is named for the offer for screen readers.
- */
-function OfferCard({ offer }: { offer: Offer }) {
-  const style = {
-    "--card-accent": offer.accent ?? "var(--color-band-blue)",
-    ...(offer.cardIcon ? { "--card-icon": `url("${offer.cardIcon}")` } : {}),
-  } as CSSProperties;
-  return (
-    <article className="offer-card" style={style}>
-      {offer.cardIcon ? <span className="offer-card-icon" aria-hidden="true" /> : null}
-      <h3 className="offer-card-title">{offer.navTitle}</h3>
-      <p className="offer-card-body case-text">{offer.summary}</p>
-      <a className="offer-card-link" href={offer.path} aria-label={`More about ${offer.navTitle}`}>
-        <span className="offer-card-more">More</span>
-        <span className="offer-card-arrow" aria-hidden="true">
-          →
-        </span>
-      </a>
-    </article>
-  );
-}
-
 export default function OfferPage({ offer }: { offer: Offer }) {
   return (
     <>
@@ -207,22 +179,7 @@ export default function OfferPage({ offer }: { offer: Offer }) {
 
         {/* The way back and the way sideways, above the closing call to
             action: the home page, and every other live offer. */}
-        <section className="section offer-related" aria-labelledby="offer-related-heading">
-          <div className="container">
-            <h2 className="h3" id="offer-related-heading">
-              Other services
-            </h2>
-            <div className="offer-related-grid">
-              {LIVE_OFFERS.filter((o) => o.path !== offer.path).map((other) => (
-                <OfferCard offer={other} key={other.path} />
-              ))}
-            </div>
-            <a className="text-link offer-home-link" href="/">
-              <span aria-hidden="true">←</span>{" "}
-              <span>Back to the home page</span>
-            </a>
-          </div>
-        </section>
+        <RelatedOffers label="Other services" currentPath={offer.path} />
 
         <section className="section offer-cta">
           <div className="container">

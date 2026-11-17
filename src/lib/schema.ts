@@ -6,14 +6,15 @@
  * consent), one Service per live offer with provider ZAC Forge (the Reality
  * Check, the Fix Week, AI Visibility, Accessibility and Performance, Web
  * Partner, and the Brand System once its flag is on), and FAQPage on each
- * offer page and on the home page, matching the visible questions exactly,
- * and a two-step BreadcrumbList (Home, then the page) on each offer page. No offers, no price
- * properties, anywhere.
+ * offer page and on /faq (moved off the home page, 2026-11-17), matching the
+ * visible questions exactly, and a two-step BreadcrumbList (Home, then the
+ * page) on each offer page and /faq. No offers, no price properties,
+ * anywhere.
  */
 import { LIVE_OFFERS } from "../pages/offers";
-import { HOME_FAQ } from "../pages/homeFaq";
+import { FAQ } from "../pages/faq";
 import type { Offer } from "../pages/offers";
-import { HOME_META, canonical } from "./meta";
+import { HOME_META, FAQ_META, canonical } from "./meta";
 import { CONTACT_EMAIL } from "./links";
 import { SITE_URL, SITE_NAME, OG_IMAGE } from "./site";
 
@@ -34,13 +35,13 @@ const organization = {
   image: OG_IMAGE,
   email: CONTACT_EMAIL,
   description: HOME_META.description,
-  // Region only, no street or city (Drew, 2026-11-13: HI, was CA).
+  // Country only: no region, city, or street (Drew, 2026-11-17; the region
+  // was HI from 2026-11-13, CA before that).
   address: {
     "@type": "PostalAddress",
-    addressRegion: "HI",
     addressCountry: "US",
   },
-  areaServed: { "@type": "Country", name: "United States" },
+  areaServed: "US",
   // sameAs (LinkedIn) is an open slot in the copy deck: no URL was supplied.
   founder: { "@id": PERSON_ID },
 };
@@ -88,7 +89,7 @@ function services() {
 export function homeSchema() {
   return {
     "@context": "https://schema.org",
-    "@graph": [organization, person, ...services(), faqPage(HOME_FAQ)],
+    "@graph": [organization, person, ...services()],
   };
 }
 
@@ -118,7 +119,35 @@ export function offerSchema(offer: Offer) {
   };
 }
 
+/** /faq: the page, Home then FAQ, and the questions. */
+export function faqSchema() {
+  const url = canonical(FAQ_META.path);
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": url,
+        url,
+        name: FAQ_META.title,
+        description: FAQ_META.description,
+        isPartOf: { "@type": "WebSite", url: `${SITE_URL}/`, name: SITE_NAME },
+        about: { "@id": ORG_ID },
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
+          { "@type": "ListItem", position: 2, name: "FAQ", item: url },
+        ],
+      },
+      faqPage(FAQ),
+    ],
+  };
+}
+
 export function schemaFor(path: string) {
+  if (path === FAQ_META.path) return faqSchema();
   const offer = LIVE_OFFERS.find((o) => o.path === path);
   return offer ? offerSchema(offer) : homeSchema();
 }

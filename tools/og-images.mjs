@@ -34,6 +34,7 @@ const CARDS = [
   { slug: "ai-visibility", file: "ai-visibility.html" },
   { slug: "accessibility", file: "accessibility.html" },
   { slug: "web-partner", file: "web-partner.html" },
+  { slug: "faq", file: "faq.html" },
 ];
 
 const asset = (p) => pathToFileURL(path.join(pub, p)).href;
@@ -58,12 +59,13 @@ function cardBody(card) {
       </div>
       <img class="z" src="${asset("art/mb11/hero-z.svg")}" alt="" />`;
   }
-  const icon = pick(html, /subpage-hero-icon"[^>]*><img src="([^"]+)"/, "hero icon", card.file);
+  // /faq has no hero icon, so its card sets the name and headline alone.
+  const icon = html.match(/subpage-hero-icon"[^>]*><img src="([^"]+)"/)?.[1];
   const name = pick(html, /subpage-hero-title">([^<]*)<\/p>/, "page name", card.file);
   const headline = pick(html, /offer-title">([^<]*)<\/h1>/, "headline", card.file);
   return `
       <div class="copy">
-        <img class="icon" src="${asset(icon.replace(/^\//, ""))}" alt="" />
+        ${icon ? `<img class="icon" src="${asset(icon.replace(/^\//, ""))}" alt="" />` : ""}
         <p class="name">${stripComments(name)}</p>
         <p class="headline">${stripComments(headline)}</p>
       </div>`;

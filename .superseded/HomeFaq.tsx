@@ -1,5 +1,5 @@
-import { Reveal } from "./Reveal";
-import { HOME_FAQ } from "../pages/homeFaq";
+import { Reveal } from "../src/components/Reveal";
+import { HOME_FAQ } from "../src/pages/faq";
 
 /**
  * FAQ, between Team and Connect (Drew, 2026-11-13). The offer pages' FAQ

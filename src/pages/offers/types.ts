@@ -42,7 +42,11 @@ export type Offer = {
   heroTitle: string;
   /** The white line icon over the hero title, from public/art/subpage/. */
   heroIcon?: { src: string; width: number; height: number };
-  /** The offer's card colour, a --color-offer-* token: its "Other services" card title. */
+  /**
+   * The offer's colour, a --color-offer-* token. Its "Other services" card
+   * title used it until 2026-11-17, when every card title went to the site
+   * blue (Drew). Kept for Misha's colour questions 40 and 44.
+   */
   accent?: string;
   /**
    * The colour the offer's hero band fades to, a --color-hero-* token, from
