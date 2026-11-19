@@ -4,7 +4,9 @@ import type { Offer } from "./types";
 export const webPartner: Offer = {
   path: "/web-partner",
   navTitle: "Web Partner",
-  summary: "One senior person who knows your site keeps it running and improves it every month.",
+  // The home card's line (2026-11-18).
+  summary:
+    "A flexible team of senior IT professionals who work alongside yours. As much or as little as you need. Month to month, no strings.",
   title: "Web Partner: senior website care, month to month | ZAC Forge",
   // Quoted the old home card line, so it takes the new card copy (2026-11-18).
   description:
@@ -19,8 +21,7 @@ export const webPartner: Offer = {
   cardIcon: "/art/offer-cards/icon-web-partner.svg",
   eyebrow: "WEB PARTNER",
   h1: "Keep it fixed. Make it better.",
-  // Drew's copy handoff of 2026-11-18. The "mechanic you trust" sentence is
-  // not yet confirmed by Drew and ships as an open item.
+  // Drew's copy handoff of 2026-11-18.
   intro: [
     "A flexible team of senior IT professionals who work alongside yours. As much or as little as you need.",
     "It's for businesses that need more than a quick fix or a review: maintenance, security and accessibility, kept up over the long term.",

@@ -3,7 +3,9 @@ import type { Offer } from "./types";
 export const accessibility: Offer = {
   path: "/accessibility",
   navTitle: "Accessibility and Performance",
-  summary: "Corrected in the code, not covered with a widget.",
+  // The home card's line (2026-11-18).
+  summary:
+    "Public agencies and federally funded health providers face federal accessibility deadlines in 2027 and 2028. We fix the site's code. We don't cover it with a widget.",
   title: "Accessibility fixes for ADA Title II deadlines | ZAC Forge",
   description:
     "Public agencies and HHS-funded health providers face accessibility deadlines in 2027 and 2028. We test by hand, fix the code to WCAG 2.1 AA, and document it.",

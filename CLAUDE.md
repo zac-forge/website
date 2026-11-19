@@ -49,7 +49,7 @@ These are not stylistic preferences. They are binding.
 
 | Rule | Detail |
 |---|---|
-| **"AI" names the problem, the offers, and the mechanism, never ZAC's identity** | Decided 2026-09-23, revised 2026-11-04 to match the v5 copy. "AI" is allowed in offer names, offer page headlines, plain descriptions of assistants (ChatGPT, Perplexity, Claude), the problem ZAC fixes, and as the mechanism in how the work gets done ("AI does the volume. We do the judgment."). It is never ZAC's identity: no "AI-native", "AI-first", "AI-powered", "AI-driven", and nothing that says ZAC is an AI company or is made of AI. `package.json` and `README.md` describe the studio without it. The voice gate fails on the compounds and flags every bare use for review. |
+| **"AI" names the problem, the offers, and the mechanism, never ZAC's identity** | Decided 2026-09-23, revised 2026-11-04 to match the v5 copy. "AI" is allowed in offer names, offer page headlines, plain descriptions of assistants (ChatGPT, Perplexity, Claude), the problem ZAC fixes, and as the mechanism in how the work gets done ("AI does the volume. We do the judgment."). It is never ZAC's identity: no "AI-native", "AI-first", "AI-powered", "AI-driven", and nothing that says ZAC is an AI company or is made of AI. `package.json` and `README.md` describe the studio without it. Approved exception (Drew, 2026-11-18): the team intro "We were already the guys. Now we're the guys with AI." describes the people using AI as a tool, not ZAC's identity, and stays. The voice gate fails on the compounds and flags every bare use for review. |
 | **Contractions are fine** | Changed 2026-11-03 (decision 41). Use them where a person would; do not force them. The earlier "no contractions" rule was inferred from v1 copy, never decided. |
 | **No em dashes** | Use a full stop or a comma. |
 | **No semicolons** | Split the sentence. |
@@ -74,10 +74,10 @@ These are not stylistic preferences. They are binding.
 | **The $1B is the client's transaction volume, not ZAC's revenue.** Write "over $1 billion in assets sold through the platform." Never "we sold $1 billion in assets." | Accuracy |
 | **The 90% figure is client-reported.** Always attribute: "the client reported support calls dropped by over 90%." | Substantiation |
 | **Never characterize a named client's leadership or internal problems.** | Professional |
-| **Do not name Misha or Luke** until they confirm. Still pending as of 2026-11-04, and the site ships them by role. Full names are known and ready: **Misha Gervits**, Design Principal, and **Luke Monegatto**, Principal Engineer (Luciano goes by Luke). Do not add them to `WhoWeAre.tsx` until Drew says consent is given. Name and photo are already optional props, so it is a two-line change. | Consent pending |
+| **Team names** (Drew, 2026-11-18): the cards carry full names, **Andrew Johnston**, **Misha Gervits**, and **Luciano Monegatto**, and the same names are used on `/about`, in the Person schema, and in `llms.txt`. Luciano goes by Luke, so his bio text says "Luke". Names live in `src/pages/team.ts`. | Approved |
 | **Team titles** (Drew, 2026-11-04): Andrew is **Founder, Principal**, Misha is **Design Principal**, Luke is **Principal Engineer**. These are the role labels in Who we are. "Creative Director" stays off the site, because it is agency vocabulary on a site that sells against agencies. | Positioning |
-| **Misha was an associate creative director at Ogilvy. Not Havas.** | Accuracy |
-| **Do not introduce team members as Andrew's former colleagues.** It makes him the centre and them satellites, which contradicts "One team. No layers." IBM appears in each bio as a credential instead. | Positioning |
+| **Misha's bio says Ogilvy only.** | Accuracy |
+| **IBM in the team copy.** Drew's approved team copy of 2026-11-18 stands: the intro "Three people who've worked together since IBM" and Luke's "building alongside Andrew since IBM". New copy still should not make Andrew the centre with the others as satellites. | Positioning |
 
 ---
 
@@ -168,7 +168,7 @@ only, and a row in this table.
 
 Hero → LogoBand → Problem → RealityCheck → FixWeek → WhatWeFix → TrackRecord (Case studies) → HowWeWork → ExperienceStrip → WhoWeAre → Closing (Drew, 2026-11-13; the FAQ moved to `/faq` on 2026-11-17)
 
-Six offer pages share one template: `/reality-check`, `/fix-week` (`/handoff` 301s there from `functions/worker.ts`; labelled "The Fix" in nav, footer, eyebrows, buttons, and its title, while body copy and the schema `name` keep "the Fix Week"), `/ai-visibility`, `/accessibility`, `/web-partner`, and `/brand-system`. The last is behind the `BRAND_SYSTEM` flag in `src/lib/flags.ts`, off by default, which keeps the page out of the routes, menus, sitemap, and schema and leaves the What we fix row as plain text. v5's `llms.txt` lists the brand system without a link, as the copy deck has it. The hawaii.surf case study card is behind `HAWAII_CARD`, off until real before and after numbers exist.
+Seven offer pages share one template: `/reality-check`, `/fix-week` (`/handoff` 301s there from `functions/worker.ts`; labelled "The Fix" in nav, footer, eyebrows, buttons, and its title, while body copy and the schema `name` keep "the Fix Week"), `/ai-visibility`, `/accessibility`, `/web-partner`, `/platform-escape` (2026-11-18: no FAQ, so the template drops its Questions section and FAQPage schema, and no hero or card icon yet), and `/brand-system`. The last is behind the `BRAND_SYSTEM` flag in `src/lib/flags.ts`, off by default, which keeps the page out of the routes, menus, sitemap, and schema and leaves the What we fix row as plain text. v5's `llms.txt` lists the brand system without a link, as the copy deck has it. The hawaii.surf case study card is behind `HAWAII_CARD`, off until real before and after numbers exist.
 
 Every page is prerendered by `scripts/prerender.mjs` into `dist/<route>.html` with its own title, description, canonical, OG tags, and JSON-LD. Assistants do not run JavaScript, so nothing may depend on client rendering.
 
@@ -176,7 +176,7 @@ Every page is prerendered by `scripts/prerender.mjs` into `dist/<route>.html` wi
 
 | File | v5 status |
 |---|---|
-| `Header.tsx` | Blue on every page (clear over an offer page hero until the page scrolls), nav What we do (menu from the `MENU` list in `Header.tsx`, labels, lines, and order from the copy handoff of 2026-11-18, including Platform Escape, which links to its card at `/#platform-escape`), Case studies, How we work, Team, CTA "Let's talk" to `BOOKING_URL` (Drew, 2026-11-12) |
+| `Header.tsx` | Blue on every page (clear over an offer page hero until the page scrolls), nav What we do (menu from the `MENU` list in `Header.tsx`, labels, lines, and order from the copy handoff of 2026-11-18, including Platform Escape), Case studies, How we work, About (to `/about`, was Team, 2026-11-18), CTA "Let's talk" to `BOOKING_URL` (Drew, 2026-11-12) |
 | `ContactFocus.tsx` | Every `#contact` link scrolls the Name field into view below the sticky header and focuses it, on click and on arrival with the hash |
 | `Hero.tsx` | Misha's home banner (412:1907, 2026-11-13) through `SubpageHero variant="home"`: the offer heroes' swoosh band, header clear at the top, MB11's Z on the right (hidden at 760px and narrower since 2026-11-17), no line art, "AI made everyone an IT expert. It didn't make IT work." (copy handoff of 2026-11-18; the two "IT"s get no special styling until Misha decides), button "Get a free Reality Check", no proof line (removed 2026-11-13), outlined "Book a 20-minute call" pill to `BOOKING_URL` beside the primary CTA. each page's OG card in `public/og/` (and `public/og-image.jpg`, the home card) is drawn from its hero by `npm run og` (`tools/og-images.mjs`), so rerun it after any hero, page name, or headline change |
 | `LogoBand.tsx` | "Where our team has worked", names as muted text, never labelled as clients |
@@ -184,10 +184,11 @@ Every page is prerendered by `scripts/prerender.mjs` into `dist/<route>.html` wi
 | `Problem.tsx` | "Problem", on the ground, one column, no art (the Z set was removed 2026-11-17), "wrong" in red and "without telling you." light italic |
 | `FixWeek.tsx` | "The Fix Week", heading, the intro and the "Things we've fixed" block read from `fixWeek.ts` (one source with `/fix-week`, 2026-11-18), link to `/fix-week`, MB11's four-piece Z |
 | `RealityCheck.tsx` | Blue band: heading, the intro read from `realityCheck.ts` (one source with `/reality-check`, 2026-11-18), the 5 questions numbered 1 to 5, CTA to `#contact`, booking pill, link to `/reality-check`. The icon points and dotted rule were removed 2026-11-13 |
-| `WhatWeFix.tsx` | "Bigger fixes", anchor `#what-we-do`, eyebrow and heading inside the blue band since 2026-11-17, directly after The Fix, six fixes in a 3 x 2 grid on a blue band with outlined pills whose labels name the destination ("See AI Visibility", "Ask about a rescue"); Brand system's pill goes to `#contact` while `BRAND_SYSTEM` is off. Card copy may run to a few paragraphs (`lines`); the AI Visibility and Platform Escape cards were cut from the end to fit on 2026-11-18, and the Platform Escape card carries `id="platform-escape"` for the menu |
+| `WhatWeFix.tsx` | "Bigger fixes", anchor `#what-we-do`, eyebrow and heading inside the blue band since 2026-11-17, directly after The Fix, six fixes in a 3 x 2 grid on a blue band with outlined pills whose labels name the destination ("See AI Visibility", "Ask about a rescue"); Brand system's pill goes to `#contact` while `BRAND_SYSTEM` is off. Card copy may run to a few paragraphs (`lines`); the AI Visibility and Platform Escape cards were cut from the end to fit on 2026-11-18, and the offers' `summary` (the "Other services" card line) repeats each card's words |
 | `HowWeWork.tsx` | Check, Fix, Partner `FlowRow` with ring icons, each step carrying its principle lines |
 | `LogoBand.tsx` `ExperienceStrip` | The credibility strip: four lines in blue Helvetica Light, label screen-reader only |
-| `WhoWeAre.tsx` | "Team", heading "Principals", the team intro, grey band, three 176px circles then name, role, bio paragraphs; Andrew named; the other two show by role until consent, though Drew shipped their handoff bios on 2026-11-18 for them to review live, and Luke's bio names him in its text |
+| `WhoWeAre.tsx` | "Team", heading "Principals", the team intro, grey band, three 176px circles (initials until photos) then full name, role, bio paragraphs, all from `src/pages/team.ts`. On home and on `/about` |
+| `pages/AboutPage.tsx` | `/about` (Drew, 2026-11-18): `SubpageHero` named "About", h1 "What is ZAC", the four "What is ZAC" paragraphs, then `WhoWeAre`. AboutPage schema with BreadcrumbList Home > About and the three Person entries, OG card `public/og/about.jpg`, in the sitemap and `llms.txt`, linked from the top bar |
 | `pages/FaqPage.tsx` | `/faq` (Drew, 2026-11-17), moved off the home page (`HomeFaq.tsx` parked in `.superseded/`): `SubpageHero` with the name "FAQ" and no icon, h1 "Questions", the 7 questions from `src/pages/faq.ts` (which also feeds its FAQPage schema), `RelatedOffers` labelled "What we do", the offers' closing CTA. BreadcrumbList Home > FAQ, OG card `public/og/faq.jpg`, in the sitemap and `llms.txt`, linked from the footer, not in the main nav |
 | `RelatedOffers.tsx` | The offer cards block on offer pages ("Other services") and `/faq`: label as an `.eyebrow` h2, card titles and "More" all in the site blue (Drew, 2026-11-17, over Misha's per-offer colours, which stay on `Offer.accent` unused) |
 | `Closing.tsx`, `ContactForm.tsx` | "Connect", the form and the mark in its circle, also rendered on `/reality-check` |
@@ -201,7 +202,7 @@ Every page is prerendered by `scripts/prerender.mjs` into `dist/<route>.html` wi
 | `lib/meta.ts`, `lib/schema.ts` | Per-route head and JSON-LD, consumed by the prerender |
 | `functions/worker.ts`, `functions/api/contact.ts` | The Worker: static assets, `POST /api/contact`, noindex on every non-production host |
 | `public/llms.txt` | Replaced with the v5 text |
-| `sitemap.xml` | Written by the prerender from the live routes: home, five offer pages, and `/faq` |
+| `sitemap.xml` | Written by the prerender from the live routes: home, six offer pages, `/faq`, and `/about` |
 
 ## Keep these
 
@@ -225,7 +226,7 @@ There is **no test framework** in this repo. Verification is `npm run build` (ru
 
 Two slots were picked on 2026-08-20 and stand for v4. Ship them exactly as written and do not re-offer either choice.
 
-- **Andrew's bio:** replaced by the copy handoff of 2026-11-18 ("Taught himself HTML in the dot com boom..."), in `WhoWeAre.tsx`. No year counts for people anywhere on the site.
+- **Andrew's bio:** replaced by the copy handoff of 2026-11-18 ("Taught himself HTML in the dot com boom..."), in `src/pages/team.ts`. No year counts for people anywhere on the site.
 - **IBM/MMG timeline framing:** "It started while he was still at IBM and has outlasted that tenure." v5 words it "and outlasted that tenure" in Track record.
 
 The v5 deck fills the Web Partner platforms answer, and it ships.
@@ -233,7 +234,6 @@ The v5 deck fills the Web Partner platforms answer, and it ships.
 Still open in v5. Slots with working text ship that text; slots without it are left out rather than filled:
 
 - **Legal Access Alameda** URL, years, and its number. The card ships with the 2026-11-05 body and a TODO in `TrackRecord.tsx`.
-- **Design Principal and Principal Engineer** bio lines, pending each person's confirmation. The deck's working versions ship, by role.
 - **hawaii.surf before and after numbers.** The card and the `/ai-visibility` proof block ship hidden.
 - **zacforge.com check result** for the `/ai-visibility` proof block.
 - **LinkedIn URL** for the `sameAs` schema property.

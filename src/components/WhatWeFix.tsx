@@ -3,13 +3,12 @@ import { Reveal } from "./Reveal";
 import { fadeUpSmall } from "../lib/motion";
 import { BRAND_SYSTEM } from "../lib/flags";
 
-type Fix = { id?: string; title: string; lines: string[]; link?: { label: string; href: string } };
+type Fix = { title: string; lines: string[]; link?: { label: string; href: string } };
 
 /**
  * Six short rows, each a line or two plus a link, from docs/site-copy-v5.md as
  * amended by Drew on 2026-11-13. AI Visibility, Platform Escape, and Web
- * Partner from Drew's copy handoff of 2026-11-18. Platform Escape carries
- * the id the header menu links to. Brand system goes to the form while its
+ * Partner from Drew's copy handoff of 2026-11-18. Brand system goes to the form while its
  * page is off.
  */
 const FIXES: Fix[] = [
@@ -42,17 +41,13 @@ const FIXES: Fix[] = [
       : { label: "Ask about a brand system", href: "#contact" },
   },
   {
-    id: "platform-escape",
     title: "Platform Escape",
-    // Cut from the end to fit the card (2026-11-18, flagged). The handoff's
-    // other two paragraphs have no slot until Platform Escape has a page:
-    // "We move you to a lean setup you own: cheaper to run, faster, safer,
-    // easier to find in search. You can still make your own simple updates."
-    // "We can do these all day long, for a fraction of the cost."
+    // Cut from the end to fit the card (2026-11-18). The full copy is the
+    // /platform-escape intro.
     lines: [
       "Think WordPress. A lot of simple business sites are on it because it's easy to update, but it's overkill, and it costs them in maintenance, security and speed.",
     ],
-    link: { label: "Ask about moving platforms", href: "#contact" },
+    link: { label: "See Platform Escape", href: "/platform-escape" },
   },
   {
     title: "Web Partner",
@@ -92,7 +87,7 @@ export function WhatWeFix() {
         <Reveal stagger={0.06}>
           <ul className="fix-grid">
             {FIXES.map((fix) => (
-              <motion.li className="fix" id={fix.id} key={fix.title} variants={fadeUpSmall}>
+              <motion.li className="fix" key={fix.title} variants={fadeUpSmall}>
                 <h3 className="fix-title">{fix.title}</h3>
                 <div className="fix-line case-text">
                   {fix.lines.map((l) => (

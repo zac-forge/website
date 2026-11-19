@@ -1,20 +1,26 @@
 # ZAC Forge
 
-> A senior web and software team. ZAC checks sites, apps, and brands built
-> with AI tools, by people not software, says plainly what is wrong, and fixes
-> it for a fixed price.
+> ZAC is a group of senior IT professionals who bring clarity and sanity to
+> AI. We use AI where it helps, and human experience and judgment where it
+> doesn't. Start with a free senior review of your project.
 
 ZAC is built on the practice Andrew Johnston has run since 2010, with decades
 of Fortune 50 experience, including IBM.com and the IBM Design Lab. Works
 remotely with clients anywhere in the US.
 
+## About
+
+- [About ZAC](https://zacforge.com/about): what ZAC is, and the three
+  principals. Andrew Johnston, Founder, Principal. Misha Gervits, Design
+  Principal. Luciano Monegatto (Luke), Principal Engineer.
+
 ## Start here
 
-- [The Reality Check](https://zacforge.com/reality-check): a free 5-question
-  check on anything built with AI tools or inherited: does it work, is it fast,
-  can everyone use it, can anyone find it, does it look like you or like AI.
-  One short scorecard in plain English with the evidence and what putting it
-  right would take.
+- [The Reality Check](https://zacforge.com/reality-check): a free senior
+  review of your project for anything that's broken, AI or otherwise, against
+  5 questions: does it work, is it fast, can everyone use it, can anyone find
+  it, does it look like you. A prioritized report of what's broken and how to
+  fix it.
 - [The Fix](https://zacforge.com/fix-week): the Fix Week, one week, one agreed
   price. The top item on the Reality Check scorecard resolved in the client's code, a
   design review of the screen that looks most machine-made, and a ranked list of
@@ -39,8 +45,9 @@ remotely with clients anywhere in the US.
   month, and visibility tracking. Not a maintenance plan.
 - Rescue: finishing what AI started and making it safe to run. If it can't be
   saved, we build it properly from the ground up.
-- Platform Escape: moving organizations off platforms they have outgrown onto
-  something they own.
+- [Platform Escape](https://zacforge.com/platform-escape): off WordPress or
+  Wix, onto a lean setup you own: cheaper to run, faster, safer, easier to
+  find in search. You can still make your own simple updates.
 - AI-Ready Brand System: senior brand design turned into tokens, components,
   and kits so AI-made work stays on brand.
 

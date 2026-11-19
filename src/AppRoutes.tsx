@@ -5,6 +5,7 @@ import OfferPage from "./pages/OfferPage.tsx";
 import ContactResult from "./pages/ContactResult.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import FaqPage from "./pages/FaqPage.tsx";
+import AboutPage from "./pages/AboutPage.tsx";
 import { LIVE_OFFERS } from "./pages/offers";
 import { metaFor } from "./lib/meta";
 import { ContactFocus } from "./components/ContactFocus";
@@ -35,6 +36,7 @@ export function AppRoutes() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/faq" element={<FaqPage />} />
+        <Route path="/about" element={<AboutPage />} />
         <Route path="/contact/thanks" element={<ContactResult variant="thanks" />} />
         <Route path="/contact/not-sent" element={<ContactResult variant="not-sent" />} />
         <Route path="/contact/error" element={<ContactResult variant="error" />} />

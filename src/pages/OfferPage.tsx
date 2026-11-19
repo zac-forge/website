@@ -160,6 +160,8 @@ export default function OfferPage({ offer }: { offer: Offer }) {
           </section>
         ) : null}
 
+        {/* /platform-escape has no questions yet, so no FAQ section. */}
+        {offer.faq.length ? (
         <section className="section offer-block offer-faq">
           <div className="container">
             <h2 className="h3">Questions</h2>
@@ -176,6 +178,7 @@ export default function OfferPage({ offer }: { offer: Offer }) {
             {offer.footnote ? <p className="offer-footnote">{offer.footnote}</p> : null}
           </div>
         </section>
+        ) : null}
 
         {/* The way back and the way sideways, above the closing call to
             action: the home page, and every other live offer. */}

@@ -1260,6 +1260,11 @@ body:has(.subpage-hero) .site-header:not([data-scrolled="true"]):not(:has(.site-
   --pad-top: var(--space-9);
   --pad-bottom: var(--space-4);
 }
+/* /about: the lead runs straight into the Principals band, so it takes the
+   bottom space the offer pages get from their next section. */
+.about-lead {
+  --pad-bottom: var(--space-10);
+}
 .offer-subline {
   max-width: var(--prose-width);
   margin-top: var(--space-4);

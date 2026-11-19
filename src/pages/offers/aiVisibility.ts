@@ -3,7 +3,9 @@ import type { Offer } from "./types";
 export const aiVisibility: Offer = {
   path: "/ai-visibility",
   navTitle: "AI Visibility",
-  summary: "Get named when customers ask ChatGPT, Google, or Perplexity who to call.",
+  // The home card's lines (2026-11-18).
+  summary:
+    "Does your business show up when people ask ChatGPT, Claude or Grok? We set your site up so AI can find it and name it. No promises.",
   title: "AI Visibility: get named by ChatGPT and Google AI | ZAC Forge",
   description:
     "Find out whether ChatGPT, Google, Perplexity, and Claude recommend your business or your competitors, and what to fix first.",

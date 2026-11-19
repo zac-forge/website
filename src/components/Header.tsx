@@ -10,15 +10,15 @@ import { BRAND_SYSTEM } from "../lib/flags";
 const NAV_LINKS = [
   { href: "/#track-record", label: "Case studies" },
   { href: "/#how-we-work", label: "How we work" },
-  { href: "/#who-we-are", label: "Team" },
+  // "Team" became "About", the /about page (Drew, 2026-11-18).
+  { href: "/about", label: "About" },
 ];
 
 /**
  * The What we do menu, labels, lines, and order from Drew's copy handoff of
  * 2026-11-18. Labels here are the menu's own: "Reality Check" and
  * "Accessibility" are shorter than the pages' navTitle, which the footer and
- * the breadcrumbs keep. Platform Escape has no page, so it goes to its card
- * on home. Brand system joins, with no line, only when its flag is on.
+ * the breadcrumbs keep. Brand system joins, with no line, only when its flag is on.
  */
 type MenuItem = { href: string; title: string; line?: string };
 const MENU: MenuItem[] = [
@@ -27,7 +27,7 @@ const MENU: MenuItem[] = [
   { href: "/web-partner", title: "Web Partner", line: "Senior help on call, month to month" },
   { href: "/ai-visibility", title: "AI Visibility", line: "Show up when people ask AI" },
   {
-    href: "/#platform-escape",
+    href: "/platform-escape",
     title: "Platform Escape",
     line: "Off WordPress or Wix, onto something you own",
   },

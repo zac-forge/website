@@ -34,7 +34,9 @@ const CARDS = [
   { slug: "ai-visibility", file: "ai-visibility.html" },
   { slug: "accessibility", file: "accessibility.html" },
   { slug: "web-partner", file: "web-partner.html" },
+  { slug: "platform-escape", file: "platform-escape.html" },
   { slug: "faq", file: "faq.html" },
+  { slug: "about", file: "about.html" },
 ];
 
 const asset = (p) => pathToFileURL(path.join(pub, p)).href;

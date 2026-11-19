@@ -7,10 +7,10 @@ export const realityCheck: Offer = {
   summary: "Send us what you built. We'll tell you straight.",
   title: "Reality Check: free review of AI-built websites | ZAC Forge",
   description:
-    "Built something with AI? A free 5-question check by senior people, not a scanner. Plain-English scorecard and what a fix would take.",
+    "A free senior review of your project for anything that's broken, AI or otherwise.",
   serviceName: "The Reality Check",
   serviceDescription:
-    "A free 5-question check on anything built with AI tools or inherited: does it work, is it fast, can everyone use it, can anyone find it, does it look like you. One page in plain English with the evidence and what a fix would take. Checked by people, not software.",
+    "A free senior review of a project for anything that's broken, AI or otherwise, against 5 questions: does it work, is it fast, can everyone use it, can anyone find it, does it look like you. A prioritized report of what's broken and how to fix it.",
   heroTitle: "Reality Check",
   heroIcon: { src: "/art/subpage/subpage-icon-reality-check.svg", width: 49, height: 48 },
   accent: "var(--color-offer-reality-check)",

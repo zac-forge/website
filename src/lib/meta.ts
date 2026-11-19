@@ -36,6 +36,15 @@ export const FAQ_META: PageMeta = {
   ogImage: `${SITE_URL}/og/faq.jpg`,
 };
 
+/** /about (Drew, 2026-11-18). Description is Drew's. */
+export const ABOUT_META: PageMeta = {
+  path: "/about",
+  title: "About ZAC | ZAC Forge",
+  description: "Senior IT professionals who bring clarity and sanity to AI.",
+  ogTitle: "About ZAC",
+  ogImage: `${SITE_URL}/og/about.jpg`,
+};
+
 /** Every prerendered route and its head. Consumed by the prerender and by
  *  the client-side title effect. */
 export const PAGES: PageMeta[] = [
@@ -48,6 +57,7 @@ export const PAGES: PageMeta[] = [
     ogImage: `${SITE_URL}/og${o.path}.jpg`,
   })),
   FAQ_META,
+  ABOUT_META,
   // Served by functions/api/contact.ts after a form submission.
   ...[
     { path: "/contact/thanks", title: "Thank you | ZAC Forge" },

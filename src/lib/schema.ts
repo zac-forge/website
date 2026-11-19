@@ -1,20 +1,22 @@
 /**
  * JSON-LD per route, server-rendered by scripts/prerender.mjs.
  *
- * Rules from docs/site-copy-v5.md: ProfessionalService for ZAC Forge, Person
- * for Andrew only (the other two team members are unnamed on the page pending
- * consent), one Service per live offer with provider ZAC Forge (the Reality
+ * Rules from docs/site-copy-v5.md: ProfessionalService for ZAC Forge, a
+ * Person for each principal from src/pages/team.ts (all three named since
+ * 2026-11-18, Drew; Andrew is the founder), one Service per live offer with provider ZAC Forge (the Reality
  * Check, the Fix Week, AI Visibility, Accessibility and Performance, Web
  * Partner, and the Brand System once its flag is on), and FAQPage on each
  * offer page and on /faq (moved off the home page, 2026-11-17), matching the
  * visible questions exactly, and a two-step BreadcrumbList (Home, then the
- * page) on each offer page and /faq. No offers, no price properties,
+ * page) on each offer page, /faq, and /about. An offer page with no
+ * questions carries no FAQPage. No offers, no price properties,
  * anywhere.
  */
 import { LIVE_OFFERS } from "../pages/offers";
 import { FAQ } from "../pages/faq";
 import type { Offer } from "../pages/offers";
-import { HOME_META, FAQ_META, canonical } from "./meta";
+import { HOME_META, FAQ_META, ABOUT_META, canonical } from "./meta";
+import { TEAM } from "../pages/team";
 import { CONTACT_EMAIL } from "./links";
 import { SITE_URL, SITE_NAME, OG_IMAGE } from "./site";
 
@@ -46,13 +48,13 @@ const organization = {
   founder: { "@id": PERSON_ID },
 };
 
-const person = {
+const people = TEAM.map((m) => ({
   "@type": "Person",
-  "@id": PERSON_ID,
-  name: "Andrew Johnston",
-  jobTitle: "Founder, Principal",
+  "@id": m.slug === "andrew-johnston" ? PERSON_ID : `${SITE_URL}/#${m.slug}`,
+  name: m.name,
+  jobTitle: m.role,
   worksFor: { "@id": ORG_ID },
-};
+}));
 
 function service(name: string, description: string, url?: string, alternateName?: string) {
   return {
@@ -89,7 +91,7 @@ function services() {
 export function homeSchema() {
   return {
     "@context": "https://schema.org",
-    "@graph": [organization, person, ...services()],
+    "@graph": [organization, ...people, ...services()],
   };
 }
 
@@ -114,7 +116,7 @@ export function offerSchema(offer: Offer) {
           { "@type": "ListItem", position: 2, name: offer.navTitle, item: canonical(offer.path) },
         ],
       },
-      faqPage(offer.faq),
+      ...(offer.faq.length ? [faqPage(offer.faq)] : []),
     ],
   };
 }
@@ -146,8 +148,36 @@ export function faqSchema() {
   };
 }
 
+/** /about: the page, Home then About, and the three principals. */
+export function aboutSchema() {
+  const url = canonical(ABOUT_META.path);
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "AboutPage",
+        "@id": url,
+        url,
+        name: ABOUT_META.title,
+        description: ABOUT_META.description,
+        isPartOf: { "@type": "WebSite", url: `${SITE_URL}/`, name: SITE_NAME },
+        about: { "@id": ORG_ID },
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
+          { "@type": "ListItem", position: 2, name: "About", item: url },
+        ],
+      },
+      ...people,
+    ],
+  };
+}
+
 export function schemaFor(path: string) {
   if (path === FAQ_META.path) return faqSchema();
+  if (path === ABOUT_META.path) return aboutSchema();
   const offer = LIVE_OFFERS.find((o) => o.path === path);
   return offer ? offerSchema(offer) : homeSchema();
 }
