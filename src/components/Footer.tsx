@@ -39,7 +39,7 @@ export function Footer() {
           <a href="/#what-we-do">What we do</a>
           <a href="/#track-record">Case studies</a>
           <a href="/#how-we-work">How we work</a>
-          <a href="/#who-we-are">Team</a>
+          <a href="/about">About</a>
           <a href="/faq">FAQ</a>
         </nav>
 

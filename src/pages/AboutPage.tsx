@@ -16,7 +16,7 @@ export const ABOUT_COPY = [
 
 /**
  * /about (Drew, 2026-11-18), on the /faq layout: the shared hero with the
- * page name, the handoff's "What is ZAC" as the headline and copy, then the
+ * page name, the headline "About ZAC" (Drew, 2026-11-18), the handoff's "What is ZAC" copy, then the
  * Principals section from the home page, unchanged. The top-bar "About"
  * link points here.
  */
@@ -29,7 +29,7 @@ export default function AboutPage() {
 
         <section className="section offer-lead about-lead">
           <div className="container">
-            <h1 className="h2 offer-title">What is ZAC</h1>
+            <h1 className="h2 offer-title">About ZAC</h1>
             {ABOUT_COPY.map((p) => (
               <p className="offer-intro" key={p}>
                 {p}
