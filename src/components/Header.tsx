@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Wordmark } from "./Brand";
-import { LIVE_OFFERS } from "../pages/offers";
 import { BOOKING_URL } from "../lib/links";
+import { BRAND_SYSTEM } from "../lib/flags";
 
 // Absolute hashes so the same header works from the offer pages, where a
 // bare "#services" would point at nothing. Labels and order set by Drew on
@@ -14,9 +14,34 @@ const NAV_LINKS = [
 ];
 
 /**
+ * The What we do menu, labels, lines, and order from Drew's copy handoff of
+ * 2026-11-18. Labels here are the menu's own: "Reality Check" and
+ * "Accessibility" are shorter than the pages' navTitle, which the footer and
+ * the breadcrumbs keep. Platform Escape has no page, so it goes to its card
+ * on home. Brand system joins, with no line, only when its flag is on.
+ */
+type MenuItem = { href: string; title: string; line?: string };
+const MENU: MenuItem[] = [
+  { href: "/reality-check", title: "Reality Check", line: "Free senior review of your project" },
+  { href: "/fix-week", title: "The Fix", line: "Fixed in a week, or it's free." },
+  { href: "/web-partner", title: "Web Partner", line: "Senior help on call, month to month" },
+  { href: "/ai-visibility", title: "AI Visibility", line: "Show up when people ask AI" },
+  {
+    href: "/#platform-escape",
+    title: "Platform Escape",
+    line: "Off WordPress or Wix, onto something you own",
+  },
+  {
+    href: "/accessibility",
+    title: "Accessibility",
+    line: "Works for everyone. Ready for the 2027 deadline.",
+  },
+  ...(BRAND_SYSTEM ? [{ href: "/brand-system", title: "Brand system" }] : []),
+];
+
+/**
  * "What we do" as a small menu on desktop: the section link first, then one
- * entry per live offer page, each with its one-line context under the name
- * (Drew, 2026-11-13). Opens on hover, on click, and on keyboard focus,
+ * entry per item in MENU, each with its one-line context under the name. Opens on hover, on click, and on keyboard focus,
  * and closes on Escape, on an outside click, and when focus leaves. Every
  * link is in the prerendered HTML whether or not the menu is open, so
  * assistants that do not run JavaScript still find the offer pages.
@@ -70,13 +95,13 @@ function WhatWeDoMenu({ onNavigate }: { onNavigate: () => void }) {
             What we do
           </a>
         </li>
-        {LIVE_OFFERS.map((offer) => (
-          <li key={offer.path}>
-            <a href={offer.path} onClick={onNavigate}>
-              <span className="nav-menu-title">{offer.navTitle}</span>
+        {MENU.map((item) => (
+          <li key={item.href}>
+            <a href={item.href} onClick={onNavigate}>
+              <span className="nav-menu-title">{item.title}</span>
               {/* The space keeps name and line apart in the plain text that
                   assistants read. */}
-              {offer.menuLine ? <> <span className="nav-menu-line">{offer.menuLine}</span></> : null}
+              {item.line ? <> <span className="nav-menu-line">{item.line}</span></> : null}
             </a>
           </li>
         ))}

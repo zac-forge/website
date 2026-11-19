@@ -26,8 +26,6 @@ export type Offer = {
   navTitle: string;
   /** One line under the name in the related offers block, from the copy deck. */
   summary: string;
-  /** One line under the name in the header's What we do menu (Drew, 2026-11-13). */
-  menuLine?: string;
   /** Behind a flag: omitted from routes, menus, sitemap, and schema. */
   flagged?: boolean;
   /** Document head. */

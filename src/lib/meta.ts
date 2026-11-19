@@ -13,15 +13,15 @@ export type PageMeta = {
   noindex?: boolean;
 };
 
-/** Copy pass of 2026-11-06, "Metadata". */
+/** The hero of Drew's copy handoff of 2026-11-18: headline and subline. */
 const HOME_DESCRIPTION =
-  "AI is fast, confident, and wrong without telling you. A free 5-question check by senior people with decades of Fortune 50 experience, then a fixed-price fix.";
+  "AI made everyone an IT expert. It didn't make IT work. We bring clarity and sanity. Start with a free senior review of your project.";
 
 export const HOME_META: PageMeta = {
   path: "/",
-  title: "ZAC Forge | Built it with AI? We'll check it.",
+  title: "ZAC Forge | AI made everyone an IT expert. It didn't make IT work.",
   description: HOME_DESCRIPTION,
-  ogTitle: "Built it with AI? Find out if it actually works.",
+  ogTitle: "AI made everyone an IT expert. It didn't make IT work.",
   ogImage: `${SITE_URL}/og/home.jpg`,
 };
 

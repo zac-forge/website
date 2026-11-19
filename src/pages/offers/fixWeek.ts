@@ -11,7 +11,6 @@ export const fixWeek: Offer = {
   path: "/fix-week",
   navTitle: "The Fix",
   summary: "One week. Start with what matters most.",
-  menuLine: "One week on what matters most.",
   title: "Fix an AI-built website in one week, fixed price | ZAC Forge",
   description:
     "One week, one agreed price. We fix the top problem on your Reality Check scorecard in your code and rank the rest. If it isn't fixed, it's free.",
@@ -26,10 +25,25 @@ export const fixWeek: Offer = {
   cardIcon: "/art/offer-cards/icon-fix.svg",
   eyebrow: "THE FIX",
   h1: "One week. Start with what matters most.",
+  // Drew's copy handoff of 2026-11-18, which the home Fix section renders
+  // too: the intro, the examples, the guarantee on its own line, the close.
   intro: [
-    "Your scorecard shows what's wrong. The Fix Week fixes the top problem and tells you what to do about the rest. One price, agreed in writing before any work starts. If it isn't fixed, it's free.",
+    "One week, one set budget, aimed at the top items from your Reality Check: the critical things that can be done in a week.",
   ],
   blocks: [
+    {
+      heading: "Things we've fixed",
+      kind: "paragraphs",
+      items: [
+        "A site built to serve people with disabilities had a carousel that trapped screen readers. Visually impaired visitors couldn't get past it to the content they came for. We fixed it.",
+        "A client's site was getting hacked and kept going down when we took it over. We moved it to new servers, upgraded the backend and closed the security holes. It has been stable for over 10 years.",
+        "Small businesses came to us with little or no SEO strategy. We got them ranked and pulling traffic within 90 days.",
+      ],
+      outro: [
+        "If it isn't fixed, it's free.",
+        "You walk away with peace of mind. You know what you have, how to maintain it, and that an AI mistake isn't leaving you exposed.",
+      ],
+    },
     {
       heading: "What you get",
       kind: "numbered",

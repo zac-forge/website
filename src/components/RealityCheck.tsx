@@ -3,6 +3,7 @@ import { Reveal } from "./Reveal";
 import { Magnetic } from "./Magnetic";
 import { BOOKING_URL } from "../lib/links";
 import { fadeUpSmall } from "../lib/motion";
+import { realityCheck } from "../pages/offers/realityCheck";
 
 /** Five lines, shown in full: no accordion, no carousel. */
 const QUESTIONS = [
@@ -40,10 +41,13 @@ export function RealityCheck() {
           <h2 className="h2 rc-heading" id="reality-check-heading">
             <span className="h-light">Send us what you built.</span> We'll tell you straight.
           </h2>
-          {/* Where the icon points were (Drew, 2026-11-13). */}
-          <p className="section-intro copy">
-            You get one page in plain English: what we found, the evidence, and what a fix would take.
-          </p>
+          {/* Where the icon points were (Drew, 2026-11-13). Intro from the
+              copy handoff of 2026-11-18. */}
+          {realityCheck.intro.map((p) => (
+            <p className="section-intro copy" key={p}>
+              {p}
+            </p>
+          ))}
         </Reveal>
 
         <Reveal className="rc-questions" stagger={0.06}>

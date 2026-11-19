@@ -5,7 +5,6 @@ export const realityCheck: Offer = {
   path: "/reality-check",
   navTitle: "The Reality Check",
   summary: "Send us what you built. We'll tell you straight.",
-  menuLine: "Free. Five questions, straight answers.",
   title: "Reality Check: free review of AI-built websites | ZAC Forge",
   description:
     "Built something with AI? A free 5-question check by senior people, not a scanner. Plain-English scorecard and what a fix would take.",
@@ -19,8 +18,12 @@ export const realityCheck: Offer = {
   cardIcon: "/art/offer-cards/icon-reality-check.svg",
   eyebrow: "THE REALITY CHECK",
   h1: "Send us what you built. We'll tell you straight.",
+  // Drew's copy handoff of 2026-11-18. The home Reality Check section
+  // renders the same three paragraphs.
   intro: [
-    "A free look at your site, app, or brand by senior people. 5 questions, one page, no obligation. Tools take the measurements. A person does the judging and writes the page.",
+    "A senior review of your project for anything that's broken, AI or otherwise.",
+    "It's for the owner who bit off more than they could chew, and for the bigger company that doesn't have the tech skills in house to fix or modernize something.",
+    "You get a prioritized report of what's broken and how to fix it. It's free. We're confident in what we do and happy to show it first. No strings attached.",
   ],
   blocks: [
     {

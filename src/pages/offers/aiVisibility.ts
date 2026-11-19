@@ -4,7 +4,6 @@ export const aiVisibility: Offer = {
   path: "/ai-visibility",
   navTitle: "AI Visibility",
   summary: "Get named when customers ask ChatGPT, Google, or Perplexity who to call.",
-  menuLine: "Get named when people ask AI who to call.",
   title: "AI Visibility: get named by ChatGPT and Google AI | ZAC Forge",
   description:
     "Find out whether ChatGPT, Google, Perplexity, and Claude recommend your business or your competitors, and what to fix first.",
@@ -20,8 +19,10 @@ export const aiVisibility: Offer = {
   h1: "AI Visibility: get named when customers ask.",
   subline:
     "Question 4 on our free [Reality Check](/reality-check) tells you whether you have this problem. This page is the fix.",
+  // Drew's copy handoff of 2026-11-18. "No promises." is deliberate.
   intro: [
-    "Ask ChatGPT to recommend a business like yours. It will name a few. We find out whether you're one of them, why or why not, and what to fix first.",
+    "Does your business show up when people ask ChatGPT, Claude or Grok?",
+    "We set your site up so AI can find it and name it. No promises. It's a moving target. But you need a strategy, and it matters more every month.",
   ],
   blocks: [
     {

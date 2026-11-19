@@ -4,7 +4,6 @@ export const accessibility: Offer = {
   path: "/accessibility",
   navTitle: "Accessibility and Performance",
   summary: "Corrected in the code, not covered with a widget.",
-  menuLine: "Usable by everyone, fast on every phone.",
   title: "Accessibility fixes for ADA Title II deadlines | ZAC Forge",
   description:
     "Public agencies and HHS-funded health providers face accessibility deadlines in 2027 and 2028. We test by hand, fix the code to WCAG 2.1 AA, and document it.",

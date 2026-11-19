@@ -1,4 +1,10 @@
 import { Reveal } from "./Reveal";
+import { fixWeek } from "../pages/offers/fixWeek";
+import type { Block } from "../pages/offers/types";
+
+/** "Things we've fixed", the guarantee, and the close: the first block of
+ *  the /fix-week page (Drew's copy handoff of 2026-11-18). */
+const examples = fixWeek.blocks[0] as Extract<Block, { kind: "paragraphs" }>;
 
 /**
  * The Fix Week, labelled "The Fix" in navigation, eyebrows, and buttons
@@ -17,17 +23,17 @@ export function FixWeek() {
             <span className="h-light">One week. Start with</span> what matters{" "}
             <span className="h-light">most.</span>
           </h2>
-          <p className="section-intro copy">
-            When the scorecard shows something worth fixing, we fix it. In one week, the same senior
-            people fix the top problem in your code, show you what makes your design look
-            machine-made, and rank everything else by how much it matters. One price, agreed before
-            we start. If it isn't fixed, it's free.
-          </p>
-          <p className="section-intro copy">
-            Not worth saving, or starting from nothing? We build it properly from the ground up. A new
-            build takes longer than a week, so we quote it as its own project. You own all of it when
-            it's done.
-          </p>
+          {fixWeek.intro.map((p) => (
+            <p className="section-intro copy" key={p}>
+              {p}
+            </p>
+          ))}
+          <h3 className="h3 fix-week-examples-heading">{examples.heading}</h3>
+          {[...examples.items, ...(examples.outro ?? [])].map((p) => (
+            <p className="section-intro copy" key={p}>
+              {p}
+            </p>
+          ))}
           <div className="cta-row fix-week-link">
             <a className="text-link" href="/fix-week">
               <span>What the Fix covers</span> <span aria-hidden="true">→</span>

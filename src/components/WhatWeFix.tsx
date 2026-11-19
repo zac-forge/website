@@ -3,45 +3,62 @@ import { Reveal } from "./Reveal";
 import { fadeUpSmall } from "../lib/motion";
 import { BRAND_SYSTEM } from "../lib/flags";
 
-type Fix = { title: string; line: string; link?: { label: string; href: string } };
+type Fix = { id?: string; title: string; lines: string[]; link?: { label: string; href: string } };
 
 /**
- * Six short rows, each one line plus a link, from docs/site-copy-v5.md as
- * amended by Drew on 2026-11-13. Brand system goes to the form while its
+ * Six short rows, each a line or two plus a link, from docs/site-copy-v5.md as
+ * amended by Drew on 2026-11-13. AI Visibility, Platform Escape, and Web
+ * Partner from Drew's copy handoff of 2026-11-18. Platform Escape carries
+ * the id the header menu links to. Brand system goes to the form while its
  * page is off.
  */
 const FIXES: Fix[] = [
   {
     title: "AI Visibility",
-    line: "Get named when customers ask ChatGPT, Google, or Perplexity who to call.",
+    // Cut from the end to fit the card (2026-11-18, flagged). The full text
+    // is the /ai-visibility intro.
+    lines: [
+      "Does your business show up when people ask ChatGPT, Claude or Grok?",
+      "We set your site up so AI can find it and name it. No promises.",
+    ],
     link: { label: "See AI Visibility", href: "/ai-visibility" },
   },
   {
     title: "Rescue",
-    line: "Finish what AI started and make it safe to run. If it can't be saved, we build it properly from the ground up.",
+    lines: ["Finish what AI started and make it safe to run. If it can't be saved, we build it properly from the ground up."],
     link: { label: "Ask about a rescue", href: "#contact" },
   },
   {
     title: "Accessibility and performance",
-    line: "Public agencies and federally funded health providers face federal accessibility deadlines in 2027 and 2028. We fix the site's code. We don't cover it with a widget.",
+    lines: ["Public agencies and federally funded health providers face federal accessibility deadlines in 2027 and 2028. We fix the site's code. We don't cover it with a widget."],
     link: { label: "See Accessibility", href: "/accessibility" },
   },
   {
     title: "Brand system",
-    line: "Our design principal sets your look once, as rules your AI tools follow. What they make after that looks like you.",
+    lines: ["Our design principal sets your look once, as rules your AI tools follow. What they make after that looks like you."],
     // Drew, 2026-11-13: always a link. To the form while the page is off.
     link: BRAND_SYSTEM
       ? { label: "Ask about a brand system", href: "/brand-system" }
       : { label: "Ask about a brand system", href: "#contact" },
   },
   {
-    title: "Platform escape",
-    line: "Off the platform you've outgrown, onto something you own.",
+    id: "platform-escape",
+    title: "Platform Escape",
+    // Cut from the end to fit the card (2026-11-18, flagged). The handoff's
+    // other two paragraphs have no slot until Platform Escape has a page:
+    // "We move you to a lean setup you own: cheaper to run, faster, safer,
+    // easier to find in search. You can still make your own simple updates."
+    // "We can do these all day long, for a fraction of the cost."
+    lines: [
+      "Think WordPress. A lot of simple business sites are on it because it's easy to update, but it's overkill, and it costs them in maintenance, security and speed.",
+    ],
     link: { label: "Ask about moving platforms", href: "#contact" },
   },
   {
     title: "Web Partner",
-    line: "One senior person who knows your site keeps it running and improves it every month.",
+    lines: [
+      "A flexible team of senior IT professionals who work alongside yours. As much or as little as you need. Month to month, no strings.",
+    ],
     link: { label: "See Web Partner", href: "/web-partner" },
   },
 ];
@@ -75,9 +92,13 @@ export function WhatWeFix() {
         <Reveal stagger={0.06}>
           <ul className="fix-grid">
             {FIXES.map((fix) => (
-              <motion.li className="fix" key={fix.title} variants={fadeUpSmall}>
+              <motion.li className="fix" id={fix.id} key={fix.title} variants={fadeUpSmall}>
                 <h3 className="fix-title">{fix.title}</h3>
-                <p className="fix-line case-text">{fix.line}</p>
+                <div className="fix-line case-text">
+                  {fix.lines.map((l) => (
+                    <p key={l}>{l}</p>
+                  ))}
+                </div>
                 {fix.link ? (
                   <a className="btn btn-secondary fix-link" href={fix.link.href}>
                     <span>{fix.link.label}</span>{" "}

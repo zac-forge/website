@@ -3,33 +3,47 @@ import { Reveal } from "./Reveal";
 import { fadeUpSmall } from "../lib/motion";
 
 /**
- * Name and photo are optional on purpose. The design principal and the principal
- * engineer have not consented to being named, so they ship by role, and
- * adding a name later is a content change. Names are known (CLAUDE.md) and
- * go in only when Drew says consent is given.
+ * Name and photo are optional on purpose. The design principal and the
+ * principal engineer still show by role; names are known (CLAUDE.md) and
+ * go in when Drew says consent is given.
  *
- * Their two bio lines are [[slots]] in docs/site-copy-v5.md, pending each
- * person's confirmation. The deck's working versions ship, as the build plan
- * says, and no bio introduces anyone as Andrew's former colleague.
+ * Intro and all three bios from Drew's copy handoff of 2026-11-18, shipped
+ * for Misha and Luke to review live (Drew overrode the doc's hold on theirs).
  */
-type TeamMember = { slug: string; name?: string; role: string; bio: string };
+type TeamMember = { slug: string; name?: string; role: string; bio: string[] };
+
+const INTRO = [
+  "We were already the guys. Now we're the guys with AI.",
+  "Three people who've worked together since IBM. What used to take a floor of people now takes us and AI doing the junior work.",
+  "Fast, fair and friendly.",
+];
 
 const TEAM: TeamMember[] = [
   {
     slug: "andrew-johnston",
     name: "Andrew Johnston",
     role: "Founder, Principal",
-    bio: "Led global web work at IBM across several roles, including lead developer for IBM.com in North America and technical director at the IBM Design Lab. He has run his own practice since 2010.",
+    bio: [
+      "Taught himself HTML in the dot com boom and never stopped building. Bay Area startups, then IBM, where he led development for IBM.com North America and ran tech at the Design Lab in New York.",
+      "He's who you talk to, and he still writes code.",
+    ],
   },
   {
     slug: "design-principal",
     role: "Design Principal",
-    bio: "Associate creative director at Ogilvy, then design lead on work for Walmart, Viacom, and Nike, and at the IBM Design Lab.",
+    bio: [
+      "Classically trained. New York. Havas and Ogilvy. If you can see it, it's his.",
+      "He's the reason our work doesn't look like AI made it.",
+    ],
   },
   {
     slug: "principal-engineer",
     role: "Principal Engineer",
-    bio: "Principal engineer at IBM: WordPress, PHP, React, Node, and mobile.",
+    bio: [
+      "The fixer. We've never brought him a problem he couldn't solve, and we've brought him some ugly ones.",
+      "He's been building alongside Andrew since IBM, across web, apps and mobile. When something has to work, it goes to Luke.",
+      "Also the nicest guy on the team.",
+    ],
   },
 ];
 
@@ -72,6 +86,11 @@ export function WhoWeAre() {
           <h2 className="h2" id="who-we-are-heading">
             Principals
           </h2>
+          {INTRO.map((p) => (
+            <p className="section-intro copy" key={p}>
+              {p}
+            </p>
+          ))}
         </Reveal>
         <Reveal className="team" stagger={0.08}>
           {TEAM.map((m) => {
@@ -88,7 +107,11 @@ export function WhoWeAre() {
                 <div className="team-text">
                   <h3 className="team-name">{m.name ?? m.role}</h3>
                   {m.name ? <p className="team-role">{m.role}</p> : null}
-                  <p className="team-bio copy">{m.bio}</p>
+                  {m.bio.map((p) => (
+                    <p className="team-bio copy" key={p}>
+                      {p}
+                    </p>
+                  ))}
                 </div>
               </motion.div>
             );

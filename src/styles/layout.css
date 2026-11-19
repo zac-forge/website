@@ -486,6 +486,13 @@ body:has(.subpage-hero) .site-header:not([data-scrolled="true"]):not(:has(.site-
 .fix-week-link {
   margin-top: var(--space-4);
 }
+/* "Things we've fixed" (copy handoff, 2026-11-18): a sub-heading inside the
+   section, at the card title size the Reality Check questions and team
+   names use, not the 48px section size. */
+.fix-week-examples-heading {
+  margin-top: var(--space-8);
+  font-size: var(--text-card);
+}
 .art-split-art--fixweek {
   width: var(--fixweek-art);
 }
@@ -718,6 +725,9 @@ body:has(.subpage-hero) .site-header:not([data-scrolled="true"]):not(:has(.site-
 .fix-line {
   justify-self: stretch;
   margin-top: var(--space-4);
+}
+.fix-line p + p {
+  margin-top: var(--space-3);
 }
 .fix-link {
   margin-top: var(--space-5);

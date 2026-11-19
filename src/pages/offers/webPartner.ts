@@ -5,10 +5,10 @@ export const webPartner: Offer = {
   path: "/web-partner",
   navTitle: "Web Partner",
   summary: "One senior person who knows your site keeps it running and improves it every month.",
-  menuLine: "A senior person on your site, month to month.",
   title: "Web Partner: senior website care, month to month | ZAC Forge",
+  // Quoted the old home card line, so it takes the new card copy (2026-11-18).
   description:
-    "One senior person who knows your site keeps it running and improves it every month. Month to month. Scales with you.",
+    "A flexible team of senior IT professionals who work alongside yours. As much or as little as you need. Month to month, no strings.",
   serviceName: "Web Partner",
   serviceDescription:
     "Ongoing senior care: updates, backups, monitoring, change requests, one improvement a month, and visibility tracking. Not a maintenance plan.",
@@ -19,8 +19,15 @@ export const webPartner: Offer = {
   cardIcon: "/art/offer-cards/icon-web-partner.svg",
   eyebrow: "WEB PARTNER",
   h1: "Keep it fixed. Make it better.",
+  // Drew's copy handoff of 2026-11-18. The "mechanic you trust" sentence is
+  // not yet confirmed by Drew and ships as an open item.
   intro: [
-    "Updates and backups are the floor. You're paying for one senior person who knows your site, answers when you ask, and improves it every month.",
+    "A flexible team of senior IT professionals who work alongside yours. As much or as little as you need.",
+    "It's for businesses that need more than a quick fix or a review: maintenance, security and accessibility, kept up over the long term.",
+    "Design too. We can turn your brand into a design system that your team and your AI tools build from, so what gets made stays on brand. And a senior designer is there when you need a sanity check.",
+    "Month to month, or longer if you want. No strings.",
+    "Having us on call is like having a mechanic you trust, but for your tech. If your nephew's vibe-coded CRM breaks and you lose your customer data, it would be nice to have a number to call.",
+    "Clients tend to stay. One for more than ten years, another for more than five, many for two to five.",
   ],
   blocks: [
     {
