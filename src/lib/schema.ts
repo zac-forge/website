@@ -53,6 +53,7 @@ const people = TEAM.map((m) => ({
   "@id": m.slug === "andrew-johnston" ? PERSON_ID : `${SITE_URL}/#${m.slug}`,
   name: m.name,
   jobTitle: m.role,
+  description: m.bio.join(" "),
   worksFor: { "@id": ORG_ID },
 }));
 

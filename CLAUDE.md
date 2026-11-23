@@ -226,7 +226,7 @@ There is **no test framework** in this repo. Verification is `npm run build` (ru
 
 Two slots were picked on 2026-08-20 and stand for v4. Ship them exactly as written and do not re-offer either choice.
 
-- **Andrew's bio:** replaced by the copy handoff of 2026-11-18 ("Taught himself HTML in the dot com boom..."), in `src/pages/team.ts`. No year counts for people anywhere on the site.
+- **Team bios:** all three replaced by Drew on 2026-11-22 ("25 years building for the web...", "A classically trained designer...", "Luke has built alongside Andrew..."), in `src/pages/team.ts`, and carried into each Person schema entry as `description`. Andrew's "25 years" is Drew's approved exception to the earlier rule of no year counts for people. Add no others.
 - **IBM/MMG timeline framing:** "It started while he was still at IBM and has outlasted that tenure." v5 words it "and outlasted that tenure" in Track record.
 
 The v5 deck fills the Web Partner platforms answer, and it ships.

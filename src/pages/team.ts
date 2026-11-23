@@ -1,8 +1,9 @@
 /**
  * The principals, read by the Principals section (home and /about) and by
- * the Person entries in the schema. Names, roles, intro, and bios are Drew's
- * approved choices of 2026-11-18: full names on the cards, and "Luke" in
- * Luciano's bio because that's what he goes by. Slugs name the photo files
+ * the Person entries in the schema (bios as each Person's description). Names,
+ * roles, and intro are Drew's approved choices of 2026-11-18, the bios his of
+ * 2026-11-22: full names on the cards, and "Luke" in Luciano's bio because
+ * that's what he goes by. Slugs name the photo files
  * in src/assets/team/ and stay as they were.
  */
 /**
@@ -24,8 +25,7 @@ export const TEAM: TeamMember[] = [
     name: "Andrew Johnston",
     role: "Founder, Principal",
     bio: [
-      "Taught himself HTML in the dot com boom and never stopped building. Bay Area startups, then IBM, where he led development for IBM.com North America and ran tech at the Design Lab in New York.",
-      "He's who you talk to, and he still writes code.",
+      "25 years building for the web, across startups, his own agency and IBM. At IBM he was one of two developers who built the code base for ibm.com/software, which was later rolled out across ibm.com, first in North America and then worldwide. He leads every ZAC engagement, from the first conversation through hands-on delivery.",
     ],
   },
   {
@@ -33,8 +33,7 @@ export const TEAM: TeamMember[] = [
     name: "Misha Gervits",
     role: "Design Principal",
     bio: [
-      "Classically trained. New York. Ogilvy. If you can see it, it's his.",
-      "He's the reason our work doesn't look like AI made it.",
+      "A classically trained designer from New York with Ogilvy on his résumé. He leads brand, web and visual design at ZAC, and he's the reason our work never looks machine-made.",
     ],
   },
   {
@@ -43,9 +42,7 @@ export const TEAM: TeamMember[] = [
     cardName: 'Luciano "Luke" Monegatto',
     role: "Principal Engineer",
     bio: [
-      "The fixer. We've never brought him a problem he couldn't solve, and we've brought him some ugly ones.",
-      "He's been building alongside Andrew since IBM, across web, apps and mobile. When something has to work, it goes to Luke.",
-      "Also the nicest guy on the team.",
+      "Luke has built alongside Andrew since IBM, across web, apps and mobile. He's who we hand the hardest problems to, and we've never handed him one he couldn't solve.",
     ],
   },
 ];
