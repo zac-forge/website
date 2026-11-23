@@ -1369,6 +1369,15 @@ button.fix-example-ill:focus-visible {
   inset: 0;
   border-radius: var(--radius-card);
 }
+/* The pill must not move on hover or press here. A transform would make
+   the pill the containing block of its own stretched target, the target
+   would shrink back to the pill, the pointer would no longer be over it,
+   and hover would flicker on and off (Drew, 2026-11-22). The tile lifts
+   instead. */
+.fix .fix-link:hover,
+.fix .fix-link:active {
+  transform: none;
+}
 /* Web Partner: words and the ownership callout left, Misha's two-piece Z
    large on the right inside dotted orbits, so the tile earns its size. */
 .fix--lead {
