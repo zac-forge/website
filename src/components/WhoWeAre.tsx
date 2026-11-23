@@ -65,7 +65,7 @@ export function WhoWeAre() {
                   )}
                 </div>
                 <div className="team-text">
-                  <h3 className="team-name">{m.name}</h3>
+                  <h3 className="team-name">{m.cardName ?? m.name}</h3>
                   <p className="team-role">{m.role}</p>
                   {m.bio.map((p) => (
                     <p className="team-bio copy" key={p}>

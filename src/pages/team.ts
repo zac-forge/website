@@ -5,7 +5,12 @@
  * Luciano's bio because that's what he goes by. Slugs name the photo files
  * in src/assets/team/ and stay as they were.
  */
-export type TeamMember = { slug: string; name: string; role: string; bio: string[] };
+/**
+ * `cardName` overrides `name` on the card only (Drew, 2026-11-22: Luciano's
+ * card reads Luciano "Luke" Monegatto so the bio's "Luke" makes sense). The
+ * schema and initials keep `name`.
+ */
+export type TeamMember = { slug: string; name: string; cardName?: string; role: string; bio: string[] };
 
 export const TEAM_INTRO = [
   "We were already the guys. Now we're the guys with AI.",
@@ -35,6 +40,7 @@ export const TEAM: TeamMember[] = [
   {
     slug: "principal-engineer",
     name: "Luciano Monegatto",
+    cardName: 'Luciano "Luke" Monegatto',
     role: "Principal Engineer",
     bio: [
       "The fixer. We've never brought him a problem he couldn't solve, and we've brought him some ugly ones.",

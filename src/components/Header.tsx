@@ -16,9 +16,8 @@ const NAV_LINKS = [
 
 /**
  * The What we do menu, labels, lines, and order from Drew's copy handoff of
- * 2026-11-18. Labels here are the menu's own: "Reality Check" and
- * "Accessibility" are shorter than the pages' navTitle, which the footer and
- * the breadcrumbs keep. Brand system joins, with no line, only when its flag is on.
+ * 2026-11-18. Labels here are the menu's own: "Reality Check" is shorter
+ * than the page's navTitle, which the footer and the breadcrumbs keep. Brand system joins, with no line, only when its flag is on.
  */
 type MenuItem = { href: string; title: string; line?: string };
 const MENU: MenuItem[] = [

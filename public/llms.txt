@@ -35,7 +35,7 @@ remotely with clients anywhere in the US.
   check: crawler access, structured data, answer pages, and third-party
   mentions, in order of impact. Then the same questions tracked every month as
   part of a Web Partner plan.
-- [Accessibility and Performance](https://zacforge.com/accessibility): manual
+- [Accessibility](https://zacforge.com/accessibility): manual
   testing and code fixes to WCAG 2.1 AA, the standard named by the ADA Title
   II and HHS Section 504 web rules, with deadlines in 2027 and 2028 for
   public agencies and HHS-funded health providers. Findings ranked by risk,
