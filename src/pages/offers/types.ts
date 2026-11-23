@@ -22,7 +22,12 @@ type Frame = { heading: string; intro?: string[]; outro?: string[]; icon?: "chec
 export type Stat = { figure: string; caption: string };
 
 export type Block =
-  | (Frame & { kind: "bullets"; items: string[] })
+  /**
+   * `view: "tiles"` sets the items as a grid of tiles, each under the icon
+   * `icons` names for it. `pair` sets the block side by side with the next
+   * one at desktop widths.
+   */
+  | (Frame & { kind: "bullets"; items: string[]; view?: "tiles"; icons?: string[]; pair?: boolean })
   /** `view: "stepper"` shows the items as the home page's question stepper. */
   /** `marker: "calendar"` puts the calendar icon in the rail's discs in
    *  place of numerals, for steps that name their own days. */
@@ -35,7 +40,18 @@ export type Block =
    * written.
    */
   | (Frame & { kind: "stats"; lead: string; items: Stat[] })
-  | (Frame & { kind: "paragraphs"; items: string[] })
+  /** `view: "card"` sets the block as a callout card in the page's accent. */
+  | (Frame & { kind: "paragraphs"; items: string[]; view?: "card" })
+  /**
+   * Dated deadlines on a timeline of years: the groups (the rules), then the
+   * dates in date order, each naming its group by `tag`, then a note.
+   */
+  | (Frame & {
+      kind: "deadlines";
+      groups: { tag: string; title: string; body: string }[];
+      dates: { group: number; who: string; date: string; iso: string }[];
+      note?: TitledItem;
+    })
   /** The home page's before-and-after cards, then a full-width statement. */
   | (Frame & { kind: "examples"; items: FixExample[]; statement?: string });
 

@@ -29,6 +29,38 @@ const ICONS = {
       <path d="M3.500 9.800h17M8 3v4M16 3v4" />
     </>
   ),
+  /* What we test (/accessibility): a keyboard, sound from a speaker, a
+     half-filled disc, lines under a heading bar, a gauge. */
+  keyboard: (
+    <>
+      <rect x="2.5" y="6" width="19" height="12" rx="2.5" />
+      <path d="M6.500 10h.01M10 10h.01M13.500 10h.01M17 10h.01M8 14h8" />
+    </>
+  ),
+  reader: (
+    <>
+      <path d="M4 9.500v5h3.500l4.500 3.500V6L7.500 9.500H4z" />
+      <path d="M15.500 9a4.200 4.200 0 0 1 0 6M18 6.500a8 8 0 0 1 0 11" />
+    </>
+  ),
+  contrast: (
+    <>
+      <circle cx="12" cy="12" r="9.5" />
+      <path d="M12 2.500v19M12 7l5.500 5.500M12 12l4 4M12 17l1.500 1.500" />
+    </>
+  ),
+  landmarks: (
+    <>
+      <rect x="3.5" y="4" width="17" height="5" rx="1.5" />
+      <path d="M3.500 13.500h10M3.500 17h17M3.500 20.500h7" />
+    </>
+  ),
+  speed: (
+    <>
+      <path d="M4.200 17.500a9.500 9.500 0 1 1 15.600 0" />
+      <path d="M12 14l4-5.500M12 14h.01" />
+    </>
+  ),
 };
 export type IconName = keyof typeof ICONS;
 
@@ -41,17 +73,32 @@ export function ListIcon({ icon, className = "icon-list-icon" }: { icon: IconNam
   );
 }
 
-export function IconList({ items, icon = "check" }: { items: (string | TitledItem)[]; icon?: IconName }) {
+export function IconList({
+  items,
+  icon = "check",
+  tiles = false,
+  icons,
+}: {
+  items: (string | TitledItem)[];
+  icon?: IconName;
+  /** A grid of tiles, the icon over the words, in place of rows. */
+  tiles?: boolean;
+  /** An icon for each item, by name, in place of the list's one icon. */
+  icons?: string[];
+}) {
   const titled = items.some((item) => typeof item !== "string");
-  const compact = !titled && items.every((item) => typeof item === "string" && item.length <= 48);
+  const compact = !tiles && !titled && items.every((item) => typeof item === "string" && item.length <= 48);
+  const staged = titled || tiles;
+  const iconFor = (i: number): IconName => (icons?.[i] && icons[i] in ICONS ? (icons[i] as IconName) : icon);
   return (
     <ul
-      className={`icon-list${compact ? " icon-list--grid" : ""}${titled ? " icon-list--titled" : ""}`}
+      className={`icon-list${compact ? " icon-list--grid" : ""}${titled ? " icon-list--titled" : ""}${tiles ? " icon-list--tiles" : ""}`}
       data-icon={icon}
+      data-count={tiles ? items.length : undefined}
     >
       {items.map((item, i) => (
-        <li className={titled ? "reveal-item" : undefined} style={titled ? step(i) : undefined} key={typeof item === "string" ? item : item.title}>
-          <ListIcon icon={icon} />
+        <li className={staged ? "reveal-item" : undefined} style={staged ? step(i) : undefined} key={typeof item === "string" ? item : item.title}>
+          <ListIcon icon={iconFor(i)} />
           {typeof item === "string" ? (
             <span>{item}</span>
           ) : (

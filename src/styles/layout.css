@@ -2373,7 +2373,7 @@ button.fix-example-ill:focus-visible {
   border-radius: var(--radius-card);
   box-shadow: var(--shadow-rest);
 }
-.offer-block--alt :is(.label-card, .faq-row, .icon-list--grid li) {
+.offer-block--alt :is(.label-card, .faq-row, .icon-list--grid li, .icon-list--tiles li, .date-card, .deadline-note) {
   background: var(--color-bg);
   box-shadow: none;
 }
@@ -2449,6 +2449,219 @@ button.fix-example-ill:focus-visible {
 }
 .icon-list-body {
   margin-top: var(--space-2);
+}
+
+/* Tiles (2026-11-22): the icon over the words, three to a row, and a last
+   row of two when there are five. */
+.icon-list--tiles {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: var(--space-4);
+  max-width: none;
+}
+.icon-list--tiles li {
+  grid-column: span 2;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-4);
+  align-content: start;
+  padding: var(--space-5);
+  background: var(--color-surface);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-rest);
+}
+.icon-list--tiles[data-count="5"] li:nth-child(n + 4) {
+  grid-column: span 3;
+}
+.icon-list--tiles .icon-list-icon {
+  width: var(--space-6);
+  height: var(--space-6);
+}
+/* A wide block's heading and opening line, then its content. */
+.offer-wide-head {
+  margin-bottom: var(--space-6);
+}
+.offer-wide-head .offer-paragraph {
+  margin-top: var(--space-3);
+}
+.offer-block--wide .callout {
+  margin-top: var(--space-6);
+}
+/* Two list blocks side by side. */
+.offer-pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-7) var(--space-8);
+  align-items: start;
+}
+.offer-pair .offer-block-heading {
+  margin-bottom: var(--space-5);
+}
+
+/* Deadlines on a timeline of years (2026-11-22). Three rows: the years on
+   their line, then a row a group. The legend on the left and each year's
+   cards share the rows by subgrid, so a group lines up with its dates. */
+.deadlines {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+  grid-template-rows: auto auto auto;
+  column-gap: var(--space-7);
+  row-gap: var(--space-4);
+}
+.deadline-groups,
+.deadline-years,
+.deadline-year,
+.date-cards {
+  display: grid;
+  grid-template-rows: subgrid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.deadline-groups {
+  grid-column: 1;
+  grid-row: 2 / span 2;
+}
+.deadline-group {
+  padding-left: var(--space-4);
+  border-left: 2px solid var(--offer-accent-deep, var(--color-accent));
+}
+.deadline-group .label-card-title {
+  font-size: var(--text-lead);
+}
+.deadline-group .label-card-body {
+  font-size: var(--text-body);
+}
+.deadline-years {
+  grid-column: 2;
+  grid-row: 1 / span 3;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.deadline-year {
+  grid-row: 1 / span 3;
+}
+/* The year on the line: a disc where the year starts, the line running on
+   to the next. */
+.deadline-year-label {
+  position: relative;
+  margin: 0;
+  padding-bottom: var(--space-4);
+  border-bottom: 2px solid var(--offer-accent-deep, var(--color-accent));
+  font-family: var(--font-display);
+  font-size: var(--text-heading);
+  font-weight: var(--weight-bold);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+.deadline-year-label::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: calc(var(--space-2) * -1 + 1px);
+  width: var(--space-3);
+  height: var(--space-3);
+  border-radius: var(--radius-full);
+  background: var(--offer-accent-deep, var(--color-accent));
+}
+.date-cards {
+  grid-row: 2 / span 2;
+  padding-right: var(--space-4);
+}
+.deadline-year:last-child .date-cards {
+  padding-right: 0;
+}
+.date-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-5);
+  background: var(--color-surface);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-rest);
+}
+.date-card-line {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  margin: 0;
+  font-size: var(--text-body);
+  line-height: var(--leading-copy);
+}
+/* The line as written, "who: date", the date set large under its label. */
+.date-card-date {
+  font-family: var(--font-display);
+  font-size: var(--text-card);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-title);
+}
+.deadline-note {
+  margin-top: var(--space-4);
+  padding: var(--space-5);
+  background: var(--color-surface);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-rest);
+}
+.deadline-note .label-card-title {
+  font-size: var(--text-lead);
+}
+.deadline-note .label-card-body {
+  max-width: none;
+  font-size: var(--text-body);
+}
+.deadline-note + .offer-footnote {
+  margin-top: var(--space-5);
+}
+.offer-footnote + .offer-footnote {
+  margin-top: var(--space-2);
+}
+@media (max-width: 900px) {
+  .offer-pair {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .icon-list--tiles {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .icon-list--tiles li,
+  .icon-list--tiles[data-count="5"] li:nth-child(n + 4) {
+    grid-column: auto;
+  }
+  .icon-list--tiles[data-count="5"] li:last-child {
+    grid-column: 1 / -1;
+  }
+  /* The legend, then a year at a time, its cards side by side. */
+  .deadlines,
+  .deadline-groups,
+  .deadline-years,
+  .deadline-year,
+  .date-cards {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: none;
+    grid-column: auto;
+    grid-row: auto;
+  }
+  .deadlines {
+    row-gap: var(--space-6);
+  }
+  .deadline-groups,
+  .deadline-year {
+    row-gap: var(--space-4);
+  }
+  .deadline-years {
+    row-gap: var(--space-6);
+  }
+  .date-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-4);
+    padding-right: 0;
+  }
+}
+@media (max-width: 760px) {
+  .icon-list--tiles,
+  .date-cards {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .icon-list--tiles[data-count="5"] li:last-child {
+    grid-column: auto;
+  }
 }
 
 /* The proof block (2026-11-22). Words sit in a panel on the home case

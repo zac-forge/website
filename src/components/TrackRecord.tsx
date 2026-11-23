@@ -3,7 +3,7 @@ import { Reveal } from "./Reveal";
 import { CountUp } from "./CountUp";
 import { ExperienceStrip } from "./LogoBand";
 import { BrowserFrame } from "./BrowserFrame";
-import { CASE_STUDIES, CASE_STUDIES_INTRO, CASE_STUDIES_PATH, caseMeta } from "../pages/caseStudies";
+import { CASE_STUDIES, CASE_STUDIES_INTRO, CASE_STUDIES_PATH, CASE_LINK_LABEL, caseLinkName, caseMeta } from "../pages/caseStudies";
 import type { CaseStudy } from "../pages/caseStudies";
 
 /**
@@ -19,7 +19,7 @@ const SHAPES = ["side", "featured", "wide", "side"];
  * One media-led card. The case's accent, deepened with ink so white text
  * clears AA on it, is the card's surface. The number is the hero and counts
  * up on entry, then its label, the client, the meta line, the first proof
- * sentence where the card has one, and "More", whose link covers the card.
+ * sentence where the card has one, and "Read the case", whose link covers the card.
  * The screenshot sits in a browser frame, cropped by the card's edge.
  * /platform-escape shows one of these as its proof, in the shape it names.
  */
@@ -48,9 +48,9 @@ export function CaseCard({ study, index, shape }: { study: CaseStudy; index: num
         <a
           className="proof-card-link"
           href={`${CASE_STUDIES_PATH}#${study.slug}`}
-          aria-label={`More about ${study.client}`}
+          aria-label={caseLinkName(study.client)}
         >
-          <span className="proof-card-more">More</span>
+          <span className="proof-card-more">{CASE_LINK_LABEL}</span>
           <span className="proof-card-arrow" aria-hidden="true" />
         </a>
       </div>

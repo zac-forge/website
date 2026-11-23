@@ -44,6 +44,9 @@ export const accessibility: Offer = {
     {
       heading: "What we test",
       kind: "bullets",
+      // A grid of five tiles, an icon each, in the order of the items.
+      view: "tiles",
+      icons: ["keyboard", "reader", "contrast", "landmarks", "speed"],
       intro: ["Scanners catch some problems and miss others. We run them, then test by hand."],
       items: [
         "Keyboard only: every menu, carousel, and form, with no mouse",
@@ -57,12 +60,13 @@ export const accessibility: Offer = {
     {
       heading: "What you get",
       kind: "bullets",
+      // Side by side with "What we can't do" at desktop widths.
+      pair: true,
       items: [
         "Findings in plain English, ranked by risk. We fix the top 10 first.",
         "Fixes in your theme, components, and content, to WCAG 2.1 AA",
         "A written record: what we tested, what we fixed, and what's left",
         "An accessibility statement for your site and a short conformance summary",
-        "Your overlay widget removed, once the real problems are fixed",
       ],
     },
     {
@@ -72,12 +76,13 @@ export const accessibility: Offer = {
       items: [
         "We can't certify legal compliance. We're not lawyers, and nobody can promise you'll never get a demand letter.",
         "We can't fix software you don't control, like a patient portal, scheduling tool, or payment page run by a vendor. We'll tell you which problems are theirs to fix.",
-        "A site doesn't stay accessible by itself. Every new page and plugin can break it. That's what the quarterly re-check is for.",
       ],
     },
     {
       heading: "For health providers",
       kind: "paragraphs",
+      // A callout card in the page's accent.
+      view: "card",
       items: [
         "Start with what patients do online: find a provider, book a visit, fill out a form, pay a bill. Those pages come first. Our team has worked on HIPAA-regulated healthcare systems. For anything behind a login, you set us up with a test account. We test with dummy data and never touch patient information.",
       ],
@@ -85,28 +90,35 @@ export const accessibility: Offer = {
     // Deadline dates. Recheck if NFB v. DOJ is decided or the rules are revised.
     {
       heading: "Who has a deadline",
-      kind: "titled",
-      icon: "calendar",
+      // The four dates as date cards on a 2027 to 2028 timeline (Drew,
+      // 2026-11-22). `dates` is in date order and is rendered in that order.
+      // Every string is the copy as written: a date line was "who: date",
+      // and `tag` is the rule's name from its group's title, shown on each
+      // card so a card read alone still says which rule it belongs to.
+      kind: "deadlines",
       intro: ["Two federal rules set the same standard for websites and mobile apps: WCAG 2.1 Level AA."],
-      items: [
+      groups: [
         {
+          tag: "ADA Title II",
           title: "State and local government (ADA Title II)",
           body: "Cities, counties, public schools and colleges, public hospitals, libraries, transit agencies, and special districts.",
-          bullets: [
-            "Population of 50,000 or more: April 26, 2027",
-            "Under 50,000, and special districts: April 26, 2028",
-          ],
         },
         {
+          tag: "Section 504",
           title: "Health care (Section 504, HHS)",
           body: "Hospitals, clinics, health centers, and practices that receive funding from the US Department of Health and Human Services.",
-          bullets: ["15 or more employees: May 11, 2027", "Fewer than 15 employees: May 10, 2028"],
-        },
-        {
-          title: "Vendors",
-          body: "If you build or run a website for one of these organizations, they will need your work to meet the same standard.",
         },
       ],
+      dates: [
+        { group: 0, who: "Population of 50,000 or more:", date: "April 26, 2027", iso: "2027-04-26" },
+        { group: 1, who: "15 or more employees:", date: "May 11, 2027", iso: "2027-05-11" },
+        { group: 0, who: "Under 50,000, and special districts:", date: "April 26, 2028", iso: "2028-04-26" },
+        { group: 1, who: "Fewer than 15 employees:", date: "May 10, 2028", iso: "2028-05-10" },
+      ],
+      note: {
+        title: "Vendors",
+        body: "If you build or run a website for one of these organizations, they will need your work to meet the same standard.",
+      },
       outro: [
         "Both sets of dates were pushed back a year in 2026. That extension is being challenged in court, so the dates could change. Not sure which rule covers you? Ask your attorney. We're not lawyers. We can tell you what's wrong with your site either way.",
         "Dates checked November 2026.",

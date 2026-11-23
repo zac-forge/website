@@ -52,7 +52,9 @@ import type { Offer, Block } from "./offers";
 function BlockBody({ block }: { block: Block }) {
   switch (block.kind) {
     case "bullets":
-      return <IconList items={block.items} icon={block.icon} />;
+      return <IconList items={block.items} icon={block.icon} tiles={block.view === "tiles"} icons={block.icons} />;
+    case "deadlines":
+      return <Deadlines block={block} />;
     case "numbered":
       return (
         <ol className="steps">
@@ -118,6 +120,67 @@ function BlockBody({ block }: { block: Block }) {
   }
 }
 
+/**
+ * Dated deadlines on a timeline of years (/accessibility). The groups (the
+ * rules) are a legend, then one column a year, the dates in date order in
+ * the HTML, each a date card naming its rule in a chip, so the list reads
+ * correctly in source order, without styles, and to a screen reader. At
+ * desktop widths a subgrid lines each group up with its cards as a row.
+ */
+function Deadlines({ block }: { block: Extract<Block, { kind: "deadlines" }> }) {
+  const years = [...new Set(block.dates.map((d) => d.iso.slice(0, 4)))];
+  return (
+    <>
+      <div className="deadlines">
+        <ul className="deadline-groups">
+          {block.groups.map((group, i) => (
+            <li className="deadline-group reveal-item" style={step(i)} key={group.title}>
+              <h3 className="label-card-title">{group.title}</h3>
+              <p className="label-card-body">{group.body}</p>
+            </li>
+          ))}
+        </ul>
+        <ol className="deadline-years">
+          {years.map((year, y) => (
+            <li className="deadline-year" key={year}>
+              <h3 className="deadline-year-label reveal-item" style={step(y + 1)}>
+                {year}
+              </h3>
+              <ul className="date-cards">
+                {block.dates
+                  .filter((d) => d.iso.startsWith(year))
+                  .map((d, i) => (
+                    <li className="date-card reveal-item" style={step(y + i + 2)} key={d.iso}>
+                      <span className="chip">{block.groups[d.group].tag}</span>
+                      {/* The line as written, "who: date", the date large. */}
+                      <p className="date-card-line">
+                        <span className="date-card-who">{d.who}</span>{" "}
+                        <time className="date-card-date" dateTime={d.iso}>
+                          {d.date}
+                        </time>
+                      </p>
+                    </li>
+                  ))}
+              </ul>
+            </li>
+          ))}
+        </ol>
+      </div>
+      {block.note ? (
+        <div className="deadline-note">
+          <h3 className="label-card-title">{block.note.title}</h3>
+          <p className="label-card-body">{block.note.body}</p>
+        </div>
+      ) : null}
+      {block.outro?.map((line) => (
+        <p className="offer-footnote" key={line}>
+          {line}
+        </p>
+      ))}
+    </>
+  );
+}
+
 /** The paragraphs a block opens with, in the paragraph style. */
 function Paragraphs({ items }: { items?: string[] }) {
   if (!items?.length) return null;
@@ -144,8 +207,63 @@ function Asides({ items }: { items?: string[] }) {
   );
 }
 
+/** Two list blocks side by side at desktop widths, each under its heading. */
+function PairSection({ blocks, alt }: { blocks: Block[]; alt: boolean }) {
+  return (
+    <section className={`section offer-block${alt ? " offer-block--alt" : ""}`}>
+      <div className="container offer-pair">
+        {blocks.map((block) => (
+          <Reveal stagger key={block.heading}>
+            <h2 className="h3 offer-block-heading">{block.heading}</h2>
+            <Paragraphs items={block.intro} />
+            <BlockBody block={block} />
+            <Asides items={block.outro} />
+          </Reveal>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 /** One block as a section. `alt` puts it on the white surface. */
 function BlockSection({ block, alt }: { block: Block; alt: boolean }) {
+  // A callout card in the page's accent, on the proof panel's surface.
+  if (block.kind === "paragraphs" && block.view === "card") {
+    return (
+      <section className={`section offer-block offer-proof${alt ? " offer-block--alt" : ""}`}>
+        <div className="container">
+          <Reveal className="proof-card proof-card--static offer-proof-panel">
+            <h2 className="h3 offer-block-heading">{block.heading}</h2>
+            {block.items.map((item) => (
+              <Callout key={item}>{item}</Callout>
+            ))}
+          </Reveal>
+        </div>
+      </section>
+    );
+  }
+  // Full width under the heading: the tile grid, and the deadline timeline
+  // (whose closing lines it sets itself, as fine print).
+  if ((block.kind === "bullets" && block.view === "tiles") || block.kind === "deadlines") {
+    return (
+      <section className={`section offer-block offer-block--wide${alt ? " offer-block--alt" : ""}`}>
+        <div className="container">
+          <Reveal className="offer-wide-head">
+            <h2 className="h3 offer-block-heading">{block.heading}</h2>
+            <Paragraphs items={block.intro} />
+          </Reveal>
+          <Reveal stagger>
+            <BlockBody block={block} />
+          </Reveal>
+          {block.kind === "deadlines" ? null : (
+            <Reveal>
+              <Asides items={block.outro} />
+            </Reveal>
+          )}
+        </div>
+      </section>
+    );
+  }
   // The home stepper, on the home Check section's blue band.
   if (block.kind === "numbered" && block.view === "stepper") {
     return (
@@ -265,13 +383,21 @@ export default function OfferPage({ offer }: { offer: Offer }) {
           </div>
         </section>
 
-        {offer.blocks.map((block) => (
-          <BlockSection
-            block={block}
-            alt={block.kind === "numbered" && block.view === "stepper" ? false : alt()}
-            key={block.heading}
-          />
-        ))}
+        {offer.blocks.map((block, i) => {
+          const prev = offer.blocks[i - 1];
+          // The second of a pair was rendered with the first.
+          if (prev?.kind === "bullets" && prev.pair) return null;
+          if (block.kind === "bullets" && block.pair && offer.blocks[i + 1]) {
+            return <PairSection blocks={[block, offer.blocks[i + 1]]} alt={alt()} key={block.heading} />;
+          }
+          return (
+            <BlockSection
+              block={block}
+              alt={block.kind === "numbered" && block.view === "stepper" ? false : alt()}
+              key={block.heading}
+            />
+          );
+        })}
 
         {/* Proof that is words: a panel in the page's accent, the home case
             cards' surface. A paragraph is a callout under "Proof", a

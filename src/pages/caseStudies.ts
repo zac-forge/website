@@ -12,6 +12,14 @@ import { HAWAII_CARD } from "../lib/flags";
  * stays out of the schema until ccconejovalley.com is live, and its link is
  * the current deployment until then.
  */
+/**
+ * The words on a case card's link, and its accessible name, which starts
+ * with those words (WCAG 2.5.3, Label in Name). One source for every card
+ * (Drew, 2026-11-22, in place of "More").
+ */
+export const CASE_LINK_LABEL = "Read the case";
+export const caseLinkName = (client: string) => `${CASE_LINK_LABEL}: ${client}`;
+
 export type CaseLink = { label: string; href: string };
 
 export type CaseStudy = {
