@@ -1,6 +1,7 @@
-/* Keyframes and timing. Section reveals live in the Reveal component
-   (Motion); this file carries the one CSS entrance and the reduced-motion
-   contract. Nothing on the page animates continuously. */
+/* Keyframes and timing: the scroll reveals, the hero's staged entrance, the
+   page transition, the case index's progress track, and the reduced-motion
+   contract. Durations, easing, and the stagger step are tokens. Nothing on
+   the page animates continuously. */
 
 /* The hero illustration arrives once, on load, slightly after the copy. */
 .hero-art {
@@ -18,7 +19,115 @@
   }
 }
 
+/* Scroll reveals (Reveal.tsx): one keyframe, one duration, one easing, one
+   stagger step, all tokens, so every section moves the same way. The
+   animation has no end keyframe and fills backwards only, so once it ends
+   the element is back on its own styles and a hover transform still works.
+   The hidden state sits under html.js (set in index.html before paint), so
+   with scripting off nothing is ever hidden. */
+@keyframes reveal-in {
+  from {
+    opacity: 0;
+    transform: translateY(var(--space-5));
+  }
+}
+.js .reveal:not(.reveal--stagger):not(.is-in),
+.js .reveal--stagger:not(.is-in) .reveal-item {
+  opacity: 0;
+}
+/* Keyboard focus never lands on something still waiting to be revealed. */
+.js .reveal:not(.is-in):focus-within,
+.js .reveal--stagger:not(.is-in):focus-within .reveal-item {
+  opacity: 1;
+}
+.js .reveal.is-in:not(.reveal--stagger),
+.js .reveal--stagger.is-in .reveal-item {
+  animation: reveal-in var(--duration-reveal) var(--ease-out) backwards;
+  animation-delay: calc(var(--i, 0) * var(--reveal-stagger));
+}
+
+/* The hero's staged entrance: headline lines, subline, buttons, in order,
+   on load, in CSS alone so it does not wait for the bundle. */
+.hero-stage {
+  animation: reveal-in var(--duration-reveal) var(--ease-out) backwards;
+  animation-delay: calc(var(--i, 0) * var(--reveal-stagger) * 1.5);
+}
+.hero-title .hero-stage {
+  display: block;
+}
+
+/* Page transitions (2026-11-22): the View Transitions API across documents,
+   so moving between home and /case-studies (or any two pages) cross-fades
+   with a short rise while the header holds still. Browsers without it load
+   the page plainly. Off with reduced motion. */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition {
+    navigation: auto;
+  }
+  .site-header {
+    view-transition-name: site-header;
+  }
+  ::view-transition-old(root) {
+    animation: page-out var(--duration-base) var(--ease-out) both;
+  }
+  ::view-transition-new(root) {
+    animation: reveal-in var(--duration-reveal) var(--ease-out) backwards;
+  }
+
+  /* The case index's progress track, driven by the case list's own scroll
+     position: empty when the list's top reaches the top of the viewport,
+     full when its end reaches the bottom. */
+  @supports (animation-timeline: view()) {
+    .cases-body {
+      timeline-scope: --cases;
+    }
+    .cases-list {
+      view-timeline: --cases block;
+    }
+    .cases-index-fill {
+      transition: none;
+      animation: cases-fill linear both;
+      animation-timeline: --cases;
+      animation-range: contain;
+    }
+  }
+}
+@keyframes page-out {
+  to {
+    opacity: 0;
+  }
+}
+@keyframes cases-fill {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
+  /* Everything revealed, in place, at once. */
+  .js .reveal:not(.reveal--stagger):not(.is-in),
+  .js .reveal--stagger:not(.is-in) .reveal-item {
+    opacity: 1;
+  }
+  .reveal,
+  .reveal-item,
+  .hero-stage,
+  .field-error {
+    animation: none !important;
+  }
+  .fix:hover,
+  .fix-example:hover,
+  .proof-card:hover,
+  .team-member:hover,
+  .cases-result:hover,
+  .team-member:hover .team-photo,
+  .site-header[data-scrolled="true"] .header-inner,
+  .site-header[data-scrolled="true"]::before {
+    transform: none !important;
+  }
   html {
     scroll-behavior: auto;
   }

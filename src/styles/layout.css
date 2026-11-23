@@ -29,10 +29,52 @@
    so the band runs up behind it as on the comps (417:2047 and siblings).
    The open mobile menu keeps the header's own blue. */
 .site-header {
-  transition: background var(--duration-fast) var(--ease-out);
+  transition:
+    background var(--duration-fast) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out);
 }
 body:has(.subpage-hero) .site-header:not([data-scrolled="true"]):not(:has(.site-nav[data-open="true"])) {
   background: transparent;
+}
+/* Condenses once the page scrolls (2026-11-22): the bar draws 12px shorter
+   and its contents rise to stay centred, with the lift shadow under it. The
+   header's own box keeps its height, so nothing below moves. The blue is on
+   ::before so it can shrink without the box. Desktop only: the phone menu is
+   position: fixed inside the header and a transform there would re-anchor it. */
+.site-header[data-scrolled="true"] {
+  box-shadow: var(--shadow-lift);
+}
+@media (min-width: 861px) {
+  .site-header {
+    background: transparent;
+  }
+  .site-header::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: var(--color-band-blue);
+    box-shadow: var(--shadow-lift);
+    transform-origin: top;
+    transition:
+      transform var(--duration-base) var(--ease-out),
+      opacity var(--duration-fast) var(--ease-out);
+  }
+  body:has(.subpage-hero) .site-header:not([data-scrolled="true"])::before {
+    opacity: 0;
+  }
+  .site-header[data-scrolled="true"] {
+    box-shadow: none;
+  }
+  .site-header[data-scrolled="true"]::before {
+    transform: scaleY(0.83);
+  }
+  .header-inner {
+    transition: transform var(--duration-base) var(--ease-out);
+  }
+  .site-header[data-scrolled="true"] .header-inner {
+    transform: translateY(calc(var(--space-3) / -2));
+  }
 }
 /* The wordmark export is black lettering. On blue it is drawn white. */
 .site-header .brand-wordmark img {
@@ -393,36 +435,45 @@ body:has(.subpage-hero) .site-header:not([data-scrolled="true"]):not(:has(.site-
 }
 
 /* --------------------------------------------------------------- Problem */
-/* Cut to the heading and one line on 2026-11-22, so the heading takes the
-   hero size (.h1) and the line the subtitle size. */
+/* A full-width statement in the page's largest type (2026-11-22), each line
+   its own block so the lines arrive one by one. The size is the hero size
+   and a half, held to the column on phones. */
 .problem {
   --pad-top: var(--space-10);
   --pad-bottom: var(--space-10);
 }
-.problem-heading {
-  max-width: calc(var(--copy-width) + var(--space-11) + var(--space-9));
+.problem-heading,
+.fix-guarantee {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: min(calc(var(--text-hero) * 1.5), 11vw);
+  font-weight: var(--weight-bold);
   line-height: 1;
+  letter-spacing: -0.02em;
+}
+.problem-heading {
+  margin-top: var(--space-4);
+}
+.problem-line {
+  display: block;
 }
 .problem-close {
-  margin-top: var(--space-6);
+  margin-top: var(--space-7);
   font-family: var(--font-display);
-  font-size: var(--text-subtitle);
+  font-size: var(--text-heading);
   font-weight: var(--weight-light);
   line-height: var(--leading-title);
 }
 
 /* ------------------------------------------------- The spine and callouts */
-/* Check, Fix, Partner (pass 1 handoff, 2026-11-22): each of the three
-   sections' eyebrows leads with its step word, then the offer name in the
-   light weight after a hairline. An extension of the MB11 eyebrow. */
+/* Check, Fix, Partner (pass 1 handoff, 2026-11-22): the Check and Fix
+   eyebrows lead with the step word, then the offer name in the light weight
+   after a hairline. Partner is the step word alone. An extension of the
+   MB11 eyebrow. */
 .eyebrow-name {
   padding-left: var(--space-4);
   border-left: 1px solid currentColor;
   font-weight: var(--weight-light);
-}
-/* Holds the old #how-we-work target at the start of the spine. */
-.spine-anchor {
-  scroll-margin-top: var(--header-height);
 }
 /* The quiet aside (Callout.tsx), the same in Check, Fix, and Partner: the
    heading's light italic (.h-aside) at the lead size, behind a rule in the
@@ -440,9 +491,8 @@ body:has(.subpage-hero) .site-header:not([data-scrolled="true"]):not(:has(.site-
 }
 
 /* ------------------------------------------------------- Reality Check */
-/* 360:1260: curve top right, cut bottom left. Since the cut of 2026-11-22
-   the copy and button sit left and the five questions, questions only, are
-   set large on the right. */
+/* 360:1260: curve top right, cut bottom left. Copy and button left, the
+   five questions as a stepper right. */
 .reality-check {
   --pad-top: calc(var(--space-9) + var(--space-4));
   --pad-bottom: calc(var(--space-9) + var(--space-6));
@@ -453,30 +503,114 @@ body:has(.subpage-hero) .site-header:not([data-scrolled="true"]):not(:has(.site-
   display: grid;
   grid-template-columns: minmax(0, var(--copy-width)) minmax(0, 1fr);
   gap: var(--space-7) var(--space-8);
-  align-items: center;
+  align-items: start;
 }
 .rc-close {
   margin-top: var(--space-6);
 }
-.rc-questions {
+/* The stepper: a numbered rail, one question open at a time. The panel
+   opens by animating its grid row from 0fr to 1fr, so no height is measured
+   in script. Every collapsed state sits under html.js, so with scripting
+   off all five descriptions show. */
+.rc-stepper {
+  --rc-dot: calc(var(--space-6) + var(--space-2));
   display: grid;
-  gap: var(--space-4);
-}
-/* The number hangs so the questions share a left edge. */
-.rc-question {
-  position: relative;
   margin: 0;
-  padding-left: var(--space-7);
+  padding: 0;
+  list-style: none;
+}
+.rc-step {
+  position: relative;
+  padding-bottom: var(--space-3);
+}
+/* The rail between one number and the next. */
+.rc-step:not(:last-child)::before {
+  content: "";
+  position: absolute;
+  left: calc(var(--rc-dot) / 2);
+  top: var(--rc-dot);
+  bottom: 0;
+  width: 1px;
+  background: rgb(var(--white-rgb) / 0.5);
+}
+.rc-step-title {
+  margin: 0;
+}
+.rc-step-button {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  width: 100%;
+  min-height: 44px;
+  padding: 0;
+  background: none;
+  border: 0;
+  color: var(--color-on-band-soft);
   font-family: var(--font-display);
   font-size: var(--text-subtitle);
   font-weight: var(--weight-bold);
   line-height: var(--leading-title);
-  color: var(--color-on-band-soft);
+  text-align: left;
+  cursor: pointer;
 }
-.rc-question-number {
-  position: absolute;
-  left: 0;
-  font-weight: var(--weight-light);
+.rc-step-number {
+  position: relative;
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: var(--rc-dot);
+  height: var(--rc-dot);
+  border: 1px solid currentColor;
+  border-radius: var(--radius-full);
+  background: var(--color-band-blue);
+  font-size: var(--text-lead);
+  line-height: 1;
+  transition:
+    background var(--duration-base) var(--ease-out),
+    color var(--duration-base) var(--ease-out),
+    border-color var(--duration-base) var(--ease-out),
+    transform var(--duration-base) var(--ease-out);
+}
+.rc-step-label {
+  text-decoration: underline transparent;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
+  transition: text-decoration-color var(--duration-fast) var(--ease-out);
+}
+.rc-step-button:hover .rc-step-label {
+  text-decoration-color: currentColor;
+}
+.rc-step-button:hover .rc-step-number {
+  transform: scale(1.08);
+}
+.rc-step-panel {
+  display: grid;
+  grid-template-rows: 1fr;
+  padding-left: calc(var(--rc-dot) + var(--space-4));
+  transition:
+    grid-template-rows var(--duration-base) var(--ease-out),
+    visibility 0s;
+}
+.rc-step-panel > div {
+  min-height: 0;
+  overflow: hidden;
+}
+.rc-step-body {
+  max-width: 24rem;
+  padding: var(--space-1) 0 var(--space-3);
+}
+/* The open step's number fills with the band's yellow (ink on it, 13.5:1). */
+.js .rc-step[data-open="true"] .rc-step-number {
+  background: var(--color-highlight);
+  border-color: var(--color-highlight);
+  color: var(--color-ink);
+}
+.js .rc-step:not([data-open="true"]) .rc-step-panel {
+  grid-template-rows: 0fr;
+  visibility: hidden;
+  transition:
+    grid-template-rows var(--duration-base) var(--ease-out),
+    visibility 0s var(--duration-base);
 }
 .inline-link {
   font-weight: var(--weight-black);
@@ -503,34 +637,70 @@ body:has(.subpage-hero) .site-header:not([data-scrolled="true"]):not(:has(.site-
 .art-split-art--fixweek {
   width: var(--fixweek-art);
 }
-/* The guarantee carries the most weight in the section: the hero size, in
-   the accent (9.38:1 on the ground). */
+/* The guarantee: a full-width type statement at the Problem heading's size
+   (set with it above), in the accent (9.38:1 on the ground). */
 .fix-guarantee {
-  margin-top: var(--space-8);
-  font-family: var(--font-display);
-  font-size: var(--text-hero);
-  font-weight: var(--weight-bold);
-  line-height: 1;
+  margin-top: var(--space-9);
   text-wrap: balance;
   color: var(--color-accent);
 }
-/* "Things we've fixed" (copy handoff, 2026-11-18): a sub-heading inside the
-   section, at the card title size, over the three examples in a row. */
+/* "Things we've fixed": three cards, each split into what was wrong (on
+   white) and how it came out (on the accent, white on it 11.18:1), the
+   comp's arrow leading the outcome. */
 .fix-week-examples-heading {
-  margin-top: var(--space-8);
+  margin-top: var(--space-9);
   font-size: var(--text-card);
 }
 .fix-examples {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--space-5) var(--space-6);
+  gap: var(--space-4);
   margin: var(--space-5) 0 0;
   padding: 0;
   list-style: none;
 }
-.fix-examples li {
-  padding-top: var(--space-4);
-  border-top: 1px solid var(--color-image-stroke);
+.fix-example {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  color: var(--color-ink);
+  transition:
+    transform var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out);
+}
+.fix-example:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lift);
+}
+.fix-example-problem {
+  flex: 1;
+  padding: var(--space-5);
+}
+.fix-example-outcome {
+  position: relative;
+  padding: var(--space-4) var(--space-5) var(--space-4) calc(var(--space-5) + var(--space-6));
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+  font-family: var(--font-display);
+  font-size: var(--text-lead);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-title);
+}
+.fix-example-outcome::before {
+  content: "";
+  position: absolute;
+  left: var(--space-5);
+  top: calc(var(--space-4) + 0.3em);
+  width: var(--space-4);
+  height: var(--space-3);
+  background: currentColor;
+  mask: url("/art/mb11/arrow.svg") center / contain no-repeat;
+  transition: transform var(--duration-base) var(--ease-out);
+}
+.fix-example:hover .fix-example-outcome::before {
+  transform: translateX(3px);
 }
 .fix-week-close {
   display: flex;
@@ -550,11 +720,11 @@ body:has(.subpage-hero) .site-header:not([data-scrolled="true"]):not(:has(.site-
 }
 
 /* ------------------------------------------------------- Track record */
-/* 394:1892: curve top left, cut bottom right. Since the cut of 2026-11-22:
-   heading left and intro right, then four white cards two by two, each
-   client, meta line, the number in the case's colour, one proof sentence,
-   and "More" to /case-studies. The .case-* rules below are shared with
-   that page. */
+/* 394:1892: curve top left, cut bottom right. Heading left and intro
+   right, then four white stat cards two by two: the number is the hero of
+   the card, in the case's colour, over its label, the client, the meta
+   line, and "More" to /case-studies. Then the experience strip as one white
+   stat band. The .case-* rules below are shared with /case-studies. */
 .track-record {
   --pad-top: var(--space-9);
   --pad-bottom: var(--space-10);
@@ -586,10 +756,31 @@ body:has(.subpage-hero) .site-header:not([data-scrolled="true"]):not(:has(.site-
 }
 .proof-card:hover,
 .proof-card:has(.proof-card-link:focus-visible) {
+  transform: translateY(-3px);
   box-shadow: var(--shadow-lift);
 }
-.proof-card-client {
+.proof-card-figure {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-1) var(--space-3);
   margin: 0;
+  font-family: var(--font-display);
+  font-weight: var(--weight-bold);
+}
+/* Large text in the case's colour: 4.05:1 or better on white. */
+.proof-card-figure-value {
+  font-size: calc(var(--text-hero) * 1.25);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--case-accent);
+}
+.proof-card-figure-caption {
+  font-size: var(--text-lead);
+  line-height: var(--leading-title);
+}
+.proof-card-client {
+  margin: var(--space-5) 0 0;
   font-family: var(--font-display);
   font-size: var(--text-card);
   font-weight: var(--weight-light);
@@ -598,30 +789,18 @@ body:has(.subpage-hero) .site-header:not([data-scrolled="true"]):not(:has(.site-
 .proof-card-meta {
   margin-top: var(--space-1);
 }
-.proof-card-figure {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: var(--space-1) var(--space-3);
-  margin-top: var(--space-5);
-  font-family: var(--font-display);
-  font-weight: var(--weight-bold);
-}
-/* Large text in the case's colour: 4.05:1 or better on white. */
-.proof-card-figure-value {
-  font-size: var(--text-hero);
-  line-height: 1;
-  color: var(--case-accent);
-}
-.proof-card-figure-caption {
-  font-size: var(--text-lead);
-  line-height: var(--leading-title);
-}
 .proof-card-proof {
   margin-top: var(--space-3);
 }
 .proof-card-link::after {
   border-radius: var(--radius-md);
+}
+.proof-card .offer-card-arrow {
+  transition: transform var(--duration-base) var(--ease-out);
+}
+.proof-card:hover .offer-card-arrow,
+.proof-card:has(.proof-card-link:focus-visible) .offer-card-arrow {
+  transform: translateX(3px);
 }
 @media (max-width: 760px) {
   .track-head,
@@ -782,10 +961,13 @@ body:has(.subpage-hero) .site-header:not([data-scrolled="true"]):not(:has(.site-
 
 /* -------------------------------------------------------- Bigger fixes */
 /* One blue band 394:1893 (cut top left, curve bottom right), the eyebrow
-   and heading 376:1755 inside it, directly after The Fix. Since the cut of
-   2026-11-22: four outlined cards, Web Partner leading on the left at the
-   full height, the other three stacked to its right, each a title, one
-   line, and its pill. The outline is decoration, the offer card's radius. */
+   and heading 376:1755 inside it, directly after The Fix. A bento grid
+   since 2026-11-22: Web Partner is the large tile, two columns by two rows,
+   with the ownership callout at its foot, two small tiles sit beside it and
+   one runs the full width under it. Tiles are a darker tint of the band
+   (black at 14%), which raises the white text's contrast above the band's
+   own 4.51:1. The pill's link is stretched over its tile, so the whole tile
+   is the target and the pill's hover state answers a hover anywhere on it. */
 .fixes-band {
   margin-top: var(--space-10);
   padding-block: var(--space-9);
@@ -797,24 +979,38 @@ body:has(.subpage-hero) .site-header:not([data-scrolled="true"]):not(:has(.site-
 }
 .fix-grid {
   display: grid;
-  grid-template-columns: minmax(0, 5fr) minmax(0, 4fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--space-4);
   margin: 0;
   padding: 0;
   list-style: none;
 }
 .fix {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: center;
-  padding: var(--space-5) var(--space-6);
-  border: 1px solid rgb(var(--white-rgb) / 0.45);
+  padding: var(--space-6);
+  background: rgb(var(--black-rgb) / 0.14);
   border-radius: var(--radius-card);
+  transition:
+    background var(--duration-base) var(--ease-out),
+    transform var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out);
+}
+.fix:hover,
+.fix:has(.fix-link:focus-visible) {
+  background: rgb(var(--black-rgb) / 0.26);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lift);
 }
 .fix--lead {
-  grid-row: 1 / span 3;
+  grid-column: 1 / span 2;
+  grid-row: 1 / span 2;
   padding: var(--space-7);
+}
+.fix:last-child {
+  grid-column: 1 / -1;
 }
 .fix-title {
   margin: 0;
@@ -827,21 +1023,28 @@ body:has(.subpage-hero) .site-header:not([data-scrolled="true"]):not(:has(.site-
 .fix-line {
   margin-top: var(--space-2);
 }
-.fix-link {
-  margin-top: var(--space-4);
+/* Static, so the pill's 44px target pseudo-element (.btn::before) anchors
+   to the tile and covers it. */
+.fix .fix-link {
+  position: static;
+  margin-top: var(--space-5);
+}
+.fix .fix-link::before {
+  inset: 0;
+  border-radius: var(--radius-card);
 }
 .fix--lead .fix-title {
-  font-size: var(--text-heading);
+  font-size: var(--text-hero);
 }
 .fix--lead .fix-line {
   margin-top: var(--space-3);
   font-size: var(--text-lead);
 }
-.fix--lead .fix-link {
-  margin-top: var(--space-5);
-}
 .fix--lead .callout {
-  margin-top: var(--space-7);
+  margin-top: auto;
+}
+.fix--lead .fix-link {
+  margin-bottom: var(--space-8);
 }
 
 @media (max-width: 760px) {
@@ -849,6 +1052,7 @@ body:has(.subpage-hero) .site-header:not([data-scrolled="true"]):not(:has(.site-
     grid-template-columns: minmax(0, 1fr);
   }
   .fix--lead {
+    grid-column: auto;
     grid-row: auto;
     padding: var(--space-6);
   }
@@ -947,18 +1151,20 @@ body:has(.subpage-hero) .site-header:not([data-scrolled="true"]):not(:has(.site-
 }
 
 /* --------------------------------------------------- Credibility strip */
-/* 388:1867 to 388:1871: four lines in the comp blue, Helvetica Light 32,
-   on the ground under How we work. Large text, so 3.44:1 passes. */
+/* 388:1867 to 388:1871: four lines in the comp blue, Helvetica Light 32.
+   Since 2026-11-22 one white stat band under the case cards, inside the
+   Proof band. Large text: the blue is 4.10:1 on white. */
 .strip {
-  padding-block: var(--space-8) calc(var(--space-10) + var(--space-4));
+  margin-top: var(--space-4);
+  padding: var(--space-6);
 }
 .strip-list {
   display: grid;
   /* 388:1868, 388:1867, 388:1870, 388:1871 are 246, 212, 171, 211 wide. */
   grid-template-columns: minmax(0, 246fr) minmax(0, 212fr) minmax(0, 171fr) minmax(0, 211fr);
-  gap: var(--space-6) var(--space-7);
+  gap: var(--space-5) var(--space-6);
   margin: 0;
-  padding: 0 0 0 var(--hero-indent);
+  padding: 0;
   list-style: none;
   font-family: var(--font-display);
   font-size: var(--text-subtitle);
@@ -969,14 +1175,14 @@ body:has(.subpage-hero) .site-header:not([data-scrolled="true"]):not(:has(.site-
 @media (max-width: 900px) {
   .strip-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    padding-left: 0;
   }
 }
 @media (max-width: 760px) {
   .strip {
-    padding-block: var(--space-8) var(--space-9);
+    padding: var(--space-5);
   }
   .strip-list {
+    grid-template-columns: minmax(0, 1fr);
     font-size: var(--text-card);
   }
 }
@@ -994,14 +1200,33 @@ body:has(.subpage-hero) .site-header:not([data-scrolled="true"]):not(:has(.site-
 .team {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--space-7) var(--space-6);
+  gap: var(--space-4);
   margin-top: var(--space-7);
 }
+/* Photo cards (2026-11-22): each principal on a ground-coloured card on the
+   white band. On hover the card lifts, the keyline takes the site blue, and
+   the photo eases in a touch. */
 .team-member {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: var(--space-6) var(--space-5);
+  background: var(--color-bg);
+  border-radius: var(--radius-md);
   color: var(--color-ink);
+  transition:
+    transform var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out);
+}
+.team-member:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lift);
+}
+.team-member:hover .team-circle {
+  border-color: var(--color-band-blue);
+}
+.team-member:hover .team-photo {
+  transform: scale(1.05);
 }
 .team-circle {
   display: grid;
@@ -1014,11 +1239,13 @@ body:has(.subpage-hero) .site-header:not([data-scrolled="true"]):not(:has(.site-
      circle holds its edge on the white band (Drew, 2026-11-22). */
   background: var(--color-surface);
   border: 1px solid var(--color-image-stroke);
+  transition: border-color var(--duration-base) var(--ease-out);
 }
 .team-photo {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform var(--duration-slow) var(--ease-out);
 }
 .team-initials {
   font-family: var(--font-display);
@@ -1098,6 +1325,57 @@ body:has(.subpage-hero) .site-header:not([data-scrolled="true"]):not(:has(.site-
 }
 .contact-actions {
   margin-top: var(--space-2);
+}
+/* Form states (2026-11-22). Focus: the accent border inside the site's
+   focus outline. Error: the comp red on the border and a bar inside the
+   field's left edge (4.05:1 on white, a boundary, not text), with the
+   message under the field in ink. Passed: a check in the Fix green after
+   the label. While it sends, the button dims and stops taking clicks. */
+.field-input {
+  transition:
+    border-color var(--duration-fast) var(--ease-out),
+    box-shadow var(--duration-fast) var(--ease-out);
+}
+.field-input:hover {
+  border-color: var(--color-ink);
+}
+.field-input:focus-visible {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 1px var(--color-accent);
+}
+.field[data-state="invalid"] .field-input {
+  border-color: var(--color-accent-red);
+  box-shadow: inset var(--space-1) 0 0 var(--color-accent-red);
+}
+.field-error {
+  display: flex;
+  gap: var(--space-2);
+  font-weight: var(--weight-black);
+  color: var(--color-ink);
+  animation: reveal-in var(--duration-base) var(--ease-out) backwards;
+}
+.field-error::before {
+  content: "";
+  flex: none;
+  width: var(--space-2);
+  height: var(--space-2);
+  margin-top: 0.45em;
+  border-radius: var(--radius-full);
+  background: var(--color-accent-red);
+}
+.field[data-state="valid"] .field-label::after {
+  content: "";
+  display: inline-block;
+  width: 0.35em;
+  height: 0.7em;
+  margin-left: var(--space-3);
+  border: solid var(--color-hero-fix);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg) translateY(-0.1em);
+}
+.contact-form[data-sending] .btn-primary {
+  opacity: 0.6;
+  pointer-events: none;
 }
 .contact-alt {
   font-size: var(--text-small);
@@ -1598,7 +1876,8 @@ body:has(.subpage-hero) .site-header:not([data-scrolled="true"]):not(:has(.site-
   font-variant-numeric: tabular-nums;
 }
 /* While it counts, the real value keeps the box and stays readable to
-   assistive tech, and the running value is drawn over it. */
+   assistive tech, and the running value is drawn over it, wrapping as the
+   real one does. */
 .countup[data-running="true"] .countup-final {
   opacity: 0;
 }
@@ -1606,16 +1885,17 @@ body:has(.subpage-hero) .site-header:not([data-scrolled="true"]):not(:has(.site-
   position: absolute;
   left: 0;
   top: 0;
-  white-space: nowrap;
+  width: 100%;
 }
 .cases-lead {
-  --pad-bottom: var(--space-8);
+  --pad-bottom: var(--space-9);
 }
-/* The results strip: the four numbers in a row, each a link to its case. */
+/* The results strip: the four numbers as white cards in a row, each a link
+   to its case. */
 .cases-results {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: var(--space-6) var(--space-5);
+  gap: var(--space-4);
   margin: var(--space-8) 0 0;
   padding: 0;
   list-style: none;
@@ -1624,15 +1904,23 @@ body:has(.subpage-hero) .site-header:not([data-scrolled="true"]):not(:has(.site-
   display: flex;
   flex-direction: column;
   height: 100%;
-  padding-top: var(--space-4);
-  border-top: var(--space-1) solid var(--case-accent);
+  padding: var(--space-5);
   color: var(--color-ink);
+  transition:
+    transform var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out);
+}
+.cases-result:hover,
+.cases-result:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lift);
 }
 .cases-result-figure {
   font-family: var(--font-display);
-  font-size: var(--text-heading);
+  font-size: var(--text-figure);
   font-weight: var(--weight-bold);
   line-height: 1;
+  letter-spacing: -0.02em;
   white-space: nowrap;
   color: var(--case-accent);
 }
@@ -1645,38 +1933,49 @@ body:has(.subpage-hero) .site-header:not([data-scrolled="true"]):not(:has(.site-
 }
 .cases-result-client {
   margin-top: auto;
-  padding-top: var(--space-3);
-  text-decoration: underline transparent;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 4px;
-  transition: text-decoration-color var(--duration-fast) var(--ease-out);
-}
-.cases-result:hover .cases-result-client,
-.cases-result:focus-visible .cases-result-client {
-  text-decoration-color: currentColor;
+  padding-top: var(--space-4);
 }
 
 /* The index beside the cases. Sticky under the header at desktop widths,
-   a scrolling row of chips below them. */
+   with a track that fills as the cases scroll past, and a scrolling row of
+   chips below them. The fill is a CSS scroll-driven animation on the case
+   list's view timeline where the browser has one (motion.css). Without it
+   the fill steps to the current case from --cases-progress. */
 .cases-body {
   display: grid;
-  grid-template-columns: calc(var(--space-11) + var(--space-7)) minmax(0, 1fr);
-  column-gap: var(--space-8);
+  grid-template-columns: calc(var(--space-11) + var(--space-4)) minmax(0, 1fr);
+  column-gap: var(--space-7);
   align-items: start;
 }
 .cases-index {
   position: sticky;
+  z-index: 1;
   top: calc(var(--header-height) + var(--space-6));
+  margin-top: var(--space-9);
+}
+.cases-index-track {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--color-image-stroke);
+}
+.cases-index-fill {
+  position: absolute;
+  inset: 0;
+  background: var(--color-band-blue);
+  transform: scaleY(var(--cases-progress, 0));
+  transform-origin: top;
+  transition: transform var(--duration-slow) var(--ease-out);
 }
 .cases-index ul {
   display: grid;
   margin: 0;
   padding: 0;
   list-style: none;
-  border-left: 1px solid var(--color-image-stroke);
 }
 .cases-index a {
-  position: relative;
   display: flex;
   align-items: center;
   min-height: 44px;
@@ -1686,37 +1985,42 @@ body:has(.subpage-hero) .site-header:not([data-scrolled="true"]):not(:has(.site-
   font-weight: var(--weight-bold);
   line-height: var(--leading-title);
   color: var(--color-text-muted);
-  transition: color var(--duration-base) var(--ease-out);
-}
-/* The marker: a bar in the case's colour that grows in on the current case. */
-.cases-index a::before {
-  content: "";
-  position: absolute;
-  left: -2px;
-  top: var(--space-2);
-  bottom: var(--space-2);
-  width: 3px;
-  background: var(--case-accent);
-  transform: scaleY(0);
-  transition: transform var(--duration-base) var(--ease-out);
+  transition:
+    color var(--duration-base) var(--ease-out),
+    transform var(--duration-base) var(--ease-out);
 }
 .cases-index a:hover,
 .cases-index a[aria-current] {
   color: var(--color-ink);
 }
-.cases-index a[aria-current]::before {
-  transform: scaleY(1);
+.cases-index a[aria-current] {
+  transform: translateX(var(--space-1));
 }
 
+/* The cases, on alternating surfaces: ground, then white run to the page
+   edges (a spread shadow, clipped to the case's own height). */
 .cases-list {
   display: grid;
-  gap: var(--space-10);
 }
 .case-study {
-  scroll-margin-top: calc(var(--header-height) + var(--space-5));
-  padding-top: var(--space-6);
-  border-top: var(--space-1) solid var(--case-accent);
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  column-gap: var(--space-7);
+  align-items: start;
+  padding-block: var(--space-9);
+  scroll-margin-top: var(--header-height);
   color: var(--color-ink);
+}
+.case-study:nth-child(even) {
+  background: var(--color-surface);
+  box-shadow: 0 0 0 100vmax var(--color-surface);
+  clip-path: inset(0 -100vmax);
+}
+/* Outcome first, and pinned: client, meta line, and the number hold under
+   the header while the narrative scrolls beside them. */
+.case-study-pin {
+  position: sticky;
+  top: calc(var(--header-height) + var(--space-6));
 }
 .case-study-client {
   margin: 0;
@@ -1726,68 +2030,58 @@ body:has(.subpage-hero) .site-header:not([data-scrolled="true"]):not(:has(.site-
   line-height: var(--leading-title);
 }
 .case-study-meta {
-  margin-top: var(--space-1);
+  margin-top: var(--space-2);
 }
-/* Outcome first: the number is the case's headline. */
 .case-study-figure {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: var(--space-2) var(--space-4);
-  margin-top: var(--space-5);
+  display: grid;
+  gap: var(--space-2);
+  margin-top: var(--space-6);
   font-family: var(--font-display);
   font-weight: var(--weight-bold);
 }
 .case-study-figure-value {
-  font-size: calc(var(--text-hero) * 1.5);
-  line-height: 1;
+  font-size: calc(var(--text-hero) * 1.25);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
   color: var(--case-accent);
 }
 .case-study-figure-caption {
   font-size: var(--text-card);
   line-height: var(--leading-title);
 }
-.case-study-grid {
+.case-study-scroll {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) var(--case-image);
-  gap: var(--space-6) var(--space-7);
-  align-items: start;
-  margin-top: var(--space-7);
-}
-/* The artwork alternates sides down the page. */
-.case-study:nth-child(even) .case-study-grid {
-  grid-template-columns: var(--case-image) minmax(0, 1fr);
-}
-.case-study:nth-child(even) .case-study-side {
-  order: -1;
+  gap: var(--space-7);
 }
 .case-study-story {
   display: grid;
-  gap: var(--space-5);
+  gap: var(--space-6);
   margin: 0;
 }
 .case-study-beat dt {
-  margin-bottom: var(--space-1);
+  margin-bottom: var(--space-2);
 }
 .case-study-beat dd {
   margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--text-lead);
+  font-weight: var(--weight-light);
+  line-height: var(--leading-copy);
 }
 /* Proof carries the most weight of the three beats. */
 .case-study-beat--proof {
-  padding: var(--space-5);
+  padding-left: var(--space-5);
   border-left: var(--space-1) solid var(--case-accent);
-  border-radius: 0 var(--radius-md) var(--radius-md) 0;
 }
 .case-study-beat--proof dd {
-  font-family: var(--font-display);
-  font-size: var(--text-card);
+  font-size: var(--text-subtitle);
   font-weight: var(--weight-bold);
   line-height: var(--leading-title);
   text-wrap: balance;
 }
 .case-study-side {
   display: grid;
-  gap: var(--space-5);
+  gap: var(--space-4);
 }
 .case-study-art {
   display: grid;
@@ -1804,13 +2098,18 @@ body:has(.subpage-hero) .site-header:not([data-scrolled="true"]):not(:has(.site-
   font-size: var(--text-hero);
   font-weight: var(--weight-bold);
 }
-/* At a glance: the meta line and link labels as labelled rows. */
+/* At a glance: the meta line and link labels as labelled rows, on the
+   surface the case is not on. */
 .case-study-facts {
   display: grid;
   gap: var(--space-3);
   margin: 0;
-  padding-top: var(--space-4);
-  border-top: 1px solid var(--color-image-stroke);
+  padding: var(--space-5);
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+}
+.case-study:nth-child(even) .case-study-facts {
+  background: var(--color-bg);
 }
 .case-study-facts > div {
   display: grid;
@@ -1838,14 +2137,16 @@ body:has(.subpage-hero) .site-header:not([data-scrolled="true"]):not(:has(.site-
   }
   .cases-index {
     position: static;
-    margin-bottom: var(--space-7);
+    margin: 0 0 var(--space-5);
+  }
+  .cases-index-track {
+    display: none;
   }
   .cases-index ul {
     display: flex;
     gap: var(--space-2);
     padding: var(--space-1);
     margin: calc(var(--space-1) * -1);
-    border-left: 0;
     overflow-x: auto;
     scrollbar-width: thin;
   }
@@ -1859,10 +2160,8 @@ body:has(.subpage-hero) .site-header:not([data-scrolled="true"]):not(:has(.site-
       background var(--duration-base) var(--ease-out),
       border-color var(--duration-base) var(--ease-out);
   }
-  .cases-index a::before {
-    display: none;
-  }
   .cases-index a[aria-current] {
+    transform: none;
     background: var(--color-surface);
     border-color: var(--case-accent);
     box-shadow: inset 0 0 0 1px var(--case-accent);
@@ -1874,15 +2173,13 @@ body:has(.subpage-hero) .site-header:not([data-scrolled="true"]):not(:has(.site-
   }
 }
 @media (max-width: 760px) {
-  .cases-list {
-    gap: var(--space-9);
-  }
-  .case-study-grid,
-  .case-study:nth-child(even) .case-study-grid {
+  .case-study {
     grid-template-columns: minmax(0, 1fr);
+    row-gap: var(--space-6);
+    padding-block: var(--space-8);
   }
-  .case-study:nth-child(even) .case-study-side {
-    order: 0;
+  .case-study-pin {
+    position: static;
   }
   .case-study-figure-value {
     font-size: var(--text-hero);

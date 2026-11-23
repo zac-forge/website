@@ -1,15 +1,7 @@
-import { motion, useReducedMotion } from "motion/react";
 import { Magnetic } from "./Magnetic";
 import { SubpageHero } from "./SubpageHero";
 import { BOOKING_URL } from "../lib/links";
-import { EASE, staggerContainer } from "../lib/motion";
-
-const container = staggerContainer(0.1, 0.05);
-
-const item = {
-  hidden: { opacity: 0, y: 26 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.75, ease: EASE } },
-};
+import { step } from "../lib/reveal";
 
 /**
  * Misha's home banner of 2026-11-13 (412:1907 and its siblings, cached in
@@ -20,27 +12,28 @@ const item = {
  * booking pill here; the booking pill (Drew, 2026-11-05) stays. The proof
  * line under the buttons was removed by Drew on 2026-11-13. The OG cards
  * (public/og/) are drawn from this hero by `npm run og`; rerun it after a change.
+ *
+ * The entrance is staged in CSS (motion.css, `.hero-stage`): the two headline
+ * lines, the subline, the buttons, then the Z, on load, with no script, so
+ * the headline paints without waiting for the bundle.
  */
 export function Hero() {
-  const shouldReduceMotion = useReducedMotion();
-
   return (
     <SubpageHero variant="home">
       <div className="hero-grid">
-        <motion.div
-          className="hero-copy"
-          variants={container}
-          initial={shouldReduceMotion ? false : "hidden"}
-          animate="show"
-        >
-          <motion.h1 className="h1 hero-title" variants={item}>
-            <span className="h-light hero-title-lead">AI made everyone an IT expert.</span>{" "}
-            <span>It didn't make IT work.</span>
-          </motion.h1>
-          <motion.p className="hero-body copy" variants={item}>
+        <div className="hero-copy">
+          <h1 className="h1 hero-title">
+            <span className="h-light hero-title-lead hero-stage" style={step(0)}>
+              AI made everyone an IT expert.
+            </span>{" "}
+            <span className="hero-stage" style={step(1)}>
+              It didn't make IT work.
+            </span>
+          </h1>
+          <p className="hero-body copy hero-stage" style={step(2)}>
             We bring clarity and sanity. Start with a free senior review of your project.
-          </motion.p>
-          <motion.div className="cta-row" variants={item}>
+          </p>
+          <div className="cta-row hero-stage" style={step(3)}>
             <Magnetic>
               <a className="btn btn-primary" href="/#contact">
                 <span>Get a free Reality Check</span>{" "}
@@ -50,8 +43,8 @@ export function Hero() {
             <a className="btn btn-secondary" href={BOOKING_URL}>
               <span>Book a 20-minute call</span>
             </a>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
 
         {/* Entrance is a CSS animation on the image itself, in motion.css. */}
         <div className="hero-visual" aria-hidden="true">

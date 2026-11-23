@@ -13,6 +13,10 @@ import "./styles/layout.css";
 import "./styles/interactive.css";
 import App from "./App.tsx";
 
+// Tells the inline script in index.html that the bundle started, so the
+// scroll reveals keep their hidden state for the observer to lift.
+(window as unknown as { __zac?: boolean }).__zac = true;
+
 const root = document.getElementById("root")!;
 const tree = (
   <StrictMode>

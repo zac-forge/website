@@ -1,6 +1,5 @@
-import { motion } from "motion/react";
 import { Reveal } from "./Reveal";
-import { fadeUpSmall } from "../lib/motion";
+import { step } from "../lib/reveal";
 import { TEAM, TEAM_INTRO } from "../pages/team";
 
 /**
@@ -54,11 +53,11 @@ export function WhoWeAre({ bios = true }: { bios?: boolean } = {}) {
             </p>
           ))}
         </Reveal>
-        <Reveal className="team" stagger={0.08}>
-          {TEAM.map((m) => {
+        <Reveal className="team" stagger>
+          {TEAM.map((m, i) => {
             const photo = photoFor(m.slug);
             return (
-              <motion.div className="team-member" key={m.slug} variants={fadeUpSmall}>
+              <div className="team-member reveal-item" style={step(i)} key={m.slug}>
                 <div className="team-circle" aria-hidden="true">
                   {photo ? (
                     <img className="team-photo" src={photo} alt="" width={176} height={176} loading="lazy" />
@@ -77,7 +76,7 @@ export function WhoWeAre({ bios = true }: { bios?: boolean } = {}) {
                       ))
                     : null}
                 </div>
-              </motion.div>
+              </div>
             );
           })}
         </Reveal>

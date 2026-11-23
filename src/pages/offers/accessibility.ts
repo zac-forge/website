@@ -9,10 +9,10 @@ export const accessibility: Offer = {
   title: "Accessibility fixes for ADA Title II deadlines | ZAC Forge",
   description:
     "Public agencies and HHS-funded health providers face accessibility deadlines in 2027 and 2028. We test by hand, fix the code to WCAG 2.1 AA, and document it.",
-  serviceName: "Accessibility and Performance",
+  serviceName: "Accessibility",
   serviceDescription:
     "Manual accessibility testing and code fixes to WCAG 2.1 AA, for public agencies facing ADA Title II deadlines, HHS-funded health providers facing Section 504 deadlines, and private businesses. Findings ranked by risk, fixes made in the code, and a written record. No overlays.",
-  heroTitle: "Accessibility & Performance",
+  heroTitle: "Accessibility",
   heroIcon: { src: "/art/subpage/subpage-icon-accessibility.svg", width: 47, height: 47 },
   // TODO(Misha): no card design for Accessibility yet. The
   // site blue and the hero's accessibility icon stand in (question 44).

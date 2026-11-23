@@ -6,6 +6,7 @@ import { Magnetic } from "../components/Magnetic";
 import { SubpageHero } from "../components/SubpageHero";
 import { Reveal } from "../components/Reveal";
 import { CountUp } from "../components/CountUp";
+import { step } from "../lib/reveal";
 import { CASE_STUDIES, CASE_STUDIES_INTRO, caseMeta } from "./caseStudies";
 import type { CaseStudy } from "./caseStudies";
 
@@ -17,7 +18,7 @@ function CaseImage({ image }: { image: { base: string; alt: string } }) {
       className="case-image"
       src={`${image.base}-720.webp`}
       srcSet={`${image.base}-360.webp 360w, ${image.base}-720.webp 720w`}
-      sizes="(max-width: 760px) calc(100vw - 48px), 360px"
+      sizes="(max-width: 760px) calc(100vw - 48px), 400px"
       alt={image.alt}
       width={302}
       height={170}
@@ -33,32 +34,45 @@ function CaseImage({ image }: { image: { base: string; alt: string } }) {
  */
 function Results() {
   return (
-    <ul className="cases-results">
-      {CASE_STUDIES.filter((s) => s.figure).map((study) => (
-        <li key={study.slug} style={accentStyle(study)}>
-          <a className="cases-result" href={`#${study.slug}`}>
-            <span className="cases-result-figure">
-              <CountUp value={study.figure!} />
-            </span>
-            {study.figureCaption ? (
-              <span className="cases-result-caption">{study.figureCaption}</span>
-            ) : null}
-            <span className="cases-result-client case-text">{study.client}</span>
-          </a>
-        </li>
-      ))}
-    </ul>
+    <Reveal stagger>
+      <ul className="cases-results">
+        {CASE_STUDIES.filter((s) => s.figure).map((study, i) => (
+          <li className="reveal-item" key={study.slug} style={{ ...accentStyle(study), ...step(i) }}>
+            <a className="cases-result surface" href={`#${study.slug}`}>
+              <span className="cases-result-figure">
+                <CountUp value={study.figure!} />
+              </span>
+              {study.figureCaption ? (
+                <span className="cases-result-caption">{study.figureCaption}</span>
+              ) : null}
+              <span className="cases-result-client case-text">{study.client}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </Reveal>
   );
 }
 
 /**
  * The client index. One list, laid out twice by CSS: a sticky column beside
- * the cases at desktop widths, a horizontally scrolling row of chips below
- * that. The current case is marked with aria-current as it scrolls past.
+ * the cases at desktop widths, with a track that fills as the cases scroll
+ * past, and a horizontally scrolling row of chips below that. The current
+ * case is marked with aria-current. The track is a CSS scroll-driven
+ * animation where the browser has one. Elsewhere it steps to the current
+ * case, from the same observer that sets aria-current.
  */
 function CaseIndex({ current }: { current: string | null }) {
+  const at = CASE_STUDIES.findIndex((s) => s.slug === current);
   return (
-    <nav className="cases-index" aria-label="Case studies">
+    <nav
+      className="cases-index"
+      aria-label="Case studies"
+      style={{ "--cases-progress": (at + 1) / CASE_STUDIES.length } as CSSProperties}
+    >
+      <span className="cases-index-track" aria-hidden="true">
+        <span className="cases-index-fill" />
+      </span>
       <ul>
         {CASE_STUDIES.map((study) => (
           <li key={study.slug} style={accentStyle(study)}>
@@ -73,104 +87,104 @@ function CaseIndex({ current }: { current: string | null }) {
 }
 
 /**
- * One case, outcome first: client and meta line, the number as the
- * headline, then the three labelled beats (Proof set heaviest) beside the
- * artwork and the at-a-glance facts. The facts are the card's meta line and
- * link labels split into labelled rows, no new copy.
+ * One case, outcome first. At desktop widths the client, meta line, and the
+ * number pin in the left column while the narrative scrolls beside them:
+ * the three labelled beats (Proof set heaviest), the artwork, and the
+ * at-a-glance facts. The facts are the card's meta line and link labels
+ * split into labelled rows, no new copy. Below desktop the case is one
+ * column in the same order.
  */
 function Case({ study }: { study: CaseStudy }) {
   const headingId = `${study.slug}-heading`;
   const links = [...(study.product?.href ? [study.product as { label: string; href: string }] : []), ...(study.moreLinks ?? [])];
   return (
     <article id={study.slug} className="case-study" style={accentStyle(study)} aria-labelledby={headingId}>
-      <Reveal>
-        <header className="case-study-head">
-          <h2 className="case-study-client" id={headingId}>
-            {study.client}
-          </h2>
-          {caseMeta(study) ? <p className="case-study-meta case-text">{caseMeta(study)}</p> : null}
-          {study.figure ? (
-            <p className="case-study-figure">
-              <CountUp value={study.figure} className="case-study-figure-value" />
-              {study.figureCaption ? (
-                <>
-                  {" "}
-                  <span className="case-study-figure-caption">{study.figureCaption}</span>
-                </>
-              ) : null}
-            </p>
-          ) : null}
-        </header>
+      <Reveal className="case-study-pin">
+        <h2 className="case-study-client" id={headingId}>
+          {study.client}
+        </h2>
+        {caseMeta(study) ? <p className="case-study-meta case-text">{caseMeta(study)}</p> : null}
+        {study.figure ? (
+          <p className="case-study-figure">
+            <CountUp value={study.figure} className="case-study-figure-value" />
+            {study.figureCaption ? (
+              <>
+                {" "}
+                <span className="case-study-figure-caption">{study.figureCaption}</span>
+              </>
+            ) : null}
+          </p>
+        ) : null}
+      </Reveal>
 
-        <div className="case-study-grid">
-          <dl className="case-study-story">
-            {study.problem ? (
-              <div className="case-study-beat">
-                <dt className="case-fact-label">Problem</dt>
-                <dd className="case-text">{study.problem}</dd>
+      <div className="case-study-scroll">
+        <dl className="case-study-story">
+          {study.problem ? (
+            <Reveal className="case-study-beat">
+              <dt className="case-fact-label">Problem</dt>
+              <dd>{study.problem}</dd>
+            </Reveal>
+          ) : null}
+          <Reveal className="case-study-beat">
+            <dt className="case-fact-label">What we built</dt>
+            <dd>{study.built}</dd>
+          </Reveal>
+          {study.proof ? (
+            <Reveal className="case-study-beat case-study-beat--proof">
+              <dt className="case-fact-label">Proof</dt>
+              <dd>{study.proof.join(" ")}</dd>
+            </Reveal>
+          ) : null}
+        </dl>
+
+        <Reveal className="case-study-side">
+          {study.images?.length ? (
+            <div className="case-study-art">
+              {study.images.map((image) => (
+                <CaseImage image={image} key={image.base} />
+              ))}
+            </div>
+          ) : study.figure ? (
+            <div className="case-study-art case-study-art--block" aria-hidden="true">
+              {study.figure}
+            </div>
+          ) : null}
+          <dl className="case-study-facts case-text">
+            {study.industry ? (
+              <div>
+                <dt className="case-fact-label">Sector</dt>
+                <dd>{study.industry}</dd>
               </div>
             ) : null}
-            <div className="case-study-beat">
-              <dt className="case-fact-label">What we built</dt>
-              <dd className="case-text">{study.built}</dd>
-            </div>
-            {study.proof ? (
-              <div className="case-study-beat case-study-beat--proof surface">
-                <dt className="case-fact-label">Proof</dt>
-                <dd>{study.proof.join(" ")}</dd>
+            {study.status ? (
+              <div>
+                <dt className="case-fact-label">Status</dt>
+                <dd>{study.status}</dd>
+              </div>
+            ) : null}
+            {links.length || study.product ? (
+              <div>
+                <dt className="case-fact-label">{links.length > 1 ? "Links" : "Link"}</dt>
+                <dd>
+                  {links.length ? (
+                    <ul className="case-study-links">
+                      {links.map((link) => (
+                        <li key={link.href}>
+                          <a className="inline-link" href={link.href}>
+                            {link.label}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    study.product?.label
+                  )}
+                </dd>
               </div>
             ) : null}
           </dl>
-
-          <div className="case-study-side">
-            {study.images?.length ? (
-              <div className="case-study-art">
-                {study.images.map((image) => (
-                  <CaseImage image={image} key={image.base} />
-                ))}
-              </div>
-            ) : study.figure ? (
-              <div className="case-study-art case-study-art--block" aria-hidden="true">
-                {study.figure}
-              </div>
-            ) : null}
-            <dl className="case-study-facts case-text">
-              {study.industry ? (
-                <div>
-                  <dt className="case-fact-label">Sector</dt>
-                  <dd>{study.industry}</dd>
-                </div>
-              ) : null}
-              {study.status ? (
-                <div>
-                  <dt className="case-fact-label">Status</dt>
-                  <dd>{study.status}</dd>
-                </div>
-              ) : null}
-              {links.length || study.product ? (
-                <div>
-                  <dt className="case-fact-label">{links.length > 1 ? "Links" : "Link"}</dt>
-                  <dd>
-                    {links.length ? (
-                      <ul className="case-study-links">
-                        {links.map((link) => (
-                          <li key={link.href}>
-                            <a className="inline-link" href={link.href}>
-                              {link.label}
-                            </a>
-                          </li>
-                        ))}
-                      </ul>
-                    ) : (
-                      study.product?.label
-                    )}
-                  </dd>
-                </div>
-              ) : null}
-            </dl>
-          </div>
-        </div>
-      </Reveal>
+        </Reveal>
+      </div>
     </article>
   );
 }

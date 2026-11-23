@@ -1,6 +1,5 @@
-import { useEffect, useRef, useState } from "react";
-import { animate, useInView, useReducedMotion } from "motion/react";
-import { EASE } from "../lib/motion";
+import { useEffect, useState } from "react";
+import { useInViewOnce, prefersReducedMotion } from "../lib/reveal";
 
 /**
  * A figure that counts up once, the first time it scrolls into view.
@@ -11,35 +10,32 @@ import { EASE } from "../lib/motion";
  * it still holds the box (no layout shift) and is still what assistive tech
  * reads, and the running value is drawn over it, hidden from assistive tech.
  * Static with reduced motion. A figure with no number to speak of ("$1B+")
- * is left alone.
+ * is left alone. The duration is the --duration-count token.
  */
 export function CountUp({ value, className = "" }: { value: string; className?: string }) {
-  const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, amount: 0.6 });
-  const shouldReduceMotion = useReducedMotion();
+  const [ref, inView] = useInViewOnce<HTMLSpanElement>(0.6);
   const [running, setRunning] = useState<string | null>(null);
 
-  const match = value.match(/^(\D*)([\d,]+)(.*)$/);
-  const target = match ? Number(match[2].replace(/,/g, "")) : 0;
-  const countable = Boolean(match) && target > 1;
-
   useEffect(() => {
-    if (!inView || !countable || shouldReduceMotion || !match) return;
+    const match = value.match(/^(\D*)([\d,]+)(.*)$/);
+    if (!inView || !match || prefersReducedMotion()) return;
     const [, prefix, digits, suffix] = match;
+    const target = Number(digits.replace(/,/g, ""));
+    if (target <= 1) return;
     const grouped = digits.includes(",");
-    const controls = animate(0, target, {
-      duration: 1.1,
-      ease: EASE,
-      onUpdate: (v) => {
-        const n = Math.round(v);
-        setRunning(`${prefix}${grouped ? n.toLocaleString("en-US") : n}${suffix}`);
-      },
-      onComplete: () => setRunning(null),
-    });
-    return () => controls.stop();
-    // The value is fixed for the life of the element.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [inView, countable, shouldReduceMotion]);
+    const duration = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--duration-count")) || 1100;
+    const start = performance.now();
+    let frame = 0;
+    const tick = (now: number) => {
+      const t = Math.min(1, (now - start) / duration);
+      if (t === 1) return setRunning(null);
+      const n = Math.round(target * (1 - Math.pow(1 - t, 4)));
+      setRunning(`${prefix}${grouped ? n.toLocaleString("en-US") : n}${suffix}`);
+      frame = requestAnimationFrame(tick);
+    };
+    frame = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(frame);
+  }, [inView, value]);
 
   return (
     <span ref={ref} className={`countup ${className}`.trim()} data-running={running !== null}>

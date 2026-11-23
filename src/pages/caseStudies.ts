@@ -26,8 +26,9 @@ export type CaseStudy = {
   built: string;
   /** One sentence per entry. The home card shows the first only. */
   proof?: string[];
-  /** False where the home card shows no proof sentence (Heritage Global
-   *  Partners: "Live since 2010" is already in its meta line). */
+  /** False where the home card shows no proof sentence: the number and the
+   *  meta line already say it (Heritage Global Partners, Disaster Legal
+   *  Services California). */
   homeProof?: boolean;
   /** Set large. The one hard number the case trades on. */
   figure?: string;
@@ -136,6 +137,8 @@ const LIVE: CaseStudy[] = [
     built:
       "California's disaster legal services portal, for Legal Access Alameda and the Disaster Legal Assistance Collaborative, a statewide alliance of legal aid groups and volunteer attorneys. One place for Californians hit by wildfires, earthquakes, and floods to find free legal help. Accessible and simple to use.",
     proof: ["It carried survivors of the 2025 Los Angeles fires to free legal help, in 7 languages."],
+    // Drew, 2026-11-22: the number and the meta line already say it.
+    homeProof: false,
     figure: "7",
     figureCaption: "languages",
     product: { label: "disasterlegalservicesca.org", href: "https://disasterlegalservicesca.org/" },

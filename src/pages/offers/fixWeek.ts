@@ -36,7 +36,12 @@ export const FIX_GUARANTEE = "If it isn't fixed, it's free.";
 export const FIX_HOME = {
   intro: `${FIX_LEAD}.`,
   examplesHeading: FIX_EXAMPLES_HEADING,
-  examples: FIX_EXAMPLES.map((e) => e.filter((s) => s.home).map((s) => s.text).join(" ")),
+  // Each home example splits into what was wrong (its first sentence) and
+  // how it came out (the rest), which the home cards set apart.
+  examples: FIX_EXAMPLES.map((e) => {
+    const [problem, ...outcome] = e.filter((s) => s.home).map((s) => s.text);
+    return { problem, outcome: outcome.join(" ") };
+  }),
 };
 
 export const fixWeek: Offer = {

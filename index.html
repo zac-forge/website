@@ -14,6 +14,16 @@
       JSON-LD from src/lib/meta.ts and src/lib/schema.ts. The dev server shows
       this template as-is, which is why it carries a plain title.
     -->
+    <!-- Marks the page as scripted before first paint, so the scroll reveals
+         hidden state (motion.css, under html.js) only ever applies when a
+         script is there to lift it. If the bundle has not started within 5
+         seconds the mark comes off and everything shows. -->
+    <script>
+      document.documentElement.classList.add("js");
+      setTimeout(function () {
+        if (!window.__zac) document.documentElement.classList.remove("js");
+      }, 5000);
+    </script>
     <title>ZAC Forge</title>
     <!--app-head-->
     <meta name="theme-color" content="#EBEBEB" />

@@ -43,13 +43,9 @@ remotely with clients anywhere in the US.
 - [Web Partner](https://zacforge.com/web-partner): ongoing senior care
   covering updates, backups, monitoring, change requests, one improvement a
   month, and visibility tracking. Not a maintenance plan.
-- Rescue: finishing what AI started and making it safe to run. If it can't be
-  saved, we build it properly from the ground up.
 - [Platform Escape](https://zacforge.com/platform-escape): off WordPress or
   Wix, onto a lean setup you own: cheaper to run, faster, safer, easier to
   find in search. You can still make your own simple updates.
-- AI-Ready Brand System: senior brand design turned into tokens, components,
-  and kits so AI-made work stays on brand.
 
 ## Track record
 

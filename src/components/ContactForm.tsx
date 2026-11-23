@@ -18,9 +18,30 @@ export function mailtoFor(fields: { name?: string; email?: string; message?: str
 }
 
 /**
+ * The inline messages, in the handler's own words (functions/api/contact.ts,
+ * `validate`), with its email test, so the form and the result page say the
+ * same thing about the same mistake.
+ */
+type Checked = "name" | "email" | "message";
+const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const CHECKS: Record<Checked, { ok: (v: string) => boolean; message: string }> = {
+  name: { ok: (v) => v.trim() !== "", message: "Please add your name." },
+  email: { ok: (v) => EMAIL.test(v.trim()), message: "Please add an email address we can reply to." },
+  message: { ok: (v) => v.trim() !== "", message: "Please tell us what you built, and what's wrong with it." },
+};
+type FieldState = "valid" | "invalid" | undefined;
+
+/**
  * The v5 contact form (decision 40). Fields exactly as the copy deck lists
  * them. A plain HTML form posting to /api/contact, so it works with scripting
  * off and is complete in the prerendered markup.
+ *
+ * With scripting on it validates inline: a field is checked when focus
+ * leaves it and on submit, its message sits under it (tied to it with
+ * aria-describedby, and aria-invalid set), a submit with a mistake moves
+ * focus to the first field that needs fixing, and a field that passes shows
+ * a mark. With scripting off the browser's own required and email checks
+ * apply, and the handler validates either way.
  *
  * Two fallbacks so nothing is lost before the Resend and Turnstile keys exist:
  * the handler logs the submission and offers a prefilled mailto on its
@@ -29,13 +50,37 @@ export function mailtoFor(fields: { name?: string; email?: string; message?: str
 export function ContactForm() {
   const formRef = useRef<HTMLFormElement>(null);
   const [mailto, setMailto] = useState(() => mailtoFor({}));
+  const [enhanced, setEnhanced] = useState(false);
+  const [state, setState] = useState<Partial<Record<Checked, FieldState>>>({});
+  const [sending, setSending] = useState(false);
 
-  function sync() {
+  useEffect(() => setEnhanced(true), []);
+
+  const valueOf = (name: string) => String(new FormData(formRef.current!).get(name) ?? "");
+
+  function check(name: Checked) {
+    const result: FieldState = CHECKS[name].ok(valueOf(name)) ? "valid" : "invalid";
+    setState((s) => ({ ...s, [name]: result }));
+    return result === "valid";
+  }
+
+  function sync(e: React.FormEvent<HTMLFormElement>) {
     const form = formRef.current;
     if (!form) return;
-    const data = new FormData(form);
-    const get = (k: string) => String(data.get(k) ?? "");
-    setMailto(mailtoFor({ name: get("name"), email: get("email"), message: get("message"), url: get("url") }));
+    setMailto(mailtoFor({ name: valueOf("name"), email: valueOf("email"), message: valueOf("message"), url: valueOf("url") }));
+    // A field already marked wrong clears as soon as it is right.
+    const name = (e.target as HTMLInputElement).name as Checked;
+    if (state[name] === "invalid" && CHECKS[name]?.ok(valueOf(name))) check(name);
+  }
+
+  function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+    const failed = (Object.keys(CHECKS) as Checked[]).filter((name) => !check(name));
+    if (failed.length) {
+      e.preventDefault();
+      formRef.current?.querySelector<HTMLElement>(`[name="${failed[0]}"]`)?.focus();
+      return;
+    }
+    setSending(true);
   }
 
   // Turnstile renders into the .cf-turnstile element once its script runs.
@@ -52,31 +97,54 @@ export function ContactForm() {
     document.head.appendChild(s);
   }, []);
 
+  /** The attributes a checked field carries, and the message under it. */
+  const fieldProps = (name: Checked) => ({
+    name,
+    required: true,
+    "aria-invalid": state[name] === "invalid" ? true : undefined,
+    "aria-describedby": state[name] === "invalid" ? `contact-${name}-error` : undefined,
+    onBlur: () => {
+      if (valueOf(name) !== "" || state[name]) check(name);
+    },
+  });
+  const error = (name: Checked) =>
+    state[name] === "invalid" ? (
+      <p className="field-error" id={`contact-${name}-error`}>
+        {CHECKS[name].message}
+      </p>
+    ) : null;
+
   return (
     <form
       ref={formRef}
       className="contact-form"
       method="post"
       action={CONTACT_ENDPOINT}
+      noValidate={enhanced}
       onInput={sync}
+      onSubmit={onSubmit}
+      data-sending={sending || undefined}
     >
-      <div className="field">
+      <div className="field" data-state={state.name}>
         <label className="field-label" htmlFor="contact-name">
           Name
         </label>
-        <input className="field-input" id="contact-name" name="name" type="text" autoComplete="name" required maxLength={200} />
+        <input className="field-input" id="contact-name" type="text" autoComplete="name" maxLength={200} {...fieldProps("name")} />
+        {error("name")}
       </div>
-      <div className="field">
+      <div className="field" data-state={state.email}>
         <label className="field-label" htmlFor="contact-email">
           Email
         </label>
-        <input className="field-input" id="contact-email" name="email" type="email" autoComplete="email" required maxLength={320} />
+        <input className="field-input" id="contact-email" type="email" autoComplete="email" maxLength={320} {...fieldProps("email")} />
+        {error("email")}
       </div>
-      <div className="field">
+      <div className="field" data-state={state.message}>
         <label className="field-label" htmlFor="contact-message">
           What did you build, and what's wrong with it?
         </label>
-        <textarea className="field-input field-textarea" id="contact-message" name="message" rows={6} required maxLength={5000} />
+        <textarea className="field-input field-textarea" id="contact-message" rows={6} maxLength={5000} {...fieldProps("message")} />
+        {error("message")}
       </div>
       <div className="field">
         <label className="field-label" htmlFor="contact-url">
@@ -96,7 +164,7 @@ export function ContactForm() {
 
       <div className="cta-row contact-actions">
         <Magnetic>
-          <button className="btn btn-primary" type="submit">
+          <button className="btn btn-primary" type="submit" aria-busy={sending || undefined}>
             <span>Send it</span>{" "}
             <span aria-hidden="true">→</span>
           </button>

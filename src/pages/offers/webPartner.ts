@@ -28,7 +28,7 @@ export const webPartner: Offer = {
     "Design too. We can turn your brand into a design system that your team and your AI tools build from, so what gets made stays on brand. And a senior designer is there when you need a sanity check.",
     "Month to month, or longer if you want. No strings.",
     "Having us on call is like having a mechanic you trust, but for your tech. If your nephew's vibe-coded CRM breaks and you lose your customer data, it would be nice to have a number to call.",
-    "Clients tend to stay. One for more than ten years, another for more than five, many for two to five.",
+    "Clients tend to stay. One for more than 10 years, another for more than five, many for two to five.",
   ],
   blocks: [
     {

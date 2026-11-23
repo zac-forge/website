@@ -1,10 +1,11 @@
 import { useRef } from "react";
-import { motion, useMotionValue, useSpring, useReducedMotion } from "motion/react";
+import { prefersReducedMotion } from "../lib/reveal";
 
 /**
  * Pulls its child a few pixels toward the cursor. Strength is deliberately
  * low: enough to feel responsive on approach, not enough to make the button
- * feel like it is dodging the pointer.
+ * feel like it is dodging the pointer. Mouse only, and off with reduced
+ * motion. The ease back is a CSS transition on .magnetic.
  */
 export function Magnetic({
   children,
@@ -14,36 +15,23 @@ export function Magnetic({
   strength?: number;
 }) {
   const ref = useRef<HTMLSpanElement>(null);
-  const shouldReduceMotion = useReducedMotion();
-
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-  const springX = useSpring(x, { stiffness: 260, damping: 18, mass: 0.4 });
-  const springY = useSpring(y, { stiffness: 260, damping: 18, mass: 0.4 });
 
   function onPointerMove(e: React.PointerEvent<HTMLSpanElement>) {
-    if (shouldReduceMotion) return;
     const el = ref.current;
-    if (!el) return;
+    if (!el || e.pointerType !== "mouse" || prefersReducedMotion()) return;
     const r = el.getBoundingClientRect();
-    x.set((e.clientX - (r.left + r.width / 2)) * strength);
-    y.set((e.clientY - (r.top + r.height / 2)) * strength);
+    const x = (e.clientX - (r.left + r.width / 2)) * strength;
+    const y = (e.clientY - (r.top + r.height / 2)) * strength;
+    el.style.transform = `translate(${x.toFixed(1)}px, ${y.toFixed(1)}px)`;
   }
 
   function reset() {
-    x.set(0);
-    y.set(0);
+    if (ref.current) ref.current.style.transform = "";
   }
 
   return (
-    <motion.span
-      ref={ref}
-      className="magnetic"
-      onPointerMove={onPointerMove}
-      onPointerLeave={reset}
-      style={shouldReduceMotion ? undefined : { x: springX, y: springY }}
-    >
+    <span ref={ref} className="magnetic" onPointerMove={onPointerMove} onPointerLeave={reset}>
       {children}
-    </motion.span>
+    </span>
   );
 }

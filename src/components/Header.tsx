@@ -9,7 +9,6 @@ import { BRAND_SYSTEM } from "../lib/flags";
 // does not repeat it.
 const NAV_LINKS = [
   { href: "/case-studies", label: "Case studies" },
-  { href: "/#how-we-work", label: "How we work" },
   // "Team" became "About", the /about page (Drew, 2026-11-18).
   { href: "/about", label: "About" },
 ];

@@ -1,3 +1,6 @@
+import { Reveal } from "./Reveal";
+import { step } from "../lib/reveal";
+
 /**
  * "Where our team has worked." MB11 places it between the hero and Problem
  * as a flat image of this same band (358:1079), so it is built as live text
@@ -51,19 +54,24 @@ const EXPERIENCE = [
   "HIPAA-regulated healthcare systems",
 ];
 
+/**
+ * Since 2026-11-22 the strip is one white stat band under the case study
+ * cards, inside the Proof band (rendered by TrackRecord), its four lines
+ * arriving in sequence. Text unchanged.
+ */
 export function ExperienceStrip() {
   return (
-    <section className="strip" aria-labelledby="experience-heading">
-      <div className="container">
-        <h2 className="sr-only" id="experience-heading">
-          Experience
-        </h2>
-        <ul className="strip-list">
-          {EXPERIENCE.map((line) => (
-            <li key={line}>{line}</li>
-          ))}
-        </ul>
-      </div>
-    </section>
+    <Reveal className="strip surface" stagger>
+      <h3 className="sr-only" id="experience-heading">
+        Experience
+      </h3>
+      <ul className="strip-list" aria-labelledby="experience-heading">
+        {EXPERIENCE.map((line, i) => (
+          <li className="reveal-item" style={step(i)} key={line}>
+            {line}
+          </li>
+        ))}
+      </ul>
+    </Reveal>
   );
 }

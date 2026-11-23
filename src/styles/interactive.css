@@ -33,6 +33,11 @@
    the button's own hover lift. */
 .magnetic {
   display: inline-block;
+  transition: transform var(--duration-base) var(--ease-out);
+}
+/* A press settles the button back into the page. */
+.btn:active {
+  transform: translateY(0) scale(0.97);
 }
 
 /* Nav items on the blue header. Colour alone cannot carry hover here: no

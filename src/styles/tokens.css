@@ -133,6 +133,9 @@
   --duration-fast: 160ms;
   --duration-base: 280ms;
   --duration-slow: 700ms;
+  --duration-reveal: 700ms;  /* Every scroll reveal and the hero's staged entrance. One value so sections cannot drift. */
+  --reveal-stagger: 90ms;  /* The step between items revealed in sequence. */
+  --duration-count: 1100ms;  /* How long a figure takes to count up. Read by CountUp.tsx from the stylesheet. */
   --ease-out: cubic-bezier(.16, 1, .3, 1);
 
   /* band: MB11 band shapes. Each band has one angular cut (clip-path) and one curved corner (border-radius), read off the band vectors' paths and scaled by layout.band-k. */

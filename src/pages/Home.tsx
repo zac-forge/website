@@ -14,8 +14,8 @@ import { Footer } from "../components/Footer";
  *  hero and employer band, Problem, then the spine (Check, Fix, Partner),
  *  Proof (the case study cards, then the experience strip, both rendered by
  *  TrackRecord), Team, Contact. The How we work section is gone (parked in
- *  .superseded/); its id stays on an anchor at the start of the spine so the
- *  nav and footer "How we work" links still land on Check, Fix, Partner.
+ *  .superseded/) and so are its nav and footer links (Drew, 2026-11-22):
+ *  Check, Fix, Partner is the how-we-work now.
  *  The FAQ moved to its own page at /faq on 2026-11-17. */
 export default function Home() {
   return (
@@ -25,7 +25,6 @@ export default function Home() {
         <Hero />
         <LogoBand />
         <Problem />
-        <div id="how-we-work" className="spine-anchor" />
         <RealityCheck />
         <FixWeek />
         <WhatWeFix />

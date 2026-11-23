@@ -54,8 +54,8 @@ const stripComments = (s) => s.replace(/<!-- -->/g, "");
 function cardBody(card) {
   const html = readFileSync(path.join(dist, card.file), "utf8");
   if (card.slug === "home") {
-    const lead = pick(html, /hero-title-lead">([^<]*)<\/span>/, "home headline lead", card.file);
-    const rest = pick(html, /hero-title-lead">[^<]*<\/span>\s*<span>([^<]*)<\/span>/, "home headline", card.file);
+    const lead = pick(html, /hero-title-lead[^>]*>([^<]*)<\/span>/, "home headline lead", card.file);
+    const rest = pick(html, /hero-title-lead[^>]*>[^<]*<\/span>(?:\s|<!-- -->)*<span[^>]*>([^<]*)<\/span>/, "home headline", card.file);
     return `
       <div class="copy copy--home">
         <h1 class="headline headline--home"><span class="light">${lead}</span> <span>${rest}</span></h1>
