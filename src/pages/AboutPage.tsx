@@ -2,6 +2,9 @@ import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import { SubpageHero } from "../components/SubpageHero";
 import { WhoWeAre } from "../components/WhoWeAre";
+import { Closing } from "../components/Closing";
+import { Reveal } from "../components/Reveal";
+import { ExperienceStrip } from "../components/LogoBand";
 
 /**
  * "What is ZAC", section 9 of Drew's copy handoff of 2026-11-18, word for
@@ -17,8 +20,9 @@ export const ABOUT_COPY = [
 /**
  * /about (Drew, 2026-11-18), on the /faq layout: the shared hero with the
  * page name, the headline "About ZAC" (Drew, 2026-11-18), the handoff's "What is ZAC" copy, then the
- * Principals section from the home page, unchanged. The top-bar "About"
- * link points here.
+ * home page's credential band (ExperienceStrip, added here 2026-11-22),
+ * the Principals section from the home page with its bios, and the home
+ * page's closing section. The top-bar "About" link points here.
  */
 export default function AboutPage() {
   return (
@@ -27,18 +31,29 @@ export default function AboutPage() {
       <main id="main" tabIndex={-1} className="offer-page">
         <SubpageHero title="About" />
 
+        {/* The headline held on the left, the four paragraphs on the right,
+            the first set as the lead, then the home page's credential band. */}
         <section className="section offer-lead about-lead">
           <div className="container">
-            <h1 className="h2 offer-title">About ZAC</h1>
-            {ABOUT_COPY.map((p) => (
-              <p className="offer-intro" key={p}>
-                {p}
-              </p>
-            ))}
+            <div className="offer-split">
+              <Reveal className="offer-split-side">
+                <h1 className="h2 offer-title">About ZAC</h1>
+              </Reveal>
+              <Reveal className="offer-split-main offer-intro-run">
+                {ABOUT_COPY.map((p) => (
+                  <p className="offer-intro" key={p}>
+                    {p}
+                  </p>
+                ))}
+              </Reveal>
+            </div>
+            <ExperienceStrip headingLevel="h2" />
           </div>
         </section>
 
         <WhoWeAre />
+
+        <Closing cta={{ label: "Start with a Reality Check", href: "/#contact" }} />
       </main>
       <Footer />
     </>

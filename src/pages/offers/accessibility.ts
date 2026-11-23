@@ -30,6 +30,7 @@ export const accessibility: Offer = {
     {
       heading: "Who has a deadline",
       kind: "titled",
+      icon: "calendar",
       intro: ["Two federal rules set the same standard for websites and mobile apps: WCAG 2.1 Level AA."],
       items: [
         {
@@ -90,6 +91,7 @@ export const accessibility: Offer = {
     {
       heading: "What we can't do",
       kind: "bullets",
+      icon: "cross",
       items: [
         "We can't certify legal compliance. We're not lawyers, and nobody can promise you'll never get a demand letter.",
         "We can't fix software you don't control, like a patient portal, scheduling tool, or payment page run by a vendor. We'll tell you which problems are theirs to fix.",

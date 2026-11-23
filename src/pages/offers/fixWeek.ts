@@ -1,4 +1,4 @@
-import type { Offer } from "./types";
+import type { Offer, FixExample } from "./types";
 
 /**
  * The paid week, named the Fix Week again in the copy pass of 2026-11-06.
@@ -8,40 +8,41 @@ import type { Offer } from "./types";
  * functions/worker.ts 301s the route it had for a day back to this one.
  */
 /**
- * The home Fix section's share of this page since the cut of 2026-11-22
- * (Drew's pass 1 handoff), held here so both read one source. The home intro
- * is the page's intro up to the colon. Each example is its sentences, and
- * the home section shows only those marked `home`: shortened by dropping
- * whole sentences, never by rewording.
+ * "Things we've fixed", held as sentences so the home Fix section and this
+ * page read one source. Each sentence is on the problem or the outcome side
+ * of its card. The home section shows only those marked `home`, shortened
+ * by dropping whole sentences, never by rewording (Drew's pass 1 handoff,
+ * 2026-11-22). This page shows every sentence. The home intro is this page's
+ * intro up to the colon.
  */
 const FIX_LEAD = "One week, one set budget, aimed at the top items from your Reality Check";
-const FIX_EXAMPLES: { text: string; home: boolean }[][] = [
+type Sentence = { text: string; side: "problem" | "outcome"; home: boolean };
+const FIX_EXAMPLES: Sentence[][] = [
   [
-    { text: "A site built to serve people with disabilities had a carousel that trapped screen readers.", home: true },
-    { text: "Visually impaired visitors couldn't get past it to the content they came for.", home: false },
-    { text: "We fixed it.", home: true },
+    { text: "A site built to serve people with disabilities had a carousel that trapped screen readers.", side: "problem", home: true },
+    { text: "Visually impaired visitors couldn't get past it to the content they came for.", side: "problem", home: false },
+    { text: "We fixed it.", side: "outcome", home: true },
   ],
   [
-    { text: "A client's site was getting hacked and kept going down when we took it over.", home: true },
-    { text: "We moved it to new servers, upgraded the backend and closed the security holes.", home: false },
-    { text: "It has been stable for over 10 years.", home: true },
+    { text: "A client's site was getting hacked and kept going down when we took it over.", side: "problem", home: true },
+    { text: "We moved it to new servers, upgraded the backend and closed the security holes.", side: "outcome", home: false },
+    { text: "It has been stable for over 10 years.", side: "outcome", home: true },
   ],
   [
-    { text: "Small businesses came to us with little or no SEO strategy.", home: true },
-    { text: "We got them ranked and pulling traffic within 90 days.", home: true },
+    { text: "Small businesses came to us with little or no SEO strategy.", side: "problem", home: true },
+    { text: "We got them ranked and pulling traffic within 90 days.", side: "outcome", home: true },
   ],
 ];
+const split = (sentences: Sentence[]): FixExample => ({
+  problem: sentences.filter((s) => s.side === "problem").map((s) => s.text).join(" "),
+  outcome: sentences.filter((s) => s.side === "outcome").map((s) => s.text).join(" "),
+});
 const FIX_EXAMPLES_HEADING = "Things we've fixed";
 export const FIX_GUARANTEE = "If it isn't fixed, it's free.";
 export const FIX_HOME = {
   intro: `${FIX_LEAD}.`,
   examplesHeading: FIX_EXAMPLES_HEADING,
-  // Each home example splits into what was wrong (its first sentence) and
-  // how it came out (the rest), which the home cards set apart.
-  examples: FIX_EXAMPLES.map((e) => {
-    const [problem, ...outcome] = e.filter((s) => s.home).map((s) => s.text);
-    return { problem, outcome: outcome.join(" ") };
-  }),
+  examples: FIX_EXAMPLES.map((e) => split(e.filter((s) => s.home))),
 };
 
 export const fixWeek: Offer = {
@@ -69,9 +70,11 @@ export const fixWeek: Offer = {
   blocks: [
     {
       heading: FIX_EXAMPLES_HEADING,
-      kind: "paragraphs",
-      items: FIX_EXAMPLES.map((e) => e.map((s) => s.text).join(" ")),
-      outro: [FIX_GUARANTEE],
+      // The home page's before-and-after cards at full length, then the
+      // guarantee as the full-width statement.
+      kind: "examples",
+      items: FIX_EXAMPLES.map(split),
+      statement: FIX_GUARANTEE,
     },
     {
       heading: "What you get",

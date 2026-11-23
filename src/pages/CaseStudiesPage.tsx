@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import type { CSSProperties } from "react";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
-import { Magnetic } from "../components/Magnetic";
+import { Closing } from "../components/Closing";
 import { SubpageHero } from "../components/SubpageHero";
 import { Reveal } from "../components/Reveal";
 import { CountUp } from "../components/CountUp";
@@ -241,18 +241,7 @@ export default function CaseStudiesPage() {
           </div>
         </div>
 
-        <section className="section offer-cta">
-          <div className="container">
-            <div className="cta-row">
-              <Magnetic>
-                <a className="btn btn-primary" href="/#contact">
-                  <span>Get a free Reality Check</span>{" "}
-                  <span aria-hidden="true">→</span>
-                </a>
-              </Magnetic>
-            </div>
-          </div>
-        </section>
+        <Closing cta={{ label: "Get a free Reality Check", href: "/#contact" }} />
       </main>
       <Footer />
     </>

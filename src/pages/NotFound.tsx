@@ -21,7 +21,7 @@ export default function NotFound() {
       <main id="main" tabIndex={-1}>
         <section id="top" className="result band band--blue">
           <div className="container result-grid">
-            <div className="result-copy">
+            <div className="result-copy result-stage">
               <h1 className="h1 result-title">Page not found</h1>
               <p className="result-line">
                 That page doesn't exist. Start from the home page, or go straight to an offer.

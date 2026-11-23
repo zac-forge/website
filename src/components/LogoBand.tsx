@@ -104,12 +104,12 @@ const EXPERIENCE: { before?: string; anchor: string; after?: string; icon: React
  * white cards on grey. Each item is a line icon over its line, the anchor
  * in bold. Rendered by TrackRecord. Text unchanged.
  */
-export function ExperienceStrip() {
+export function ExperienceStrip({ headingLevel: Heading = "h3" }: { headingLevel?: "h2" | "h3" } = {}) {
   return (
     <Reveal className="strip" stagger>
-      <h3 className="sr-only" id="experience-heading">
+      <Heading className="sr-only" id="experience-heading">
         Experience
-      </h3>
+      </Heading>
       <ul className="strip-list" aria-labelledby="experience-heading">
         {EXPERIENCE.map((item, i) => (
           <li className="strip-item reveal-item" style={step(i)} key={item.anchor}>

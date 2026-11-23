@@ -60,7 +60,7 @@ export default function ContactResult({ variant }: { variant: ContactResultVaria
       <main id="main" tabIndex={-1}>
         <section id="top" className="result band band--blue">
           <div className="container result-grid">
-            <div className="result-copy">
+            <div className="result-copy result-stage">
               {variant === "thanks" ? (
                 <>
                   <p className="eyebrow">Got it</p>

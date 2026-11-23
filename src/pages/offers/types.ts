@@ -8,14 +8,24 @@
  */
 export type TitledItem = { title: string; body?: string; bullets?: string[] };
 
-/** Any block may open and close with plain paragraphs around its items. */
-type Frame = { heading: string; intro?: string[]; outro?: string[] };
+/** A "Things we've fixed" example, split where its card splits. */
+export type FixExample = { problem: string; outcome: string };
+
+/**
+ * Any block may open and close with plain paragraphs around its items.
+ * `icon` picks the line icon its lists carry (a check by default). These,
+ * `view`, and `statement` say how a block is shown, never what it says.
+ */
+type Frame = { heading: string; intro?: string[]; outro?: string[]; icon?: "check" | "cross" | "calendar" };
 
 export type Block =
   | (Frame & { kind: "bullets"; items: string[] })
-  | (Frame & { kind: "numbered"; items: TitledItem[] })
+  /** `view: "stepper"` shows the items as the home page's question stepper. */
+  | (Frame & { kind: "numbered"; items: TitledItem[]; view?: "stepper" })
   | (Frame & { kind: "titled"; items: TitledItem[] })
-  | (Frame & { kind: "paragraphs"; items: string[] });
+  | (Frame & { kind: "paragraphs"; items: string[] })
+  /** The home page's before-and-after cards, then a full-width statement. */
+  | (Frame & { kind: "examples"; items: FixExample[]; statement?: string });
 
 export type Faq = { question: string; answer: string };
 

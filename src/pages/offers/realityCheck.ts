@@ -38,6 +38,8 @@ export const realityCheck: Offer = {
     {
       heading: "What we check",
       kind: "numbered",
+      // The home Check section's stepper, with the same five items.
+      view: "stepper",
       items: [
         {
           title: "Does it work?",

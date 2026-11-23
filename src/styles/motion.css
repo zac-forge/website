@@ -35,15 +35,21 @@
 .js .reveal--stagger:not(.is-in) .reveal-item {
   opacity: 0;
 }
-/* Keyboard focus never lands on something still waiting to be revealed. */
-.js .reveal:not(.is-in):focus-within,
-.js .reveal--stagger:not(.is-in):focus-within .reveal-item {
-  opacity: 1;
-}
+
 .js .reveal.is-in:not(.reveal--stagger),
 .js .reveal--stagger.is-in .reveal-item {
   animation: reveal-in var(--duration-reveal) var(--ease-out) backwards;
   animation-delay: calc(var(--i, 0) * var(--reveal-stagger));
+}
+/* Keyboard focus never lands on something still waiting to be revealed,
+   or still fading in: a block holding focus shows at once. */
+.js .reveal:not(.is-in):focus-within,
+.js .reveal--stagger:not(.is-in):focus-within .reveal-item {
+  opacity: 1;
+}
+.js .reveal.is-in:not(.reveal--stagger):focus-within,
+.js .reveal--stagger.is-in:focus-within .reveal-item {
+  animation: none;
 }
 
 /* The "Things we've fixed" illustrations (FixIllustrations.tsx). Each part
@@ -124,6 +130,23 @@
 .hero-title .hero-stage {
   display: block;
 }
+/* The same entrance on every subpage hero (the icon, then the page name)
+   and on the result and 404 pages (each line of the copy in turn). */
+.subpage-hero-icon,
+.subpage-hero-title,
+.result-stage > * {
+  animation: reveal-in var(--duration-reveal) var(--ease-out) backwards;
+}
+.subpage-hero-title,
+.result-stage > :nth-child(2) {
+  animation-delay: calc(var(--reveal-stagger) * 1.5);
+}
+.result-stage > :nth-child(3) {
+  animation-delay: calc(var(--reveal-stagger) * 3);
+}
+.result-stage > :nth-child(n + 4) {
+  animation-delay: calc(var(--reveal-stagger) * 4.5);
+}
 
 /* Page transitions (2026-11-22): the View Transitions API across documents,
    so moving between home and /case-studies (or any two pages) cross-fades
@@ -184,6 +207,9 @@
   .reveal,
   .reveal-item,
   .hero-stage,
+  .subpage-hero-icon,
+  .subpage-hero-title,
+  .result-stage > *,
   .field-error,
   .ill *,
   .fix-lead-z {

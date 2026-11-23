@@ -1289,7 +1289,7 @@ button.fix-example-ill:focus-visible {
   transform: translateY(-4px);
   box-shadow: var(--shadow-raised);
 }
-.fix:last-child {
+.fix-grid--bento .fix:last-child {
   grid-column: 1 / -1;
 }
 /* The offer's icon, Misha's white line art (a mask, so it takes the text
@@ -1338,7 +1338,7 @@ button.fix-example-ill:focus-visible {
 .fix:has(.fix-link:focus-visible) .fix-capsule {
   transform: rotate(-32deg) translateX(calc(var(--space-3) * -1));
 }
-.fix:last-child .fix-capsule {
+.fix-grid--bento .fix:last-child .fix-capsule {
   top: auto;
   bottom: calc(var(--space-7) * -1);
   right: calc(var(--space-6) * -1);
@@ -1484,7 +1484,7 @@ button.fix-example-ill:focus-visible {
     min-height: calc(var(--space-11) + var(--space-6));
     max-width: calc(var(--space-11) * 2);
   }
-  .fix:last-child .fix-capsule {
+  .fix-grid--bento .fix:last-child .fix-capsule {
     top: calc(var(--space-5) * -1);
     bottom: auto;
     right: calc(var(--space-7) * -1);
@@ -1936,15 +1936,23 @@ button.fix-example-ill:focus-visible {
 }
 .result-steps li {
   display: grid;
-  grid-template-columns: var(--space-7) minmax(0, 1fr);
-  gap: var(--space-3);
-  align-items: baseline;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: var(--space-4);
+  align-items: center;
 }
+/* The number in a keyline circle, as the stepper sets its numbers. */
 .result-steps li::before {
   counter-increment: step;
   content: counter(step);
-  font-size: var(--text-subtitle);
-  font-weight: var(--weight-black);
+  display: grid;
+  place-items: center;
+  width: calc(var(--space-6) + var(--space-2));
+  height: calc(var(--space-6) + var(--space-2));
+  border: 1px solid currentColor;
+  border-radius: var(--radius-full);
+  font-family: var(--font-display);
+  font-size: var(--text-lead);
+  font-weight: var(--weight-bold);
   line-height: 1;
 }
 .result-errors {
@@ -2105,131 +2113,356 @@ button.fix-example-ill:focus-visible {
     padding-left: 0;
   }
 }
+/* The subpages since 2026-11-22: built from the home page's components.
+   What is only theirs is below: the two-column block with its heading held
+   on the left, the lead, numbered steps, labelled cards, icon lists, and
+   the accordion. Blocks alternate between the ground and the white surface
+   instead of being ruled off. */
 .offer-lead {
   --pad-top: var(--space-9);
-  --pad-bottom: var(--space-4);
+  --pad-bottom: var(--space-9);
 }
 /* /about: the lead runs straight into the Principals band, so it takes the
    bottom space the offer pages get from their next section. */
 .about-lead {
   --pad-bottom: var(--space-10);
 }
-.offer-subline {
-  max-width: var(--prose-width);
-  margin-top: var(--space-4);
-  font-size: var(--text-lead);
-  font-weight: var(--weight-black);
+.about-lead .strip {
+  margin-top: var(--space-9);
+}
+.offer-split {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: var(--space-6) var(--space-8);
+  align-items: start;
+}
+/* The heading holds under the header while its content scrolls past. */
+.offer-split-side {
+  position: sticky;
+  top: calc(var(--header-height) + var(--space-6));
 }
 .offer-title {
-  max-width: 20ch;
+  max-width: 16ch;
 }
-.offer-intro {
-  max-width: var(--prose-width);
+.offer-split-side .callout {
   margin-top: var(--space-5);
 }
+.offer-split-main > * + * {
+  margin-top: var(--space-5);
+}
+/* The intro: the first paragraph is the lead, in the display light. */
+.offer-intro,
+.offer-paragraph,
+.steps-body,
+.label-card-body,
+.faq-answer {
+  max-width: var(--prose-width);
+  font-size: var(--text-lead);
+  line-height: var(--leading-copy);
+}
+.offer-intro:first-child {
+  max-width: none;
+  font-family: var(--font-display);
+  font-size: var(--text-card);
+  font-weight: var(--weight-light);
+  line-height: 1.3;
+  text-wrap: pretty;
+}
+/* A block that is one paragraph sets it as a statement, in the lead's
+   display light, so a short section still carries weight. */
+.offer-split-main > .offer-paragraph:only-child {
+  max-width: none;
+  font-family: var(--font-display);
+  font-size: var(--text-card);
+  font-weight: var(--weight-light);
+  line-height: 1.3;
+  text-wrap: pretty;
+}
 .offer-block {
-  --pad-top: var(--space-8);
-  --pad-bottom: var(--space-4);
+  --pad-top: var(--space-9);
+  --pad-bottom: var(--space-9);
 }
-.offer-block .h3 {
-  margin-bottom: var(--space-5);
+.offer-block--alt {
+  background: var(--color-surface);
 }
-/* The home FAQ uses the home heading (.h2) over the same list. */
-.offer-faq .h2 {
-  margin-bottom: var(--space-7);
+.offer-block-heading {
+  font-size: var(--text-subtitle);
+  line-height: var(--leading-title);
 }
-.offer-list {
+.offer-block--wide .fix-guarantee {
+  margin-top: var(--space-8);
+}
+/* A block that brings the home Check section's band: the same cut and
+   curve, the heading and any opening lines left, the stepper right. */
+.offer-band {
+  --pad-top: var(--space-9);
+  --pad-bottom: calc(var(--space-9) + var(--space-6));
+  clip-path: var(--band-clip-rc);
+  border-top-right-radius: var(--band-curve-rc);
+}
+.offer-band .offer-paragraph {
+  margin-top: var(--space-4);
+}
+
+/* Numbered steps on a rail, the stepper's static cousin on the ground. */
+.steps {
+  --steps-dot: calc(var(--space-6) + var(--space-2));
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.steps-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: var(--steps-dot) minmax(0, 1fr);
+  gap: var(--space-5);
+  padding-bottom: var(--space-6);
+}
+.steps-item:last-child {
+  padding-bottom: 0;
+}
+.steps-item:not(:last-child)::before {
+  content: "";
+  position: absolute;
+  left: calc(var(--steps-dot) / 2);
+  top: var(--steps-dot);
+  bottom: 0;
+  width: 1px;
+  background: var(--color-image-stroke);
+}
+.steps-number {
+  display: grid;
+  place-items: center;
+  width: var(--steps-dot);
+  height: var(--steps-dot);
+  border-radius: var(--radius-full);
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+  font-family: var(--font-display);
+  font-size: var(--text-lead);
+  font-weight: var(--weight-bold);
+  line-height: 1;
+}
+.steps-title,
+.label-card-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--text-card);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-title);
+}
+.steps-title {
+  padding-top: var(--space-1);
+}
+.steps-body,
+.label-card-body {
+  margin-top: var(--space-2);
+}
+
+/* Labelled cards: white on the ground, ground on the white surface. */
+.label-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+.label-card {
+  padding: var(--space-6);
+  background: var(--color-surface);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-rest);
+}
+.offer-block--alt :is(.label-card, .faq-row, .icon-list--grid li) {
+  background: var(--color-bg);
+  box-shadow: none;
+}
+.label-card .icon-list {
+  margin-top: var(--space-4);
+}
+/* An odd card out takes the full row. */
+.label-card:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+}
+/* Stacked: one card a row, its list beside its words. */
+.label-cards--stack {
+  grid-template-columns: minmax(0, 1fr);
+}
+.label-cards--stack .label-card:has(.icon-list) {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--space-5);
+  align-items: start;
+}
+.label-cards--stack .label-card .icon-list {
+  margin-top: 0;
+}
+
+/* Icon lists (IconList.tsx): a coded line icon per row. Short items sit as
+   a compact grid of small cards. */
+.icon-list {
+  display: grid;
+  gap: var(--space-4);
   margin: 0;
   padding: 0;
   list-style: none;
   max-width: var(--prose-width);
+  font-size: var(--text-lead);
+  line-height: var(--leading-copy);
+}
+.icon-list li {
+  display: grid;
+  grid-template-columns: var(--space-5) minmax(0, 1fr);
+  gap: var(--space-3);
+  align-items: start;
+}
+.icon-list-icon {
+  width: var(--space-5);
+  height: var(--space-5);
+  fill: none;
+  stroke: var(--color-accent);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.icon-list[data-icon="cross"] .icon-list-icon {
+  stroke: var(--color-text-muted);
+}
+.icon-list[data-icon="calendar"] .icon-list-icon {
+  stroke: var(--color-band-blue);
+}
+.icon-list--grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3);
+  max-width: none;
+}
+.icon-list--grid li {
+  align-items: center;
+  padding: var(--space-4);
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-rest);
+  font-weight: var(--weight-black);
+}
+.label-card .icon-list--grid {
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-3);
+}
+.label-card .icon-list--grid li {
+  padding: 0;
+  background: none;
+  box-shadow: none;
+  font-size: var(--text-body);
+}
+
+/* The accordion (FaqAccordion.tsx). The panel opens by its grid row, as
+   the stepper's does, and every collapsed state sits under html.js, so
+   with scripting off all the answers show. */
+.faq-list {
   display: grid;
   gap: var(--space-3);
 }
-.offer-list li {
-  position: relative;
-  padding-left: var(--space-5);
+.faq-row {
+  overflow: hidden;
+  background: var(--color-surface);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-rest);
 }
-.offer-list li::before {
+.faq-question {
+  margin: 0;
+}
+.faq-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+  width: 100%;
+  min-height: 44px;
+  padding: var(--space-4) var(--space-5);
+  background: none;
+  border: 0;
+  color: var(--color-ink);
+  font-family: var(--font-display);
+  font-size: var(--text-lead);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-title);
+  text-align: left;
+  cursor: pointer;
+}
+.faq-button:focus-visible {
+  outline-offset: -3px;
+  border-radius: var(--radius-card);
+}
+/* A plus that closes to a minus when the row is open. */
+.faq-mark {
+  position: relative;
+  flex: none;
+  width: var(--space-4);
+  height: var(--space-4);
+}
+.faq-mark::before,
+.faq-mark::after {
   content: "";
   position: absolute;
   left: 0;
-  top: 0.62em;
-  width: var(--space-3);
+  right: 0;
+  top: calc(50% - 1px);
   height: 2px;
   background: var(--color-accent);
+  transition: transform var(--duration-base) var(--ease-out);
 }
-.offer-steps {
-  margin: 0;
+.js .faq-row:not([data-open="true"]) .faq-mark::after {
+  transform: rotate(90deg);
+}
+.faq-panel {
+  display: grid;
+  grid-template-rows: 1fr;
+  transition:
+    grid-template-rows var(--duration-base) var(--ease-out),
+    visibility 0s;
+}
+.faq-panel > div {
+  min-height: 0;
+  overflow: hidden;
+}
+.faq-answer {
+  padding: 0 var(--space-5) var(--space-5);
+}
+.js .faq-row:not([data-open="true"]) .faq-panel {
+  grid-template-rows: 0fr;
+  visibility: hidden;
+  transition:
+    grid-template-rows var(--duration-base) var(--ease-out),
+    visibility 0s var(--duration-base);
+}
+/* /faq: jump links to the groups, as chips, and the groups. */
+.faq-jump ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin: var(--space-5) 0 0;
   padding: 0;
   list-style: none;
-  counter-reset: step;
-  max-width: var(--prose-width);
+}
+.faq-jump .chip {
+  min-height: var(--space-6);
+  transition: background var(--duration-fast) var(--ease-out);
+}
+.faq-jump .chip:hover {
+  background: var(--color-surface);
+}
+.faq-groups {
   display: grid;
-  gap: var(--space-5);
+  gap: var(--space-8);
 }
-.offer-steps li {
-  display: grid;
-  grid-template-columns: var(--space-7) minmax(0, 1fr);
-  gap: var(--space-3);
+.faq-groups > * + * {
+  margin-top: 0;
 }
-.offer-steps li::before {
-  counter-increment: step;
-  content: counter(step);
-  font-size: var(--text-title);
-  font-weight: var(--weight-black);
-  line-height: 1;
-  color: var(--color-accent);
-}
-.offer-step-title,
-.offer-titled-title {
-  margin: 0;
-  font-size: var(--text-lead);
-  font-weight: var(--weight-black);
-  line-height: var(--leading-title);
-}
-.offer-step-body,
-.offer-titled-body,
-.offer-faq dd {
-  margin: var(--space-2) 0 0;
-}
-.offer-titled {
-  max-width: var(--prose-width);
-  display: grid;
-  gap: var(--space-5);
-}
-.offer-paragraph {
-  max-width: var(--prose-width);
-}
-/* A block's opening or closing paragraphs, and a bullet list under a
-   titled item, spaced like the existing paragraph runs (2026-11-13). */
-.offer-paragraph + :is(.offer-list, .offer-steps, .offer-titled),
-:is(.offer-list, .offer-steps, .offer-titled) + .offer-paragraph {
-  margin-top: var(--space-5);
-}
-.offer-titled .offer-list {
-  margin-top: var(--space-3);
-}
-.offer-paragraph + .offer-paragraph {
-  margin-top: var(--space-4);
-}
-.offer-proof-line {
-  max-width: var(--prose-width);
-  padding-left: var(--space-5);
-  border-left: 2px solid var(--color-accent);
-}
-.offer-proof-line + .offer-proof-line {
-  margin-top: var(--space-4);
-}
-.offer-faq dl {
-  margin: 0;
-  max-width: var(--prose-width);
-  display: grid;
-  gap: var(--space-5);
-}
-.offer-faq dt {
-  font-size: var(--text-lead);
-  font-weight: var(--weight-black);
+.faq-group-heading {
+  margin: 0 0 var(--space-4);
+  scroll-margin-top: calc(var(--header-height) + var(--space-5));
+  font-family: var(--font-display);
+  font-size: var(--text-card);
+  font-weight: var(--weight-bold);
   line-height: var(--leading-title);
 }
 .offer-footnote {
@@ -2238,9 +2471,73 @@ button.fix-example-ill:focus-visible {
   font-size: var(--text-small);
   color: var(--color-text-muted);
 }
+
+/* The related offers: the home Partner tiles on the same band, three to a
+   row, with a last row of two when there are five. */
 .offer-related {
-  --pad-top: var(--space-9);
-  --pad-bottom: 0;
+  margin-top: 0;
+}
+.fix-grid--related {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+.fix-grid--related .fix {
+  grid-column: span 2;
+}
+.fix-grid--related[data-count="5"] .fix:nth-child(n + 4) {
+  grid-column: span 3;
+}
+.fix-grid--related .fix-link {
+  margin-top: auto;
+}
+.fix-grid--related .fix-line {
+  margin-bottom: var(--space-5);
+}
+@media (max-width: 900px) {
+  .fix-grid--related {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .fix-grid--related .fix,
+  .fix-grid--related[data-count="5"] .fix:nth-child(n + 4) {
+    grid-column: auto;
+  }
+  .fix-grid--related[data-count="5"] .fix:last-child {
+    grid-column: 1 / -1;
+  }
+  .offer-split {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .offer-split-side {
+    position: static;
+  }
+  .offer-title {
+    max-width: 20ch;
+  }
+}
+@media (max-width: 760px) {
+  .fix-grid--related {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .fix-grid--related[data-count="5"] .fix:last-child {
+    grid-column: auto;
+  }
+  .label-cards,
+  .icon-list--grid,
+  .label-cards--stack .label-card:has(.icon-list) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .offer-lead,
+  .offer-block {
+    --pad-top: var(--space-8);
+    --pad-bottom: var(--space-8);
+  }
+}
+/* The closing section with a button in place of the form. */
+.closing--cta {
+  --pad-top: var(--space-10);
+  --pad-bottom: var(--space-10);
+}
+.closing-cta {
+  margin-top: var(--space-6);
 }
 .offer-related-heading {
   margin-bottom: var(--space-5);
