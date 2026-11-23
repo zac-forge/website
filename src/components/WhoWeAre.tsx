@@ -35,9 +35,11 @@ function initials(name: string) {
  * curve bottom right). Three white 176px circles (376:1749 to 376:1751),
  * then name, role, and bio. The comp's names and bios are placeholders, so
  * the live ones ship. Until a photo exists a circle shows the person's
- * initials. Also rendered on /about.
+ * initials. Also rendered on /about. On home since 2026-11-22 (Drew's pass
+ * 1 handoff) the cards drop their bios and one link goes to /about, which
+ * renders this same component with the bios.
  */
-export function WhoWeAre() {
+export function WhoWeAre({ bios = true }: { bios?: boolean } = {}) {
   return (
     <section id="who-we-are" className="section band band--white who-we-are" aria-labelledby="who-we-are-heading">
       <div className="container">
@@ -67,16 +69,25 @@ export function WhoWeAre() {
                 <div className="team-text">
                   <h3 className="team-name">{m.cardName ?? m.name}</h3>
                   <p className="team-role">{m.role}</p>
-                  {m.bio.map((p) => (
-                    <p className="team-bio copy" key={p}>
-                      {p}
-                    </p>
-                  ))}
+                  {bios
+                    ? m.bio.map((p) => (
+                        <p className="team-bio copy" key={p}>
+                          {p}
+                        </p>
+                      ))
+                    : null}
                 </div>
               </motion.div>
             );
           })}
         </Reveal>
+        {bios ? null : (
+          <div className="cta-row team-about-link">
+            <a className="text-link" href="/about">
+              <span>About ZAC</span> <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        )}
       </div>
     </section>
   );

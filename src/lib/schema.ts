@@ -8,14 +8,14 @@
  * Partner, and the Brand System once its flag is on), and FAQPage on each
  * offer page and on /faq (moved off the home page, 2026-11-17), matching the
  * visible questions exactly, and a two-step BreadcrumbList (Home, then the
- * page) on each offer page, /faq, and /about. An offer page with no
+ * page) on each offer page, /faq, /about, and /case-studies. An offer page with no
  * questions carries no FAQPage. No offers, no price properties,
  * anywhere.
  */
 import { LIVE_OFFERS } from "../pages/offers";
 import { FAQ } from "../pages/faq";
 import type { Offer } from "../pages/offers";
-import { HOME_META, FAQ_META, ABOUT_META, canonical } from "./meta";
+import { HOME_META, FAQ_META, ABOUT_META, CASE_STUDIES_META, canonical } from "./meta";
 import { TEAM } from "../pages/team";
 import { CONTACT_EMAIL } from "./links";
 import { SITE_URL, SITE_NAME, OG_IMAGE } from "./site";
@@ -176,7 +176,35 @@ export function aboutSchema() {
   };
 }
 
+/** /case-studies: the page and Home then Case studies. The cases are not
+ *  listed here: CCCV stays out of the schema until its domain is live. */
+export function caseStudiesSchema() {
+  const url = canonical(CASE_STUDIES_META.path);
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "CollectionPage",
+        "@id": url,
+        url,
+        name: CASE_STUDIES_META.title,
+        description: CASE_STUDIES_META.description,
+        isPartOf: { "@type": "WebSite", url: `${SITE_URL}/`, name: SITE_NAME },
+        about: { "@id": ORG_ID },
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
+          { "@type": "ListItem", position: 2, name: "Case studies", item: url },
+        ],
+      },
+    ],
+  };
+}
+
 export function schemaFor(path: string) {
+  if (path === CASE_STUDIES_META.path) return caseStudiesSchema();
   if (path === FAQ_META.path) return faqSchema();
   if (path === ABOUT_META.path) return aboutSchema();
   const offer = LIVE_OFFERS.find((o) => o.path === path);

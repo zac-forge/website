@@ -7,6 +7,38 @@ import type { Offer } from "./types";
  * describes the offer, and the schema carries both names.
  * functions/worker.ts 301s the route it had for a day back to this one.
  */
+/**
+ * The home Fix section's share of this page since the cut of 2026-11-22
+ * (Drew's pass 1 handoff), held here so both read one source. The home intro
+ * is the page's intro up to the colon. Each example is its sentences, and
+ * the home section shows only those marked `home`: shortened by dropping
+ * whole sentences, never by rewording.
+ */
+const FIX_LEAD = "One week, one set budget, aimed at the top items from your Reality Check";
+const FIX_EXAMPLES: { text: string; home: boolean }[][] = [
+  [
+    { text: "A site built to serve people with disabilities had a carousel that trapped screen readers.", home: true },
+    { text: "Visually impaired visitors couldn't get past it to the content they came for.", home: false },
+    { text: "We fixed it.", home: true },
+  ],
+  [
+    { text: "A client's site was getting hacked and kept going down when we took it over.", home: true },
+    { text: "We moved it to new servers, upgraded the backend and closed the security holes.", home: false },
+    { text: "It has been stable for over 10 years.", home: true },
+  ],
+  [
+    { text: "Small businesses came to us with little or no SEO strategy.", home: true },
+    { text: "We got them ranked and pulling traffic within 90 days.", home: true },
+  ],
+];
+const FIX_EXAMPLES_HEADING = "Things we've fixed";
+export const FIX_GUARANTEE = "If it isn't fixed, it's free.";
+export const FIX_HOME = {
+  intro: `${FIX_LEAD}.`,
+  examplesHeading: FIX_EXAMPLES_HEADING,
+  examples: FIX_EXAMPLES.map((e) => e.filter((s) => s.home).map((s) => s.text).join(" ")),
+};
+
 export const fixWeek: Offer = {
   path: "/fix-week",
   navTitle: "The Fix",
@@ -25,24 +57,16 @@ export const fixWeek: Offer = {
   cardIcon: "/art/offer-cards/icon-fix.svg",
   eyebrow: "THE FIX",
   h1: "One week. Start with what matters most.",
-  // Drew's copy handoff of 2026-11-18, which the home Fix section renders
-  // too: the intro, the examples, the guarantee on its own line, the close.
-  intro: [
-    "One week, one set budget, aimed at the top items from your Reality Check: the critical things that can be done in a week.",
-  ],
+  // Drew's copy handoff of 2026-11-18: the intro, the examples, and the
+  // guarantee on its own line. The "peace of mind" close was cut from this
+  // page and from home on 2026-11-22 (pass 1 handoff).
+  intro: [`${FIX_LEAD}: the critical things that can be done in a week.`],
   blocks: [
     {
-      heading: "Things we've fixed",
+      heading: FIX_EXAMPLES_HEADING,
       kind: "paragraphs",
-      items: [
-        "A site built to serve people with disabilities had a carousel that trapped screen readers. Visually impaired visitors couldn't get past it to the content they came for. We fixed it.",
-        "A client's site was getting hacked and kept going down when we took it over. We moved it to new servers, upgraded the backend and closed the security holes. It has been stable for over 10 years.",
-        "Small businesses came to us with little or no SEO strategy. We got them ranked and pulling traffic within 90 days.",
-      ],
-      outro: [
-        "If it isn't fixed, it's free.",
-        "You walk away with peace of mind. You know what you have, how to maintain it, and that an AI mistake isn't leaving you exposed.",
-      ],
+      items: FIX_EXAMPLES.map((e) => e.map((s) => s.text).join(" ")),
+      outro: [FIX_GUARANTEE],
     },
     {
       heading: "What you get",
@@ -79,6 +103,15 @@ export const fixWeek: Offer = {
       kind: "paragraphs",
       items: [
         "Take another item off the list, move to Web Partner, or stop there. The list is yours.",
+      ],
+    },
+    // The home page's Rescue card, moved here word for word when the home
+    // Partner section went from six cards to four (pass 1 handoff, 2026-11-22).
+    {
+      heading: "Rescue",
+      kind: "paragraphs",
+      items: [
+        "Finish what AI started and make it safe to run. If it can't be saved, we build it properly from the ground up.",
       ],
     },
   ],

@@ -126,6 +126,9 @@ to it:
 
 ## Extensions made without Figma coverage
 
+- **Pass 1, 2026-11-22 (Drew's handoff, for Misha to revise).** None of this is on a board. `/case-studies`: results strip, sticky client index and chips, outcome-first cases, the Proof panel, the at-a-glance rows, all from the existing type and space scales, with one accent a case from the `--color-hero-*` set (CCCV reality-check purple, Heritage Global web-partner gold, Legacy Studios fix green, Disaster Legal Services accessibility brown), on numbers and rules only. Home: `.eyebrow-name` (step word, hairline, name in light), `.callout` (light italic at the lead size behind a 2px rule), the questions at the subtitle size beside the copy, the guarantee at the hero size in the accent purple, the four outlined Partner cards with Web Partner leading, the white `.proof-card`s, and the Problem heading at the hero size. The Reality Check and Bigger fixes line art is no longer used. No new tokens.
+
+
 - Drew's changes of 2026-11-17, departing from the comps at his request:
   the Bigger fixes eyebrow and heading sit inside the blue band 394:1893
   (MB11 sets them on the ground), the Problem section's Z set 360:1259 is

@@ -53,6 +53,8 @@ remotely with clients anywhere in the US.
 
 ## Track record
 
+- [Case studies](https://zacforge.com/case-studies): every system below was
+  built by our team and handed to the people who own it.
 - Calvary Chapel Conejo Valley: 1,703 sermons from 2001 to 2026 rescued from
   a hosted platform with no backup, and the site rebuilt on a stack the
   church owns. Launching soon.

@@ -35,6 +35,7 @@ const CARDS = [
   { slug: "accessibility", file: "accessibility.html" },
   { slug: "web-partner", file: "web-partner.html" },
   { slug: "platform-escape", file: "platform-escape.html" },
+  { slug: "case-studies", file: "case-studies.html" },
   { slug: "faq", file: "faq.html" },
   { slug: "about", file: "about.html" },
 ];

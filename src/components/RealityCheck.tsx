@@ -1,81 +1,64 @@
 import { motion } from "motion/react";
 import { Reveal } from "./Reveal";
 import { Magnetic } from "./Magnetic";
-import { BOOKING_URL } from "../lib/links";
+import { Callout } from "./Callout";
 import { fadeUpSmall } from "../lib/motion";
-import { realityCheck } from "../pages/offers/realityCheck";
+import { RC_HOME_INTRO } from "../pages/offers/realityCheck";
 
-/** Five lines, shown in full: no accordion, no carousel. */
+/** The five questions, as questions only since 2026-11-22. The line under
+ *  each is on /reality-check, under "What we check". */
 const QUESTIONS = [
-  { q: "Does it work?", a: "Sign-in, forms, data, and what happens when it fails." },
-  { q: "Is it fast?", a: "Measured on a real phone." },
-  {
-    q: "Can everyone use it?",
-    a: "Tested by hand with a keyboard and a screen reader, against WCAG 2.2 AA, the published standard.",
-  },
-  {
-    q: "Can anyone find it?",
-    a: "What ChatGPT, Google, and Perplexity say when a customer asks for someone like you.",
-  },
-  {
-    q: "Does it look like you?",
-    a: "Whether it looks like your business or like a template. Our design principal makes the call.",
-  },
+  "Does it work?",
+  "Is it fast?",
+  "Can everyone use it?",
+  "Can anyone find it?",
+  "Does it look like you?",
 ];
 
 /**
- * The front door, on MB11's blue band 360:1260 (curve top right, cut bottom
- * left): heading, the five questions numbered 1 to 5 (the comp numbers only
- * 2 and 4), and the button. The comp's four icon points and the dotted rule
- * under them were removed by Drew on 2026-11-13. The
- * booking pill and the "How it works" link to /reality-check stay from the
- * live page; the comp has the button only.
+ * Check, the first step of the page's spine, on MB11's blue band 360:1260
+ * (curve top right, cut bottom left). Cut on 2026-11-22 (Drew's pass 1
+ * handoff): heading, two intro lines, one button, and the "How it works"
+ * link on the left, the five questions set large on the right, revealed in
+ * sequence. The callout is the principle line from the removed How we work
+ * section's Check step.
  */
 export function RealityCheck() {
   return (
     <section id="reality-check" className="section band band--blue reality-check" aria-labelledby="reality-check-heading">
-      <img className="band-lines band-lines--rc" src="/art/mb11/lines-reality-check.svg" width={1280} height={966} alt="" aria-hidden="true" loading="lazy" />
-      <div className="container">
-        <Reveal>
-          <p className="eyebrow">Reality Check</p>
+      <div className="container rc-grid">
+        <Reveal className="rc-lead">
+          <p className="eyebrow">
+            <span className="eyebrow-step">Check</span> <span className="eyebrow-name">Reality Check</span>
+          </p>
           <h2 className="h2 rc-heading" id="reality-check-heading">
             <span className="h-light">Send us what you built.</span> We'll tell you straight.
           </h2>
-          {/* Where the icon points were (Drew, 2026-11-13). Intro from the
-              copy handoff of 2026-11-18. */}
-          {realityCheck.intro.map((p) => (
+          {RC_HOME_INTRO.map((p) => (
             <p className="section-intro copy" key={p}>
               {p}
             </p>
           ))}
-        </Reveal>
-
-        <Reveal className="rc-questions" stagger={0.06}>
-          {QUESTIONS.map((item, i) => (
-            <motion.div className="rc-question" key={item.q} variants={fadeUpSmall}>
-              <h3 className="rc-question-title">
-                <span className="rc-question-number">{i + 1}.</span> {item.q}
-              </h3>
-              <p className="rc-question-body copy">{item.a}</p>
-            </motion.div>
-          ))}
-        </Reveal>
-
-        <Reveal className="rc-close">
-          <div className="cta-row">
+          <div className="cta-row rc-close">
             <Magnetic>
               <a className="btn btn-primary" href="#contact">
-                <span>FREE Reality Check</span>{" "}
+                <span>Get a free Reality Check</span>{" "}
                 <span aria-hidden="true">→</span>
               </a>
             </Magnetic>
-            <a className="btn btn-secondary" href={BOOKING_URL}>
-              <span>Book a 20-minute call</span>
-            </a>
             <a className="text-link" href="/reality-check">
               <span>How it works</span>
             </a>
           </div>
+          <Callout>The people on the call do the work.</Callout>
+        </Reveal>
+
+        <Reveal className="rc-questions" stagger={0.12}>
+          {QUESTIONS.map((q, i) => (
+            <motion.h3 className="rc-question" key={q} variants={fadeUpSmall}>
+              <span className="rc-question-number">{i + 1}.</span> {q}
+            </motion.h3>
+          ))}
         </Reveal>
       </div>
     </section>

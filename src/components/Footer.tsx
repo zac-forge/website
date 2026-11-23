@@ -37,7 +37,7 @@ export function Footer() {
             Site
           </p>
           <a href="/#what-we-do">What we do</a>
-          <a href="/#track-record">Case studies</a>
+          <a href="/case-studies">Case studies</a>
           <a href="/#how-we-work">How we work</a>
           <a href="/about">About</a>
           <a href="/faq">FAQ</a>

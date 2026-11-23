@@ -1,5 +1,6 @@
 import { LIVE_OFFERS } from "../pages/offers";
 import { SITE_URL } from "./site";
+import { CASE_STUDIES_PATH, CASE_STUDIES_INTRO } from "../pages/caseStudies";
 
 export type PageMeta = {
   path: string;
@@ -45,6 +46,16 @@ export const ABOUT_META: PageMeta = {
   ogImage: `${SITE_URL}/og/about.jpg`,
 };
 
+/** /case-studies (Drew's pass 1 handoff, 2026-11-22). Title and description
+ *  are the handoff's: the description is the page's intro line. */
+export const CASE_STUDIES_META: PageMeta = {
+  path: CASE_STUDIES_PATH,
+  title: "Case studies | ZAC Forge",
+  description: CASE_STUDIES_INTRO,
+  ogTitle: "Case studies",
+  ogImage: `${SITE_URL}/og/case-studies.jpg`,
+};
+
 /** Every prerendered route and its head. Consumed by the prerender and by
  *  the client-side title effect. */
 export const PAGES: PageMeta[] = [
@@ -56,6 +67,7 @@ export const PAGES: PageMeta[] = [
     ogTitle: o.title.replace(" | ZAC Forge", ""),
     ogImage: `${SITE_URL}/og${o.path}.jpg`,
   })),
+  CASE_STUDIES_META,
   FAQ_META,
   ABOUT_META,
   // Served by functions/api/contact.ts after a form submission.

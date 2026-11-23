@@ -1,72 +1,62 @@
 import { motion } from "motion/react";
 import { Reveal } from "./Reveal";
+import { Callout } from "./Callout";
 import { fadeUpSmall } from "../lib/motion";
-import { BRAND_SYSTEM } from "../lib/flags";
 
-type Fix = { title: string; lines: string[]; link?: { label: string; href: string } };
+type Fix = { title: string; line: string; link: { label: string; href: string } };
 
 /**
- * Six short rows, each a line or two plus a link, from docs/site-copy-v5.md as
- * amended by Drew on 2026-11-13. AI Visibility, Platform Escape, and Web
- * Partner from Drew's copy handoff of 2026-11-18. Brand system goes to the form while its
- * page is off.
+ * Four cards since the cut of 2026-11-22 (Drew's pass 1 handoff), down from
+ * six: a title, one line, and the card's existing link. The lines are the
+ * handoff's, the header menu's subtext for each offer. The paragraph copy
+ * each card carried is on its offer's own page. The Rescue card's text moved
+ * to /fix-week, and the Brand system card is gone (/web-partner covers the
+ * design system offer).
  */
+const LEAD: Fix = {
+  title: "Web Partner",
+  line: "Senior help on call, month to month",
+  link: { label: "See Web Partner", href: "/web-partner" },
+};
 const FIXES: Fix[] = [
   {
     title: "AI Visibility",
-    // Cut from the end to fit the card (2026-11-18, flagged). The full text
-    // is the /ai-visibility intro.
-    lines: [
-      "Does your business show up when people ask ChatGPT, Claude or Grok?",
-      "We set your site up so AI can find it and name it. No promises.",
-    ],
+    line: "Show up when people ask AI. No promises.",
     link: { label: "See AI Visibility", href: "/ai-visibility" },
   },
   {
-    title: "Rescue",
-    lines: ["Finish what AI started and make it safe to run. If it can't be saved, we build it properly from the ground up."],
-    link: { label: "Ask about a rescue", href: "#contact" },
-  },
-  {
-    title: "Accessibility and performance",
-    lines: ["Public agencies and federally funded health providers face federal accessibility deadlines in 2027 and 2028. We fix the site's code. We don't cover it with a widget."],
-    link: { label: "See Accessibility", href: "/accessibility" },
-  },
-  {
-    title: "Brand system",
-    lines: ["Our design principal sets your look once, as rules your AI tools follow. What they make after that looks like you."],
-    // Drew, 2026-11-13: always a link. To the form while the page is off.
-    link: BRAND_SYSTEM
-      ? { label: "Ask about a brand system", href: "/brand-system" }
-      : { label: "Ask about a brand system", href: "#contact" },
-  },
-  {
     title: "Platform Escape",
-    // Cut from the end to fit the card (2026-11-18). The full copy is the
-    // /platform-escape intro.
-    lines: [
-      "Think WordPress. A lot of simple business sites are on it because it's easy to update, but it's overkill, and it costs them in maintenance, security and speed.",
-    ],
+    line: "Off WordPress or Wix, onto something you own",
     link: { label: "See Platform Escape", href: "/platform-escape" },
   },
   {
-    title: "Web Partner",
-    lines: [
-      "A flexible team of senior IT professionals who work alongside yours. As much or as little as you need. Month to month, no strings.",
-    ],
-    link: { label: "See Web Partner", href: "/web-partner" },
+    title: "Accessibility",
+    line: "Works for everyone. Ready for the 2027 deadline.",
+    link: { label: "See Accessibility", href: "/accessibility" },
   },
 ];
 
+function Card({ fix, lead = false }: { fix: Fix; lead?: boolean }) {
+  return (
+    <>
+      <h3 className="fix-title">{fix.title}</h3>
+      <p className={`fix-line ${lead ? "copy" : "case-text"}`}>{fix.line}</p>
+      <a className="btn btn-secondary fix-link" href={fix.link.href}>
+        <span>{fix.link.label}</span>{" "}
+        <span aria-hidden="true">→</span>
+      </a>
+    </>
+  );
+}
+
 /**
- * Bigger fixes, MB11 376:1756 and 376:1755, now with the eyebrow and heading
- * inside the blue band 394:1893 (cut top left, curve bottom right), directly
- * after The Fix (Drew, 2026-11-17), then the six fixes as a three by two
- * grid: yellow title, one line, an outlined pill whose label names its
- * destination (Drew, 2026-11-13). On the band the heading and lines are
- * white (4.51:1), the titles yellow at 24px bold (3.13:1, large text), and
- * the pills take the band's foreground. Titles drop their trailing periods,
- * as the comp sets four of them.
+ * Partner, the third step of the page's spine, on the blue band 394:1893
+ * (cut top left, curve bottom right), MB11 376:1756 and 376:1755. Web
+ * Partner leads, larger, with the callout from the removed How we work
+ * section's Partner step beside it. The other three stack to its right. On
+ * the band the heading and lines are white (4.51:1) and the titles yellow at
+ * 24px bold and up (3.13:1, large text). The band's dotted line art was
+ * drawn for the six-card grid and is not used.
  */
 export function WhatWeFix() {
   return (
@@ -75,31 +65,27 @@ export function WhatWeFix() {
       className="what-we-fix band band--blue fixes-band"
       aria-labelledby="what-we-do-heading"
     >
-      <img className="band-lines band-lines--fixes" src="/art/mb11/lines-bigger-fixes.svg" width={1280} height={607} alt="" aria-hidden="true" loading="lazy" />
       <div className="container">
         <Reveal className="what-we-fix-head">
-          <p className="eyebrow">Bigger fixes</p>
+          <p className="eyebrow">
+            <span className="eyebrow-step">Partner</span> <span className="eyebrow-name">Bigger fixes</span>
+          </p>
           <h2 className="h2" id="what-we-do-heading">
             <span className="h-light">When</span> the Check <span className="h-light">calls for</span>{" "}
             more
           </h2>
         </Reveal>
-        <Reveal stagger={0.06}>
+        <Reveal stagger={0.08}>
           <ul className="fix-grid">
+            <motion.li className="fix fix--lead" variants={fadeUpSmall}>
+              <Card fix={LEAD} lead />
+              <Callout>
+                You own the code, the accounts, and the files. If we vanished tomorrow, you'd be fine.
+              </Callout>
+            </motion.li>
             {FIXES.map((fix) => (
               <motion.li className="fix" key={fix.title} variants={fadeUpSmall}>
-                <h3 className="fix-title">{fix.title}</h3>
-                <div className="fix-line case-text">
-                  {fix.lines.map((l) => (
-                    <p key={l}>{l}</p>
-                  ))}
-                </div>
-                {fix.link ? (
-                  <a className="btn btn-secondary fix-link" href={fix.link.href}>
-                    <span>{fix.link.label}</span>{" "}
-                    <span aria-hidden="true">→</span>
-                  </a>
-                ) : null}
+                <Card fix={fix} />
               </motion.li>
             ))}
           </ul>

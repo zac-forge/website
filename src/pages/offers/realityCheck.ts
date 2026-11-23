@@ -1,5 +1,14 @@
 import type { Offer } from "./types";
 
+/**
+ * The intro lines the home Check section keeps since the cut of 2026-11-22
+ * (Drew's pass 1 handoff): the first paragraph, and the first two sentences
+ * of the third. Held here so home and /reality-check read one source.
+ */
+const RC_WHAT = "A senior review of your project for anything that's broken, AI or otherwise.";
+const RC_REPORT = "You get a prioritized report of what's broken and how to fix it. It's free.";
+export const RC_HOME_INTRO = [RC_WHAT, RC_REPORT];
+
 /** Copy from docs/site-copy-v5.md, "/reality-check". */
 export const realityCheck: Offer = {
   path: "/reality-check",
@@ -18,12 +27,12 @@ export const realityCheck: Offer = {
   cardIcon: "/art/offer-cards/icon-reality-check.svg",
   eyebrow: "THE REALITY CHECK",
   h1: "Send us what you built. We'll tell you straight.",
-  // Drew's copy handoff of 2026-11-18. The home Reality Check section
-  // renders the same three paragraphs.
+  // Drew's copy handoff of 2026-11-18. The home Check section rendered all
+  // three paragraphs until 2026-11-22 and now shows RC_HOME_INTRO only.
   intro: [
-    "A senior review of your project for anything that's broken, AI or otherwise.",
+    RC_WHAT,
     "It's for the owner who bit off more than they could chew, and for the bigger company that doesn't have the tech skills in house to fix or modernize something.",
-    "You get a prioritized report of what's broken and how to fix it. It's free. We're confident in what we do and happy to show it first. No strings attached.",
+    `${RC_REPORT} We're confident in what we do and happy to show it first. No strings attached.`,
   ],
   blocks: [
     {
