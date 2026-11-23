@@ -39,7 +39,7 @@ function initials(name: string) {
  */
 export function WhoWeAre() {
   return (
-    <section id="who-we-are" className="section band band--grey who-we-are" aria-labelledby="who-we-are-heading">
+    <section id="who-we-are" className="section band band--white who-we-are" aria-labelledby="who-we-are-heading">
       <div className="container">
         <Reveal>
           <p className="eyebrow">Team</p>

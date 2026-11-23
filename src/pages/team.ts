@@ -8,8 +8,8 @@
  */
 /**
  * `cardName` overrides `name` on the card only (Drew, 2026-11-22: Luciano's
- * card reads Luciano "Luke" Monegatto so the bio's "Luke" makes sense). The
- * schema and initials keep `name`.
+ * card read Luciano "Luke" Monegatto so the bio's "Luke" made sense, then
+ * Luke Monegatto to fit one line). The schema and initials keep `name`.
  */
 export type TeamMember = { slug: string; name: string; cardName?: string; role: string; bio: string[] };
 
@@ -25,7 +25,7 @@ export const TEAM: TeamMember[] = [
     name: "Andrew Johnston",
     role: "Founder, Principal",
     bio: [
-      "25 years building for the web, across startups, his own agency and IBM. At IBM he was one of two developers who built the code base for ibm.com/software, which was later rolled out across ibm.com, first in North America and then worldwide. He leads every ZAC engagement, from the first conversation through hands-on delivery.",
+      "25 years building for the web, across startups, his own agency and IBM, where he was one of two developers who built the code base later rolled out across ibm.com worldwide. He leads every ZAC engagement, start to finish.",
     ],
   },
   {
@@ -39,7 +39,7 @@ export const TEAM: TeamMember[] = [
   {
     slug: "principal-engineer",
     name: "Luciano Monegatto",
-    cardName: 'Luciano "Luke" Monegatto',
+    cardName: "Luke Monegatto",
     role: "Principal Engineer",
     bio: [
       "Luke has built alongside Andrew since IBM, across web, apps and mobile. He's who we hand the hardest problems to, and we've never handed him one he couldn't solve.",

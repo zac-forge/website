@@ -910,8 +910,9 @@ body:has(.subpage-hero) .site-header:not([data-scrolled="true"]):not(:has(.site-
 }
 
 /* ------------------------------------------------------------- The team */
-/* 394:1894: cut top left, curve bottom right. Three white 176 circles,
-   then name, role, and bio. */
+/* 394:1894: cut top left, curve bottom right. On white since 2026-11-22
+   (Drew), not MB11's grey. Three 176 circles in the ground grey, then
+   name, role, and bio. */
 .who-we-are {
   --pad-top: var(--space-7);
   --pad-bottom: var(--space-8);
@@ -937,7 +938,9 @@ body:has(.subpage-hero) .site-header:not([data-scrolled="true"]):not(:has(.site-
   aspect-ratio: 1;
   overflow: hidden;
   border-radius: var(--radius-full);
-  background: var(--color-surface);
+  /* The ground grey, the same fill the photos are cut out onto, so the
+     circles read on the white band with or without a photo. */
+  background: var(--color-bg);
 }
 .team-photo {
   width: 100%;

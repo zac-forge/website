@@ -270,6 +270,12 @@ p {
 .band--grey {
   --band-bg: var(--color-band-grey);
 }
+/* White band (Drew, 2026-11-22: the team). Not in MB11, which draws the
+   team on grey. The surface white keeps the cut and curve readable against
+   the ground. */
+.band--white {
+  --band-bg: var(--color-surface);
+}
 .band .eyebrow {
   color: var(--band-muted);
 }
