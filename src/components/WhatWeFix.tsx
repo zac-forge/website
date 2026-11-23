@@ -3,6 +3,7 @@ import { Callout } from "./Callout";
 import { OfferTile, TileBody, capsuleStyle } from "./OfferTiles";
 import type { Tile } from "./OfferTiles";
 import { step } from "../lib/reveal";
+import { PRINCIPLES } from "../pages/principles";
 
 /**
  * Four tiles since the cut of 2026-11-22 (Drew's pass 1 handoff), down from
@@ -69,9 +70,7 @@ export function WhatWeFix() {
             <li className="fix fix--lead reveal-item" style={{ ...step(0), ...capsuleStyle(LEAD.link.href) }}>
               <div className="fix-lead-copy">
                 <TileBody tile={LEAD} lead />
-                <Callout>
-                  You own the code, the accounts, and the files. If we vanished tomorrow, you'd be fine.
-                </Callout>
+                <Callout>{PRINCIPLES.partner}</Callout>
               </div>
               <div className="fix-lead-art" aria-hidden="true">
                 <svg className="fix-orbits" viewBox="0 0 320 320" focusable="false">

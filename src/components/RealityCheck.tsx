@@ -1,6 +1,6 @@
+import { REALITY_CHECK_LABEL } from "../lib/links";
 import { Reveal } from "./Reveal";
 import { Magnetic } from "./Magnetic";
-import { Callout } from "./Callout";
 import { QuestionStepper } from "./QuestionStepper";
 import { realityCheck, RC_HOME_INTRO } from "../pages/offers/realityCheck";
 import type { Block } from "../pages/offers/types";
@@ -13,8 +13,9 @@ const QUESTIONS = (realityCheck.blocks[0] as Extract<Block, { kind: "numbered" }
  * Check, the first step of the page's spine, on MB11's blue band 360:1260
  * (curve top right, cut bottom left): heading, two intro lines, one button,
  * and the "How it works" link on the left, the five questions as a stepper
- * (QuestionStepper, shared with /reality-check) on the right. The callout
- * is the principle line from the removed How we work section's Check step.
+ * (QuestionStepper, shared with /reality-check) on the right. Its callout,
+ * the Check principle line, left the home page on 2026-11-22 (Drew) and is
+ * on /about under "How we work".
  */
 export function RealityCheck() {
   return (
@@ -35,7 +36,7 @@ export function RealityCheck() {
           <div className="cta-row rc-close">
             <Magnetic>
               <a className="btn btn-primary" href="#contact">
-                <span>Get a free Reality Check</span>{" "}
+                <span>{REALITY_CHECK_LABEL}</span>{" "}
                 <span aria-hidden="true">→</span>
               </a>
             </Magnetic>
@@ -43,7 +44,6 @@ export function RealityCheck() {
               <span>How it works</span>
             </a>
           </div>
-          <Callout>The people on the call do the work.</Callout>
         </Reveal>
 
         <Reveal stagger>

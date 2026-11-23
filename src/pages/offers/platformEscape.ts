@@ -1,3 +1,4 @@
+import { REALITY_CHECK_LABEL } from "../../lib/links";
 import type { Offer } from "./types";
 
 /**
@@ -40,5 +41,5 @@ export const platformEscape: Offer = {
     },
   ],
   faq: [],
-  cta: { label: "Start with a Reality Check", href: "/#contact" },
+  cta: { label: REALITY_CHECK_LABEL, href: "/#contact" },
 };

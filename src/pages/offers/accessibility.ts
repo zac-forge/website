@@ -1,3 +1,4 @@
+import { REALITY_CHECK_LABEL } from "../../lib/links";
 import type { Offer } from "./types";
 
 export const accessibility: Offer = {
@@ -151,5 +152,5 @@ export const accessibility: Offer = {
   ],
   footnote:
     "Sources: EcomBack 2025 ADA Website Accessibility Lawsuit Report. US Department of Justice interim final rule, April 20, 2026 (ADA Title II). US Department of Health and Human Services interim final rule, May 2026 (Section 504).",
-  cta: { label: "Start with a Reality Check", href: "/#contact" },
+  cta: { label: REALITY_CHECK_LABEL, href: "/#contact" },
 };

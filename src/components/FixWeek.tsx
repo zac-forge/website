@@ -2,6 +2,7 @@ import { Reveal } from "./Reveal";
 import { Callout } from "./Callout";
 import { FixExamples, Statement } from "./FixExamples";
 import { step } from "../lib/reveal";
+import { PRINCIPLES } from "../pages/principles";
 import { FIX_HOME, FIX_GUARANTEE } from "../pages/offers/fixWeek";
 
 /**
@@ -45,7 +46,7 @@ export function FixWeek() {
         </Reveal>
 
         <Reveal className="fix-week-close">
-          <Callout>We tell you what's not worth fixing. A lot of it isn't.</Callout>
+          <Callout>{PRINCIPLES.fix}</Callout>
           <a className="text-link" href="/fix-week">
             <span>What the Fix covers</span> <span aria-hidden="true">→</span>
           </a>

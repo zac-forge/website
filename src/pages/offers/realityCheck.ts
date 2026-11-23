@@ -1,3 +1,4 @@
+import { REALITY_CHECK_LABEL } from "../../lib/links";
 import type { Offer } from "./types";
 
 /**
@@ -102,6 +103,6 @@ export const realityCheck: Offer = {
     },
     { question: "What if it's fine?", answer: "Then the scorecard says so." },
   ],
-  cta: { label: "FREE Reality Check", href: "#contact" },
+  cta: { label: REALITY_CHECK_LABEL, href: "#contact" },
   form: true,
 };

@@ -12,3 +12,10 @@ export const CONTACT_ENDPOINT = "/api/contact";
  * skips verification. See README.md.
  */
 export const TURNSTILE_SITE_KEY: string = import.meta.env.VITE_TURNSTILE_SITE_KEY ?? "";
+
+/**
+ * The one label for every Reality Check button and closing section (Drew,
+ * 2026-11-22), in place of "Start with a Reality Check" and "FREE Reality
+ * Check". Running text keeps its own wording.
+ */
+export const REALITY_CHECK_LABEL = "Get a free Reality Check";

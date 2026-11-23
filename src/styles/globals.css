@@ -180,7 +180,7 @@ p {
     background var(--duration-fast) var(--ease-out),
     border-color var(--duration-fast) var(--ease-out);
 }
-/* On the narrowest phones a long label ("Start with a Reality Check") would
+/* On the narrowest phones a long label ("Get a free Reality Check") would
    push the pill past the column. Below 400px it may wrap to two lines. */
 @media (max-width: 400px) {
   .btn {

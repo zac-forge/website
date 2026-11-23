@@ -1,6 +1,6 @@
 import { Magnetic } from "./Magnetic";
 import { SubpageHero } from "./SubpageHero";
-import { BOOKING_URL } from "../lib/links";
+import { BOOKING_URL, REALITY_CHECK_LABEL } from "../lib/links";
 import { step } from "../lib/reveal";
 
 /**
@@ -36,7 +36,7 @@ export function Hero() {
           <div className="cta-row hero-stage" style={step(3)}>
             <Magnetic>
               <a className="btn btn-primary" href="/#contact">
-                <span>Get a free Reality Check</span>{" "}
+                <span>{REALITY_CHECK_LABEL}</span>{" "}
                 <span aria-hidden="true">→</span>
               </a>
             </Magnetic>

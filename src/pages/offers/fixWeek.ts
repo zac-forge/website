@@ -1,3 +1,4 @@
+import { REALITY_CHECK_LABEL } from "../../lib/links";
 import type { Offer, FixExample } from "./types";
 
 /**
@@ -153,5 +154,5 @@ export const fixWeek: Offer = {
     },
     { question: "No scorecard yet?", answer: "Start with the free Reality Check." },
   ],
-  cta: { label: "Start with a Reality Check", href: "/#contact" },
+  cta: { label: REALITY_CHECK_LABEL, href: "/#contact" },
 };

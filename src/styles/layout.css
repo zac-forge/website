@@ -1763,7 +1763,68 @@ button.fix-example-ill:focus-visible {
 .team-bio {
   margin-top: var(--space-3);
 }
-/* Home, without the bios: one link to /about under the three cards. */
+/* Home, compact (Drew, 2026-11-22): the intro's first line is the headline,
+   the principals sit in one row, a small photo with the name and title
+   beside it, no card behind, and the About ZAC link closes the row. About
+   half the height the cards took. */
+.who-we-are--compact {
+  --pad-bottom: var(--space-7);
+}
+.who-we-are--compact .h2 {
+  max-width: calc(var(--copy-width) + var(--space-11));
+}
+.who-we-are--compact .section-intro.copy {
+  max-width: var(--prose-width);
+  margin-top: var(--space-5);
+}
+.who-we-are--compact .team {
+  gap: var(--space-5) var(--space-6);
+  margin-top: var(--space-6);
+}
+.who-we-are--compact .team-member {
+  flex-direction: row;
+  align-items: center;
+  gap: var(--space-4);
+  padding: 0;
+  background: none;
+  border-radius: 0;
+}
+.who-we-are--compact .team-member:hover {
+  transform: none;
+  box-shadow: none;
+}
+.who-we-are--compact .team-circle {
+  flex: none;
+  width: calc(var(--team-circle) * 0.5);
+}
+.who-we-are--compact .team-text {
+  width: auto;
+  margin-top: 0;
+}
+.who-we-are--compact .team-about-link {
+  justify-content: flex-start;
+  margin-top: var(--space-4);
+}
+@media (max-width: 760px) {
+  .who-we-are--compact .team-member {
+    display: flex;
+  }
+  .who-we-are--compact .team-circle {
+    width: calc(var(--team-circle) * 0.4);
+  }
+}
+/* /about: the three principle lines under "How we work". */
+.principles {
+  display: grid;
+  gap: var(--space-6);
+}
+.principles .callout {
+  max-width: none;
+  margin-top: 0;
+  font-size: var(--text-card);
+  line-height: 1.3;
+}
+/* Home, without the bios: one link to /about under the row. */
 .team-about-link {
   justify-content: center;
   margin-top: var(--space-7);
@@ -2125,6 +2186,10 @@ button.fix-example-ill:focus-visible {
 /* /about: the lead runs straight into the Principals band, so it takes the
    bottom space the offer pages get from their next section. */
 .about-lead {
+  --pad-bottom: var(--space-8);
+}
+.about-principles {
+  --pad-top: var(--space-8);
   --pad-bottom: var(--space-10);
 }
 .about-lead .strip {

@@ -39,15 +39,26 @@ function initials(name: string) {
  * renders this same component with the bios.
  */
 export function WhoWeAre({ bios = true }: { bios?: boolean } = {}) {
+  // Home (no bios) is the compact form (Drew, 2026-11-22): the intro's first
+  // line is the headline in place of "Principals", its second the one
+  // supporting line, and the principals sit in one row with small photos
+  // and no card behind them. /about keeps "Principals", the whole intro,
+  // and the cards with bios.
+  const compact = !bios;
+  const [headline, ...rest] = TEAM_INTRO;
   return (
-    <section id="who-we-are" className="section band band--white who-we-are" aria-labelledby="who-we-are-heading">
+    <section
+      id="who-we-are"
+      className={`section band band--white who-we-are${compact ? " who-we-are--compact" : ""}`}
+      aria-labelledby="who-we-are-heading"
+    >
       <div className="container">
         <Reveal>
           <p className="eyebrow">Team</p>
           <h2 className="h2" id="who-we-are-heading">
-            Principals
+            {compact ? headline : "Principals"}
           </h2>
-          {TEAM_INTRO.map((p) => (
+          {(compact ? rest.slice(0, 1) : TEAM_INTRO).map((p) => (
             <p className="section-intro copy" key={p}>
               {p}
             </p>

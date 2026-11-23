@@ -1,3 +1,4 @@
+import { REALITY_CHECK_LABEL } from "../../lib/links";
 import type { Offer } from "./types";
 
 /** Copy from docs/site-copy-v5.md, "/web-partner", amended by the copy pass of 2026-11-06. */
@@ -94,5 +95,5 @@ export const webPartner: Offer = {
         "Give 30 days' notice. The code, the accounts, and the files are yours the whole time, so there's nothing to ask us for.",
     },
   ],
-  cta: { label: "Start with a Reality Check", href: "/#contact" },
+  cta: { label: REALITY_CHECK_LABEL, href: "/#contact" },
 };

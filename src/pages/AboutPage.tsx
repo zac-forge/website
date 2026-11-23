@@ -1,8 +1,11 @@
+import { REALITY_CHECK_LABEL } from "../lib/links";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import { SubpageHero } from "../components/SubpageHero";
 import { WhoWeAre } from "../components/WhoWeAre";
 import { Closing } from "../components/Closing";
+import { Callout } from "../components/Callout";
+import { PRINCIPLES } from "./principles";
 import { Reveal } from "../components/Reveal";
 import { ExperienceStrip } from "../components/LogoBand";
 
@@ -51,9 +54,26 @@ export default function AboutPage() {
           </div>
         </section>
 
+        {/* The three principle lines from the home page's removed How we
+            work section, verbatim, in the shared callout style. */}
+        <section className="section offer-block about-principles">
+          <div className="container offer-split">
+            <Reveal className="offer-split-side">
+              <h2 className="h3 offer-block-heading">How we work</h2>
+            </Reveal>
+            <Reveal className="offer-split-main principles" stagger>
+              {Object.values(PRINCIPLES).map((line, i) => (
+                <Callout className="reveal-item" key={line} index={i}>
+                  {line}
+                </Callout>
+              ))}
+            </Reveal>
+          </div>
+        </section>
+
         <WhoWeAre />
 
-        <Closing cta={{ label: "Start with a Reality Check", href: "/#contact" }} />
+        <Closing cta={{ label: REALITY_CHECK_LABEL, href: "/#contact" }} />
       </main>
       <Footer />
     </>

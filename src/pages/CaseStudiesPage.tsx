@@ -1,3 +1,4 @@
+import { REALITY_CHECK_LABEL } from "../lib/links";
 import { useEffect, useState } from "react";
 import type { CSSProperties } from "react";
 import { Header } from "../components/Header";
@@ -241,7 +242,7 @@ export default function CaseStudiesPage() {
           </div>
         </div>
 
-        <Closing cta={{ label: "Get a free Reality Check", href: "/#contact" }} />
+        <Closing cta={{ label: REALITY_CHECK_LABEL, href: "/#contact" }} />
       </main>
       <Footer />
     </>

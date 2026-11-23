@@ -1,3 +1,4 @@
+import { REALITY_CHECK_LABEL } from "../../lib/links";
 import type { Offer } from "./types";
 
 /**
@@ -79,5 +80,5 @@ export const brandSystem: Offer = {
         "One working session. After that, they use the tools they already use, and the output comes back on brand.",
     },
   ],
-  cta: { label: "Start with a Reality Check", href: "/#contact" },
+  cta: { label: REALITY_CHECK_LABEL, href: "/#contact" },
 };

@@ -1,3 +1,4 @@
+import { REALITY_CHECK_LABEL } from "../lib/links";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import { Closing } from "../components/Closing";
@@ -63,7 +64,7 @@ export default function FaqPage() {
 
         <RelatedOffers label="What we do" />
 
-        <Closing cta={{ label: "Start with a Reality Check", href: "/#contact" }} />
+        <Closing cta={{ label: REALITY_CHECK_LABEL, href: "/#contact" }} />
       </main>
       <Footer />
     </>

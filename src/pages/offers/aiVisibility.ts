@@ -1,3 +1,4 @@
+import { REALITY_CHECK_LABEL } from "../../lib/links";
 import type { Offer } from "./types";
 
 export const aiVisibility: Offer = {
@@ -103,5 +104,5 @@ export const aiVisibility: Offer = {
         "Technical fixes can show up within weeks, as assistants re-read your site. Reviews and mentions take longer. We check again at 30 days and track monthly after that.",
     },
   ],
-  cta: { label: "Start with a Reality Check", href: "/#contact" },
+  cta: { label: REALITY_CHECK_LABEL, href: "/#contact" },
 };
