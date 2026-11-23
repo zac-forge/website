@@ -127,6 +127,12 @@ export function Header({ hideCta = false }: { hideCta?: boolean } = {}) {
   }, []);
 
   return (
+    <>
+    {/* First in the tab order on every page: straight to <main id="main">.
+        Off screen until it takes focus (Drew, 2026-11-22). */}
+    <a className="skip-link" href="#main">
+      Skip to main content
+    </a>
     <header className="site-header" data-scrolled={scrolled}>
       <div className="header-inner">
         <a href="/#top" className="brand" onClick={close} aria-label="zacforge, home">
@@ -164,5 +170,6 @@ export function Header({ hideCta = false }: { hideCta?: boolean } = {}) {
         </button>
       </div>
     </header>
+    </>
   );
 }

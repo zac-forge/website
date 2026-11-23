@@ -5,8 +5,14 @@ import type { CSSProperties } from "react";
  * True once the element has scrolled into view, and it stays true. One
  * IntersectionObserver per element, disconnected as soon as it fires. Where
  * the observer does not exist the element counts as in view straight away.
+ *
+ * By default it fires as the element's top edge crosses the bottom of the
+ * viewport (Drew, 2026-11-22: at 15% in, sections sat blank until well into
+ * view), so the reveal has run by the time a reader gets there. `amount`
+ * asks for more of the element first, which the count-up uses so the number
+ * is on screen while it counts.
  */
-export function useInViewOnce<T extends Element>(amount = 0.15) {
+export function useInViewOnce<T extends Element>(amount = 0) {
   const ref = useRef<T>(null);
   const [inView, setInView] = useState(false);
   useEffect(() => {
@@ -23,7 +29,7 @@ export function useInViewOnce<T extends Element>(amount = 0.15) {
           io.disconnect();
         }
       },
-      { threshold: amount, rootMargin: "0px 0px -8% 0px" },
+      { threshold: amount },
     );
     io.observe(el);
     return () => io.disconnect();

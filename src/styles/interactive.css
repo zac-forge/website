@@ -105,3 +105,35 @@
     transform: none !important;
   }
 }
+
+/* The skip link (Header.tsx): first in the tab order on every page, off
+   screen until focused, then a primary pill at the top left, above the
+   header. Its target, <main>, takes focus without drawing a ring of its
+   own: it is where reading starts, not a control. */
+.skip-link {
+  position: fixed;
+  top: var(--space-3);
+  left: var(--space-3);
+  z-index: 60;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 var(--space-5);
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+  border-radius: var(--radius-full);
+  font-size: var(--text-small);
+  font-weight: var(--weight-black);
+  box-shadow: var(--shadow-lift);
+  transform: translateY(calc(-100% - var(--space-5)));
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+.skip-link:focus-visible {
+  transform: none;
+  outline-color: var(--color-on-accent);
+  outline-offset: -5px;
+  border-radius: var(--radius-full);
+}
+main:focus {
+  outline: none;
+}

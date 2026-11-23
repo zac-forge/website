@@ -24,7 +24,7 @@ export default function AboutPage() {
   return (
     <>
       <Header />
-      <main className="offer-page">
+      <main id="main" tabIndex={-1} className="offer-page">
         <SubpageHero title="About" />
 
         <section className="section offer-lead about-lead">

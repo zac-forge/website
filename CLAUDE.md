@@ -142,7 +142,7 @@ Build pages from these. Do not create a second button, card, or eyebrow.
 | Inline text action | `.text-link` |
 | Card surface | `.surface`, white, 12px radius, no border |
 | Undecided imagery | `.placeholder`, the board's grey |
-| Colour band (MB11) | `.band` with `.band--blue` or `.band--grey`; the cut and curve come from the `band.*` tokens (`--band-clip-*`, `--band-curve-*`), set per section in `layout.css` and scaled by `--band-k` |
+| Colour band (MB11) | `.band` with `.band--blue` or `.band--grey`; the cut and curve come from the `band.*` tokens (`--band-clip-*`, `--band-curve-*`), set per section in `layout.css` and scaled by `--band-k` (the compact cut at 900px and narrower) |
 | Dotted line art on a band | `<img class="band-lines">` from `public/art/mb11/lines-*.svg`, laid on the 1280 frame, hidden below 900px |
 | Step row with arrows | `FlowRow` (`src/components/FlowRow.tsx`), ring icon, title, arrows that draw once, paragraphs under each |
 | Heading left, intro right | `.split-head` with `.split-head-copy` |
@@ -154,7 +154,8 @@ Build pages from these. Do not create a second button, card, or eyebrow.
 | Team photo | Drop `andrew-johnston`, `design-principal`, or `principal-engineer` (.webp, .jpg, .png) in `src/assets/team/` and rebuild; initials or a plain circle until then. The set is grayscale on each photo's original background (cutouts were tried and dropped, 2026-11-22), cropped so the face box is half the frame and the eyes sit 45% down; a new photo should match |
 | Contact form | `ContactForm` (`src/components/ContactForm.tsx`) inside `Closing`, fields `.field` / `.field-label` / `.field-input`, posts to `/api/contact` |
 | Screen-reader-only text | `.sr-only` |
-| Entrance reveal | `<Reveal>` (CSS, `motion.css`): the block fades and rises once. `<Reveal stagger>` reveals its `.reveal-item` descendants in sequence, each at `style={step(i)}` from `src/lib/reveal.ts`. Timing is the `--duration-reveal`, `--reveal-stagger`, and `--ease-out` tokens, never ad hoc values |
+| Skip link | `.skip-link` in `Header.tsx`, on every page, to `<main id="main" tabIndex={-1}>`. A new page's `main` needs the same id and tabIndex |
+| Entrance reveal | `<Reveal>` (CSS, `motion.css`): the block fades and rises once. `<Reveal stagger>` reveals its `.reveal-item` descendants in sequence, each at `style={step(i)}` from `src/lib/reveal.ts`. Timing is the `--duration-reveal`, `--reveal-stagger`, and `--ease-out` tokens, never ad hoc values. A reveal fires as the block's top edge enters the viewport (Drew, 2026-11-22), so nothing sits blank in view |
 | Brand | `<Wordmark>` and `<ZacMark>` from `Brand.tsx`, which serve the board's SVG exports, never an SVG or raster of your own |
 | Favicon | `public/favicon.svg` (the wordmark's Z, black on `#EBEBEB`), `public/favicon.ico` (16, 32, 48), `public/brand/favicon-64.png`, and the 180px apple-touch icon on a solid ground, all rendered from that SVG |
 | Booking and email | `BOOKING_URL`, `CONTACT_EMAIL`, and `CONTACT_ENDPOINT` from `src/lib/links.ts` |

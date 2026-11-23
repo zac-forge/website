@@ -57,7 +57,7 @@ export default function ContactResult({ variant }: { variant: ContactResultVaria
       {/* The thank-you page drops the header's Reality Check button: the
           visitor has just asked for one. */}
       <Header hideCta={variant === "thanks"} />
-      <main>
+      <main id="main" tabIndex={-1}>
         <section id="top" className="result band band--blue">
           <div className="container result-grid">
             <div className="result-copy">

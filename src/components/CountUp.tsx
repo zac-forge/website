@@ -13,7 +13,7 @@ import { useInViewOnce, prefersReducedMotion } from "../lib/reveal";
  * is left alone. The duration is the --duration-count token.
  */
 export function CountUp({ value, className = "" }: { value: string; className?: string }) {
-  const [ref, inView] = useInViewOnce<HTMLSpanElement>(0.6);
+  const [ref, inView] = useInViewOnce<HTMLSpanElement>(1);
   const [running, setRunning] = useState<string | null>(null);
 
   useEffect(() => {

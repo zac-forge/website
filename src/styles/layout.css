@@ -285,12 +285,13 @@ body:has(.subpage-hero) .site-header:not([data-scrolled="true"]):not(:has(.site-
   transform: translateX(-50%);
   pointer-events: none;
 }
-@media (max-width: 760px) {
+/* The compact cut runs to 900px (was 760, Drew's 768px review of
+   2026-11-22): at tablet widths the full-size hero cut sliced the corner of
+   the first button, which sits a 24px gutter from the edge there. */
+@media (max-width: 900px) {
   :root {
     --band-k: var(--band-k-compact);
   }
-}
-@media (max-width: 900px) {
   .band-lines {
     display: none;
   }
@@ -1047,13 +1048,26 @@ body:has(.subpage-hero) .site-header:not([data-scrolled="true"]):not(:has(.site-
   margin-bottom: var(--space-8);
 }
 
+/* Tablet: the third column is too narrow for a tile's pill ("See Platform
+   Escape" ran past its tile at 768), so Web Partner takes the full width,
+   two tiles share the next row, and the last runs full width. */
+@media (max-width: 900px) {
+  .fix-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .fix--lead {
+    grid-column: 1 / -1;
+    grid-row: auto;
+  }
+  .fix--lead .fix-link {
+    margin-bottom: var(--space-7);
+  }
+}
 @media (max-width: 760px) {
   .fix-grid {
     grid-template-columns: minmax(0, 1fr);
   }
   .fix--lead {
-    grid-column: auto;
-    grid-row: auto;
     padding: var(--space-6);
   }
 }
@@ -2159,6 +2173,10 @@ body:has(.subpage-hero) .site-header:not([data-scrolled="true"]):not(:has(.site-
       color var(--duration-base) var(--ease-out),
       background var(--duration-base) var(--ease-out),
       border-color var(--duration-base) var(--ease-out);
+  }
+  /* The chips already separate the lead from the first case. */
+  .case-study:first-child {
+    padding-top: var(--space-6);
   }
   .cases-index a[aria-current] {
     transform: none;

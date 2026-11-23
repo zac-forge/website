@@ -19,7 +19,7 @@ export default function FaqPage() {
   return (
     <>
       <Header />
-      <main className="offer-page">
+      <main id="main" tabIndex={-1} className="offer-page">
         <SubpageHero title="FAQ" />
 
         <section className="section offer-lead">

@@ -114,7 +114,7 @@ export default function OfferPage({ offer }: { offer: Offer }) {
   return (
     <>
       <Header />
-      <main className="offer-page">
+      <main id="main" tabIndex={-1} className="offer-page">
         <SubpageHero
           title={offer.heroTitle}
           icon={offer.heroIcon}

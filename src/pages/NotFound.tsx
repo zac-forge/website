@@ -18,7 +18,7 @@ export default function NotFound() {
   return (
     <>
       <Header />
-      <main>
+      <main id="main" tabIndex={-1}>
         <section id="top" className="result band band--blue">
           <div className="container result-grid">
             <div className="result-copy">

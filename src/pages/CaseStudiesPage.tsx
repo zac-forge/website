@@ -220,7 +220,7 @@ export default function CaseStudiesPage() {
   return (
     <>
       <Header />
-      <main className="offer-page cases-page">
+      <main id="main" tabIndex={-1} className="offer-page cases-page">
         <SubpageHero title="Case studies" />
 
         <section className="section offer-lead cases-lead">
