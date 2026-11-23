@@ -14,6 +14,8 @@ export const RC_HOME_INTRO = [RC_WHAT, RC_REPORT];
 export const realityCheck: Offer = {
   path: "/reality-check",
   navTitle: "The Reality Check",
+  menuTitle: "Reality Check",
+  line: "Free senior review of your project",
   summary: "Send us what you built. We'll tell you straight.",
   title: "Reality Check: free review of AI-built websites | ZAC Forge",
   description:
@@ -37,9 +39,29 @@ export const realityCheck: Offer = {
   ],
   blocks: [
     {
+      heading: "How it works",
+      kind: "numbered",
+      items: [
+        { title: "Send it.", body: "A link is enough." },
+        { title: "Give us a few days.", body: "Nothing on your site changes." },
+        {
+          title: "You read the scorecard and decide.",
+          body: "Fix it with us, fix it yourself, or leave it. The scorecard is yours either way.",
+        },
+      ],
+    },
+    {
+      heading: "What you get",
+      kind: "paragraphs",
+      items: [
+        "One page. A verdict on each question, the evidence, and what a fix would take. Nothing you need a developer to translate.",
+      ],
+    },
+    {
       heading: "What we check",
       kind: "numbered",
-      // The home Check section's stepper, with the same five items.
+      // The home Check section's stepper, with the same five items. It is
+      // this page's proof block, so it comes last.
       view: "stepper",
       items: [
         {
@@ -61,32 +83,8 @@ export const realityCheck: Offer = {
         },
       ],
     },
-    {
-      heading: "What you get",
-      kind: "paragraphs",
-      items: [
-        "One page. A verdict on each question, the evidence, and what a fix would take. Nothing you need a developer to translate.",
-      ],
-    },
-    {
-      heading: "How it works",
-      kind: "numbered",
-      items: [
-        { title: "Send it.", body: "A link is enough." },
-        { title: "Give us a few days.", body: "Nothing on your site changes." },
-        {
-          title: "You read the scorecard and decide.",
-          body: "Fix it with us, fix it yourself, or leave it. The scorecard is yours either way.",
-        },
-      ],
-    },
   ],
   faq: [
-    {
-      question: "Why is it free?",
-      answer:
-        "Because it's how we meet clients. You see how we work before you spend anything. If we can help, you get a quote. If we can't, we say so.",
-    },
     {
       question: "Is it automated?",
       answer:

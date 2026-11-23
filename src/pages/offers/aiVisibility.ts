@@ -1,9 +1,14 @@
 import { REALITY_CHECK_LABEL } from "../../lib/links";
 import type { Offer } from "./types";
 
+/** The menu's line. The tiles add "No promises." (copy handoff, 2026-11-18). */
+const AI_LINE = "Show up when people ask AI";
+
 export const aiVisibility: Offer = {
   path: "/ai-visibility",
   navTitle: "AI Visibility",
+  line: AI_LINE,
+  tileLine: `${AI_LINE}. No promises.`,
   // The home card's lines (2026-11-18).
   summary:
     "Does your business show up when people ask ChatGPT, Claude or Grok? We set your site up so AI can find it and name it. No promises.",
@@ -29,32 +34,6 @@ export const aiVisibility: Offer = {
   ],
   blocks: [
     {
-      heading: "What we check",
-      kind: "numbered",
-      items: [
-        {
-          title: "Can the assistants read your site?",
-          body: "Some hosting setups block AI crawlers by default, and many crawlers can't read content that only appears after JavaScript runs. We check your firewall, CDN, and robots.txt settings, and what's actually in the page.",
-        },
-        {
-          title: "Do they understand what you are?",
-          body: "Structured data is a label in your code that tells a machine your business name, services, people, and location. We check that it's there and that it's right.",
-        },
-        {
-          title: "Do you answer the questions customers ask?",
-          body: "Pages built around real questions, in your customers' words, with facts an assistant can quote.",
-        },
-        {
-          title: "What do other sites say about you?",
-          body: "Reviews, directories, your Google Business Profile, press, and forums. Assistants lean on these.",
-        },
-        {
-          title: "How often are you named?",
-          body: "The same questions, run repeatedly across four assistants, with every answer saved.",
-        },
-      ],
-    },
-    {
       heading: "How it works",
       kind: "numbered",
       items: [
@@ -69,6 +48,33 @@ export const aiVisibility: Offer = {
         {
           title: "Track.",
           body: "The same questions every month as part of a Web Partner plan.",
+        },
+      ],
+    },
+    {
+      heading: "What we check",
+      kind: "titled",
+      view: "list",
+      items: [
+        {
+          title: "Can the assistants read your site?",
+          body: "Some hosting setups block AI crawlers by default, and many crawlers can't read content that only appears after JavaScript runs.",
+        },
+        {
+          title: "Do they understand what you are?",
+          body: "Structured data is a label in your code that tells a machine your business name, services, people, and location.",
+        },
+        {
+          title: "Do you answer the questions customers ask?",
+          body: "Pages built around real questions, in your customers' words, with facts an assistant can quote.",
+        },
+        {
+          title: "What do other sites say about you?",
+          body: "Reviews, directories, your Google Business Profile, press, and forums. Assistants lean on these.",
+        },
+        {
+          title: "How often are you named?",
+          body: "The same questions, run repeatedly across four assistants, with every answer saved.",
         },
       ],
     },
@@ -87,7 +93,7 @@ export const aiVisibility: Offer = {
     {
       question: "Is this SEO with a new name?",
       answer:
-        "Part of it overlaps, and good search foundations still matter. The difference is that assistants read your site differently. Many cannot run JavaScript, some are blocked by default settings, and they rely heavily on reviews, listings, and what other sites say about you.",
+        "Part of it overlaps, and good search foundations still matter. The difference is that assistants read your site differently.",
     },
     {
       question: "Do we need to write a lot of new content?",

@@ -11,6 +11,8 @@ type Props = {
   title?: string;
   /** A white line icon from public/art/subpage/, set over the title. */
   icon?: { src: string; width: number; height: number };
+  /** A coded icon in the same white line, for an offer with no icon file. */
+  glyph?: ReactNode;
   /**
    * The colour the band fades to at the bottom, a --color-hero-* token. As in
    * Misha's frames, the band runs from the site blue at the top to the page's
@@ -31,7 +33,7 @@ type Props = {
  * header and its wordmark and nav are the site header above. The art was
  * generated from the nodes' vector geometry, see design/subpage-heroes/.
  */
-export function SubpageHero({ variant = "offer", title, icon, accent, children }: Props) {
+export function SubpageHero({ variant = "offer", title, icon, glyph, accent, children }: Props) {
   const style = accent ? ({ "--hero-accent": accent } as CSSProperties) : undefined;
   const className = `subpage-hero${variant === "home" ? " subpage-hero--home" : ""} band band--blue`;
 
@@ -54,6 +56,10 @@ export function SubpageHero({ variant = "offer", title, icon, accent, children }
             {icon ? (
               <span className="subpage-hero-icon" aria-hidden="true">
                 <img src={icon.src} width={icon.width} height={icon.height} alt="" />
+              </span>
+            ) : glyph ? (
+              <span className="subpage-hero-icon subpage-hero-icon--glyph" aria-hidden="true">
+                {glyph}
               </span>
             ) : null}
             {/* The page name is a label, set at h1 size. The headline under

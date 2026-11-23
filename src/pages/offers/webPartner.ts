@@ -5,6 +5,7 @@ import type { Offer } from "./types";
 export const webPartner: Offer = {
   path: "/web-partner",
   navTitle: "Web Partner",
+  line: "Senior help on call, month to month",
   // The home card's line (2026-11-18).
   summary:
     "A flexible team of senior IT professionals who work alongside yours. As much or as little as you need. Month to month, no strings.",
@@ -28,9 +29,14 @@ export const webPartner: Offer = {
     "It's for businesses that need more than a quick fix or a review: maintenance, security and accessibility, kept up over the long term.",
     "Design too. We can turn your brand into a design system that your team and your AI tools build from, so what gets made stays on brand. And a senior designer is there when you need a sanity check.",
     "Month to month, or longer if you want. No strings.",
-    "Having us on call is like having a mechanic you trust, but for your tech. If your nephew's vibe-coded CRM breaks and you lose your customer data, it would be nice to have a number to call.",
-    "Clients tend to stay. One for more than 10 years, another for more than five, many for two to five.",
   ],
+  // Set as shared callouts since the text cut of 2026-11-22 (Drew): the
+  // mechanic line under the intro, and the clients line as the page's proof,
+  // its first sentence set large. Both word for word.
+  introCallouts: [
+    "Having us on call is like having a mechanic you trust, but for your tech. If your nephew's vibe-coded CRM breaks and you lose your customer data, it would be nice to have a number to call.",
+  ],
+  proofStat: ["Clients tend to stay.", "One for more than 10 years, another for more than five, many for two to five."],
   blocks: [
     {
       heading: "Every plan includes",
@@ -59,17 +65,10 @@ export const webPartner: Offer = {
       ],
     },
     {
-      heading: "Need more than a website?",
-      kind: "paragraphs",
-      items: [
-        "If you need a senior team on more than the site (a platform, an internal tool, a workflow, a brand), Web Partner scales to that. Design, engineering, and automation from the same people, sized to your budget, month to month or on a longer term.",
-      ],
-    },
-    {
       heading: "How it starts",
       kind: "paragraphs",
       items: [
-        "Web Partner usually follows a Fix Week, so we already know your site. Every project includes 30 days of care first: we monitor and maintain the work we did, at no charge. After that, plans run month to month. Cancel with 30 days' notice. Longer terms are available if you want one.",
+        "Web Partner usually follows a Fix Week, so we already know your site. Every project includes 30 days of care first: we monitor and maintain the work we did, at no charge.",
       ],
     },
   ],

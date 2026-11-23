@@ -4,6 +4,7 @@ import type { Offer } from "./types";
 export const accessibility: Offer = {
   path: "/accessibility",
   navTitle: "Accessibility",
+  line: "Works for everyone. Ready for the 2027 deadline.",
   // The home card's line (2026-11-18).
   summary:
     "Public agencies and federally funded health providers face federal accessibility deadlines in 2027 and 2028. We fix the site's code. We don't cover it with a widget.",
@@ -27,6 +28,63 @@ export const accessibility: Offer = {
     "Public agencies and federally funded health providers have federal deadlines in 2027 and 2028 to make their websites work for people with disabilities. We test your site by hand, fix the code to WCAG 2.1 AA, and document what we did. We don't sell a scan or a widget.",
   ],
   blocks: [
+    {
+      heading: "How it works",
+      kind: "numbered",
+      items: [
+        { title: "Reality Check.", body: "Free. Question 3 shows where you stand." },
+        {
+          title: "The fix.",
+          body: "We test by hand, rank what we find, and fix it in your code. Quoted after the check. One price, agreed before we start.",
+        },
+        { title: "The record.", body: "You get the documentation and an accessibility statement." },
+        { title: "The re-check.", body: "Each quarter if you want it, as part of a Web Partner plan." },
+      ],
+      outro: [
+        "How long it takes depends on the size of the site. If your date is in 2027, start with the free check now, so you know the size of the job.",
+      ],
+    },
+    {
+      heading: "What we test",
+      kind: "bullets",
+      intro: ["Scanners catch some problems and miss others. We run them, then test by hand."],
+      items: [
+        "Keyboard only: every menu, carousel, and form, with no mouse",
+        "Screen readers: VoiceOver and NVDA",
+        "Color contrast and text size",
+        "Labels, headings, and landmarks, the signposts a screen reader follows",
+        "Speed: page weight, third-party scripts, and Core Web Vitals",
+      ],
+      outro: ["Speed is on this page because we fix both in the same pass through your code."],
+    },
+    {
+      heading: "What you get",
+      kind: "bullets",
+      items: [
+        "Findings in plain English, ranked by risk. We fix the top 10 first.",
+        "Fixes in your theme, components, and content, to WCAG 2.1 AA",
+        "A written record: what we tested, what we fixed, and what's left",
+        "An accessibility statement for your site and a short conformance summary",
+        "Your overlay widget removed, once the real problems are fixed",
+      ],
+    },
+    {
+      heading: "What we can't do",
+      kind: "bullets",
+      icon: "cross",
+      items: [
+        "We can't certify legal compliance. We're not lawyers, and nobody can promise you'll never get a demand letter.",
+        "We can't fix software you don't control, like a patient portal, scheduling tool, or payment page run by a vendor. We'll tell you which problems are theirs to fix.",
+        "A site doesn't stay accessible by itself. Every new page and plugin can break it. That's what the quarterly re-check is for.",
+      ],
+    },
+    {
+      heading: "For health providers",
+      kind: "paragraphs",
+      items: [
+        "Start with what patients do online: find a provider, book a visit, fill out a form, pay a bill. Those pages come first. Our team has worked on HIPAA-regulated healthcare systems. For anything behind a login, you set us up with a test account. We test with dummy data and never touch patient information.",
+      ],
+    },
     // Deadline dates. Recheck if NFB v. DOJ is decided or the rules are revised.
     {
       heading: "Who has a deadline",
@@ -59,67 +117,14 @@ export const accessibility: Offer = {
     },
     {
       heading: "No deadline? The risk is already here.",
-      kind: "paragraphs",
+      // The page's proof block. One sentence, set as stat cards: read in
+      // order it is the sentence as written.
+      kind: "stats",
+      lead: "In 2025,",
       items: [
-        "In 2025, 3,948 website accessibility lawsuits were filed in the US, 787 of them in California. 983 targeted sites that already had an overlay widget installed.",
-      ],
-    },
-    {
-      heading: "What we test",
-      kind: "bullets",
-      intro: ["Scanners catch some problems and miss others. We run them, then test by hand."],
-      items: [
-        "Keyboard only: every menu, carousel, and form, with no mouse",
-        "Screen readers: VoiceOver and NVDA",
-        "Color contrast and text size",
-        "Labels, headings, and landmarks, the signposts a screen reader follows",
-        "Speed: page weight, third-party scripts, and Core Web Vitals",
-      ],
-      outro: ["Speed is on this page because we fix both in the same pass through your code."],
-    },
-    {
-      heading: "What you get",
-      kind: "bullets",
-      items: [
-        "Findings in plain English, ranked by risk. We fix the top 10 first.",
-        "Fixes in your theme, components, and content, to WCAG 2.1 AA",
-        "A written record: what we tested, what we fixed, and what's left",
-        "An accessibility statement for your site and a short conformance summary",
-        "Your overlay widget removed, once the real problems are fixed",
-        "An optional re-check each quarter, as part of a Web Partner plan",
-      ],
-    },
-    {
-      heading: "What we can't do",
-      kind: "bullets",
-      icon: "cross",
-      items: [
-        "We can't certify legal compliance. We're not lawyers, and nobody can promise you'll never get a demand letter.",
-        "We can't fix software you don't control, like a patient portal, scheduling tool, or payment page run by a vendor. We'll tell you which problems are theirs to fix.",
-        "A site doesn't stay accessible by itself. Every new page and plugin can break it. That's what the quarterly re-check is for.",
-      ],
-    },
-    {
-      heading: "For health providers",
-      kind: "paragraphs",
-      items: [
-        "Start with what patients do online: find a provider, book a visit, fill out a form, pay a bill. Those pages come first. Our team has worked on HIPAA-regulated healthcare systems. For anything behind a login, you set us up with a test account. We test with dummy data and never touch patient information.",
-      ],
-    },
-    {
-      heading: "How it works",
-      kind: "numbered",
-      items: [
-        { title: "Reality Check.", body: "Free. Question 3 shows where you stand." },
-        {
-          title: "The fix.",
-          body: "We test by hand, rank what we find, and fix it in your code. Quoted after the check. One price, agreed before we start.",
-        },
-        { title: "The record.", body: "You get the documentation and an accessibility statement." },
-        { title: "The re-check.", body: "Each quarter if you want it, as part of a Web Partner plan." },
-      ],
-      outro: [
-        "How long it takes depends on the size of the site. If your date is in 2027, start with the free check now, so you know the size of the job.",
+        { figure: "3,948", caption: "website accessibility lawsuits were filed in the US," },
+        { figure: "787", caption: "of them in California." },
+        { figure: "983", caption: "targeted sites that already had an overlay widget installed." },
       ],
     },
   ],
@@ -133,16 +138,6 @@ export const accessibility: Offer = {
       question: "We already have an accessibility widget. Is that enough?",
       answer:
         "No. A quarter of the 2025 lawsuits targeted sites that had one. We usually recommend removing it once the real issues are fixed.",
-    },
-    {
-      question: "Which deadline applies to us?",
-      answer:
-        "State and local government bodies fall under ADA Title II: April 26, 2027 for a population of 50,000 or more, April 26, 2028 for smaller ones and special districts. Organizations that receive HHS funding fall under Section 504: May 11, 2027 with 15 or more employees, May 10, 2028 with fewer. Some, such as public hospitals, may fall under both. Your attorney can tell you which applies.",
-    },
-    {
-      question: "The deadlines already moved once. Will they move again?",
-      answer:
-        "They might. The 2026 extension is being challenged in court. We'd plan around the dates as written. The work is the same whenever the date lands.",
     },
     {
       question: "Your Reality Check says WCAG 2.2 and this page says 2.1. Which is it?",

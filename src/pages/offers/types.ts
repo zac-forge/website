@@ -18,11 +18,23 @@ export type FixExample = { problem: string; outcome: string };
  */
 type Frame = { heading: string; intro?: string[]; outro?: string[]; icon?: "check" | "cross" | "calendar" };
 
+/** A figure and the words that follow it, as one stat card. */
+export type Stat = { figure: string; caption: string };
+
 export type Block =
   | (Frame & { kind: "bullets"; items: string[] })
   /** `view: "stepper"` shows the items as the home page's question stepper. */
-  | (Frame & { kind: "numbered"; items: TitledItem[]; view?: "stepper" })
-  | (Frame & { kind: "titled"; items: TitledItem[] })
+  /** `marker: "calendar"` puts the calendar icon in the rail's discs in
+   *  place of numerals, for steps that name their own days. */
+  | (Frame & { kind: "numbered"; items: TitledItem[]; view?: "stepper"; marker?: "calendar" })
+  /** `view: "list"` shows the items as the icon list, title then body. */
+  | (Frame & { kind: "titled"; items: TitledItem[]; view?: "list" })
+  /**
+   * One sentence set as stat cards: `lead` opens it and each card carries a
+   * figure and the words after it, so read in order it is the sentence as
+   * written.
+   */
+  | (Frame & { kind: "stats"; lead: string; items: Stat[] })
   | (Frame & { kind: "paragraphs"; items: string[] })
   /** The home page's before-and-after cards, then a full-width statement. */
   | (Frame & { kind: "examples"; items: FixExample[]; statement?: string });
@@ -34,7 +46,21 @@ export type Offer = {
   path: string;
   /** Name in the header menu, the footer, and the related offers block. */
   navTitle: string;
-  /** One line under the name in the related offers block, from the copy deck. */
+  /** The header menu's shorter name for the offer, where it has one. */
+  menuTitle?: string;
+  /**
+   * The line under the offer's name in the header menu, and on its tile on
+   * home and in the "Other services" block, so the three cannot drift
+   * (Drew's copy handoff of 2026-11-18, one source since 2026-11-22).
+   */
+  line?: string;
+  /** The tile's line where it says more than the menu's. */
+  tileLine?: string;
+  /**
+   * The paragraph the "Other services" tile carried until the text cut of
+   * 2026-11-22. No longer shown anywhere, except as the tile line of an
+   * offer with no `line` (the flagged brand system).
+   */
   summary: string;
   /** Behind a flag: omitted from routes, menus, sitemap, and schema. */
   flagged?: boolean;
@@ -59,6 +85,9 @@ export type Offer = {
   /**
    * The colour the offer's hero band fades to, a --color-hero-* token, from
    * Misha's hero frames (design question 40). Differs from accent for now.
+   * Since 2026-11-22 it is the offer's one accent: the hero, the step discs,
+   * the list icons, the proof panel, and its tile's capsule. An offer
+   * without one (Platform Escape) takes the site blue.
    */
   heroAccent?: string;
   /** The line icon on its "Other services" card, from public/art/offer-cards/. */
@@ -70,8 +99,20 @@ export type Offer = {
   /** The v5 line under the H1 that places a fix behind the Reality Check. */
   subline?: string;
   intro: string[];
+  /** Standout intro lines, set as shared callouts under the intro. */
+  introCallouts?: string[];
+  /**
+   * The body, in the family order (2026-11-22): how it works (steps), then
+   * the lists, then any section that is the page's own, then a proof block
+   * where the proof is one (examples, stats, the stepper).
+   */
   blocks: Block[];
+  /** Proof as a paragraph, set as a callout under the heading "Proof". */
   proof?: string[];
+  /** Proof as a statement: the first sentence set large, then the rest. */
+  proofStat?: [string, string];
+  /** Proof as the home page's case card, by the case's slug. */
+  proofCase?: string;
   faq: Faq[];
   footnote?: string;
   /** The closing call to action. */

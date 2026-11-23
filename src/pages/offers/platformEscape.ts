@@ -11,6 +11,7 @@ import type { Offer } from "./types";
 export const platformEscape: Offer = {
   path: "/platform-escape",
   navTitle: "Platform Escape",
+  line: "Off WordPress or Wix, onto something you own",
   summary:
     "Think WordPress. A lot of simple business sites are on it because it's easy to update, but it's overkill, and it costs them in maintenance, security and speed.",
   title: "Platform Escape: off WordPress or Wix, onto something you own | ZAC Forge",
@@ -24,7 +25,7 @@ export const platformEscape: Offer = {
   h1: "Off WordPress or Wix, onto something you own",
   intro: [
     "Think WordPress. A lot of simple business sites are on it because it's easy to update, but it's overkill, and it costs them in maintenance, security and speed.",
-    "We move you to a lean setup you own: cheaper to run, faster, safer, easier to find in search. You can still make your own simple updates.",
+    "We move you to a lean setup you own.",
     "We can do these all day long, for a fraction of the cost.",
   ],
   blocks: [
@@ -40,6 +41,8 @@ export const platformEscape: Offer = {
       ],
     },
   ],
+  // The home page's CCCV case card, which links to its case study.
+  proofCase: "calvary-chapel-conejo-valley",
   faq: [],
   cta: { label: REALITY_CHECK_LABEL, href: "/#contact" },
 };

@@ -21,12 +21,13 @@ const SHAPES = ["side", "featured", "wide", "side"];
  * up on entry, then its label, the client, the meta line, the first proof
  * sentence where the card has one, and "More", whose link covers the card.
  * The screenshot sits in a browser frame, cropped by the card's edge.
+ * /platform-escape shows one of these as its proof, in the shape it names.
  */
-function CaseCard({ study, index }: { study: CaseStudy; index: number }) {
+export function CaseCard({ study, index, shape }: { study: CaseStudy; index: number; shape?: string }) {
   const proof = study.homeProof === false ? undefined : study.proof?.[0];
   return (
     <article
-      className={`proof-card proof-card--${SHAPES[index] ?? "side"} reveal-item`}
+      className={`proof-card proof-card--${shape ?? SHAPES[index] ?? "side"} reveal-item`}
       style={{ "--case-accent": study.accent, "--i": index } as CSSProperties}
     >
       <div className="proof-card-copy">

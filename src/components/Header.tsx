@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Wordmark } from "./Brand";
 import { BOOKING_URL } from "../lib/links";
-import { BRAND_SYSTEM } from "../lib/flags";
+import { LIVE_OFFERS } from "../pages/offers";
 
 // Absolute hashes so the same header works from the offer pages, where a
 // bare "#services" would point at nothing. Labels and order set by Drew on
@@ -14,28 +14,19 @@ const NAV_LINKS = [
 ];
 
 /**
- * The What we do menu, labels, lines, and order from Drew's copy handoff of
- * 2026-11-18. Labels here are the menu's own: "Reality Check" is shorter
- * than the page's navTitle, which the footer and the breadcrumbs keep. Brand system joins, with no line, only when its flag is on.
+ * The What we do menu, in the order of Drew's copy handoff of 2026-11-18.
+ * Names and lines come from each offer's own data (`menuTitle` or
+ * `navTitle`, and `line`), the source the offer tiles read too, so the menu
+ * and the tiles cannot drift. "Reality Check" is the menu's shorter name;
+ * the footer and the breadcrumbs keep the navTitle. Brand system joins, with
+ * no line, only when its flag is on.
  */
 type MenuItem = { href: string; title: string; line?: string };
-const MENU: MenuItem[] = [
-  { href: "/reality-check", title: "Reality Check", line: "Free senior review of your project" },
-  { href: "/fix-week", title: "The Fix", line: "Fixed in a week, or it's free." },
-  { href: "/web-partner", title: "Web Partner", line: "Senior help on call, month to month" },
-  { href: "/ai-visibility", title: "AI Visibility", line: "Show up when people ask AI" },
-  {
-    href: "/platform-escape",
-    title: "Platform Escape",
-    line: "Off WordPress or Wix, onto something you own",
-  },
-  {
-    href: "/accessibility",
-    title: "Accessibility",
-    line: "Works for everyone. Ready for the 2027 deadline.",
-  },
-  ...(BRAND_SYSTEM ? [{ href: "/brand-system", title: "Brand system" }] : []),
-];
+const MENU_ORDER = ["/reality-check", "/fix-week", "/web-partner", "/ai-visibility", "/platform-escape", "/accessibility", "/brand-system"];
+const MENU: MenuItem[] = MENU_ORDER.flatMap((path) => {
+  const offer = LIVE_OFFERS.find((o) => o.path === path);
+  return offer ? [{ href: offer.path, title: offer.menuTitle ?? offer.navTitle, line: offer.line }] : [];
+});
 
 /**
  * "What we do" as a small menu on desktop: the section link first, then one

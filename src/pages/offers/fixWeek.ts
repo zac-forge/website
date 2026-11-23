@@ -13,8 +13,8 @@ import type { Offer, FixExample } from "./types";
  * page read one source. Each sentence is on the problem or the outcome side
  * of its card. The home section shows only those marked `home`, shortened
  * by dropping whole sentences, never by rewording (Drew's pass 1 handoff,
- * 2026-11-22). This page shows every sentence. The home intro is this page's
- * intro up to the colon.
+ * 2026-11-22). This page shows every sentence. The home intro and this page's
+ * are the same line.
  */
 const FIX_LEAD = "One week, one set budget, aimed at the top items from your Reality Check";
 type Sentence = { text: string; side: "problem" | "outcome"; home: boolean };
@@ -49,6 +49,7 @@ export const FIX_HOME = {
 export const fixWeek: Offer = {
   path: "/fix-week",
   navTitle: "The Fix",
+  line: "Fixed in a week, or it's free.",
   summary: "One week. Start with what matters most.",
   title: "Fix an AI-built website in one week, fixed price | ZAC Forge",
   description:
@@ -67,19 +68,29 @@ export const fixWeek: Offer = {
   // Drew's copy handoff of 2026-11-18: the intro, the examples, and the
   // guarantee on its own line. The "peace of mind" close was cut from this
   // page and from home on 2026-11-22 (pass 1 handoff).
-  intro: [`${FIX_LEAD}: the critical things that can be done in a week.`],
+  // ": the critical things that can be done in a week" was cut on 2026-11-22
+  // (subpage text cut), so the page and home now carry the same line.
+  intro: [`${FIX_LEAD}.`],
   blocks: [
     {
-      heading: FIX_EXAMPLES_HEADING,
-      // The home page's before-and-after cards at full length, then the
-      // guarantee as the full-width statement.
-      kind: "examples",
-      items: FIX_EXAMPLES.map(split),
-      statement: FIX_GUARANTEE,
+      heading: "How the week runs",
+      // The steps rail, with the calendar in its discs: the steps name
+      // their own days, so numerals beside them would disagree.
+      kind: "numbered",
+      marker: "calendar",
+      items: [
+        { title: "Day 1.", body: "Scope and price in writing." },
+        { title: "Days 2 to 4.", body: "The work, in your code." },
+        {
+          title: "Day 5.",
+          body: "Before and after, side by side. For 30 days after, we monitor and maintain the work we did, at no charge.",
+        },
+      ],
     },
     {
       heading: "What you get",
-      kind: "numbered",
+      kind: "titled",
+      view: "list",
       items: [
         {
           title: "The top problem, fixed.",
@@ -96,18 +107,6 @@ export const fixWeek: Offer = {
       ],
     },
     {
-      heading: "How the week runs",
-      kind: "titled",
-      items: [
-        { title: "Day 1.", body: "Scope and price in writing." },
-        { title: "Days 2 to 4.", body: "The work, in your code." },
-        {
-          title: "Day 5.",
-          body: "Before and after, side by side. For 30 days after, we monitor and maintain the work we did, at no charge.",
-        },
-      ],
-    },
-    {
       heading: "After the week",
       kind: "paragraphs",
       items: [
@@ -120,8 +119,16 @@ export const fixWeek: Offer = {
       heading: "Rescue",
       kind: "paragraphs",
       items: [
-        "Finish what AI started and make it safe to run. If it can't be saved, we build it properly from the ground up.",
+        "Finish what AI started and make it safe to run.",
       ],
+    },
+    {
+      heading: FIX_EXAMPLES_HEADING,
+      // The home page's before-and-after cards at full length, then the
+      // guarantee as the full-width statement.
+      kind: "examples",
+      items: FIX_EXAMPLES.map(split),
+      statement: FIX_GUARANTEE,
     },
   ],
   faq: [

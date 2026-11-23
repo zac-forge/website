@@ -18,6 +18,9 @@
   section { max-width: 1400px; margin: 0 auto; padding: 32px 24px; scroll-margin-top: 64px; }
   h2 { margin: 0 0 16px; font-size: 24px; }
   .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start; }
+  .family { grid-template-columns: repeat(6, 1fr); gap: 12px; align-items: start; margin-bottom: 32px; }
+  h3 { margin: 24px 0 12px; font-size: 18px; scroll-margin-top: 64px; }
+  body:not([data-show="1280"]) h3[data-w="1280"], body:not([data-show="390"]) h3[data-w="390"], body:not([data-show="768"]) p[data-w="768"] { display: none !important; }
   figure { margin: 0; }
   figcaption { font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 8px; color: var(--muted); }
   img { display: block; max-width: 100%; height: auto; margin: 0 auto; background: var(--surface); border-radius: 8px; box-shadow: 0 1px 2px rgb(0 0 0 / .06), 0 12px 28px -14px rgb(0 0 0 / .22); }
@@ -36,6 +39,7 @@
   <button type="button" data-set="768" aria-pressed="false">768</button>
   <button type="button" data-set="390" aria-pressed="false">390</button>
   <span class="gap"></span>
+  <a href="#text-cut">Text cut and offer family</a>
   <a href="#reality-check">/reality-check</a>
   <a href="#fix-week">/fix-week</a>
   <a href="#web-partner">/web-partner</a>
@@ -51,6 +55,93 @@
   <a href="#case-studies">/case-studies</a>
 </nav>
 <main>
+<section id="text-cut">
+  <h2>Text cut and offer family (third pass, 2026-11-22)</h2>
+  <p>Removal only, no rewording. The six offer pages now share one order: hero in the page accent with its tile icon, lead and callouts, how it works, lists, sections of the page's own, one proof block, questions, other services, closing. First the six pages side by side, after the pass, then each page before and after. Captured at 1280 and 390.</p>
+  <p data-w="768" style="display:revert">This pass was captured at 1280 and 390 only. Pick one of those widths.</p>
+  <h3 data-w="1280" style="display:revert">The family at 1280px, after</h3>
+  <div class="family" data-w="1280">
+    <figure><figcaption>/reality-check</figcaption><img loading="lazy" src="text-cut/reality-check-1280-after.webp" alt="/reality-check after the text cut, at 1280 pixels wide"></figure>
+    <figure><figcaption>/fix-week</figcaption><img loading="lazy" src="text-cut/fix-week-1280-after.webp" alt="/fix-week after the text cut, at 1280 pixels wide"></figure>
+    <figure><figcaption>/web-partner</figcaption><img loading="lazy" src="text-cut/web-partner-1280-after.webp" alt="/web-partner after the text cut, at 1280 pixels wide"></figure>
+    <figure><figcaption>/ai-visibility</figcaption><img loading="lazy" src="text-cut/ai-visibility-1280-after.webp" alt="/ai-visibility after the text cut, at 1280 pixels wide"></figure>
+    <figure><figcaption>/platform-escape</figcaption><img loading="lazy" src="text-cut/platform-escape-1280-after.webp" alt="/platform-escape after the text cut, at 1280 pixels wide"></figure>
+    <figure><figcaption>/accessibility</figcaption><img loading="lazy" src="text-cut/accessibility-1280-after.webp" alt="/accessibility after the text cut, at 1280 pixels wide"></figure>
+  </div>
+  <h3 data-w="390" style="display:revert">The family at 390px, after</h3>
+  <div class="family" data-w="390">
+    <figure><figcaption>/reality-check</figcaption><img loading="lazy" src="text-cut/reality-check-390-after.webp" alt="/reality-check after the text cut, at 390 pixels wide"></figure>
+    <figure><figcaption>/fix-week</figcaption><img loading="lazy" src="text-cut/fix-week-390-after.webp" alt="/fix-week after the text cut, at 390 pixels wide"></figure>
+    <figure><figcaption>/web-partner</figcaption><img loading="lazy" src="text-cut/web-partner-390-after.webp" alt="/web-partner after the text cut, at 390 pixels wide"></figure>
+    <figure><figcaption>/ai-visibility</figcaption><img loading="lazy" src="text-cut/ai-visibility-390-after.webp" alt="/ai-visibility after the text cut, at 390 pixels wide"></figure>
+    <figure><figcaption>/platform-escape</figcaption><img loading="lazy" src="text-cut/platform-escape-390-after.webp" alt="/platform-escape after the text cut, at 390 pixels wide"></figure>
+    <figure><figcaption>/accessibility</figcaption><img loading="lazy" src="text-cut/accessibility-390-after.webp" alt="/accessibility after the text cut, at 390 pixels wide"></figure>
+  </div>
+  <h3 id="text-cut-reality-check">/reality-check</h3>
+  <div class="pair" data-w="1280">
+    <figure><figcaption>Before, 1280px</figcaption><img loading="lazy" src="text-cut/reality-check-1280-before.webp" alt="/reality-check before the text cut, at 1280 pixels wide"></figure>
+    <figure><figcaption>After, 1280px</figcaption><img loading="lazy" src="text-cut/reality-check-1280-after.webp" alt="/reality-check after the text cut, at 1280 pixels wide"></figure>
+  </div>
+  <div class="pair" data-w="390">
+    <figure><figcaption>Before, 390px</figcaption><img loading="lazy" src="text-cut/reality-check-390-before.webp" alt="/reality-check before the text cut, at 390 pixels wide"></figure>
+    <figure><figcaption>After, 390px</figcaption><img loading="lazy" src="text-cut/reality-check-390-after.webp" alt="/reality-check after the text cut, at 390 pixels wide"></figure>
+  </div>
+  <h3 id="text-cut-fix-week">/fix-week</h3>
+  <div class="pair" data-w="1280">
+    <figure><figcaption>Before, 1280px</figcaption><img loading="lazy" src="text-cut/fix-week-1280-before.webp" alt="/fix-week before the text cut, at 1280 pixels wide"></figure>
+    <figure><figcaption>After, 1280px</figcaption><img loading="lazy" src="text-cut/fix-week-1280-after.webp" alt="/fix-week after the text cut, at 1280 pixels wide"></figure>
+  </div>
+  <div class="pair" data-w="390">
+    <figure><figcaption>Before, 390px</figcaption><img loading="lazy" src="text-cut/fix-week-390-before.webp" alt="/fix-week before the text cut, at 390 pixels wide"></figure>
+    <figure><figcaption>After, 390px</figcaption><img loading="lazy" src="text-cut/fix-week-390-after.webp" alt="/fix-week after the text cut, at 390 pixels wide"></figure>
+  </div>
+  <h3 id="text-cut-web-partner">/web-partner</h3>
+  <div class="pair" data-w="1280">
+    <figure><figcaption>Before, 1280px</figcaption><img loading="lazy" src="text-cut/web-partner-1280-before.webp" alt="/web-partner before the text cut, at 1280 pixels wide"></figure>
+    <figure><figcaption>After, 1280px</figcaption><img loading="lazy" src="text-cut/web-partner-1280-after.webp" alt="/web-partner after the text cut, at 1280 pixels wide"></figure>
+  </div>
+  <div class="pair" data-w="390">
+    <figure><figcaption>Before, 390px</figcaption><img loading="lazy" src="text-cut/web-partner-390-before.webp" alt="/web-partner before the text cut, at 390 pixels wide"></figure>
+    <figure><figcaption>After, 390px</figcaption><img loading="lazy" src="text-cut/web-partner-390-after.webp" alt="/web-partner after the text cut, at 390 pixels wide"></figure>
+  </div>
+  <h3 id="text-cut-ai-visibility">/ai-visibility</h3>
+  <div class="pair" data-w="1280">
+    <figure><figcaption>Before, 1280px</figcaption><img loading="lazy" src="text-cut/ai-visibility-1280-before.webp" alt="/ai-visibility before the text cut, at 1280 pixels wide"></figure>
+    <figure><figcaption>After, 1280px</figcaption><img loading="lazy" src="text-cut/ai-visibility-1280-after.webp" alt="/ai-visibility after the text cut, at 1280 pixels wide"></figure>
+  </div>
+  <div class="pair" data-w="390">
+    <figure><figcaption>Before, 390px</figcaption><img loading="lazy" src="text-cut/ai-visibility-390-before.webp" alt="/ai-visibility before the text cut, at 390 pixels wide"></figure>
+    <figure><figcaption>After, 390px</figcaption><img loading="lazy" src="text-cut/ai-visibility-390-after.webp" alt="/ai-visibility after the text cut, at 390 pixels wide"></figure>
+  </div>
+  <h3 id="text-cut-platform-escape">/platform-escape</h3>
+  <div class="pair" data-w="1280">
+    <figure><figcaption>Before, 1280px</figcaption><img loading="lazy" src="text-cut/platform-escape-1280-before.webp" alt="/platform-escape before the text cut, at 1280 pixels wide"></figure>
+    <figure><figcaption>After, 1280px</figcaption><img loading="lazy" src="text-cut/platform-escape-1280-after.webp" alt="/platform-escape after the text cut, at 1280 pixels wide"></figure>
+  </div>
+  <div class="pair" data-w="390">
+    <figure><figcaption>Before, 390px</figcaption><img loading="lazy" src="text-cut/platform-escape-390-before.webp" alt="/platform-escape before the text cut, at 390 pixels wide"></figure>
+    <figure><figcaption>After, 390px</figcaption><img loading="lazy" src="text-cut/platform-escape-390-after.webp" alt="/platform-escape after the text cut, at 390 pixels wide"></figure>
+  </div>
+  <h3 id="text-cut-accessibility">/accessibility</h3>
+  <div class="pair" data-w="1280">
+    <figure><figcaption>Before, 1280px</figcaption><img loading="lazy" src="text-cut/accessibility-1280-before.webp" alt="/accessibility before the text cut, at 1280 pixels wide"></figure>
+    <figure><figcaption>After, 1280px</figcaption><img loading="lazy" src="text-cut/accessibility-1280-after.webp" alt="/accessibility after the text cut, at 1280 pixels wide"></figure>
+  </div>
+  <div class="pair" data-w="390">
+    <figure><figcaption>Before, 390px</figcaption><img loading="lazy" src="text-cut/accessibility-390-before.webp" alt="/accessibility before the text cut, at 390 pixels wide"></figure>
+    <figure><figcaption>After, 390px</figcaption><img loading="lazy" src="text-cut/accessibility-390-after.webp" alt="/accessibility after the text cut, at 390 pixels wide"></figure>
+  </div>
+  <h3 id="text-cut-faq">/faq</h3>
+  <div class="pair" data-w="1280">
+    <figure><figcaption>Before, 1280px</figcaption><img loading="lazy" src="text-cut/faq-1280-before.webp" alt="/faq before the text cut, at 1280 pixels wide"></figure>
+    <figure><figcaption>After, 1280px</figcaption><img loading="lazy" src="text-cut/faq-1280-after.webp" alt="/faq after the text cut, at 1280 pixels wide"></figure>
+  </div>
+  <div class="pair" data-w="390">
+    <figure><figcaption>Before, 390px</figcaption><img loading="lazy" src="text-cut/faq-390-before.webp" alt="/faq before the text cut, at 390 pixels wide"></figure>
+    <figure><figcaption>After, 390px</figcaption><img loading="lazy" src="text-cut/faq-390-after.webp" alt="/faq after the text cut, at 390 pixels wide"></figure>
+  </div>
+</section>
+<!-- /text-cut -->
 <section id="reality-check">
   <h2>/reality-check</h2>
   <div class="pair" data-w="1280">

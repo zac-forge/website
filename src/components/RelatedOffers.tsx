@@ -1,5 +1,5 @@
 import { Reveal } from "./Reveal";
-import { OfferTile } from "./OfferTiles";
+import { OfferTile, offerTile } from "./OfferTiles";
 import { LIVE_OFFERS } from "../pages/offers";
 
 /**
@@ -7,7 +7,8 @@ import { LIVE_OFFERS } from "../pages/offers";
  * offer pages and /faq: a tile for every live offer but the current page's,
  * under the site's eyebrow, then the link home. Since 2026-11-22 the tiles
  * are the home Partner section's (OfferTiles.tsx), on the same blue band,
- * with each offer's hero icon: its name, its one line (`summary`), and
+ * with each offer's hero icon: its name, the header menu's line for it
+ * (one source, the offer's `line`, since the text cut of 2026-11-22), and
  * "More", named for the offer for screen readers. They replace Misha's
  * white offer cards (423:2429), whose styles stay in layout.css unused
  * until he decides.
@@ -28,12 +29,7 @@ export function RelatedOffers({ label, currentPath }: { label: string; currentPa
               <OfferTile
                 key={offer.path}
                 index={i}
-                tile={{
-                  title: offer.navTitle,
-                  line: offer.summary,
-                  icon: offer.heroIcon?.src,
-                  link: { label: "More", href: offer.path, ariaLabel: `More about ${offer.navTitle}` },
-                }}
+                tile={offerTile(offer, "More", `More about ${offer.navTitle}`)}
               />
             ))}
           </ul>

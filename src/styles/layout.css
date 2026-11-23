@@ -1329,7 +1329,7 @@ button.fix-example-ill:focus-visible {
   width: calc(var(--space-11) - var(--space-4));
   height: var(--space-7);
   border-radius: var(--radius-full);
-  background: linear-gradient(90deg, var(--tile-from), var(--tile-to));
+  background: linear-gradient(90deg, color-mix(in srgb, var(--tile-accent) 45%, var(--color-surface)), var(--tile-accent));
   box-shadow: calc(var(--space-6) * -1) var(--space-8) 0 calc(var(--space-2) * -1) rgb(var(--white-rgb) / 0.1);
   transform: rotate(-32deg);
   transition: transform var(--duration-slow) var(--ease-out);
@@ -2161,6 +2161,16 @@ button.fix-example-ill:focus-visible {
 .subpage-hero-icon img {
   height: auto;
 }
+/* The coded stand-in, at the icon files' size and in their white line. */
+.subpage-hero-icon--glyph svg {
+  width: var(--space-7);
+  height: var(--space-7);
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
 .subpage-hero-title {
   max-width: calc(var(--copy-width) + var(--space-9));
   margin-top: var(--space-5);
@@ -2250,6 +2260,18 @@ button.fix-example-ill:focus-visible {
 .offer-block--alt {
   background: var(--color-surface);
 }
+/* One short paragraph: less room, so the section does not sit hollow. */
+.offer-block--short {
+  --pad-top: var(--space-8);
+  --pad-bottom: var(--space-8);
+}
+/* The page's one accent (2026-11-22), the colour its hero fades to, set on
+   <main> by OfferPage.tsx. Deepened with ink, as the home case cards do,
+   for the step discs and the list icons: white on it is 5.45:1 or better,
+   and it holds 4.57:1 or better against the ground, more on white. */
+.offer-page {
+  --offer-accent-deep: color-mix(in srgb, var(--offer-accent) 80%, var(--color-ink));
+}
 .offer-block-heading {
   font-size: var(--text-subtitle);
   line-height: var(--leading-title);
@@ -2302,12 +2324,22 @@ button.fix-example-ill:focus-visible {
   width: var(--steps-dot);
   height: var(--steps-dot);
   border-radius: var(--radius-full);
-  background: var(--color-accent);
+  background: var(--offer-accent-deep, var(--color-accent));
   color: var(--color-on-accent);
   font-family: var(--font-display);
   font-size: var(--text-lead);
   font-weight: var(--weight-bold);
   line-height: 1;
+}
+/* An icon in the disc in place of the numeral. */
+.steps-icon {
+  width: var(--space-5);
+  height: var(--space-5);
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 .steps-title,
 .label-card-title {
@@ -2384,7 +2416,7 @@ button.fix-example-ill:focus-visible {
   width: var(--space-5);
   height: var(--space-5);
   fill: none;
-  stroke: var(--color-accent);
+  stroke: var(--offer-accent-deep, var(--color-accent));
   stroke-width: 1.5;
   stroke-linecap: round;
   stroke-linejoin: round;
@@ -2392,8 +2424,108 @@ button.fix-example-ill:focus-visible {
 .icon-list[data-icon="cross"] .icon-list-icon {
   stroke: var(--color-text-muted);
 }
-.icon-list[data-icon="calendar"] .icon-list-icon {
-  stroke: var(--color-band-blue);
+/* Rows with a title and a body: the steps rail's type, without the rail. */
+.icon-list--titled {
+  gap: var(--space-5);
+}
+.icon-list--titled li {
+  grid-template-columns: var(--space-6) minmax(0, 1fr);
+  gap: var(--space-4);
+}
+.icon-list--titled .icon-list-icon {
+  width: var(--space-6);
+  height: var(--space-6);
+}
+.icon-list-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--text-card);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-title);
+}
+.icon-list-body {
+  margin-top: var(--space-2);
+}
+
+/* The proof block (2026-11-22). Words sit in a panel on the home case
+   card's surface, in the page's accent. A paragraph is the shared callout
+   under its heading. A statement sets its first sentence at the heading
+   size and the rest in the light weight. */
+.proof-card--static:hover {
+  transform: none;
+  box-shadow: var(--shadow-rest);
+}
+.offer-proof-panel {
+  --case-accent: var(--offer-accent);
+  display: block;
+  padding: var(--space-8);
+}
+.offer-proof-panel .callout {
+  max-width: calc(var(--prose-width) + var(--space-9));
+  margin-top: var(--space-5);
+  font-size: var(--text-card);
+  line-height: 1.3;
+}
+.offer-proof-panel .callout--stat {
+  max-width: none;
+  margin-top: 0;
+  padding-left: var(--space-5);
+  font-style: normal;
+}
+.callout--stat strong {
+  display: block;
+  font-size: var(--text-hero);
+  font-weight: var(--weight-bold);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+.callout--stat span {
+  display: block;
+  margin-top: var(--space-4);
+  font-size: var(--text-card);
+}
+/* The home case card, alone, the full width of the column. */
+.offer-proof-case {
+  margin-top: var(--space-5);
+}
+.offer-proof-case .proof-card {
+  grid-column: 1 / -1;
+}
+/* One sentence as stat cards: the opening words, then a card a figure. */
+.stat-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-4);
+  margin: var(--space-6) 0 0;
+}
+.stat-lead {
+  grid-column: 1 / -1;
+  font-family: var(--font-display);
+  font-size: var(--text-card);
+  font-weight: var(--weight-light);
+  line-height: var(--leading-title);
+}
+.stat-card {
+  --case-accent: var(--offer-accent);
+  grid-column: auto;
+  gap: var(--space-3);
+  padding: var(--space-6);
+}
+.stat-card .proof-card-figure-value {
+  font-family: var(--font-display);
+  font-weight: var(--weight-bold);
+}
+.stat-card .proof-card-figure-caption {
+  font-family: var(--font-display);
+  font-weight: var(--weight-light);
+}
+@media (max-width: 760px) {
+  .stat-cards {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .offer-proof-panel {
+    padding: var(--space-6) var(--space-5);
+  }
 }
 .icon-list--grid {
   grid-template-columns: repeat(2, minmax(0, 1fr));

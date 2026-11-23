@@ -1,6 +1,7 @@
 import { Reveal } from "./Reveal";
 import { Callout } from "./Callout";
-import { OfferTile, TileBody, capsuleStyle } from "./OfferTiles";
+import { OfferTile, TileBody, capsuleStyle, offerTile } from "./OfferTiles";
+import { LIVE_OFFERS } from "../pages/offers";
 import type { Tile } from "./OfferTiles";
 import { step } from "../lib/reveal";
 import { PRINCIPLES } from "../pages/principles";
@@ -8,36 +9,18 @@ import { PRINCIPLES } from "../pages/principles";
 /**
  * Four tiles since the cut of 2026-11-22 (Drew's pass 1 handoff), down from
  * six: a title, one line, and the tile's existing link. The lines are the
- * handoff's, the header menu's subtext for each offer. The paragraph copy
+ * handoff's, the header menu's subtext for each offer, read from the offer's
+ * own data (`line`, `tileLine`) as the menu and the subpage tiles do. The paragraph copy
  * each card carried is on its offer's own page. The Rescue card's text moved
  * to /fix-week, and the Brand system card is gone (/web-partner covers the
  * design system offer).
  */
-const LEAD: Tile = {
-  title: "Web Partner",
-  line: "Senior help on call, month to month",
-  link: { label: "See Web Partner", href: "/web-partner" },
-  icon: "/art/subpage/subpage-icon-web-partner.svg",
+const tileFor = (path: string): Tile => {
+  const offer = LIVE_OFFERS.find((o) => o.path === path)!;
+  return offerTile(offer, `See ${offer.navTitle}`);
 };
-const FIXES: Tile[] = [
-  {
-    title: "AI Visibility",
-    line: "Show up when people ask AI. No promises.",
-    link: { label: "See AI Visibility", href: "/ai-visibility" },
-    icon: "/art/subpage/subpage-icon-ai-visibility.svg",
-  },
-  {
-    title: "Platform Escape",
-    line: "Off WordPress or Wix, onto something you own",
-    link: { label: "See Platform Escape", href: "/platform-escape" },
-  },
-  {
-    title: "Accessibility",
-    line: "Works for everyone. Ready for the 2027 deadline.",
-    link: { label: "See Accessibility", href: "/accessibility" },
-    icon: "/art/subpage/subpage-icon-accessibility.svg",
-  },
-];
+const LEAD = tileFor("/web-partner");
+const FIXES = ["/ai-visibility", "/platform-escape", "/accessibility"].map(tileFor);
 
 /**
  * Partner, the third step of the page's spine, on the blue band 394:1893
