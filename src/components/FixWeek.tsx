@@ -1,7 +1,59 @@
+import { useEffect, useState } from "react";
 import { Reveal } from "./Reveal";
 import { Callout } from "./Callout";
-import { step } from "../lib/reveal";
+import { TrapIllustration, SteadyIllustration, RankIllustration } from "./FixIllustrations";
+import { step, prefersReducedMotion } from "../lib/reveal";
 import { FIX_HOME, FIX_GUARANTEE } from "../pages/offers/fixWeek";
+
+/** The category chip and the illustration for each example, in the order of
+ *  FIX_HOME.examples: the carousel, the hacked site, the SEO work. */
+const KINDS = [
+  { chip: "Accessibility", Illustration: TrapIllustration },
+  { chip: "Security", Illustration: SteadyIllustration },
+  { chip: "SEO", Illustration: RankIllustration },
+];
+
+/**
+ * One before-and-after card: the illustration, which plays from the broken
+ * state to the fixed one when the card is revealed, the category chip, what
+ * was wrong, and the outcome band. Hovering the card replays the
+ * illustration, and so does the illustration itself, which is a button once
+ * the script is running and motion is allowed (so it is in the tab order
+ * only when it does something). Remounting the SVG by key restarts its CSS
+ * animations.
+ */
+function ExampleCard({ example, index }: { example: { problem: string; outcome: string }; index: number }) {
+  const { chip, Illustration } = KINDS[index];
+  const [run, setRun] = useState(0);
+  const [canReplay, setCanReplay] = useState(false);
+  useEffect(() => setCanReplay(!prefersReducedMotion()), []);
+  const replay = () => setRun((n) => n + 1);
+
+  return (
+    <li
+      className="fix-example reveal-item"
+      style={step(index + 1)}
+      onPointerEnter={(e) => e.pointerType === "mouse" && canReplay && replay()}
+    >
+      {canReplay ? (
+        <button type="button" className="fix-example-ill" aria-label={`Replay the ${chip} illustration`} onClick={replay}>
+          <Illustration key={run} />
+        </button>
+      ) : (
+        <div className="fix-example-ill">
+          <Illustration />
+        </div>
+      )}
+      <div className="fix-example-body">
+        <p className="chip">{chip}</p>
+        <p className="fix-example-problem case-text">{example.problem}</p>
+      </div>
+      <p className="fix-example-outcome">
+        <span>{example.outcome}</span>
+      </p>
+    </li>
+  );
+}
 
 /**
  * Fix, the second step of the page's spine: the Fix Week, labelled "The
@@ -9,8 +61,8 @@ import { FIX_HOME, FIX_GUARANTEE } from "../pages/offers/fixWeek";
  * 366:1368, 366:1367, 366:1370, on the ground with the four-piece Z set
  * 376:1748 to the right. The heading and the intro up to its colon, then
  * the guarantee as a full-width type statement, then the three examples as
- * cards split into what was wrong and how it came out (whole sentences from
- * /fix-week, where the full examples are), a callout, and the link.
+ * before-and-after cards (whole sentences from /fix-week, where the full
+ * examples are), a callout, and the link.
  */
 export function FixWeek() {
   return (
@@ -42,10 +94,7 @@ export function FixWeek() {
           </h3>
           <ul className="fix-examples">
             {FIX_HOME.examples.map((example, i) => (
-              <li className="fix-example reveal-item" style={step(i + 1)} key={example.problem}>
-                <p className="fix-example-problem case-text">{example.problem}</p>
-                <p className="fix-example-outcome">{example.outcome}</p>
-              </li>
+              <ExampleCard example={example} index={i} key={example.problem} />
             ))}
           </ul>
         </Reveal>

@@ -42,33 +42,85 @@ export function LogoBand({
 }
 
 /**
- * The credibility strip, MB11 388:1867 to 388:1871: four lines in the comp
- * blue, Helvetica Light 32px, in the comp's order. Its label stays for
- * screen readers only. The HIPAA line drops the comp's year count (Drew,
- * 2026-11-12), per the no-year-counts rule.
+ * The credibility strip, MB11 388:1867 to 388:1871, in the comp's order and
+ * words. The HIPAA line drops the comp's year count (Drew, 2026-11-12), per
+ * the no-year-counts rule. Each line is split around its anchor, which sets
+ * bold (design pass, 2026-11-22), and carries a line icon drawn in code.
  */
-const EXPERIENCE = [
-  "Accessibility under IBM.com standards",
-  "Salesforce integration for 20,000 users",
-  "Systems running since 2010",
-  "HIPAA-regulated healthcare systems",
+const EXPERIENCE: { before?: string; anchor: string; after?: string; icon: React.ReactNode }[] = [
+  {
+    before: "Accessibility under ",
+    anchor: "IBM.com",
+    after: " standards",
+    // A figure in a circle.
+    icon: (
+      <>
+        <circle cx="12" cy="12" r="9.5" />
+        <circle cx="12" cy="7.4" r="1.1" />
+        <path d="M7.4 10.2h9.2M12 10.2v4.6M12 14.8l-2.6 4M12 14.8l2.6 4" />
+      </>
+    ),
+  },
+  {
+    before: "Salesforce integration for ",
+    anchor: "20,000 users",
+    // Two systems, joined.
+    icon: (
+      <>
+        <rect x="2.5" y="2.5" width="8" height="8" rx="2.2" />
+        <rect x="13.5" y="13.5" width="8" height="8" rx="2.2" />
+        <path d="M10.5 6.5h4a3 3 0 0 1 3 3v4M13.5 17.5h-4a3 3 0 0 1-3-3v-4" />
+      </>
+    ),
+  },
+  {
+    before: "Systems running ",
+    anchor: "since 2010",
+    // A clock that keeps going round.
+    icon: (
+      <>
+        <path d="M21.5 12a9.5 9.5 0 1 1-3-6.9" />
+        <path d="M21.5 3.2v4.4h-4.4" />
+        <path d="M12 7.2V12l3.2 2" />
+      </>
+    ),
+  },
+  {
+    anchor: "HIPAA",
+    after: "-regulated healthcare systems",
+    // A shield with a cross.
+    icon: (
+      <>
+        <path d="M12 2.5l7.5 3v5.4c0 4.6-3 8.5-7.5 10.6-4.500-2.1-7.500-6-7.500-10.600V5.500z" />
+        <path d="M12 8.6v6M9 11.600h6" />
+      </>
+    ),
+  },
 ];
 
 /**
- * Since 2026-11-22 the strip is one white stat band under the case study
- * cards, inside the Proof band (rendered by TrackRecord), its four lines
- * arriving in sequence. Text unchanged.
+ * A credential row (design pass, 2026-11-22): four equal columns on a dark
+ * band inside Proof, ink running to the accent purple, so it breaks up the
+ * white cards on grey. Each item is a line icon over its line, the anchor
+ * in bold. Rendered by TrackRecord. Text unchanged.
  */
 export function ExperienceStrip() {
   return (
-    <Reveal className="strip surface" stagger>
+    <Reveal className="strip" stagger>
       <h3 className="sr-only" id="experience-heading">
         Experience
       </h3>
       <ul className="strip-list" aria-labelledby="experience-heading">
-        {EXPERIENCE.map((line, i) => (
-          <li className="reveal-item" style={step(i)} key={line}>
-            {line}
+        {EXPERIENCE.map((item, i) => (
+          <li className="strip-item reveal-item" style={step(i)} key={item.anchor}>
+            <svg className="strip-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              {item.icon}
+            </svg>
+            <p className="strip-line">
+              {item.before}
+              <strong>{item.anchor}</strong>
+              {item.after}
+            </p>
           </li>
         ))}
       </ul>

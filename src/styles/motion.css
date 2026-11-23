@@ -46,6 +46,75 @@
   animation-delay: calc(var(--i, 0) * var(--reveal-stagger));
 }
 
+/* The "Things we've fixed" illustrations (FixIllustrations.tsx). Each part
+   is drawn in its fixed state and these play it there from the broken one:
+   keyframes with no end, filling backwards, over --duration-illustration.
+   They start when the card's reveal starts, replay when the SVG remounts
+   (hover, or its button), and never loop. */
+.ill-ring--trapped,
+.ill-ring--free,
+.ill-tick--down,
+.ill-row {
+  animation-duration: var(--duration-illustration);
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: backwards;
+  animation-delay: 400ms;
+}
+.ill-ring--trapped {
+  animation-name: ill-trapped;
+}
+.ill-ring--free {
+  animation-name: ill-free;
+}
+.ill-tick--down {
+  animation-name: ill-tick;
+  animation-timing-function: var(--ease-out);
+}
+.ill-row--ours {
+  animation-name: ill-rise;
+}
+.ill-row--other {
+  animation-name: ill-sink;
+}
+.js .reveal--stagger:not(.is-in) .ill * {
+  animation: none;
+}
+/* Round the slides twice, never out, then let go. */
+@keyframes ill-trapped {
+  0%, 10% { opacity: 1; transform: translateX(0); }
+  20%, 28% { opacity: 1; transform: translateX(64px); }
+  38%, 46% { opacity: 1; transform: translateX(128px); }
+  56%, 62% { opacity: 1; transform: translateX(0); }
+  72% { opacity: 1; transform: translateX(64px); }
+  82%, 100% { opacity: 0; transform: translateX(64px); }
+}
+@keyframes ill-free {
+  0%, 78% { opacity: 0; transform: translateY(-22px); }
+}
+@keyframes ill-tick {
+  0%, 50% { fill: var(--color-accent-red); transform: scaleY(var(--h)); }
+}
+@keyframes ill-rise {
+  0%, 40% { transform: translateY(69px); }
+}
+@keyframes ill-sink {
+  0%, 40% { transform: translateY(-23px); }
+}
+/* The Web Partner tile's Z pieces drift in as the tile is revealed. */
+.js .reveal--stagger.is-in .fix-lead-z {
+  animation: z-in var(--duration-slow) var(--ease-out) backwards;
+  animation-delay: 300ms;
+}
+.js .reveal--stagger.is-in .fix-lead-z--b {
+  animation-delay: 450ms;
+}
+@keyframes z-in {
+  from {
+    opacity: 0;
+    transform: translate(var(--space-5), var(--space-5)) scale(0.92);
+  }
+}
+
 /* The hero's staged entrance: headline lines, subline, buttons, in order,
    on load, in CSS alone so it does not wait for the bundle. */
 .hero-stage {
@@ -115,9 +184,13 @@
   .reveal,
   .reveal-item,
   .hero-stage,
-  .field-error {
+  .field-error,
+  .ill *,
+  .fix-lead-z {
     animation: none !important;
   }
+  .proof-card:hover .browser,
+  .fix:hover .fix-lead-z,
   .fix:hover,
   .fix-example:hover,
   .proof-card:hover,

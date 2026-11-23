@@ -645,9 +645,11 @@ body:has(.subpage-hero) .site-header:not([data-scrolled="true"]):not(:has(.site-
   text-wrap: balance;
   color: var(--color-accent);
 }
-/* "Things we've fixed": three cards, each split into what was wrong (on
-   white) and how it came out (on the accent, white on it 11.18:1), the
-   comp's arrow leading the outcome. */
+/* "Things we've fixed": three before-and-after cards (design pass,
+   2026-11-22). Each is an illustration panel, a category chip, what was
+   wrong, and the outcome band on the accent (white on it 11.18:1). The
+   three share their rows through subgrid, so the panels, the copy, and the
+   outcome bands line up across the row whatever each card's length. */
 .fix-week-examples-heading {
   margin-top: var(--space-9);
   font-size: var(--text-card);
@@ -655,34 +657,132 @@ body:has(.subpage-hero) .site-header:not([data-scrolled="true"]):not(:has(.site-
 .fix-examples {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--space-4);
+  grid-template-rows: auto 1fr auto;
+  column-gap: var(--space-4);
   margin: var(--space-5) 0 0;
   padding: 0;
   list-style: none;
 }
 .fix-example {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-row: span 3;
+  grid-template-rows: subgrid;
   overflow: hidden;
   background: var(--color-surface);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-rest);
   color: var(--color-ink);
   transition:
     transform var(--duration-base) var(--ease-out),
     box-shadow var(--duration-base) var(--ease-out);
 }
-.fix-example:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-lift);
+.fix-example:hover,
+.fix-example:focus-within {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-raised);
 }
-.fix-example-problem {
-  flex: 1;
+/* The illustration panel: a tint of the site blue running to the ground,
+   with a keyline under it. A button once it can replay. */
+.fix-example-ill {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: var(--space-3) var(--space-3) 0;
+  border: 0;
+  border-bottom: 1px solid var(--color-line);
+  background: linear-gradient(
+    160deg,
+    color-mix(in srgb, var(--color-band-blue) 16%, var(--color-surface)),
+    var(--color-bg)
+  );
+}
+button.fix-example-ill {
+  cursor: pointer;
+}
+button.fix-example-ill:focus-visible {
+  outline-offset: -4px;
+  border-radius: var(--radius-card) var(--radius-card) 0 0;
+}
+.ill {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+/* Illustration parts. Neutral furniture in the greys, the broken state in
+   the comp red, the fixed state in the Fix green, the client's own row in
+   the accent. All decoration: the card's words carry the meaning. */
+.ill-frame {
+  fill: var(--color-surface);
+  stroke: var(--color-image-stroke);
+  stroke-width: 1.5;
+}
+.ill-block {
+  fill: color-mix(in srgb, var(--color-band-blue) 28%, var(--color-surface));
+}
+.ill-line {
+  fill: var(--color-image-stroke);
+}
+.ill-glass {
+  fill: none;
+  stroke: var(--color-text-muted);
+  stroke-width: 1.5;
+}
+.ill-ring {
+  fill: none;
+  stroke-width: 3;
+}
+.ill-ring--trapped {
+  stroke: var(--color-accent-red);
+  opacity: 0;
+}
+.ill-ring--free {
+  stroke: var(--color-hero-fix);
+}
+.ill-tick {
+  fill: var(--color-hero-fix);
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+}
+.ill-row-bg {
+  fill: color-mix(in srgb, var(--color-accent) 12%, var(--color-surface));
+  stroke: var(--color-accent);
+  stroke-width: 1.5;
+}
+.ill-row-dot,
+.ill-row-bar {
+  fill: var(--color-accent);
+}
+.fix-example-body {
   padding: var(--space-5);
 }
+/* Category chip: a small capital label in a keyline pill. */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--space-5);
+  padding: 0 var(--space-3);
+  border: 1px solid var(--color-text-muted);
+  border-radius: var(--radius-full);
+  font-family: var(--font-display);
+  font-size: var(--text-small);
+  font-weight: var(--weight-bold);
+  line-height: 1;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-ink);
+}
+.fix-example-problem {
+  margin-top: var(--space-3);
+}
+/* The payoff: one row of the shared grid, so all three are the same height,
+   the arrow and words centred in it. */
 .fix-example-outcome {
-  position: relative;
-  padding: var(--space-4) var(--space-5) var(--space-4) calc(var(--space-5) + var(--space-6));
-  background: var(--color-accent);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-5);
+  background: linear-gradient(100deg, var(--color-accent), color-mix(in srgb, var(--color-accent) 78%, var(--color-band-blue)));
   color: var(--color-on-accent);
   font-family: var(--font-display);
   font-size: var(--text-lead);
@@ -691,9 +791,7 @@ body:has(.subpage-hero) .site-header:not([data-scrolled="true"]):not(:has(.site-
 }
 .fix-example-outcome::before {
   content: "";
-  position: absolute;
-  left: var(--space-5);
-  top: calc(var(--space-4) + 0.3em);
+  flex: none;
   width: var(--space-4);
   height: var(--space-3);
   background: currentColor;
@@ -717,15 +815,20 @@ body:has(.subpage-hero) .site-header:not([data-scrolled="true"]):not(:has(.site-
 @media (max-width: 760px) {
   .fix-examples {
     grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: none;
+    row-gap: var(--space-4);
+  }
+  .fix-example {
+    grid-row: auto;
+    grid-template-rows: auto auto auto;
   }
 }
 
 /* ------------------------------------------------------- Track record */
 /* 394:1892: curve top left, cut bottom right. Heading left and intro
-   right, then four white stat cards two by two: the number is the hero of
-   the card, in the case's colour, over its label, the client, the meta
-   line, and "More" to /case-studies. Then the experience strip as one white
-   stat band. The .case-* rules below are shared with /case-studies. */
+   right, then the four cases as a bento of media-led cards (design pass,
+   2026-11-22), then the experience strip as a dark credential band. The
+   .case-* rules below are shared with /case-studies. */
 .track-record {
   --pad-top: var(--space-9);
   --pad-bottom: var(--space-10);
@@ -738,27 +841,77 @@ body:has(.subpage-hero) .site-header:not([data-scrolled="true"]):not(:has(.site-
   column-gap: var(--space-8);
   align-items: end;
 }
+/* Twelve columns. Row one: a narrow card (4) and the featured card (8).
+   Row two: a wide card (7) and a narrow one (5). */
 .proof-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(12, minmax(0, 1fr));
   gap: var(--space-4);
   margin-top: var(--space-7);
 }
+/* The card's surface is its case's accent, deepened with ink: 80% accent
+   at the top (white on it 5.47:1 at worst, the gold) running to 58%. Two
+   ghost capsules in the brand's shape language sit behind as texture. */
 .proof-card {
+  --case-top: color-mix(in srgb, var(--case-accent) 80%, var(--color-ink));
+  --case-bottom: color-mix(in srgb, var(--case-accent) 58%, var(--color-ink));
   position: relative;
+  isolation: isolate;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  padding: var(--space-6);
-  color: var(--color-ink);
+  grid-column: span 4;
+  background: linear-gradient(155deg, var(--case-top), var(--case-bottom));
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-rest);
+  color: var(--color-on-band);
   transition:
     transform var(--duration-base) var(--ease-out),
     box-shadow var(--duration-base) var(--ease-out);
 }
+.proof-card::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: calc(var(--space-7) * -1);
+  right: calc(var(--space-9) * -1);
+  width: calc(var(--space-11) * 2);
+  height: var(--space-9);
+  border-radius: var(--radius-full);
+  background: rgb(var(--white-rgb) / 0.08);
+  box-shadow: calc(var(--space-10) * -1) calc(var(--space-11) + var(--space-8)) 0 rgb(var(--white-rgb) / 0.05);
+  transform: rotate(-32deg);
+}
 .proof-card:hover,
 .proof-card:has(.proof-card-link:focus-visible) {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-lift);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-raised);
+}
+.proof-card--featured {
+  grid-column: span 8;
+}
+.proof-card--wide {
+  grid-column: span 7;
+  flex-direction: row;
+  align-items: stretch;
+}
+.proof-card--wide + .proof-card {
+  grid-column: span 5;
+}
+.proof-card-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: var(--space-6);
+}
+.proof-card--wide .proof-card-copy {
+  flex: 0 0 56%;
+  justify-content: center;
+  padding-right: var(--space-4);
+}
+/* Sized so "41 states" holds one line beside the screenshots. */
+.proof-card--wide .proof-card-figure-value {
+  font-size: calc(var(--text-hero) * 0.8);
 }
 .proof-card-figure {
   display: flex;
@@ -769,12 +922,14 @@ body:has(.subpage-hero) .site-header:not([data-scrolled="true"]):not(:has(.site-
   font-family: var(--font-display);
   font-weight: var(--weight-bold);
 }
-/* Large text in the case's colour: 4.05:1 or better on white. */
+/* The number is the hero of the card: white on the accent surface. */
 .proof-card-figure-value {
-  font-size: calc(var(--text-hero) * 1.25);
-  line-height: 1;
+  font-size: var(--text-hero);
+  line-height: 0.95;
   letter-spacing: -0.02em;
-  color: var(--case-accent);
+}
+.proof-card--featured .proof-card-figure-value {
+  font-size: calc(var(--text-hero) * 1.5);
 }
 .proof-card-figure-caption {
   font-size: var(--text-lead);
@@ -793,23 +948,148 @@ body:has(.subpage-hero) .site-header:not([data-scrolled="true"]):not(:has(.site-
 .proof-card-proof {
   margin-top: var(--space-3);
 }
-.proof-card-link::after {
-  border-radius: var(--radius-md);
+/* "More": its link covers the whole card, above the media. */
+.proof-card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-height: var(--space-5);
+  margin-top: var(--space-5);
+  font-family: var(--font-display);
+  font-size: var(--text-body);
+  font-weight: var(--weight-bold);
 }
-.proof-card .offer-card-arrow {
+.proof-card-link::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  border-radius: var(--radius-card);
+}
+.proof-card-link:focus-visible {
+  outline-color: currentColor;
+}
+.proof-card-more {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+.proof-card-arrow {
+  width: var(--space-4);
+  height: var(--space-3);
+  background: currentColor;
+  mask: url("/art/mb11/arrow.svg") center / contain no-repeat;
   transition: transform var(--duration-base) var(--ease-out);
 }
-.proof-card:hover .offer-card-arrow,
-.proof-card:has(.proof-card-link:focus-visible) .offer-card-arrow {
-  transform: translateX(3px);
+.proof-card:hover .proof-card-arrow,
+.proof-card:has(.proof-card-link:focus-visible) .proof-card-arrow {
+  transform: translateX(var(--space-1));
+}
+/* The screenshot in a browser frame, set in from the left and cropped by
+   the card's right and bottom edges. */
+.proof-card-media {
+  position: relative;
+  flex: 1;
+  min-height: calc(var(--space-11) - var(--space-3));
+  margin: auto calc(var(--space-7) * -1) 0 var(--space-6);
+}
+.proof-card--featured .proof-card-media {
+  min-height: calc(var(--space-11) + var(--space-8));
+  margin-left: calc(var(--space-9) + var(--space-6));
+}
+.proof-card--wide .proof-card-media {
+  margin: var(--space-7) calc(var(--space-9) * -1) 0 0;
+  min-height: calc(var(--space-11) + var(--space-8));
+}
+.browser {
+  position: absolute;
+  inset: 0 0 auto 0;
+  overflow: hidden;
+  background: var(--color-surface);
+  border-radius: var(--radius-image) var(--radius-image) 0 0;
+  box-shadow: var(--shadow-raised);
+  transform-origin: 0 0;
+  transition: transform var(--duration-slow) var(--ease-out);
+}
+.browser-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  height: var(--space-5);
+  padding-inline: var(--space-3);
+  background: var(--color-bg);
+}
+.browser-bar span {
+  width: var(--space-2);
+  height: var(--space-2);
+  border-radius: var(--radius-full);
+  background: var(--color-image-stroke);
+}
+.browser img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+/* Two screenshots: the second sits behind the first, up and to the right. */
+.browser--back {
+  left: 22%;
+  opacity: 0.92;
+}
+.browser--front {
+  top: var(--space-6);
+  right: 18%;
+}
+.proof-card:hover .browser,
+.proof-card:has(.proof-card-link:focus-visible) .browser {
+  transform: translate(calc(var(--space-2) * -1), calc(var(--space-2) * -1)) scale(1.03);
+}
+.proof-card:hover .browser--back,
+.proof-card:has(.proof-card-link:focus-visible) .browser--back {
+  transform: translate(var(--space-2), calc(var(--space-1) * -1));
+}
+/* Tablet: two rows of two, wide beside narrow, then narrow beside wide. */
+@media (max-width: 900px) {
+  .proof-card,
+  .proof-card--wide {
+    grid-column: span 5;
+    flex-direction: column;
+  }
+  .proof-card--wide + .proof-card {
+    grid-column: span 5;
+  }
+  .proof-card--featured,
+  .proof-card--wide {
+    grid-column: span 7;
+  }
+  .proof-card--wide .proof-card-copy {
+    flex: none;
+  }
+  .proof-card--featured .proof-card-figure-value,
+  .proof-card--wide .proof-card-figure-value {
+    font-size: var(--text-hero);
+  }
+  .proof-card--wide .proof-card-copy {
+    padding-right: var(--space-6);
+  }
+  .proof-card-media,
+  .proof-card--featured .proof-card-media,
+  .proof-card--wide .proof-card-media {
+    min-height: calc(var(--space-11) - var(--space-3));
+    margin: auto calc(var(--space-7) * -1) 0 var(--space-6);
+  }
 }
 @media (max-width: 760px) {
-  .track-head,
-  .proof-grid {
+  .track-head {
     grid-template-columns: minmax(0, 1fr);
   }
   .track-intro {
     margin-top: var(--space-5);
+  }
+  .proof-card,
+  .proof-card--wide,
+  .proof-card--featured,
+  .proof-card--wide + .proof-card {
+    grid-column: 1 / -1;
   }
 }
 /* Helvetica Light 14 on 18: the case, fix, and step text (359:1116). */
@@ -962,13 +1242,13 @@ body:has(.subpage-hero) .site-header:not([data-scrolled="true"]):not(:has(.site-
 
 /* -------------------------------------------------------- Bigger fixes */
 /* One blue band 394:1893 (cut top left, curve bottom right), the eyebrow
-   and heading 376:1755 inside it, directly after The Fix. A bento grid
-   since 2026-11-22: Web Partner is the large tile, two columns by two rows,
-   with the ownership callout at its foot, two small tiles sit beside it and
-   one runs the full width under it. Tiles are a darker tint of the band
-   (black at 14%), which raises the white text's contrast above the band's
-   own 4.51:1. The pill's link is stretched over its tile, so the whole tile
-   is the target and the pill's hover state answers a hover anywhere on it. */
+   and heading 376:1755 inside it, directly after The Fix. A bento grid:
+   Web Partner is the large tile, two columns by two rows, two small tiles
+   sit beside it and one runs the full width under it. Tiles are a darker
+   tint of the band (black at 14% running to 30%), which raises the white
+   text's contrast above the band's own 4.51:1, inside a faint white
+   keyline. The pill's link is stretched over its tile, so the whole tile is
+   the target and the pill's hover state answers a hover anywhere on it. */
 .fixes-band {
   margin-top: var(--space-10);
   padding-block: var(--space-9);
@@ -988,30 +1268,85 @@ body:has(.subpage-hero) .site-header:not([data-scrolled="true"]):not(:has(.site-
 }
 .fix {
   position: relative;
+  isolation: isolate;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   padding: var(--space-6);
-  background: rgb(var(--black-rgb) / 0.14);
+  background: linear-gradient(160deg, rgb(var(--black-rgb) / 0.14), rgb(var(--black-rgb) / 0.3));
+  border: 1px solid rgb(var(--white-rgb) / 0.16);
   border-radius: var(--radius-card);
+  box-shadow: var(--shadow-rest);
   transition:
-    background var(--duration-base) var(--ease-out),
+    border-color var(--duration-base) var(--ease-out),
     transform var(--duration-base) var(--ease-out),
     box-shadow var(--duration-base) var(--ease-out);
 }
 .fix:hover,
 .fix:has(.fix-link:focus-visible) {
-  background: rgb(var(--black-rgb) / 0.26);
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-lift);
-}
-.fix--lead {
-  grid-column: 1 / span 2;
-  grid-row: 1 / span 2;
-  padding: var(--space-7);
+  border-color: rgb(var(--white-rgb) / 0.5);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-raised);
 }
 .fix:last-child {
   grid-column: 1 / -1;
+}
+/* The offer's icon, Misha's white line art (a mask, so it takes the text
+   colour), in a keyline circle. */
+.fix-icon {
+  display: grid;
+  place-items: center;
+  width: var(--space-7);
+  height: var(--space-7);
+  margin-bottom: var(--space-5);
+  border: 1px solid rgb(var(--white-rgb) / 0.55);
+  border-radius: var(--radius-full);
+}
+.fix-icon-art {
+  width: calc(var(--space-5) + var(--space-1));
+  height: calc(var(--space-5) + var(--space-1));
+  background: currentColor;
+  mask: var(--tile-icon) center / contain no-repeat;
+}
+.fix-icon svg {
+  width: var(--space-5);
+  height: var(--space-5);
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+/* A capsule in the brand's shape language (the Z's rounded bars), in two
+   palette stops, cropped by the tile's top right corner, with a ghost of
+   itself behind. Decoration only, clear of the tile's words. */
+.fix-capsule {
+  position: absolute;
+  z-index: -1;
+  top: calc(var(--space-3) * -1);
+  right: calc(var(--space-6) * -1);
+  width: calc(var(--space-11) - var(--space-4));
+  height: var(--space-7);
+  border-radius: var(--radius-full);
+  background: linear-gradient(90deg, var(--tile-from), var(--tile-to));
+  box-shadow: calc(var(--space-6) * -1) var(--space-8) 0 calc(var(--space-2) * -1) rgb(var(--white-rgb) / 0.1);
+  transform: rotate(-32deg);
+  transition: transform var(--duration-slow) var(--ease-out);
+}
+.fix:hover .fix-capsule,
+.fix:has(.fix-link:focus-visible) .fix-capsule {
+  transform: rotate(-32deg) translateX(calc(var(--space-3) * -1));
+}
+.fix:last-child .fix-capsule {
+  top: auto;
+  bottom: calc(var(--space-7) * -1);
+  right: calc(var(--space-6) * -1);
+  width: calc(var(--space-11) * 2);
+  height: calc(var(--space-9) + var(--space-3));
+  box-shadow:
+    calc(var(--space-11) * -1) calc(var(--space-7) * -1) 0 calc(var(--space-5) * -1) rgb(var(--white-rgb) / 0.12),
+    calc(var(--space-9) * -1) var(--space-9) 0 calc(var(--space-4) * -1) rgb(var(--white-rgb) / 0.07);
 }
 .fix-title {
   margin: 0;
@@ -1034,6 +1369,22 @@ body:has(.subpage-hero) .site-header:not([data-scrolled="true"]):not(:has(.site-
   inset: 0;
   border-radius: var(--radius-card);
 }
+/* Web Partner: words and the ownership callout left, Misha's two-piece Z
+   large on the right inside dotted orbits, so the tile earns its size. */
+.fix--lead {
+  grid-column: 1 / span 2;
+  grid-row: 1 / span 2;
+  display: grid;
+  grid-template-columns: minmax(0, 11fr) minmax(0, 9fr);
+  gap: var(--space-6);
+  align-items: stretch;
+  padding: var(--space-7);
+}
+.fix-lead-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
 .fix--lead .fix-title {
   font-size: var(--text-hero);
 }
@@ -1041,11 +1392,59 @@ body:has(.subpage-hero) .site-header:not([data-scrolled="true"]):not(:has(.site-
   margin-top: var(--space-3);
   font-size: var(--text-lead);
 }
+/* The callout as an inset panel at the tile's foot, behind the yellow. */
 .fix--lead .callout {
+  max-width: none;
   margin-top: auto;
+  padding: var(--space-4) var(--space-5);
+  border-left: 3px solid var(--color-highlight);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  background: rgb(var(--black-rgb) / 0.2);
 }
 .fix--lead .fix-link {
-  margin-bottom: var(--space-8);
+  margin-bottom: var(--space-7);
+}
+.fix-lead-art {
+  position: relative;
+  min-height: calc(var(--space-11) + var(--space-10));
+}
+/* Dotted orbits in the manner of MB11's line art: 1px white, 2 on 2 off. */
+.fix-orbits {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 135%;
+  height: auto;
+  transform: translate(-50%, -50%);
+  fill: none;
+  stroke: rgb(var(--white-rgb) / 0.55);
+  stroke-width: 1;
+  stroke-dasharray: 2 3;
+  vector-effect: non-scaling-stroke;
+}
+.fix-lead-z {
+  position: absolute;
+  height: auto;
+  filter: drop-shadow(0 var(--space-3) var(--space-4) rgb(var(--black-rgb) / 0.28));
+  transition: transform var(--duration-slow) var(--ease-out);
+}
+.fix-lead-z--a {
+  top: 16%;
+  left: -4%;
+  width: 92%;
+}
+.fix-lead-z--b {
+  top: 54%;
+  left: 34%;
+  width: 60%;
+}
+.fix--lead:hover .fix-lead-z--a,
+.fix--lead:has(.fix-link:focus-visible) .fix-lead-z--a {
+  transform: translate(calc(var(--space-2) * -1), calc(var(--space-1) * -1));
+}
+.fix--lead:hover .fix-lead-z--b,
+.fix--lead:has(.fix-link:focus-visible) .fix-lead-z--b {
+  transform: translate(var(--space-2), var(--space-2));
 }
 
 /* Tablet: the third column is too narrow for a tile's pill ("See Platform
@@ -1059,16 +1458,29 @@ body:has(.subpage-hero) .site-header:not([data-scrolled="true"]):not(:has(.site-
     grid-column: 1 / -1;
     grid-row: auto;
   }
-  .fix--lead .fix-link {
-    margin-bottom: var(--space-7);
-  }
 }
 @media (max-width: 760px) {
   .fix-grid {
     grid-template-columns: minmax(0, 1fr);
   }
   .fix--lead {
+    grid-template-columns: minmax(0, 1fr);
     padding: var(--space-6);
+  }
+  .fix--lead .fix-link {
+    margin-bottom: var(--space-6);
+  }
+  .fix-lead-art {
+    order: -1;
+    min-height: calc(var(--space-11) + var(--space-6));
+    max-width: calc(var(--space-11) * 2);
+  }
+  .fix:last-child .fix-capsule {
+    top: calc(var(--space-5) * -1);
+    bottom: auto;
+    right: calc(var(--space-7) * -1);
+    width: calc(var(--space-11) - var(--space-4));
+    height: var(--space-7);
   }
 }
 
@@ -1165,39 +1577,94 @@ body:has(.subpage-hero) .site-header:not([data-scrolled="true"]):not(:has(.site-
 }
 
 /* --------------------------------------------------- Credibility strip */
-/* 388:1867 to 388:1871: four lines in the comp blue, Helvetica Light 32.
-   Since 2026-11-22 one white stat band under the case cards, inside the
-   Proof band. Large text: the blue is 4.10:1 on white. */
+/* 388:1867 to 388:1871, the comp's four lines. Since the design pass of
+   2026-11-22 a credential row on a dark band inside Proof: ink running to
+   the accent purple (white on it 11.18:1 at the lightest), four equal
+   columns, a line icon in the band's yellow over each line, the anchor in
+   bold, at a size that holds each line to two rows. A ghost capsule and a
+   dotted rule, MB11's line art, sit behind. */
 .strip {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   margin-top: var(--space-4);
-  padding: var(--space-6);
+  padding: var(--space-7) var(--space-6);
+  background: linear-gradient(115deg, var(--color-ink) 15%, var(--color-accent));
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-rest);
+  color: var(--color-on-band);
+}
+.strip::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: calc(var(--space-8) * -1);
+  right: calc(var(--space-8) * -1);
+  width: calc(var(--space-11) * 2.5);
+  height: var(--space-10);
+  border-radius: var(--radius-full);
+  background: rgb(var(--white-rgb) / 0.07);
+  transform: rotate(-32deg);
+}
+.strip::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  bottom: var(--space-4);
+  width: 38%;
+  border-top: 1px dashed rgb(var(--white-rgb) / 0.4);
+  transform: rotate(-3deg);
+  transform-origin: left;
 }
 .strip-list {
   display: grid;
-  /* 388:1868, 388:1867, 388:1870, 388:1871 are 246, 212, 171, 211 wide. */
-  grid-template-columns: minmax(0, 246fr) minmax(0, 212fr) minmax(0, 171fr) minmax(0, 211fr);
-  gap: var(--space-5) var(--space-6);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-6);
   margin: 0;
   padding: 0;
   list-style: none;
+}
+.strip-item {
+  display: grid;
+  gap: var(--space-4);
+  align-content: start;
+}
+.strip-icon {
+  width: calc(var(--space-7) - var(--space-2));
+  height: calc(var(--space-7) - var(--space-2));
+  fill: none;
+  stroke: var(--color-highlight);
+  stroke-width: 1.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.strip-line {
   font-family: var(--font-display);
-  font-size: var(--text-subtitle);
+  font-size: var(--text-lead);
   font-weight: var(--weight-light);
-  line-height: var(--leading-strip);
-  color: var(--color-accent-blue);
+  line-height: 1.3;
+  text-wrap: balance;
+}
+.strip-line strong {
+  font-weight: var(--weight-bold);
 }
 @media (max-width: 900px) {
   .strip-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
-@media (max-width: 760px) {
+@media (max-width: 520px) {
   .strip {
-    padding: var(--space-5);
+    padding: var(--space-6) var(--space-5);
   }
   .strip-list {
     grid-template-columns: minmax(0, 1fr);
-    font-size: var(--text-card);
+    gap: var(--space-5);
+  }
+  .strip-item {
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
   }
 }
 

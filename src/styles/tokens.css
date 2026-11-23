@@ -101,6 +101,8 @@
 
   /* shadow */
   --shadow-lift: 0 8px 24px rgb(0 0 0 / .08);  /* Hover lift on cards and the button. The board has no effects, so this is the only shadow and it only appears on interaction. */
+  --shadow-rest: 0 1px 2px rgb(0 0 0 / .06), 0 12px 28px -14px rgb(0 0 0 / .22);  /* A card at rest: a contact line and a soft, tucked-under drop. Design pass of 2026-11-22, when Drew allowed depth on the home cards. */
+  --shadow-raised: 0 2px 4px rgb(0 0 0 / .08), 0 24px 48px -18px rgb(0 0 0 / .38);  /* A card on hover or focus, and the browser frames layered over the case study cards. */
 
   /* layout: Emitted without a prefix: --content-width, --gutter, --header-height and so on. */
   --content-width: 1008px;  /* 1280 minus two 160 margins. */
@@ -135,6 +137,7 @@
   --duration-slow: 700ms;
   --duration-reveal: 700ms;  /* Every scroll reveal and the hero's staged entrance. One value so sections cannot drift. */
   --reveal-stagger: 90ms;  /* The step between items revealed in sequence. */
+  --duration-illustration: 2600ms;  /* One play of a before-and-after illustration on the Things we've fixed cards, from the broken state to the fixed one. */
   --duration-count: 1100ms;  /* How long a figure takes to count up. Read by CountUp.tsx from the stylesheet. */
   --ease-out: cubic-bezier(.16, 1, .3, 1);
 
