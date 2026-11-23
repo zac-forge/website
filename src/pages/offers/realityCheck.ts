@@ -51,17 +51,11 @@ export const realityCheck: Offer = {
       ],
     },
     {
-      heading: "What you get",
-      kind: "paragraphs",
-      items: [
-        "One page. A verdict on each question, the evidence, and what a fix would take. Nothing you need a developer to translate.",
-      ],
-    },
-    {
       heading: "What we check",
       kind: "numbered",
       // The home Check section's stepper, with the same five items. It is
-      // this page's proof block, so it comes last.
+      // this page's proof block. "What you get" follows it (Drew,
+      // 2026-11-22), so the questions are read before the verdict on each.
       view: "stepper",
       items: [
         {
@@ -81,6 +75,13 @@ export const realityCheck: Offer = {
           title: "Does it look like you?",
           body: "Whether it looks like your business or like a template. Our design principal makes the call.",
         },
+      ],
+    },
+    {
+      heading: "What you get",
+      kind: "paragraphs",
+      items: [
+        "One page. A verdict on each question, the evidence, and what a fix would take. Nothing you need a developer to translate.",
       ],
     },
   ],

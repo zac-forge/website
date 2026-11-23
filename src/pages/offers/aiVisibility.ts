@@ -93,7 +93,7 @@ export const aiVisibility: Offer = {
     {
       question: "Is this SEO with a new name?",
       answer:
-        "Part of it overlaps, and good search foundations still matter. The difference is that assistants read your site differently.",
+        "Part of it overlaps, and good search foundations still matter. The difference is that assistants read your site differently. Many cannot run JavaScript, some are blocked by default settings, and they rely heavily on reviews, listings, and what other sites say about you.",
     },
     {
       question: "Do we need to write a lot of new content?",

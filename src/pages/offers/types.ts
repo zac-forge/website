@@ -59,9 +59,10 @@ export type Offer = {
   /**
    * The paragraph the "Other services" tile carried until the text cut of
    * 2026-11-22. No longer shown anywhere, except as the tile line of an
-   * offer with no `line` (the flagged brand system).
+   * offer with no `line` (the flagged brand system). Deleted from Web
+   * Partner and Accessibility at Drew's request the same day.
    */
-  summary: string;
+  summary?: string;
   /** Behind a flag: omitted from routes, menus, sitemap, and schema. */
   flagged?: boolean;
   /** Document head. */

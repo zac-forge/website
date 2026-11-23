@@ -51,6 +51,8 @@ export function WhatWeFix() {
         <Reveal stagger>
           <ul className="fix-grid fix-grid--bento">
             <li className="fix fix--lead reveal-item" style={{ ...step(0), ...capsuleStyle(LEAD.link.href) }}>
+              {/* Its accent, as on the other tiles (Drew, 2026-11-22). */}
+              <span className="fix-capsule" aria-hidden="true" />
               <div className="fix-lead-copy">
                 <TileBody tile={LEAD} lead />
                 <Callout>{PRINCIPLES.partner}</Callout>

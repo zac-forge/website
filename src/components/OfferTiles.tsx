@@ -25,7 +25,7 @@ export type Tile = {
 export function offerTile(offer: Offer, label: string, ariaLabel?: string): Tile {
   return {
     title: offer.navTitle,
-    line: offer.tileLine ?? offer.line ?? offer.summary,
+    line: offer.tileLine ?? offer.line ?? offer.summary ?? "",
     icon: offer.heroIcon?.src,
     link: { label, href: offer.path, ariaLabel },
   };

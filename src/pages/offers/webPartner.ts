@@ -6,9 +6,6 @@ export const webPartner: Offer = {
   path: "/web-partner",
   navTitle: "Web Partner",
   line: "Senior help on call, month to month",
-  // The home card's line (2026-11-18).
-  summary:
-    "A flexible team of senior IT professionals who work alongside yours. As much or as little as you need. Month to month, no strings.",
   title: "Web Partner: senior website care, month to month | ZAC Forge",
   // Quoted the old home card line, so it takes the new card copy (2026-11-18).
   description:

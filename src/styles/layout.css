@@ -358,6 +358,10 @@ body:has(.subpage-hero) .site-header:not([data-scrolled="true"]):not(:has(.site-
     order: -1;
     margin-top: 0;
     justify-self: start;
+    /* A set width, so the Z's box is held before the image loads. Sized by
+       its content alone it was empty until then, and the copy below jumped
+       down when it arrived (2026-11-22). */
+    width: 100%;
     max-width: calc(var(--hero-art) * 0.5);
   }
 }
