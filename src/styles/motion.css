@@ -216,6 +216,7 @@
     animation: none !important;
   }
   .proof-card:hover .browser,
+  .case-study-stage:hover .browser,
   .fix:hover .fix-lead-z,
   .fix:hover,
   .fix-example:hover,

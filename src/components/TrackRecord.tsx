@@ -2,36 +2,9 @@ import type { CSSProperties } from "react";
 import { Reveal } from "./Reveal";
 import { CountUp } from "./CountUp";
 import { ExperienceStrip } from "./LogoBand";
+import { BrowserFrame } from "./BrowserFrame";
 import { CASE_STUDIES, CASE_STUDIES_INTRO, CASE_STUDIES_PATH, caseMeta } from "../pages/caseStudies";
 import type { CaseStudy } from "../pages/caseStudies";
-
-/**
- * The case's screenshot in a browser frame drawn in CSS: a bar with three
- * dots over the image. Decorative on the home cards (the card's words say
- * what it is, and /case-studies carries the image with its alt text), so
- * the whole media block is hidden from assistive tech.
- */
-function BrowserFrame({ base, className = "" }: { base: string; className?: string }) {
-  return (
-    <div className={`browser ${className}`.trim()}>
-      <div className="browser-bar">
-        <span />
-        <span />
-        <span />
-      </div>
-      <img
-        src={`${base}-720.webp`}
-        srcSet={`${base}-360.webp 360w, ${base}-720.webp 720w`}
-        sizes="(max-width: 760px) calc(100vw - 96px), 560px"
-        alt=""
-        width={720}
-        height={405}
-        loading="lazy"
-        decoding="async"
-      />
-    </div>
-  );
-}
 
 /**
  * The bento's shapes, by position (design pass, 2026-11-22). Row one: a

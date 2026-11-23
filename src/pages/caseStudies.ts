@@ -87,9 +87,11 @@ const LIVE: CaseStudy[] = [
     client: "Heritage Global Partners",
     industry: "Industrial auctions and asset sales",
     status: "Live since 2010",
-    problem: "An outdated design and a weak server setup. The site kept crashing under load.",
+    // Cut by Drew on 2026-11-22 (removal only): the problem's first sentence
+    // and the tablets sentence that closed "What we built".
+    problem: "The site kept crashing under load.",
     built:
-      "A new design system, new site architecture and code on an up-to-date WordPress, and a custom server environment built for the load. Auction listings created on tablets straight from the sale floor.",
+      "A new design system, new site architecture and code on an up-to-date WordPress, and a custom server environment built for the load.",
     proof: ["Stable since launch, without interruption."],
     homeProof: false,
     figure: "$1B+",
@@ -105,11 +107,10 @@ const LIVE: CaseStudy[] = [
     status: "Built 2016 to 2019 · Still running",
     problem: "A bloated proprietary system, controlled by a vendor that made it hard to leave.",
     built:
-      "A custom back end on WordPress and open source, with tablet point of sale on one central database so parents bought photos the same day. The same platform runs separately branded portals for the US Naval Academy and the US Military Academy. Then we handed the keys back.",
-    proof: [
-      "The client reported support calls dropped by over 90%.",
-      "Still running, now maintained by another team.",
-    ],
+      // Cut by Drew on 2026-11-22 (removal only): the academies sentence
+      // (the USNA and USMA portal links stay) and the proof's second sentence.
+      "A custom back end on WordPress and open source, with tablet point of sale on one central database so parents bought photos the same day. Then we handed the keys back.",
+    proof: ["The client reported support calls dropped by over 90%."],
     figure: "41 states",
     product: { label: "School and academy photo platform", href: "https://teddybearportraits.com" },
     moreLinks: [
@@ -135,7 +136,8 @@ const LIVE: CaseStudy[] = [
     industry: "Nonprofit legal aid",
     status: "Live through the 2025 Los Angeles fires",
     built:
-      "California's disaster legal services portal, for Legal Access Alameda and the Disaster Legal Assistance Collaborative, a statewide alliance of legal aid groups and volunteer attorneys. One place for Californians hit by wildfires, earthquakes, and floods to find free legal help. Accessible and simple to use.",
+      // Cut by Drew on 2026-11-22 to its first sentence (removal only).
+      "California's disaster legal services portal, for Legal Access Alameda and the Disaster Legal Assistance Collaborative, a statewide alliance of legal aid groups and volunteer attorneys.",
     proof: ["It carried survivors of the 2025 Los Angeles fires to free legal help, in 7 languages."],
     // Drew, 2026-11-22: the number and the meta line already say it.
     homeProof: false,

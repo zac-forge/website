@@ -2850,15 +2850,16 @@ button.fix-example-ill:focus-visible {
 }
 
 /* The cases, on alternating surfaces: ground, then white run to the page
-   edges (a spread shadow, clipped to the case's own height). */
+   edges (a spread shadow, clipped to the case's own height). Since the
+   design pass of 2026-11-22 the work is the hero of each case: the number
+   and a large screenshot on the case's accent surface, then three panels. */
 .cases-list {
   display: grid;
 }
 .case-study {
-  display: grid;
-  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
-  column-gap: var(--space-7);
-  align-items: start;
+  --case-top: color-mix(in srgb, var(--case-accent) 80%, var(--color-ink));
+  --case-bottom: color-mix(in srgb, var(--case-accent) 58%, var(--color-ink));
+  --case-bar: calc(var(--space-9) + var(--space-3));
   padding-block: var(--space-9);
   scroll-margin-top: var(--header-height);
   color: var(--color-ink);
@@ -2868,121 +2869,211 @@ button.fix-example-ill:focus-visible {
   box-shadow: 0 0 0 100vmax var(--color-surface);
   clip-path: inset(0 -100vmax);
 }
-/* Outcome first, and pinned: client, meta line, and the number hold under
-   the header while the narrative scrolls beside them. */
-.case-study-pin {
-  position: sticky;
-  top: calc(var(--header-height) + var(--space-6));
-}
 .case-study-client {
   margin: 0;
   font-family: var(--font-display);
-  font-size: var(--text-subtitle);
-  font-weight: var(--weight-light);
-  line-height: var(--leading-title);
+  font-size: var(--text-heading);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-heading);
+  text-wrap: balance;
 }
-.case-study-meta {
-  margin-top: var(--space-2);
-}
-.case-study-figure {
-  display: grid;
+/* At a glance, as chips under the client name: sector, status, then each
+   link. The link chips carry the comp's arrow and fill on hover. */
+.case-study-chips {
+  display: flex;
+  flex-wrap: wrap;
   gap: var(--space-2);
+  margin: var(--space-4) 0 0;
+  padding: 0;
+  list-style: none;
+}
+.case-study-chips .chip {
+  min-height: var(--space-6);
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: var(--text-small);
+}
+.chip--link {
+  gap: var(--space-2);
+  background: var(--color-ink);
+  border-color: var(--color-ink);
+  color: var(--color-on-band);
+  transition:
+    background var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out);
+}
+.chip--link:hover {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+}
+.chip-arrow {
+  width: var(--space-3);
+  height: var(--space-2);
+  background: currentColor;
+  mask: url("/art/mb11/arrow.svg") center / contain no-repeat;
+  transition: transform var(--duration-base) var(--ease-out);
+}
+.chip--link:hover .chip-arrow {
+  transform: translateX(2px);
+}
+.case-study-work {
   margin-top: var(--space-6);
+}
+/* The number, on the accent surface (white on it 5.47:1 at worst). At
+   desktop widths it is a bar of a set height that pins under the header
+   while the case scrolls beneath it, and the stage tucks up behind it so
+   bar and screenshot read as one panel at rest. */
+.case-study-figure {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-1) var(--space-4);
+  margin: 0;
+  padding: var(--space-5) var(--space-6);
+  background: var(--case-top);
+  border-radius: var(--radius-card) var(--radius-card) 0 0;
+  color: var(--color-on-band);
   font-family: var(--font-display);
   font-weight: var(--weight-bold);
 }
 .case-study-figure-value {
-  font-size: calc(var(--text-hero) * 1.25);
-  line-height: 0.95;
+  font-size: var(--text-hero);
+  line-height: 1;
   letter-spacing: -0.02em;
-  color: var(--case-accent);
 }
 .case-study-figure-caption {
   font-size: var(--text-card);
   line-height: var(--leading-title);
 }
-.case-study-scroll {
-  display: grid;
-  gap: var(--space-7);
+/* The stage: the screenshot in a large browser frame on the accent
+   surface, two ghost capsules behind. */
+.case-study-stage {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 0 var(--space-6) var(--space-6);
+  background: linear-gradient(180deg, var(--case-top), var(--case-bottom));
+  border-radius: 0 0 var(--radius-card) var(--radius-card);
+  box-shadow: var(--shadow-rest);
 }
-.case-study-story {
+.case-study-stage::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: var(--space-8);
+  right: calc(var(--space-10) * -1);
+  width: calc(var(--space-11) * 3);
+  height: var(--space-10);
+  border-radius: var(--radius-full);
+  background: rgb(var(--white-rgb) / 0.08);
+  box-shadow: calc(var(--space-11) * -3) calc(var(--space-11) * 1.5) 0 rgb(var(--white-rgb) / 0.05);
+  transform: rotate(-32deg);
+}
+/* On this page the frame is in the flow at its full size, not cropped. */
+.case-study-stage .browser {
+  position: relative;
+  inset: auto;
+  border-radius: var(--radius-image);
+}
+.case-study-stage:hover .browser {
+  transform: translateY(calc(var(--space-1) * -1)) scale(1.01);
+}
+/* Two screenshots, layered: the second behind and to the right. */
+.case-study-stage--layered {
   display: grid;
-  gap: var(--space-6);
-  margin: 0;
+}
+.case-study-stage--layered .browser {
+  grid-area: 1 / 1;
+  width: 82%;
+}
+.case-study-stage--layered .browser--back {
+  justify-self: end;
+  align-self: start;
+  left: auto;
+  opacity: 1;
+}
+.case-study-stage--layered .browser--front {
+  justify-self: start;
+  align-self: end;
+  top: auto;
+  right: auto;
+  margin-top: 14%;
+}
+.case-study-stage--layered:hover .browser--back {
+  transform: translate(var(--space-2), calc(var(--space-1) * -1));
+}
+/* A case without artwork: the number, large, in place of the screenshot. */
+.case-study-art--block {
+  display: grid;
+  place-items: center;
+  aspect-ratio: var(--case-image-ratio);
+  border-radius: var(--radius-image);
+  background: rgb(var(--black-rgb) / 0.18);
+  color: var(--color-on-accent);
+  font-family: var(--font-display);
+  font-size: var(--text-hero);
+  font-weight: var(--weight-bold);
+}
+/* Problem, What we built, Proof: three panels in a row. Proof carries the
+   most weight, on the accent surface in the larger bold. */
+.case-study-beats {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 6fr) minmax(0, 5fr);
+  gap: var(--space-3);
+  margin: var(--space-3) 0 0;
+}
+.case-study-beats:has(> :nth-child(2):last-child) {
+  grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+}
+.case-study-beat {
+  padding: var(--space-5);
+  background: var(--color-surface);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-rest);
+}
+.case-study:nth-child(even) .case-study-beat:not(.case-study-beat--proof) {
+  background: var(--color-bg);
+  box-shadow: none;
 }
 .case-study-beat dt {
   margin-bottom: var(--space-2);
 }
 .case-study-beat dd {
   margin: 0;
-  font-family: var(--font-display);
-  font-size: var(--text-lead);
-  font-weight: var(--weight-light);
+  font-size: var(--text-body);
   line-height: var(--leading-copy);
 }
-/* Proof carries the most weight of the three beats. */
 .case-study-beat--proof {
-  padding-left: var(--space-5);
-  border-left: var(--space-1) solid var(--case-accent);
+  background: linear-gradient(155deg, var(--case-top), var(--case-bottom));
+  color: var(--color-on-band);
 }
 .case-study-beat--proof dd {
-  font-size: var(--text-subtitle);
+  font-family: var(--font-display);
+  font-size: var(--text-card);
   font-weight: var(--weight-bold);
   line-height: var(--leading-title);
   text-wrap: balance;
 }
-.case-study-side {
-  display: grid;
-  gap: var(--space-4);
-}
-.case-study-art {
-  display: grid;
-  gap: var(--space-3);
-}
-/* A case without artwork: a block in its colour carrying the number. */
-.case-study-art--block {
-  place-items: center;
-  aspect-ratio: var(--case-image-ratio);
-  background: var(--case-accent);
-  color: var(--color-on-accent);
-  border-radius: var(--radius-image);
-  font-family: var(--font-display);
-  font-size: var(--text-hero);
-  font-weight: var(--weight-bold);
-}
-/* At a glance: the meta line and link labels as labelled rows, on the
-   surface the case is not on. */
-.case-study-facts {
-  display: grid;
-  gap: var(--space-3);
-  margin: 0;
-  padding: var(--space-5);
-  background: var(--color-surface);
-  border-radius: var(--radius-md);
-}
-.case-study:nth-child(even) .case-study-facts {
-  background: var(--color-bg);
-}
-.case-study-facts > div {
-  display: grid;
-  grid-template-columns: calc(var(--space-8) + var(--space-2)) minmax(0, 1fr);
-  gap: var(--space-3);
-}
-.case-study-facts dd {
-  margin: 0;
-}
-.case-study-links {
-  display: grid;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-/* Stacked links keep a 24px target each (WCAG 2.2, 2.5.8). */
-.case-study-links li + li a {
-  display: inline-block;
-  padding-top: var(--space-2);
-}
 
+/* Desktop: the number bar pins under the condensed header. */
+@media (min-width: 1081px) {
+  .case-study-figure {
+    position: sticky;
+    top: calc(var(--header-height) - var(--space-3) + var(--space-2));
+    flex-wrap: nowrap;
+    align-items: center;
+    height: var(--case-bar);
+    padding-block: 0;
+    border-radius: var(--radius-card);
+  }
+  .case-study-stage {
+    margin-top: calc(var(--case-bar) * -1);
+    padding-top: calc(var(--case-bar) + var(--space-2));
+    border-radius: var(--radius-card);
+  }
+}
 @media (max-width: 1080px) {
   .cases-body {
     grid-template-columns: minmax(0, 1fr);
@@ -3030,15 +3121,17 @@ button.fix-example-ill:focus-visible {
 }
 @media (max-width: 760px) {
   .case-study {
-    grid-template-columns: minmax(0, 1fr);
-    row-gap: var(--space-6);
     padding-block: var(--space-8);
   }
-  .case-study-pin {
-    position: static;
+  .case-study-figure {
+    padding: var(--space-5);
   }
-  .case-study-figure-value {
-    font-size: var(--text-hero);
+  .case-study-stage {
+    padding: 0 var(--space-4) var(--space-4);
+  }
+  .case-study-beats,
+  .case-study-beats:has(> :nth-child(2):last-child) {
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
